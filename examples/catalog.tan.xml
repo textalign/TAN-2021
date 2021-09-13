@@ -976,7 +976,7 @@
                    orig-href="../ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
       </source>
    </doc>
-   <doc href="TAN-A-lm/grc-tan-a-lm-α.xml"
+   <doc href="TAN-A-lm/grc-tan-a-lm-alpha.xml"
         TAN-version="2021"
         id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusα"
         lexicon="LSJ"
@@ -999,7 +999,7 @@
       <tok-is xmlns="tag:textalign.net,2015:ns">Ἆ</tok-is>
       <tok-is xmlns="tag:textalign.net,2015:ns">α</tok-is>
    </doc>
-   <doc href="TAN-A-lm/grc-tan-a-lm-αʹ.xml"
+   <doc href="TAN-A-lm/grc-tan-a-lm-alpha-prime.xml"
         TAN-version="2021"
         id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusαʹ"
         lexicon="LSJ"
