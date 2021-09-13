@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="incl/TAN-class-3.rng">
+    <start>
+      <element name="TAN-voc">
+        <a:documentation>specifies a TAN file that contains vocabulary items. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <define name="source-list">
+      <empty/>
+    </define>
+    <define name="body-attributes-non-core">
+      <optional>
+        <ref name="element-scope"/>
+      </optional>
+      <optional>
+        <ref name="attribute-scope"/>
+      </optional>
+    </define>
+    <define name="group-attributes-non-core">
+      <optional>
+        <ref name="element-scope"/>
+      </optional>
+      <optional>
+        <ref name="attribute-scope"/>
+      </optional>
+    </define>
+    <define name="body-content-non-class-3">
+      <interleave>
+        <zeroOrMore>
+          <ref name="body-group"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="body-item"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+    <define name="body-item">
+      <choice>
+        <ref name="element-item"/>
+        <ref name="voc-element-verb"/>
+      </choice>
+    </define>
+    <define name="extra-verb-attrs">
+      <ref name="ptr-attr-group"/>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="attribute-scope">
+    <attribute name="affects-attribute">
+      <a:documentation>names one or more TAN attributes that an item applies to.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. An element will be affected only by the values of the closest @affects-attribute.</a:documentation>
+      <a:documentation>Currently this attribute may be applied only to @n.</a:documentation>
+      <value>n</value>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-item">
+    <element name="item">
+      <a:documentation>provides a container for IRI, names, and descriptions of something. The item is assumed to be a type (or types) of thing indicated by the values of the closest @affects-attribute or @affects-element.</a:documentation>
+      <a:documentation>An &lt;item&gt; does not describe verbs, which have special constraints. Use &lt;verb&gt; instead.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="attribute-scope"/>
+          </optional>
+          <optional>
+            <ref name="element-scope"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-group"/>
+          </optional>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <choice>
+              <ref name="entity-digital-tan-other-content"/>
+              <ref name="entity-nondigital-content"/>
+              <ref name="entity-nondigital-with-constraints-content"/>
+              <ref name="entity-tok-def"/>
+            </choice>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-scope">
+    <attribute name="affects-element">
+      <a:documentation>names one or more TAN elements that an item applies to.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. An element is be affected only by the values of the closest @affects-element.</a:documentation>
+    </attribute>
+  </define>
+</grammar>
+<!-- PATTERNS -->

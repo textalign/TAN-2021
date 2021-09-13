@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:n:eng:bible">
+    <head>
+        <name>commonly used vocabulary for the bible</name>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.bible.eng.tan-voc.xml"/>
+        <license which="by 4.0" licensor="kalvesmaki"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:person:kalvesmaki</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name>joel kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change who="kalvesmaki" when="2017-12-02T16:26:16.45-05:00">Started file.</change>
+        <change when="2018-09-12" who="kalvesmaki">Converted file from independent project TAN-voc
+            into a TAN extra vocabulary file.</change>
+        <change when="2018-09-14" who="kalvesmaki">Separated from Spanish vocabulary</change>
+        <to-do/>
+    </head>
+    <body affects-attribute="n" affects-element="work">
+        <item>
+            <IRI>tag:textalign.net,2015:work:bible</IRI>
+            <IRI>http://dbpedia.org/resource/Bible</IRI>
+            <name>bible</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:tanakh</IRI>
+            <IRI>http://dbpedia.org/resource/Tanakh</IRI>
+            <name>tanakh</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:old_testament</IRI>
+            <IRI>http://dbpedia.org/resource/Old_Testament</IRI>
+            <name>old testament</name>
+            <name>ot</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:septuagint</IRI>
+            <IRI>http://dbpedia.org/resource/Septuagint</IRI>
+            <name>septuagint</name>
+            <name>lxx</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:new_testament</IRI>
+            <IRI>http://dbpedia.org/resource/New_testament</IRI>
+            <name>new testament</name>
+            <name>nt</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:apocrypha</IRI>
+            <IRI>http://dbpedia.org/resource/Apocrypha</IRI>
+            <name>apocrypha</name>
+            <!-- apoc is reserved as an abbreviation for Revelation -->
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:genesis</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Genesis</IRI>
+            <name>ge</name>
+            <name>gn</name>
+            <name>gen</name>
+            <name>genesis</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:exodus</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Exodus</IRI>
+            <name>ex</name>
+            <name>exod</name>
+            <name>exodus</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:leviticus</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Leviticus</IRI>
+            <name>lv</name>
+            <name>le</name>
+            <name>lev</name>
+            <name>leviticus</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:numbers</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Numbers</IRI>
+            <name>nm</name>
+            <name>nu</name>
+            <name>num</name>
+            <name>numbers</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:deuteronomy</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Deuteronomy</IRI>
+            <name>dt</name>
+            <name>de</name>
+            <name>du</name>
+            <name>deut</name>
+            <name>deuteronomy</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:joshua</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Joshua</IRI>
+            <name>jos</name>
+            <name>josh</name>
+            <name>joshua</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:judges</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Judges</IRI>
+            <name>jdg</name>
+            <name>jgs</name>
+            <comment when="2019-05-26" who="kalvesmaki">jud is reserved for Jude (New Testament)</comment>
+            <name>judg</name>
+            <name>judges</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:ruth</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Ruth</IRI>
+            <name>ru</name>
+            <name>rt</name>
+            <name>ruth</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_kingdoms</IRI>
+            <IRI>http://dbpedia.org/resource/1_Samuel</IRI>
+            <name>1sm</name>
+            <name>1sa</name>
+            <name>1sam</name>
+            <name>1 sm</name>
+            <name>1 sam</name>
+            <name>1 samuel</name>
+            <name>1 kingdoms</name>
+            <name>1 kgdms</name>
+            <name>1kgdms</name>
+            <name>ism</name>
+            <name>i sm</name>
+            <name>i sam</name>
+            <name>i samuel</name>
+            <name>i kingdoms</name>
+            <name>i kgdms</name>
+            <name>ikgdms</name>
+            <desc>I Kingdoms is the LXX name for the book, not to be confused with I Kings, which
+                the LXX calls 3 Kingdoms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_kingdoms</IRI>
+            <IRI>http://dbpedia.org/resource/2_Samuel</IRI>
+            <name>2sm</name>
+            <name>2sa</name>
+            <name>2sam</name>
+            <name>2 sm</name>
+            <name>2 sam</name>
+            <name>2 samuel</name>
+            <name>2 kingdoms</name>
+            <name>2 kgdms</name>
+            <name>2kgdms</name>
+            <name>iism</name>
+            <name>iisa</name>
+            <name>ii sm</name>
+            <name>ii sam</name>
+            <name>ii samuel</name>
+            <name>ii kingdoms</name>
+            <name>ii kgdms</name>
+            <name>iikgdms</name>
+            <desc>II Kingdoms is the LXX name for the book, not to be confused with II Kings, which
+                the LXX calls 2 Kingdoms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:3_kingdoms</IRI>
+            <IRI>http://dbpedia.org/resource/1_Kings</IRI>
+            <name>1kg</name>
+            <name>1ki</name>
+            <name>1kgs</name>
+            <name>1 kgs</name>
+            <name>1 kings</name>
+            <name>3 kingdoms</name>
+            <name>3 kgdms</name>
+            <name>3kgdms</name>
+            <name>ikg</name>
+            <name>iki</name>
+            <name>ikgs</name>
+            <name>i kgs</name>
+            <name>i kings</name>
+            <name>iii kingdoms</name>
+            <name>iii kgdms</name>
+            <name>iiikgdms</name>
+            <desc>'Kings' is the name commonly given, but 'Kingdoms' is the term used by the LXX.
+                The distinction is fortuitous, since the LXX book numbering differs too. E.g., 1
+                Kings = 3 Kingdoms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:4_kingdoms</IRI>
+            <IRI>http://dbpedia.org/resource/2_Kings</IRI>
+            <name>2kg</name>
+            <name>2ki</name>
+            <name>2kgs</name>
+            <name>2 kgs</name>
+            <name>2 kings</name>
+            <name>4 kingdoms</name>
+            <name>4 kgdms</name>
+            <name>4kgdms</name>
+            <name>iikg</name>
+            <name>iiki</name>
+            <name>iikgs</name>
+            <name>ii kgs</name>
+            <name>ii kings</name>
+            <name>iv kingdoms</name>
+            <name>iv kgdms</name>
+            <name>ivkgdms</name>
+            <desc>'Kings' is the name commonly given, but 'Kingdoms' is the term used by the LXX.
+                The distinction is fortuitous, since the LXX book numbering differs too. E.g., 1
+                Kings = 3 Kingdoms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_paraleipomenon</IRI>
+            <IRI>http://dbpedia.org/resource/1_Chronicles</IRI>
+            <name>1ch</name>
+            <name>1 chr</name>
+            <name>1chr</name>
+            <name>1 chron</name>
+            <name>1 chronicles</name>
+            <name>1 para</name>
+            <name>1para</name>
+            <name>1 paraleipomena</name>
+            <name>ich</name>
+            <name>i chr</name>
+            <name>ichr</name>
+            <name>i chron</name>
+            <name>i chronicles</name>
+            <name>i para</name>
+            <name>ipara</name>
+            <name>i paraleipomena</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_paraleipomenon</IRI>
+            <IRI>http://dbpedia.org/resource/2_Chronicles</IRI>
+            <name>2ch</name>
+            <name>2 chr</name>
+            <name>2chr</name>
+            <name>2 chron</name>
+            <name>2 chronicles</name>
+            <name>2 para</name>
+            <name>2para</name>
+            <name>2 paraleipomena</name>
+            <name>iich</name>
+            <name>ii chr</name>
+            <name>iichr</name>
+            <name>ii chron</name>
+            <name>ii chronicles</name>
+            <name>ii para</name>
+            <name>iipara</name>
+            <name>ii paraleipomena</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:ezra</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Ezra</IRI>
+            <name>ezr</name>
+            <name>esd</name>
+            <name>ezra</name>
+            <name>esdras</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:nehemiah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Nehemiah</IRI>
+            <name>ne</name>
+            <name>neh</name>
+            <name>nehemiah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1esdra</IRI>
+            <IRI>http://dbpedia.org/resource/1_Esdras</IRI>
+            <name>1esd</name>
+            <name>1esdr</name>
+            <name>1 esdras</name>
+            <name>iesd</name>
+            <name>iesdr</name>
+            <name>i esdras</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2esdras</IRI>
+            <IRI>http://dbpedia.org/resource/2_Esdras</IRI>
+            <name>2esd</name>
+            <name>2esdr</name>
+            <name>2 esdras</name>
+            <name>iiesd</name>
+            <name>iiesdr</name>
+            <name>ii esdras</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:tobías</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Tobit</IRI>
+            <name>tb</name>
+            <name>tob</name>
+            <name>tobit</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:judith</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Judith</IRI>
+            <name>jdt</name>
+            <name>jth</name>
+            <name>judith</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:esther</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Esther</IRI>
+            <name>est</name>
+            <name>esth</name>
+            <name>esther</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:additions_to_esther</IRI>
+            <IRI>tag:kalvesmaki.com,2014:work:bible:additions-to-esther</IRI>
+            <name>addesth</name>
+            <name>additions to esther</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_maccabees</IRI>
+            <IRI>http://dbpedia.org/resource/1_Maccabees</IRI>
+            <name>1mc</name>
+            <name>1ma</name>
+            <name>1 mac</name>
+            <name>1 macc</name>
+            <name>1mac</name>
+            <name>1macc</name>
+            <name>1 maccabees</name>
+            <name>imc</name>
+            <name>ima</name>
+            <name>i mac</name>
+            <name>i macc</name>
+            <name>imac</name>
+            <name>imacc</name>
+            <name>i maccabees</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_maccabees</IRI>
+            <IRI>http://dbpedia.org/resource/2_Maccabees</IRI>
+            <name>2mc</name>
+            <name>2ma</name>
+            <name>2 mac</name>
+            <name>2 macc</name>
+            <name>2mac</name>
+            <name>2macc</name>
+            <name>2 maccabees</name>
+            <name>iimc</name>
+            <name>iima</name>
+            <name>ii mac</name>
+            <name>ii macc</name>
+            <name>iimac</name>
+            <name>iimacc</name>
+            <name>ii maccabees</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:3_maccabees</IRI>
+            <IRI>http://dbpedia.org/resource/3_Maccabees</IRI>
+            <name>3mc</name>
+            <name>3ma</name>
+            <name>3 mac</name>
+            <name>3 macc</name>
+            <name>3mac</name>
+            <name>3macc</name>
+            <name>3 maccabees</name>
+            <name>iiimc</name>
+            <name>iiima</name>
+            <name>iii mac</name>
+            <name>iii macc</name>
+            <name>iiimac</name>
+            <name>iiimacc</name>
+            <name>iii maccabees</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:4_maccabees</IRI>
+            <IRI>http://dbpedia.org/resource/4_Maccabees</IRI>
+            <name>4mc</name>
+            <name>4ma</name>
+            <name>4 mac</name>
+            <name>4 macc</name>
+            <name>4mac</name>
+            <name>4macc</name>
+            <name>4 maccabees</name>
+            <name>ivmc</name>
+            <name>ivma</name>
+            <name>iv mac</name>
+            <name>iv macc</name>
+            <name>ivmac</name>
+            <name>ivmacc</name>
+            <name>iv maccabees</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:job</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Job</IRI>
+            <name>jb</name>
+            <name>job</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:psalms</IRI>
+            <IRI>http://dbpedia.org/resource/Psalms</IRI>
+            <name>ps</name>
+            <name>psalms</name>
+            <name>pss</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:odes</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Odes_(Bible)</IRI>
+            <name>odes</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:psalms_of_solomon</IRI>
+            <IRI>http://dbpedia.org/resource/Psalms_of_Solomon</IRI>
+            <name>pssol</name>
+            <name>psalms of solomon</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:proverbs</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Proverbs</IRI>
+            <name>pr</name>
+            <name>prv</name>
+            <name>pro</name>
+            <name>prov</name>
+            <name>proverbs</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:ecclesiastes</IRI>
+            <IRI>http://dbpedia.org/resource/Ecclesiastes</IRI>
+            <name>ec</name>
+            <name>qoh</name>
+            <name>eccl</name>
+            <name>eccles</name>
+            <name>qoheleth</name>
+            <name>ecclesiastes</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:song_of_songs</IRI>
+            <IRI>http://dbpedia.org/resource/Song_of_Songs</IRI>
+            <name>ss</name>
+            <name>sg</name>
+            <name>can</name>
+            <name>song</name>
+            <name>cant</name>
+            <name>song of songs</name>
+            <name>canticle of canticles</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:wisdom_of_solomon</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Wisdom</IRI>
+            <name>ws</name>
+            <name>wis</name>
+            <name>wisdom</name>
+            <name>wisdom of solomon</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:sirach</IRI>
+            <IRI>http://dbpedia.org/resource/Sirach</IRI>
+            <name>sir</name>
+            <name>sirach</name>
+            <name>ecclus</name>
+            <name>ecclesiasticus</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:isaiah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Isaiah</IRI>
+            <name>is</name>
+            <name>isa</name>
+            <name>isaiah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:jeremiah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Jeremiah</IRI>
+            <name>je</name>
+            <name>jer</name>
+            <name>jeremiah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:epistle_of_jeremiah</IRI>
+            <IRI>http://dbpedia.org/resource/Letter_of_Jeremiah</IRI>
+            <name>epjer</name>
+            <name>epistle of jeremiah</name>
+            <name>letter of jeremiah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:lamentaciones</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Lamentations</IRI>
+            <name>la</name>
+            <name>lam</name>
+            <name>lamentations</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:baruch</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Baruch</IRI>
+            <name>ba</name>
+            <name>bar</name>
+            <name>baruch</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:ezekiel</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Ezekiel</IRI>
+            <name>ez</name>
+            <name>ezk</name>
+            <name>ezek</name>
+            <name>ezekiel</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:daniel</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Daniel</IRI>
+            <name>dn</name>
+            <name>da</name>
+            <name>dan</name>
+            <name>daniel</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:prayer_of_azariah</IRI>
+            <IRI>http://dbpedia.org/resource/Prayer_of_Azariah</IRI>
+            <name>prazar</name>
+            <name>prayer of azariah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:susanna</IRI>
+            <IRI>http://dbpedia.org/resource/Susanna_(Book_of_Daniel)</IRI>
+            <name>sus</name>
+            <name>susanna</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:bel_and_the_dragon</IRI>
+            <IRI>http://dbpedia.org/resource/Bel_and_the_Dragon</IRI>
+            <name>bel</name>
+            <name>bel and the dragon</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:prayer_of_manasseh</IRI>
+            <IRI>http://dbpedia.org/resource/Prayer_of_Manasseh</IRI>
+            <name>man</name>
+            <name>prman</name>
+            <name>prayer of manasseh</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:song_of_the_three_holy_children</IRI>
+            <IRI>http://dbpedia.org/resource/Song_of_the_Three_Holy_Children</IRI>
+            <name>s3y</name>
+            <name>song of the three youths</name>
+            <name>song of the three holy children</name>
+            <name>song of the three holy youths</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:hosea</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Hosea</IRI>
+            <name>ho</name>
+            <name>hos</name>
+            <name>hosea</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:joel</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Joel</IRI>
+            <name>jl</name>
+            <name>joel</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:amos</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Amos</IRI>
+            <name>am</name>
+            <name>amos</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:obadiah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Obadiah</IRI>
+            <name>ob</name>
+            <name>obad</name>
+            <name>obadiah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:jonah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Jonah</IRI>
+            <name>jon</name>
+            <name>jonah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:micah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Micah</IRI>
+            <name>mi</name>
+            <name>mic</name>
+            <name>micah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:nahum</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Nahum</IRI>
+            <name>na</name>
+            <name>nah</name>
+            <name>nahum</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:habakkuk</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Habakkuk</IRI>
+            <name>hb</name>
+            <name>hab</name>
+            <name>habakkuk</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:zephaniah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Zephaniah</IRI>
+            <name>zep</name>
+            <name>zeph</name>
+            <name>zephaniah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:haggai</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Haggai</IRI>
+            <name>hg</name>
+            <name>hag</name>
+            <name>haggai</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:zechariah</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Zechariah</IRI>
+            <name>zec</name>
+            <name>zech</name>
+            <name>zechariah</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:malachi</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Malachi</IRI>
+            <name>ml</name>
+            <name>mal</name>
+            <name>malachi</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:matthew</IRI>
+            <IRI>http://dbpedia.org/resource/Gospel_of_Matthew</IRI>
+            <name>mt</name>
+            <name>mat</name>
+            <name>matt</name>
+            <name>matthew</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:mark</IRI>
+            <IRI>http://dbpedia.org/resource/Gospel_of_Mark</IRI>
+            <name>mk</name>
+            <name>mar</name>
+            <name>mark</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:luke</IRI>
+            <IRI>http://dbpedia.org/resource/Gospel_of_Luke</IRI>
+            <name>lk</name>
+            <name>lu</name>
+            <name>luke</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:john</IRI>
+            <IRI>http://dbpedia.org/resource/Gospel_of_John</IRI>
+            <name>jn</name>
+            <name>jo</name>
+            <name>john</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:acts</IRI>
+            <IRI>http://dbpedia.org/resource/Acts_of_the_Apostles</IRI>
+            <name>ac</name>
+            <name>acts</name>
+            <name>acts of the apostles</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:romans</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Romans</IRI>
+            <name>rm</name>
+            <name>ro</name>
+            <name>rom</name>
+            <name>romans</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_corinthians</IRI>
+            <IRI>http://dbpedia.org/resource/First_Epistle_to_the_Corinthians</IRI>
+            <name>1 co</name>
+            <name>1 cor</name>
+            <name>1co</name>
+            <name>1cor</name>
+            <name>1c</name>
+            <name>1 corinthians</name>
+            <name>1corinthians</name>
+            <name>i co</name>
+            <name>i cor</name>
+            <name>ico</name>
+            <name>icor</name>
+            <name>ic</name>
+            <name>i corinthians</name>
+            <name>icorinthians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_corinthians</IRI>
+            <IRI>http://dbpedia.org/resource/Second_Epistle_to_the_Corinthians</IRI>
+            <name>2 co</name>
+            <name>2 cor</name>
+            <name>2co</name>
+            <name>2cor</name>
+            <name>2c</name>
+            <name>2 corinthians</name>
+            <name>2corinthians</name>
+            <name>ii co</name>
+            <name>ii cor</name>
+            <name>iico</name>
+            <name>iicor</name>
+            <name>iic</name>
+            <name>ii corinthians</name>
+            <name>iicorinthians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:galatians</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Galatians</IRI>
+            <name>ga</name>
+            <name>gal</name>
+            <name>galatians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:ephesians</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Ephesians</IRI>
+            <name>ep</name>
+            <name>eph</name>
+            <name>ephesians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:philippians</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Philippians</IRI>
+            <name>php</name>
+            <name>phil</name>
+            <name>philippians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:colossians</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Colossians</IRI>
+            <name>co</name>
+            <name>col</name>
+            <name>colossians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_thessalonians</IRI>
+            <IRI>http://dbpedia.org/resource/First_Epistle_to_the_Thessalonians</IRI>
+            <name>1th</name>
+            <name>1 thes</name>
+            <name>1 thess</name>
+            <name>1thes</name>
+            <name>1thess</name>
+            <name>1 thessalonians</name>
+            <name>1thessalonians</name>
+            <name>ith</name>
+            <name>i thes</name>
+            <name>i thess</name>
+            <name>ithes</name>
+            <name>ithess</name>
+            <name>i thessalonians</name>
+            <name>ithessalonians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_thessalonians</IRI>
+            <IRI>http://dbpedia.org/resource/Second_Epistle_to_the_Thessalonians</IRI>
+            <name>2th</name>
+            <name>2 thes</name>
+            <name>2 thess</name>
+            <name>2thes</name>
+            <name>2thess</name>
+            <name>2 thessalonians</name>
+            <name>2thessalonians</name>
+            <name>iith</name>
+            <name>ii thes</name>
+            <name>ii thess</name>
+            <name>iithes</name>
+            <name>iithess</name>
+            <name>ii thessalonians</name>
+            <name>iithessalonians</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_timothy</IRI>
+            <IRI>http://dbpedia.org/resource/First_Epistle_to_Timothy</IRI>
+            <name>1t</name>
+            <name>1 tm</name>
+            <name>1 ti</name>
+            <name>1 tim</name>
+            <name>1tm</name>
+            <name>1ti</name>
+            <name>1tim</name>
+            <name>1 timothy</name>
+            <name>1timothy</name>
+            <name>it</name>
+            <name>i tm</name>
+            <name>i ti</name>
+            <name>i tim</name>
+            <name>itm</name>
+            <name>iti</name>
+            <name>itim</name>
+            <name>i timothy</name>
+            <name>itimothy</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_timothy</IRI>
+            <IRI>http://dbpedia.org/resource/Second_Epistle_to_Timothy</IRI>
+            <name>2t</name>
+            <name>2 tm</name>
+            <name>2 ti</name>
+            <name>2 tim</name>
+            <name>2tm</name>
+            <name>2ti</name>
+            <name>2tim</name>
+            <name>2 timothy</name>
+            <name>2timothy</name>
+            <name>iit</name>
+            <name>ii tm</name>
+            <name>ii ti</name>
+            <name>ii tim</name>
+            <name>iitm</name>
+            <name>iiti</name>
+            <name>iitim</name>
+            <name>ii timothy</name>
+            <name>iitimothy</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:titus</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_Titus</IRI>
+            <name>ti</name>
+            <name>tit</name>
+            <name>titus</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:philemon</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_Philemon</IRI>
+            <name>phm</name>
+            <name>phlm</name>
+            <name>philem</name>
+            <name>philemon</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:hebrews</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_to_the_Hebrews</IRI>
+            <name>he</name>
+            <name>heb</name>
+            <name>hebrews</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:james</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_of_James</IRI>
+            <name>ja</name>
+            <name>jas</name>
+            <name>jam</name>
+            <name>james</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_peter</IRI>
+            <IRI>http://dbpedia.org/resource/First_Epistle_of_Peter</IRI>
+            <name>1p</name>
+            <name>1 pt</name>
+            <name>1 pe</name>
+            <name>1pe</name>
+            <name>1 pet</name>
+            <name>1pt</name>
+            <name>1pet</name>
+            <name>1 peter</name>
+            <name>1peter</name>
+            <name>ip</name>
+            <name>i pt</name>
+            <name>i pe</name>
+            <name>i pet</name>
+            <name>ipt</name>
+            <name>ipet</name>
+            <name>i peter</name>
+            <name>ipeter</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_peter</IRI>
+            <IRI>http://dbpedia.org/resource/Second_Epistle_of_Peter</IRI>
+            <name>2p</name>
+            <name>2 pt</name>
+            <name>2 pe</name>
+            <name>2pe</name>
+            <name>2 pet</name>
+            <name>2pt</name>
+            <name>2pet</name>
+            <name>2 peter</name>
+            <name>2peter</name>
+            <name>iip</name>
+            <name>ii pt</name>
+            <name>ii pe</name>
+            <name>ii pet</name>
+            <name>iipt</name>
+            <name>iipet</name>
+            <name>ii peter</name>
+            <name>iipeter</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:1_john</IRI>
+            <IRI>http://dbpedia.org/resource/First_Epistle_of_John</IRI>
+            <name>1j</name>
+            <name>1 jn</name>
+            <name>1 jo</name>
+            <name>1jn</name>
+            <name>1jo</name>
+            <name>1 john</name>
+            <name>1john</name>
+            <name>ij</name>
+            <name>i jn</name>
+            <name>i jo</name>
+            <name>ijn</name>
+            <name>ijo</name>
+            <name>i john</name>
+            <name>ijohn</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:2_john</IRI>
+            <IRI>http://dbpedia.org/resource/Second_Epistle_of_John</IRI>
+            <name>2j</name>
+            <name>2 jn</name>
+            <name>2 jo</name>
+            <name>2jn</name>
+            <name>2jo</name>
+            <name>2 john</name>
+            <name>2john</name>
+            <name>iij</name>
+            <name>ii jn</name>
+            <name>ii jo</name>
+            <name>iijn</name>
+            <name>iijo</name>
+            <name>ii john</name>
+            <name>iijohn</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:3_john</IRI>
+            <IRI>http://dbpedia.org/resource/Third_Epistle_of_John</IRI>
+            <name>3j</name>
+            <name>3 jn</name>
+            <name>3 jo</name>
+            <name>3jn</name>
+            <name>3jo</name>
+            <name>3 john</name>
+            <name>3john</name>
+            <name>iiij</name>
+            <name>iii jn</name>
+            <name>iii jo</name>
+            <name>iiijn</name>
+            <name>iiijo</name>
+            <name>iii john</name>
+            <name>iiijohn</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:judas</IRI>
+            <IRI>http://dbpedia.org/resource/Epistle_of_Jude</IRI>
+            <name>ju</name>
+            <name>jud</name>
+            <name>jude</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:ns:work:revelation</IRI>
+            <IRI>http://dbpedia.org/resource/Book_of_Revelation</IRI>
+            <name>re</name>
+            <name>rv</name>
+            <name>ap</name>
+            <name>rev</name>
+            <name>apoc</name>
+            <name>revelation</name>
+            <name>apocalypse</name>
+            <name>revelation to john</name>
+        </item>
+    </body>
+</TAN-voc>

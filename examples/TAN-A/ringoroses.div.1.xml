@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ring01-TAN-A-ring02">
+    <head>
+        <name>div-based alignment of multiple versions of Ring o Roses</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A/ringoroses.div.1.xml"/>
+        <license which="by_4.0" licensor="park"/>
+        <token-definition src="eng-us" pattern="[-\w]+"/>
+        <source xml:id="eng-uk">
+            <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+            <name>Transcription of ring around the roses in English (UK)</name>
+            <location href="../ring-o-roses.eng.1881.xml" accessed-when="2015-03-10"/>
+        </source>
+        <source xml:id="eng-us">
+            <IRI>tag:parkj@textalign.net,2015:ring02</IRI>
+            <name>Transcription of ring around the roses in English (US)</name>
+            <location href="../ring-o-roses.eng.1987.xml" accessed-when="2014-08-13"/>
+        </source>
+        <source xml:id="ger">
+            <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+            <name>Transcription of an ancestor of Ring around the roses in German</name>
+            <location href="../ring-o-roses.deu.1897.xml" accessed-when="2014-08-13"/>
+        </source>
+        <source xml:id="eng-1790">
+            <IRI>tag:parkj@textalign.net,2015:ring04</IRI>
+            <name>TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+                1883</name>
+            <location href="../ring-o-roses.eng.1951.xml" accessed-when="2017-10-21"/>
+        </source>
+        <adjustments src="ger">
+            <skip div-type="Gedicht"/>
+            <rename n="e" by="-1"/>
+        </adjustments>
+        <vocabulary-key>
+            <algorithm xml:id="xslt1">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:20:15.157-04:00"/>
+            </algorithm>
+            <role xml:id="stylesheet" which="stylesheet"/>
+            <comment when="2016-02-22-05:00" who="park">The following token definition treats the
+                following as words: sequences of letters, any individual character that is neither a
+                letter nor a space (i.e., punctuation).</comment>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <verb xml:id="resembles">
+                <IRI>tag:parkj@textalign.net,2015:verb:resembles</IRI>
+                <name>resembles</name>
+            </verb>
+            <scriptum xml:id="böhme">
+                <IRI>http://www.worldcat.org/oclc/4574384</IRI>
+                <name>Franz Magnus Böhme, Deutsches Kinderlied und Kinderspiel: Volksüberlieferungen aus
+                    allen Landen deutscher Zunge, gesammelt, geordnet und mit Angabe der Quellen. Leipzig,
+                    1897.</name>
+            </scriptum>
+            <alias id="ring" idrefs="ger eng-us"/>
+        </vocabulary-key>
+        
+        <file-resp who="park"/>
+        <resp who="xslt1" roles="stylesheet"/>
+        <resp who="park" roles="creator"/>
+        <change when="2014-08-14" who="park">Started file</change>
+        <change when="2014-08-22" who="park">Added German version.</change>
+        <change who="xslt1" when="2018-08-09T11:20:15.157-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do>
+            <comment when="2018-08-09-04:00" who="park">Finish file.</comment>
+        </to-do>
+    </head>
+    <body claimant="park">
+        <comment when="2019-06-16" who="park">The following claims merely exemplify the statements one could make, and do not make truthful assertions.</comment>
+        <claim verb="resembles">
+            <subject src="eng-uk">
+                <tok ref="2" pos="2-3" chars="3-4"/>
+                <from-tok ref="1" pos="3"/>
+                <through-tok ref="2" pos="1"/>
+            </subject>
+            <object work="eng-uk" ref="3-4"/>
+        </claim>
+        <claim verb="quotes">
+            <subject work="ring" ref="1"/>
+            <object work="ring" ref="2"/>
+        </claim>
+        <claim verb="lacks_text" subject="böhme">
+            <at-ref src="eng-uk" ref="1"/>
+        </claim>
+        <claim subject="ger" verb="translates" object="eng-uk" in-lang="deu"/>
+    </body>
+</TAN-A>

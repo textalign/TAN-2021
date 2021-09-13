@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:patricius.confessio.tan-a">
+    <head>
+        <name>Annotations on Patricius, Confessio</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A/patricius.confessio.TAN-A.xml"/>
+        <license licensor="park" which="by 4.0"/>
+        <numerals priority="letters"/>
+        <source xml:id="conf">
+            <IRI>tag:parkj@textalign.net,2015:patricius.confession.2003.eng</IRI>
+            <name>The Confession of St Patrick: A digital edition of the English translation by
+                Pádraig McCarthy</name>
+            <location href="../patricius.confessio.2003.eng.xml" accessed-when="2020-10-14-04:00"/>
+        </source>
+        <source xml:id="Matt">
+            <IRI>tag:parkj@textalign.net,2015:bible:matthew</IRI>
+            <name>Gospel of Matthew, King James Version of the Bible, 1760 edition</name>
+            <location href="../matt.eng.kjv.1760.xml" accessed-when="2020-10-14-04:00"/>
+        </source>
+        <vocabulary-key>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp who="park" roles="creator"/>
+        <change when="2020-10-14" who="park">Started file</change>
+        <to-do>
+            <comment when="2018-08-05-04:00" who="park">Need to add annotations.</comment>
+        </to-do>
+    </head>
+    <body claimant="park">
+        <claim verb="quotes">
+            <subject src="conf" ref="40 1"/>
+            <object src="Matt" ref="28:19-20"/>
+        </claim>
+    </body>
+</TAN-A>

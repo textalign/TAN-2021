@@ -1,0 +1,15 @@
+[submodule "applications/get inclusions/xslt-for-docx"]
+	path = applications/get inclusions/xslt-for-docx
+	url = https://github.com/Arithmeticus/xslt-for-docx.git
+[submodule "output/tablesorter"]
+	path = output/js/tablesorter
+	url = https://github.com/Mottie/tablesorter.git
+[submodule "output/js/venn.js"]
+	path = output/js/venn.js
+	url = https://github.com/benfred/venn.js.git
+[submodule "output/js/tablesorter"]
+	path = output/js/tablesorter
+	url = https://github.com/Mottie/tablesorter.git
+[submodule "maintenance/xslt-quality-kalv"]
+	path = maintenance/xslt-quality-kalv
+	url = https://github.com/Arithmeticus/xslt-quality.git

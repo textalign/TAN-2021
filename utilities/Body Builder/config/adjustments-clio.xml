@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="tag:textalign.net,2015:ns">
+   <!-- These adjustments are written for the TAN application convert to TAN.xsl, and are based upon
+      a series of Word documents that contained the working transcriptions of the CLIO project. -->
+   <initial-adjustments>
+      <replace pattern="([rv]) \(01\)" replacement="$1bis" message="Adjusting fol. X (01) to fol. X bis"/>
+   </initial-adjustments>
+   <main-text-to-markup>
+      <!-- First, mark the homily number, using dot-all mode and a reluctant match. It finds the opening
+         line, and as much text needed before reaching the first Arabic-numeral based reference. This allows us 
+         to find the homily number. We can't do that on the title, which uses Roman numerals. Note we use $0 
+         to capture and place the original text, which should not be consumed, because it will capture a lot 
+         of main text that will be needed for the next steps. -->
+      <markup>
+         <where pattern="(\n|\t|^)(Explanatio|Iohannis|Homilia [IVXL]|Omelia [IVXL]|Commentarius).+?(\d+)\.(\d+)\.(\d+)" 
+            flags="s" message="Setting up beginning of tree for homily $3"/>
+         <div level="1" type="hom" n="$3"/>
+         <div level="2" type="title" n="title"/>
+         <ab level="3"/>$0
+      </markup>
+      
+      <markup>
+         <where pattern="\[?Omelia.+[\)\]]" exclude-format="bold"/>
+         <where pattern="\[Homilia.+\]"/>
+         <div level="2" type="title" n="loc">
+            <ab>$0</ab>
+         </div>
+      </markup>
+      
+      <!-- If it is centered and in square brackets, treat it as a manuscript
+         title, but not if it is merely indicating the homily number. -->
+      <!-- If it is bold, treat it as an original title, unless it has the word
+         "Explanatio", etc.,  which signals the initial title, already handled, or
+         a stray bold space or character. -->
+      <markup>
+         <where pattern="\[.+\]" format="center" exclude-pattern="(\[Omeli|Heiligenkreuz|\[Homilia)"/>
+         <where format="bold" exclude-pattern="Explanatio|(Homi|Ome)lia [IVXL]|Commentarius|^\s+$|^.$"/>
+         <div level="2" type="title" n="orig_title">
+            <ab>$0</ab>
+         </div>
+      </markup>
+      
+      <markup>
+         <where format="italic"/>
+         <quote>$0</quote>
+      </markup>
+      
+      <!-- In this particular pattern, the empty anchors represent the hierarchy
+         that should be constructed. The text that follows will be wrapped by the 
+         last element. -->
+      <markup>
+         <where pattern="(\d+)\.(\d+)\.(\d+)" exclude-format="center"/>
+         <div level="1" type="hom" n="$1"/>
+         <div level="2" type="sec" n="$2"/>
+         <div level="3" type="sub" n="$3"/>
+         <ab level="4"/>
+      </markup>
+      
+   </main-text-to-markup>
+   
+   <comments-to-markup>
+      
+      <!-- CLIO: Burgundio -->
+      
+      <!-- Get all complex MS refs. Note that the loose folio pattern looks for Arabic
+         numbers, r for recto, v for verso, a and b for columns, and bis for a secondary
+         reference. These regular expressions are quite loosely constructed and do not
+         forbid many obvious erroneous patterns.
+      -->
+      <markup>
+         <where pattern="(Paris|Harley) (fol)\.\s*(\d+[rvabis]*); (Paris|Harley) (fol)\.\s*(\d+[rvabis]*)"/>
+         <milestone edRef="$1" unit="$2" n="$3"/>
+         <milestone edRef="$4" unit="$5" n="$6" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+      <!-- Get single complex MS refs -->
+      <markup>
+         <where pattern="(Paris|Harley) (fol)\.\s*(\d+[rvabis]*)"/>
+         <milestone edRef="$1" unit="$2" n="$3" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+      
+      <!-- CLIO: Griffolini and Montfaucon -->
+      <!-- milestones -->
+      
+      <!-- The following is for an exception that occurs twice. Normally the more specific
+         the exception, the earlier it should appear. -->
+      <markup>
+         <where pattern="1470: fol.30([rv]) \(01\)" message="dealing with duplicate folio numeration"/>
+         <milestone edRef="#W1470" unit="fol" n="30bis$1" rend="1470: fol.30(bis)$1"/>
+         <maintext/>
+      </markup>
+      
+      <!-- I added ? after : because sometimes the editor forgot it -->
+      <!-- This markup example breaks apart the publications by milestone type, but subsequent markups, 
+         which combine milestones, combine them. -->
+      <markup>
+         <where pattern="\[(1530|1603|1728):? (p)\.\s*([\d/]+)\]"/>
+         <where pattern="\[(1556|1862):? (col)\.\s*([\d/]+)\]"/>
+         <where pattern="\[(1462|1470|1486):? (fol)\.\s*(\d+[rvabis]*)\]"/>
+         <milestone edRef="#W$1" unit="$2" n="$3" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+      <markup>
+         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); ?(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <milestone edRef="#W$1" unit="$2" n="$3"/>
+         <milestone edRef="#W$4" unit="$5" n="$6" rend="$0"/>
+         <maintext/>
+      </markup>
+      <!-- [1470: fol.128v; 1530: p.872] -->
+      
+      <markup>
+         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <milestone edRef="#W$1" unit="$2" n="$3"/>
+         <milestone edRef="#W$4" unit="$5" n="$6"/>
+         <milestone edRef="#W$7" unit="$8" n="$9" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+      <markup>
+         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <milestone edRef="#W$1" unit="$2" n="$3"/>
+         <milestone edRef="#W$4" unit="$5" n="$6"/>
+         <milestone edRef="#W$7" unit="$8" n="$9"/>
+         <milestone edRef="#W$10" unit="$11" n="$12" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+      
+      <!-- VARIANT READINGS -->
+      
+      <!-- variant readings, specific exceptions -->
+      
+      <!-- for complex comments combining a 2-siglum variant reading with a 
+         one-siglum milestone, e.g., Griffolini 39.2.22 -->
+      <markup cuts="true">
+         <where pattern="((1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+))(\((1462|1470|1486|1530|1556|1603|1728|1862):\s*(fol|p|col)\.\s*(\d+[rvabis\d/]*)\))"/>
+         <milestone edRef="#W$7" unit="$8" n="$9" rend="$6"/>
+         <app rend="$1">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$2 #W$3">$5</rdg>
+         </app>
+      </markup>
+      
+      <!-- for 2 witnesses followed by 1 witness -->
+      <markup cuts="true">
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1 #W$2">$4</rdg>
+            <rdg wit="#W$5">$7</rdg>
+         </app>
+      </markup>
+      
+      <!-- for 1 witness followed by 2 witnesses -->
+      <markup cuts="true">
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1">$3</rdg>
+            <rdg wit="#W$4 #W$5">$7</rdg>
+         </app>
+      </markup>
+      
+      <!-- for 1 witness followed by 1 witness -->
+      <markup cuts="true">
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1">$3</rdg>
+            <rdg wit="#W$4">$6</rdg>
+         </app>
+      </markup>
+      
+      <!-- These patterns complain about unexpected complex comments. -->
+      <markup cuts="true">
+         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+)\(.*\)" message="unexpected complex comment; parentheses not anticipated: $0"/>
+         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+);.*\d" exclude-pattern="[\[\]]" message="unexpected complex comment; semicolon not anticipated: $0"/>
+         <unexpected/>
+         <maintext/>
+      </markup>
+      
+      <!-- variant readings, generally -->
+      
+      <!-- for 3 witnesses -->
+      <markup cuts="true">
+         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1 #W$2 #W$3">$5</rdg>
+         </app>
+      </markup>
+
+      <!-- for 2 witnesses -->
+      <markup cuts="true">
+         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1 #W$2">$4</rdg>
+         </app>
+      </markup>
+      
+      <!-- for 1 witness; sometimes the colon is dropped -->
+      <markup cuts="true">
+         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1">$3</rdg>
+         </app>
+      </markup>
+      
+      <!-- All CLIO versions, default -->
+      <!-- These are the most general rules, so are placed last, as fallbacks -->
+
+      <!-- Get MS refs without a siglum, and assume it belongs to Paris -->
+      <markup cuts="true">
+         <where pattern="(fol)\.\s*(\d+[rvabis\d/]*)"/>
+         <milestone edRef="Paris" unit="$1" n="$2" rend="$0"/>
+         <maintext/>
+      </markup>
+      
+   </comments-to-markup>
+</configuration>

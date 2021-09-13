@@ -1,0 +1,881 @@
+/* css for 2020 version of schemas */
+
+
+/* background */
+.label:hover,
+.signal:hover,
+.TAN-T_merge .head > .src:hover,
+.e-TAN-T_merge .e-head > .src:hover,
+.option-item:hover
+{
+   background-color: lightgreen;
+}
+.head,
+.e-head,
+.teiHeader,
+.e-teiHeader,
+tr > td.irrelevant,
+tr > td.label
+{
+   background: lightgray;
+}
+.lookatme {
+   background: green;
+}
+.highlight0 {
+   background: yellow;
+   opacity: 0.8;
+}
+.highlight1 {
+   background: orange;
+   opacity: 0.8;
+}
+.highlight2 {
+   background: lightgreen;
+   opacity: 0.8;
+}
+.alias--1 {
+   background-color: tan;
+}
+.alias--2 {
+   background-color: lightblue;
+}
+.alias--3 {
+   background-color: #ff8080; /* red @ 75% */
+}
+.alias--4 {
+   background-color: yellow;
+}
+.alias--5 {
+   background-color: orchid;
+}
+.alias--6 {
+   background-color: lightgreen;
+}
+.alias--7 {
+   background-color: orange;
+}
+.alias--8 {
+   background-color: gray;
+}
+.alias--9 {
+   background-color: pink;
+}
+.alias--10 {
+   background-color: khaki;
+}
+.alias--11 {
+   background-color: linen;
+}
+.groupitem--1 {
+   background-color: rgba(255, 255, 255, 0.30)
+}
+.groupitem--2 {
+   background-color: rgba(255, 255, 255, 0.40)
+}
+.groupitem--3 {
+   background-color: rgba(255, 255, 255, 0.50)
+}
+.groupitem--4 {
+   background-color: rgba(255, 255, 255, 0.60)
+}
+.groupitem--5 {
+   background-color: rgba(255, 255, 255, 0.65)
+}
+.groupitem--6 {
+   background-color: rgba(255, 255, 255, 0.70)
+}
+.groupitem--7 {
+   background-color: rgba(255, 255, 255, 0.75)
+}
+.groupitem--8 {
+   background-color: rgba(255, 255, 255, 0.80)
+}
+.groupitem--9 {
+   background-color: rgba(255, 255, 255, 0.85)
+}
+.groupitem--10,
+.groupitem--11,
+.groupitem--12,
+.groupitem--13,
+.groupitem--14,
+.groupitem--15,
+.groupitem--16,
+.groupitem--17,
+.groupitem--18,
+.groupitem--19,
+.groupitem--20
+{
+   background-color: rgba(255, 255, 255, 0.90)
+}
+/*.src--1 {
+    /\*background-color: tan;*\/
+    /\*background-color: rgba(210, 180, 140, 0.6)*\/
+    background-color: rgba(255, 255, 255, 0.95)
+}
+.src--2 {
+    /\*background-color: #dbc3a3;*\/
+    background-color: rgba(255, 255, 255, 0.9)
+}
+.src--3 {
+    background-color: #eadbc8;
+}
+.src--4 {
+    /\*background-color: #f8f3ed;*\/
+    background-color: rgba(248, 243, 237, 0.6)
+}
+.src--5 {
+    background-color: goldenrod;
+}
+.src--6 {
+    background-color: #e4ba4e;
+}
+.src--7 {
+    background-color: #ebcb7a;
+}
+.src--8 {
+    background-color: #f2dca6;
+}
+/\* next up: shades of darkred *\/
+.src--9 {
+    background-color: #ff1a1a;
+}
+.src--10 {
+    background-color: #ff4d4d;
+}
+.src--11 {
+    background-color: #ff8080;
+}
+.src--12 {
+    background-color: #ffb3b3;
+}
+/\* next up: shades of purple *\/
+.src--13 {
+    background-color: #ff33ff;
+}
+.src--14 {
+    background-color: #ff66ff;
+}
+.src--15 {
+    background-color: #ff99ff;
+}
+.src--16 {
+    background-color: #ffccff;
+}*/
+.body div[class *= src--]:not(.td),
+.bibl-item {
+   background-color: inherit
+}
+.filler,
+.rdg,
+.note,
+.signal
+{
+   background-color: white;
+}
+.control .group > .label, 
+.control .e-group > .label 
+{
+   background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* borders */
+table {
+   border-collapse: collapse;
+}
+.control .group > .label,
+.control .e-group > .label
+{
+   border-radius: 5px;
+}
+td div {
+   border-radius: 3px;
+}
+
+.head,
+.e-head,
+.control .group,
+.control .e-group
+{
+   border: 1px solid tan;
+   border-radius: 5px;
+}
+td.version {
+   border-radius: 3px;
+}
+td.version.filler {
+   border: 0px;
+}
+body > div:first-child ~ div {
+   border-top: 2px solid black
+}
+.td > div.version ~ div.version,
+.consolidated > div.version ~ div.version {
+   border-top: 1px solid gray
+}
+/*.tei .rdg,
+.tei .note {
+    border: 1px solid black;
+}*/
+
+/* color */
+.control .group > .label,
+.control .e-group > .label
+{
+   color: black;
+}
+.div > .tok > *,
+.score,
+.tei .resp,
+.tei .wit
+{
+   color: blue;
+}
+td .label {
+   color: gray;
+}
+.a,
+.corr {
+   color: green;
+}
+.b,
+.corr ~ .sic {
+   color: red;
+}
+tr td.irrelevant {
+   color: lightgray;
+}
+
+/* content */
+.tei .wit:after,
+.tei .resp:after {
+   content: ': ';
+}
+div.lb::before,
+div.e-lb::before
+{
+   content: '|';
+}
+
+
+/* cursor */
+.TAN-T_merge .head,
+.e-TAN-T_merge .e-head,
+.control .sortable > * {
+   cursor: move;
+}
+.label,
+.TAN-T_merge .head > .src,
+.e-TAN-T_merge .e-head > .src,
+.switch,
+.signal,
+.tei .lem,
+.classSwitch
+{
+   cursor: pointer
+}
+
+/* direction */
+[lang |= ara],
+[lang |= syr],
+[lang |= hbo]
+{
+   direction: rtl
+}
+
+/* display and flex flow */
+
+.bibl > .label ~ *,
+.head > .label ~ *,
+.e-head > .label ~ *,
+.meta .label ~ *,
+.control > .group > .label ~ *,
+.control > .e-group > .label ~ *,
+.hideNext ~ *,
+.tei .hideNext ~ *,
+/* hide specific elements that you wish to suppress */
+.error,
+.e-error,
+.warning,
+.e-warning,
+.expansion,
+.e-expansion,
+.skip,
+.e-skip,
+.hidden,
+.type,
+.a-type,
+.ed-who,
+.a-ed-who,
+/* TAN-T expansions produce both <ref> and <n>s. Your choice as to which to display */
+.TAN-T .ref,
+.e-TAN-T .e-ref,
+.div > .src,
+.e-div > .e-src,
+/*.ref,  */
+/* one shouldn't hide refs, generally */
+.TAN-T_merge > .label,
+.e-TAN-T_merge > .label,
+.TAN-T_merge .tr > .src,
+.e-TAN-T_merge .tr > .e-src,
+.TAN-T_merge .orig-ref,
+.e-TAN-T_merge .e-orig-ref,
+.TAN-T_merge .version > .ref > *,
+.e-TAN-T_merge .version > .e-ref > *,
+/*.TAN-T_merge .version > .n,*/
+/* suppress the info in each TAN-T-merge head so the source id can fit a single cell */
+/*.TAN-T_merge .head > .label ~ *,*/
+.tok-ref > .max,
+.tok > .tok-ref ~ *,
+.e-tok > .e-tok-ref ~ *,
+.div .tok-ref > .src,
+.e-div .e-tok-ref > .e-src,
+.div .tok-ref > .ref,
+.e-div .e-tok-ref > .e-ref,
+.div .tok-ref > .pos,
+.e-div .e-tok-ref > .a-pos,
+div.version > div.ref,
+div.version > div.e-ref,
+div.tei .hidden,
+div.ns-tei .hidden,
+div.tei .id,
+div.ns-tei .a-id,
+div.tei > .anchor,
+div.ns-tei > .e-anchor,
+.display-n ~ .n,
+.e-display-n ~ .a-n,
+.e-display-n ~ .e-n,
+.e-display-n ~ .e-ref,
+td .n,
+td .a-n,
+td .e-n,
+div.div > div.n,
+div.e-div > div.a-n,
+.ref > .n,
+.e-ref > .e-n,
+td.ref > div:first-child ~ *,
+td.e-ref > div:first-child ~ *,
+.emph > .resp,
+.e-emph > .e-resp,
+.allusion > .type
+.e-allusion > .a-type,
+/* next to items added ad hoc 2021-06-12 */
+td.filler > .e-src,
+.e-claim > .a-include,
+.a-break
+{
+   display: none
+}
+
+.tok,
+.e-tok,
+.non-tok,
+.e-non-tok,
+.inline,
+div.p > *,
+.when,
+.a-when,
+.who,
+.a-who,
+.tok *,
+.e-tok *,
+.tei *,
+.ns-tei *,
+.e-lb
+/*.tei .app,
+.tei .lem,
+.tei .rdg,
+.tei .add,
+.tei .choice,
+.tei .corr,
+.tei .sic,
+.tei .emph,*/
+{
+   display: inline;
+}
+.body > .div > .type:first-of-type,
+.p.tei,
+.ns-tei .e-p,
+.tei .list,
+.ns-tei .e-list
+{
+   display: block
+}
+
+.inlineBlock,
+.TAN-T_merge .head,
+.e-TAN-T_merge .e-head,
+.div.version > .orig-ref,
+.div > .claim,
+.e-div > .e-claim,
+.claim .score,
+.e-claim .e-score,
+.claim div.ref,
+.e-claim div.e-ref,
+.claim > *,
+.e-claim > *,
+.bibl-key-item > *,
+.classSwitch > *,
+.option-item,
+tr > td div.tei,
+tr > td div.tei > *,
+tr > td div.tei > .list,
+.prevFrag,
+.nextFrag,
+/* 2021-06-12 added the next line for the parallel editions */
+.sortable > .e-group,
+.meta td .label ~ *
+/*.tei .wrapper > *,*/
+
+{
+   display: inline-block
+}
+.sortable > .group
+.sortable > .e-group
+{
+   display: table-cell;
+}
+.group.sortable,
+.e-group.sortable
+{
+   display: table-row;
+}
+.TAN-T_merge .td > .version,
+.e-TAN-T_merge .td > .version
+{
+   display: block;
+}
+
+.table {
+   display: table;
+   /*width: 100%;*/
+   /*display: flex;*/
+   /*flex-direction: column*/
+}
+.tr {
+   display: table-row;
+   border: 1px solid blue;
+   /*display: flex;*/
+   /*justify-content: space-around;*/
+   /*align-items: center;*/
+}
+.TAN-T_merge .version,
+.e-TAN-T_merge .version,
+.align > .tok,
+.td,
+.n,
+.e-n,
+.claim > * 
+.e-claim > * 
+{
+   display: table-cell;
+   /*border: 1px solid green;*/
+   vertical-align: middle;
+}
+td.version .version {
+   display: block;
+}
+
+/* float */
+/* leaf-div metadata */
+.TAN-T .n,
+.e-TAN-T .e-n
+{
+   float: left;
+   margin-right: 6px;
+   color: gray
+}
+caption,
+.body > .div > .type, 
+.e-body > .e-div > .e-type 
+{
+   float: left;
+}
+.when,
+.a-when,
+.who,
+.a-who,
+.claimant,
+.a-claimant,
+.switch,
+.filter
+{
+   float: right
+}
+.a,
+.e-a,
+.b,
+.e-b,
+.common,
+.e-common
+{
+   display: inline
+}
+
+
+/* FONTS */
+/* font faces */
+@font-face
+{
+   font-family: "Rosario";
+   src: url('../../fonts/Rosario-Regular.ttf');
+}
+@font-face {
+   font-family: "Rosario";
+   src: url("../../fonts/Rosario-Bold.ttf");
+   font-weight: bold;
+}
+@font-face {
+   font-family: "Rosario";
+   src: url("../../fonts/Rosario-Italic.ttf");
+   font-style: italic, oblique;
+}
+@font-face {
+   font-family: "Rosario";
+   src: url("../../fonts/Rosario-BoldItalic.ttf");
+   font-weight: bold;
+   font-style: italic;
+}
+@font-face {
+   font-family: "Sorts Mill Goudy";
+   src: url("../../fonts/SortsMillGoudy-Regular.ttf") format("truetype");
+   font-style: normal;
+}
+@font-face {
+   font-family: "Sorts Mill Goudy";
+   src: url("../../fonts/SortsMillGoudy-Italic.ttf") format("truetype");
+   font-style: italic;
+}
+@font-face
+{
+   font-family: noto;
+   src: url('../../fonts/NotoSansSyriacEstrangela-Regular.ttf') format('truetype');
+}
+@font-face
+{
+   font-family: antinoou;
+   src: url('../../fonts/Antinoou.ttf') format('truetype');
+}
+body {
+   font-family: 'Sorts Mill Goudy';
+}
+div[dir = rtl] {
+   font-family: 'noto';
+}
+body > * > .name,
+.type--title {
+   font-family: 'Rosario';
+}
+.when,
+.who,
+.matches-m,
+.IRI {
+   font-family: courier, fixed, monospace
+}
+
+/* font attributes */
+.head,
+.e-head,
+.teiHeader,
+.e-teiHeader,
+.IRI,
+.e-IRI,
+.who,
+.a-who,
+.when
+.a-when
+.claimant,
+.a-claimant,
+.desc,
+.e-desc,
+.src,
+.a-src,
+.e-src,
+.orig-ref,
+.a-orig-ref,
+.div > .tok > *,
+.e-div > .e-tok > *,
+.note,
+.e-note,
+.tei .resp,
+.ns-tei .a-resp,
+.tei .wit,
+.ns-tei .a-wit,
+.signal,
+.a-signal,
+td.n,
+td.a-n,
+td.e-n,
+.option-item,
+td .label,
+td.label,
+.tei .ref .rend,
+.ns-tei .e-ref .a-rend,
+.milestone .rend,
+.e-milestone .a-rend,
+.passage,
+.e-passage,
+.rename,
+.e-rename,
+div.ref ~ div.ref,
+div.e-ref ~ div.e-ref,
+div.n ~ div.n,
+div.a-n ~ div.a-n
+{
+   font-size: smaller;
+}
+.name,
+.e-name,
+.body > .div > .n,
+.e-body > .e-div > .e-n,
+.body > .div > .display-n,
+.e-body > .e-div > .e-display-n,
+.type,
+.e-type,
+.a-type
+{
+   font-size: 24px;
+}
+.bibl-key-item > *,
+.bibl-item > * {
+   font-size: inherit
+}
+/*.emph {
+    font-style: italic;
+}*/
+.name,
+.e-name,
+.match,
+.boldface,
+.stats-diff,
+.tei .lem,
+.ns-tei .e-lem,
+.scholion,
+.e-scholion /*,
+.tei .emph*/
+{
+   font-weight: 900;
+}
+
+
+/* margins */
+.TAN-A-tok ~ .TAN-T .div,
+.e-TAN-A-tok ~ .e-TAN-T .e-div,
+.TAN-A-lm ~ .TAN-T .div, 
+.e-TAN-A-lm ~ .e-TAN-T .div 
+{
+   margin-top: 3em;
+}
+
+.scholion,
+.e-scholion {
+   margin-left: 3em;
+}
+
+.control .group,
+.control .e-group,
+.classSwitch > * {
+   margin: 0.2em;
+}
+.control .options * {
+   margin: initial
+}
+.head > .label,
+.e-head > .label,
+.bibl-item > .desc,
+.meta > .claim .label ~ div,
+.meta > .e-claim .label ~ div,
+.option-item {
+   margin-left: 0.5em;
+}
+.tok,
+.e-tok,
+.non-tok,
+.e-non-tok,
+.div > .tok *,
+.e-div > .e-tok *,
+div.a,
+div.e-a,
+div.b,
+div.e-b,
+div.common,
+div.e-common,
+.tei div,
+.ns-tei div
+{
+   margin-left: 0em;
+}
+div.group.sortable,
+div.e-group.sortable,
+.claim,
+.e-claim,
+.bibl-key {
+   margin-bottom: 1em;
+}
+.meta .claim, 
+.meta .e-claim 
+{
+   margin-bottom: 0em;
+}
+.version-wrapper {
+   margin-bottom: 0.5em;
+}
+
+
+/* opacity */
+.suppressed
+{
+   opacity: 0.5;
+}
+.tei .add,
+.ns-tei .add{
+   opacity: 0.7;
+}
+
+
+/* padding */
+/*.div.version,*/
+#parameters .td {
+   padding: 0px 8px;
+}
+.n,
+.a-n,
+.e-n {
+   padding: 0px 5px;
+}
+.claim > div,
+.e-claim > div{
+   padding: 0px 2px 0px 0px;
+}
+td,
+td div {
+   padding: 2px;
+}
+td div.tei div,
+td div.ns-tei div
+{
+   padding: 0px;
+}
+div.lb,
+div.e-lb,
+div.a,
+div.e-a,
+div.b,
+div.e-b,
+div.common,
+div.e-common,
+div.tok,
+div.e-tok,
+div.non-tok,
+div.e-non-tok
+{
+   padding: 0px;
+}
+td.version.filler {
+   padding: 0px;
+}
+.control > .group,
+.control > .e-group
+{
+   padding: 0.2em;
+}
+
+
+
+/* position */
+.div > .tok > *
+.e-div > .e-tok > *
+{
+   position: absolute;
+}
+.div > .tok
+.e-div > .e-tok
+{
+   position: relative;
+}
+/* table */
+table
+{
+   table-layout: auto;
+}
+
+/* text */
+thead td,
+td .label,
+td .passage,
+td .e-passage,
+td .rename,
+td .e-rename
+{
+   text-align: center;
+}
+table.tablesorter td.stats,
+table.tablesorter td.stats-diff,
+[lang |= ara],
+[lang |= syr]
+{
+   text-align: right;
+}
+.a,
+.e-a,
+.tei .emph,
+.ns-tei .e-emph,
+.tei .quote
+.ns-tei .e-quote
+{
+   text-decoration: underline;
+}
+.b,
+.e-b,
+.corr ~ .sic
+.e-corr ~ .e-sic
+{
+   text-decoration: line-through;
+}
+.resp
+.e-resp
+{
+   text-decoration: inherit;
+}
+div.ref,
+div.e-ref
+{
+   text-indent: 0px
+}
+.options .label ~ div {
+   text-indent: 1em;
+}
+/* vertical alignment */
+.tei .resp,
+.ns-tei .e-resp,
+.tei .wit,
+.ns-tei .e-wit,
+.signal,
+.tei .ref,
+.ns-tei .e-ref,
+.tei .milestone,
+.ns-tei .e-milestone
+{
+   vertical-align: top;
+   font-size: 0.6em;
+}
+
+/* width */
+table {
+   width: 100%
+}
+/* the ref/n of a table-based parallel display */
+.parallel-edition td:first-child {
+   width: 25px;
+}
+/*td:first-child ~ td {
+    width: 33%;
+}*/
+/* word break */
+
+.n,
+.e-n,
+.a-n
+{
+   word-break: break-word;
+}

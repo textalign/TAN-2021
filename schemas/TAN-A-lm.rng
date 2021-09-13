@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="incl/TAN-class-2.rng">
+    <start>
+      <element name="TAN-A-lm">
+        <a:documentation>specifies that the file is a TAN file containing lexico-morphology data about a class-1 source or a language in general. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <define name="decl-non-class-2">
+      <zeroOrMore>
+        <ref name="element-for-lang"/>
+      </zeroOrMore>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-tok-starts-with"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="element-tok-is"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+    <define name="source-content">
+      <ref name="entity-digital-nontan-no-id"/>
+    </define>
+    <!-- Either one source with no language specifications, or a language specification with zero or more sources -->
+    <define name="source-list">
+      <zeroOrMore>
+        <ref name="link-element-source"/>
+      </zeroOrMore>
+    </define>
+    <define name="tok-sources-ref-opt">
+      <empty/>
+    </define>
+    <!-- TAN-A-lm files must each have at least one lexicon and one TAN-mor -->
+    <define name="voc-element-non-class-2">
+      <interleave>
+        <oneOrMore>
+          <ref name="voc-element-lexicon"/>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="voc-element-morphology"/>
+        </oneOrMore>
+      </interleave>
+    </define>
+    <!-- Because TAN-A-lm files depend on only one source, no id references to sources are needed... -->
+    <define name="token-definition-attributes">
+      <empty/>
+    </define>
+    <define name="ptr-attr-src-many">
+      <empty/>
+    </define>
+    <!-- ...and <where> is also unnecessary -->
+    <define name="action-condition">
+      <ref name="action-simple-condition"/>
+    </define>
+    <define name="group-attributes-non-core">
+      <optional>
+        <ref name="ptr-attr-lexicon"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-morphology"/>
+      </optional>
+    </define>
+    <define name="body-attributes-non-core">
+      <ref name="ptr-attr-lexicon"/>
+      <ref name="ptr-attr-morphology"/>
+    </define>
+    <define name="body-item">
+      <ref name="element-ana"/>
+    </define>
+    <define name="default-tok-element">
+      <choice>
+        <ref name="element-tok-standard"/>
+        <ref name="element-tok-abstract"/>
+      </choice>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="attr-def-ref">
+    <attribute name="def-ref">
+      <a:documentation>identifies which lexical definition is meant. This attribute is essential in cases where a lexicon has multiple entries for lexemes (lexical headwords) that are identical. </a:documentation>
+      <a:documentation>Because there is no TAN format for lexicons, assertions about lexica will not be validated.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-lexicon">
+    <attribute name="lexicon">
+      <a:documentation>points via idrefs to one or more lexicons, persons, organizations, or algorithms.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-tok-pop">
+    <attribute name="tok-pop">
+      <a:documentation>specifies the quantity of tokens that are the subject of the &lt;ana&gt;. This attribute is useful for language-specific TAN-A-lm files, where the total number of tokens that formed the set might be lost. It is also useful for calculating the relative probability of token-to-lm combinations.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+      <data type="integer"/>
+    </attribute>
+  </define>
+  <define name="ptr-attr-morphology">
+    <attribute name="morphology">
+      <a:documentation>points to one or more &lt;morphology&gt; IDs</a:documentation>
+      <a:documentation>This attribute is inheritable. See main.xml#inheritable_attributes</a:documentation>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-ana">
+    <element name="ana">
+      <a:documentation>contains a one or more assertions about the lexical or morphological properties of one or more tokens.</a:documentation>
+      <a:documentation>Claims within an &lt;ana&gt; are distributive. That is, every combination of &lt;l&gt; and &lt;m&gt; within an &lt;lm&gt; is claimed to be true for every &lt;tok&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;ana&gt;s is immaterial.</a:documentation>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="certainty-stamp"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-lexicon"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-morphology"/>
+          </optional>
+          <optional>
+            <ref name="claimant-attributes"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-group"/>
+          </optional>
+          <optional>
+            <ref name="attr-tok-pop"/>
+          </optional>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <group>
+              <oneOrMore>
+                <choice>
+                  <ref name="default-tok-element"/>
+                  <ref name="element-group-for-tok"/>
+                </choice>
+              </oneOrMore>
+              <oneOrMore>
+                <ref name="element-lm"/>
+              </oneOrMore>
+            </group>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-l">
+    <element name="l">
+      <a:documentation>names a lexeme, by pointing to the main word entry in the lexicon identified by the element's inherited value(s) of @lexicon. This element should not be used to point to roots, only to lexical headwords. </a:documentation>
+      <a:documentation>In many languages, especially those that are lightly inflected, the lexeme will be identical to the word token itself. If &lt;l&gt; is omitted, the calculated value of &lt;tok&gt; is to be inferred as its value.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;l&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="ptr-attr-lexicon"/>
+      </optional>
+      <optional>
+        <ref name="attr-def-ref"/>
+      </optional>
+      <optional>
+        <ref name="certainty-stamp"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="element-lm">
+    <element name="lm">
+      <a:documentation>groups lexical or morphological data.</a:documentation>
+      <a:documentation>Components within &lt;lm&gt; combine with each other and with all sibling &lt;tok&gt;s. That is, every &lt;l&gt; is asserted against every &lt;m&gt; within an &lt;lm&gt; is asserted of every &lt;tok&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;lm&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="certainty-stamp"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-lexicon"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-morphology"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <choice>
+          <group>
+            <oneOrMore>
+              <ref name="element-l"/>
+            </oneOrMore>
+            <zeroOrMore>
+              <ref name="element-m"/>
+            </zeroOrMore>
+          </group>
+          <group>
+            <zeroOrMore>
+              <ref name="element-l"/>
+            </zeroOrMore>
+            <oneOrMore>
+              <ref name="element-m"/>
+            </oneOrMore>
+          </group>
+        </choice>
+      </interleave>
+    </element>
+  </define>
+  <define name="element-m">
+    <element name="m">
+      <a:documentation>carries a morphological code that conforms to the rules or patterns defined in the TAN-mor file upon which the data depends.</a:documentation>
+      <a:documentation>Codes are space-delimited. If a value of &lt;m&gt; violates the rules established by the dependency TAN-mor file, an error will be generated. For more about how codes are built, and how they function, see main.xml#tan-a-lm.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;m&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="certainty-stamp"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-morphology"/>
+      </optional>
+      <data type="string">
+        <param name="pattern">[^\+\s]+(\s+[^\+\s]+)*</param>
+      </data>
+    </element>
+  </define>
+  <define name="element-tok-abstract">
+    <element name="tok">
+      <a:documentation>points to a token in the abstract, no matter where it is found, either in the source (if there is one) or the language (if there is no source).</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;tok&gt;s is immaterial, except in the context of &lt;group&gt;.</a:documentation>
+      <optional>
+        <ref name="certainty-stamp"/>
+      </optional>
+      <choice>
+        <ref name="attr-val"/>
+        <ref name="attr-rgx"/>
+      </choice>
+      <optional>
+        <ref name="attr-chars"/>
+      </optional>
+    </element>
+  </define>
+  <define name="element-tok-is">
+    <element name="tok-is">
+      <a:documentation>specifies an exact value of @val of &lt;tok&gt;s in the file. Collectively, every &lt;tok&gt; should point to at least one &lt;tok-is&gt;.</a:documentation>
+      <a:documentation>This element is an optional way to improve the efficiency of validation and applications. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;tok-is&gt;s is immaterial.</a:documentation>
+      <text/>
+    </element>
+  </define>
+  <define name="element-tok-starts-with">
+    <element name="tok-starts-with">
+      <a:documentation>specifies one opening string that characterizes the @val of &lt;tok&gt;s in the file.</a:documentation>
+      <a:documentation>This element is an optional way to improve the efficiency of validation and applications.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;tok-is&gt;s is immaterial.</a:documentation>
+      <text/>
+    </element>
+  </define>
+  <!-- Vocabulary items -->
+  <define name="voc-element-lexicon">
+    <element name="lexicon">
+      <a:documentation>names a lexicographical authority.</a:documentation>
+      <choice>
+        <ref name="entity-digital-tan-id"/>
+        <ref name="entity-nondigital-id"/>
+      </choice>
+    </element>
+  </define>
+  <define name="voc-element-morphology">
+    <element name="morphology">
+      <a:documentation>identifies a dependency &lt;TAN-mor&gt; file that defines the parts of speech for a language, the codes for those parts, and the rules for combining them</a:documentation>
+      <ref name="entity-digital-tan-id"/>
+    </element>
+  </define>
+</grammar>
+<!-- PATTERNS -->

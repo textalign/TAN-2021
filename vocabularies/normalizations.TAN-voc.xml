@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:normalizations">
+    <head>
+        <name>TAN keywords for types of normalizations</name>
+        <desc>Definitive list of key terms used for normalizations to texts.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/normalizations.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-02-02" who="kalvesmaki">Started file</change>
+        <change when="2018-09-16" who="kalvesmaki">Added other names for unicode normalization.</change>
+        <to-do/>
+    </head>
+    <body affects-element="normalization">
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:hyphens-discretionary-removed</IRI>
+            <name>no hyphens</name>
+            <desc>Discretionary word-break line-end hyphens have been deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:space-typographer-converted</IRI>
+            <name>norm space</name>
+            <desc>General Punctuation spaces (U+2000..U+200B) to regular space have been replaced
+                with regular space. Equivalent to fn:replace('[\x{2000} \x{2001} \x{2002} \x{2003}
+                \x{2004} \x{2005} \x{2006} \x{2007} \x{2008} \x{2009} \x{200A} \x{200B}]','
+                ')</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:annotation-signals-removed</IRI>
+            <name>no note callouts</name>
+            <desc>Footnote or endnote signals (frequently superscript numbers or letters) have been
+                deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:annotation-content-removed</IRI>
+            <name>no notes</name>
+            <desc>Footnotes or endnotes have been deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:comments-editorial-removed</IRI>
+            <name>no comments</name>
+            <desc>Editorial comments have been deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:pointers-reference-removed</IRI>
+            <name>no pointers</name>
+            <desc>Reference pointers to other texts, both internal (cross-references) and external
+                (citations of primary or secondary sources) have been deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:milestones-reference-removed</IRI>
+            <name>no milestones</name>
+            <desc>Reference milestones such as page numbers and section numbers have been
+                deleted.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:ligatures-converted</IRI>
+            <name>no ligatures</name>
+            <desc>All ligatures have been converted into constituent letters.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:letters-combining-converted</IRI>
+            <name>no combining chars</name>
+            <desc>All combining letters (U+0363..U+036F) have been converted to their corresponding
+                ASCII counterpart.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:orthography-corrected</IRI>
+            <name>corrected spelling</name>
+            <desc>All orthography (spelling) has been tacitly corrected to standard forms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:punctuation-corrected</IRI>
+            <name>corrected punctuation</name>
+            <desc>All punctuation has been tacitly corrected to standard forms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:punctuation-removed</IRI>
+            <name>no punctuation</name>
+            <desc>All punctuation has been removed.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:quotation-marks-removed</IRI>
+            <name>no quotation marks</name>
+            <desc>Quotation marks have been removed.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:capitalization-corrected</IRI>
+            <name>corrected capitalization</name>
+            <desc>All letters have been tacitly capitalized according to standard forms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:case-upper-to-lower</IRI>
+            <name>changed to lowercase</name>
+            <desc>All uppercase letters converted to lowercase.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:case-lower-to-upper</IRI>
+            <name>changed to uppercase</name>
+            <desc>All lowercase letters converted to uppercase.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:music-printed-removed</IRI>
+            <name>no music</name>
+            <desc>Printed music has been removed.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:space-prepunctuation-corrected</IRI>
+            <name>no prepunctuation space</name>
+            <desc>All prepunctuation space has been corrected according to standard forms.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:nfc</IRI>
+            <name>normalized unicode</name>
+            <name>unicode nfc</name>
+            <name>unicode normalized</name>
+            <desc>All non-NFC-compliant Unicode converted to normalized Unicode. Same effect as if
+                applying normalize-unicode().</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:html-to-tan-t</IRI>
+            <name>converted html to tan</name>
+            <desc>HTML converted to TAN-T format</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:reference-markers-removed</IRI>
+            <name>no reference markers</name>
+            <desc>All numbers, letters, or other labels inserted by the author or editor to indicate
+                references (the value ordinarily placed in @n in &lt;div&gt;) removed.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:normalization:accents-normalized</IRI>
+            <name>accents normalized</name>
+            <desc>Accents have been normalized. If missing, they have been supplied. If incorrect, they have been corrected.</desc>
+        </item>
+    </body>
+</TAN-voc>

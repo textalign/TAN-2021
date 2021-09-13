@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021"
+    id="tag:textalign.net,2015:tan-voc:verbs">
+    <head>
+        <name>TAN keywords for verbs</name>
+        <desc>Vocabulary below supports commonly used verbs in TAN-A claims involving intertextuality.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/verbs.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2017-03-07" who="kalvesmaki">Started file</change>
+        <to-do/>
+    </head>
+    <body affects-element="verb">
+        <comment when="2019-09-02" who="kalvesmaki">Unless otherwise specified, all verbs are assumed to be asymmetrical and
+            intransitive, and to make no implications about the chronological priority of the subject relative to the object.</comment>
+        <!-- general authorship -->
+        <item>
+            <IRI>http://rdaregistry.info/Elements/u/P60663</IRI>
+            <IRI>tag:textalign.net,2015:verb:writes</IRI>
+            <name>is author of</name>
+            <name>writes</name>
+            <name>wrote</name>
+            <constraints>
+                <subject status="required" item-type="person"/>
+                <object status="required" item-type="work version"/>
+            </constraints>
+        </item>
+        <!-- apparatus criticus -->
+        <group type="textual_subject">
+            <comment when="2019-08-30" who="kalvesmaki">Verbs in this group are meant to represent
+                the kinds of verbs needed to express the claims found in the typical apparatus
+                criticus of a critical edition. It is assumed that all statements in a criticus
+                apparatus have a few common features. First, each statement is tethered to some
+                locus in a base text. Second, each statement is about one or more textual witnesses,
+                normally represented by a siglum or abbreviation; that is, the statements are about
+                complete textual entities. Many times those entities are inert texts, but sometimes
+                they are authors (an entry may assign a siglum to a person, e.g., Andronicus, and
+                not a specific text). Third, each statement asserts whether the reading agrees with
+                the base text at the locus in question or if it differs. The verbs in this group
+                address these three common features. For the first, &lt;at-ref> is used, to restrict
+                the scope of a claim to a particular passage. For the second, the grammatical
+                subject is taken to be the textual entities referred to by the sigla (e.g.,
+                manuscript S reads...). For the third feature, verb options should be limited in
+                number. Verbal vocabulary should focus upon the common underlying sentiment, not on
+                how it will be presented to the reader. The grammatical object of the claim of each
+                of these verbs is taken to be a string representing the reading of the
+                witness.</comment>
+            <group type="one_or_more_at_refs">
+                <verb group="zero_objects">
+                    <IRI>tag:textalign.net,2015:verb:lacks-text</IRI>
+                    <name>lacks text</name>
+                    <name>lacks text at</name>
+                    <desc>At the &lt;at-ref>, the textual entity referred to by the subject lacks
+                        any text. The claim takes no object.</desc>
+                    <constraints>
+                        <subject status="required" item-type="scriptum"/>
+                        <object status="disallowed"/>
+                        <at-ref status="required"/>
+                    </constraints>
+                </verb>
+                <verb group="one_object">
+                    <IRI>tag:textalign.net,2015:verb:reads</IRI>
+                    <name>reads</name>
+                    <desc>At the &lt;at-ref>, the textual entity referred to by the subject has the
+                        words contained in the object.</desc>
+                    <constraints>
+                        <subject status="required" item-type="scriptum work version"/>
+                        <object status="required" content-datatype="string"/>
+                        <at-ref status="required"/>
+                    </constraints>
+                </verb>
+            </group>
+            <verb group="one_object textual_passage_object">
+                <IRI>tag:textalign.net,2015:verb:agrees-with</IRI>
+                <name>matches</name>
+                <name>agrees with</name>
+                <desc>The textual entity (the subject) agrees with the reading found at a particular
+                    textual passage (the object).</desc>
+                <constraints>
+                    <subject status="required" item-type="scriptum work version"/>
+                    <object status="required" item-type="ref"/>
+                </constraints>
+            </verb>
+        </group>
+        <!-- general verbs pertaining to textual artefacts as subjects -->
+        <group type="textual_artefact_subject one_or_more_objects">
+            <verb group="symmetry cf textual_artefact_object">
+                <IRI>tag:textalign.net,2015:verb:parallels</IRI>
+                <name>parallels</name>
+                <desc>The subject (a textual artefact or passage) is topically or textually parallel
+                    to the object (a textual artefact or passage). Any textual relationship that
+                    exists may go from roughly similar up through verbatim. Nothing is implied about
+                    whether the subject quotes from object, the object from the subject, or neither.
+                    Nothing is implied about the chronological priority of the object or subject.
+                    The relationship is symmetrical: if A parallels B then B parallels A.</desc>
+                <constraints>
+                    <subject status="required" item-type="ref scriptum work version source"/>
+                    <object status="required" item-type="ref scriptum work version source"/>
+                </constraints>
+            </verb>
+            <group type="subject_postdates_object textual_object">
+                <verb group="near_verbatim textual_object">
+                    <IRI>tag:textalign.net,2015:verb:quotes</IRI>
+                    <name>quotes</name>
+                    <desc>The subject (a textual artefact or passage) reproduces text from the
+                        object (a bearer or creator of texts) in verbatim, or near-verbatim fashion.
+                        Relationship may be direct or indirect. The subject by implication postdates
+                        the object.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="cf">
+                    <IRI>tag:textalign.net,2015:verb:paraphrases</IRI>
+                    <name>paraphrases</name>
+                    <desc>The subject (a textual artefact or passage) reproduces text from the
+                        object (a bearer or creator of texts) without verbatim or near-verbatim
+                        accuracy. Relationship may be direct or indirect. The subject by implication
+                        postdates the object. Paraphrasing differs from rephrasing in that word
+                        changes in the former retain a similar meaning, whereas the latter changes
+                        it. For example, "apple" if changed to "fruit" would be a paraphrase, but if
+                        changed to "banana" would be a rephrasing. </desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="cf">
+                    <IRI>tag:textalign.net,2015:verb:rephrases</IRI>
+                    <name>rephrases</name>
+                    <desc>The subject (a textual artefact or passage) reproduces text from the
+                        object (a bearer or creator of texts) but revises it in such a way as to
+                        alter the meaning. Reproduction may be verbatim, near-verbatim, or loose.
+                        Relationship may be direct or indirect. The subject by implication postdates
+                        the object. Rephrasing differs from paraphrasing in that word changes in the
+                        former introduces changes in meaning, whereas the latter does not. For
+                        example, "apple" if changed to "banana" would be a rephrasing, but if
+                        changed to "fruit" would be a paraphrase. </desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="cf">
+                    <IRI>tag:textalign.net,2015:verb:refers-to</IRI>
+                    <name>refers to</name>
+                    <desc>The subject (a textual artefact) refers to the object (a textual artefact
+                        or text maker). The reference is direct (explicit), via a verbatim
+                        quotation, number, name of the author, or some other text that explicitly
+                        points to the object. The subject postdates the object. See also refers or
+                        alludes to.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="cf">
+                    <IRI>tag:textalign.net,2015:verb:alludes-to</IRI>
+                    <name>alludes to</name>
+                    <desc>The subject (a textual artefact) refers to the object (a textual artefact
+                        or text maker). The reference is indirect (implicit), via a verbatim
+                        quotation, paraphrase, synonym, or some other text that only indirectly
+                        suggests the object. The subject postdates the object. See also refers or
+                        alludes to.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="cf">
+                    <IRI>tag:textalign.net,2015:verb:alludes-or-refers-to</IRI>
+                    <name>alludes or refers to</name>
+                    <name>refers or alludes to</name>
+                    <desc>The subject (a textual artefact) refers to the object (a textual artefact
+                        or text maker) directly or indirectly. The subject postdates the object.
+                        See also refers to, alludes to.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    </constraints>
+                </verb>
+                <verb group="textual_artefact_object">
+                    <IRI>http://rdaregistry.info/Elements/w/P10116</IRI>
+                    <IRI>tag:textalign.net,2015:verb:comments-on</IRI>
+                    <name>comments on</name>
+                    <name>is commentary in (work)</name>
+                    <desc>The subject (a textual artefact) contains or is a set of explanatory or
+                        critical notes on the object (also a textual artefact). See
+                        http://rdaregistry.info/Elements/w.xml</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source"/>
+                        <object status="required" item-type="ref scriptum work version source"/>
+                    </constraints>
+                </verb>
+            </group>
+        </group>
+        
+        <group type="textual_subject subject_postdates_object">
+            <comment when="2019-08-30" who="kalvesmaki">General verbs with textuals as subjects,
+                i.e., both textual artefacts and text makers</comment>
+            <verb group="cf one_or_more_objects">
+                <IRI>http://schema.org/about</IRI>
+                <IRI>tag:textalign.net,2015:verb:about</IRI>
+                <name>is about</name>
+                <name>discusses</name>
+                <desc>The subject (a textual passage or entity) is about or discusses the object
+                    (anything, but oftentimes a topic).</desc>
+                <constraints>
+                    <subject status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                    <object status="required" item-type="*"/>
+                </constraints>
+            </verb>
+            <group type="textual_artefact_object subject_postdates_object one_or_more_objects">
+                <comment when="2019-08-12" who="kalvesmaki">Verbs in this group deal with common
+                    relationships between pairs of texts, e.g., X translates Y.</comment>
+                <verb group="allows-in-lang">
+                    <IRI>tag:textalign.net,2015:verb:translates</IRI>
+                    <IRI>http://purl.org/vocab/frbr/core#translationOf</IRI>
+                    <name>translates</name>
+                    <name>is a translation of</name>
+                    <desc>The subject, in one language or dialect, translates the object, in another
+                        language or dialect.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                        <object status="required" item-type="ref scriptum work version source"/>
+                        <in-lang status="allowed"/>
+                    </constraints>
+                </verb>
+                <verb>
+                    <IRI>tag:textalign.net,2015:verb:transcribes</IRI>
+                    <name>transcribes</name>
+                    <name>is a transcription of</name>
+                    <desc>The subject transcribes or is a transcription of the object. Both share
+                        the same language and script, and the subject was created so as to
+                        faithfully render the object. A transcription differs from an edition in
+                        that the former focuses on one exemplar and tries to recreate it whereas the
+                        latter may have many exemplars, and might take liberties.</desc>
+                    <desc>This category does not include transliterations, where a text replicates
+                        another, but using a different script or alphabet.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                        <object status="required" item-type="ref scriptum work version source"/>
+                    </constraints>
+                </verb>
+                <verb>
+                    <IRI>tag:textalign.net,2015:verb:edits</IRI>
+                    <name>edits</name>
+                    <name>is an edition of</name>
+                    <desc>The subject is an edition of the object. Both share the same language, and
+                        the subjects was created so as to render the object in a different form. An
+                        edition differs from a transcription in that the latter focuses on one
+                        exemplar and tries to recreate it whereas the former may have many
+                        exemplars, and might take liberties.</desc>
+                    <constraints>
+                        <subject status="required" item-type="ref scriptum work version source person organization algorithm"/>
+                        <object status="required" item-type="ref scriptum work version source"/>
+                    </constraints>
+                </verb>
+            </group>
+        </group>
+
+        <!-- reification -->
+        <group type="textual_subject claim_object one_or_more_objects">
+            <comment when="2019-08-30" who="kalvesmaki">The verbs in this group deal with
+                reification, i.e., claims treated as objects in their own right. Claims with these
+                verbs may nest to whatever depth, to make claims about claims. </comment>
+            <verb>
+                <IRI>tag:textalign.net,2015:verb:claims</IRI>
+                <name>claims</name>
+                <desc>The subject, considering a certain claim to be true, asserts it.</desc>
+                <constraints>
+                    <object status="required" item-type="claim"/>
+                </constraints>
+            </verb>
+            <verb>
+                <IRI>tag:textalign.net,2015:verb:shows</IRI>
+                <name>shows</name>
+                <name>supplies evidence that</name>
+                <desc>The subject provides reason for believing a certain claim, normally made by
+                    someone else.</desc>
+                <constraints>
+                    <object status="required" item-type="claim"/>
+                </constraints>
+            </verb>
+        </group>
+        
+    </body>
+</TAN-voc>

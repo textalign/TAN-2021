@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:vocabularies">
+    <head>
+        <name>TAN vocabulary items for extra vocabularies</name>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/vocabularies.TAN-voc.xml"/>
+        <license which="by 4.0" licensor="kalvesmaki"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2018-09-13" who="kalvesmaki">Started file</change>
+        <to-do/>
+    </head>
+    <body affects-element="vocabulary">
+        <item>
+            <IRI>tag:textalign.net,2015:tan-voc:n:eng:bible</IRI>
+            <name>bible eng</name>
+            <name>eng bible</name>
+            <name>commonly used vocabulary in english for the bible</name>
+            <location href="extra/n.bible.eng.tan-voc.xml" accessed-when="2018-09-13"/>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:tan-voc:n:spa:bible</IRI>
+            <name>biblia spa</name>
+            <name>spa biblia</name>
+            <name>vocabulario de uso común para la biblia</name>
+            <location href="extra/n.bible.spa.tan-voc.xml" accessed-when="2018-09-13"/>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:tan-voc:n:eng-ara:quran</IRI>
+            <name>quran eng</name>
+            <name>eng quran</name>
+            <name>quran ara</name>
+            <name>ara quran</name>
+            <name>ara eng quran</name>
+            <name>eng ara quran</name>
+            <name>quran ara eng</name>
+            <name>quran eng ara</name>
+            <desc>Commonly used names for Surahs in the Quran, incorporating English and Arabic.</desc>
+            <location href="extra/n.quran.eng-ara.tan-voc.xml" accessed-when="2018-09-14"/>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:tan-voc:n:eng:unlabeled-divs-1</IRI>
+            <name>unlabeled eng</name>
+            <name>unlabeled divs 1 eng</name>
+            <name>commonly used vocabulary in english for divs that are unnamed, first system</name>
+            <location href="extra/n.unlabeled-divs-1.eng.tan-voc.xml" accessed-when="2018-09-13"/>
+        </item>
+    </body>
+</TAN-voc>

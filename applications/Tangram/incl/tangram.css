@@ -1,0 +1,89 @@
+/* Background */
+
+.label,
+.counterparts {
+   background-color: lightgray;
+}
+.a-ref {
+   background-color: lightgreen;
+}
+
+
+/* Cursors */
+
+th,
+.label,
+.gram > .e-tok {
+   cursor: pointer;
+}
+
+/* Display */
+
+.e-x,
+.e-tok,
+.inline,
+.gram,
+.counterparts,
+.a-ref,
+.e-aliases
+{
+   display: inline;
+}
+.inline * {
+   display: inline-block;
+}
+.hide,
+.inline .hide {
+   display: none;
+}
+
+/* Fonts */
+
+
+code,
+.code {
+   font-family: monospace;
+}
+.computeroutput {
+   font-family: monospace;
+}
+.score,
+.gram,
+.a-method{
+   font-weight: 900;
+}
+
+/* Padding */
+
+.a-ref {
+   padding-right: 0.3em;
+}
+.e-aliases *{
+   padding-left: .3em;
+}
+
+/* Text */
+
+table.summary tbody td {
+   text-align: center
+}
+
+
+
+
+
+
+/* General */
+
+table {
+   border-spacing: 0;
+   width: 100%;
+   border-collapse: collapse;
+}
+th {
+   text-align: center;
+   padding: 1em;
+}
+td {
+   padding: 0.3em;
+}

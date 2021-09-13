@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href ="../schemas/catalog.tan.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href ="../schemas/catalog.tan.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<collection stable="true">
+   <doc href="bitext-relations.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:bitext-relation"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of bitext relations</name>
+      <desc xmlns="tag:textalign.net,2015:ns">List of standardized terms used for types of bitext relations.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/bitext-relations.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-05-10" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="div-types.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:div-types"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of divisions</name>
+      <desc xmlns="tag:textalign.net,2015:ns">Definitive list of key terms used for textual divisions.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/div-types.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:group-types</IRI>
+         <name>TAN keywords for types of groups</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/group-types.TAN-voc.xml"/>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:no-new-line-start</IRI>
+            <name>does not start new line</name>
+            <name>no new line start</name>
+            <name>inline start</name>
+            <name>not nls</name>
+            <name>not(^\n)</name>
+            <desc>Text divisions that typically do not begin on a new line</desc>
+            <id>inline-start</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:no-new-line-end</IRI>
+            <name>no new line end</name>
+            <name>does not end new line</name>
+            <name>inline end</name>
+            <name>not nle</name>
+            <name>not(\n$)</name>
+            <desc>Text divisions whose termination does not force the next text division to
+                    start a new line</desc>
+            <id>inline-end</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-line-start</IRI>
+            <name>start new line</name>
+            <name>new line start</name>
+            <name>nls</name>
+            <name>^\n</name>
+            <desc>Text divisions that typically begin on a new line</desc>
+            <id>line-start</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-line-end</IRI>
+            <name>new line end</name>
+            <name>end new line</name>
+            <name>nle</name>
+            <name>\n$</name>
+            <desc>Text divisions whose termination forces the next text division to start a new
+                    line</desc>
+            <id>line-end</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:extra-leading-start</IRI>
+            <name>start extra leading</name>
+            <name>extra leading start</name>
+            <name>space above</name>
+            <desc>Text divisions that typically begin with extra leading (a horizontal line of
+                    white space)</desc>
+            <id>leading-start</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:extra-leading-end</IRI>
+            <name>end extra leading</name>
+            <name>extra leading end</name>
+            <name>space below</name>
+            <desc>Text divisions that typically end with extra leading (a horizontal line of
+                    white space)</desc>
+            <id>leading-end</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-column-start</IRI>
+            <name>start new column</name>
+            <name>new column start</name>
+            <name>ncs</name>
+            <desc>Text divisions that typically begin on a new column</desc>
+            <id>column-start</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-column-end</IRI>
+            <name>new column end</name>
+            <name>end new column</name>
+            <name>nce</name>
+            <desc>Text divisions whose termination forces the next text division to start a new
+                    column</desc>
+            <id>column-end</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-page-start</IRI>
+            <name>start new page</name>
+            <name>new page start</name>
+            <name>nps</name>
+            <desc>Text divisions that typically begin on a new page</desc>
+            <id>page-start</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:new-page-end</IRI>
+            <name>new page end</name>
+            <name>end new page</name>
+            <name>npe</name>
+            <desc>Text divisions whose termination forces the next text division to start a new
+                    page</desc>
+            <id>page-end</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:logical</IRI>
+            <name>logical</name>
+            <name>conceptual</name>
+            <desc>Text division is based on logical units that do not depend upon scripta for
+                    their meaning, e.g., sentence, paragraph. Contrasts with physical, scriptum-based
+                    divisions.</desc>
+            <id>logical</id>
+         </item>
+         <item>
+            <group>div</group>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:div:scriptum</IRI>
+            <name>scriptum</name>
+            <name>scriptum based</name>
+            <name>object</name>
+            <name>physical</name>
+            <name>material</name>
+            <desc>Text division is based on a physical feature in the scriptum, e.g., page,
+                    column, line. Contrasts with logical divisions.</desc>
+            <id>scriptum</id>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <group-type xml:id="inline-start" which="no new line start"/>
+            <group-type xml:id="inline-end" which="no new line end"/>
+            <group-type xml:id="line-start" which="new line start"/>
+            <group-type xml:id="line-end" which="new line end"/>
+            <group-type xml:id="leading-start" which="space above"/>
+            <group-type xml:id="leading-end" which="space below"/>
+            <group-type xml:id="column-start" which="new column start"/>
+            <group-type xml:id="column-end" which="new column end"/>
+            <group-type xml:id="page-start" which="new page start"/>
+            <group-type xml:id="page-end" which="new page end"/>
+            <group-type xml:id="logical" which="logical"/>
+            <group-type xml:id="scriptum" which="scriptum"/>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-02-02" who="kalvesmaki">Started file</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-14" who="kalvesmaki">Revised for 2019; added Quranic div types.</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="extra/n.bible.eng.tan-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:n:eng:bible"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">commonly used vocabulary for the bible</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.bible.eng.tan-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="kalvesmaki"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:person:kalvesmaki</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name>joel kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns"
+              who="kalvesmaki"
+              when="2017-12-02T16:26:16.45-05:00">Started file.</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-12" who="kalvesmaki">Converted file from independent project TAN-voc
+            into a TAN extra vocabulary file.</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-14" who="kalvesmaki">Separated from Spanish vocabulary</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="extra/n.bible.spa.tan-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:n:spa:bible"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">vocabulario de uso común para la biblia</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.bible.spa.tan-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="kalvesmaki"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:person:kalvesmaki</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name>joel kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns"
+              who="kalvesmaki"
+              when="2017-12-02T16:26:16.45-05:00">Started file.</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-12" who="kalvesmaki">Converted file from independent project TAN-voc
+            into a TAN extra vocabulary file.</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-14" who="kalvesmaki">Separated from English vocabulary</change>
+      <to-do xmlns="tag:textalign.net,2015:ns">
+            <comment when="2018-09-12" who="kalvesmaki">Needs to be corrected by native
+                speaker familiar with Biblical scholarship.</comment>
+        </to-do>
+   </doc>
+   <doc href="extra/n.quran.eng-ara.tan-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:n:eng-ara:quran"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Commonly used names for Surahs in the Quran, incorporating English and Arabic.</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.quran.eng-ara.tan-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="kalvesmaki"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/2995827031</IRI>
+            <IRI>tag:textalign.net,2015:person:kalvesmaki1</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self1</IRI>
+            <IRI>tag:kalvesmaki@gmail.com,2014:self1</IRI>
+            <name>joel kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" who="kalvesmaki" when="2018-09-14">Started file.</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="extra/n.unlabeled-divs-1.eng.tan-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:n:eng:unlabeled-divs-1"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Commonly used vocabulary in English for divs that are unnamed, first system</name>
+      <desc xmlns="tag:textalign.net,2015:ns">There are a handful of div types that do not easily lend themselves to values of @n
+            because that type of div is traditionally not labeled or numbered. In practice, @n is
+            given a value that is identical to, or looks a lot like, the value of @type. This
+            TAN-voc file tries to provide a lingua franca for such unlabeled div types.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.unlabeled-divs-1.tan-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="kalvesmaki"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:person:kalvesmaki</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name norm="">joel kalvesmaki</name>
+            <name>Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-13" who="kalvesmaki">Started file.</change>
+      <to-do xmlns="tag:textalign.net,2015:ns">
+            <comment when="2018-09-13" who="kalvesmaki">Need to test against real-life examples, to
+                add other commonly unlabeled div types, and to massage the nomenclature.</comment>
+        </to-do>
+   </doc>
+   <doc href="features.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:features"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for features</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This file contains in TAN-voc format the core vocabulare adopted by OLiA for parts of
+            speech: http://purl.org/olia/olia.owl.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/features.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+            <group-type xml:id="perseus">
+                <IRI>tag:textalign.net,2015:features:group-type:perseus</IRI>
+                <name norm="">perseus features</name>
+            <name>Perseus features</name>
+                <desc>Grammatical features that appear in Perseus's morphological analysis of Greek
+                    and Latin words that do not appear to be featured in OLiA's vocabulary.</desc>
+            </group-type>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-03-31" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="group-types.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:group-types"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of groups</name>
+      <desc xmlns="tag:textalign.net,2015:ns">Definitive list of key terms used for types of groups.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/group-types.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:group-types</IRI>
+         <name>TAN keywords for types of groups</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/group-types.TAN-voc.xml"/>
+         <item>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:group-type:requires-attribute-n</IRI>
+            <name>attr n</name>
+            <name>attribute n</name>
+            <name>tan lm</name>
+            <desc>The group contains items that define groups relevant only in the context of @n</desc>
+            <id>n</id>
+         </item>
+         <item>
+            <affects-element>group-type</affects-element>
+            <IRI>tag:textalign.net,2015:group-type:group-type:div-types</IRI>
+            <name>div types</name>
+            <desc>The group contains items that define groups of division types</desc>
+            <id>div</id>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <group-type xml:id="n" which="attr-n"/>
+            <group-type xml:id="div" which="div types"/>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-04-23" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="licenses.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:rights"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of rights</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This file depends largely upon the vocabulary of Creative Commons</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/rights.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+            <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-02-05" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="modals.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:modals"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of modals</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This file has been created ad hoc to reflect the kind of modal qualifiers that textual
+         scholars habitually employ to nuance their claims. These categories are not to be seen as
+         necessarily correlating with any branch modal logic. </desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/modals.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+            <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-03-29" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="normalizations.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:normalizations"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of normalizations</name>
+      <desc xmlns="tag:textalign.net,2015:ns">Definitive list of key terms used for normalizations to texts.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/normalizations.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-02-02" who="kalvesmaki">Started file</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-16" who="kalvesmaki">Added other names for unicode normalization.</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="reuse-types.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:reuse-type"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of bitext reuse</name>
+      <desc xmlns="tag:textalign.net,2015:ns">List of standardized terms used for types of bitext reuse.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/reuse-types.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-05-10" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="roles.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:roles"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of roles</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This file has been created ad hoc to some basic terms for roles involved in the
+            creation and editing of TAN files.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/roles.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2017-02-22" who="kalvesmaki">Started file</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-05-03" who="kalvesmaki">Added a role called source.</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="token-definitions.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:tokenizations"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for types of token definitions</name>
+      <desc xmlns="tag:textalign.net,2015:ns">Definitive list of key terms used to name standard token definitions.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/token-definitions.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-02-02" who="kalvesmaki">Started file</change>
+      <change xmlns="tag:textalign.net,2015:ns" when="2016-02-22" who="kalvesmaki">Revised to suit new
+            &lt;token-definition&gt;</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="verbs.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:verbs"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN keywords for verbs</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This file has been created ad hoc to some basic terms for verbs involved in the
+            creation and editing of TAN files.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/verbs.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki" which="by 4.0"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <group-type xml:id="text-subject">
+                <IRI>tag:textalign.net,2015:verb:group:text-subject</IRI>
+                <name norm="">verbs that have subjects that are text bearing objects: persons, agents, scripta, versions, works.</name>
+            <name>Verbs that have subjects that are text-bearing objects: persons, agents,
+                    scripta, versions, works.</name>
+            </group-type>
+            <group-type xml:id="text-object">
+                <IRI>tag:textalign.net,2015:verb:group:text-object</IRI>
+                <name norm="">verbs that have objects that are text bearing objects: persons, agents, scripta, versions, works.</name>
+            <name>Verbs that have objects that are text-bearing objects: persons, agents,
+                    scripta, versions, works.</name>
+            </group-type>
+            <group-type xml:id="claim-object">
+                <IRI>tag:textalign.net,2015:verb:group:claim-object</IRI>
+                <name norm="">verbs that have objects that are claims.</name>
+            <name>Verbs that have objects that are claims.</name>
+            </group-type>
+            <group-type xml:id="object-required">
+                <IRI>tag:textalign.net,2015:verb:group:object-required</IRI>
+                <name norm="">verbs that require objects</name>
+            <name>Verbs that require objects</name>
+            </group-type>
+            <group-type xml:id="object-disallowed">
+                <IRI>tag:textalign.net,2015:verb:group:object-disallowed</IRI>
+                <name norm="">verbs that may not take objects</name>
+            <name>Verbs that may not take objects</name>
+            </group-type>
+            <group-type xml:id="near-verbatim">
+                <IRI>tag:textalign.net,2015:verb:group:verbatim70-100</IRI>
+                <name norm="">verbs that indicate a passage of text in each of the subject and object where there is agreement of 70% or greater.</name>
+            <name>Verbs that indicate a passage of text in each of the subject and object where
+                    there is agreement of 70% or greater.</name>
+                <desc>If subject and object are in the same language, the quantity is measured by
+                    agreement after normalization, ignoring accentuation, capitalization,
+                    punctuation, and word spaces. If they are in different languages, the quantity
+                    is measured by the number of words in one source that correspond to words in the
+                    other.</desc>
+            </group-type>
+            <group-type xml:id="similar">
+                <IRI>tag:textalign.net,2015:verb:group:verbatim40-70</IRI>
+                <name norm="">verbs that indicate a passage of text in each of the subject and object where there is agreement of 40% to 70%.</name>
+            <name>Verbs that indicate a passage of text in each of the subject and object where
+                    there is agreement of 40% to 70%.</name>
+                <desc>See description for verbatim.</desc>
+            </group-type>
+            <group-type xml:id="somewhat-similar">
+                <IRI>tag:textalign.net,2015:verb:group:verbatim5-40</IRI>
+                <name norm="">verbs that indicate a passage of text in each of the subject and object where there is agreement of 5% to 40%.</name>
+            <name>Verbs that indicate a passage of text in each of the subject and object where
+                    there is agreement of 5% to 40%.</name>
+                <desc>See description for verbatim.</desc>
+            </group-type>
+            <group-type xml:id="cf">
+                <IRI>tag:textalign.net,2015:verb:group:confer</IRI>
+                <name norm="">verbs that indicate comparisons between subject and object.</name>
+            <name>Verbs that indicate comparisons between subject and object.</name>
+            </group-type>
+            <group-type xml:id="symmetry">
+                <IRI>tag:textalign.net,2015:verb:group:symmetry</IRI>
+                <name norm="">verbs that establish symmetrical relationships between subject and object. if x [verb] y then y [verb] x.</name>
+            <name>Verbs that establish symmetrical relationships between subject and object. If
+                    X [verb] Y then Y [verb] X.</name>
+            </group-type>
+            <group-type xml:id="transitivity">
+                <IRI>tag:textalign.net,2015:verb:group:transitivity</IRI>
+                <name norm="">verbs that establish transitive relationships between subject and object. if x [verb] y and y [verb] z then x [verb] z.</name>
+            <name>Verbs that establish transitive relationships between subject and object. If X
+                    [verb] Y and Y [verb] Z then X [verb] Z.</name>
+            </group-type>
+            <group-type xml:id="locus-based">
+                <IRI>tag:textalign.net,2015:verb:group:locus-based</IRI>
+                <name norm="">verbs that require or or more &lt;locus&gt;.</name>
+            <name>Verbs that require or or more &lt;locus&gt;.</name>
+                <desc>These verbs are intended to support claims about how specific persons or
+                    scripta corroborate or depart from the reading of a particular locus of
+                    text.</desc>
+            </group-type>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2017-03-07" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="vocabularies.TAN-voc.xml"
+        id="tag:textalign.net,2015:tan-voc:vocabularies"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">TAN vocabulary items for extra vocabularies</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2021/vocabularies/vocabularies.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="kalvesmaki"/>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:rights</IRI>
+         <name>TAN keywords for types of rights</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/licenses.TAN-voc.xml"/>
+         <item>
+            <affects-element>license</affects-element>
+            <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+            <IRI>tag:textalign.net,2015:license:by/4.0/</IRI>
+            <name>by 4.0</name>
+            <name>attribution 4.0 international</name>
+         </item>
+      </tan-vocabulary>
+      <tan-vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:tan-voc:roles</IRI>
+         <name>TAN keywords for types of roles</name>
+         <location accessed-when="2018-09-20-04:00"
+                   href="file:/C:/Users/jdkalv/Dropbox/TAN/TAN-2020/vocabularies/roles.TAN-voc.xml"/>
+         <item>
+            <affects-element>role</affects-element>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+         </item>
+      </tan-vocabulary>
+      <vocabulary-key xmlns="tag:textalign.net,2015:ns">
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng" norm="">joel kalvesmaki</name>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+      <file-resp xmlns="tag:textalign.net,2015:ns" who="kalvesmaki"/>
+      <resp xmlns="tag:textalign.net,2015:ns" roles="creator" who="kalvesmaki"/>
+      <change xmlns="tag:textalign.net,2015:ns" when="2018-09-13" who="kalvesmaki">Started file</change>
+      <to-do xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+</collection>

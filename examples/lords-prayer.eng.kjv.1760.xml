@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2021"
+   id="tag:parkj@textalign.net,2015:bible:matthew:lords-prayer">
+   <head>
+      <name>Matthew's version of the Lord's Prayer, King James Version of the Bible, 1760
+         edition</name>
+      <master-location
+         href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/lords-prayer.eng.kjv.1760.xml"/>
+      <license which="by 4.0" licensor="park"/>
+      <reference-system type="logical" wf-ready="false"/>
+      <work>
+         <IRI>http://dbpedia.org/resource/Lord%27s_Prayer</IRI>
+         <name>Lord's Prayer</name>
+         <name xml:lang="lat">Pater Noster</name>
+         <desc>Sermon on the Mount, from Matthew 5-7.</desc>
+      </work>
+      <version>
+         <IRI>tag:parkj@textalign.net,2015:version:matthews-version-of-the-lords-prayer</IRI>
+         <name>Matthew's version of the Lord's Prayer</name>
+      </version>
+      <vocabulary>
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Keywords for TAN files edited by Jenny Park</name>
+         <location href="TAN-voc/park-projects.TAN-voc.xml" accessed-when="2019-10-08"/>
+      </vocabulary>
+      <source which="kjv 1760"/>
+      <vocabulary-key>
+         <person which="Jenny Park" xml:id="park"/>
+         <div-type xml:id="ch" which="chapter"/>
+         <div-type xml:id="verse" which="verse (scripture)"/>
+      </vocabulary-key>
+      <file-resp who="park"/>
+      <resp who="park" roles="editor"/>
+      <change when="2019-10-08" who="park">Started file.</change>
+      <to-do/>
+   </head>
+   <body xml:lang="eng">
+      <div n="9" type="verse">Our Father which art in heaven, Hallowed be thy name.</div>
+      <div n="10" type="verse">Thy kingdom come. Thy will be done in earth, as it is in
+         heaven.</div>
+      <div n="11" type="verse">Give us this day our daily bread.</div>
+      <div n="12" type="verse">And forgive us our debts, as we forgive our debtors.</div>
+      <div n="13" type="verse">And lead us not into temptation, but deliver us from evil: For thine
+         is the kingdom, and the power, and the glory, for ever. Amen.</div>
+   </body>
+</TAN-T>

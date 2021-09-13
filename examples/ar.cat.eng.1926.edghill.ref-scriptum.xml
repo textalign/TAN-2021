@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" id="tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:model-object-refs" TAN-version="2021">
+   <head>
+      <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+      <master-location href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.eng.1926.edghill.ref-scriptum.xml"/>
+      <license licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work>
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <source>
+         <IRI>http://id.lib.harvard.edu/aleph/007901738/catalog</IRI>
+         <name>Aristotle: Categoriae &amp; De interpretatione by E.M. Edghill. Analytica priora / by
+            A.J. Jenkinson. Analytica posteriora / by G.R.G. Mure. Oxford : Clarendon Press, 1926.
+         </name>
+      </source>
+      <redivision>
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:semantic-refs</IRI>
+         <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+         <location href="ar.cat.eng.1926.edghill.ref-logical.xml"
+            accessed-when="2016-07-07T16:36:28.867-04:00"/>
+         <comment who="kalvesmaki" when="2021-02-12">A scan is available here:
+            https://ia600908.us.archive.org/33/items/worksofaristotle01arisuoft/worksofaristotle01arisuoft.pdf</comment>
+      </redivision>
+      <model>
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+            accessed-when="2016-07-07T16:36:28.867-04:00"/>
+      </model>
+      <adjustments>
+         <normalization which="no hyphens"/>
+      </adjustments>
+      <vocabulary-key>
+         <div-type xml:id="p">
+            <IRI>http://dbpedia.org/resource/Page_(paper)</IRI>
+            <name>page</name>
+         </div-type>
+         <div-type xml:id="c">
+            <IRI>http://dbpedia.org/resource/Column_(typography)</IRI>
+            <name>column</name>
+         </div-type>
+         <div-type xml:id="l">
+            <IRI>tag:textalign.net,2015:div-type:line:physical</IRI>
+            <name>physical line</name>
+         </div-type>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+         </person>
+         <algorithm xml:id="xslt1">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI>
+            <name>Stylesheet to populate a TAN-A file from collections.</name>
+            <location href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"
+               accessed-when="2018-08-02"/>
+         </algorithm>
+         <role xml:id="editor">
+            <IRI>http://schema.org/editor</IRI>
+            <name xml:lang="eng">Editor</name>
+         </role>
+         <role xml:id="stylesheet1" which="stylesheet"/>
+         <scriptum xml:id="bekker">
+            <IRI>http://id.lib.harvard.edu/alma/990017941240203941/catalog</IRI>
+            <IRI>http://www.worldcat.org/oclc/490107033</IRI>
+            <name>Bekker</name>
+            <name>Bekker, I., Brandis, C., Bonitz, H., Deutsche Akademie der Wissenschaften zu
+               Berlin, &amp; Society for the Collegiate Instruction of Women, former owner. (1831).
+               Aristotelis opera. Berolini: Apud G. Reimerum.</name>
+         </scriptum>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp roles="editor" who="kalvesmaki"/>
+      <resp who="xslt1" roles="stylesheet1"/>
+      <change when="2020-12-31" who="kalvesmaki">Added new reference-system declaration.</change>
+      <change when="2016-07-07T16:36:28.867-04:00" who="kalvesmaki">Reformatted file at
+         ar.cat.eng.1926.edghill.sem.xml to the structure of the copy of the model.</change>
+      <change who="xslt1" when="2017-11-02T22:27:59.302-04:00">TAN file updated to 2018
+         schemas.</change>
+      <change when="2018-07-30-04:00" who="kalvesmaki">updated to 2019 schemas</change>
+      <to-do/>
+   </head>
+   <body xml:lang="eng">
+      <div type="p" n="1">
+         <div type="c" n="a">
+            <div type="l" n="1">Things are said to be named 'equivocally' when, though they have a common name, the definition corresponding</div>
+            <div type="l" n="2">with the name differs for each. Thus, a real man and a figure in a picture can both</div>
+            <div type="l" n="3">lay claim to the name 'animal'; yet these are equivocally so named, for, though they have</div>
+            <div type="l" n="4">a common name, the definition corresponding with the name differs for each. For should any</div>
+            <div type="l" n="5">one define in what sense each is an animal, his definition in the one case will</div>
+            <div type="l" n="6">be appropriate to that case only. On the other hand, things are said to be</div>
+            <div type="l" n="7">named 'univocally' which have both the name and the definition answering to the name in common.</div>
+            <div type="l" n="8">A man and an ox are both 'animal', and these are univocally so named,</div>
+            <div type="l" n="9">inasmuch as not only the name, but also the definition, is the</div>
+            <div type="l" n="10">same in both cases: for if a man should state in what sense each</div>
+            <div type="l" n="11">is an animal, the statement in the one case would be identical with that</div>
+            <div type="l" n="12">in the other. Things are said to be named 'derivatively', which derive their</div>
+            <div type="l" n="13">name from some other name, but differ from it in termination. Thus the</div>
+            <div type="l" n="14">grammarian derives his name from the word 'grammar', and the courageous man</div>
+            <div type="l" n="15">from the word 'courage'. </div>
+            <div type="l" n="16">Forms of speech are either simple or</div>
+            <div type="l" n="17">composite. Examples of the latter are such expressions as</div>
+            <div type="l" n="18">'the man runs', 'the man wins'; of the former 'man',</div>
+            <div type="l" n="19">'ox', 'runs', 'wins'. </div>
+            <div type="l" n="20">Of things themselves some are predicable of a subject, and</div>
+            <div type="l" n="21">are never present in a subject. Thus 'man' is predicable of</div>
+            <div type="l" n="22">the individual man, and is never present in a subject. </div>
+            <div type="l" n="23">By being 'present in a subject' I do not mean present as parts are</div>
+            <div type="l" n="24">present in a whole, but being incapable of existence apart from the said subject.</div>
+            <div type="l" n="25">Some things, again, are present in a subject, but are never predicable of</div>
+            <div type="l" n="26">a subject. For instance, a certain point of grammatical knowledge is present in</div>
+            <div type="l" n="27">the mind, but is not predicable of any subject; or again, a certain whiteness</div>
+            <div type="l" n="28">may be present in the body (for colour requires a material basis), yet</div>
+            <div type="l" n="29">it is never predicable of anything. Other things, again, are both</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">predicable of a subject and present in a subject. Thus while</div>
+            <div type="l" n="2">knowledge is present in the human mind, it is predicable</div>
+            <div type="l" n="3">of grammar. There is, lastly, a class of things</div>
+            <div type="l" n="4">which are neither present in a subject nor predicable</div>
+            <div type="l" n="5">of a subject, such as the individual man or</div>
+            <div type="l" n="6">the individual horse. But, to speak more generally, that which is individual and</div>
+            <div type="l" n="7">has the character of a unit is never predicable of a subject. Yet in some cases there is nothing to</div>
+            <div type="l" n="8">prevent such being present in a subject. Thus a certain point of grammatical knowledge is present</div>
+            <div type="l" n="9">in a subject. </div>
+            <div type="l" n="10">When one thing is predicated of another, all that</div>
+            <div type="l" n="11">which is predicable of the predicate will be predicable</div>
+            <div type="l" n="12">also of the subject. Thus, 'man' is predicated of</div>
+            <div type="l" n="13">the individual man; but 'animal' is predicated of 'man'; </div>
+            <div type="l" n="14">it will, therefore, be predicable of the individual man also: </div>
+            <div type="l" n="15">for the individual man is both 'man' and 'animal'. </div>
+            <div type="l" n="16">If genera are different and co-ordinate, their differentiae are themselves different in kind.</div>
+            <div type="l" n="17">Take as an instance the genus 'animal' and the genus 'knowledge'. </div>
+            <div type="l" n="18">'With feet', 'two-footed', 'winged', 'aquatic', are differentiae of 'animal'; the species</div>
+            <div type="l" n="19">of knowledge are not distinguished by the same differentiae. One species</div>
+            <div type="l" n="20">of knowledge does not differ from another in being 'two-footed'. But where one</div>
+            <div type="l" n="21">genus is subordinate to another, there is nothing to prevent their having the same differentiae: </div>
+            <div type="l" n="22">for the greater class is predicated of the lesser, so that</div>
+            <div type="l" n="23">all the differentiae of the predicate will be differentiae also</div>
+            <div type="l" n="24">of the subject. </div>
+            <div type="l" n="25">Expressions which are in no way composite signify</div>
+            <div type="l" n="26">substance, quantity, quality, relation, place, time, position,</div>
+            <div type="l" n="27">state, action, or affection. To sketch my meaning roughly, examples</div>
+            <div type="l" n="28">of substance are 'man' or 'the horse', of quantity, such terms as 'two cubits long' or 'three</div>
+            <div type="l" n="29">cubits long', of quality, such attributes as 'white', 'grammatical'. 'Double', 'half', 'greater',</div>
+         </div>
+      </div>
+      <div type="p" n="2">
+         <div type="c" n="a">
+            <div type="l" n="1">fall under the category of relation; 'in a the market place', 'in the Lyceum', under that of</div>
+            <div type="l" n="2">place; 'yesterday', 'last year', under that of time. 'Lying', 'sitting', are terms indicating position,</div>
+            <div type="l" n="3">'shod', 'armed', state; 'to lance', 'to</div>
+            <div type="l" n="4">cauterize', action; 'to be lanced', 'to be cauterized', affection. No</div>
+            <div type="l" n="5">one of these terms, in and by itself, involves an affirmation; it</div>
+            <div type="l" n="6">is by the combination of such terms that positive or</div>
+            <div type="l" n="7">negative statements arise. For every assertion must, as is admitted,</div>
+            <div type="l" n="8">be either true or false, whereas expressions which are</div>
+            <div type="l" n="9">not in any way composite such as 'man', 'white', 'runs', 'wins',</div>
+            <div type="l" n="10">cannot be either true or false. </div>
+            <div type="l" n="11">Substance, in the truest and primary and most definite sense of</div>
+            <div type="l" n="12">the word, is that which is neither predicable of a subject</div>
+            <div type="l" n="13">nor present in a subject; for instance, the individual man or horse.</div>
+            <div type="l" n="14">But in a secondary sense those things are called substances within which,</div>
+            <div type="l" n="15">as species, the primary substances are included; also those which, as genera,</div>
+            <div type="l" n="16">include the species. For instance, the individual man is included in the species</div>
+            <div type="l" n="17">'man', and the genus to which the species belongs is 'animal'; these,</div>
+            <div type="l" n="18">therefore-that is to say, the species 'man' and the genus 'animal,-are termed secondary</div>
+            <div type="l" n="19">substances. It is plain from what has been said that</div>
+            <div type="l" n="20">both the name and the definition of the predicate must be</div>
+            <div type="l" n="21">predicable of the subject. For instance, 'man' is predicted of</div>
+            <div type="l" n="22">the individual man. Now in this case the name of the species man' is</div>
+            <div type="l" n="23">applied to the individual, for we use the term 'man' in describing the individual;</div>
+            <div type="l" n="24">and the definition of 'man' will also be predicated of</div>
+            <div type="l" n="25">the individual man, for the individual man is both man and</div>
+            <div type="l" n="26">animal. Thus, both the name and the definition of the species</div>
+            <div type="l" n="27">are predicable of the individual. With regard, on the other hand, to those things which</div>
+            <div type="l" n="28">are present in a subject, it is generally the case that neither their name nor their definition is predicable</div>
+            <div type="l" n="29">of that in which they are present. Though, however, the definition is never predicable, there</div>
+            <div type="l" n="30">is nothing in certain cases to prevent the name being used.</div>
+            <div type="l" n="31">For instance, 'white' being present in a body is predicated of</div>
+            <div type="l" n="32">that in which it is present, for a body is called white:</div>
+            <div type="l" n="33">the definition, however, of the colour white' is never predicable of the</div>
+            <div type="l" n="34">body. Everything except primary substances is either predicable of a</div>
+            <div type="l" n="35">primary substance or present in a primary substance. This becomes</div>
+            <div type="l" n="36">evident by reference to particular instances which occur. 'Animal' is predicated</div>
+            <div type="l" n="37">of the species 'man', therefore of the individual man, for if there were</div>
+            <div type="l" n="38">no individual man of whom it could be predicated, it could not be</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">predicated of the species 'man' at all. Again, colour is present</div>
+            <div type="l" n="2">in body, therefore in individual bodies, for if there were no individual</div>
+            <div type="l" n="3">body in which it was present, it could not be present in body at all. Thus everything</div>
+            <div type="l" n="4">except primary substances is either predicated of primary substances,</div>
+            <div type="l" n="5">or is present in them, and if these last</div>
+            <div type="l" n="6">did not exist, it would be impossible for anything else to exist. </div>
+            <!--<div type="l" n="6a"/>
+            <div type="l" n="6b"/>
+            <div type="l" n="6c"/>-->
+            <div type="l" n="7">Of secondary substances, the species is more truly substance than the genus,</div>
+            <div type="l" n="8">being more nearly related to primary substance. For if any one</div>
+            <div type="l" n="9">should render an account of what a primary substance is, he would render a more instructive account, and</div>
+            <div type="l" n="10">one more proper to the subject, by stating the species than by stating the genus. Thus,</div>
+            <div type="l" n="11">he would give a more instructive account of an individual man by stating that he was man than</div>
+            <div type="l" n="12">by stating that he was animal, for the former description is peculiar to the individual in a greater</div>
+            <div type="l" n="13">degree, while the latter is too general. Again, the man who gives an account of the nature of an individual</div>
+            <div type="l" n="14">tree will give a more instructive account by mentioning the species 'tree' than by mentioning the genus 'plant'. </div>
+            <div type="l" n="15">Moreover, primary substances are most properly called substances in virtue of the fact</div>
+            <div type="l" n="16">that they are the entities which underlie everything else, and that everything</div>
+            <div type="l" n="17">else is either predicated of them or present in them. Now the</div>
+            <div type="l" n="18">same relation which subsists between primary substance and everything else subsists also</div>
+            <div type="l" n="19">between the species and the genus: for the species is to the genus as subject is</div>
+            <div type="l" n="20">to predicate, since the genus is predicated of the species, whereas the</div>
+            <div type="l" n="21">species cannot be predicated of the genus. Thus we have a second</div>
+            <div type="l" n="22">ground for asserting that the species is more truly substance than the genus. Of species themselves, except in</div>
+            <div type="l" n="23">the case of such as are genera, no one is more truly substance than another.</div>
+            <div type="l" n="24">We should not give a more appropriate account of the individual man by stating the</div>
+            <div type="l" n="25">species to which he belonged, than we should of an individual horse by adopting the same method</div>
+            <div type="l" n="26">of definition. In the same way, of primary substances, no one is more</div>
+            <div type="l" n="27">truly substance than another; an individual man is not more truly substance</div>
+            <div type="l" n="28">than an individual ox. </div>
+            <div type="l" n="29">It is, then, with good reason that of all that remains, when we exclude primary</div>
+            <div type="l" n="30">substances, we concede to species and genera alone the name 'secondary substance', for these alone</div>
+            <div type="l" n="31">of all the predicates convey a knowledge of primary substance. For it</div>
+            <div type="l" n="32">is by stating the species or the genus that we appropriately define any individual</div>
+            <div type="l" n="33">man; and we shall make our definition more exact by stating the former than</div>
+            <div type="l" n="34">by stating the latter. All other things that we</div>
+            <div type="l" n="35">state, such as that he is white, that he runs, and</div>
+            <div type="l" n="36">so on, are irrelevant to the definition. Thus it is just that these</div>
+            <div type="l" n="37">alone, apart from primary substances, should be called substances. Further, primary substances are most</div>
+            <div type="l" n="38">properly so called, because they underlie and are the subjects of everything</div>
+         </div>
+      </div>
+      <div type="p" n="3">
+         <div type="c" n="a">
+            <div type="l" n="1">else. Now the same relation that subsists between primary substance and everything else subsists also between the</div>
+            <div type="l" n="2">species and the genus to which the primary substance belongs, on the one hand, and every attribute which is not</div>
+            <div type="l" n="3">included within these, on the other. For these are the subjects of all</div>
+            <div type="l" n="4">such. If we call an individual man 'skilled in grammar', the predicate is</div>
+            <div type="l" n="5">applicable also to the species and to the genus to which he belongs. This law</div>
+            <div type="l" n="6">holds good in all cases. </div>
+            <div type="l" n="7">It is a common characteristic of all substance that it is never present in a</div>
+            <div type="l" n="8">subject. For primary substance is neither present in a subject nor</div>
+            <div type="l" n="9">predicated of a subject; while, with regard to secondary substances, it is</div>
+            <div type="l" n="10">clear from the following arguments (apart from others) that they are not present in a subject. For 'man'</div>
+            <div type="l" n="11">is predicated of the individual man, but is not present</div>
+            <div type="l" n="12">in any subject: for manhood is not present in the individual</div>
+            <div type="l" n="13">man. In the same way, 'animal' is also</div>
+            <div type="l" n="14">predicated of the individual man, but is not present in</div>
+            <div type="l" n="15">him. Again, when a thing is present in a subject, though</div>
+            <div type="l" n="16">the name may quite well be applied to that in which it is present, the</div>
+            <div type="l" n="17">definition cannot be applied. Yet of secondary substances, not only the name,</div>
+            <div type="l" n="18">but also the definition, applies to the subject: we should use both</div>
+            <div type="l" n="19">the definition of the species and that of the genus with reference</div>
+            <div type="l" n="20">to the individual man. Thus substance cannot be present in</div>
+            <div type="l" n="21">a subject. Yet this is not peculiar to substance, for it is</div>
+            <div type="l" n="22">also the case that differentiae cannot be present in subjects. The characteristics</div>
+            <div type="l" n="23">'terrestrial' and 'two-footed' are predicated of the species</div>
+            <div type="l" n="24">'man', but not present in it. For they are</div>
+            <div type="l" n="25">not in man. Moreover, the definition of the differentia may be predicated</div>
+            <div type="l" n="26">of that of which the differentia itself is predicated. For instance, if the</div>
+            <div type="l" n="27">characteristic 'terrestrial' is predicated of the species 'man', the definition also of that characteristic</div>
+            <div type="l" n="28">may be used to form the predicate of the species 'man': for 'man' is terrestrial. </div>
+            <div type="l" n="29">The fact that the parts of substances appear to be present in the whole,</div>
+            <div type="l" n="30">as in a subject, should not make us apprehensive lest we should have to admit that</div>
+            <div type="l" n="31">such parts are not substances: for in explaining the phrase 'being present in a subject',</div>
+            <div type="l" n="32">we stated' that we meant 'otherwise than as parts in a whole'. </div>
+            <div type="l" n="33">It is the mark of substances and of differentiae that, in all propositions of which they</div>
+            <div type="l" n="34">form the predicate, they are predicated univocally. For all such propositions have</div>
+            <div type="l" n="35">for their subject either the individual or the species.</div>
+            <div type="l" n="36">It is true that, inasmuch as primary substance is not predicable</div>
+            <div type="l" n="37">of anything, it can never form the predicate of any proposition. But of</div>
+            <div type="l" n="38">secondary substances, the species is predicated of the individual,</div>
+            <div type="l" n="39">the genus both of the species and of the individual. </div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">Similarly the differentiae are predicated of the species and</div>
+            <div type="l" n="2">of the individuals. Moreover, the definition of the species and</div>
+            <div type="l" n="3">that of the genus are applicable to the primary substance, and that of the</div>
+            <div type="l" n="4">genus to the species. For all that is predicated of the</div>
+            <div type="l" n="5">predicate will be predicated also of the subject. Similarly, the definition</div>
+            <div type="l" n="6">of the differentiae will be applicable to the species and to</div>
+            <div type="l" n="7">the individuals. But it was stated above that the word 'univocal' was applied to those things which had</div>
+            <div type="l" n="8">both name and definition in common. It is, therefore, established that in every proposition, of which either substance</div>
+            <div type="l" n="9">or a differentia forms the predicate, these are predicated univocally. </div>
+            <div type="l" n="10">All substance appears to signify that which is individual. In the</div>
+            <div type="l" n="11">case of primary substance this is indisputably</div>
+            <div type="l" n="12">true, for the thing is a unit.</div>
+            <div type="l" n="13">In the case of secondary substances, when we speak, for instance, of 'man'</div>
+            <div type="l" n="14">or 'animal', our form of speech gives the impression that we are here also indicating that</div>
+            <div type="l" n="15">which is individual, but the impression is not strictly true; for a secondary substance is</div>
+            <div type="l" n="16">not an individual, but a class with a certain qualification; for it is not one and single as</div>
+            <div type="l" n="17">a primary substance is; the words 'man', 'animal', are predicable of more than one subject.</div>
+            <div type="l" n="18">Yet species and genus do not merely indicate quality, like the term 'white'; </div>
+            <div type="l" n="19">'white' indicates quality and nothing further, but species and genus</div>
+            <div type="l" n="20">determine the quality with reference to a substance: they signify</div>
+            <div type="l" n="21">substance qualitatively differentiated. The determinate qualification covers a larger field in the case of</div>
+            <div type="l" n="22">the genus that in that of the species: he who uses the word 'animal' is herein using a word of</div>
+            <div type="l" n="23">wider extension than he who uses the word 'man'. </div>
+            <div type="l" n="24">Another mark of substance is that it has no contrary.</div>
+            <div type="l" n="25">What could be the contrary of any primary substance, such as the individual man or animal? It has</div>
+            <div type="l" n="26">none. Nor can the species or the genus have</div>
+            <div type="l" n="27">a contrary. Yet this characteristic is not peculiar to substance, but is</div>
+            <div type="l" n="28">true of many other things, such as quantity. There is nothing that forms the contrary of</div>
+            <div type="l" n="30">'two cubits long' or of 'three cubits long', or of 'ten', or of any such term. A</div>
+            <div type="l" n="31">man may contend that 'much' is the contrary of 'little', or 'great' of 'small', but</div>
+            <div type="l" n="32">of definite quantitative terms no contrary exists. </div>
+            <div type="l" n="33">Substance, again, does not appear to admit of variation of degree.</div>
+            <div type="l" n="34">I do not mean by this that one substance cannot be more or less</div>
+            <div type="l" n="35">truly substance than another, for it has already been stated' that this is the</div>
+            <div type="l" n="36">case; but that no single substance admits of varying degrees within itself. </div>
+            <div type="l" n="37">For instance, one particular substance, 'man', cannot be more or less man either</div>
+            <div type="l" n="38">than himself at some other time or than some other man.</div>
+            <div type="l" n="39">One man cannot be more man than another, as that which is white may be more or</div>
+         </div>
+      </div>
+      <div type="p" n="4">
+         <div type="c" n="a">
+            <div type="l" n="1">less white than some other white object, or as that which is beautiful may be more or</div>
+            <div type="l" n="2">less beautiful than some other beautiful object. The same quality, moreover, is said to subsist in</div>
+            <div type="l" n="3">a thing in varying degrees at different times. A body, being white, is said to be</div>
+            <div type="l" n="4">whiter at one time than it was before, or, being warm, is said to be warmer</div>
+            <div type="l" n="5">or less warm than at some other time. But substance is not said to be</div>
+            <div type="l" n="6">more or less that which it is: a man is not more truly a man at one</div>
+            <div type="l" n="7">time than he was before, nor is anything, if it is substance, more or less what it</div>
+            <div type="l" n="8">is. Substance, then, does not admit of variation of degree.</div>
+            <!--<div type="l" n="9"/>-->
+            <div type="l" n="10">The most distinctive mark of substance appears to be that, while remaining numerically one and</div>
+            <div type="l" n="11">the same, it is capable of admitting contrary qualities. From among things</div>
+            <div type="l" n="12">other than substance, we should find ourselves unable to</div>
+            <div type="l" n="13">bring forward any which possessed this mark. </div>
+            <div type="l" n="14">Thus, one and the same colour cannot be white and</div>
+            <div type="l" n="15">black. Nor can the same one action be good</div>
+            <div type="l" n="16">and bad: this law holds good with everything that</div>
+            <div type="l" n="17">is not substance. But one and the selfsame substance,</div>
+            <div type="l" n="18">while retaining its identity, is yet capable of admitting contrary qualities. The same individual</div>
+            <div type="l" n="19">person is at one time white, at another black, at one</div>
+            <div type="l" n="20">time warm, at another cold, at one time good, at another</div>
+            <div type="l" n="21">bad. This capacity is found nowhere else, though it might</div>
+            <div type="l" n="22">be maintained that a statement or opinion was an exception</div>
+            <div type="l" n="23">to the rule. The same statement, it is agreed, can be</div>
+            <div type="l" n="24">both true and false. For if the statement 'he is sitting' is true, yet,</div>
+            <div type="l" n="25">when the person in question has risen, the same statement will be</div>
+            <div type="l" n="26">false. The same applies to opinions. For if any one thinks</div>
+            <div type="l" n="27">truly that a person is sitting, yet, when that person has risen, this same</div>
+            <div type="l" n="28">opinion, if still held, will be false. Yet although this exception may be allowed, there is,</div>
+            <div type="l" n="29">nevertheless, a difference in the manner in which the thing takes place. It is by themselves</div>
+            <div type="l" n="30">changing that substances admit contrary qualities. It is thus that that which was hot becomes</div>
+            <div type="l" n="31">cold, for it has entered into a different state. Similarly that which was white</div>
+            <div type="l" n="32">becomes black, and that which was bad good, by a process of change;</div>
+            <div type="l" n="33">and in the same way in all other cases it is by changing</div>
+            <div type="l" n="34">that substances are capable of admitting contrary qualities. But statements and opinions themselves</div>
+            <div type="l" n="35">remain unaltered in all respects: it is by the alteration in the facts</div>
+            <div type="l" n="36">of the case that the contrary quality comes to be theirs. The statement</div>
+            <div type="l" n="37">'he is sitting' remains unaltered, but it is at</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">one time true, at another false, according to circumstances. </div>
+            <div type="l" n="2">What has been said of statements applies also to opinions. Thus, in respect of the manner in which</div>
+            <div type="l" n="3">the thing takes place, it is the peculiar mark of substance that it should be capable of admitting</div>
+            <div type="l" n="4">contrary qualities; for it is by itself changing that it does so. If, then, a man should make</div>
+            <div type="l" n="5">this exception and contend that statements and opinions are capable of admitting contrary qualities, his contention</div>
+            <div type="l" n="6">is unsound. For statements and opinions are said to have this</div>
+            <div type="l" n="7">capacity, not because they themselves undergo modification, but because this modification occurs in</div>
+            <div type="l" n="8">the case of something else. The truth or falsity of a</div>
+            <div type="l" n="9">statement depends on facts, and not on any power on the</div>
+            <div type="l" n="10">part of the statement itself of admitting contrary qualities. In short, there</div>
+            <div type="l" n="11">is nothing which can alter the nature of statements and opinions. As, then, no change</div>
+            <div type="l" n="12">takes place in themselves, these cannot be said to be capable of admitting contrary qualities.</div>
+            <div type="l" n="13">But it is by reason of the modification which takes place within the substance itself that a substance</div>
+            <div type="l" n="14">is said to be capable of admitting contrary qualities; for a substance admits within</div>
+            <div type="l" n="15">itself either disease or health, whiteness or blackness. It is in this</div>
+            <div type="l" n="16">sense that it is said to be capable of admitting contrary qualities. </div>
+            <div type="l" n="17">To sum up, it is a distinctive mark of substance, that, while remaining numerically one and the same, it is capable of admitting contrary qualities, the modification</div>
+            <div type="l" n="18">taking place through a change in the substance itself. Let these remarks suffice on the subject of</div>
+            <div type="l" n="19">substance.</div>
+            <div type="l" n="20">Quantity is either discrete or continuous. </div>
+            <div type="l" n="21">Moreover, some quantities are such that each part of the whole has a relative position to the</div>
+            <div type="l" n="22">other parts: others have within them no such relation of part to part. Instances of</div>
+            <div type="l" n="23">discrete quantities are number and speech; of continuous, lines, surfaces,</div>
+            <div type="l" n="24">solids, and, besides these, time and place. </div>
+            <div type="l" n="25">In the case of the parts of a number, there is</div>
+            <div type="l" n="26">no common boundary at which they join. For example: two</div>
+            <div type="l" n="27">fives make ten, but the two fives have no common</div>
+            <div type="l" n="28">boundary, but are separate; the parts three and seven</div>
+            <div type="l" n="29">also do not join at any boundary. Nor, to generalize, would it</div>
+            <div type="l" n="30">ever be possible in the case of number that there should be a common boundary among the parts;</div>
+            <div type="l" n="31">they are always separate. Number, therefore, is a discrete quantity. </div>
+            <div type="l" n="32">The same is true of speech. That speech</div>
+            <div type="l" n="33">is a quantity is evident: for it is measured in long</div>
+            <div type="l" n="34">and short syllables. I mean here that speech which</div>
+            <div type="l" n="35">is vocal. Moreover, it is a discrete quantity for its parts have</div>
+            <div type="l" n="36">no common boundary. There is no common boundary at which the syllables join,</div>
+            <div type="l" n="37">but each is separate and distinct from the rest. </div>
+         </div>
+      </div>
+      <div type="p" n="5">
+         <div type="c" n="a">
+            <div type="l" n="1">A line, on the other hand, is a continuous quantity, for it is possible to find</div>
+            <div type="l" n="2">a common boundary at which its parts join. In the case of the</div>
+            <div type="l" n="3">line, this common boundary is the point; in the case of the plane, it is the line: for the parts of</div>
+            <div type="l" n="4">the plane have also a common boundary. Similarly you can find a common boundary</div>
+            <div type="l" n="5">in the case of the parts of a solid, namely either</div>
+            <div type="l" n="6">a line or a plane. Space and time also belong</div>
+            <div type="l" n="7">to this class of quantities. Time, past, present, and future,</div>
+            <div type="l" n="8">forms a continuous whole. Space, likewise, is a</div>
+            <div type="l" n="9">continuous quantity; for the parts of a solid occupy a certain</div>
+            <div type="l" n="10">space, and these have a common boundary; it follows that the</div>
+            <div type="l" n="11">parts of space also, which are occupied by the parts of the</div>
+            <div type="l" n="12">solid, have the same common boundary as the parts of the</div>
+            <div type="l" n="13">solid. Thus, not only time, but space also, is a continuous quantity, for its</div>
+            <div type="l" n="14">parts have a common boundary. </div>
+            <div type="l" n="15">Quantities consist either of parts which bear a relative position</div>
+            <div type="l" n="16">each to each, or of parts which do not. </div>
+            <div type="l" n="17">The parts of a line bear a relative position to each other, for each</div>
+            <div type="l" n="18">lies somewhere, and it would be possible to distinguish each, and to state the position</div>
+            <div type="l" n="19">of each on the plane and to explain to what sort of</div>
+            <div type="l" n="20">part among the rest each was contiguous. Similarly the parts of a</div>
+            <div type="l" n="21">plane have position, for it could similarly be stated what was</div>
+            <div type="l" n="22">the position of each and what sort of parts were contiguous. The</div>
+            <div type="l" n="23">same is true with regard to the solid and to space. But it</div>
+            <div type="l" n="24">would be impossible to show that the parts of a number had</div>
+            <div type="l" n="25">a relative position each to each, or a particular position, or</div>
+            <div type="l" n="26">to state what parts were contiguous. Nor could this be done in the case of time, </div>
+            <div type="l" n="27">for none of the parts of time has an abiding existence, and that</div>
+            <div type="l" n="28">which does not abide can hardly have position. It would be</div>
+            <div type="l" n="29">better to say that such parts had a relative order, in virtue of one</div>
+            <div type="l" n="30">being prior to another. Similarly with number: in counting, 'one'</div>
+            <div type="l" n="31">is prior to 'two', and 'two' to 'three', </div>
+            <div type="l" n="32">and thus the parts of number may be said to possess a relative order, though it would be impossible to discover any distinct position for each.</div>
+            <div type="l" n="33">This holds good also in the case of speech. None of its parts has an</div>
+            <div type="l" n="34">abiding existence: when once a syllable is pronounced, it is not possible to</div>
+            <div type="l" n="35">retain it, so that, naturally, as the parts do not abide, they cannot have</div>
+            <div type="l" n="36">position. Thus, some quantities consist of parts which have position, and</div>
+            <div type="l" n="37">some of those which have not. </div>
+            <div type="l" n="38">Strictly speaking, only the things which I have mentioned belong to the category of quantity: everything else</div>
+            <div type="l" n="39">that is called quantitative is a quantity in a secondary sense. It is because we have</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">in mind some one of these quantities, properly so called, that we apply quantitative terms to other things.</div>
+            <div type="l" n="2">We speak of what is white as large, because the surface over which the white extends is large; we</div>
+            <div type="l" n="3">speak of an action or a process as lengthy, because the time covered is long; these things</div>
+            <div type="l" n="4">cannot in their own right claim the quantitative epithet. For instance, should any one explain</div>
+            <div type="l" n="5">how long an action was, his statement would be made in terms of the time taken,</div>
+            <div type="l" n="6">to the effect that it lasted a year, or something of that sort. In the same way,</div>
+            <div type="l" n="7">he would explain the size of a white object in terms of surface, for he would state</div>
+            <div type="l" n="8">the area which it covered. Thus the things already mentioned, and these alone, are in</div>
+            <div type="l" n="9">their intrinsic nature quantities; nothing else can claim the name in its own right, but, if</div>
+            <div type="l" n="10">at all, only in a secondary sense. </div>
+            <div type="l" n="11">Quantities have no contraries. In the case of definite quantities this is</div>
+            <div type="l" n="12">obvious; thus, there is nothing that is the contrary of 'two cubits</div>
+            <div type="l" n="13">long' or of 'three cubits long', or of a surface, or of</div>
+            <div type="l" n="14">any such quantities. A man might, indeed, argue that 'much' was</div>
+            <div type="l" n="15">the contrary of 'little', and 'great' of 'small'. But these</div>
+            <div type="l" n="16">are not quantitative, but relative; things are not great or small</div>
+            <div type="l" n="17">absolutely, they are so called rather as the result of an act</div>
+            <div type="l" n="18">of comparison. For instance, a mountain is called small, a grain large, in</div>
+            <div type="l" n="19">virtue of the fact that the latter is greater than others of its kind,</div>
+            <div type="l" n="20">the former less. Thus there is a reference here to an external standard,</div>
+            <div type="l" n="21">for if the terms 'great' and 'small' were used absolutely, a mountain</div>
+            <div type="l" n="22">would never be called small or a grain large. Again, we say that there</div>
+            <div type="l" n="23">are many people in a village, and few in Athens, although those in the city are many</div>
+            <div type="l" n="24">times as numerous as those in the village: or we say that a house has many in</div>
+            <div type="l" n="25">it, and a theatre few, though those in the theatre far outnumber those in the house. The</div>
+            <div type="l" n="26">terms 'two cubits long, "three cubits long,' and so</div>
+            <div type="l" n="27">on indicate quantity, the terms 'great' and 'small'</div>
+            <div type="l" n="28">indicate relation, for they have reference to an external</div>
+            <div type="l" n="29">standard. It is, therefore, plain that these are to be classed as relative. Again,</div>
+            <div type="l" n="30">whether we define them as quantitative or not, they</div>
+            <div type="l" n="31">have no contraries: for how can there be a contrary of an</div>
+            <div type="l" n="32">attribute which is not to be apprehended in or by itself, but only by reference</div>
+            <div type="l" n="33">to something external? Again, if 'great' and 'small' are contraries, it will come about</div>
+            <div type="l" n="34">that the same subject can admit contrary qualities at one and the same time, and that</div>
+            <div type="l" n="35">things will themselves be contrary to themselves. For it happens at times that</div>
+            <div type="l" n="36">the same thing is both small and great. For the same thing may be small in</div>
+            <div type="l" n="37">comparison with one thing, and great in comparison with another, so that the</div>
+            <div type="l" n="38">same thing comes to be both small and great at</div>
+            <div type="l" n="39">one and the same time, and is of such a nature as</div>
+         </div>
+      </div>
+      <div type="p" n="6">
+         <div type="c" n="a">
+            <div type="l" n="1">to admit contrary qualities at one and the same moment. Yet it was agreed, when substance was being discussed, that</div>
+            <div type="l" n="2">nothing admits contrary qualities at one and the same moment. For though substance is capable of admitting contrary qualities, yet no one</div>
+            <div type="l" n="3">is at the same time both sick and healthy, nothing is at the same time both white and black. Nor</div>
+            <div type="l" n="4">is there anything which is qualified in contrary ways at one and the same time. Moreover, if</div>
+            <div type="l" n="5">these were contraries, they would themselves be contrary to themselves. For if 'great' is the</div>
+            <div type="l" n="6">contrary of 'small', and the same thing is both great and small at the same time,</div>
+            <div type="l" n="7">then 'small' or 'great' is the contrary of itself. But this</div>
+            <div type="l" n="8">is impossible. The term 'great', therefore, is not</div>
+            <div type="l" n="9">the contrary of the term 'small', nor 'much' of 'little'. And even though</div>
+            <div type="l" n="10">a man should call these terms not relative but quantitative, they would not</div>
+            <div type="l" n="11">have contraries. It is in the case of space that quantity most plausibly appears to</div>
+            <div type="l" n="12">admit of a contrary. For men define the term 'above' as the contrary of 'below', when it</div>
+            <div type="l" n="13">is the region at the centre they mean by 'below'; and this is so, because nothing is</div>
+            <div type="l" n="15">farther from the extremities of the universe than the region at the centre. Indeed, it seems</div>
+            <div type="l" n="16">that in defining contraries of every kind men have recourse to a spatial metaphor, </div>
+            <div type="l" n="17">for they say that those things are contraries which, within the same class, are separated</div>
+            <div type="l" n="18">by the greatest possible distance. </div>
+            <div type="l" n="19">Quantity does not, it appears, admit of variation of degree. One</div>
+            <div type="l" n="20">thing cannot be two cubits long in a greater degree than another.</div>
+            <div type="l" n="21">Similarly with regard to number: what is 'three' is not more truly three than what is</div>
+            <div type="l" n="22">'five' is five; nor is one set of three more truly three than another set. Again, one period</div>
+            <div type="l" n="23">of time is not said to be more truly time than another. Nor is there any other</div>
+            <div type="l" n="24">kind of quantity, of all that have been mentioned, with regard to which variation of degree can be predicated. The category</div>
+            <div type="l" n="25">of quantity, therefore, does not admit of variation of degree. </div>
+            <div type="l" n="26">The most distinctive mark of quantity is that equality and inequality are predicated of it.</div>
+            <div type="l" n="27">Each of the aforesaid quantities is said to be equal</div>
+            <div type="l" n="28">or unequal. For instance, one solid is said to be equal or</div>
+            <div type="l" n="28a">unequal to another; number, too, and time can have these</div>
+            <div type="l" n="29">terms applied to them, indeed can all those kinds</div>
+            <div type="l" n="30">of quantity that have been mentioned. That which</div>
+            <div type="l" n="31">is not a quantity can by no means, it would seem, be</div>
+            <div type="l" n="32">termed equal or unequal to anything else. One particular disposition or one particular quality,</div>
+            <div type="l" n="33">such as whiteness, is by no means compared with another in terms of equality</div>
+            <div type="l" n="34">and inequality but rather in terms of similarity. Thus it is the distinctive mark</div>
+            <div type="l" n="35">of quantity that it can be called equal and unequal. </div>
+            <div type="l" n="36">Those things are called relative, which, being either said to be of something else or</div>
+            <div type="l" n="37">related to something else, are explained by reference to that other thing. For instance,</div>
+            <div type="l" n="38">the word 'superior' is explained by reference to something else, for it is superiority over</div>
+            <div type="l" n="39">something else that is meant. Similarly, the expression 'double' has this external reference, for it is</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">the double of something else that is meant. So it is with everything else of this</div>
+            <div type="l" n="2">kind. There are, moreover, other relatives, e.g. habit, disposition,</div>
+            <div type="l" n="3">perception, knowledge, and attitude. The significance of all these is</div>
+            <div type="l" n="4">explained by a reference to something else and in no other way. Thus,</div>
+            <div type="l" n="5">a habit is a habit of something, knowledge is knowledge of something, attitude is the attitude of</div>
+            <div type="l" n="6">something. So it is with all other relatives that have been mentioned. Those terms, then,</div>
+            <div type="l" n="7">are called relative, the nature of which is explained by reference to something else, the preposition 'of' or some other</div>
+            <div type="l" n="8">preposition being used to indicate the relation. Thus, one mountain is called great in comparison with son with</div>
+            <div type="l" n="9">another; for the mountain claims this attribute by comparison with something. Again, that which is called similar</div>
+            <div type="l" n="10">must be similar to something else, and all other such attributes have this external reference.</div>
+            <div type="l" n="11">It is to be noted that lying and standing and sitting are</div>
+            <div type="l" n="12">particular attitudes, but attitude is itself a relative term. To lie, to stand,</div>
+            <div type="l" n="13">to be seated, are not themselves attitudes, but take</div>
+            <div type="l" n="14">their name from the aforesaid attitudes. </div>
+            <div type="l" n="15">It is possible for relatives to have contraries. Thus virtue has</div>
+            <div type="l" n="16">a contrary, vice, these both being relatives; knowledge, too, has a contrary,</div>
+            <div type="l" n="17">ignorance. But this is not the mark of all relatives; </div>
+            <div type="l" n="18">'double' and 'triple' have no contrary, nor indeed</div>
+            <div type="l" n="19">has any such term. It also appears that</div>
+            <div type="l" n="20">relatives can admit of variation of degree. For 'like' and</div>
+            <div type="l" n="21">'unlike', 'equal' and 'unequal', have the modifications 'more' and 'less' applied to them, and</div>
+            <div type="l" n="22">each of these is relative in character: for the terms 'like'</div>
+            <div type="l" n="23">and 'unequal' bear a reference to something external. Yet, again, it is</div>
+            <div type="l" n="25">not every relative term that admits of variation of degree. No term such</div>
+            <div type="l" n="26">as 'double' admits of this</div>
+            <div type="l" n="27">modification.</div>
+            <div type="l" n="28">All relatives have correlatives: by the term 'slave' we mean the slave</div>
+            <div type="l" n="29">of a master, by the term 'master', the master of a</div>
+            <div type="l" n="30">slave; by 'double', the double of its hall; by 'half', the half</div>
+            <div type="l" n="31">of its double; by 'greater', greater than that which is less; by 'less,'</div>
+            <div type="l" n="32">less than that which is greater. So it is with every other relative</div>
+            <div type="l" n="33">term; but the case we use to express the correlation differs in some instances.</div>
+            <div type="l" n="34">Thus, by knowledge we mean knowledge the knowable; by the knowable, that which is</div>
+            <div type="l" n="35">to be apprehended by knowledge; by perception, perception of the perceptible; by the perceptible,</div>
+            <div type="l" n="36">that which is apprehended by perception. Sometimes, however, reciprocity of correlation does not appear to</div>
+            <div type="l" n="37">exist. This comes about when a blunder is made, and that to which the relative</div>
+            <div type="l" n="38">is related is not accurately stated. If a man states that a wing is necessarily relative</div>
+            <div type="l" n="39">to a bird, the connexion between these two will not be reciprocal, for it will not be possible to</div>
+         </div>
+      </div>
+      <div type="p" n="7">
+         <div type="c" n="a">
+            <div type="l" n="1">say that a bird is a bird by reason of its wings. The reason is that the original statement was</div>
+            <div type="l" n="2">inaccurate, for the wing is not said to be relative to the bird qua bird, </div>
+            <div type="l" n="3">since many creatures besides birds have wings, but qua winged creature. If, then, the statement</div>
+            <div type="l" n="4">is made accurate, the connexion will be reciprocal, for we can speak of a wing, having reference necessarily to a winged</div>
+            <div type="l" n="5">creature, and of a winged creature as being such because of its wings. Occasionally, perhaps, it is</div>
+            <div type="l" n="6">necessary to coin words, if no word exists by which a correlation can</div>
+            <div type="l" n="7">adequately be explained. If we define a rudder as necessarily having reference</div>
+            <div type="l" n="8">to a boat, our definition will not be appropriate, for the rudder does not</div>
+            <div type="l" n="9">have this reference to a boat qua boat, as there are boats which have</div>
+            <div type="l" n="10">no rudders. Thus we cannot use the terms reciprocally, for the word 'boat' cannot be said to</div>
+            <div type="l" n="11">find its explanation in the word 'rudder'. As there is no existing word, our</div>
+            <div type="l" n="12">definition would perhaps be more accurate if we coined some word</div>
+            <div type="l" n="13">like 'ruddered' as the correlative of 'rudder'. If we express</div>
+            <div type="l" n="14">ourselves thus accurately, at any rate the terms are reciprocally connected, for the 'ruddered' thing is 'ruddered'</div>
+            <div type="l" n="15">in virtue of its rudder. So it is in all other cases. A head</div>
+            <div type="l" n="16">will be more accurately defined as the correlative of that which is 'headed', than as that</div>
+            <div type="l" n="17">of an animal, for the animal does not have a head qua animal, since many</div>
+            <div type="l" n="18">animals have no head. Thus we may perhaps most easily comprehend</div>
+            <div type="l" n="19">that to which a thing is related, when a name does not exist, if, from that</div>
+            <div type="l" n="20">which has a name, we derive a new name, and apply it to that with</div>
+            <div type="l" n="21">which the first is reciprocally connected, as in the aforesaid instances, when we derived the</div>
+            <div type="l" n="22">word 'winged' from 'wing' and from 'rudder'. All relatives, then, if</div>
+            <div type="l" n="23">properly defined, have a correlative. I add</div>
+            <div type="l" n="24">this condition because, if that to which they are related is stated as haphazard and not accurately,</div>
+            <div type="l" n="25">the two are not found to be interdependent. Let me state what I mean more clearly.</div>
+            <div type="l" n="26">Even in the case of acknowledged correlatives, and where names exist for each, there will</div>
+            <div type="l" n="27">be no interdependence if one of the two is denoted, not by that name which expresses</div>
+            <div type="l" n="28">the correlative notion, but by one of irrelevant significance. The term 'slave,' if</div>
+            <div type="l" n="29">defined as related, not to a master, but to a man,</div>
+            <div type="l" n="30">or a biped, or anything of that sort, is not reciprocally connected with that in relation to which</div>
+            <div type="l" n="31">it is defined, for the statement is not exact. Further, if one thing is said to be correlative with another, and</div>
+            <div type="l" n="32">the terminology used is correct, then, though all irrelevant attributes should be removed, and</div>
+            <div type="l" n="33">only that one attribute left in virtue of which it was correctly stated to be</div>
+            <div type="l" n="34">correlative with that other, the stated correlation will still exist. If the</div>
+            <div type="l" n="35">correlative of 'the slave' is said to be 'the master', then, though</div>
+            <div type="l" n="36">all irrelevant attributes of the said 'master', such as 'biped', 'receptive</div>
+            <div type="l" n="37">of knowledge', 'human', should be removed, and the attribute 'master' alone</div>
+            <div type="l" n="38">left, the stated correlation existing between him and the slave will</div>
+            <div type="l" n="39">remain the same, for it is of a master that a slave is said to be</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">the slave. On the other hand, if, of two correlatives, one is not correctly termed, then,</div>
+            <div type="l" n="2">when all other attributes are removed and that alone is left in virtue of which it</div>
+            <div type="l" n="3">was stated to be correlative, the stated correlation will be found to have disappeared. For</div>
+            <div type="l" n="4">suppose the correlative of 'the slave' should be said to be 'the man', or the correlative</div>
+            <div type="l" n="5">of 'the wing' 'the bird'; if the attribute 'master' be withdrawn from' the man', the</div>
+            <div type="l" n="6">correlation between 'the man' and 'the slave' will cease to exist, for if the man is not a</div>
+            <div type="l" n="7">master, the slave is not a slave. Similarly, if the attribute 'winged' be</div>
+            <div type="l" n="8">withdrawn from 'the bird', 'the wing' will no longer be</div>
+            <div type="l" n="9">relative; for if the so-called correlative is not winged, it follows that 'the wing' has no correlative. </div>
+            <div type="l" n="10">Thus it is essential that the correlated terms should be exactly designated; if</div>
+            <div type="l" n="11">there is a name existing, the statement will be easy; if not, it</div>
+            <div type="l" n="12">is doubtless our duty to construct names. When the terminology</div>
+            <div type="l" n="13">is thus correct, it is evident that all correlatives are</div>
+            <div type="l" n="14">interdependent. </div>
+            <div type="l" n="15">Correlatives are thought to come into existence simultaneously. This is for the most part</div>
+            <div type="l" n="16">true, as in the case of the double and the half. The existence of the half necessitates the existence of that</div>
+            <div type="l" n="17">of which it is a half. Similarly the existence of a master necessitates the existence of a slave, and</div>
+            <div type="l" n="18">that of a slave implies that of a master; these are merely instances of a general</div>
+            <div type="l" n="19">rule. Moreover, they cancel one another; for if there</div>
+            <div type="l" n="20">is no double it follows that there is no</div>
+            <div type="l" n="21">half, and vice versa; this rule also applies to all such</div>
+            <div type="l" n="22">correlatives. Yet it does not appear to be true in all cases that</div>
+            <div type="l" n="23">correlatives come into existence simultaneously. The object of knowledge would appear to</div>
+            <div type="l" n="24">exist before knowledge itself, for it is usually the case</div>
+            <div type="l" n="25">that we acquire knowledge of objects already existing; it would</div>
+            <div type="l" n="26">be difficult, if not impossible, to find a branch of knowledge the beginning of the existence of which was</div>
+            <div type="l" n="27">contemporaneous with that of its object. Again, while the object of knowledge, if it ceases to</div>
+            <div type="l" n="28">exist, cancels at the same time the knowledge which was its correlative, the converse of this is</div>
+            <div type="l" n="29">not true. It is true that if the object of knowledge does not exist there can be no knowledge: for</div>
+            <div type="l" n="30">there will no longer be anything to know. Yet it is equally true that, if knowledge of a certain object does not</div>
+            <div type="l" n="31">exist, the object may nevertheless quite well exist. Thus, in the case of the squaring of the circle,</div>
+            <div type="l" n="32">if indeed that process is an object of knowledge, though it itself exists as an object of knowledge,</div>
+            <div type="l" n="33">yet the knowledge of it has not yet come into existence. Again, if all animals ceased to</div>
+            <div type="l" n="34">exist, there would be no knowledge, but there might yet be many objects of</div>
+            <div type="l" n="35">knowledge. This is likewise the case with regard to perception: </div>
+            <div type="l" n="36">for the object of perception is, it appears, prior to the act of perception. If</div>
+            <div type="l" n="37">the perceptible is annihilated, perception also will cease to exist; but the annihilation of perception</div>
+            <div type="l" n="38">does not cancel the existence of the perceptible. For perception implies a body perceived and</div>
+            <div type="l" n="39">a body in which perception takes place. Now if that which is perceptible is annihilated, it</div>
+         </div>
+      </div>
+      <div type="p" n="8">
+         <div type="c" n="a">
+            <div type="l" n="1">follows that the body is annihilated, for the body is a perceptible thing; and</div>
+            <div type="l" n="2">if the body does not exist, it follows that perception also ceases to exist. Thus</div>
+            <div type="l" n="3">the annihilation of the perceptible involves that of perception. But the annihilation of perception does not involve</div>
+            <div type="l" n="4">that of the perceptible. For if the animal is annihilated, it follows</div>
+            <div type="l" n="5">that perception also is annihilated, but perceptibles such as body,</div>
+            <div type="l" n="6">heat, sweetness, bitterness, and so on, will remain. Again, perception is</div>
+            <div type="l" n="7">generated at the same time as the perceiving subject, for it</div>
+            <div type="l" n="8">comes into existence at the same time as the animal. But the perceptible</div>
+            <div type="l" n="9">surely exists before perception; for fire and water and such elements, out</div>
+            <div type="l" n="10">of which the animal is itself composed, exist before the animal is an</div>
+            <div type="l" n="11">animal at all, and before perception. Thus it would seem that the perceptible exists</div>
+            <div type="l" n="12">before perception. </div>
+            <div type="l" n="13">It may be questioned whether it is true that no substance is relative, as</div>
+            <div type="l" n="14">seems to be the case, or whether exception is to be made in the</div>
+            <div type="l" n="15">case of certain secondary substances. With regard to primary substances, it is quite true that there is</div>
+            <div type="l" n="16">no such possibility, for neither wholes nor parts of primary substances are relative. </div>
+            <div type="l" n="17">The individual man or ox is not defined with reference</div>
+            <div type="l" n="18">to something external. Similarly with the parts: </div>
+            <div type="l" n="19">a particular hand or head is not defined as a particular hand or head</div>
+            <div type="l" n="20">of a particular person, but as the hand or head of a</div>
+            <div type="l" n="21">particular person. It is true also, for the most part at least, in</div>
+            <div type="l" n="22">the case of secondary substances; the species 'man' and the species 'ox' are not defined with reference</div>
+            <div type="l" n="23">to anything outside themselves. Wood, again, is only relative in so far as it is some one's property, not</div>
+            <div type="l" n="24">in so far as it is wood. It is plain, then, that in the</div>
+            <div type="l" n="25">cases mentioned substance is not relative. But with regard to some secondary substances there</div>
+            <div type="l" n="26">is a difference of opinion; thus, such terms as 'head' and 'hand' are</div>
+            <div type="l" n="27">defined with reference to that of which the things indicated are a part, and</div>
+            <div type="l" n="28">so it comes about that these appear to have a relative character. Indeed,</div>
+            <div type="l" n="29">if our definition of that which is relative was complete, it</div>
+            <div type="l" n="30">is very difficult, if not impossible, to prove that no</div>
+            <div type="l" n="31">substance is relative. If, however, our definition was not complete, if those things only are properly called</div>
+            <div type="l" n="32">relative in the case of which relation to an external object is a necessary condition of existence, perhaps some explanation</div>
+            <div type="l" n="33">of the dilemma may be found. The former definition does indeed apply to</div>
+            <div type="l" n="34">all relatives, but the fact that a thing is explained with reference</div>
+            <div type="l" n="35">to something else does not make it essentially relative. From this</div>
+            <div type="l" n="36">it is plain that, if a man definitely apprehends a relative thing, he will</div>
+            <div type="l" n="37">also definitely apprehend that to which it is relative. Indeed</div>
+            <div type="l" n="38">this is self-evident: for if a man knows that some particular thing</div>
+            <div type="l" n="39">is relative, assuming that we call that a relative in the case of which relation to something</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">is a necessary condition of existence, he knows that also to which it is related. </div>
+            <div type="l" n="2">For if he does not know at all that to which it is related, he will not</div>
+            <div type="l" n="3">know whether or not it is relative. This is clear, moreover, in</div>
+            <div type="l" n="4">particular instances. If a man knows definitely that such and such a thing is</div>
+            <div type="l" n="5">'double', he will also forthwith know definitely that of which it is the double. For</div>
+            <div type="l" n="6">if there is nothing definite of which he knows it to be the double,</div>
+            <div type="l" n="7">he does not know at all that it is double. Again, if he knows</div>
+            <div type="l" n="8">that a thing is more beautiful, it follows necessarily that he will forthwith definitely</div>
+            <div type="l" n="9">know that also than which it is more beautiful. He will not merely know</div>
+            <div type="l" n="10">indefinitely that it is more beautiful than something which is less beautiful, for this</div>
+            <div type="l" n="11">would be supposition, not knowledge. For if he does not</div>
+            <div type="l" n="12">know definitely that than which it is more beautiful, he can no longer claim to know definitely that it is more beautiful</div>
+            <div type="l" n="13">than something else which is less beautiful: for it might be that nothing was less beautiful. It is, therefore, evident that if a man</div>
+            <div type="l" n="14">apprehends some relative thing definitely, he necessarily knows that also definitely</div>
+            <div type="l" n="15">to which it is related. Now the head, the hand, and such</div>
+            <div type="l" n="16">things are substances, and it is possible to know their essential character definitely,</div>
+            <div type="l" n="17">but it does not necessarily follow that we should know that to which they are</div>
+            <div type="l" n="18">related. It is not possible to know forthwith whose head</div>
+            <div type="l" n="19">or hand is meant. Thus these are not relatives, </div>
+            <div type="l" n="20">and, this being the case, it would be true to say that</div>
+            <div type="l" n="21">no substance is relative in character. It is perhaps a difficult</div>
+            <div type="l" n="22">matter, in such cases, to make a positive statement without more</div>
+            <div type="l" n="23">exhaustive examination, but to have raised questions with regard to details is not</div>
+            <div type="l" n="24">without advantage. </div>
+            <div type="l" n="25">By 'quality' I mean that in virtue of which people are said to be such and such. Quality is</div>
+            <div type="l" n="26">a term that is used in many senses. One sort</div>
+            <div type="l" n="27">of quality let us call 'habit' or 'disposition'. Habit differs from</div>
+            <div type="l" n="28">disposition in being more lasting and more firmly established. </div>
+            <div type="l" n="29">The various kinds of knowledge and of virtue are habits, for knowledge, even</div>
+            <div type="l" n="30">when acquired only in a moderate degree, is, it is agreed, abiding</div>
+            <div type="l" n="31">in its character and difficult to displace, unless some great mental</div>
+            <div type="l" n="32">upheaval takes place, through disease or any such cause. The virtues,</div>
+            <div type="l" n="33">also, such as justice, self-restraint, and so on, are</div>
+            <div type="l" n="34">not easily dislodged or dismissed, so as to give place to</div>
+            <div type="l" n="35">vice. By a disposition, on the other hand, we mean a condition that</div>
+            <div type="l" n="36">is easily changed and quickly gives place to its opposite. Thus, heat, cold,</div>
+            <div type="l" n="37">disease, health, and so on are dispositions. For a man is</div>
+            <div type="l" n="38">disposed in one way or another with reference to these, but</div>
+            <div type="l" n="39">quickly changes, becoming cold instead of warm, ill instead of well.</div>
+         </div>
+      </div>
+      <div type="p" n="9">
+         <div type="c" n="a">
+            <div type="l" n="1">So it is with all other dispositions also, unless through lapse</div>
+            <div type="l" n="2">of time a disposition has itself become inveterate and almost impossible to</div>
+            <div type="l" n="3">dislodge: in which case we should perhaps go so far as to call</div>
+            <div type="l" n="4">it a habit. It is evident that men incline to call those conditions habits</div>
+            <div type="l" n="5">which are of a more or less permanent type and difficult to displace; for those</div>
+            <div type="l" n="6">who are not retentive of knowledge, but volatile, are not said to have such</div>
+            <div type="l" n="7">and such a 'habit' as regards knowledge, yet they are disposed, we may say,</div>
+            <div type="l" n="8">either better or worse, towards knowledge. Thus habit differs from disposition in this,</div>
+            <div type="l" n="9">that while the latter in ephemeral, the former is permanent and difficult</div>
+            <div type="l" n="10">to alter. Habits are at the same time dispositions, but</div>
+            <div type="l" n="11">dispositions are not necessarily habits. For those who have some specific habit may be said</div>
+            <div type="l" n="12">also, in virtue of that habit, to be thus or thus disposed; but those who are disposed in some specific</div>
+            <div type="l" n="13">way have not in all cases the corresponding habit. </div>
+            <div type="l" n="14">Another sort of quality is that in virtue of which, for example, we call</div>
+            <div type="l" n="15">men good boxers or runners, or healthy or sickly: in fact it includes</div>
+            <div type="l" n="16">all those terms which refer to inborn capacity or incapacity. Such things are</div>
+            <div type="l" n="17">not predicated of a person in virtue of his disposition, but in virtue of</div>
+            <div type="l" n="18">his inborn capacity or incapacity to do something with ease or to avoid</div>
+            <div type="l" n="19">defeat of any kind. Persons are called good boxers or good runners, not</div>
+            <div type="l" n="20">in virtue of such and such a disposition, but in virtue of</div>
+            <div type="l" n="21">an inborn capacity to accomplish something with ease. Men are called healthy in</div>
+            <div type="l" n="22">virtue of the inborn capacity of easy resistance to those unhealthy influences that</div>
+            <div type="l" n="23">may ordinarily arise; unhealthy, in virtue of the lack of this</div>
+            <div type="l" n="24">capacity. Similarly with regard to softness and hardness.</div>
+            <div type="l" n="25">Hardness is predicated of a thing because it has that capacity of resistance</div>
+            <div type="l" n="26">which enables it to withstand disintegration; softness, again, is predicated of a thing by reason</div>
+            <div type="l" n="27">of the lack of that capacity. </div>
+            <div type="l" n="28">A third class within this category is that of affective qualities and affections.</div>
+            <div type="l" n="29">Sweetness, bitterness, sourness, are examples of this sort of quality,</div>
+            <div type="l" n="30">together with all that is akin to these; heat, moreover, and cold,</div>
+            <div type="l" n="31">whiteness, and blackness are affective qualities. It is evident</div>
+            <div type="l" n="32">that these are qualities, for those things that possess them are themselves said to</div>
+            <div type="l" n="33">be such and such by reason of their presence. Honey is called sweet because it</div>
+            <div type="l" n="34">contains sweetness; the body is called white because it contains whiteness;</div>
+            <div type="l" n="35">and so in all other cases. The term 'affective</div>
+            <div type="l" n="36">quality' is not used as indicating that those things which admit these qualities are</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">affected in any way. Honey is not called sweet because it is affected in</div>
+            <div type="l" n="2">a specific way, nor is this what is meant in any other instance. Similarly</div>
+            <div type="l" n="3">heat and cold are called affective qualities, not because</div>
+            <div type="l" n="4">those things which admit them are affected. What</div>
+            <div type="l" n="5">is meant is that these said qualities are</div>
+            <div type="l" n="6">capable of producing an 'affection' in the way of</div>
+            <div type="l" n="7">perception. For sweetness has the power of affecting the sense of taste;</div>
+            <div type="l" n="8">heat, that of touch; and so it is with the rest of these</div>
+            <div type="l" n="9">qualities. Whiteness and blackness, however, and the other colours, are</div>
+            <div type="l" n="10">not said to be affective qualities in this sense, but -because</div>
+            <div type="l" n="11">they themselves are the results of an affection. It is</div>
+            <div type="l" n="12">plain that many changes of colour take place because of affections.</div>
+            <div type="l" n="13">When a man is ashamed, he blushes; when he is afraid,</div>
+            <div type="l" n="14">he becomes pale, and so on. So true is this, that when a man is</div>
+            <div type="l" n="15">by nature liable to such affections, arising from some concomitance of elements in his constitution, it is a probable</div>
+            <div type="l" n="16">inference that he has the corresponding complexion of skin. For the same disposition of bodily elements, which</div>
+            <div type="l" n="17">in the former instance was momentarily present in the case of an access of</div>
+            <div type="l" n="18">shame, might be a result of a man's natural temperament, so as to produce the</div>
+            <div type="l" n="19">corresponding colouring also as a natural characteristic. All conditions, therefore, of</div>
+            <div type="l" n="20">this kind, if caused by certain permanent and</div>
+            <div type="l" n="21">lasting affections, are called affective qualities. For</div>
+            <div type="l" n="22">pallor and duskiness of complexion are called qualities, inasmuch as we</div>
+            <div type="l" n="23">are said to be such and such in virtue of them,</div>
+            <div type="l" n="24">not only if they originate in natural constitution, but also if they</div>
+            <div type="l" n="25">come about through long disease or sunburn, and are difficult to</div>
+            <div type="l" n="26">remove, or indeed remain throughout life. For in the same way we</div>
+            <div type="l" n="27">are said to be such and such because of these. </div>
+            <div type="l" n="28">Those conditions, however, which arise from causes which may easily be rendered ineffective or speedily removed, are</div>
+            <div type="l" n="29">called, not qualities, but affections: for we are not said to be such virtue</div>
+            <div type="l" n="30">of them. The man who blushes through shame is not said to be a</div>
+            <div type="l" n="31">constitutional blusher, nor is the man who becomes pale through fear said to be constitutionally</div>
+            <div type="l" n="32">pale. He is said rather to have been affected. Thus such conditions</div>
+            <div type="l" n="33">are called affections, not qualities. In like manner there</div>
+            <div type="l" n="34">are affective qualities and affections of the soul.</div>
+            <div type="l" n="35">That temper with which a man is born and which has</div>
+            <div type="l" n="36">its origin in certain deep-seated affections is called a quality. I mean</div>
+         </div>
+      </div>
+      <div type="p" n="10">
+         <div type="c" n="a">
+            <div type="l" n="1">such conditions as insanity, irascibility, and so on: for people are said to</div>
+            <div type="l" n="2">be mad or irascible in virtue of these. Similarly those abnormal psychic</div>
+            <div type="l" n="3">states which are not inborn, but arise from the concomitance of</div>
+            <div type="l" n="4">certain other elements, and are difficult to remove, or altogether permanent,</div>
+            <div type="l" n="5">are called qualities, for in virtue of them men are said to be such and such. </div>
+            <div type="l" n="6">Those, however, which arise from causes easily rendered ineffective are called affections, not qualities.</div>
+            <div type="l" n="7">Suppose that a man is irritable when vexed: he is not even spoken</div>
+            <div type="l" n="8">of as a bad-tempered man, when in such circumstances he loses his temper somewhat, but rather</div>
+            <div type="l" n="9">is said to be affected. Such conditions are therefore termed, not qualities,</div>
+            <div type="l" n="10">but affections. </div>
+            <div type="l" n="11">The fourth sort of quality is figure and the shape</div>
+            <div type="l" n="12">that belongs to a thing; and besides this, straightness and</div>
+            <div type="l" n="13">curvedness and any other qualities of this type; each of these</div>
+            <div type="l" n="14">defines a thing as being such and such. Because it is triangular or quadrangular</div>
+            <div type="l" n="15">a thing is said to have a specific character, or again because it is straight or curved; </div>
+            <div type="l" n="16">in fact a thing's shape in every case gives rise to a qualification of it. Rarity</div>
+            <div type="l" n="17">and density, roughness and smoothness, seem to be terms indicating</div>
+            <div type="l" n="18">quality: yet these, it would appear, really belong to a</div>
+            <div type="l" n="19">class different from that of quality. For it is rather a certain relative position of the</div>
+            <div type="l" n="20">parts composing the thing thus qualified which, it appears, is indicated by each of these terms. A thing is dense, owing to</div>
+            <div type="l" n="21">the fact that its parts are closely combined with one another; rare, because there are interstices</div>
+            <div type="l" n="22">between the parts; smooth, because its parts lie, so to speak,</div>
+            <div type="l" n="23">evenly; rough, because some parts project beyond others. </div>
+            <div type="l" n="25">There may be other sorts of quality, but those that are most properly</div>
+            <div type="l" n="26">so called have, we may safely say, been enumerated. </div>
+            <div type="l" n="27">These, then, are qualities, and the things that take their name from them as derivatives, or are</div>
+            <div type="l" n="28">in some other way dependent on them, are said to be qualified in some specific way.</div>
+            <div type="l" n="29">In most, indeed in almost all cases, the name of</div>
+            <div type="l" n="30">that which is qualified is derived from that of the</div>
+            <div type="l" n="31">quality. Thus the terms 'whiteness', 'grammar', 'justice', give us the adjectives</div>
+            <div type="l" n="32">'white', 'grammatical', 'just', and so on. There are some cases, however, in</div>
+            <div type="l" n="33">which, as the quality under consideration has no name, it is impossible that those possessed of it</div>
+            <div type="l" n="34">should have a name that is derivative. For instance, the name given to the runner</div>
+            <div type="l" n="35">or boxer, who is so called in virtue of an inborn capacity, is not derived from</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">that of any quality; for lob those capacities have no name assigned to them. In</div>
+            <div type="l" n="2">this, the inborn capacity is distinct from the science, with reference to which men are called, e.g.</div>
+            <div type="l" n="3">boxers or wrestlers. Such a science is classed as a disposition; it has a name, and</div>
+            <div type="l" n="4">is called 'boxing' or 'wrestling' as the case may be, and the name given to those</div>
+            <div type="l" n="5">disposed in this way is derived from that of the science. Sometimes, even though a</div>
+            <div type="l" n="6">name exists for the quality, that which takes its character from</div>
+            <div type="l" n="7">the quality has a name that is not a derivative. For instance, the</div>
+            <div type="l" n="8">upright man takes his character from the possession of the quality of integrity, but the name given him is not derived</div>
+            <div type="l" n="9">from the word 'integrity'. Yet this does not occur often. We may therefore state</div>
+            <div type="l" n="10">that those things are said to be possessed of some specific quality which have a name derived from that of the aforesaid quality,</div>
+            <div type="l" n="11">or which are in some other way dependent on it. </div>
+            <div type="l" n="12">One quality may be the contrary of another; thus justice is the contrary of injustice, whiteness</div>
+            <div type="l" n="13">of blackness, and so on. The things, also, which are said to be such and such in virtue of</div>
+            <div type="l" n="14">these qualities, may be contrary the one to the other; for that which is unjust is contrary to</div>
+            <div type="l" n="15">that which is just, that which is white to that which is black. This, however, is</div>
+            <div type="l" n="16">not always the case. Red, yellow, and such colours,</div>
+            <div type="l" n="17">though qualities, have no contraries. If one</div>
+            <div type="l" n="18">of two contraries is a quality, the other will also be a quality. This</div>
+            <div type="l" n="19">will be evident from particular instances, if we apply the names used to denote the other categories;</div>
+            <div type="l" n="20">for instance, granted that justice is the contrary of injustice and justice is a quality, injustice</div>
+            <div type="l" n="21">will also be a quality: neither quantity, nor relation, nor</div>
+            <div type="l" n="22">place, nor indeed any other category but that</div>
+            <div type="l" n="23">of quality, will be applicable properly to injustice. </div>
+            <div type="l" n="24">So it is with all other contraries falling under the category of</div>
+            <div type="l" n="25">quality.</div>
+            <div type="l" n="26">Qualities admit of variation of degree. </div>
+            <div type="l" n="27">Whiteness is predicated of one thing in a greater or less degree than of another. This</div>
+            <div type="l" n="28">is also the case with reference to justice. Moreover, one and the same thing may exhibit a</div>
+            <div type="l" n="29">quality in a greater degree than it did before: if a thing is white, it may become whiter. Though</div>
+            <div type="l" n="30">this is generally the case, there are exceptions. For if we should say that justice admitted</div>
+            <div type="l" n="31">of variation of degree, difficulties might ensue, and this is true with regard to</div>
+            <div type="l" n="32">all those qualities which are dispositions. There are some, indeed, who dispute the possibility</div>
+            <div type="l" n="33">of variation here. They maintain that justice and health cannot very</div>
+            <div type="l" n="34">well admit of variation of degree themselves, but that people vary in</div>
+            <div type="l" n="35">the degree in which they possess these qualities, and that this is</div>
+         </div>
+      </div>
+      <div type="p" n="11">
+         <div type="c" n="a">
+            <div type="l" n="1">the case with grammatical learning and all those qualities which are classed</div>
+            <div type="l" n="2">as dispositions. However that may be, it is an incontrovertible fact that the things which in virtue of these</div>
+            <div type="l" n="3">qualities are said to be what they are vary in the degree in which they possess them; for one</div>
+            <div type="l" n="4">man is said to be better versed in grammar, or more healthy</div>
+            <div type="l" n="5">or just, than another, and so on. The qualities expressed by the</div>
+            <div type="l" n="6">terms 'triangular' and 'quadrangular' do not appear to admit of variation of degree, nor indeed do any that</div>
+            <div type="l" n="7">have to do with figure. For those things to which the definition of the</div>
+            <div type="l" n="8">triangle or circle is applicable are all equally triangular or circular. Those, on the other</div>
+            <div type="l" n="9">hand, to which the same definition is not applicable, cannot be said to differ from</div>
+            <div type="l" n="10">one another in degree; the square is no more a circle</div>
+            <div type="l" n="11">than the rectangle, for to neither is the definition of the circle appropriate.</div>
+            <div type="l" n="12">In short, if the definition of the term proposed</div>
+            <div type="l" n="13">is not applicable to both objects, they cannot be compared. </div>
+            <div type="l" n="14">Thus it is not all qualities which admit of variation of degree. </div>
+            <div type="l" n="15">Whereas none of the characteristics I have mentioned are peculiar to quality, the fact that likeness and unlikeness can</div>
+            <div type="l" n="16">be predicated with reference to quality only, gives to that category its distinctive feature. One thing</div>
+            <div type="l" n="17">is like another only with reference to that in virtue of which it is such and</div>
+            <div type="l" n="18">such; thus this forms the peculiar mark of</div>
+            <div type="l" n="19">quality. </div>
+            <div type="l" n="20">We must not be disturbed because it may be argued that, though</div>
+            <div type="l" n="21">proposing to discuss the category of quality, we have included in it</div>
+            <div type="l" n="22">many relative terms. We did say that habits and dispositions were</div>
+            <div type="l" n="23">relative. In practically all such cases the genus</div>
+            <div type="l" n="24">is relative, the individual not. Thus knowledge, as</div>
+            <div type="l" n="25">a genus, is explained by reference to something else, for we mean a</div>
+            <div type="l" n="26">knowledge of something. But particular branches of knowledge are not thus</div>
+            <div type="l" n="27">explained. The knowledge of grammar is not relative to anything external, nor</div>
+            <div type="l" n="28">is the knowledge of music, but these, if relative at all, are</div>
+            <div type="l" n="29">relative only in virtue of their genera; thus grammar is</div>
+            <div type="l" n="30">said be the knowledge of something, not the grammar of something; similarly music</div>
+            <div type="l" n="31">is the knowledge of something, not the music of something. Thus</div>
+            <div type="l" n="32">individual branches of knowledge are not relative. And it is because we possess these individual branches of</div>
+            <div type="l" n="33">knowledge that we are said to be such and such. It is these that we actually possess: we are</div>
+            <div type="l" n="34">called experts because we possess knowledge in some particular branch. Those particular</div>
+            <div type="l" n="35">branches, therefore, of knowledge, in virtue of which we are sometimes said</div>
+            <div type="l" n="36">to be such and such, are themselves qualities, and are not relative. </div>
+            <div type="l" n="37">Further, if anything should happen to fall within both the category of quality and that of relation,</div>
+            <div type="l" n="38">there would be nothing extraordinary in classing it under both these heads. </div>
+            <!--<div type="l" n="39"/>-->
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">Action and affection both admit of contraries and also</div>
+            <div type="l" n="2">of variation of degree. Heating is the</div>
+            <div type="l" n="3">contrary of cooling, being heated of being cooled, being glad</div>
+            <div type="l" n="4">of being vexed. Thus they admit of contraries. They</div>
+            <div type="l" n="5">also admit of variation of degree: for it is possible to heat</div>
+            <div type="l" n="6">in a greater or less degree; also to be heated in a greater</div>
+            <div type="l" n="7">or less degree. Thus action and affection also admit of</div>
+            <div type="l" n="8">variation of degree. </div>
+            <!--<div type="l" n="9"/>-->
+            <div type="l" n="10">So much, then, is stated with regard to these categories. We spoke, moreover, of the category of position when we were dealing</div>
+            <div type="l" n="11">with that of relation, and stated that such terms derived their names from those of the corresponding attitudes. As for the rest,</div>
+            <div type="l" n="12">time, place, state, since they are easily intelligible, I say no more about them than</div>
+            <div type="l" n="13">was said at the beginning, that in the category of state are included such states</div>
+            <div type="l" n="14">as 'shod', 'armed', in that of place 'in the Lyceum' and so on, as</div>
+            <div type="l" n="15">was explained before. The proposed categories have, then, been adequately dealt with.</div>
+            <div type="l" n="16">We must next explain the various senses in which the term 'opposite' is used. </div>
+            <div type="l" n="17">Things are said to be opposed in four senses: (i) as correlatives</div>
+            <div type="l" n="18">to one another, (ii) as contraries to one another, (iii) as privatives to</div>
+            <div type="l" n="19">positives, (iv) as affirmatives to negatives. Let me sketch my meaning in outline.</div>
+            <div type="l" n="20">An instance of the use of the word 'opposite' with reference to correlatives is afforded</div>
+            <div type="l" n="21">by the expressions 'double' and 'half'; with reference to contraries by 'bad' and 'good'. Opposites</div>
+            <div type="l" n="22">in the sense of 'privatives' and 'positives' are' blindness' and 'sight'; in the</div>
+            <div type="l" n="23">sense of affirmatives and negatives, the propositions 'he sits', 'he does not sit'. </div>
+            <div type="l" n="24">(i) Pairs of opposites which fall under the category of relation are explained by a reference of the</div>
+            <div type="l" n="25">one to the other, the reference being indicated by the preposition 'of' or by some other preposition. </div>
+            <div type="l" n="26">Thus, double is a relative term, for that which is double is explained as the double of</div>
+            <div type="l" n="27">something. Knowledge, again, is the opposite of</div>
+            <div type="l" n="28">the thing known, in the same sense;</div>
+            <div type="l" n="29">and the thing known also is explained by</div>
+            <div type="l" n="30">its relation to its opposite, knowledge. For the thing known is explained as that</div>
+            <div type="l" n="31">which is known by something, that is, by knowledge. </div>
+            <div type="l" n="32">Such things, then, as are opposite the one to the other in the sense of being correlatives</div>
+            <div type="l" n="33">are explained by a reference of the one to the other. (ii) Pairs</div>
+            <div type="l" n="34">of opposites which are contraries are not in any way interdependent, but</div>
+            <div type="l" n="35">are contrary the one to the other. The good is not spoken</div>
+            <div type="l" n="36">of as the good of the had, but as the contrary of the bad, nor is white spoken of as the</div>
+            <div type="l" n="37">white of the black, but as the contrary of the black. These two types of opposition</div>
+            <div type="l" n="38">are therefore distinct. Those contraries which are such that the subjects in</div>
+         </div>
+      </div>
+      <div type="p" n="12">
+         <div type="c" n="a">
+            <div type="l" n="1">which they are naturally present, or of which they are predicated, must necessarily</div>
+            <div type="l" n="2">contain either the one or the other of them, have no intermediate, but those</div>
+            <div type="l" n="3">in the case of which no such necessity obtains, always have an</div>
+            <div type="l" n="4">intermediate. Thus disease and health are naturally present in the body of an</div>
+            <div type="l" n="5">animal, and it is necessary that either the one or the other should be present</div>
+            <div type="l" n="6">in the body of an animal. Odd and even, again, are predicated of</div>
+            <div type="l" n="7">number, and it is necessary that the one or the other</div>
+            <div type="l" n="8">should be present in numbers. Now there is no intermediate</div>
+            <div type="l" n="9">between the terms of either of these two pairs. On</div>
+            <div type="l" n="10">the other hand, in those contraries with regard to which no such necessity obtains, we find an</div>
+            <div type="l" n="11">intermediate. Blackness and whiteness are naturally present in the body, but it is not necessary that</div>
+            <div type="l" n="12">either the one or the other should be present in the body, inasmuch as it is not</div>
+            <div type="l" n="13">true to say that everybody must be white or black. Badness and goodness, again, are</div>
+            <div type="l" n="14">predicated of man, and of many other things, but it is not necessary</div>
+            <div type="l" n="15">that either the one quality or the other should be present in that</div>
+            <div type="l" n="16">of which they are predicated: it is not true to say that everything that may be good or bad must</div>
+            <div type="l" n="17">be either good or bad. These pairs of contraries have intermediates: the intermediates between white and</div>
+            <div type="l" n="18">black are grey, sallow, and all the other colours that come between; the</div>
+            <div type="l" n="19">intermediate between good and bad is that which is neither the one nor the</div>
+            <div type="l" n="20">other. Some intermediate qualities have names, such as grey and sallow and all</div>
+            <div type="l" n="21">the other colours that come between white and black; in other cases,</div>
+            <div type="l" n="22">however, it is not easy to name the intermediate, but we must define</div>
+            <div type="l" n="23">it as that which is not either extreme, as in the</div>
+            <div type="l" n="24">case of that which is neither good nor bad, neither just nor</div>
+            <div type="l" n="25">unjust. </div>
+            <div type="l" n="26">(iii) 'privatives' and 'Positives' have reference to the same subject. Thus, sight</div>
+            <div type="l" n="27">and blindness have reference to the eye. It is a universal rule that each</div>
+            <div type="l" n="28">of a pair of opposites of this type has reference to that to which the particular 'positive' is</div>
+            <div type="l" n="29">natural. We say that that is capable of some particular faculty or possession has suffered privation when the</div>
+            <div type="l" n="30">faculty or possession in question is in no way present in that in which, and at the time at</div>
+            <div type="l" n="31">which, it should naturally be present. We do not call that toothless which has not teeth,</div>
+            <div type="l" n="32">or that blind which has not sight, but rather that which has not teeth or sight at the</div>
+            <div type="l" n="33">time when by nature it should. For there are some creatures which from birth are</div>
+            <div type="l" n="34">without sight, or without teeth, but these are not called toothless or blind. </div>
+            <div type="l" n="35">To be without some faculty or to possess it is not the same as the corresponding 'privative' or</div>
+            <div type="l" n="36">'positive'. 'Sight' is a 'positive', 'blindness' a 'privative', but 'to possess sight'</div>
+            <div type="l" n="37">is not equivalent to 'sight', 'to be blind' is not equivalent to</div>
+            <div type="l" n="38">'blindness'. Blindness is a 'privative', to be blind is to be in a</div>
+            <div type="l" n="39">state of privation, but is not a 'privative'. Moreover, if 'blindness' were equivalent</div>
+            <div type="l" n="40">to 'being blind', both would be predicated of the same</div>
+            <div type="l" n="41">subject; but though a man is said to be blind, he is by</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">no means said to be blindness. To be in a state of 'possession' is,</div>
+            <div type="l" n="2">it appears, the opposite of being in a state of 'privation', just as 'positives' and 'privatives' themselves are</div>
+            <div type="l" n="3">opposite. There is the same type of antithesis in both cases; for just</div>
+            <div type="l" n="4">as blindness is opposed to sight, so is being blind opposed</div>
+            <div type="l" n="5">to having sight. That which is affirmed or denied is</div>
+            <div type="l" n="6">not itself affirmation or denial. By 'affirmation' we mean</div>
+            <div type="l" n="7">an affirmative proposition, by 'denial' a negative. Now, those facts which</div>
+            <div type="l" n="8">form the matter of the affirmation or denial are not propositions;</div>
+            <div type="l" n="10">yet these two are said to be opposed in the same sense as the affirmation and denial, for in this case</div>
+            <div type="l" n="11">also the type of antithesis is the same. For as the affirmation is opposed to the denial, as in the two</div>
+            <div type="l" n="12">propositions 'he sits', 'he does not sit', so also the fact which constitutes the</div>
+            <div type="l" n="13">matter of the proposition in one case is opposed to that in</div>
+            <div type="l" n="15">the other, his sitting, that is to say, to his not</div>
+            <div type="l" n="16">sitting. It is evident that 'positives' and 'privatives' are not opposed each to each in</div>
+            <div type="l" n="17">the same sense as relatives. The one is not explained by reference to the</div>
+            <div type="l" n="18">other; sight is not sight of blindness, nor is any other preposition</div>
+            <div type="l" n="19">used to indicate the relation. Similarly blindness is not</div>
+            <div type="l" n="20">said to be blindness of sight,</div>
+            <div type="l" n="21">but rather, privation of sight. Relatives, moreover,</div>
+            <div type="l" n="22">reciprocate; if blindness, therefore, were a relative, there would be a</div>
+            <div type="l" n="23">reciprocity of relation between it and that with which it was</div>
+            <div type="l" n="24">correlative. But this is not the case. Sight is not called the</div>
+            <div type="l" n="25">sight of blindness. </div>
+            <div type="l" n="26">That those terms which fall under the heads of 'positives' and 'privatives' are not opposed each</div>
+            <div type="l" n="27">to each as contraries, either, is plain from the following facts: Of a pair of</div>
+            <div type="l" n="28">contraries such that they have no intermediate, one or the other must needs be present</div>
+            <div type="l" n="29">in the subject in which they naturally subsist, or of which they are predicated; </div>
+            <div type="l" n="30">for it is those, as we proved,' in the case of which this necessity</div>
+            <div type="l" n="31">obtains, that have no intermediate. Moreover, we cited health and disease, odd and even,</div>
+            <div type="l" n="32">as instances. But those contraries which have an intermediate are not subject to</div>
+            <div type="l" n="33">any such necessity. It is not necessary that every substance, receptive of such</div>
+            <div type="l" n="34">qualities, should be either black or white, cold or hot, for something intermediate between these</div>
+            <div type="l" n="35">contraries may very well be present in the subject. We proved, moreover, that those</div>
+            <div type="l" n="36">contraries have an intermediate in the case of which the said necessity does not obtain. Yet when</div>
+            <div type="l" n="37">one of the two contraries is a constitutive property of the subject, as it is a</div>
+            <div type="l" n="38">constitutive property of fire to be hot, of snow to be white, it is</div>
+            <div type="l" n="39">necessary determinately that one of the two contraries, not one or the other, should be present</div>
+            <div type="l" n="40">in the subject; for fire cannot be cold, or</div>
+            <div type="l" n="41">snow black. Thus, it is not the case here that one of the</div>
+         </div>
+      </div>
+      <div type="p" n="13">
+         <div type="c" n="a">
+            <div type="l" n="1">two must needs be present in every subject receptive of these qualities, but only in that subject of which the one</div>
+            <div type="l" n="2">forms a constitutive property. Moreover, in such cases it is one member of the pair determinately, and not either the one or</div>
+            <div type="l" n="3">the other, which must be present. In the case of 'positives' and 'privatives', on the other hand,</div>
+            <div type="l" n="4">neither of the aforesaid statements holds good. For it is not necessary that a subject receptive</div>
+            <div type="l" n="5">of the qualities should always have either the one or the other; that which has not yet</div>
+            <div type="l" n="6">advanced to the state when sight is natural is not said either to be blind or to see. Thus 'positives'</div>
+            <div type="l" n="7">and 'privatives' do not belong to that class of contraries which consists of those which have no intermediate. </div>
+            <div type="l" n="8">On the other hand, they do not belong either to that class which consists of contraries which have an intermediate. For under certain conditions it is necessary that either the</div>
+            <div type="l" n="9">one or the other should form part of the constitution of every appropriate subject. For when a thing has reached</div>
+            <div type="l" n="10">the stage when it is by nature capable of sight, it will be said either to see or to be blind,</div>
+            <div type="l" n="11">and that in an indeterminate sense, signifying that the capacity may be either present or absent; for it is not necessary either</div>
+            <div type="l" n="12">that it should see or that it should be blind, but that it should be either in the one state</div>
+            <div type="l" n="13">or in the other. Yet in the case of those contraries which have an intermediate we found that it was never necessary</div>
+            <div type="l" n="14">that either the one or the other should be present in every appropriate subject, but only that in certain subjects one of</div>
+            <div type="l" n="15">the pair should be present, and that in a determinate sense. It is, therefore, plain that 'positives' and</div>
+            <div type="l" n="16">'privatives' are not opposed each to each in either of the senses in which</div>
+            <div type="l" n="17">contraries are opposed. Again, in the case of contraries, it is possible that there should</div>
+            <div type="l" n="18">be changes from either into the other, while the subject retains its identity, unless indeed one</div>
+            <div type="l" n="20">of the contraries is a constitutive property of that subject, as heat is of fire. For it</div>
+            <div type="l" n="21">is possible that that that which is healthy should become diseased, that</div>
+            <div type="l" n="22">which is white, black, that which is cold, hot, that which is good,</div>
+            <div type="l" n="23">bad, that which is bad, good. The bad man, if he</div>
+            <div type="l" n="24">is being brought into a better way of life and thought, may</div>
+            <div type="l" n="25">make some advance, however slight, and if he should once improve, even ever</div>
+            <div type="l" n="26">so little, it is plain that he might change completely, or at any rate make</div>
+            <div type="l" n="27">very great progress; for a man becomes more and more easily moved to virtue, however small the</div>
+            <div type="l" n="28">improvement was at first. It is, therefore, natural to suppose that he will make yet greater progress</div>
+            <div type="l" n="29">than he has made in the past; and as this process goes on, it will</div>
+            <div type="l" n="30">change him completely and establish him in the contrary state, provided he is not hindered by lack</div>
+            <div type="l" n="31">of time. In the case of 'positives' and 'privatives', however, change</div>
+            <div type="l" n="32">in both directions is impossible. There may be a</div>
+            <div type="l" n="33">change from possession to privation, but not from</div>
+            <div type="l" n="34">privation to possession. The man who has become blind does not regain</div>
+            <div type="l" n="35">his sight; the man who has become bald does not regain his hair; the man who has lost his teeth</div>
+            <div type="l" n="36">does not grow his grow a new set. </div>
+            <div type="l" n="37">(iv) Statements opposed as affirmation and negation belong</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">manifestly to a class which is distinct, </div>
+            <div type="l" n="2">for in this case, and in this case only, it is necessary for the one opposite to be</div>
+            <div type="l" n="3">true and the other false. Neither in the case of contraries, nor in the</div>
+            <div type="l" n="4">case of correlatives, nor in the case of 'positives' and 'privatives', is it necessary</div>
+            <div type="l" n="5">for one to be true and the other false. Health and</div>
+            <div type="l" n="6">disease are contraries: neither of them is true or false.</div>
+            <div type="l" n="7">'Double' and 'half' are opposed to each other</div>
+            <div type="l" n="8">as correlatives: neither of them is true or false. </div>
+            <div type="l" n="9">The case is the same, of course, with regard to 'positives' and 'privatives' such as 'sight'</div>
+            <div type="l" n="10">and 'blindness'. In short, where there is no sort of combination of</div>
+            <div type="l" n="11">words, truth and falsity have no place, and all the opposites we</div>
+            <div type="l" n="12">have mentioned so far consist of simple words. At the same time, when the</div>
+            <div type="l" n="13">words which enter into opposed statements are contraries, these, more than any other set of opposites,</div>
+            <div type="l" n="14">would seem to claim this characteristic. 'Socrates is ill' is the contrary of 'Socrates is</div>
+            <div type="l" n="15">well', but not even of such composite expressions is it true to say that one</div>
+            <div type="l" n="16">of the pair must always be true and the other false. For if Socrates exists,</div>
+            <div type="l" n="17">one will be true and the other false, but if he does not exist, both</div>
+            <div type="l" n="18">will be false; for neither 'Socrates is ill' nor 'Socrates is</div>
+            <div type="l" n="19">well' is true, if Socrates does not exist at all. </div>
+            <div type="l" n="20">In the case of 'positives' and 'privatives', if the subject does not exist at all, neither proposition is true, but</div>
+            <div type="l" n="21">even if the subject exists, it is not always the fact that one is true and the other false. </div>
+            <div type="l" n="22">For 'Socrates has sight' is the opposite of 'Socrates is blind' in</div>
+            <div type="l" n="23">the sense of the word 'opposite' which applies to possession and privation.</div>
+            <div type="l" n="24">Now if Socrates exists, it is not necessary that one should</div>
+            <div type="l" n="25">be true and the other false, for when he is not yet</div>
+            <div type="l" n="26">able to acquire the power of vision, both are false, as also</div>
+            <div type="l" n="27">if Socrates is altogether non-existent. But in the case of</div>
+            <div type="l" n="28">affirmation and negation, whether the subject exists or not, one is</div>
+            <div type="l" n="29">always false and the other true. For manifestly, if Socrates</div>
+            <div type="l" n="30">exists, one of the two propositions 'Socrates is ill', 'Socrates</div>
+            <div type="l" n="31">is not ill', is true, and the other false. </div>
+            <div type="l" n="32">This is likewise the case if he does not exist; for if he does not exist, to say that he is ill is false, to say that he is not ill</div>
+            <div type="l" n="33">is true. Thus it is in the case of those opposites only, which are opposite in the sense in which the term</div>
+            <div type="l" n="34">is used with reference to affirmation and negation, that the rule holds good, that one of the pair must be</div>
+            <div type="l" n="35">true and the other false. </div>
+            <div type="l" n="36">That the contrary of a good is an evil is</div>
+            <div type="l" n="37">shown by induction: the contrary of health is disease, of courage,</div>
+         </div>
+      </div>
+      <div type="p" n="14">
+         <div type="c" n="a">
+            <div type="l" n="1">cowardice, and so on. But the contrary of an evil</div>
+            <div type="l" n="2">is sometimes a good, sometimes an evil. For defect, which is an</div>
+            <div type="l" n="3">evil, has excess for its contrary, this also being an evil, and the mean, which is a</div>
+            <div type="l" n="4">good, is equally the contrary of the one and of the other. It is only in a</div>
+            <div type="l" n="5">few cases, however, that we see instances of this: in most, the contrary of</div>
+            <div type="l" n="6">an evil is a good. In the case of contraries, it is not always necessary that</div>
+            <div type="l" n="7">if one exists the other should also exist: for if all become healthy there will be</div>
+            <div type="l" n="8">health and no disease, and again, if everything turns white,</div>
+            <div type="l" n="10">there will be white, but no black. Again, since the fact that</div>
+            <div type="l" n="11">Socrates is ill is the contrary of the fact that Socrates is well, and two</div>
+            <div type="l" n="12">contrary conditions cannot both obtain in one and the same individual at the same time,</div>
+            <div type="l" n="13">both these contraries could not exist at once: for if that Socrates was well was</div>
+            <div type="l" n="14">a fact, then that Socrates was ill could not possibly be one. </div>
+            <div type="l" n="15">It is plain that contrary attributes must needs be present in subjects which belong to</div>
+            <div type="l" n="16">the same species or genus. Disease and health require as their subject the body of an animal;</div>
+            <div type="l" n="17">white and black require a body, without further qualification; justice and injustice require as their subject</div>
+            <div type="l" n="18">the human soul. Moreover, it is necessary that pairs of contraries should in all cases either</div>
+            <div type="l" n="20">belong to the same genus or belong to contrary genera or be themselves genera. White</div>
+            <div type="l" n="21">and black belong to the same genus, colour;</div>
+            <div type="l" n="22">justice and injustice, to contrary genera, virtue and vice;</div>
+            <div type="l" n="23">while good and evil do not belong to</div>
+            <div type="l" n="24">genera, but are themselves actual genera, with terms under</div>
+            <div type="l" n="25">them.</div>
+            <div type="l" n="26">There are four senses in which one thing can be said to be 'prior' to another. Primarily and most</div>
+            <div type="l" n="27">properly the term has reference to time: in this sense the word</div>
+            <div type="l" n="28">is used to indicate that one thing is older or more ancient than another, for the</div>
+            <div type="l" n="29">expressions 'older' and 'more ancient' imply greater length of time. Secondly, one</div>
+            <div type="l" n="30">thing is said to be 'prior' to another when the sequence of their</div>
+            <div type="l" n="31">being cannot be reversed. In this sense 'one' is 'prior' to 'two'. For</div>
+            <div type="l" n="32">if 'two' exists, it follows directly that 'one' must exist, but if 'one' exists, it does</div>
+            <div type="l" n="33">not follow necessarily that 'two' exists: thus the sequence subsisting cannot be reversed. It is agreed, then,</div>
+            <div type="l" n="34">that when the sequence of two things cannot be reversed, then that one on which the</div>
+            <div type="l" n="35">other depends is called 'prior' to that other. In the third place, the term 'prior' is</div>
+            <div type="l" n="36">used with reference to any order, as in the case of science and of oratory.</div>
+            <div type="l" n="37">For in sciences which use demonstration there is that which is prior</div>
+            <div type="l" n="38">and that which is posterior in order; in geometry, the elements are</div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">prior to the propositions; in reading and writing, the letters of the</div>
+            <div type="l" n="2">alphabet are prior to the syllables. Similarly, in the case of speeches,</div>
+            <div type="l" n="3">the exordium is prior in order to the narrative. Besides these</div>
+            <div type="l" n="4">senses of the word, there is a fourth. That which is better and more honourable is</div>
+            <div type="l" n="5">said to have a natural priority. In common parlance men speak of</div>
+            <div type="l" n="6">those whom they honour and love as 'coming</div>
+            <div type="l" n="7">first' with them. This sense of the word is perhaps</div>
+            <div type="l" n="8">the most far-fetched. </div>
+            <div type="l" n="9">Such, then, are the different senses in which the term 'prior' is used.</div>
+            <div type="l" n="10">Yet it would seem that besides those mentioned there</div>
+            <div type="l" n="11">is yet another. For in those things, the being of each of which implies</div>
+            <div type="l" n="12">that of the other, that which is in any way the cause may reasonably be said</div>
+            <div type="l" n="13">to be by nature 'prior' to the effect. It is plain that there are instances of</div>
+            <div type="l" n="14">this. The fact of the being of a man carries with it the truth</div>
+            <div type="l" n="15">of the proposition that he is, and the implication is reciprocal: for if</div>
+            <div type="l" n="16">a man is, the proposition wherein we allege that he is true,</div>
+            <div type="l" n="17">and conversely, if the proposition wherein we allege that</div>
+            <div type="l" n="18">he is true, then he is. The true proposition, however, is</div>
+            <div type="l" n="19">in no way the cause of the being of the man, but the fact of the man's</div>
+            <div type="l" n="20">being does seem somehow to be the cause of the truth of the proposition, </div>
+            <div type="l" n="21">for the truth or falsity of the proposition depends on the fact of the man's being</div>
+            <div type="l" n="22">or not being. Thus the word 'prior' may be used in five</div>
+            <div type="l" n="23">senses. </div>
+            <div type="l" n="24">The term 'simultaneous' is primarily and most appropriately applied to those things the genesis of the one of</div>
+            <div type="l" n="25">which is simultaneous with that of the other; for in such cases neither is prior or posterior</div>
+            <div type="l" n="26">to the other. Such things are said to be simultaneous in point of time. </div>
+            <div type="l" n="27">Those things, again, are 'simultaneous' in point of nature, the being of</div>
+            <div type="l" n="28">each of which involves that of the other, while at the same</div>
+            <div type="l" n="29">time neither is the cause of the other's being. This is the case with regard</div>
+            <div type="l" n="30">to the double and the half, for these are reciprocally dependent, since, if there is a double, there is also a half,</div>
+            <div type="l" n="31">and if there is a half, there is also a double, while at the same time neither is the cause of the</div>
+            <div type="l" n="33">being of the other. Again, those species which are distinguished one from another and opposed one to another within the</div>
+            <div type="l" n="34">same genus are said to be 'simultaneous' in nature. I mean those species which are distinguished each</div>
+            <div type="l" n="35">from each by one and the same method of division. Thus the 'winged' species is simultaneous with the</div>
+            <div type="l" n="36">'terrestrial' and the 'water' species. These are distinguished within the same genus, and are</div>
+            <div type="l" n="37">opposed each to each, for the genus 'animal' has the 'winged', the 'terrestrial',</div>
+            <div type="l" n="38">and the 'water' species, and no one of these is prior or</div>
+            <div type="l" n="39">posterior to another; on the contrary, all such things appear to be</div>
+         </div>
+      </div>
+      <div type="p" n="15">
+         <div type="c" n="a">
+            <div type="l" n="1">'simultaneous' in nature. Each of these also, the terrestrial, the</div>
+            <div type="l" n="2">winged, and the water species, can be divided again into</div>
+            <div type="l" n="3">subspecies. Those species, then, also will be 'simultaneous' point of nature, which, belonging to the same genus, are</div>
+            <div type="l" n="4">distinguished each from each by one and the same method of differentiation. But genera are prior</div>
+            <div type="l" n="5">to species, for the sequence of their being cannot be</div>
+            <div type="l" n="6">reversed. If there is the species 'water-animal', there will be the genus 'animal', but granted the being of the genus 'animal', it</div>
+            <div type="l" n="7">does not follow necessarily that there will be the species 'water-animal'. Those things, therefore, are said to be 'simultaneous' in</div>
+            <div type="l" n="8">nature, the being of each of which involves that of the other, while at the same time</div>
+            <div type="l" n="10">neither is in any way the cause of the other's being; those species, also, which are distinguished each</div>
+            <div type="l" n="11">from each and opposed within the same genus. Those things, moreover, are 'simultaneous' in the unqualified sense of the word which come</div>
+            <div type="l" n="12">into being at the same time. </div>
+            <div type="l" n="13">There are six sorts of movement: generation, destruction, increase, diminution,</div>
+            <div type="l" n="14">alteration, and change of place. It is evident in all but</div>
+            <div type="l" n="15">one case that all these sorts of movement are distinct each from each. Generation is distinct</div>
+            <div type="l" n="16">from destruction, increase and change of place from</div>
+            <div type="l" n="17">diminution, and so on. But in the case of alteration</div>
+            <div type="l" n="18">it may be argued that the process necessarily implies one or other of the</div>
+            <div type="l" n="20">other five sorts of motion. This is not true, for we</div>
+            <div type="l" n="21">may say that all affections, or nearly all, produce in us an</div>
+            <div type="l" n="22">alteration which is distinct from all other sorts of motion, for</div>
+            <div type="l" n="23">that which is affected need not suffer either increase or</div>
+            <div type="l" n="24">diminution or any of the other sorts of motion. Thus alteration</div>
+            <div type="l" n="25">is a distinct sort of motion; for, if it were</div>
+            <div type="l" n="26">not, the thing altered would not only be altered, but would forthwith necessarily suffer increase or diminution or</div>
+            <div type="l" n="27">some one of the other sorts of motion in addition; which as a matter of fact is not the case. </div>
+            <div type="l" n="28">Similarly that which was undergoing the process of increase or was subject to some other sort of motion would, if alteration were not a</div>
+            <div type="l" n="29">distinct form of motion, necessarily be subject to alteration also. But there are some things which undergo increase but yet</div>
+            <div type="l" n="30">not alteration. The square, for instance, if a gnomon is applied</div>
+            <div type="l" n="31">to it, undergoes increase but not alteration, and so it is</div>
+            <div type="l" n="32">with all other figures of this sort. Alteration and increase, therefore, are</div>
+            <div type="l" n="33">distinct. </div>
+         </div>
+         <div type="c" n="b">
+            <div type="l" n="1">Speaking generally, rest is the contrary of motion. But the different</div>
+            <div type="l" n="2">forms of motion have their own contraries in other forms; thus destruction is the contrary of generation, diminution of increase, </div>
+            <div type="l" n="3">rest in a place, of change of place. As for this last,</div>
+            <div type="l" n="4">change in the reverse direction would seem to be most truly its contrary;</div>
+            <div type="l" n="5">thus motion upwards is the contrary of motion downwards and vice versa.</div>
+            <div type="l" n="6">In the case of that sort of motion which yet</div>
+            <div type="l" n="7">remains, of those that have been enumerated, it is not easy to state</div>
+            <div type="l" n="8">what is its contrary. It appears to have no contrary, unless one should</div>
+            <div type="l" n="9">define the contrary here also either as 'rest in its quality' or as</div>
+            <div type="l" n="10">'change in the direction of the contrary quality', just as we</div>
+            <div type="l" n="11">defined the contrary of change of place either as rest in a place</div>
+            <div type="l" n="12">or as change in the reverse direction. For a thing is</div>
+            <div type="l" n="13">altered when change of quality takes place; therefore either rest in its quality or change in the</div>
+            <div type="l" n="14">direction of the contrary may be called the contrary of this qualitative form of motion. In this way</div>
+            <div type="l" n="15">becoming white is the contrary of becoming black; there is alteration in the contrary direction, since</div>
+            <div type="l" n="16">a change of a qualitative nature takes place. </div>
+            <div type="l" n="17">The term 'to have' is used in various senses. In the</div>
+            <div type="l" n="18">first place it is used with reference to habit or disposition or any other quality, for</div>
+            <div type="l" n="19">we are said to 'have' a piece of knowledge or a virtue. Then, again, it has</div>
+            <div type="l" n="20">reference to quantity, as, for instance, in the case of a man's height; for he is said to</div>
+            <div type="l" n="21">'have' a height of three or four cubits. It is used, moreover, with regard to apparel, a man</div>
+            <div type="l" n="22">being said to 'have' a coat or tunic; or in respect of something which we have on a part of ourselves, as a</div>
+            <div type="l" n="23">ring on the hand: or in respect of something which is a part of us, as hand or foot. The term refers also</div>
+            <div type="l" n="24">to content, as in the case of a vessel and wheat, or of a jar</div>
+            <div type="l" n="25">and wine; a jar is said to 'have' wine, and a corn-measure wheat. </div>
+            <div type="l" n="26">The expression in such cases has reference to content. Or it refers to that which has been acquired; </div>
+            <div type="l" n="27">we are said to 'have' a house or a field. A man is also said</div>
+            <div type="l" n="28">to 'have' a wife, and a wife a husband, and this appears to be the most</div>
+            <div type="l" n="29">remote meaning of the term, for by the use of it we mean</div>
+            <div type="l" n="30">simply that the husband lives with the wife. Other senses of the word</div>
+            <div type="l" n="31">might perhaps be found, but the most ordinary ones have</div>
+            <div type="l" n="32">all been enumerated. </div>
+         </div>
+      </div>
+   </body>
+</TAN-T>

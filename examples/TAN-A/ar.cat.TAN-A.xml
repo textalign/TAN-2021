@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ar.cat.tan-a">
+    <head>
+        <name>Alignment of Aristotle's Categories</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A/ar.cat.tan-a.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+        </license>
+        <numerals priority="letters"/>
+        <token-definition src="fra" pattern="\S+"/>
+        <source xml:id="grc">
+            <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+            <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+            <location href="../ar.cat.grc.1949.minio-paluello.ref-logical.xml" accessed-when="2016-07-08T15:17:28.037-04:00"/>
+        </source>
+        <source xml:id="fra">
+            <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs-realigned</IRI>
+            <name>Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+            <location href="../ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml" accessed-when="2016-07-11T13:44:25.487-04:00"/>
+        </source>
+        <source xml:id="eng">
+            <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:semantic-refs</IRI>
+            <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+            <location href="../ar.cat.eng.1926.edghill.ref-logical.xml" accessed-when="2016-07-08T15:18:25.573-04:00"/>
+        </source>
+        <companion-version>
+            <IRI>tag:parkj@textalign.net,2015:ar.cat.tan-a:claims</IRI>
+            <name>Comments and claims on Aristotle's Categories</name>
+            <location accessed-when="2021-04-29T11:41:57.716-04:00" href="ar.cat.TAN-A.claims.xml"/>
+        </companion-version>
+        
+        <adjustments src="fra">
+            <skip div-type="summ" shallow="false"/>
+            <equate n="ti title"/>
+            <reassign>
+                <passage ref="5 4 7 2">
+                    <from-tok val=":" pos="1"/>
+                    <through-tok val=":" pos="1"/>
+                </passage>
+                <to ref="5 4 7 1"/>
+            </reassign>
+        </adjustments>
+        
+        <vocabulary-key>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-05T00:55:47.739-04:00"/>
+            </algorithm>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+            <verb which="is about" xml:id="concerns"/>
+            <topic xml:id="predication">
+                <IRI>tag:parkj@textalign.net,2015:topic:predication</IRI>
+                <name>predication</name>
+                <desc>The act of asserting something about a grammatical subject.</desc>
+            </topic>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp who="park" roles="creator"/>
+        <change when="2016-07-07" who="park">Started file</change>
+        <change who="xslt2" when="2018-08-05T00:55:47.739-04:00">Converted from 2018 to 2019 schemas.</change>
+        <change when="2019-05-05" who="park">Updated French source to a newly redivided version.</change>
+        <to-do>
+            <comment when="2018-08-05-04:00" who="park">Need to finish annotations.</comment>
+        </to-do>
+    </head>
+    <body claimant="park">
+        <claim verb="concerns" object="predication">
+            <subject src="grc" ref="1 1"/>
+        </claim>
+    </body>
+</TAN-A>

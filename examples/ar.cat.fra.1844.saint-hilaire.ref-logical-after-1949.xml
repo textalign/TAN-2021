@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs-realigned">
+   <head>
+      <name>Realignment of Categories, Aristotle, French translation by J. Barthélemy
+         Saint-Hilaire</name>
+      <master-location href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"/>
+      <license licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work>
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <source>
+         <IRI>http://id.lib.harvard.edu/aleph/002773288/catalog</IRI>
+         <name>Logique d'Aristote: Traduite en français pour la première fois et accompagnée de
+            notes perpétuelles par J. Barthélemy Saint-Hilaire. Paris : Ladrange, 1839-1844. </name>
+      </source>
+      <redivision>
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs</IRI>
+         <name>Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+         <location href="ar.cat.fra.1844.saint-hilaire.ref-logical.xml" accessed-when="2016-07-14T11:38:29.251-04:00"/>
+      </redivision>
+      <model>
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location href="ar.cat.grc.1949.minio-paluello.ref-logical.xml" accessed-when="2016-07-14T11:38:29.251-04:00"/>
+      </model>
+      <adjustments>
+         <normalization which="no hyphens"/>
+      </adjustments>
+      <vocabulary-key>
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-05T00:03:20.142-04:00"/>
+         </algorithm>
+         <div-type xml:id="ch">
+            <IRI>http://dbpedia.org/resource/Chapter_(books)</IRI>
+            <name>chapter</name>
+         </div-type>
+         <div-type xml:id="par">
+            <IRI>http://dbpedia.org/resource/Paragraph</IRI>
+            <name xml:lang="eng">paragraph</name>
+         </div-type>
+         <div-type xml:id="sec" which="section"/>
+         <div-type xml:id="ti" which="title"/>
+         <div-type xml:id="summ" which="summary"/>
+         <div-type xml:id="subch" which="subchapter"/>
+         <div-type xml:id="s">
+            <IRI>http://dbpedia.org/resource/Sentence_(linguistics)</IRI>
+            <name>sentence</name>
+         </div-type>
+         <div-type xml:id="ic">
+            <IRI>https://en.wikipedia.org/wiki/Independent_clause</IRI>
+            <name>independent clause</name>
+            <desc>used to identify two or more sentence parts that have a subject and predicate and
+               function as a sentence.</desc>
+         </div-type>
+         <div-type xml:id="pt" which="part"/>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+         </person>
+         <role xml:id="editor">
+            <IRI>http://schema.org/editor</IRI>
+            <name xml:lang="eng">Editor</name>
+         </role>
+         <role xml:id="stylesheet1" which="stylesheet"/>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp who="xslt2" roles="stylesheet1"/>
+      <resp roles="editor" who="kalvesmaki"/>
+      <change when="2016-07-10" who="kalvesmaki">Began new file</change>
+      <change when="2016-07-14T11:38:29.251-04:00" who="kalvesmaki">Created TAN-T file using TAN-A realign
+         element to transform one source file into the image of another. Backup made at
+         file:/C:/Users/jdkalv/Dropbox/TAN/library/TAN-2018/examples/TAN-A/ar.cat.tan-a-201607141138292510400.xml.</change>
+      <change who="xslt2" when="2018-08-05T00:03:20.142-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do/>
+   </head>
+   <body xml:lang="fra">
+      <div n="ti_1" type="ti">
+         <div n="1" type="par">CATÉGORIES</div>
+         <div n="2" type="par">SECTION PREMIÈRE</div>
+         <div n="3" type="par">PROTHÉORIE</div>
+      </div>
+      <div n="1" type="ch">
+         <div n="ti" type="ti">CHAPITRE PREMIER</div>
+         <div n="summ" type="summ">Définition des homonymes, synonymes et paronymes</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">On appelle homonymes les êtres qui n'ont de commun entre eux qu'une appellation pareille, mais dont la définition, sous cette appellation identique, est essentiellement différente : par exemple, on appelle animal, l'homme réel</div>
+               <div type="ic" n="2">et l'homme représenté en peinture. En effet, leur appellation seule est commune; mais leur définition essentielle est différente sous cette</div>
+               <div type="ic" n="3">appellation; car si l'on veut définir ce qui fait un animal de l'un et de l'autre, ou donnera une définition différente de chacun d'eux.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">On appelle synonymes les êtres qui ont à la fois une appellation commune, et sous cette appellation, une définition essentiellement pareille. Tels sont l'homme et le bœuf appelés</div>
+               <div type="ic" n="2">tous deux du nom d'animal. L'homme et le bœuf, en effet, reçoivent l'appellation commune d'animal, et leur définition essentielle est identique;</div>
+               <div type="ic" n="3">car si l'on veut définir ce qui fait un animal de l'un et de l'autre, on donnera une définition identique pour tous les deux.</div>
+            </div>
+            <div type="s" n="3">On appelle paronymes les êtres qui tirent d'un autre leur appellation nominale avec une différence de terminaison, comme grammairien tire la sienne de grammaire, et courageux de courage.</div>
+         </div>
+      </div>
+      <div n="2" type="ch">
+         <div n="ti" type="ti">CHAPITRE II</div>
+         <div n="summ" type="summ">Division des mots selon qu'ils sont unis ou séparés. - Division des choses selon qu'elles sont substances ou attributs.</div>
+         <div n="1" type="par">Les mots peuvent être tantôt liés entre eux, tantôt séparés. Liés entre eux, quand on dit, par exemple: L'homme court, l'homme triomphe; séparés, quand on dit : Homme, bœuf, court, triomphe.</div>
+         <div n="2" type="par">Les choses peuvent se dire d'un sujet sans être cependant dans aucun sujet: par exemple, l'homme se dit d'un sujet, lequel est un homme quelconque, et l'homme n'est cependant dans aucun sujet. D'autres choses peuvent être dans un sujet et ne se dire cependant d'aucun sujet; et je dis d'une chose qu'elle est dans un sujet, lorsque, sans y être comme partie de ce sujet dans lequel elle est, elle ne saurait toutefois exister indépendamment de lui. Je prends pour exemple la grammaire : la grammaire est certainement dans un sujet qui est l'intelligence de l'homme, et cependant elle ne saurait se dire d'un sujet quelconque. De même la blancheur est certainement dans un sujet qui est le corps où elle est, puisque toute couleur est dans un corps, et cependant on ne peut dire ce mot d'aucun sujet. Certaines choses peuvent à la fois et se dire le sujet et être dans un sujet : la science, par exemple, est dans un sujet qui est l'intelligence humaine, et en même temps elle se dit d'un sujet qui peut être la grammaire. Certaines choses enfin ne peuvent être ni dans un sujet ni se dire d'un sujet : par exemple, homme, un cheval, toutes choses qui ne sont dans aucun sujet et ne se disent d'aucun sujet. En général, les individus et tout ce qui est numériquement un, ne peuvent se dire d'aucun sujet. Mais rien n'empêche qu'elles ne soient quelquefois dans un sujet : par exemple, la grammaire est une de ces choses qui sont dans un sujet, et cependant elle n'est dite d'aucun sujet.</div>
+      </div>
+      <div n="3" type="ch">
+         <div n="ti" type="ti">CHAPITRE III</div>
+         <div n="summ" type="summ">Règles des attributs et des sujets, des différences des choses hétérogènes, et des différences des genres subordonnés.</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">Quand une chose est attribuée à une autre, comme à son sujet, tout ce qui pourra se dire de l'attribut pourra se dire aussi du</div>
+               <div type="ic" n="2">sujet. Ainsi, homme est attribué à un homme quelconque, et animal est attribué à homme;</div>
+               <div type="ic" n="3">donc animal sera attribué à un homme quelconque et en effet un</div>
+               <div type="ic" n="4">homme est à la fois homme et animal.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Dans les choses de genres différents et qui n'ont entre elles aucun rapport de subordination, les différences aussi sont spécifiquement dissemblables. Soit, par exemple,</div>
+               <div type="ic" n="2">les différences de l'animal et celles de la science. Les différences dans l'animal, c'est d'être terrestre, bipède, volatile, aquatique. La science n'offre aucune différence pareille; car une</div>
+               <div type="ic" n="3">science ne date pas d'une autre science parce qu'elle a deux pieds.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Au contraire, dans les genres subordonnés, rien n'empêche que les différences soient semblables.</div>
+               <div type="ic" n="2">Les genres supérieurs peuvent servir d'attributs aux genres inférieurs, de sorte que toutes les différences de l'attribut pourront être en nombre égal à celles du sujet.</div>
+            </div>
+         </div>
+      </div>
+      <div n="ti_2" type="ti">
+         <div n="1" type="par">SECTION DEUXIÈME</div>
+         <div n="2" type="par">THÉORIE</div>
+      </div>
+      <div n="4" type="ch">
+         <div n="ti" type="ti">CHAPITRE IV</div>
+         <div n="summ" type="summ">Énumération des dix catégories. - Exemples de chacune. - Distinction des mots isolés, et des mots formant par leur réunion soit une affirmation, soit une négation.</div>
+         <div n="1" type="par">Les mots, quand ils sont pris isolément, expriment chacun l'une des choses suivantes : ou substance, quantité, ou qualité, ou relation, ou lieu, ou temps, ou position, ou état, ou action, ou enfin passion.</div>
+         <div n="2" type="subch">La substance c'est, par exemple, afin de parler sommairement, homme, cheval ; la quantité, c'est de deux coudées, de trois coudées; la qualité, c'est blanc, grammairien; la relation, c'est double, demi, plus grand; le lieu, c'est dans la place publique, dans le lycée; le temps, c'est hier, l'an passé; la situation, c'est être couché, être assis; l'état, c'est être chaussé, être armé ; l'action c'est couper, brûler; la souffrance, c'est être coupé, être brûlé.</div>
+         <div n="3" type="subch">Aucun des mots que nous venons d'énumérer n'emporte seul et par lui-même, l'idée d'affirmation ou de négation. C'est seulement par la combinaison de ces termes les uns avec les autres, que se forment l'affirmation et la négation. Toute affirmation, en effet, toute négation doit être vraie ou fausse. Les mots, au contraire, qui ne sont pas combinés avec d'autres mots n'expriment ni vérité ni erreur; ainsi homme, blancheur, court, triomphe.</div>
+      </div>
+      <div n="5" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE V</div>
+            <div n="2" type="par">DE LA SUBSTANCE</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Distinction de la substance en première et seconde. - Les substances secondes ne sauraient exister sans les substances premières, qui leur servent de sujets, soit d'attribution, soit d'inhérence.</div>
+            <div n="2" type="par">L'espèce, parmi les substances secondes, est plus substance que le genre : identité des espèces entre elles; identité des substances premières. - Les espèces et les genres sont les seules substances secondes.</div>
+            <div n="3" type="par">Propriétés de la substance : 1° elle n'est point dans un sujet : objection et réponse à l'objection : 2° toutes les attributions tirées des substances sont synonymes ainsi que celles des différences : 3° toute substance exprime un être réel : objection et réponse à l'objection : 4° la substance n'a pas de contraire : 5° elle n'est pas susceptible de plus et de moins : 6° Propriété principale : elle est susceptible, tout en conservant son identité, de recevoir les contraires : objection et réponse à l'objection.</div>
+         </div>
+         <div type="par" n="1">
+            <div type="s" n="1">La substance, dans l'acception la plus exacte, la substance première, la substance par excellence, est celle qui ne se dit point d'un sujet, et ne se trouve point dans un sujet: par exemple, un homme, un cheval.</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">On appelle substances secondes, les espèces où existent les substances qu'on nomme premières, et non seulement les espèces, mais aussi les genres</div>
+               <div type="ic" n="2">de ces espèces. Par exemple, un homme est dans l'espèce homme. Mais le genre de l'espèce homme</div>
+               <div type="ic" n="3">c'est animal : ainsi homme, animal, c'est ce qu'on appelle les substances secondes.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Il suit évidemment de ce qui précède, que l'appellation et la définition des choses dites d'un sujet sont attribuées aussi à ce</div>
+               <div type="ic" n="2">sujet. Par exemple, homme se disant d'un homme quelconque comme sujet, l'appellation d'abord est attribuable, puisqu'on peut attribuer homme à tel homme; et de plus,</div>
+               <div type="ic" n="3">la définition de l'homme s'applique également bien à cet homme quelconque, puisque tout homme est homme et en outre</div>
+               <div type="ic" n="4">animal. Ainsi l'appellation nominale et la définition seront attribuées parfaitement au sujet.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Pour les choses, au contraire, qui sont, dans un sujet, ni le nom ni la définition ne peuvent être attribués le plus souvent</div>
+               <div type="ic" n="2">à ce sujet. Parfois, cependant, l'appellation peut être attribuée; mais pour la définition, il est impossible qu'elle le soit jamais: ainsi</div>
+               <div type="ic" n="3">la blancheur qui est dans un sujet, dans un corps, est attribuée au sujet; car on dit d'un corps qu'il est blanc; mais quant à la définition de la blancheur, elle ne sera jamais attribuée à ce corps.</div>
+            </div>
+            <div type="s" n="5">Toutes les choses autres que les substances se disent des substances premières prises comme sujets, ou bien elles sont dans ces</div>
+            <div type="s" n="6">
+               <div type="ic" n="1">substances qui leur servent de sujets. Ceci est évident si l'on examine</div>
+               <div type="ic" n="2">chacun des exemples cités. Par exemple, animal se dit en parlant de l'homme : par conséquent, on l'attribuera à un homme quelconque; car, si l'on ne pouvait l'attribuer spécialement à aucun homme, on</div>
+               <div type="ic" n="3">ne le dirait pas davantage de l'homme en général. Autre exemple: la couleur</div>
+               <div type="ic" n="4">est dans le corps, donc elle doit être aussi dans un corps quelconque;</div>
+               <div type="ic" n="5">car si elle ne pouvait être dans aucun des corps particuliers, elle ne serait pas du tout dans le corps. Il en</div>
+            </div>
+            <div type="s" n="7">
+               <div type="ic" n="1">faut conclure que toutes les choses autres que les substances premières, ou se disent</div>
+               <div type="ic" n="2">de ces substances prises comme sujets, ou bien sont dans ces substances qui leur servent de sujets. Si donc il</div>
+               <div type="ic" n="3">n'y avait pas de substances premières, les autres non plus ne sauraient exister.</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">Parmi les substances secondes, l'espèce est plus substance que le genre; car elle</div>
+               <div type="ic" n="2">est plus rapprochée de la substance première. Si l'on veut,</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">en effet, faire comprendre ce que c'est que la substance première, on s'expliquera d'une manière plus claire et plus propre en prenant l'espèce plutôt que le genre. Par exemple,</div>
+               <div type="ic" n="2">si l'on veut définir un homme, on se fera plus comprendre en prenant l'espèce homme qu'en prenant le genre animal. L'une est, en effet, plus rapprochée d'un homme quelconque; l'autre, au contraire, est plus générale. Si l'on veut définir un arbre, on se fera mieux comprendre en prenant l'espèce arbre qu'en prenant le genre végétal.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">D'un autre côté, si les substances premières sont plus spécialement appelées substances, c'est parce qu'elles sont le sujet de toutes les autres choses, et que toutes les autres choses ou sont attribuées à elles</div>
+               <div type="ic" n="2">ou sont en elles. Le rapport des substances premières à toutes les autres est précisément celui de l'espèce au</div>
+               <div type="ic" n="3">genre; car les genres sont attribués aux espèces;</div>
+               <div type="ic" n="4">mais les espèces ne sont pas attribuées réciproquement aux genres : ainsi l'espèce sert de fondement au genre. On</div>
+               <div type="ic" n="5">peut donc aussi conclure que l'espèce est plus substance que le genre.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Quant à toutes les espèces qui ne sont pas genres, elles ne sont point, comparativement entre elles, plus substances</div>
+               <div type="ic" n="2">les unes que les autres; car on ne se fera pas mieux comprendre et définissant l'homme pour définir un homme, qu'en définissant le cheval pour définir un cheval.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Et de même encore, pour les substances premières, elles ne sont pas entre elles plus substances les</div>
+               <div type="ic" n="2">unes que les autres; un homme n'est pas plus substance qu'un bœuf.</div>
+            </div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">C'est donc bien avec raison qu'après avoir exclu les substances premières, on ne reconnaît, dans tout le reste, pour substances secondes, que les espèces</div>
+               <div type="ic" n="2">et les genres seulement; car seules, parmi les attributs, elle est seulement la</div>
+               <div type="ic" n="3">substance première. Que l'on veuille par exemple, définir ce que c'est qu'un homme, on le définira fort bien en définissant l'espèce ou le genre seulement, on se fera mieux comprendre en prenant plutôt homme qu'animal. Mais si l'on définissait une</div>
+               <div type="ic" n="4">chose quelconque parmi toutes les autres choses, cette définition serait tout à fait déplacée: par exemple, si l'on définit blancheur, court, ou telle autre chose pareillement, et donc, c'est avec raison</div>
+               <div type="ic" n="5">que, parmi toutes les autres choses, le genre et l'espèce sont seuls reconnues</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">comme substances. De plus, c'est parce que les substances premières sont le fondement de toutes les autres choses et que toutes les</div>
+               <div type="ic" n="2">autres choses ou en sont les attributs ou sont en elles, qu'elles sont appelées substances par excellence. Ce que ces substances premières sont pour les autres choses, les genres et les espèces</div>
+               <div type="ic" n="3">de circonstances premières le sont à tout le reste; car c'est</div>
+               <div type="ic" n="4">de là que tout le reste est attribué. Si l'on dit, par exemple qu'un homme est grammairien, on pourra dire aussi que l'homme et</div>
+               <div type="ic" n="5">l'animal sont grammairiens, et ainsi du reste.</div>
+            </div>
+         </div>
+         <div type="par" n="4">
+            <div type="s" n="1">Une propriété commune à toute substance, c'est de n'être point dans</div>
+            <div type="s" n="2">un sujet. Ainsi la substance première n'est pas dans un sujet et ne se dit d'aucun sujet.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Quant aux substances secondes, il est tout aussi évident qu'elles ne sont pas dans un sujet.</div>
+               <div type="ic" n="2">L'homme, en effet, peut se dire d'un homme quelconque comme sujet, mais n'est point dans ce sujet; car l'homme n'est point dans un homme. De même l'animal peut se dire</div>
+               <div type="ic" n="3">d'un homme comme sujet, et pourtant l'animal n'est point dans un homme. J'ajoute que, pour les choses qui sont dans un sujet, rien n'empêche que</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">leur appellation puisse parfois être attribuée au sujet; mais il est impossible que la définition s'y applique jamais. Pour les substances secondes, au contraire, l'appellation</div>
+               <div type="ic" n="2">et la définition sont attribuées également au sujet. En effet, on attribuera la définition de l'homme à un homme quelconque, et celle de l'animal s'y attribuera tout aussi bien. Ainsi, la substance ne saurait être mise</div>
+            </div>
+            <div type="s" n="5">au nombre des choses qui sont dans un sujet.</div>
+            <div type="s" n="6">
+               <div type="ic" n="1">Ceci, du reste, n'est point spécial à la substance, puisque la différence aussi est une</div>
+               <div type="ic" n="2">des choses qui ne sont pas dans un sujet: ainsi, terrestre, bipède, se disent de l'homme comme sujet, et cependant ne sont pas dans un sujet; car le bipède, le terrestre, n'est pas</div>
+            </div>
+            <div type="s" n="7">
+               <div type="ic" n="1">dans l'homme. La définition de la différence est attribuée à l'objet dont est dite cette différence</div>
+               <div type="ic" n="2">: par exemple, si terrestre se dit en parlant de l'homme, la définition de terrestre se dit aussi de l'homme; car l'homme est un animal terrestre.</div>
+            </div>
+            <div type="s" n="8">
+               <div type="ic" n="1">Du reste, ne craignons pas, parce que les parties des substance sont dans leurs entiers comme dans des sujets, d'être obligés de repousser ces entiers du nombre des substances: car, en disant que telles choses</div>
+               <div type="ic" n="2">étaient dans un sujet, nous n'avons pas prétendu dire qu'elles y fussent comme les parties dans un tout.</div>
+            </div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">
+               <div type="ic" n="1">Les substances et les différences ont cette propriété que tout ce qui vient d'elles est</div>
+               <div type="ic" n="2">nommé synonymiquement; car toutes les attributions qui en viennent s'appliquent à des individus ou à des espèces.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Il n'y a pas de catégorie qui découle de la substance première, parce qu'elle ne se dit d'aucun</div>
+               <div type="ic" n="2">sujet. Mais parmi les substances secondes, l'espèce est attribuée à l'individu; le genre est attribué à la fois aux espèces et aux individus: les</div>
+               <div type="ic" n="3">différences sont dans le même cas, et s'attribuent aux espèces et aux individus. Les substances premières</div>
+            </div>
+            <div type="s" n="3">peuvent recevoir la définition des espèces et celle des genres : l'espèce admet aussi la définition du genre, parce qu'en effet tout</div>
+            <div type="s" n="4">
+               <div type="ic" n="1">ce qu'on peut dire de l'attribut peut se dire également du sujet. De même, les</div>
+               <div type="ic" n="2">espèces et les individus reçoivent la définition des différences. Plus haut, nous avons appelé synonymes</div>
+               <div type="ic" n="3">les choses dont l'appellation était commune et la définition identique. Ainsi tout</div>
+            </div>
+            <div type="s" n="5">ce qui dérive des substances et des différences est dénommé par synonymie.</div>
+         </div>
+         <div type="par" n="6">
+            <div type="s" n="1">Toute substance semble désigner un objet réel. Pour les substances premières, il est incontestablement vrai qu'elles désignent quelque chose de</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">réel, puisque ce qu'elles désignent est toujours un individu et une unité numérique. Quant aux substances secondes, bien qu'elles semblent, par la forme même de l'appellation, désigner aussi une chose spéciale, comme lorsqu'on dit homme, animal, ceci pourtant n'est pas exact. Elles désignent plutôt une chose</div>
+               <div type="ic" n="2">qualifiée: en effet, le sujet ici n'est pas un comme la substance première, puisque homme, animal, se disent de plusieurs hommes, de plusieurs animaux.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="3">Pourtant, elles ne désignent pas non plus absolument une chose qualifiée, comme</div>
+               <div type="ic" n="4">le ferait cette expression, le blanc: le blanc ne désigne en effet rien de plus qu'une qualité. Mais le genre et l'espèce limitent la qualité à la substance, puisque le genre et l'espèce désignent une substance qualifiée</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">de certaine manière. Cependant la définition est plus compréhensive par le genre que par l'espèce; car</div>
+               <div type="ic" n="2">on y renferme plus de choses, quand on dit animal que quand on dit homme.</div>
+            </div>
+         </div>
+         <div type="par" n="7">
+            <div type="s" n="1">Les substances possèdent la propriété de ne point avoir de contraires. En effet, où est</div>
+            <div type="s" n="2">le contraire de la substance première, le contraire d'un homme</div>
+            <div type="s" n="3">par exemple, d'un animal? Évidemment il n'y a point ici de contraire. Il n'y a rien de contraire ni à l'homme ni à l'animal.</div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Du reste, ceci n'appartient pas exclusivement à la substance. Ce caractère appartient aussi à plusieurs autres catégories, et entre autres, à</div>
+               <div type="ic" n="2">celle de la quantité. Il n'y a pas de contraires à deux coudées, trois coudées, pas de contraires au nombre dix, pas de contraires à aucune des choses du même genre, à moins qu'on ne soutienne que peu est le contraire de beaucoup,</div>
+               <div type="ic" n="3">petit de grand. Mais quant aux quantités définies, elles ne sauraient jamais avoir de contraires.</div>
+            </div>
+         </div>
+         <div type="par" n="8">
+            <div type="s" n="1">
+               <div type="ic" n="1">La substance ne paraît pas susceptible de plus ni de moins. Je ne veux</div>
+               <div type="ic" n="2">pas dire qu'une substance ne soit pas plus ou moins substance qu'une autre substance, car j'ai déjà dit qu'il en était ainsi; mais je veux dire que chaque substance ne peut être plus ou moins ce qu'elle est. Par exemple, si</div>
+               <div type="ic" n="3">telle substance est homme, elle ne sera ni plus ni moins homme; l'homme ne sera ni plus ni moins homme que lui-même, ne sera ni plus ni moins homme</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">qu'un autre. En effet, un homme n'est pas homme plus qu'un autre, de la même façon qu'une chose blanche est plus ou moins blanche qu'une autre, qu'une chose belle est plus ou moins belle</div>
+               <div type="ic" n="2">qu'une autre. On peut bien dire sans doute qu'une chose a du plus ou du moins comparativement à elle-même: ainsi d'un corps blanc on dit qu'il est maintenant plus ou moins blanc qu'auparavant; d'un corps chaud, qu'il est plus ou</div>
+               <div type="ic" n="3">moins chaud. La substance, au contraire, n'est jamais ni plus ni moins substance; car on ne peut pas dire qu'un homme soit maintenant plus homme que auparavant. Et de même pour toutes les</div>
+               <div type="ic" n="4">autres substances. Ainsi la substance ne paraît susceptible ni de plus ni de moins.</div>
+            </div>
+         </div>
+         <div type="par" n="9">
+            <div type="s" n="1">
+               <div type="ic" n="1">La propriété la plus spéciale de la substance semble être que, tout en restant une seule et même chose, elle peut</div>
+               <div type="ic" n="2">recevoir les contraires. Pour toutes les autres choses, en effet, qui ne sont pas substances, on ne saurait dire qu'une seule et même chose reçoive les contraires. Ainsi, par</div>
+               <div type="ic" n="3">exemple, la couleur, qui numériquement est une seule et même chose, ne sera pas à la fois blanche et noire, de même qu'une seule et même action ne saurait être en même temps bonne et mauvaise. Ceci s'applique sans exception à toutes les choses qui</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">ne sont pas substances. Pour la substance au contraire, bien qu'elle reste une et identique,</div>
+               <div type="ic" n="2">elle n'en reçoit pas mois les contraires : ainsi un homme, un seul et même homme, peut être tour à tour blanc et noir, froid et chaud, bon ou méchant.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Quant aux autres choses, on n'y découvre rien de pareil, à moins qu'on ne soutienne que la parole, la pensée, peuvent admettre les contraires. Une même assertion,</div>
+               <div type="ic" n="2">en effet, semble pouvoir être fausse et vraie. Par exemple, si l'on dit avec vérité de quelqu'un qu'il est assis, cette même assertion sera fausse si cette personne vient à se lever. Et de même</div>
+               <div type="ic" n="3">pour la pensée; car si l'on pense</div>
+               <div type="ic" n="4">vrai en pensant que quelqu'un est assis, cette pensée deviendra fausse si la personne se lève et que l'on conserve relativement à elle la même pensée.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Même en admettant cette objection, il y a ici une différence formelle.</div>
+               <div type="ic" n="2">C'est qu'en ce qui concerne les substances, elles ne sont susceptibles des contraires que par suite d'un changement qu'elles-mêmes éprouvent; ainsi le corps qui devient froid, de chaud qu'il était, a subi un changement puisqu'il devient autre; ainsi de noir il devient blanc, de bon il devient mauvais; et de même pour toutes les autres choses, c'est parce</div>
+               <div type="ic" n="3">qu'elles éprouvent chacune un changement qu'elles sont susceptibles des contraires. Mais la parole et la pensée restent elles-mêmes absolument et toujours immuables; et c'est seulement parce que</div>
+               <div type="ic" n="4">l'objet vient à changer qu'elles reçoivent les contraires. Ainsi cette assertion que quelqu'un est assis demeure la même, mais la chose venant à changer l'assertion</div>
+               <div type="ic" n="5">peut être tour à tour fausse et</div>
+            </div>
+            <div type="s" n="5">vraie. Il en est de même pour la pensée. Ainsi donc en ce sens, ce serait une propriété de la substance, spéciale du moins dans la forme, d'être susceptible des contraires par cela seul qu'elle éprouve elle-même un changement.</div>
+            <div type="s" n="6">
+               <div type="ic" n="1">Tout en admettant encore que la</div>
+               <div type="ic" n="2">parole, la pensée sont susceptibles des contraires, on peut dire que cette opinion n'est pourtant pas tout à fait exacte. Si l'on dit que la parole et la pensée reçoivent les contraires, ce n'est pas qu'elles reçoivent</div>
+               <div type="ic" n="3">réellement quelque chose; mais c'est de fait dans un autre objet que se passe ce changement. C'est uniquement parce que la chose même est ou n'est pas de telle façon, que l'assertion peut être dite vraie ou</div>
+               <div type="ic" n="4">fausse, et non pas parce que la parole elle-même serait susceptible des contraires. Rien, en effet, ne saurait faire changer ni la parole ni la pensée, en sorte qu'elles ne reçoivent point les contraires, en ce sens qu'aucun</div>
+               <div type="ic" n="5">changement ne survient en elles. Quant à la substance, c'est parce qu'elle reçoit elle-même les contraires qu'on peut dire qu'elle est susceptible des contraires.</div>
+               <div type="ic" n="6">En effet, la substance reçoit également et la maladie et la santé, et le blanc et le noir; et c'est parce qu'elle éprouve elle-même toutes les modifications de ce genre qu'on dit qu'elle est susceptible de recevoir les contraires.</div>
+            </div>
+            <div type="s" n="7">Ainsi le propre de la substance, serait, tout en restant identique et numériquement une, d'admettre les contraires par un changement qu'elle éprouve elle-même.</div>
+            <div type="s" n="8">Terminons ici ce qui concerne la substance.</div>
+         </div>
+      </div>
+      <div n="6" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE VI</div>
+            <div n="2" type="par">DE LA QUANTITÉ</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Division de la quantité en finie et continue : division de la quantité, selon que ses parties ont ou n'ont pas de position dans l'espace. - Quantités finies : nombre, parole. - Quantités continues : ligne, surface, solide, temps, espace. - Quantités dont les parties ont une position : signe, surface, solide, espace. - Quantités dont les parties n'ont pas de position : nombre, temps, parole.</div>
+            <div n="2" type="par">Les quantités énumérées sont les seules quantités vraies: les autres ne sont qu'accidentelles : exemples divers.</div>
+            <div n="3" type="par">Propriétés de la quantité : 1° la quantité n'a point de contraire : objections diverses et réponses à ces objections; 2° une quantité n'est ni plus ni moins quantité qu'une autre; 3° Propriété principale : la quantité seule peut être dite égale ou inégale.</div>
+         </div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">La quantité est ou définie ou continue. Elle se compose,</div>
+               <div type="ic" n="2">soit de choses dont les parties ont entre elles un rapport de position, soit de choses dont les parties n'ont pas de position respective.</div>
+            </div>
+            <div type="s" n="2">La quantité définie est, par exemple, le nombre et la parole; la quantité continue, c'est la ligne, la surface, le corps, et de plus, le temps et l'espace.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">En effet, il n'y a, pour les parties du nombre, aucun terme commun dans lequel elles s'unissent. Ainsi, cinq est bien</div>
+               <div type="ic" n="2">une partie de dix, mais cinq et cinq ne tiennent l'un à l'autre par aucun terme commun : ils sont l'un et l'autre des quantités définies. Trois</div>
+               <div type="ic" n="3">et sept ne se lient pas davantage par un commun terme; et en général, pour</div>
+               <div type="ic" n="4">le nombre, on ne saurait en lier les parties par aucun rapport commun; ces parties sont toujours des quantités définies.</div>
+               <div type="ic" n="5">Le nombre doit donc être rangé parmi les quantités définies.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">La parole en fait également partie. D'abord il</div>
+               <div type="ic" n="2">est évident que la parole est une quantité, puisqu'elle</div>
+               <div type="ic" n="3">se mesure par des syllabes brèves et longues; je</div>
+               <div type="ic" n="4">veux dire la parole articulée, et l'on ne peut</div>
+               <div type="ic" n="5">rapporter les parties qui la composent à aucun terme commun. Il</div>
+               <div type="ic" n="6">n'est point de terme commun qui joigne les syllabes entre elles; elles sont chacune par elles-mêmes des quantités définies.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Au contraire la ligne est une quantité</div>
+               <div type="ic" n="2">continue: car il est possible d'assigner un terme commun où aboutissent ses parties, et ce terme c'est le point,</div>
+               <div type="ic" n="3">comme pour la surface, c'est la ligne; car toutes les parties du plan se réunissent dans ce terme commun.</div>
+            </div>
+            <div type="s" n="6">Le solide aussi a un terme commun du même genre; car on peut regarder la ligne ou la surface comme le terme commun dans lequel s'unissent toutes les parties du solide.</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">Le temps et l'espace sont dans le même cas;</div>
+               <div type="ic" n="2">car, d'une part, le présent tient à la fois et au passé et à l'avenir;</div>
+            </div>
+            <div type="s" n="8">
+               <div type="ic" n="1">et d'autre part, l'espace aussi doit</div>
+               <div type="ic" n="2">compter parmi les quantités continues, puisque les parties du corps qui aboutissent par leur réunion à un terme</div>
+               <div type="ic" n="3">commun occupent toujours un espace. Donc, les parties de l'espace qu'occupe chacune des parties du corps, se réunissent dans ce même terme commun où se réunissent les parties du corps lui-même</div>
+               <div type="ic" n="4">: donc, l'espace est une quantité continue,</div>
+               <div type="ic" n="5">puisque ces parties aboutissent par leur réunion à un terme commun.</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">En outre on a dit que certaines quantités sont formées de choses dont les parties ont entre elles un rapport de position, et d'autres ne sont formées que de choses dont les parties n'ont point de position.</div>
+               <div type="ic" n="2">Ainsi les parties de la ligne ont relativement les unes aux autres une position; car chacune est placée dans un lieu distinct ; et l'on pourrait dire et indiquer précisément où chacune est posée dans le plan, et à quelle sorte de partie elle se lie.</div>
+               <div type="ic" n="3">De même les parties du plan ont une certaine position, et l'on pourrait dire pour chacune également le lieu précis où elle est, et énoncer celles qui se lient entre elles.</div>
+            </div>
+            <div type="s" n="2">De même que pour les parties du solide, pour les parties de l'espace.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Pour le nombre, au contraire, il serait impossible de montrer, ni comment ses parties ont entre elles un rapport de position, ni où elles sont, et comment elles se lient les unes aux</div>
+               <div type="ic" n="2">autres. Même difficulté pour les</div>
+               <div type="ic" n="3">parties du temps; car aucune des parties du temps n'est permanente. Et comment ce qui n'est pas permanent pourrait-il avoir une position?</div>
+            </div>
+            <div type="s" n="4">On pourrait dire aussi que les parties du temps ont entre elles un certain lieu puisque dans le temps telle partie</div>
+            <div type="s" n="5">
+               <div type="ic" n="1">est antérieure, telle autre postérieure. De même aussi pour le nombre, puisque un est nombré avant deux, et deux avant trois. De</div>
+               <div type="ic" n="2">là, si l'on veut, une espèce d'ordre, mais ce n'est que de position.</div>
+            </div>
+            <div type="s" n="6">
+               <div type="ic" n="1">De même enfin pour</div>
+               <div type="ic" n="2">la parole. Aucune de ces parties n'est permanente. Une fois prononcées, on ne peut les ressaisir, de sorte qu'il ne peut y avoir aucune position pour ces parties puisqu'elles ne sont pas permanentes.</div>
+            </div>
+            <div type="s" n="7">Ainsi donc, certaines quantités sont formées de choses dont les parties ont une position, et certaines autres de choses dont les parties n'ont pas de position.</div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">Les quantités proprement dites sont celles que nous avons énoncées; toutes les autres ne sont des quantités que par accident. C'est seulement en vue</div>
+               <div type="ic" n="2">des premières que nous nommons ainsi les autres : par exemple, on dit une grande blancheur, par cela seul que la surface blanche est fort étendue : on dit d'une action, qu'elle est longue, parce qu'il s'écoule beaucoup de temps durant son accomplissement. Et c'est de même aussi qu'on dit : un grand mouvement.</div>
+               <div type="ic" n="3">En soi-même aucune de ces choses ne peut être appelée quantité; ou si l'on veut</div>
+               <div type="ic" n="4">exprimer quelle est la quantité d'une action, il faut la déterminer par le temps, et dire qu'elle dure une année ou tel autre espace de temps. Et de même pour la blancheur, si on veut dire quelle est la quantité de la blancheur, on la déterminera par la surface, et l'on mesurera la quantité de la blancheur à la quantité même de la surface.</div>
+               <div type="ic" n="5">Ainsi donc les seules quantités véritables, les seules quantités en soi, sont celles que nous avons dites : quant à toutes les autres, elles ne sont pas quantités par elles-mêmes, elles ne le sont que par accident.</div>
+            </div>
+         </div>
+         <div type="par" n="4">
+            <div type="s" n="1">La quantité, non plus que la substance, n'a pas de contraires. Pour les quantités définies, il est bien évident qu'elles n'ont pas de contraires : par exemple, deux coudées, trois coudées, surface, et toutes les choses de cet ordre n'en ont pas. A moins qu'on ne prétende que beaucoup est contraire à peu, grand à petit.</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Mais ces dernières choses ne sont pas des quantités, ce sont bien plutôt</div>
+               <div type="ic" n="2">des relatifs. Rien, en effet, ne peut en ni être dit petit ou grand; ce ne peut être jamais que par rapport à une autre chose. Ainsi d'une montagne, on dit qu'elle est petite et d'un noyau qu'il est grand, parce que celui-ci est plus grand que les objets du même genre que lui, celle-là plus petite que les objets analogues. Il</div>
+               <div type="ic" n="3">y a donc ici relation à un autre objet; car si ces objets pouvaient en eux-mêmes être grands et petits, on n'aurait pas dit que la montagne fût petite et le noyau grand. De même, on dit que dans un bourg il y</div>
+            </div>
+            <div type="s" n="3">a beaucoup de population et qu'il y en a peu dans Athènes, bien que de fait la population, dans Athènes, soit beaucoup plus nombreuse; on dit qu'il y a beaucoup de monde dans une maison, et qu'il y en a peu au théâtre, bien que dans ce dernier lieu il y en ait bien davantage.</div>
+            <div type="s" n="4">
+               <div type="ic" n="1">C'est, je le répète, que deux coudées, trois coudées et autres choses du même genre expriment une quantité; grand et petit, au contraire, n'expriment pas une quantité, ils expriment plutôt un rapport. En effet, grand</div>
+               <div type="ic" n="2">et petit ne se distinguent que relativement à un autre objet; et il est</div>
+               <div type="ic" n="3">clair que grand et petit sont de la catégorie des relatifs.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Du reste qu'on les reconnaisse ou qu'on ne les reconnaisse pas pour quantités, on peut dire que grand et petit n'ont pas de contraires;</div>
+               <div type="ic" n="2">car d'une chose qu'on ne peut pas saisir et prendre en soi, d'une chose qui se rapporte à une autre, comment pourrait-on dire qu'elle a des contraires?</div>
+            </div>
+            <div type="s" n="6">Bien plus, si grand et petit sont contraires l'un à l'autre, il s'ensuivra qu'une seule et même chose pourra recevoir en même temps les contraires, et que les choses seront</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">contraires à elles-mêmes. En effet, une chose peut être à la fois petite et grande; petite, par rapport à tel objet, grande, par rapport à tel autre objet; de sorte</div>
+               <div type="ic" n="2">qu'une seule et même chose peut être grande et petite au même moment, et qu'elle reçoit en même temps les contraires. Or il n'est rien au monde</div>
+               <div type="ic" n="3">qui paraisse pouvoir admettre en même temps les contraires. Dira-t-on que c'est</div>
+               <div type="ic" n="4">la substance? Certainement, elle admet les contraires; mais pourtant aucun être n'est à la fois malade et bien portant; rien n'est à la fois blanc et noir. Parmi toutes les autres choses, il n'en est non plus aucune qui admette en même temps les</div>
+            </div>
+            <div type="s" n="8">
+               <div type="ic" n="1">contraires. Il s'ensuivrait aussi qu'une chose pourrait fort bien être contraire à</div>
+               <div type="ic" n="2">elle-même. Car si grand est le contraire de petit, et qu'une même chose puisse être à la fois grande et petite, cette chose sera contraire à</div>
+               <div type="ic" n="3">elle-même; mais il y impossibilité qu'une chose quelconque soit contraire à elle-même. Donc,</div>
+            </div>
+            <div type="s" n="9">grand n'est pas le contraire de petit, ni beaucoup de peu ; donc, même en admettant qu'on rapporte ces choses, non pas à la relation, mais à la quantité, elles n'auront pas davantage de contraires.</div>
+            <div type="s" n="10">
+               <div type="ic" n="1">C'est surtout relativement à l'espace que la quantité semble avoir des contraires. En effet,</div>
+               <div type="ic" n="2">on regarde le haut comme le contraire du bas, appelant le bas ce qui est vers le centre, parce que le centre est à la plus grande distance possible des bornes du monde.</div>
+            </div>
+            <div type="s" n="11">
+               <div type="ic" n="1">C'est même de là qu'on semble tirer toutes les définitions des autres contraires ; car les</div>
+               <div type="ic" n="2">choses qui dans un même genre sont les plus éloignées les unes des autres, sont appelées contraires.</div>
+            </div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">
+               <div type="ic" n="1">La quantité ne paraît pas susceptible de plus et de moins : par exemple, une chose de deux coudées n'a ces deux coudées ni plus ni</div>
+               <div type="ic" n="2">moins qu'une autre de même dimension. De même aussi pour les nombres: trois ne sont pas trois plus que cinq ne sont cinq, et réciproquement.</div>
+               <div type="ic" n="3">Le temps non plus, n'est pas plus temps qu'un autre temps. De</div>
+               <div type="ic" n="4">toutes les quantités que nous avons énumérées, aucune n'est ni plus ni moins quantité qu'une autre.</div>
+               <div type="ic" n="5">La quantité ne paraît donc pas susceptible de plus et de moins.</div>
+            </div>
+         </div>
+         <div type="par" n="6">
+            <div type="s" n="1">La propriété la plus spéciale de la quantité, c'est d'être dite égale</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">et inégale. En effet, on peut dire de chacune des quantités dont nous avons parlé, qu'elle est égale et inégale : le nombre, le temps est dit égal et inégal; et de même pour toutes les quantités citées plus haut,</div>
+               <div type="ic" n="2">on peut dire qu'elles sont égales et inégales. Quant aux choses qui ne sont pas des quantités, on</div>
+            </div>
+            <div type="s" n="3">ne pourrait dire avec exactitude qu'elles soient égales et inégales. Par exemple, d'une disposition, on ne peut dire qu'elle soit réellement égale et inégale; on doit dire plutôt qu'elle est semblable et dissemblable. La blancheur ne peut être dite réellement égale et inégale, mais plutôt semblable</div>
+            <div type="s" n="4">et dissemblable. Donc la propriété spéciale de la quantité, c'est d'être dite égale et inégale.</div>
+         </div>
+      </div>
+      <div n="7" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE VII</div>
+            <div n="2" type="par">DES RELATIFS</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Définition vulgaire des relatifs : exemples divers.</div>
+            <div n="2" type="par">Propriétés des relatifs. 1° Quelques-uns ont des contraires. 2° Quelques-uns sont susceptibles de plus et de moins. 3° Tous les relatifs doivent être réciproques à un autre terme : difficultés pour reconnaître cette réciprocité quand les mots manquent à la langue : nécessité de forger des mots pour découvrir la relation. 4° Les relatifs coexistent pour la plupart : exceptions diverses.</div>
+            <div n="3" type="par">Examen de cette question : Quelques substances peuvent-elles être comprises parmi les relatifs? Solution négative, au moyen d'une définition nouvelle des relatifs.</div>
+            <div n="4" type="par">Difficulté de la théorie des relatifs.</div>
+         </div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">On appelle relatives, les choses qui sont dites, quelles qu'elles soient, les choses d'autres choses, ou qui se rapportent à une autre chose, de quelque façon différente que ce soit.</div>
+               <div type="ic" n="2">Par exemple, plus grand, quel que soit l'objet, se dit par rapport à une autre chose, puisqu'on doit dire plus grand que telle autre chose. Double aussi n'est ce qu'il est que par rapport à une autre chose, puisqu'on</div>
+               <div type="ic" n="3">doit dire double d'une autre chose; et de même</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">pour toutes les choses de ce genre. Voici encore d'autres relatifs: possession, disposition, sensation, science, position; ces choses-là ne sont que les</div>
+               <div type="ic" n="2">choses d'autres choses, ou ont tel autre rapport à une autre chose, et ne valent que par ce</div>
+               <div type="ic" n="3">rapport. La possession, par exemple, c'est la possession de quelque chose; la science, la science de quelque chose; la position est la position de quelque chose; et de même</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">pour tout le reste. Ainsi, les relatifs sont toutes les choses qui ne sont dites, quelles qu'elles soient, que d'autres choses,</div>
+               <div type="ic" n="2">ou qui se rapportent, de quelque façon que ce soit, à une autre chose qu'elles-mêmes. Ainsi une montagne est dite grande par rapport à une autre montagne; elle n'est dite grande que par relation. Semblable est dit semblable à quelque chose, et de même pour toutes les choses analogues; elles sont dites relativement à quelque chose.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">De même encore la récubation, la station, le séant, sont des positions; et la position fait partie des relatifs. Cependant,</div>
+               <div type="ic" n="2">être couché, être debout, être assis, ne sont pas en eux-mêmes des positions; mais on les appelle ainsi par dérivation des positions qu'on vient de citer.</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">Les relatifs possèdent aussi la propriété des contraires: ainsi, la vertu est le contraire du vice; et le vice et la vertu sont tous deux des relatifs; la science est le contraire de l'ignorance.</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Cependant cette propriété des contraires n'appartient pas à</div>
+               <div type="ic" n="2">tous les relatifs : double, triple, ni aucune des choses du même genre n'ont de contraires.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Les relatifs aussi paraissent susceptibles de plus et moins: en effet, semblable et</div>
+               <div type="ic" n="2">dissemblable sont dits l'un et l'autre plus ou moins; égal et inégal le sont aussi plus ou moins; et ce sont là des relatifs;</div>
+               <div type="ic" n="3">car semblable est dit semblable à quelque chose, inégal est dit inégal à quelque chose.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Tous les relatifs cependant ne sont pas susceptibles de plus et de</div>
+               <div type="ic" n="2">moins. Double, en effet, n'est ni plus ni moins double; il en est de même pour tous les relatifs de ce dernier genre.</div>
+            </div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">Tous les relatifs s'appliquent à des choses réciproques: ainsi l'esclave est dit esclave du maître; et réciproquement, le maître est maître de l'esclave. Le double veut dire le double de ce qui en est la moitié ; la moitié est la moitié de ce qui en est le double; plus grand est plus grand que ce qui est plus petit; plus petit est plus petit que ce qui</div>
+               <div type="ic" n="2">est plus grand, et ainsi du reste. Il peut</div>
+               <div type="ic" n="3">se faire cependant que dans l'énonciation les choses réciproques diffèrent quelquefois par la terminaison. Ainsi, la science est la science de ce qui est su, et ce qui est su est su par la science : la sensation est la sensation de l'objet senti, et l'objet sensible est senti par la sensation.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Parfois cette réciprocité des relatifs cesse d'être apparente, quand on ne fait pas une application exacte des mots, et qu'on s'est trompé dans cette application. Par</div>
+               <div type="ic" n="2">exemple, si l'on rapporte l'aile à l'oiseau on ne pourra pas dire réciproquement l'oiseau d'une aile. C'est</div>
+               <div type="ic" n="3">que la première application de mots n'est pas juste, et qu'on rapporte à tort</div>
+               <div type="ic" n="4">aile à oiseau. En effet, ce n'est pas en tant qu'il est oiseau qu'on dit son aile, mais</div>
+               <div type="ic" n="5">c'est en tant qu'il est ailé; car bien d'autres choses ont des ailes sans</div>
+               <div type="ic" n="6">être pour cela des oiseaux. La réciprocité se rétablit si l'application est exacte: ainsi l'aile est l'aile d'un animal ailé, et l'animal ailé est ailé par l'aile.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Parfois aussi, il est nécessaire de créer un mot spécial, quand il n'existe pas de terme auquel on puisse légitimement rapporter la chose. Par exemple,</div>
+               <div type="ic" n="2">si l'on veut rapporter gouvernail à navire, l'application n'est pas exacte; car ce n'est pas parce que l'objet est vaisseau qu'on dit son gouvernail, puisqu'il y a des vaisseaux</div>
+               <div type="ic" n="3">sans gouvernail. La réciprocité est donc ici détruite, puisqu'on</div>
+               <div type="ic" n="4">ne peut pas dire réciproquement que</div>
+               <div type="ic" n="5">le vaisseau est le vaisseau du gouvernail. Mais peut-être l'appellation des</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">mots serait-elle plus juste, si l'on disait, par exemple : Le gouvernail est le gouvernail d'une chose « gouvernallisée », ou si l'on employait toute autre expression pareille, attendu qu'il n'y a point ici de mot</div>
+               <div type="ic" n="2">spécial. La réciprocité existe toujours en faisant une application de mots</div>
+               <div type="ic" n="3">qui soit légitime; en effet, la chose « gouvernallisée »</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">est « gouvernallisée » par le gouvernail; et ainsi du reste. Par exemple, tête se dira plus exactement d'un être « têtifié » que d'animal; car</div>
+               <div type="ic" n="2">ce n'est pas en tant qu'animal que l'animal</div>
+               <div type="ic" n="3">a une tête, puisque beaucoup d'animaux n'en ont pas.</div>
+            </div>
+            <div type="s" n="6">C'est ainsi qu'on peut trouver fort aisément des mots pour des choses qui n'ont pas de nom spécial, si l'on tire ces mots des primitifs, et qu'on les impose aux objets correspondants à ces primitifs, comme on l'a fait plus haut, d'aile faisant ailé, de gouvernail « gouvernallisé ».</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">Ainsi donc, tous les relatifs, si l'application des mots est exacte, doivent être dits de choses qui leur sont</div>
+               <div type="ic" n="2">réciproques; seulement, si l'on fait cette application au hasard et qu'on ne les rapporte pas à la chose même dont ils sont</div>
+            </div>
+            <div type="s" n="8">
+               <div type="ic" n="1">dits, la réciprocité disparaît. J'ajoute que, même parmi les choses dont la réciprocité est notoire, et qu'on peut rendre par des mots spéciaux, la correspondance vient à cesser, si l'appellation se fait d'après quelque accident, et non pas d'après la chose même dont il s'agit. Par exemple,</div>
+               <div type="ic" n="2">si l'on attribue l'esclave, non pas au maître, mais à l'homme, à l'animal bipède, ou à tel autre accident de ce genre, la réciprocité n'existe plus, parce</div>
+               <div type="ic" n="3">que l'appellation des mots est inexacte.</div>
+            </div>
+            <div type="s" n="9">
+               <div type="ic" n="1">Mais si l'on fait une appellation légitime relativement à la chose qui doit la recevoir, et qu'éliminant tout ce qui n'est qu'accident, on ne garde que ce qui peut recevoir justement l'appellation du mot, le mot alors sera toujours parfaitement applicable</div>
+               <div type="ic" n="2">à la chose. Ainsi, que l'on rapporte esclave à maître, et en écartant tous les faits accidentels qui peuvent se rapporter au maître, par exemple d'être un animal à deux pieds, d'être susceptible de science, d'être un homme, on pourra toujours, en lui laissant uniquement cette propriété d'être maître, rapporter esclave à</div>
+               <div type="ic" n="3">maître; car l'esclave est dit esclave du maître.</div>
+            </div>
+            <div type="s" n="10">
+               <div type="ic" n="1">Si, au contraire, l'appellation du mot n'est pas légitime, même en ayant soin d'écarter toutes les autres circonstances, pour ne garder que la chose même à laquelle le mot devrait se rapporter,</div>
+               <div type="ic" n="2">on ne pourra l'employer avec justesse. Par exemple, qu'on rapporte esclave à homme et aile à oiseau, et qu'on écarte de l'homme sa qualité</div>
+               <div type="ic" n="3">de maître, on ne pourra plus dire esclave par rapport à homme; car sans maître il n'y a plus</div>
+               <div type="ic" n="4">d'esclave. Et de même qu'on ôte à l'oiseau sa qualité d'être ailé, aile</div>
+               <div type="ic" n="5">ne sera plus une chose de relation, puisque sans</div>
+               <div type="ic" n="6">animal ailé l'aile ne sera plus dite de quelque chose.</div>
+            </div>
+            <div type="s" n="11">
+               <div type="ic" n="1">Ainsi donc, il faut faire l'appellation du mot relativement aux choses qui peuvent légitimement</div>
+               <div type="ic" n="2">la recevoir. S'il existe un nom spécial, cette appellation est fort simple; s'il n'en existe pas, il sera peut-être nécessaire d'en créer un nouveau. Avec</div>
+            </div>
+            <div type="s" n="12">des appellations verbales ainsi faites, il est évident que tous les relatifs se disent de choses réciproques les unes aux autres.</div>
+         </div>
+         <div type="par" n="4">
+            <div type="s" n="1">Les relatifs semblent pouvoir exister simultanément par nature,</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">et ceci est vrai de la plupart d'entre eux.</div>
+               <div type="ic" n="2">Double et moitié existent à la fois; moitié existant, double existe aussi; le maître existant, l'esclave existe; l'esclave existant, le maître existe, et ainsi de</div>
+               <div type="ic" n="3">reste. Il faut ajouter que ces choses</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">se détruisent aussi réciproquement: s'il n'y a pas</div>
+               <div type="ic" n="2">de double, il n'y a pas de moitié; s'il n'y a pas de moitié, il n'y a pas de</div>
+               <div type="ic" n="3">double, et de même pour tous les autres cas.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Cependant cette simultanéité naturelle d'existence n'est pas vraie pour tous les relatifs : la</div>
+               <div type="ic" n="2">chose sue paraît antérieure à la science; car en général nous tirons les sciences</div>
+               <div type="ic" n="3">de choses qui existent préalablement. Il n'y a qu'un bien petit nombre de choses, pour ne</div>
+               <div type="ic" n="4">pas dire aucune, où l'on voie la science formée en même temps que la chose qui doit être sue.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">De plus, si la chose qui peut être sue disparaît, elle fait disparaitre la science avec elle; mais la science disparaissant n'enlève pas avec elle la</div>
+               <div type="ic" n="2">chose qui peut être sue. Sans la chose qui peut être sue, il n'y a pas de science; car ce serait la science de rien; mais la chose à savoir peut fort bien exister sans la</div>
+               <div type="ic" n="3">science. Par exemple, la quadrature du cercle, si toutefois c'est une chose qui puisse être sue, existe comme chose à savoir, bien que la science de cette chose n'existe pas encore. J'ajoute que l'animal</div>
+            </div>
+            <div type="s" n="6">homme venant à disparaître, il n'y aurait plus de science, bien qu'une foule de choses susceptibles d'être sues pussent rester encore après lui.</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">Il en est de même pour la sensation, l'objet sensible semble</div>
+               <div type="ic" n="2">antérieur à la sensation: ôtez, en effet, l'objet sensible, il emporte la</div>
+               <div type="ic" n="3">sensation avec lui. Mais la sensation disparaissant n'enlève pas avec elle l'objet sensible. En effet, les sensations s'appliquent à un corps, et sont</div>
+            </div>
+            <div type="s" n="8">dans un corps : l'objet sensible détruit, le corps lui-même disparaît; car le corps est du nombre des objets sensibles, et s'il n'y a pas de corps, la sensation elle-même disparaît; de sorte que la chose sensible détruite, détruit avec elle la sensation. La sensation, au contraire, ne détruit pas</div>
+            <div type="s" n="9">
+               <div type="ic" n="1">avec elle la chose sensible. Si l'animal disparaît,</div>
+               <div type="ic" n="2">la sensation disparaît avec lui; mais la chose sensible reste; et c'est, par exemple, le corps, la chaleur, la douceur, l'amertume, et tant d'autres choses du même genre, qui touchent nos sens.</div>
+            </div>
+            <div type="s" n="10">Il y a plus, la sensation ne naît qu'avec l'être qui sent; car c'est seulement quand l'animal vient à naître, que la sensation naît avec lui. Mais les objets sensibles existent avant qu'il n'y ait ni d'animal, ni de sensation : en effet, le feu, l'eau et tous les éléments analogues dont l'animal est formé, existent avant qu'il n'y ait du tout ni animal ni sensation. Ainsi, l'objet sensible paraîtrait précéder la sensation.</div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">On peut se demander si toute substance est exclue des relatifs, ainsi que cela semble, ou bien si l'on peut comprendre parmi eux quelques-unes des substances secondes. Il est certain,</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">pour les substances premières, que ni les substances entières ni leurs</div>
+               <div type="ic" n="2">parties ne sont jamais exprimées par relation; car on ne dit pas</div>
+               <div type="ic" n="3">que tel individu homme est un homme de telle chose que tel bœuf est un bœuf de telle chose, non plus</div>
+               <div type="ic" n="4">que pour leurs parties, on ne</div>
+               <div type="ic" n="5">dit pas que telle main est telle main de quelqu'un, mais bien la main de quelqu'un; on ne dit pas que telle tête est telle tête de quelqu'un, mais bien la</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">tête de quelqu'un. Il en est de même pour les substances secondes, pour la plupart</div>
+               <div type="ic" n="2">du moins. Par exemple, l'homme n'est pas dit l'homme de quelque chose; le bœuf n'est pas le bœuf de quelque chose; le bois, le bois de quelque chose; mais ils sont</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">dits la propriété de quelqu'un. Il est donc évident que les choses de ce genre ne sont pas parmi les relatifs. Mais il y a doute pour quelques-unes</div>
+               <div type="ic" n="2">des substances secondes. Par exemple, la tête est dite la tête de quelqu'un, la main est dite la main de quelqu'un, et ainsi des choses du même genre, qui paraissent appartenir aux relatifs.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Si donc la définition des relatifs a été bonne; il est difficile, pour ne pas dire impossible, de démontrer qu''aucune substance n'entre dans la catégorie des relatifs</div>
+               <div type="ic" n="2">Mais si la définition est insuffisante, et qu'on pense que les relatifs sont les choses dont l'existence se confond avec leur rapport quelconque à une autre chose, alors il y aurait moyen de répondre à cette objection.</div>
+            </div>
+            <div type="s" n="6">La première définition des relatifs s'applique sans doute à tous les relatifs sans exception; mais y a une grande différence entre être relatif, et n'être ce qu'on est que parce qu'on est dit d'une autre chose.</div>
+            <div type="s" n="7">De ce qu'on a dit, il suit évidemment que si quelqu'un connaît un relatif d'une manière précise, il connaîtra d'une manière précise aussi la chose à laquelle le relatif s'applique. Ceci</div>
+            <div type="s" n="8">
+               <div type="ic" n="1">est évident par soi-même. Si quelqu'un en effet sait que</div>
+               <div type="ic" n="2">telle chose est au nombre des relatifs, et que l'existence des relatifs soit identique au rapport quelconque qu'ils ont avec une chose, il connaît aussi la chose à l'égard de laquelle ce relatif est dans une certaine relation. S'il ne connaît</div>
+               <div type="ic" n="3">point du tout la chose à laquelle ce relatif se rapporte, il ne saura même pas s'il se rapporte à quelque chose.</div>
+            </div>
+            <div type="s" n="9">
+               <div type="ic" n="1">Ceci n'est pas moins évident dans les exemples particuliers. Par exemple</div>
+               <div type="ic" n="2">si l'on sait positivement d'une chose qu'elle est le double, on sait aussitôt positivement de quelle autre chose elle est le double ; car si on ne savait pas qu'elle est le double d'une chose déterminée, on ne saurait pas du tout non plus qu'elle est le double. Et de même</div>
+               <div type="ic" n="3">si l'on sait qu'une chose est plus belle, on doit nécessairement aussi savoir sur-le-champ et d'une manière déterminée, la chose en comparaison de laquelle elle est plus belle. On ne saura pas d'une manière indéterminée qu'elle est plus belle qu'une chose plus laide; car ce</div>
+               <div type="ic" n="4">ne serait alors qu'une vague conception, ce ne serait pas une science. On</div>
+               <div type="ic" n="5">ne saurait même pas exactement qu'elle est plus belle qu'une chose plus laide; car</div>
+               <div type="ic" n="6">il pourrait se faire qu'il n'y eût pas eu réalité de chose moins</div>
+               <div type="ic" n="7">belle que celle-là. Il est donc évidemment nécessaire que ce qu'on sait précisément des relatifs, on le sache précisément aussi de la chose à laquelle ces relatifs se rapportent.</div>
+            </div>
+            <div type="s" n="10">
+               <div type="ic" n="1">On peut savoir d'une manière précise ce que sont la tête, la main, et autres choses du même ordre, qui sont des substances; mais on ne sait pas nécessairement pour cela la chose qu'elles concernent, et</div>
+               <div type="ic" n="2">l'on peut ignorer à qui précisément appartint cette tête, à qui cette main. Ce ne sont donc</div>
+               <div type="ic" n="3">pas là des relatifs; et si ce ne sont</div>
+               <div type="ic" n="4">pas là des relatifs, il est donc vrai de dire qu'il n'y a pas de substance qui fasse partie des relatifs.</div>
+            </div>
+            <div type="s" n="11">Du reste, il serait peut-être difficile de rien affirmer en ces matières sans y avoir regardé à plusieurs reprises; mais en tout cas il n'est pas inutile d'avoir discuté chacune de ces questions.</div>
+         </div>
+      </div>
+      <div n="8" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE VIII</div>
+            <div n="2" type="par">DE LA QUALITÉ</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Définition de la qualité : qualité est un mot à plusieurs sens. 1° espèce de la qualité : Capacité et disposition : rapports et différences de l'une et de l'autre.</div>
+            <div n="2" type="par">espèce de la qualité : Puissance et impuissance naturelles : exemples divers.</div>
+            <div n="3" type="par">Espèce de la qualité : Qualités affectives et affection: distinctions, exemples divers : affections du corps : affections de l'âme.</div>
+            <div n="4" type="par">Espèce de la qualité : Forme et figure des choses: exemples divers.</div>
+            <div n="5" type="par">Les qualitatifs sont en général dénommés par dérivation des qualités: exceptions.</div>
+            <div n="6" type="par">Propriétés de la qualité :</div>
+            <div n="7" type="par">La qualité a le plus souvent un contraire qui est alors aussi dans la catégorie de la qualité;</div>
+            <div n="8" type="par">la qualité reçoit ordinairement le plus et le moins : exceptions pour la première et la quatrième espèce de qualité ;</div>
+            <div n="9" type="par">Propriété spéciale : La qualité seule peut être dite semblable ou dissemblable.</div>
+         </div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">J'appelle qualité ce qui fait qu'on dit des êtres qu'ils sont de telle façon.</div>
+               <div type="ic" n="2">Qualité, du reste, est un mot à plusieurs sens.</div>
+            </div>
+            <div type="s" n="2">Ainsi la capacité et la disposition forment une première espèce de qualité.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">La capacité diffère de la disposition en ce qu'elle est beaucoup plus durable,</div>
+               <div type="ic" n="2">beaucoup plus stable; les sciences et les vertus sont</div>
+               <div type="ic" n="3">dans le même cas. La science, en effet, paraît une des choses les plus stables, les plus inébranlables pour peu qu'on la possède, sauf le cas de maladie ou telle autre circonstance analogue qui détermine</div>
+               <div type="ic" n="4">en nous un grand changement. Et</div>
+               <div type="ic" n="5">dans l'ordre des vertus, la justice, par exemple, la sagesse ou toute autre vertu pareille, semblent quelque chose qui n'est ni</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">facilement variable ni changeant. Les dispositions, au contraire, sont les qualités qui changent sans peine et se modifient rapidement. Ainsi la chaleur, le froid, la santé, la maladie</div>
+               <div type="ic" n="2">et toutes choses pareilles. L'homme est dans un certain état selon ces dispositions diverses, et il peut changer subitement, de chaud devenant froid, passant de la santé à</div>
+               <div type="ic" n="3">la maladie, et ainsi du reste. Mais si quelqu'une de ces dispositions même est, par sa longue durée, devenue en quelque sorte naturelle, irrémédiable ou tout à fait immuable, alors on peut l'appeler une véritable capacité.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Car il est clair que ce qui est plus durable et de changement plus difficile, doit être nommé capacité.</div>
+               <div type="ic" n="2">Ceux qui ne possèdent pas complètement les principes des sciences, mais qui sont encore ébranlables sur bien des points, ne sauraient passer pour avoir une réelle capacité, bien qu'ils aient plus ou moins de dispositions pour</div>
+            </div>
+            <div type="s" n="6">la science. Ainsi, la disposition diffère de la capacité en ce que l'une est mobile, tandis que l'autre est plus durable et moins changeante.</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">Les capacités, du reste, sont aussi des dispositions; mais les dispositions ne sont pas nécessairement des capacités. Ceux qui</div>
+               <div type="ic" n="2">ont acquis réellement des capacités sont constitués par elles dans une certaine disposition; mais ceux qui ont la disposition n'ont pas nécessairement et par cela seul une capacité.</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">Une seconde espèce de la qualité est celle qui nous fait dire, par exemple, que les gens sont susceptibles d'être lutteurs, coureurs, bien portants ou malades; en un mot, tout ce qui est dénommé d'après</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">la puissance ou l'impuissance physique. En effet, tous ces gens sont ainsi qualifiés, non point à cause d'une certaine manière d'être réelle, mais à cause de leur puissance ou de leur impuissance</div>
+               <div type="ic" n="2">physique à faire aisément ou à ne pas souffrir. Par exemple, on appelle certaines gens lutteurs, coureurs, non parce qu'ils sont en une certaine disposition, mais parce qu'ils ont la puissance physique de faire aisément certains exercices. On appelle hommes sains ceux qui ont la puissance physique de ne pas souffrir aisément de tous les accidents fortuits; les valétudinaires, ceux qui sont par</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">constitution impuissants à ne pas souffrir aisément de tous ces accidents. C'est dans le</div>
+               <div type="ic" n="2">même sens qu'on appelle telle chose dure, telle autre molle; dure, parce qu'elle a la puissance de ne pas être divisée aisément; molle, parce qu'elle a l'impuissance de cette même qualité.</div>
+            </div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">Un troisième genre de qualité se forme des qualités</div>
+               <div type="ic" n="2">affectives et des affections. Telles sont la douceur, l'amertume, l'âcreté, et toutes les choses de même ordre; elles sont encore la chaleur, le froid, la blancheur, la noirceur.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Il est évident que ce sont là des qualités;</div>
+               <div type="ic" n="2">pour les choses qui les reçoivent sont dites d'après elles être</div>
+               <div type="ic" n="3">telles ou telles. Ainsi c'est parce que le miel reçoit la douceur qu'il est appelé doux: et le corps est dit blanc, parce</div>
+               <div type="ic" n="4">qu'il reçoit la blancheur; et ainsi du reste.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Ces qualités sont appelées affectives, non pas parce que les choses qui les reçoivent seraient elles-mêmes affectées en</div>
+               <div type="ic" n="2">rien ; car le miel, non plus que telle autre chose de ce genre, n'est pas appelé doux, parce</div>
+               <div type="ic" n="3">qu'il est affecté d'une certaine façon; la chaleur, le froid ne sont pas appelés qualités affectives, parce que les corps qui reçoivent ces qualités éprouvent eux-mêmes une modification d'un certain genre. Mais elles sont dites qualités affectives, parce que relativement aux sensations qu'elles nous donnent, chacune de ces qualités produit</div>
+               <div type="ic" n="4">une affection particulière; ainsi la douceur cause une affection sur le goût, la chaleur sur le toucher, et de même pour les autres.</div>
+            </div>
+            <div type="s" n="4">La blancheur et la noirceur, en un mot les couleurs, ne sont pas appelées qualités affectives dans le même sens que les qualités précédemment nommées; mais c'est parce qu'elles proviennent elles-mêmes</div>
+            <div type="s" n="5">
+               <div type="ic" n="1">d'une affection. Il est évident en effet que souvent des affections produisent des changements de</div>
+               <div type="ic" n="2">couleurs. La honte fait rougir, la crainte fait pâlir, et ainsi du reste. Que si l'on vient</div>
+               <div type="ic" n="3">à éprouver une de ces affection par suite de causes toutes naturelles, on doit prendre alors aussi une couleur semblable; car</div>
+               <div type="ic" n="4">la disposition qui se produisait à l'occasion de la honte dans les éléments du corps, peut bien être produite identiquement par un tempérament naturel, de sorte qu'une couleur de même genre soit causée par la nature.</div>
+            </div>
+            <div type="s" n="6">
+               <div type="ic" n="1">Toutes les modifications analogues qui prennent leur origine dans quelque affection permanente et invariable, se nomment donc des qualités affectives. Ainsi la blancheur et la noirceur sont dites des</div>
+               <div type="ic" n="2">qualités, soit qu'elles résultent d'une constitution naturelle, parce qu'alors elles font que nous sommes qualifiés d'après elles de telle ou telle manière; soit qu'une maladie fort longue ou bien une chaleur brûlante, produisent ce même effet de blancheur ou de noirceur, et qu'alors ces deux qualités deviennent difficilement effaçables, ou même demeurent durant la vie entière de l'individu. Dans ce cas même, ce sont encore des qualités, puisque nous sommes encore qualifiés d'après elles. Toutes les modifications qui procèdent de causes aisément</div>
+            </div>
+            <div type="s" n="7">
+               <div type="ic" n="1">détruites, et dont les effets sont passagers, peuvent être appelées des affections, mais non des qualités; car elles ne peuvent</div>
+               <div type="ic" n="2">déterminer une qualification pour l'individu. On ne dit pas qu'un homme</div>
+               <div type="ic" n="3">est de couleur rouge, parce qu'il rougit de honte; on ne dit pas qu'un homme est de couleur pâle, parce qu'il pâlit de crainte; on dit plutôt qu'il est affecté d'une</div>
+               <div type="ic" n="4">certaine manière. Ce sont donc là des affections, et non pas des qualités.</div>
+            </div>
+            <div type="s" n="8">Il y a également pour l'âme des qualités affectives et des affections; tout ce qui dès la</div>
+            <div type="s" n="9">
+               <div type="ic" n="1">naissance provient de quelques affections inébranlables, se nomme qualité. Par exemple, la fureur maniaque, la colère, etc., etc., parce qu'en effet on est qualifié d'après elles de furieux, de colérique.</div>
+               <div type="ic" n="2">On en peut dire autant encore des déportements de divers genres qui ne</div>
+            </div>
+            <div type="s" n="10">
+               <div type="ic" n="1">sont pas de nature, mais qui, par d'autres circonstances, deviennent excessivement difficiles à changer, ou même tout à fait immuables. Eux aussi sont dits qualités parce que nous sommes qualifiés d'après eux. Mais on</div>
+               <div type="ic" n="2">limite le terme d'affection aux modifications qui naissent</div>
+            </div>
+            <div type="s" n="11">
+               <div type="ic" n="1">de causes rapides et toutes passagères. Par exemple, si par suite d'un chagrin l'on devient plus irascible, on ne dit pas</div>
+               <div type="ic" n="2">alors que l'individu qui est plus irritable sous l'impression du chagrin, soit un homme colère; on dit plutôt qu'il éprouve quelque</div>
+               <div type="ic" n="3">souffrance. Ainsi ce sont là des affections, mais non des qualités.</div>
+            </div>
+         </div>
+         <div type="par" n="4">
+            <div type="s" n="1">
+               <div type="ic" n="1">Le quatrième genre de qualité, c'est la figure et la forme extérieure de chaque chose. C'est en outre la direction en ligne droite, en ligne courbe, et telle autre propriété analogue. Chacune de ces</div>
+               <div type="ic" n="2">propriétés, en effet, suffit pour qualifier une chose. Être triangulaire</div>
+               <div type="ic" n="3">ou quadrilatère, suffit pour qualifier une chose, et de même pour un objet droit, un objet courbe :</div>
+            </div>
+            <div type="s" n="2">et la forme suffit ainsi pour qualifier quoi que ce soit.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Rare et dense, rude et uni, sont des mots qui semblent indiquer encore quelque qualité; mais toutes ces choses semblent sortir en réalité des divisions de la qualité;</div>
+               <div type="ic" n="2">car ces mots expriment plutôt la situation que peuvent avoir les parties</div>
+               <div type="ic" n="3">d'un corps. Dense s'emploie quand ces parties sont rapprochées les unes des autres; rare, quand elles sont</div>
+               <div type="ic" n="4">éloignées; uni, quand elles sont disposées en ligne plane; rude, quand au contraire l'une est élevée et l'autre déprimée.</div>
+            </div>
+            <div type="s" n="4">Il peut y avoir encore quelque autre mode de la qualité; mais les modes qu'on vient de citer sont les principaux et les plus fréquemment employés.</div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">Les qualités sont donc telles que nous les avons énoncées. Quant aux objets qualifiés (qualitatifs), ce sont ceux qui sont nommés d'après ces qualités, soit par dérivation, soit de toute autre manière.</div>
+            <div type="s" n="2">La plupart, et l'on peut dire presque tous, sont nommés par dérivation. Ainsi blanc vient de blancheur, grammatical de grammaire, juste de justice; et de même pour tous les autres.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Pour quelques-uns de ces objets, comme les qualités elles-mêmes n'ont pas de nom spécial, ils ne peuvent être nommés par dérivation de ces qualités. Ainsi coureur, lutteur, en</div>
+               <div type="ic" n="2">tant que qualifications appliquées à une certaine faculté physique, ne sont pas formés par dérivation d'une qualité, puisqu'il n'imite pas de mot pour exprimer les facultés d'après lesquelles on donne ces qualifications,</div>
+               <div type="ic" n="3">de même qu'il en existe pour les sciences dont la pratique fait donner aux gens les noms de coureurs, de lutteurs. En effet, il existe une science qui reçoit le nom de Pugilat et de Palestre: et ceux qui s'y livrent reçoivent une qualification dérivée du nom de ces sciences. Parfois aussi, il arrive que même quand il existe un nom spécial pour la qualité, on ne qualifie pas l'objet par dérivation de cette qualité.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Ainsi honnête est le qualitatif de vertu, on nomme quelqu'un honnête parce qu'il a de la vertu</div>
+               <div type="ic" n="2">; mais son appellation ne dérive pas de vertu. Ce cas</div>
+               <div type="ic" n="3">du reste n'est pas fréquent.</div>
+            </div>
+            <div type="s" n="5">On peut donc dire que les qualitatifs sont les mots dénommés d'après les qualités, soit par dérivation, soit de toute autre manière.</div>
+         </div>
+         <div type="par" n="6">
+            <div type="s" n="1">Les contraires existent aussi pour la qualité. Ainsi la justice est le contraire de l'injustice, la blancheur de la noirceur, et ainsi du reste. Ceci s'applique aussi aux qualitatifs formés d'après ces qualités. Par exemple, le juste est opposé à l'injuste; le blanc, au noir.</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Cette propriété n'est pas cependant générale</div>
+               <div type="ic" n="2">: ainsi, roux, pâle et telles autres couleurs pareilles, n'ont pas de contraire, quoique ce soient là aussi des qualitatifs.</div>
+            </div>
+            <div type="s" n="3">Si l'un des deux contraires est qualitatif, l'autre le sera également; et cela</div>
+            <div type="s" n="4">
+               <div type="ic" n="1">devient évident, en interrogeant particulièrement les autres catégories. Soit, par exemple, la justice contraire à l'injustice, si justice est un qualitatif, l'injustice en sera aussi un; car aucune catégorie ne répondra</div>
+               <div type="ic" n="2">à l'injustice, ni celle de la quantité, ni celle de la relation, ni celle du lieu, ni aucune autre, si ce n'est celle de la qualité. Cette observation</div>
+               <div type="ic" n="3">s'applique à tous les contraires qui se rapportent à la qualité.</div>
+            </div>
+         </div>
+      </div>
+      <div n="9" type="ch">
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">Les qualitatifs sont susceptibles de plus et de moins : une chose blanche est plus ou moins</div>
+               <div type="ic" n="2">blanche qu'une autre; une chose juste est plus ou moins juste qu'une autre; et ces choses reçoivent individuellement une augmentation de qualité; car une chose blanche peut devenir plus blanche.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="2">Si, du reste, ce s'est pas</div>
+               <div type="ic" n="3">là le cas général, c'est du moins celui de la plupart des qualitatifs. Mais une justice est-elle plus ou moins justice? pourrait-on demander;</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">et de même pour toutes les autres dispositions morales. Ces</div>
+               <div type="ic" n="2">doutes, en effet, ont été élevés; on ne peut pas absolument dire qu'une justice soit plus ou moins justice, une santé plus ou moins santé; pourtant on peut dire que tel homme a moins de santé, moins de justice qu'un autre. Cette remarque peut s'étendre à la science de la grammaire, ou</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">à toutes les autres facultés morales. Donc les choses qui sont dénommées d'après elles, sont incontestablement susceptibles de plus</div>
+               <div type="ic" n="2">et de moins, puisqu'on dit de tel homme qu'il est plus grammairien, plus juste, moins pourtant, que tel autre, et ainsi du reste.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Un triangle, tout au contraire, ou un quadrilatère ou telle autre figure, ne paraît pas susceptible de plus ou de</div>
+               <div type="ic" n="2">moins; car tout ce qui admet la définition de triangle ou de cercle, est cercle et triangle de la même façon; et quant aux choses qui ne l'admettent pas, elles ne sont triangle ni cercle, pas plus l'une que</div>
+               <div type="ic" n="3">l'autre. En effet, un quadrilatère n'est pas plus un cercle que ne l'est un trapèze,</div>
+               <div type="ic" n="4">puisque ni l'un ni l'autre n'admettent la définition du cercle. En</div>
+            </div>
+            <div type="s" n="6">général, à moins que les deux objets ne puissent admettre la définition de la chose en question, l'un ne pourra pas être dit plus que</div>
+            <div type="s" n="7">l'autre. Donc tous les qualitatifs ne reçoivent pas le plus et le moins.</div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">Dans tout ce que nous avons dit jusqu'ici, il n'y a point encore de propriété spéciale à la qualité. Cette propriété spéciale aux qualités,</div>
+               <div type="ic" n="2">est de pouvoir être dites semblables et dissemblables; une chose est semblable à une autre, parce qu'elle est</div>
+            </div>
+            <div type="s" n="2">qualifiée d'une certaine manière; donc, le propre de la qualité, c'est que semblable et dissemblable s'appliquent à elle.</div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">Il ne faut pas craindre qu'on nous objecte ici qu'en voulant traiter de la qualité, nous y avons aussi compté bon nombre de relatifs, puisque</div>
+               <div type="ic" n="2">les facultés et les dispositions faisaient, selon nous, partie des relatifs.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">C'est que, dans presque tous ces cas, les genres se rapportent à la relation, et que les espèces particulières ne s'y rapportent pas.</div>
+               <div type="ic" n="2">Ainsi, on peut dire de la science, qui est un genre à elle seule, qu'elle n'est ce qu'elle est que par une autre chose, puisqu'on dit</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">la science d'une chose. Mais quant aux sciences spéciales, aucune n'est ce qu'elle est par une autre chose : ainsi la grammaire n'est pas dite la grammaire d'une chose, la musique n'est pas dite la musique d'une chose; et cependant par le genre dont elles font partie, elles sont, elles aussi, des relatifs;</div>
+               <div type="ic" n="2">ainsi la grammaire est la science de quelque chose, et non pas la grammaire de quelque chose; la musique est la science de quelque chose, et non la musique de quelque</div>
+               <div type="ic" n="3">chose. On voit donc que chacune de ces sciences en particulier n'appartient</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">plus à la relation. Nous recevons d'autre part des qualifications</div>
+               <div type="ic" n="2">d'après ces sciences particulières; car nous les possédons, et nous sommes appelés savants par cela seul que nous possédons quelques-unes de ces sciences en particulier.</div>
+               <div type="ic" n="3">Ainsi prises spécialement, elles pourraient être considérées comme des qualités, puisque par rapport à elles, nous sommes dénommés de telle ou telle façon; mais</div>
+               <div type="ic" n="4">par elles-mêmes, elles n'appartiennent pas à la relation.</div>
+            </div>
+            <div type="s" n="5">Du reste, si une même chose peut être à la fois et de relation et de qualité, il n'y a rien d'absurde à la compter dans l'un et l'autre genre à la fois.</div>
+         </div>
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE IX</div>
+            <div n="2" type="par">DES AUTRES CATÉGORIES</div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">
+               <div type="ic" n="1">L'action et la passion admettent les contraires et le plus et le moins.</div>
+               <div type="ic" n="2">Echauffer en effet, est le contraire de refroidir; être chaud, d'être froid; être content, d'être chagrin; ainsi l'action et</div>
+               <div type="ic" n="3">la passion reçoivent les contraires.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Elles reçoivent également le plus</div>
+               <div type="ic" n="2">et le moins: on peut échauffer plus ou moins, être chaud plus ou moins, être plus ou moins chagrin. Ainsi</div>
+               <div type="ic" n="3">donc, l'action et la passion sont susceptibles de plus et de moins.</div>
+            </div>
+         </div>
+         <div type="par" n="7">
+            <div type="s" n="1">
+               <div type="ic" n="1">Je n'en dirai pas davantage sur ces deux catégories.</div>
+               <div type="ic" n="2">Quant a celle de situation, il en a été question dans les relatifs, et l'on a dit qu'elle était exprimée par dérivation des positions mêmes.</div>
+            </div>
+            <div type="s" n="2">Enfin, pour les autres catégories, le temps, le lieu, la manière d'être, comme elles sont parfaitement claires, on n'ajoutera rien à ce qu'on en a dit au début: à savoir, que la manière d'être, c'est, par exemple, d'être chaussé, d'être armé; et le lieu : dans le lycée, dans la place, etc., et autres explications déjà données.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">La discussion précédente doit suffire en ce qui concerne les genres que nous nous étions proposé d'étudier.</div>
+            </div>
+         </div>
+      </div>
+      <div n="ti_3" type="ti">
+         <div n="1" type="par">SECTION TROISIÈME</div>
+         <div n="2" type="par">HYPOTHÉORIE</div>
+      </div>
+      <div n="10" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE X</div>
+            <div n="2" type="par">DES OPPOSÉS</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Quatre espèces d'opposés : les relatifs, les contraires, les opposés par possession et privation, et les opposés par affirmation et négation; exemples divers.</div>
+            <div n="2" type="par">Des relatifs;</div>
+            <div n="3" type="par">Des contraires : contraires avec intermédiaires ou sans intermédiaires, qui peuvent avoir ou ne pas avoir de dénomination spéciale ;</div>
+            <div n="4" type="par">Des opposés par possession et privation : ils s'appliquent toujours à un même sujet : conditions de cette opposition : rapports et différences de ces opposés avec l'affirmation et la négation, avec les relatifs, avec les contraires:</div>
+            <div n="5" type="par">Des opposés par affirmation et négation : rapports et différences de ces opposés avec les autres : leur caractère spécial, c'est que l'un des deux est toujours vrai et l'autre faux.</div>
+         </div>
+      </div>
+      <div n="9" type="ch">
+         <div type="par" n="7">
+            <div type="s" n="3">
+               <div type="ic" n="2">Nous devons parler maintenant des opposés, et dire de combien de façons ils sont ordinairement opposés.</div>
+            </div>
+         </div>
+      </div>
+      <div n="10" type="ch">
+         <div type="par" n="1">
+            <div type="s" n="1">Une chose peut être opposée à une autre de quatre manières différentes; ou comme les relatifs ou comme les contraires, ou comme privation ou comme possession, ou enfin comme affirmation et négation.</div>
+            <div type="s" n="2">Et pour donner des exemples, toutes ces choses sont opposées entre elles, ainsi qu'en fait de relatifs, le double l'est à la moitié; en fait de contraire, le bien au mal, en fait de privation et de possession, l'aveuglement et la vue; et enfin, en fait d'affirmation et de négation : il est assis, il n'est pas assis.</div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">Tout ce qui est opposé comme relatif est dit ce qu'il est de la chose qui lui est opposée, ou il se comporte de toute autre manière :</div>
+               <div type="ic" n="2">par exemple, le double est dit ce qu'il est, est dit le double d'une chose double que lui-même,</div>
+               <div type="ic" n="3">il est le double de quelque chose. La science est opposée comme relatif à la chose qui doit être sue, et la science est dite ce qu'elle est de ce qui</div>
+               <div type="ic" n="4">est su; la chose sue n'est dite ce qu'elle est que par rapport à un opposé, c'est-à-dire, à la science. En effet, la</div>
+               <div type="ic" n="5">science qui est sue, est dite sue par quelque autre chose, par la science.</div>
+            </div>
+         </div>
+         <div type="par" n="3">
+            <div type="s" n="1">
+               <div type="ic" n="1">Toutes les choses donc qui sont opposées comme relatifs, sont dites ce qu'elles sont des choses qui leur sont opposées; ou ces choses ont entre elles un</div>
+               <div type="ic" n="2">autre rapport quelconque de réciprocité. Les choses opposées comme contraires ne sont pas du tout dites réciproquement les unes des autres ce qu'elles sont, bien qu'elles soient dites</div>
+               <div type="ic" n="3">contraires les unes des autres. Ainsi le bien n'est pas appelé le bien du mal, mais le contraire du mal ; le blanc n'est pas dit le blanc du noir, mais le</div>
+            </div>
+            <div type="s" n="2">contraire du noir. Et c'est ainsi que ces oppositions diffèrent entre elles.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Toutes les fois que les contraires sont tels que l'un des deux doit de toute nécessité se trouver ou dans les choses qui les possèdent naturellement, ou dans celles auxquelles on les attribue, il n'y a pas d'intermédiaire entre eux.</div>
+               <div type="ic" n="2">Pour ceux au contraire dont l'un des deux ne doit pas nécessairement exister, il y a toujours quelque intermédiaire.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Ainsi la santé et la maladie sont par nature dans le corps de l'animal. De toute nécessité, l'une des deux, maladie ou santé, doit y être.</div>
+               <div type="ic" n="2">De même aussi pair et impair sont des attributs du nombre, et il faut de toute nécessité que l'un ou l'autre, pair ou impair,</div>
+               <div type="ic" n="3">soit au nombre. Ici, aucun intermédiaire, ni entre la santé et la maladie, ni entre le pair et l'impair.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Mais pour les contraires où l'alternative n'est pas nécessaire, il existe des intermédiaires: par</div>
+               <div type="ic" n="2">exemple, blanc et noir sont des qualités naturelles du corps; mais il n'est pas indispensable que l'un ou l'autre appartienne au corps, puisque tout corps n'est pas nécessairement blanc ou noir. De même</div>
+               <div type="ic" n="3">encore, on dit mauvais, bon, en parlant de l'homme et de tant d'autres choses; mais il n'est pas nécessaire que l'une de ces deux qualités soit dans les objets auxquels on peut les attribuer, puisque toutes</div>
+               <div type="ic" n="4">choses ne sont pas nécessairement bonnes ou mauvaises. Aussi existe-t-il</div>
+            </div>
+            <div type="s" n="6">entre ces contraires-là des intermédiaires : par exemple, entre le blanc et le noir, il y a le gris et le pâle, et bleu d'autres nuances; entre le bon et le mauvais, ce qui n'est ni bon ni mauvais.</div>
+            <div type="s" n="7">
+               <div type="ic" n="1">Parfois les intermédiaires ont des noms spéciaux : par exemple, le gris, le pâle et les autres nuances entre le noir et</div>
+               <div type="ic" n="2">le blanc. Parfois il ne serait pas facile de donner un nom à l'intermédiaire, et alors on le détermine par la négation de l'un et l'autre extrême: par exemple, quand on dit d'une chose qu'elle n'est ni bonne ni mauvaise, ni juste ni injuste.</div>
+            </div>
+         </div>
+         <div type="par" n="4">
+            <div type="s" n="1">
+               <div type="ic" n="1">La privation et la possession se disent par rapport à une seule et même chose : par exemple, l'aveuglement et la vue se disent en pariant de</div>
+               <div type="ic" n="2">l'œil Et en général c'est pour la chose même où la possession est une qualité naturelle, qu'on peut employer tour à tour l'une et l'autre.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Quand nous disons pour une chose susceptible de possession, qu'elle est affectée de privation, c'est qu'elle ne se trouve, ni dans la chose, ni dans le temps où elle doit naturellement se trouver. On dit d'un être qu'il est édenté, non pas</div>
+               <div type="ic" n="2">par cela seul qu'il n'a pas de dents, ou qu'il est aveugle, non pas par cela seul qu'il n'a pas la vue, mais parce qu'il n'a ni dents ni vue, quand par sa nature il devrait avoir l'un et</div>
+               <div type="ic" n="3">l'autre. Certains êtres, en effet, sont, au moment de leur naissance, privés de dents et de vue, et on ne les appelle pas pour cela édentés ou aveugles.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">tre privé et posséder ne doivent pas être confondus avec privation ou</div>
+               <div type="ic" n="2">possession. La possession c'est la vue; la privation, c'est l'aveuglement. Mais avoir la vue n'est pas la vue, être aveugle n'est pas l'aveuglement. L'aveuglement,</div>
+               <div type="ic" n="3">en effet, est une privation : être aveugle, c'est être privé, ce n'est pas privation. Si l'aveuglement</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">était la même chose qu'être aveugle, on pourrait attribuer l'un et l'autre au même objet. Or,</div>
+               <div type="ic" n="2">on dit d'un homme qu'il est aveugle, mais l'on ne saurait dire qu'il est aveuglement.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Du reste, être privé et posséder paraissent opposés entre eux, comme le sont entre elles privation et possession : le mode de l'opposition</div>
+               <div type="ic" n="2">est le même de part et d'autre; et de même</div>
+               <div type="ic" n="3">que l'aveuglement est opposé à la vue, de même être aveugle est opposé à posséder la vue. De même non plus ce qui</div>
+            </div>
+            <div type="s" n="6">
+               <div type="ic" n="1">tombe sous la négation et l'affirmation, ne doit pas être confondu avec la négation et l'affirmation: l'affirmation est un jugement</div>
+               <div type="ic" n="2">affirmatif; la négation, un jugement négatif. Quant aux choses qui tombent sous l'une de ces deux énonciations, on ne saurait dire qu'elles sont des jugements; ce sont des choses. Mais on peut dire que</div>
+            </div>
+            <div type="s" n="7">
+               <div type="ic" n="1">ces choses aussi sont opposées entre elles, comme la négation et l'affirmation. En effet, le mode de l'affirmation est</div>
+               <div type="ic" n="2">identique; car de même que dans ces deux phrases : Il est assis, il</div>
+               <div type="ic" n="3">n'est pas assis, l'affirmation est l'opposé de la négation, de même les choses exprimées dans ces deux énonciations sont opposées: Être assis, n'être pas assis. On voit sans peine que la privation et la possession ne sont pas opposées</div>
+            </div>
+            <div type="s" n="8">
+               <div type="ic" n="1">entre elles, comme le sont les relatifs; car ici la chose n'est pas dite être ce qu'elle est de</div>
+               <div type="ic" n="2">celle qui lui est opposée. La vue, par exemple, n'est pas la vue</div>
+               <div type="ic" n="3">de l'aveuglement, et ne peut être dite de l'aveuglement de quelque autre façon que ce soit. Et de même l'aveuglement</div>
+               <div type="ic" n="4">n'est pas dit l'aveuglement de la vue; car on dit que l'aveuglement est la privation de la vue, et l'on ne dit pas qu'il est l'aveuglement de la vue. D'un autre côté, on</div>
+            </div>
+            <div type="s" n="9">
+               <div type="ic" n="1">sait que tous les relatifs s'appliquent à des choses réciproques : si donc l'aveuglement était un relatif, on pourrait employer réciproquement pour lui la chose à laquelle on le rapporte; mais il n'y a point</div>
+               <div type="ic" n="2">ici de réciprocité pareille; on ne</div>
+               <div type="ic" n="3">dit pas que la vue est la vue de l'aveuglement.</div>
+            </div>
+         </div>
+         <div type="par" n="5">
+            <div type="s" n="1">De plus, voici qui démontre que les choses énoncées par privation et possession ne sont pas opposées entre elles comme le sont les contraires. D'abord, pour</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">les contraires entre lesquels il n'existe pas de termes moyens, il est toujours nécessaire que l'un des deux existe dans les choses où il est placé par nature, ou bien dans celles auxquelles on l'attribue; et l'on se rappelle qu'il</div>
+               <div type="ic" n="2">n'y a point d'intermédiaires pour les contraires dont l'un des deux doit nécessairement se trouver dans le sujet qui les reçoit. L'on a cité pour exemple la maladie et la santé, le pair et l'impair. On sait encore que,</div>
+               <div type="ic" n="3">pour les contraires qui ont des intermédiaires, il n'y a pas nécessité que l'un ou l'autre soit dans tout le</div>
+               <div type="ic" n="4">sujet: par exemple, il n'est pas nécessaire que tout sujet susceptible de blanc et de noir soit blanc ou noir, non plus que chaud ou froid. Rien en effet, ne s'oppose à ce qu'il n'y ait ici des</div>
+               <div type="ic" n="5">intermédiaires. Souvenons-nous, de plus, qu'il y a des intermédiaires entre les contraires dont l'un ou l'autre ne doit pas exister nécessairement dans le sujet qui les reçoit, si ce n'est pourtant dans les choses qui n'ont qu'une seule qualité par nature: pour le fer par exemple, d'être chaud; pour la</div>
+               <div type="ic" n="6">neige, d'être blanche. Pour ces choses-là, il faut de toute nécessité que l'un des deux contraires leur appartienne spécialement, et non pas l'un ou l'autre</div>
+               <div type="ic" n="7">au hasard, puisque le feu ne peut être froid, et la neige ne peut pas davantage être noire. Ainsi</div>
+               <div type="ic" n="8">donc il n'est pas nécessaire que l'un ou l'autre de ces contraires appartienne à tout le sujet qui les reçoit; mais c'est nécessaire seulement, dans les choses qui naturellement n'ont qu'un seul des contraires; et alors ce contraire unique est en elles d'une manière déterminée, et non</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">pas indifféremment. On le voit donc, tout ce que l'on a dit jusqu'ici est inapplicable à la privation et à</div>
+               <div type="ic" n="2">la possession. D'abord, il n'est pas toujours nécessaire que l'une ou l'autre se trouve dans le sujet qui les peut admettre: ce qui naturellement n'a pas encore dû avoir de vue n'est pas appelé aveugle ou voyant. Ainsi donc la privation et la possession ne sont pas au nombre des contraires sans intermédiaire. Elles ne sont pas non plus de</div>
+               <div type="ic" n="3">ceux qui ont des intermédiaires; car il faut toujours nécessairement que</div>
+               <div type="ic" n="4">l'un d'eux se trouve dans tout l'objet qui les reçoit : ainsi, d'un objet fait par nature pour avoir</div>
+               <div type="ic" n="5">actuellement la vue, on dit qu'il est aveugle ou qu'il a la vue, sans que positivement l'une de ces deux propriétés soit déterminée, l'une pouvant être aussi bien que l'autre, puisqu'il n'y a pas nécessité que l'être soit aveugle ou qu'il ait la vue, et qu'il peut indifféremment être l'un, ou avoir l'autre. Loin de là, dans les contraires qui</div>
+               <div type="ic" n="6">ont des intermédiaires, on se rappelle qu'il n'y a jamais nécessité que l'un ou l'autre appartienne à tous les objets qui peuvent les admettre, mais ils peuvent appartenir à quelques-uns; et ces objets alors n'en ont qu'un seul d'une manière spéciale, et</div>
+            </div>
+            <div type="s" n="4">non pas indifféremment un des deux. Concluons donc qu'évidemment les choses énoncées par privation et possession, ne sont opposées entre elles d'aucune des deux façons dont les contraires peuvent l'être entre eux.</div>
+            <div type="s" n="5">
+               <div type="ic" n="1">De plus, les contraires, dès qu'il y a un sujet qui les reçoit, peuvent se changer l'un dans l'autre, à moins que l'un des deux uniquement ne soit une nécessité physique, comme la chaleur dans</div>
+               <div type="ic" n="2">le feu. En effet, l'homme bien portant peut devenir malade, le blanc peut devenir noir, le froid peut devenir chaud, le chaud peut devenir froid, le bon peut devenir mauvais; le mauvais peut devenir bon. Ainsi, l'homme pervers</div>
+               <div type="ic" n="3">ramené à de meilleures habitudes, à de meilleurs conseils, peut s'amender en quelques points, quelque légers qu'ils soient; et s'il s'amende une fois, quelque peu</div>
+               <div type="ic" n="4">que ce soit, il est évident qu'il changera complètement de conduite, ou qu'il recevra du moins une grande amélioration. Il acquiert de plus en plus</div>
+               <div type="ic" n="5">de penchant à la vertu, et quelque légère que soit l'amélioration qu'il ait sentie dès le principe, il est probable qu'elle ne fera que s'accroître par le temps; et les progrès</div>
+               <div type="ic" n="6">continuant toujours, il finira, à moins que le temps ne l'arrête, par arriver à une manière d'être totalement différente de la première. Mais</div>
+               <div type="ic" n="7">pour la privation et la possession, il est impossible qu'elles se changent jamais l'une dans l'autre. De la possession il</div>
+               <div type="ic" n="8">peut bien se faire un changement en privation; mais il n'y a pas de changement possible de la privation à la possession : quand</div>
+               <div type="ic" n="9">on est une fois devenu aveugle, on ne recouvre pas la vue; un homme chauve n'est jamais devenu chevelu, un édenté n'a jamais fait de dents.</div>
+            </div>
+         </div>
+         <div type="par" n="6">
+            <div type="s" n="1">
+               <div type="ic" n="1">Les opposés qui le sont comme négation ou affirmation ne sont évidemment opposés d'aucune des façons qu'on a dites jusqu'ici; mais pour ces</div>
+               <div type="ic" n="2">choses, et pour elles seules, il faut toujours nécessairement que l'une des deux soit vraie et l'autre fausse.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Dans les contraires, il n'est pas toujours nécessaire que l'un des deux soit vrai et l'autre faux, ni dans les relatifs, ni dans les choses de possession et de</div>
+               <div type="ic" n="2">privation. Ainsi, la santé et la maladie sont des contraires, et cependant ni l'une ni l'autre n'est</div>
+               <div type="ic" n="3">ni vraie ni fausse. Et de même pour le double et la moitié, qui sont opposés comme relatifs, ni l'un ni l'autre ne sont ni vrais ni</div>
+               <div type="ic" n="4">faux, non plus que les choses de privation ou de possession, par exemple, la</div>
+               <div type="ic" n="5">vue et l'aveuglement. En général, les mots pris isolément n'expriment ni vérité ni erreur, et les mots dont</div>
+               <div type="ic" n="6">on vient de parler sont tous pris sans combinaison.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Toutefois, on pourrait croire que cette remarque s'applique surtout aux contraires exprimés avec combinaison de mots, et qu'ainsi : Socrate est bien portant est contraire à : Socrate est malade. Mais, même pour les contraires de ce genre, il n'est pas toujours nécessaire que l'un soit vrai, l'autre faux. Si Socrate existe,</div>
+               <div type="ic" n="2">l'un sera vrai, et l'autre faux; si Socrate n'existe pas, ils seront faux tous les deux; puisqu'en effet si</div>
+               <div type="ic" n="3">Socrate n'existe pas du tout, il ne peut être vrai, ni qu'il soit malade, ni qu'il soit bien portant.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Dans les choses de privation et de possession, quand l'objet n'existe pas, aucun des deux contraires n'est vrai; et quand l'objet existe, il ne s'ensuit pas</div>
+               <div type="ic" n="2">toujours que l'un soit vrai et l'autre faux. Ainsi, Socrate y voit, Socrate est aveugle, sont deux propositions opposées comme possession et privation. En admettant que Socrate existe, il n'est pas nécessaire encore que l'un des deux soit vrai ou faux, puisque si le moment naturel de la possession n'est pas encore venu, tous deux sont faux; et si Socrate n'existe pas du tout, les deux assertions sont également fausses, qu'il est aveugle ou qu'il y voit.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="1">Au contraire, pour la négation et l'affirmation, que l'objet existe ou n'existe pas, il faut que l'une soit fausse et l'autre vraie. Soit par exemple, l'affirmation : Socrate</div>
+               <div type="ic" n="2">est malade, et la négation: Socrate n'est pas malade; si Socrate existe, il faut nécessairement que l'une soit vraie et l'autre fausse et il en est encore de même s'il n'existe</div>
+               <div type="ic" n="3">pas : s'il n'existe pas, être malade est faux, n'être pas malade est vrai.</div>
+               <div type="ic" n="4">Ainsi donc, les choses qui sont opposées, comme négation et affirmation, ont seules cette propriété spéciale que l'une des deux doit toujours être fausse ou vraie.</div>
+            </div>
+         </div>
+      </div>
+      <div n="11" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE XI</div>
+            <div n="2" type="par">DES CONTRAIRES</div>
+         </div>
+         <div n="summ" type="summ">Exemples divers de contraires. - Un contraire peut exister sans l'autre. - Le sujet des contraires est le même, soit en espèce, soit en genre. - Les contraires doivent être ou dans le même genre, ou dans des genres contraires, ou former eux-mêmes des genres contraires.</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">Le mal est nécessairement contraire au bien; et cela est évident en parcourant les cas particuliers. La maladie est contraire à la santé, la justice à l'injustice, le courage à la lâcheté; et ainsi du reste. Mais si le bien est le contraire du mal, parfois aussi le mal est le contraire du mal : par exemple, le luxe qui</div>
+               <div type="ic" n="2">est un mal, est le contraire de la misère qui est un mal aussi;</div>
+               <div type="ic" n="3">et de même l'aisance, la médiocrité, qui est contraire à l'un et à l'autre,</div>
+            </div>
+            <div type="s" n="2">est un bien. Ceci, du reste, s'applique à un fort petit nombre de cas; dans la plupart, c'est le bien qui est le contraire du mal.</div>
+            <div type="s" n="3">
+               <div type="ic" n="1">En outre dans les contraires, l'existence de l'un n'entraîne pas nécessairement celle de l'autre. Si tout le monde</div>
+               <div type="ic" n="2">se porte bien, la santé existera et la maladie n'existera point; et de même si</div>
+               <div type="ic" n="3">tous les objets sont blancs la blancheur existera et la noirceur n'existera pas. Il y a plus; si</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">« Socrate se porte bien » est contraire à « Socrate est malade », comme il n'est pas possible que les deux choses existent à la fois dans le même individu, il est impossible aussi que l'un des contraires existant, l'autre existe aussi; car si ce fait :</div>
+               <div type="ic" n="2">« Socrate se porte bien », existe, cet autre fait : « Socrate est malade », n'existe</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">pas. Il est évident que les contraires sont naturellement applicables à un objet identique, soit en genre soit en espèce.</div>
+               <div type="ic" n="2">Ainsi, la maladie et la santé sont naturellement placées dans le corps de l'animal; la blancheur et la noirceur ne peuvent être non plus que dans le corps, la justice et l'iniquité,</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">que dans le cœur de l'homme. Il faut nécessairement pour tous les contraient qu'ils soient ou dans des genres contraires, ou dans le même genre, ou</div>
+               <div type="ic" n="2">enfin qu'ils soient eux-mêmes des genres. Noir et blanc appartiennent à un même genre, puisque la couleur est le genre de tous les deux: justice et iniquité sont dans des genres contraires; car le genre de l'un c'est la vertu, celui de l'autre c'est le vice. Enfin, le bien et le mal ne sont pas dans un genre, mais ils sont eux-mêmes genres de certaines choses.</div>
+            </div>
+         </div>
+      </div>
+      <div n="12" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE XII</div>
+            <div n="2" type="par">DE LA PRIORITÉ</div>
+         </div>
+         <div n="summ" type="summ">
+            <div n="1" type="par">Quatre espèces principales de priorité : 1° relativement au temps; 2° relativement à la non-réciprocité; 3° relativement à l'ordre; 4° relativement au mérite.</div>
+            <div n="2" type="par">On peut distinguer encore une cinquième espèce de priorité, la priorité de nature.</div>
+         </div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">Une chose peut être antérieure à une autre de quatre façons différentes.</div>
+               <div type="ic" n="2">D'abord et de la manière la plus spéciale, relativement au temps, d'après lequel une chose est dite plus vieille ou plus ancienne qu'une autre. En effet, par cela seul qu'il s'est écoulé un espace de temps plus considérable, la chose est appelée plus vieille, plus ancienne.</div>
+               <div type="ic" n="3">En second lieu, la priorité appartient à toutes les choses qui ne rendent pas réciproquement la consécution d'existence.</div>
+               <div type="ic" n="4">Ainsi, un précède deux, parce que deux existant, il s'ensuit sur-le-champ qu'un existe; tandis qu'un existant, il ne s'ensuit pas nécessairement que deux existe; et l'un ne suit pas réciproquement l'existence du reste. Ainsi donc, une chose semble être première quand il n'en sort pas réciproquement l'existence d'une autre.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">En troisième lieu, l'idée de priorité s'applique à un ordre quelconque, comme dans les sciences</div>
+               <div type="ic" n="2">et dans les discours. Dans les sciences démonstratives, il y a la priorité et la postériorité selon un certain ordre: ainsi, les éléments précèdent en ordre les démonstrations de géométrie; et dans la grammaire, les lettres précèdent les syllabes. Et de même dans les discours, l'exorde est selon l'ordre avant la narration.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Outre ces priorités qu'on vient d'énumérer, on peut dire encore que le mieux, le plus honorable, tient par nature</div>
+               <div type="ic" n="2">le premier rang: c'est ainsi que l'on dit généralement que l'homme qu'on estime le plus, qu'on aime le plus, est le premier des hommes. Mais</div>
+               <div type="ic" n="3">de tous les modes de priorité, ce dernier est le moins commun.</div>
+            </div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">Tels sont, à peu près, tous les modes de priorité.</div>
+            <div type="s" n="2">
+               <div type="ic" n="1">Mais peut-être pourrait-on croire qu'outre tous ceux-là il en existe encore un autre. Ainsi, dans les</div>
+               <div type="ic" n="2">choses qui se rendent réciproquement la présupposition d'existence, celle qui d'une façon quelconque est cause de l'existence de l'autre, semblerait naturellement devoir être appelée première. Or, il est évident qu'il y</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">a certaines choses de ce genre. Par exemple, quand</div>
+               <div type="ic" n="2">on dit: L'homme existe, il y a rapport réciproque entre l'existence de l'homme, et le jugement vrai qu'on énonce sur cette existence; en effet,</div>
+               <div type="ic" n="3">si l'homme existe, le jugement par lequel nous déclarons que l'homme existe est vrai. Et la réciproque</div>
+               <div type="ic" n="4">n'est pas moins juste; car si le jugement par lequel nous déclarons que l'homme existe est vrai, l'homme existe aussi véritablement. Mais un</div>
+               <div type="ic" n="5">jugement, quelque vrai qu'il puisse être, n'est pas cause qu'une chose est; et la chose, au contraire, semble lire en quelque sorte la cause de la vérité du jugement, puisqu'en effet, c'est</div>
+               <div type="ic" n="6">selon que la chose est ou n'est pas que le jugement est faux ou vrai.</div>
+            </div>
+            <div type="s" n="4">Ainsi donc, l'on peut dire de cinq façons qu'une chose est antérieure à une autre.</div>
+         </div>
+      </div>
+      <div n="13" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE XIII</div>
+            <div n="2" type="par">DE LA SIMULTANÉITÉ</div>
+         </div>
+         <div n="summ" type="summ">Trois espèces de simultanéité : 1° en temps; 2° par nature; 3° par division spécifique.</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">On dit en général, et dans le sens le plus spécial du mot, que deux choses coexistent quand leur existence</div>
+               <div type="ic" n="2">a lieu dans le même temps. L'une n'est pas antérieure, ni l'autre</div>
+               <div type="ic" n="3">postérieure; elles sont dites exister à la fois dans le temps.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">On appelle simultanées par nature, les choses qui se rendent réciproquement la présupposition d'existence, sans que l'une soit cependant pour l'autre cause d'existence. Tels sont, par exemple, le double et la moitié; car ces deux</div>
+               <div type="ic" n="2">choses sont réciproques; parce que dès que le double existe, la moitié existe; et que réciproquement, la moitié existant, le double existe aussi; mais l'un n'est pas la cause de l'existence de l'autre.</div>
+            </div>
+            <div type="s" n="3">Les choses d'un même genre, mais placées dans des divisions différentes les unes des autres, sont dites aussi simultanées</div>
+            <div type="s" n="4">
+               <div type="ic" n="1">par nature. Placées dans des divisions différentes les unes des autres, se dit des choses comprises dans une même division: par exemple, le volatile est divisé par opposition en</div>
+               <div type="ic" n="2">terrestre et en aquatique; terrestre et aquatique, en effet, sortis du même genre, sont des divisions opposées</div>
+               <div type="ic" n="3">l'une à l'autre. L'animal se divise, en effet, en toutes ces classes : en volatile, en terrestre, en aquatique; et de toutes ces choses, aucune n'est antérieure ou postérieure à l'autre ; elles coexistent naturellement. Au reste, chacun de ces genres pourrait encore se décomposer en espèces diverses,</div>
+               <div type="ic" n="4">le volatile aussi bien que le terrestre et l'aquatique. On appelle donc simultanées par nature les choses sortant d'un même genre, et comprises dans une même division.</div>
+            </div>
+            <div type="s" n="5">
+               <div type="ic" n="2">Les genres, du reste, précèdent toujours les espèces;</div>
+               <div type="ic" n="3">car ils ne rendent pas réciproquement la superposition d'existence. Par exemple, du moment que</div>
+               <div type="ic" n="4">l'espèce aquatique existe, le genre animal doit exister; mais l'animal peut exister sans qu'il y ait nécessité que l'aquatique existe.</div>
+            </div>
+            <div type="s" n="6">
+               <div type="ic" n="1">Ainsi donc, on appelle simultanées par nature, des choses qui, réciproques quant à la supposition d'existence, ne sont pas causes d'existence l'une pour l'autre, et les choses d'un même genre, séparées par divisions opposées entre elles. D'une manière générale, on appelle simultanées,</div>
+               <div type="ic" n="2">les choses dont l'existence se produit dans le même temps.</div>
+            </div>
+         </div>
+      </div>
+      <div n="14" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE XIV</div>
+            <div n="2" type="par">DU MOUVEMENT</div>
+         </div>
+         <div n="summ" type="summ">Six espèces de mouvement : rapports et opposition de ces espèces entre elles.</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">On distingue six</div>
+               <div type="ic" n="2">espèces de mouvement: naissance ou génération, destruction, accroissement, décroissement, modification, déplacement dans le lieu.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">videmment tous ces mouvements diffèrent entre eux : la</div>
+               <div type="ic" n="2">naissance n'est pas la destruction; l'accroissement n'est pas le décroissement, non plus que le déplacement, et ainsi du reste.</div>
+               <div type="ic" n="3">Quant à la modification, on peut demander s'il n'est pas toujours nécessaire que ce qui est modifié le soit selon un des autres mouvements.</div>
+            </div>
+            <div type="s" n="3">
+               <div type="ic" n="1">Mais cette supposition n'est pas</div>
+               <div type="ic" n="2">juste. Dans toutes nos sensations, ou du moins dans la plupart, il arrive que nous sommes modifiés sans qu'aucun autre mouvement ne vienne nous affecter. Il n'est</div>
+               <div type="ic" n="3">pas nécessaire, en effet, que ce qui est mû par une sensation s'accroisse ou diminue, ni qu'il éprouve aucun des autres mouvements. Ainsi donc la modification est bien réellement un mouvement d'espèce différente de toutes les autres.</div>
+               <div type="ic" n="4">Si elle n'était qu'un mouvement de même nature, il faudrait que sur-le-champ la chose modifiée s'accrût ou diminuât, ou éprouvât un des autres mouvements; or,</div>
+               <div type="ic" n="5">il n'en est rien.</div>
+            </div>
+            <div type="s" n="4">
+               <div type="ic" n="1">Et de même, il faudrait que ce qui croît ou est affecté de tout autre mouvement fût aussi</div>
+               <div type="ic" n="2">modifié; mais il est des choses qui croissent sans être modifiées :</div>
+               <div type="ic" n="3">par exemple, un quadrilatère, si on lui applique le gnomon, devient il est vrai plus grand, mais il n'est pas autre chose qu'un</div>
+               <div type="ic" n="4">quadrilatère. Ceci peut être dit de toutes les choses du même genre,</div>
+            </div>
+            <div type="s" n="5">etc. Ainsi, tous ces mouvements sont différents les uns des autres.</div>
+         </div>
+         <div type="par" n="2">
+            <div type="s" n="1">
+               <div type="ic" n="1">D'une manière absolue, le repos est contraire au mouvement;</div>
+               <div type="ic" n="2">mais chaque mouvement spécial est contraire à un autre mouvement spécial : la destruction</div>
+               <div type="ic" n="3">à la génération, le décroissement à l'accroissement; le repos dans le lieu au déplacement dans le leu. Le déplacement dans un lieu contraire, pourrait plus que les autres mouvements sembler une modification : par exemple, le déplacement en</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">haut est opposé au déplacement en bas, et réciproquement. Mais pour la modification, le dernier des mouvements énoncés, il ne serait pas facile de dire ce qui est son contraire. Rien, en effet, ne paraît lui être contraire à moins qu'on ne lui oppose le repos avec telle qualité ou bien le changement de la qualité dans son contraire; de même qu'au déplacement dans le lieu, on oppose le repos dans le lieu, ou le changement dans le sens contraire. La modification, en effet, est aussi un</div>
+               <div type="ic" n="2">changement de qualité : ainsi, le repos dans une qualité ou bien le changement dans le contraire de cette qualité sera opposé au mouvement dans la qualité; ainsi devenir blanc sera opposé à devenir noir; car</div>
+               <div type="ic" n="3">alors, l'objet est modifié, parce que le qualitatif vient à changer en ses contraires.</div>
+            </div>
+         </div>
+      </div>
+      <div n="15" type="ch">
+         <div n="ti" type="ti">
+            <div n="1" type="par">CHAPITRE XV</div>
+            <div n="2" type="par">DE LA POSSESSION</div>
+         </div>
+         <div n="summ" type="summ">Huit espèces principales de la possession ; exemples.</div>
+         <div type="par" n="1">
+            <div type="s" n="1">
+               <div type="ic" n="1">Avoir, s'emploie de plusieurs façons.</div>
+               <div type="ic" n="2">D'abord comme manière d'être, disposition ou toute autre qualité : on dit, en effet, qu'un homme a de la science, de la vertu.</div>
+               <div type="ic" n="3">En second lieu, comme quantité, par exemple, la taille que quelqu'un a ; car on dit qu'il a trois coudées, quatre coudées.</div>
+               <div type="ic" n="4">Ou bien relativement à ce qui entoure le corps : on dit que quelqu'un a un manteau, un vêtement.</div>
+               <div type="ic" n="5">Ou par rapport à ce qui est dans une partie du corps : comme on dit que quelqu'un a un anneau à la main.</div>
+               <div type="ic" n="6">Ou même relativement à une partie du corps : on dit que quelqu'un a un pied, une main.</div>
+               <div type="ic" n="7">Ou par rapport à ce qui est dans un vase, comme on dit que le médimne a du grain, la cruche du vin; car on dit fort bien que le médimne a du grain, que la cruche a du vin. Et</div>
+               <div type="ic" n="8">toutes ces mesures sont dites avoir quelque chose en tant que vase.</div>
+               <div type="ic" n="9">Ou enfin comme</div>
+               <div type="ic" n="10">propriété; car on dit que quelqu'un a une maison, un champ.</div>
+            </div>
+            <div type="s" n="2">
+               <div type="ic" n="1">On dit encore d'un homme, qu'il a une femme, d'une</div>
+               <div type="ic" n="2">femme qu'elle a un mari; mais ce mode de possession paraît le plus éloigné</div>
+               <div type="ic" n="3">de tous; car ordinairement avoir une femme ne signifie pas autre chose que cohabiter avec</div>
+            </div>
+            <div type="s" n="3">elle. Il y a peut-être encore d'autres modes de possession; mais nous avons énuméré tous ceux à peu près qu'on emploie le plus habituellement.</div>
+         </div>
+      </div>
+   </body>
+</TAN-T>

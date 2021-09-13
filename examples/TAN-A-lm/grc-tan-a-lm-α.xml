@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-A.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" TAN-version="2021"
+   id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusα">
+   <head>
+      <name>Perseus lexico-morphological permutations devoted exclusively to α</name>
+      <license which="Attribution-ShareAlike 3.0 Unported" licensor="perseus"/>
+      <for-lang>grc</for-lang>
+      <tok-is>ἆ</tok-is>
+      <tok-is>ἁ</tok-is>
+      <tok-is>ἅ</tok-is>
+      <tok-is>ἃ</tok-is>
+      <tok-is>ᾇ</tok-is>
+      <tok-is>Α</tok-is>
+      <tok-is>ά</tok-is>
+      <tok-is>Ἃ</tok-is>
+      <tok-is>Ἆ</tok-is>
+      <tok-is>α</tok-is>
+      <vocabulary-key>
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Converter from TAN 2018 to TAN 2019</name>
+            <location
+               href="../../../TAN-2020/applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl"
+               accessed-when="2019-04-22T12:14:58.196-04:00"/>
+         </algorithm>
+         <algorithm xml:id="xslt1">
+            <IRI>tag:textalign.net,2015:stylesheet:convert:perseus-raw-xml-to-tan-a-lm</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <desc>Stylesheet at:
+               ../../do%20things/configure%20parameters/parameters-for-TAN-output.xsl</desc>
+            <location
+               href="../../../TAN-2020/applications/convert/private-convert%20perseus%20raw%20xml%20to%20TAN-A-lm.xsl"
+               accessed-when="2019-04-22"/>
+         </algorithm>
+         <lexicon xml:id="LSJ">
+            <IRI>http://lccn.loc.gov/95032369</IRI>
+            <name>Liddell-Scott-Jones 9+</name>
+            <name xml:lang="eng">Liddell-Scott-Jones, 9th ed. plus rev. supplement</name>
+         </lexicon>
+         <morphology xml:id="perseus-dik">
+            <IRI>tag:kalvesmaki.com,2014:tan-r-mor:grc:perseus</IRI>
+            <name xml:lang="eng">Perseus Greek morphology</name>
+            <location accessed-when="2020-03-05"
+               href="../TAN-mor/grc.perseus.tan-mor.xml"/>
+         </morphology>
+         <organization xml:id="perseus">
+            <IRI>http://dbpedia.org/resource/Perseus_Project</IRI>
+            <name>Perseus Project</name>
+         </organization>
+         <person xml:id="dik">
+            <IRI>http://viaf.org/viaf/71547824</IRI>
+            <name>Helma Dik</name>
+         </person>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <IRI>tag:kalvesmaki.com,2015:self</IRI>
+            <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+            <name>Joel Kalvesmaki</name>
+            <name>kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+
+
+
+      <file-resp who="Joel_Kalvesmaki"/>
+      <resp who="xslt2" roles="stylesheet"/>
+      <resp who="xslt1" roles="stylesheet"/>
+      <resp who="perseus dik" roles="creator"/>
+      <resp who="perseus" roles="sponsor"/>
+      <resp who="kalvesmaki" roles="editor"/>
+      <change when="2018-01-11" who="kalvesmaki">Started template file.</change>
+      <change who="xslt1" when="2018-04-20T10:16:08.873-04:00">Conversion of input at
+         file:/Users/joelk/Dropbox/TAN/pre-TAN/language-specific%20morphology/grc/GreekMorph16-%CE%B1.xml
+         to TAN-A-lm at
+         file:/Users/joelk/Dropbox/TAN/library-lm/grc/lm-perseus-2018-04-20/grc-tan-a-lm-.xml</change>
+      <change who="xslt2" when="2019-04-22T12:14:58.196-04:00">Converted from 2018 to 2019
+         schemas.</change>
+      <to-do>
+         <comment who="xslt1" when="2018-04-20T10:16:08.873-04:00">File is still in
+            progress.</comment>
+      </to-do>
+   </head>
+   <body lexicon="LSJ" morphology="perseus-dik" claimant="xslt2">
+      <ana>
+         <tok val="Α" cert="0.2"/>
+         <tok val="α" cert="0.083333333333333333"/>
+         <tok val="ἆ"/>
+         <tok val="Ἆ"/>
+         <lm>
+            <l>ἆ</l>
+            <m>i</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="α" cert="0.083333333333333333"/>
+         <tok val="ἁ"/>
+         <tok val="ἃ" cert="0.142857142857142857"/>
+         <tok val="ἅ" cert="0.166666666666666667"/>
+         <lm>
+            <l>ὁ</l>
+            <m>p a - s - - - f n</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="Α" cert="0.4"/>
+         <tok val="α" cert="0.166666666666666667"/>
+         <tok val="ἃ" cert="0.285714285714285714"/>
+         <tok val="ἅ" cert="0.333333333333333333"/>
+         <tok val="Ἃ"/>
+         <lm>
+            <l>ὅς</l>
+            <m cert="0.5">p r - p - - - n a</m>
+            <m cert="0.5">p r - p - - - n n</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="α" cert="0.25"/>
+         <tok val="ἃ" cert="0.428571428571428571"/>
+         <tok val="ἅ" cert="0.5"/>
+         <lm>
+            <l>ὅς</l>
+            <m cert="0.333333333333333333">p r - d - - - f a</m>
+            <m cert="0.333333333333333333">p r - d - - - f n</m>
+            <m cert="0.333333333333333333">p r - s - - - f n</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="α" cert="0.083333333333333333"/>
+         <tok val="ᾇ"/>
+         <lm>
+            <l>ὅς</l>
+            <m>p r - s - - - f d</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="α" cert="0.083333333333333333"/>
+         <tok val="ἃ" cert="0.142857142857142857"/>
+         <lm>
+            <l>ὅς2</l>
+            <m>p s - p - - - n a</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="Α" cert="0.4"/>
+         <tok val="α" cert="0.166666666666666667"/>
+         <lm cert="0.5">
+            <l>ΑΒΓ</l>
+            <m>y</m>
+         </lm>
+         <lm cert="0.5">
+            <l>α</l>
+            <m>m</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok val="ά"/>
+         <tok val="α" cert="0.083333333333333333"/>
+         <tok val="ὰ"/>
+         <lm>
+            <l>ά</l>
+            <m>i</m>
+         </lm>
+      </ana>
+   </body>
+</TAN-A-lm>

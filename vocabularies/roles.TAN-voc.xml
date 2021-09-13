@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:roles">
+    <head>
+        <name>TAN keywords for types of roles</name>
+        <desc>This file has been created ad hoc to some basic terms for roles involved in the
+            creation and editing of TAN files.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/roles.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2017-02-22" who="kalvesmaki">Started file</change>
+        <change when="2018-05-03" who="kalvesmaki">Added a role called source.</change>
+        <to-do/>
+    </head>
+    <body affects-element="role">
+        <item>
+            <IRI>http://schema.org/creator</IRI>
+            <IRI>http://purl.org/dc/terms/creator</IRI>
+            <IRI>tag:textalign.net,2015:role:creator</IRI>
+            <name>creator</name>
+        </item>
+        <item>
+            <IRI>http://purl.org/dc/elements/1.1/publisher</IRI>
+            <IRI>tag:textalign.net,2015:role:publisher</IRI>
+            <name>publisher</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:funder</IRI>
+            <name>funder</name>
+            <desc>agent that provides money</desc>
+            <desc>intended to map to tei:funder</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:sponsor</IRI>
+            <name>sponsor</name>
+            <desc>agent that sponsors; may or may not involve money</desc>
+            <desc>intended to map to tei:sponsor</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:editor-in-chief</IRI>
+            <IRI>tag:textalign.net,2015:role:manager:project</IRI>
+            <name>project manager</name>
+            <name>principal</name>
+            <name>editor in chief</name>
+            <desc>intended to map to tei:principal</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:manager</IRI>
+            <name>manager</name>
+            <desc>generic manager; may or may not have a role under another manager</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:manager:technical</IRI>
+            <name>technical manager</name>
+            <name>lead developer</name>
+        </item>
+        <item>
+            <IRI>http://schema.org/editor</IRI>
+            <IRI>tag:textalign.net,2015:role:editor</IRI>
+            <name>editor</name>
+            <name>revisor</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:developer</IRI>
+            <name>developer</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:project-assistant</IRI>
+            <name>project assistant</name>
+            <name>assistant</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:advisor</IRI>
+            <name>advisor</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:advisor:technical</IRI>
+            <name>technical advisor</name>
+        </item>
+        <item>
+            <IRI>http://www.w3.org/1999/xhtml/vocab#stylesheet</IRI>
+            <IRI>tag:textalign.net,2015:role:stylesheet</IRI>
+            <name>stylesheet</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:proofreader</IRI>
+            <name>proofreader</name>
+            <name>corrector</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:encoder</IRI>
+            <name>encoder</name>
+            <desc>The job of encoding a text, e.g., marking text with tags.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:keyboarder</IRI>
+            <name>keyboarder</name>
+            <name>typist</name>
+            <name>transcriber</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:digitizer</IRI>
+            <name>digitizer</name>
+            <name>ocr operator</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:tan-converter</IRI>
+            <name>tan converter</name>
+            <name>converter</name>
+            <desc>Responsible for converting a file into the TAN format.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:role:reference</IRI>
+            <name>source</name>
+            <desc>Person, organization, or algorithm provided data that was adopted, consulted, or
+                used.</desc>
+        </item>
+    </body>
+</TAN-voc>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="TAN-core.rng">
+    <define name="source-content">
+      <choice>
+        <ref name="entity-nondigital-no-id"/>
+        <ref name="entity-digital-nontan-no-id"/>
+      </choice>
+    </define>
+    <define name="networked-files-non-core">
+      <interleave>
+        <zeroOrMore>
+          <ref name="link-element-redivision"/>
+        </zeroOrMore>
+        <optional>
+          <ref name="link-element-model"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="link-element-annotation"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+    <define name="declaration-non-core">
+      <interleave>
+        <ref name="decl-class-1"/>
+        <ref name="decl-non-class-1"/>
+      </interleave>
+    </define>
+    <define name="voc-key-non-core">
+      <interleave>
+        <ref name="voc-element-class-1"/>
+        <ref name="voc-element-non-class-1"/>
+      </interleave>
+    </define>
+    <define name="adjust-non-core">
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-normalization"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="adjust-repl"/>
+        </zeroOrMore>
+      </interleave>
+    </define>
+    <define name="body-group">
+      <empty/>
+    </define>
+    <define name="body-content-non-core">
+      <interleave>
+        <ref name="body-content-class-1"/>
+        <ref name="body-content-non-class-1"/>
+      </interleave>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="attr-ref-alias">
+    <attribute name="ref-alias">
+      <a:documentation>contains one or more supplemental references to a &lt;div&gt;. Each reference must have the same number of @n values as the &lt;div&gt; is deep in the body hierarchy. Each atomic @n value inherits the corresponding div type. For example, in &lt;div type="letter" n="1"&gt; &lt;div type="section" n="1" ref-alias="3 4"&gt;text&lt;/div&gt; &lt;/div&gt; the @ref-alias ensures that the innermost &lt;div&gt; is assigned both 1 1 and 3 4 as references, each typed to letter, section. The values of @ref-alias are strongly inheritable by any children &lt;div&gt;s. </a:documentation>
+      <a:documentation>This feature is intended for parts of a transcription that correspond to more than one section of a work.</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-replacement">
+    <attribute name="replacement">
+      <a:documentation>contains a string used to replace any occurrence of @pattern </a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-scriptum">
+    <attribute name="scriptum">
+      <a:documentation>points to a text-bearing object that forms the basis of the reference system. The reference system must be the primary one used in the scriptum for the type indicated, material or logical. Many scripta have both a primary material system (e.g., pages, columns, lines) as well as a logical one (e.g., chapters, sections, paragraphs). </a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-type-ref-system">
+    <attribute name="type">
+      <a:documentation>declares the main type of reference system is being used: material (based on the material features of a scriptum, e.g., page, column, line) or logical (e.g., chapter, paragraph, stanza). This is evaluated primarily against the top level of the reference system </a:documentation>
+      <choice>
+        <value>material</value>
+        <value>logical</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-wf-ready">
+    <attribute name="wf-ready">
+      <a:documentation>specifies whether the class 1 file's reference system is suited for Writing Fragid URIs. Default is false. If @wf-ready is true, the class 1 file can be parsed against, and be used to generate, Writing Fragid URIs. A value of true may be supplied only if the following are true: </a:documentation>
+      <a:documentation>The scriptum used for the reference system has no more than one logical and no more than one material reference system (the "key reference system," defined by the specifications for Writing Fragids, version 0).</a:documentation>
+      <a:documentation>The division of a text unit should result in a unique numbered sequence. That is, in any given enumerable text division sequence (sibling &lt;div&gt;s whose values of @n can be converted to integers or integer-qualified integers, e.g., 3b), Arabic numerals, Roman numerals, and alphabetic numerals may not be mixed.</a:documentation>
+      <a:documentation>It is permitted to divide a key reference system more finely, but only in its innermost (leafmost) structures, not at the branch or root levels. </a:documentation>
+      <data type="boolean"/>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-n-alias">
+    <element name="n-alias">
+      <a:documentation>specifies whether aliases for n should be applied selectively. For files that use &lt;vocabulary&gt; with @which, for extra @n vocabulary, this element improves the efficiency of validation.</a:documentation>
+      <ref name="ptr-attr-div-type"/>
+    </element>
+  </define>
+  <define name="element-normalization">
+    <element name="normalization">
+      <a:documentation>specifies an alteration that has been made to a source file to bring the transcription into conformity with standards or common expectations. This element is used typically for minor corrections, e.g., suppression of discretionary hyphenation. You should declare every normalizing change you have made to the source.</a:documentation>
+      <a:documentation>&lt;normalization&gt; is especially helpful in reference to nondigital sources, but it may be made also for digital sources, to declare global changes that would be cumbersome, difficult, or impossible to describe via regular expressions in &lt;replace&gt;. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;normalization&gt; is immaterial.</a:documentation>
+      <a:documentation>See main.xml#vocabularies-normalizations for standard TAN vocabulary for normalizations. For general discussion see main.xml#normalizing_transcriptions </a:documentation>
+      <ref name="entity-nondigital-no-id"/>
+    </element>
+  </define>
+  <define name="element-reference-system">
+    <element name="reference-system">
+      <a:documentation>specifies the type of reference system and its basis. The attributes of this element specify the type of reference system (material or logical); point to one or more reference scripta that form the basis of the reference system, and stipulate whether the scripta use that reference system as their key material or logical reference system.  </a:documentation>
+      <a:documentation>In the absence of this element or any individual attribute, the following values are presumed: </a:documentation>
+      <a:documentation>The default reference type, material (i.e., scriptum-based: pages, columns, lines) or logical (based on conceptual divisions), is determined by the types of text units in the topmost tier of &lt;div&gt;s. </a:documentation>
+      <a:documentation>The default reference scriptum is &lt;source&gt;. The reference system is assumed not to be the primary one.</a:documentation>
+      <a:documentation>For a class 1 file to be a candidate for Literature Fragid URIs, whether as a target or as a source of creating LF URIs, the reference system must be the key reference system of its type in the reference scriptum.</a:documentation>
+      <ref name="attr-type-ref-system"/>
+      <optional>
+        <ref name="attr-wf-ready"/>
+      </optional>
+      <optional>
+        <ref name="attr-scriptum"/>
+      </optional>
+    </element>
+  </define>
+  <define name="element-replace">
+    <element name="replace">
+      <a:documentation>contains the equivalent of the XPath replace() function plus parameters, indicating a replacement operation that should be, or has been, applied to a digital file.</a:documentation>
+      <a:documentation>Multiple &lt;replace&gt;s will be assumed to have been implemented in the given order.</a:documentation>
+      <a:documentation>The conventions of this element and its children parallel the XPath function replace(). See http://www.w3.org/TR/xpath-functions-30/#func-replace</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;replace&gt;s is important, reflecting the order in which replacements occured. Results may differ depending upon the order of replace operations.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <interleave>
+          <zeroOrMore>
+            <ref name="element-comment"/>
+          </zeroOrMore>
+          <group>
+            <ref name="attr-pattern"/>
+            <ref name="attr-replacement"/>
+            <optional>
+              <ref name="attr-flags-for-functions"/>
+            </optional>
+          </group>
+        </interleave>
+      </choice>
+    </element>
+  </define>
+  <define name="element-version">
+    <element name="version">
+      <a:documentation>identifies the version of a work. Applicable to sources that contain multiple versions, e.g., original text and facing translations. Like &lt;work&gt;, &lt;version&gt; points to a conceptual entity, not a physical one.</a:documentation>
+      <a:documentation>In the context of a class 1 file, the entity identified by &lt;version&gt; is assumed to be a version of the entity defined in &lt;work&gt;.  </a:documentation>
+      <a:documentation>Very few work-versions have their own URN names. It is advisable to assign a tag URN or a UUID. If you have used an IRI for &lt;work&gt; that you are entitled to modify, you may wish to add a suffix that will name the version. If you need to specify exactly where on a text-bearing object a version appears, &lt;desc&gt; or &lt;comment&gt; should be used.</a:documentation>
+      <a:documentation>For more, see main.xml#conceptual_works</a:documentation>
+      <ref name="entity-nondigital-no-id"/>
+    </element>
+  </define>
+  <define name="element-work">
+    <element name="work">
+      <a:documentation>identifies a creative textual work, understood conceptually, not physically (e.g., Homer's Iliad, not a particular version or copy of it).</a:documentation>
+      <a:documentation>The term "work" is only loosely defined in TAN. Any text that has enough unity to be referred to in ordinary conversation as a single entity may be identified as a work. A work may be composed of other works, be a part of other works, or even overlap with other works. E.g., the Lord's Prayer, the Gospel of Luke, the Tetravengelion, the New Testament, and the Bible are all valid works, despite the complex relationship between each of them.</a:documentation>
+      <a:documentation>This element takes the IRI + name pattern. For more, see main.xml#conceptual_works</a:documentation>
+      <ref name="entity-nondigital-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-annotation">
+    <element name="annotation">
+      <a:documentation>identifies a class-2 file that is an annotation on (and therefore a dependent of) the current file.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;annotation&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-model">
+    <element name="model">
+      <a:documentation>identifies a class-1 file has been used as a model for how the current file has been segmented and labeled.</a:documentation>
+      <a:documentation>A file need not follow its model exactly. Upon verbose validation, differences between the file and its model will be reported only as warnings.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-redivision">
+    <element name="redivision">
+      <a:documentation>identifies a class-1 file that has the same work, scriptum, and version, but is segmented according to a different reference system.</a:documentation>
+      <a:documentation>The normalized transcriptions of redivided texts must be identical.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;redivision&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <!-- PATTERNS -->
+  <define name="adjust-repl">
+    <ref name="element-replace"/>
+  </define>
+  <define name="body-content-class-1">
+    <empty/>
+  </define>
+  <define name="body-content-non-class-1">
+    <empty/>
+  </define>
+  <define name="decl-class-1">
+    <interleave>
+      <ref name="element-work"/>
+      <optional>
+        <ref name="element-version"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="element-token-definition"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="element-n-alias"/>
+      </optional>
+      <optional>
+        <ref name="element-reference-system"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="decl-non-class-1">
+    <empty/>
+  </define>
+  <define name="voc-element-class-1">
+    <zeroOrMore>
+      <ref name="voc-element-div-type"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="voc-element-scri"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="voc-element-work"/>
+    </zeroOrMore>
+  </define>
+  <define name="voc-element-non-class-1">
+    <empty/>
+  </define>
+</grammar>

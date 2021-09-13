@@ -1,0 +1,295 @@
+
+/* BACKGROUND */
+.suppressed {
+   background-color: beige;
+}
+table.e-collation {
+   background-color: powderblue;
+}
+.e-diff > .e-a:hover,
+.e-diff > .e-b:hover,
+div.e-u:hover {
+   background-color: yellow
+}
+.venn-a {
+   background-color: rgba(31, 119, 180, 0.6);
+}
+.venn-b {
+   background-color: rgba(255, 127, 14, 0.6);
+}
+.venn-c {
+   background-color: rgba(44, 160, 44, 0.6);
+}
+.label:hover {
+   background-color: lightgreen;
+}
+.e-stats,
+.e-diff > .e-a,
+.e-diff > .e-b,
+.e-u
+{
+   background-color: aliceblue;
+}
+.fragment
+{
+   background-color: lightgray;
+}
+
+
+/* BORDERS */
+thead > tr:first-of-type > th[colspan] {
+   border-bottom: solid black 1px;
+}
+.e-u {
+   border: solid black 1px;
+}
+.e-u.a-other,
+.e-a.a-other,
+.e-b.a-other,
+.other-picker.a-other{
+    border: solid green 1px;
+}
+
+/* COLOR */
+.e-diff .e-a,
+.e-diff .e-b,
+.e-u,
+.last-picker {
+   color: red;
+   text-decoration: line-through;
+}
+/* note, .e-u is lower priority (above) than the same with a @base marker */
+/*.e-diff > .e-b,*/
+.e-u.a-last,
+.e-a.a-last,
+.e-b.a-last,
+.last-picker.a-last {
+   color: green;
+   text-decoration: underline;
+}
+.e-div > .e-ref,
+.e-div > .a-n,
+.title,
+.subtitle{
+    color: blue
+}
+
+/* CURSOR */
+.last-picker:hover,
+.other-picker:hover,
+.switch:hover,
+.label {
+   cursor: pointer;
+}
+
+/* DISPLAY */
+.e-file {
+   display: table-row;
+}
+div.e-a,
+div.e-b,
+div.e-common,
+div.e-collation > *,
+.e-txt,
+.e-u,
+.e-c,
+.e-stats td *,
+.label > *,
+.venn-a,
+.venn-b,
+.venn-c,
+.fragment,
+.bottomline,
+.e-div > *,
+.e-ab > *{
+   display: inline
+}
+body .e-div > .e-div{
+    display: block
+}
+div.e-witness,
+.hide,
+div.e-a.hide,
+div.e-b.hide,
+div.label ~ *,
+div.collation-head div.label ~ *,
+script,
+/*.e-div > .a-n,*/
+.e-div > .e-n,
+.e-div > .e-ref,
+.a-string-length,
+.a-_len,
+.a-string-pos,
+.a-_pos,
+.a-_pos-a,
+.a-_pos-b,
+.a-orig-n,
+.e-div > .e-ref > .e-n,
+.e-div > .a-type,
+.e-div > .e-type,
+.a-ed-who,
+.a-ed-when,
+.e-ed-who,
+.a-part,
+.a-org,
+.a-sample,
+.a-q{
+   display: none
+}
+td div.label ~ *
+{
+   display: inherit;
+}
+td div.label ~ .tok,
+td div.label ~ .non-tok
+{
+   display: inline;
+}
+
+/* FONTS */
+.last-picker,
+.other-picker {
+   font-weight: initial;
+}
+.label,
+.bottomline,
+.subtitle,
+.title{
+   font-weight: 900;
+}
+.explanation,
+.e-quote {
+   font-style: italic;
+}
+.title{
+   font-size: 180%;
+}
+.subtitle,
+body > div > div.label{
+   font-size:larger;
+}
+tr.averages{
+   font-size:smaller;
+   font-style: italic;
+}
+
+
+/* MARGINS */
+
+table {
+   margin: 10px;
+}
+.last-picker {
+   margin: 0px 2px;
+}
+body > * > .label {
+   margin: 20px 0px 0px 0px;
+}
+.venn > .label > div {
+   margin: 0px 4px;
+}
+.explanation {
+   margin: 2px 6px 6px 6px;
+}
+.e-ref,
+.a-n{
+    margin: 0px 4px;
+}
+.e-div > .e-div{
+    margin-left: 10px;
+}
+
+/* OPACITY */
+.suppressed
+{
+   opacity: 0.5;
+}
+
+/* PADDING */
+div.collation div,
+div.e-diff div{
+   padding: 0px;
+}
+
+/* POSITION */
+
+.e-u {
+   position: relative;
+}
+
+/* TEXT */
+tr.averages > td:nth-child(2),
+table.e-stats > tbody > tr > td{
+   text-align:right;
+}
+table.e-stats > thead > tr > th{
+   text-align:center;
+}
+
+/* VISIBILITY */
+
+/* WIDTH */
+
+.last-picker,
+.other-picker {
+   width: 20px;
+}
+
+
+/* UNSORTED */
+.a-uri {
+   font-family: monospace;
+   display: inline-block;
+}
+.a-length::before {
+   content: "character length: ";
+}
+.e-file > * {
+   display: table-cell;
+   padding: 0px 10px;
+}
+td:first-of-type {
+   text-align: right;
+   font-weight: 900;
+   padding: 0px 10px 0px 0px;
+}
+
+/* WITNESS TOOLTIP */
+.wits {
+   visibility: hidden;
+   /*width: 120px;*/
+   background-color: #555;
+   color: #fff;
+   text-align: center;
+   padding: 5px 0;
+   border-radius: 6px;
+
+   position: absolute;
+   /*position: relative;*/
+   z-index: 1;
+   bottom: 100%;
+   left: 0;
+   /*right: 0;*/
+   /*bottom: 125%;
+   left: 50%;
+   margin-left: -60px;*/
+   opacity: 0;
+   transition: opacity 0.3s;
+
+}
+
+/* Tooltip arrow */
+/*.wits::after {
+   content: "";
+   position: absolute;
+   /\*top: 100%;
+   left: 50%;*\/
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: #555 transparent transparent transparent;
+}*/
+.e-u:hover .wits {
+   visibility: visible;
+   opacity: 1;
+}

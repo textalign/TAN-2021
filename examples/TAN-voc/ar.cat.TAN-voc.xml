@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:TAN-key:ar.cat">
+    <head>
+        <name>Keywords for Aristotle's Categories</name>
+        <master-location href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/TAN-voc/ar.cat.TAN-voc.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+        </license>
+        <adjustments/>
+        <vocabulary-key>
+            <algorithm xml:id="xslt3">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-05T00:30:17.756-04:00"/>
+            </algorithm>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp who="xslt3" roles="stylesheet1"/>
+        <resp roles="creator" who="park"/>
+        <change when="2016-07-07" who="park">Started file</change>
+        <change who="xslt3" when="2018-08-05T00:30:17.756-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do/>
+    </head>
+    <body affects-element="work">
+        <item>
+            <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+            <name xml:lang="fra">Aristote, Catégories</name>
+            <name xml:lang="eng">Aristotle, Categories</name>
+        </item>
+        <item>
+            <IRI>tag:parkj@textalign.net,2015:work:porphyry:on-aristotles-categories</IRI>
+            <name xml:lang="lat">Commentarium graecum Porphyrii</name>
+            <name xml:lang="eng">Porphyry's commentary on Aristotle's Categories</name>
+        </item>
+        <item>
+            <IRI>tag:parkj@textalign.net,2015:work:dexippus:on-aristotles-categories</IRI>
+            <name xml:lang="lat">Commentarium graecum Dexippi</name>
+            <name xml:lang="eng">Dexippus's commentary on Aristotle's Categories</name>
+        </item>
+        <group>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:ammonius:on-aristotles-categories:lemmata</IRI>
+                <name xml:lang="lat">Lemmata de commentario graeco Ammonii</name>
+                <name xml:lang="eng">Lemmata from Ammonius's commentary on Aristotle's
+                    Categories</name>
+            </item>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:ammonius:on-aristotles-categories:discussions</IRI>
+                <name xml:lang="lat">Explanationes de commentario graeco Ammonii</name>
+                <name xml:lang="eng">Discussions in Ammonius's commentary on Aristotle's
+                    Categories</name>
+            </item>
+        </group>
+        <group>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:philoponus:on-aristotles-categories:lemmata</IRI>
+                <name xml:lang="lat">Lemmata de commentario graeco Ioannis Philoponi</name>
+                <name xml:lang="eng">Lemmata from John Philoponus's commentary on Aristotle's
+                    Categories</name>
+            </item>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:philoponus:on-aristotles-categories:discussions</IRI>
+                <name xml:lang="lat">Explanationes de commentario graeco Ioannis Philoponi</name>
+                <name xml:lang="eng">Discussions in John Philoponus's commentary on Aristotle's
+                    Categories</name>
+            </item>
+        </group>
+        <group>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:olympiodorus:on-aristotles-categories:lemmata</IRI>
+                <name xml:lang="lat">Lemmata de commentario graeco Olympiodori</name>
+                <name xml:lang="eng">Lemmata from Olympiodorus's commentary on Aristotle's
+                    Categories</name>
+            </item>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:olympiodorus:on-aristotles-categories:discussions</IRI>
+                <name xml:lang="lat">Explanationes de commentario graeco Olympiodori</name>
+                <name xml:lang="eng">Discussions in Olympiodorus's commentary on Aristotle's
+                    Categories</name>
+            </item>
+        </group>
+        <group>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:elias:on-aristotles-categories:lemmata</IRI>
+                <name xml:lang="lat">Lemmata de commentario graeco Eliae</name>
+                <name xml:lang="eng">Lemmata from Elias's commentary on Aristotle's
+                    Categories</name>
+            </item>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:elias:on-aristotles-categories:discussions</IRI>
+                <name xml:lang="lat">Explanationes de commentario graeco Eliae</name>
+                <name xml:lang="eng">Discussions in Elias's commentary on Aristotle's
+                    Categories</name>
+            </item>
+        </group>
+        <group>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:simplicius:on-aristotles-categories:lemmata</IRI>
+                <name xml:lang="lat">Lemmata de commentario graeco Simplicii</name>
+                <name xml:lang="eng">Lemmata from Simplicius's commentary on Aristotle's
+                    Categories</name>
+            </item>
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:work:simplicius:on-aristotles-categories:discussions</IRI>
+                <name xml:lang="lat">Explanationes de commentario graeco Simplicii</name>
+                <name xml:lang="eng">Discussions in Simplicius's commentary on Aristotle's
+                    Categories</name>
+            </item>
+        </group>
+        <item>
+            <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:armenian</IRI>
+            <name>Anonymous Armenian translation</name>
+            <desc>5th-c. translation once ascribed to a translator named David.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:latin</IRI>
+            <name>Latin translation of Aristotle's Categories by Anicius Manlius Severinus
+                Boëthius</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:sergius</IRI>
+            <name>Syriac translation of Aristotle's Categories by Sergius of Reshaina</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:jacob</IRI>
+            <name>Syriac translation of Aristotle's Categories by Jacob of Edessa</name>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:george</IRI>
+            <name>Syriac translation of Aristotle's Categories by George, Bishop of the Arabs</name>
+        </item>
+    </body>
+</TAN-voc>

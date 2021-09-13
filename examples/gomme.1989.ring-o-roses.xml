@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-TEI.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:tan="tag:textalign.net,2015:ns" 
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0" TAN-version="2021" 
+  id="tag:parkj@textalign.net,2015:gomme.1898.ring-o-roses">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt><title/>
+        <title/>
+      </titleStmt>
+      <publicationStmt>
+        <p part="N"/>
+      </publicationStmt>
+      <sourceDesc default="false">
+        <p part="N"/>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <head xmlns="tag:textalign.net,2015:ns">
+    <name>Dictionary entry by Alice Bertha Gomme on Ring a Ring o' Roses</name>
+    <master-location href="http://textalign.net/release/TAN-2020/examples/gomme.1989.ring-o-roses.xml"/>
+    <license licensor="park">
+      <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+      <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+        License. The license is granted independent of rights and licenses associated with the
+        source. </name>
+    </license>
+    <reference-system type="logical" wf-ready="true"/>
+    <work>
+      <IRI>tag:kalvesmaki@gmail.com,2014:work:gomme.1898.ring-o-roses</IRI>
+      <name>Article by Alice Bertha Gomme on Ring a Ring o' Roses</name>
+    </work>
+    <source>
+      <IRI>http://www.worldcat.org/oclc/2779087</IRI>
+      <name>The traditional games of England, Scotland, and Ireland : with tunes, singing-rhymes,
+        and methods of playing according to the variants extant and recorded in different parts of
+        the Kingdom</name>
+      <comment when="2015-03-10" who="park">This work is to be found at vol. 2, pp.
+        108-111.</comment>
+    </source>
+    <adjustments>
+      <normalization>
+        <IRI>tag:textalign.net,2015:normalization:music-printed-removed</IRI>
+        <name>Printed music has been removed.</name>
+      </normalization>
+      <normalization>
+        <IRI>tag:textalign.net,2015:normalization:hyphens-discretionary-removed</IRI>
+        <name>Suppression of hyphens</name>
+      </normalization>
+      <replace pattern="--" replacement="—" flags="i"/>
+    </adjustments>
+    <vocabulary-key>
+      <algorithm xml:id="xslt2">
+        <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+        <name>Stylesheet to create a TAN file.</name>
+        <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:09:27.084-04:00"/>
+      </algorithm>
+      <div-type xml:id="sect">
+        <IRI>http://dbpedia.org/resource/Section_(typography)</IRI>
+        <name>section</name>
+      </div-type>
+      <div-type xml:id="var">
+        <IRI>tag:kalvesmaki.com,2014:div-type-variant</IRI>
+        <name xml:lang="eng">variant</name>
+      </div-type>
+      <div-type xml:id="cit">
+        <IRI>http://dbpedia.org/resource/Citation</IRI>
+        <name>citation</name>
+      </div-type>
+      <div-type xml:id="line">
+        <IRI>http://dbpedia.org/resource/Line_(poetry)</IRI>
+        <name>line</name>
+      </div-type>
+      <div-type xml:id="para">
+        <IRI>http://dbpedia.org/resource/Paragraph</IRI>
+        <name>paragraph</name>
+      </div-type>
+      <person xml:id="park">
+        <IRI>tag:parkj@textalign.net,2015:self</IRI>
+        <name xml:lang="eng">Jenny Park</name>
+      </person>
+      <algorithm xml:id="xslt1">
+        <IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI>
+        <name>Stylesheet to populate a TAN-A file from collections.</name>
+        <location accessed-when="2018-08-09T11:09:27.084-04:00"
+          href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/>
+      </algorithm>
+      <role xml:id="editor">
+        <IRI>http://schema.org/editor</IRI>
+        <name xml:lang="eng">Editor</name>
+      </role>
+      <role xml:id="stylesheet1" which="stylesheet"/>
+    </vocabulary-key>
+    
+    <file-resp who="park"/>
+    <resp who="xslt2" roles="stylesheet1"/>
+    <resp roles="editor" who="park"/>
+    <resp who="xslt1" roles="stylesheet1"/>
+    <change when="2021-02-13" who="park">Replaced ever • with an em dash</change>
+    <change when="2015-03-10" who="park">Created new TAN-TEI file.</change>
+    <change who="xslt1" when="2017-11-02T22:22:13.424-04:00">TAN file updated to 2018 schemas.</change>
+    <change when="2017-11-02" who="park">Removed reference numerals from text.</change>
+    <change who="xslt2" when="2018-08-09T11:09:27.084-04:00">Converted from 2018 to 2019 schemas.</change>
+    <to-do>
+      <comment when="2018-08-09-04:00" who="park">Finish file.</comment>
+    </to-do>
+  </head>
+  <text>
+    <body xml:lang="eng">
+      <div type="sect" n="a" part="N" org="uniform" sample="complete">
+        <div type="var" n="1" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring a ring o' roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket-full o' posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">One for me, and one for you,</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">And one for little Moses—</l>
+          </div>
+          <div type="line" n="5" part="N" org="uniform" sample="complete">
+            <l part="N">Hasher, Hasher, Hasher, all fall down.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Winterton, Lincoln, and Leadenham (Miss M. Peacock).</p>
+          </div>
+        </div>
+        <div type="var" n="2" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">A ring, a ring o' roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket-full o' posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">One for Jack, and one for Jim, and one for little Moses—</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">A-tisha! a-tisha! a-tisha!</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Shropshire (Burne's Shropshire Folk-lore, p. 511).</p>
+          </div>
+        </div>
+        <div type="var" n="3" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">A ring, a ring o' roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket-full o' posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">A curchey in, and a curchey out,</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">And a curchey all together.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Egmond (Burne's Shropshire Folk-lore, p. 571).</p>
+          </div>
+        </div>
+        <div type="var" n="4" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring, a ring o' roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket full o' posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">Up-stairs and down-stairs,</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">In my lady's chamber—</l>
+          </div>
+          <div type="line" n="5" part="N" org="uniform" sample="complete">
+            <l part="N">Husher! Husher! Cuckoo!</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Wakefield, Yorks. (Miss Fowler).</p>
+          </div>
+        </div>
+        <div type="var" n="5" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring, a ring of roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">Basket full of posies—</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">Tisha! Tisha! all fall down.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Penzance, Cornwall (Mrs. Mabbott).</p>
+          </div>
+        </div>
+        <div type="var" n="6" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring, a ring a roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocketful of posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">Hush, oh! hush, oh!</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">All fall down!</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Colchester, Essex (Miss G. M. Frances).</p>
+          </div>
+        </div>
+        <div type="var" n="7" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring, a ring a rosy,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket full of posies;</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">One for you, and one for me,</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">And one for little Moses—</l>
+          </div>
+          <div type="line" n="5" part="N" org="uniform" sample="complete">
+            <l part="N">Atishm! Atishm!</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Beddgelert (Mrs. Williams).</p>
+          </div>
+        </div>
+        <div type="var" n="8" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">A ring, a ring of roses,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocket full of posies—</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">Hist! hush! last down dead!</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Gainford, Durham (Miss A. Eddleston).</p>
+          </div>
+        </div>
+        <div type="var" n="9" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ring, a ring a row-o,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">See the children go-o,</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">Sit below the goose-berry bush;</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">Hark! they all cry Hush! hush! hush!</l>
+          </div>
+          <div type="line" n="5" part="N" org="uniform" sample="complete">
+            <l part="N">Sitty down, sit down.</l>
+          </div>
+          <div type="line" n="6" part="N" org="uniform" sample="complete">
+            <l part="N">Duzzy, duzzy gander,</l>
+          </div>
+          <div type="line" n="7" part="N" org="uniform" sample="complete">
+            <l part="N">Sugar, milk, and candy;</l>
+          </div>
+          <div type="line" n="8" part="N" org="uniform" sample="complete">
+            <l part="N">Hatch-u, hatch-u, all fall down together.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—South Shields (Miss Blair, aged 9).</p>
+          </div>
+        </div>
+        <div type="var" n="10" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Ringey, ringey rosies,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">A pocketful of posies—</l>
+          </div>
+          <div type="line" n="3a" part="N" org="uniform" sample="complete">
+            <l part="N">Hach-ho, hach-ho, all fall down.</l>
+          </div>
+          <div type="para" n="p1" part="N" org="uniform" sample="complete">
+            <p part="N">Another version—</p>
+          </div>
+          <div type="line" n="3b" part="N" org="uniform" sample="complete">
+            <l part="N">Hash-ho! Tzhu-ho! all fall down.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Sporle, Norfolk (Miss Matthews).</p>
+          </div>
+        </div>
+        <div type="var" n="11" part="N" org="uniform" sample="complete">
+          <div type="line" n="1" part="N" org="uniform" sample="complete">
+            <l part="N">Windy, windy weather,</l>
+          </div>
+          <div type="line" n="2" part="N" org="uniform" sample="complete">
+            <l part="N">Cold and frosty weather,</l>
+          </div>
+          <div type="line" n="3" part="N" org="uniform" sample="complete">
+            <l part="N">When the wind blows</l>
+          </div>
+          <div type="line" n="4" part="N" org="uniform" sample="complete">
+            <l part="N">We all blow together.</l>
+          </div>
+          <div type="line" n="5" part="N" org="uniform" sample="complete">
+            <l part="N">I saw Peter!</l>
+          </div>
+          <div type="line" n="6" part="N" org="uniform" sample="complete">
+            <l part="N">When did you meet him?</l>
+          </div>
+          <div type="line" n="7" part="N" org="uniform" sample="complete">
+            <l part="N">Merrily, cherrily [so pronounced]</l>
+          </div>
+          <div type="line" n="8" part="N" org="uniform" sample="complete">
+            <l part="N">All fall down.</l>
+          </div>
+          <div type="line" n="9" part="N" org="uniform" sample="complete">
+            <l part="N">A ring, a ring of roses,</l>
+          </div>
+          <div type="line" n="10" part="N" org="uniform" sample="complete">
+            <l part="N">A pocketful of posies—</l>
+          </div>
+          <div type="line" n="11" part="N" org="uniform" sample="complete">
+            <l part="N">Ashem, ashem, all fall down.</l>
+          </div>
+          <div type="cit" n="cit" part="N" org="uniform" sample="complete">
+            <p part="N">—Sheffield (S. O. Addy).</p>
+          </div>
+        </div>
+      </div>
+      <div type="sect" n="b" part="N" org="uniform" sample="complete">
+        <div type="para" n="1" part="N" org="uniform" sample="complete">
+          <p part="N">(b) A ring is formed by the children joining hands. They all dance round, singing the
+            lines. At the word "Hasher" or "Atcha" they all raise their hands [still clasped] up and
+            down, and at "all fall down" they sit suddenly down on the ground. In Lancashire
+            (Morton) they pause and curtsey deeply. The imitation of sneezing is common to all. Miss
+            Peacock says, in Nottinghamshire they say "Hashem! Hashem!" and shake their heads. In
+            the Sheffield version the children sing the first eight lines going round, and all fall
+            down when the eighth is sang. They then form a ring by holding hands, and move round
+            singing the next three lines, and then they all fall either on their knees or flat on
+            their faces.</p>
+        </div>
+      </div>
+      <div type="sect" n="c" part="N" org="uniform" sample="complete">
+        <div type="para" n="1" part="N" org="uniform" sample="complete">
+          <p part="N">(c) Versions of this game, identical with the Winterton one, have been sent me by Miss
+            Winfield, Nottingham; others, almost identical with the second Norfolk version, from
+            Monton, Lancashire (Miss Dendy), North Staffs. Potteries, Norbury, Staffs., (Miss A.
+            Keary), Earls Heaton, Yorks. (H. Hardy). Addy, Sheffield Glossary, gives a version
+            almost identical with the last Sporle version.</p>
+        </div>
+        <div type="para" n="2" part="N" org="uniform" sample="complete">
+          <p part="N">Addy, Sheffield Glossary, compares the old stories about rose-laughing in Grimm's Teut.
+            Myth. iii. 1101. "Gifted children of fortune have the power to laugh roses, as Treyja
+            wept gold. Probably in the first instance they were Pagan beings of light, who spread
+            their brightness in the sky over the earth—'rose children,' 'sun children.'" This
+            seems to me to be a very apposite explanation of the game, the rhymes of which are
+            fairly well preserved, though showing in some of the variants that decay towards a
+            practical interpretation which will soon abolish all traces of the mythical origin of
+            game-rhyme. It may, however, simply be the making, or "ringing," a ring or circle of
+            roses or other flowers and bowing to this. Mr. Addy's suggestion does not account for
+            the imitation of sneezing, evidently an important incident, which runs through all
+            versions. Sneezing has always been regarded as an important or supernatural event in
+            every-day life, and many superstitious beliefs and practices are connected with it both
+            in savage and civilised life. Newell (Games and Songs of American Children, p. 127)
+            describes "Ring around the Rosie," apparently this game, but the imitation of sneezing
+            has been lost.</p>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>

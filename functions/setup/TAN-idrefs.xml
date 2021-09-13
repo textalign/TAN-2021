@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file maps attributes that take idrefs to vocabulary elements that take ids.  -->
+<id-idrefs xmlns="tag:textalign.net,2015:ns">
+    <id>
+        <element>person</element>
+        <element>organization</element>
+        <element>algorithm</element>
+        <idrefs attribute="who"/>
+        <idrefs attribute="ed-who"/>
+        <idrefs attribute="claimant"/>
+    </id>
+    <id>
+        <element>person</element>
+        <element>organization</element>
+        <idrefs attribute="licensor"/>
+    </id>
+    <id>
+        <element>period</element>
+        <idrefs attribute="period"/>
+        <idrefs attribute="claim-period"/>
+    </id>
+    <id>
+        <element>rights</element>
+        <idrefs attribute="rights"/>
+    </id>
+    <id>
+        <element>role</element>
+        <idrefs attribute="roles"/>
+    </id>
+    <id>
+        <element>source</element>
+        <idrefs attribute="src"/>
+        <idrefs attribute="work"/>
+    </id>
+    <id>
+        <element>work</element>
+        <idrefs attribute="work"/>
+    </id>
+    <id>
+        <element>div-type</element>
+        <idrefs element="div" attribute="type"/>
+    </id>
+    <id>
+        <element>group-type</element>
+        <idrefs element="group" attribute="type"/>
+    </id>
+    <id>
+        <element>feature</element>
+        <idrefs attribute="feature"/>
+        <idrefs element="feature" attribute="type"/>
+        <idrefs element="category" attribute="type"/>
+    </id>
+    <id>
+        <element>lexicon</element>
+        <idrefs attribute="lexicon"/>
+    </id>
+    <id>
+        <element>morphology</element>
+        <idrefs attribute="morphology"/>
+    </id>
+    <id>
+        <element>reuse-type</element>
+        <idrefs attribute="reuse-type"/>
+    </id>
+    <id>
+        <element>bitext-relation</element>
+        <idrefs attribute="bitext-relation"/>
+    </id>
+    <id>
+        <element>feature</element>
+        <idrefs attribute="features"/>
+    </id>
+    <id>
+        <element>inclusion</element>
+        <idrefs attribute="include"/>
+    </id>
+    <id>
+        <element>modal</element>
+        <idrefs attribute="adverb"/>
+    </id>
+    <id>
+        <element>group-type</element>
+        <idrefs attribute="group"/>
+    </id>
+    <id>
+        <element>verb</element>
+        <idrefs attribute="verb"/>
+    </id>
+    <id>
+        <element>place</element>
+        <idrefs attribute="where"/>
+    </id>
+    <id>
+        <element>relationship</element>
+        <idrefs attribute="relationship"/>
+    </id>
+    <id>
+        <element>algorithm</element>
+        <element>organization</element>
+        <element>person</element>
+        <element>work</element>
+        <element>version</element>
+        <element>scriptum</element>
+        <element>topic</element>
+        <element>source</element>
+        <idrefs attribute="subject" element="subject"/>
+        <idrefs attribute="object" element="object"/>
+        <idrefs attribute="claim-basis"/>
+    </id>
+    <id>
+        <element>claim</element>
+        <idrefs attribute="object" element="object"/>
+    </id>
+    <id>
+        <element>modal</element>
+        <idrefs attribute="adverb"/>
+    </id>
+    <id>
+        <element>topic</element>
+        <idrefs attribute="topic"/>
+    </id>
+    <id>
+        <element>unit</element>
+        <element>div-type</element>
+        <idrefs attribute="units"/>
+    </id>
+    <id>
+        <element>version</element>
+        <idrefs attribute="version"/>
+    </id>
+    <id>
+        <element>work</element>
+        <element>version</element>
+        <idrefs attribute="work-version"/>
+    </id>
+    <id>
+        <element>scriptum</element>
+        <idrefs attribute="scriptum"/>
+    </id>
+    <id cross-file="true">
+        <element>div-type</element>
+        <idrefs attribute="div-type"/>
+    </id>
+</id-idrefs>

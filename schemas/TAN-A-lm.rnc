@@ -1,0 +1,134 @@
+default namespace = "tag:textalign.net,2015:ns"
+
+include "incl/TAN-class-2.rnc" {
+    start =
+        
+        ## specifies that the file is a TAN file containing lexico-morphology data about a class-1 source or a language in general. Root element.
+        element TAN-A-lm { TAN-root }
+    decl-non-class-2 = element-for-lang*, (element-tok-starts-with* & element-tok-is*)
+    source-content = entity-digital-nontan-no-id
+    # Either one source with no language specifications, or a language specification with zero or more sources
+    source-list = link-element-source*
+    tok-sources-ref-opt = empty
+    # TAN-A-lm files must each have at least one lexicon and one TAN-mor
+    voc-element-non-class-2 = voc-element-lexicon+ & voc-element-morphology+
+    # Because TAN-A-lm files depend on only one source, no id references to sources are needed...
+    token-definition-attributes = empty
+    ptr-attr-src-many = empty
+    # ...and <where> is also unnecessary
+    action-condition = action-simple-condition
+    group-attributes-non-core = ptr-attr-lexicon?, ptr-attr-morphology?
+    body-attributes-non-core = ptr-attr-lexicon, ptr-attr-morphology
+    body-item = element-ana
+    default-tok-element = element-tok-standard | element-tok-abstract
+}
+# ATTRIBUTES
+attr-def-ref =
+    
+    ## identifies which lexical definition is meant. This attribute is essential in cases where a lexicon has multiple entries for lexemes (lexical headwords) that are identical. 
+    
+    ## Because there is no TAN format for lexicons, assertions about lexica will not be validated.
+    attribute def-ref { text }
+ptr-attr-lexicon =
+    
+    ## points via idrefs to one or more lexicons, persons, organizations, or algorithms.
+    
+    ## This attribute is weakly inheritable. See main.xml#inheritable_attributes
+    attribute lexicon { text }
+attr-tok-pop =
+    
+    ## specifies the quantity of tokens that are the subject of the <ana>. This attribute is useful for language-specific TAN-A-lm files, where the total number of tokens that formed the set might be lost. It is also useful for calculating the relative probability of token-to-lm combinations.
+    
+    ## This attribute is weakly inheritable. See main.xml#inheritable_attributes
+    attribute tok-pop { xsd:integer }
+ptr-attr-morphology =
+    
+    ## points to one or more <morphology> IDs
+    
+    ## This attribute is inheritable. See main.xml#inheritable_attributes
+    attribute morphology { text }
+# ELEMENTS
+element-ana =
+    
+    ## contains a one or more assertions about the lexical or morphological properties of one or more tokens.
+    
+    ## Claims within an <ana> are distributive. That is, every combination of <l> and <m> within an <lm> is claimed to be true for every <tok>.
+    
+    ## The sequence of consecutive <ana>s is immaterial.
+    element ana {
+        inclusion
+        | (certainty-stamp?,
+           ptr-attr-lexicon?,
+           ptr-attr-morphology?,
+           claimant-attributes?,
+           ptr-attr-group?,
+           attr-tok-pop?,
+           (element-comment*
+            & ((default-tok-element | element-group-for-tok)+, element-lm+)))
+    }
+element-l =
+    
+    ## names a lexeme, by pointing to the main word entry in the lexicon identified by the element's inherited value(s) of @lexicon. This element should not be used to point to roots, only to lexical headwords. 
+    
+    ## In many languages, especially those that are lightly inflected, the lexeme will be identical to the word token itself. If <l> is omitted, the calculated value of <tok> is to be inferred as its value.
+    
+    ## The sequence of consecutive <l>s is immaterial.
+    element l { ptr-attr-lexicon?, attr-def-ref?, certainty-stamp?, text }
+element-lm =
+    
+    ## groups lexical or morphological data.
+    
+    ## Components within <lm> combine with each other and with all sibling <tok>s. That is, every <l> is asserted against every <m> within an <lm> is asserted of every <tok>.
+    
+    ## The sequence of consecutive <lm>s is immaterial.
+    element lm {
+        certainty-stamp?,
+        ptr-attr-lexicon?,
+        ptr-attr-morphology?,
+        (element-comment*
+         & ((element-l+, element-m*) | (element-l*, element-m+)))
+    }
+element-m =
+    
+    ## carries a morphological code that conforms to the rules or patterns defined in the TAN-mor file upon which the data depends.
+    
+    ## Codes are space-delimited. If a value of <m> violates the rules established by the dependency TAN-mor file, an error will be generated. For more about how codes are built, and how they function, see main.xml#tan-a-lm.
+    
+    ## The sequence of consecutive <m>s is immaterial.
+    element m {
+        certainty-stamp?,
+        ptr-attr-morphology?,
+        xsd:string { pattern = "[^\+\s]+(\s+[^\+\s]+)*" }
+    }
+element-tok-abstract =
+    
+    ## points to a token in the abstract, no matter where it is found, either in the source (if there is one) or the language (if there is no source).
+    
+    ## The sequence of consecutive <tok>s is immaterial, except in the context of <group>.
+    element tok { certainty-stamp?, (attr-val | attr-rgx), attr-chars? }
+element-tok-is =
+    
+    ## specifies an exact value of @val of <tok>s in the file. Collectively, every <tok> should point to at least one <tok-is>.
+    
+    ## This element is an optional way to improve the efficiency of validation and applications. 
+    
+    ## The sequence of consecutive <tok-is>s is immaterial.
+    element tok-is { text }
+element-tok-starts-with =
+    
+    ## specifies one opening string that characterizes the @val of <tok>s in the file.
+    
+    ## This element is an optional way to improve the efficiency of validation and applications.
+    
+    ## The sequence of consecutive <tok-is>s is immaterial.
+    element tok-starts-with { text }
+# Vocabulary items
+voc-element-lexicon =
+    
+    ## names a lexicographical authority.
+    element lexicon { entity-digital-tan-id | entity-nondigital-id }
+voc-element-morphology =
+    
+    ## identifies a dependency <TAN-mor> file that defines the parts of speech for a language, the codes for those parts, and the rules for combining them
+    element morphology { entity-digital-tan-id }
+# PATTERNS

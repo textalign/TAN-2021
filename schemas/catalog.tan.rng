@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="collection">
+      <attribute name="stable">
+        <data type="boolean"/>
+      </attribute>
+      <optional>
+        <attribute name="id">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="metadata-resolved">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <element name="doc">
+          <ref name="doc-attributes"/>
+          <zeroOrMore>
+            <ref name="nondoc-attributes"/>
+          </zeroOrMore>
+          <ref name="any-content"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </start>
+  <define name="doc-attributes">
+    <attribute name="href"/>
+    <attribute name="id">
+      <data type="anyURI"/>
+    </attribute>
+    <attribute name="root">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="nondoc-attributes">
+    <attribute>
+      <anyName>
+        <except>
+          <name>href</name>
+          <name>id</name>
+          <name>root</name>
+        </except>
+      </anyName>
+    </attribute>
+  </define>
+  <define name="any-content">
+    <interleave>
+      <zeroOrMore>
+        <ref name="any-element"/>
+      </zeroOrMore>
+      <text/>
+    </interleave>
+  </define>
+  <define name="any-element">
+    <element>
+      <anyName/>
+      <zeroOrMore>
+        <ref name="any-attribute"/>
+      </zeroOrMore>
+      <ref name="any-content"/>
+    </element>
+  </define>
+  <!--
+    We omit @xml:id to avoid id conflicts
+    any-attribute = attribute * - xml:id { text }
+  -->
+  <define name="any-attribute">
+    <attribute>
+      <anyName/>
+    </attribute>
+  </define>
+</grammar>

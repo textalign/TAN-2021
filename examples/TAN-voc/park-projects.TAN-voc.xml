@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:TAN-voc:standard">
+    <head>
+        <name>Vocabulary for TAN files edited by Jenny Park</name>
+        <license licensor="park" which="by 4.0"/>
+        <vocabulary-key>
+            <person which="Jenny Park" xml:id="park"/>
+            <organization xml:id="pt" which="Project_team_for_TAN_examples"/>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp roles="creator" who="park"/>
+        <resp roles="editor" who="pt"/>
+        <change when="2019-10-08" who="park">Started file</change>
+        <to-do>
+            <comment when="2020-01-04" who="park">Need to check files for new vocabulary items.</comment>
+        </to-do>
+    </head>
+    <body>
+        <group affects-element="person">
+            <item>
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </item>
+        </group>
+        <item affects-element="work">
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+            <name>Ring a Ring o' Roses</name>
+            <name>Ring Around the Rosie</name>
+        </item>
+        <item affects-element="organization">
+            <IRI>tag:parkj@textalign.net,2015:example-project</IRI>
+            <name>Project team for TAN examples</name>
+        </item>
+        <group affects-element="scriptum source">
+            <item>
+                <IRI>http://id.lib.harvard.edu/aleph/012287584/catalog</IRI>
+                <IRI>urn:uuid:d851b3b0-59a0-11e4-8ed6-0800200c9a66</IRI>
+                <name>King James Version, Francis Parris 1760 edition</name>
+                <name>kjv 1760</name>
+            </item>
+        </group>
+    </body>
+</TAN-voc>

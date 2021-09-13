@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0"
+  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>ODD file for generating the TAN-TEI schema for the Text Alignment Network
+          format</title>
+        <author>Joel Kalvesmaki</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Joel Kalvesmaki</publisher>
+        <date>Revised 2020-05-24</date>
+        <availability status="free">
+          <p>Insofar as this ODD file constitutes an original work (see below) all material is
+            released under a GNU General Public License, https://opensource.org/licenses/GPL-3.0</p>
+          <p>The notice in the next paragraph is preserved from the template upon which this ODD
+            file is based.</p>
+          <!-- original <p> -->
+          <p>TEI material can be licensed differently depending on the use you intend to make of it.
+            Hence it is made available under both the CC+BY and BSD-2 licences. The CC+BY licence is
+            generally appropriate for usages which treat TEI content as data or documentation. The
+            BSD-2 licence is generally appropriate for usage of TEI content in a software
+            environment. For further information or clarification, please contact the TEI Consortium
+            (info@tei-c.org).</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p/>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <head>TEI All, adapted for the Text Alignment Network</head>
+      <p>This ODD describes parameters needed to turn any document that validates against TEI All
+        (P5) into a form that can be used with the Text Alignment Network (TAN). The next two
+        paragraphs are preserved from the template upon which this ODD file is based. </p>
+      <!-- original <p>s -->
+      <p>This TEI customization describes a schema that includes <emph>all</emph> of the TEI (P5)
+        modules. This is a very useful starting place for manually creating your own customizations
+        — it is much easier to delete the modules you do not want than to add the modules you do.
+        Furthermore this customization often proves helpful for testing TEI software.</p>
+      <p>However, this particular TEI customization is <emph>not recommended</emph> for actual use
+        for encoding documents. It produces schemas and reference documentation that will be much
+        larger, and include many more elements, than almost anyone could conceivably ever need.
+        Tempting though it may be simply to have absolutely everything, and <q>just ignore</q>
+        elements not required, experience has shown that their presence makes the documentation
+        harder to read and use, and makes a schema that is far more lax than desired.</p>
+      <schemaSpec ident="tei_all" start="TEI teiCorpus">
+        <moduleRef key="tei"/>
+        <!-- required -->
+        <moduleRef key="core"/>
+        <!-- required -->
+        <moduleRef key="analysis"/>
+        <moduleRef key="certainty"/>
+        <moduleRef key="corpus"/>
+        <moduleRef key="dictionaries"/>
+        <moduleRef key="drama"/>
+        <moduleRef key="figures"/>
+        <moduleRef key="gaiji"/>
+        <moduleRef key="header"/>
+        <!-- required -->
+        <moduleRef key="iso-fs"/>
+        <moduleRef key="linking"/>
+        <moduleRef key="msdescription"/>
+        <moduleRef key="namesdates"/>
+        <moduleRef key="nets"/>
+        <moduleRef key="spoken"/>
+        <moduleRef key="textcrit"/>
+        <moduleRef key="textstructure"/>
+        <!-- required -->
+        <moduleRef key="transcr"/>
+        <moduleRef key="verse"/>
+        <moduleRef key="tagdocs"/>
+
+        <!-- CUSTOMIZATION BELOW -->
+        <moduleRef url="incl/TAN-class-1.rng"/>
+        <elementSpec mode="change" ident="TEI" module="textstructure">
+          <desc>Two headers are required, teiHeader and TAN's head, because the two heads are very
+            different animals. The teiHeader is quite expansive, allowing you to spend time talking
+            about all sorts of things that may be only very loosely related to the body, and it is generally
+            designed to be written and read by humans. The TAN header on the other hand is restricted to 
+            metadata directly related to the data itself, and is designed on every level to be RDF-ready. See
+            the TAN guidelines for more.
+          </desc>
+          <content>
+            <rng:group>
+              <rng:interleave>
+                <rng:ref name="teiHeader"/>
+                <rng:ref name="element-head"/>
+              </rng:interleave>
+              <rng:choice>
+                <rng:group>
+                  <rng:oneOrMore>
+                    <rng:ref name="model.resourceLike"/>
+                  </rng:oneOrMore>
+                  <rng:optional>
+                    <rng:ref name="text"/>
+                  </rng:optional>
+                </rng:group>
+                <rng:ref name="text"/>
+              </rng:choice>
+            </rng:group>
+            <rng:optional>
+              <rng:ref name="element-tail"/>
+            </rng:optional>
+          </content>
+          <attList>
+            <attDef mode="add" ident="id" usage="req">
+              <desc>A tag URN is required in the root element, uniquely identifying the document.
+                Revisions need not be renamed, since ISO-compliant dates will be checked to
+                determine the version of the document.</desc>
+              <datatype>
+                <rng:data type="anyURI">
+                  <rng:param name="pattern"
+                    >tag:([\-a-zA-Z0-9._%+]+@)?[\-a-zA-Z0-9.]+\.[A-Za-z]{2,4},\d{4}(-(0\d|1[0-2]))?(-([0-2]\d|3[01]))?:[\-a-zA-Z0-9._~:%@/?!$&amp;'\(\)*+,;=]+</rng:param>
+                </rng:data>
+              </datatype>
+            </attDef>
+            <attDef mode="add" ident="TAN-version" usage="req">
+              <desc>A TAN version number is required</desc>
+              <datatype>
+                <rng:data type="string">
+                  <rng:param name="pattern">2021</rng:param>
+                </rng:data>
+              </datatype>
+            </attDef>
+          </attList>
+        </elementSpec>
+        <elementSpec mode="change" ident="body" module="textstructure">
+          <desc>The body contains either &lt;div>s or empty elements (like &lt;milestone>)</desc>
+          <content>
+            <rng:interleave>
+              <rng:oneOrMore>
+                <rng:ref name="model.divLike"/>
+              </rng:oneOrMore>
+              <rng:zeroOrMore>
+                <rng:ref name="model.milestoneLike"/>
+              </rng:zeroOrMore>
+            </rng:interleave>
+          </content>
+          <attList>
+            <attDef mode="change" ident="xml:lang" usage="req"/>
+          </attList>
+        </elementSpec>
+        <elementSpec mode="change" ident="div" module="textstructure">
+          <desc>Every &lt;div> either contains purely &lt;div>s / empty elements (like
+            &lt;milestone>) or it does not (leaf &lt;div>s). The TAN-TEI div is much more like the
+            HTML div, which may be any unit whatsover, even an inline phrase. It does the job of
+            &lt;ab>, &lt;p>, &lt;l>, and all other text segmentation elements, with @type declaring
+            exactly the kind(s) of division.</desc>
+          <classes mode="change">
+            <memberOf key="att.global" mode="delete"/>
+            <memberOf key="att.divLike" mode="delete"/>
+            <memberOf key="att.typed" mode="delete"/>
+            <memberOf key="att.declaring" mode="delete"/>
+            <memberOf key="att.written" mode="delete"/>
+          </classes>
+          <content>
+            <rng:optional>
+              <rng:attribute name="ed-who">
+                <a:documentation>Reference to agent or agents who have edited (added or modified) an
+                  element or its content</a:documentation>
+                <rng:data type="string">
+                  <rng:param name="pattern">.+</rng:param>
+                </rng:data>
+              </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+              <rng:attribute name="ed-when">
+                <a:documentation>Reference to a date or time when an element or its content was
+                  edited (added or modified)</a:documentation>
+                <rng:choice>
+                  <rng:data type="date"/>
+                  <rng:data type="dateTime"/>
+                </rng:choice>
+              </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+              <rng:attribute name="ref-alias">
+                <a:documentation>Contains one or more supplemental references to a &lt;div>. Each
+                  reference must have the same number of @n values as the &lt;div> is deep in the
+                  body hierarchy. Each atomic @n value inherits the corresponding div type. For example,
+                  in &lt;div type="letter" n="1"> &lt;div type="section" n="1" ref-alias="3
+                  4">text&lt;/div> &lt;/div> the @ref-alias ensures that the innermost &lt;div> is
+                  assigned both 1 1 and 3 4 as references, each typed to letter, section. The values
+                  of @ref-alias are strongly inheritable by any children &lt;div>s. This feature is
+                  intended for parts of a transcription that correspond to more than one section of
+                  a work. </a:documentation>
+                <rng:data type="string"/>
+              </rng:attribute>
+            </rng:optional>
+            <rng:choice>
+              <rng:attribute name="include">
+                <a:documentation>This attribute signals that the parent element is to be replaced by
+                  all elements of the same name found in the file referred to by the corresponding
+                  inclusion.</a:documentation>
+                <rng:data type="string"/>
+              </rng:attribute>
+              <rng:group>
+                <rng:ref name="att.global.attributes"/>
+                <rng:ref name="att.divLike.attributes"/>
+                <rng:ref name="att.typed.attributes"/>
+                <rng:ref name="att.declaring.attributes"/>
+                <rng:ref name="att.written.attributes"/>
+              </rng:group>
+            </rng:choice>
+            <rng:choice>
+              <rng:interleave>
+                <rng:oneOrMore>
+                  <rng:ref name="model.divLike"/>
+                </rng:oneOrMore>
+                <rng:zeroOrMore>
+                  <rng:ref name="model.milestoneLike"/>
+                </rng:zeroOrMore>
+              </rng:interleave>
+              <!-- Comments below exempt some parts of the original, left here to document decisions made -->
+              <!--<rng:oneOrMore>
+                <rng:group>
+                  <rng:ref name="model.common"/>
+                  <rng:zeroOrMore>
+                    <rng:ref name="model.global"/>
+                  </rng:zeroOrMore>
+                </rng:group>
+              </rng:oneOrMore>-->
+              <rng:group>
+                <rng:zeroOrMore>
+                  <rng:choice>
+                    <rng:ref name="model.divTop"/>
+                    <rng:ref name="model.global"/>
+                  </rng:choice>
+                </rng:zeroOrMore>
+                <rng:optional>
+                  <rng:group>
+                    <rng:choice>
+                      <rng:oneOrMore>
+                        <rng:group>
+                          <!--<rng:ref name="model.divLike"/>-->
+                          <rng:zeroOrMore>
+                            <rng:ref name="model.global"/>
+                          </rng:zeroOrMore>
+                        </rng:group>
+                      </rng:oneOrMore>
+                      <rng:group>
+                        <rng:oneOrMore>
+                          <rng:group>
+                            <rng:ref name="model.common"/>
+                            <rng:zeroOrMore>
+                              <rng:ref name="model.global"/>
+                            </rng:zeroOrMore>
+                          </rng:group>
+                        </rng:oneOrMore>
+                        <rng:zeroOrMore>
+                          <rng:group>
+                            <rng:ref name="model.divGenLike"/>
+                            <rng:zeroOrMore>
+                              <rng:ref name="model.global"/>
+                            </rng:zeroOrMore>
+                          </rng:group>
+                        </rng:zeroOrMore>
+                      </rng:group>
+                    </rng:choice>
+                    <rng:zeroOrMore>
+                      <rng:group>
+                        <rng:ref name="model.divBottom"/>
+                        <rng:zeroOrMore>
+                          <rng:ref name="model.global"/>
+                        </rng:zeroOrMore>
+                      </rng:group>
+                    </rng:zeroOrMore>
+                  </rng:group>
+                </rng:optional>
+              </rng:group>
+            </rng:choice>
+          </content>
+        </elementSpec>
+
+        <classSpec type="atts" ident="att.typed" mode="change">
+          <attList>
+            <attDef ident="type" mode="change">
+              <desc>@type may take multiple values, space delimited. Each value is an idref or a
+                name, pointing to a vocabulary item that provides the IRIs, names, and descriptions
+                of the textual division.</desc>
+              <datatype>
+                <rng:data type="string">
+                  <rng:param name="pattern">.+</rng:param>
+                </rng:data>
+              </datatype>
+            </attDef>
+          </attList>
+        </classSpec>
+        <classSpec type="atts" ident="att.global" mode="change">
+          <attList>
+            <attDef ident="n" mode="change">
+              <desc>names a &lt;div> or &lt;group>, or refers to a &lt;div>'s @n. ¶ @n may consist
+                of one or more values, space delimited, which are to be treated as synonyms. ¶ Each
+                synonymous value of @n may be simple or complex. A simple value of @n is a set of
+                word characters (or the underbar). A complex value of @n consists of word characters
+                (or the underbar) separated by commas and hyphens. A complex value of @n refers to a
+                range of references. The sequence of items in a complex value are significant. For
+                example n="6, 8" signifies that the text straddles reference 6 then 8. But n="8, 6"
+                signifies the converse. In the context of a &lt;div>, the implication is that in
+                neither case can the text be securely disentangled so as to create one &lt;div> for
+                6 and another for 8. ¶ The hyphen-minus, - (U+002D, the most common form of hyphen),
+                is reserved to specify a range. This feature is useful for cases where a &lt;div>
+                straddles more than one standard reference number (e.g., a translation of Aristotle
+                that cannot be easily tied to Bekker numbers). ¶ If you need to use a hyphen-like
+                character in an @n that does not specify a range, consider ‐ (U+2010 HYPHEN), ‑
+                (U+2011 NON-BREAKING HYPHEN), ‒ (U+2012 FIGURE DASH), – (U+2013 EN DASH), or −
+                (U+2212 MINUS SIGN). ¶ The comma is reserved to specify a sequence of references. ¶
+                The space is reserved to separate synonymous values, or to pad commas and hyphens.
+                If you wish to use a value of @n that would normally use word spaces, use the
+                underbar, _, instead. ¶ @n does not permit other non-word spaces reserved by @ref,
+                i.e., the period/full stop or colon, which delimit a hierarchy of @n's. ¶ Because @n
+                is used to construct @ref, it is indirectly cumulatively inheritable. See
+                main.xml#inheritable_attributes. ¶ Extra TAN vocabulary is available for @n, to
+                provide built-in aliases. For more on this feature see main.xml#extra_n_vocabulary.
+                For specific extra vocabulary see main.xml#vocabularies-n-bible-eng
+                main.xml#vocabularies-n-bible-spa main.xml#vocabularies-n-quran-eng-ara
+                main.xml#vocabularies-n-unlabeled-divs-1-eng</desc>
+              <datatype>
+                <!-- The TAN definition for @n, commented out below, is not enforced on the 
+                  RNC level, because it should pertain only to <div>, not to @n values in the
+                  teiHeader's descendants. The regular expression below is enforced within the 
+                  <body> via TAN schematron validation. -->
+                <rng:data type="string"/>
+                <!--<rng:data type="string">
+                  <rng:param name="pattern">[\w/_]+([\- ,;]+[\w/_]+)*</rng:param>
+                </rng:data>-->
+              </datatype>
+            </attDef>
+          </attList>
+        </classSpec>
+
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>

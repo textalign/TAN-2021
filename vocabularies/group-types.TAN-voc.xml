@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021"
+    id="tag:textalign.net,2015:tan-voc:group-types">
+    <head>
+        <name>TAN keywords for types of groups</name>
+        <desc>Definitive list of key terms used for types of groups.</desc>
+        <master-location
+            href="http://textalign.net/release/TAN-2021/vocabularies/group-types.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-04-23" who="kalvesmaki">Started file</change>
+        <change when="2019-03-04" who="kalvesmaki">Added verb group types</change>
+        <change when="2019-08-30" who="kalvesmaki">Added at-ref as a synonym for locus</change>
+        <change when="2020-01-17" who="kalvesmaki">Added annotation group type.</change>
+        <to-do/>
+    </head>
+    <body affects-element="group-type">
+        <item>
+            <IRI>tag:textalign.net,2015:group-type:group-type:div-types</IRI>
+            <name>div types</name>
+            <desc>The group contains items that define groups of division types</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:group-type:group-type:requires-attribute-n</IRI>
+            <name>attr n</name>
+            <name>attribute n</name>
+            <name>tan lm</name>
+            <desc>The group contains items that define groups relevant only in the context of
+                @n</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:group-type:group-type:verbs</IRI>
+            <name>verb types</name>
+            <desc>The group contains items that define groups relevant to verbs</desc>
+        </item>
+        <group type="div_types">
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:no-new-line-start</IRI>
+                <name>does not start new line</name>
+                <name>no new line start</name>
+                <name>inline start</name>
+                <name>not nls</name>
+                <name>not(^\n)</name>
+                <desc>Text divisions that typically do not begin on a new line</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:no-new-line-end</IRI>
+                <name>no new line end</name>
+                <name>does not end new line</name>
+                <name>inline end</name>
+                <name>not nle</name>
+                <name>not(\n$)</name>
+                <desc>Text divisions whose termination does not force the next text division to
+                    start a new line</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-line-start</IRI>
+                <name>start new line</name>
+                <name>new line start</name>
+                <name>nls</name>
+                <name>^\n</name>
+                <desc>Text divisions that typically begin on a new line</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-line-end</IRI>
+                <name>new line end</name>
+                <name>end new line</name>
+                <name>nle</name>
+                <name>\n$</name>
+                <desc>Text divisions whose termination forces the next text division to start a new
+                    line</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:extra-leading-start</IRI>
+                <name>start extra leading</name>
+                <name>extra leading start</name>
+                <name>space above</name>
+                <desc>Text divisions that typically begin with extra leading (a horizontal line of
+                    white space)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:extra-leading-end</IRI>
+                <name>end extra leading</name>
+                <name>extra leading end</name>
+                <name>space below</name>
+                <desc>Text divisions that typically end with extra leading (a horizontal line of
+                    white space)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-column-start</IRI>
+                <name>start new column</name>
+                <name>new column start</name>
+                <name>ncs</name>
+                <desc>Text divisions that typically begin on a new column</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-column-end</IRI>
+                <name>new column end</name>
+                <name>end new column</name>
+                <name>nce</name>
+                <desc>Text divisions whose termination forces the next text division to start a new
+                    column</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-page-start</IRI>
+                <name>start new page</name>
+                <name>new page start</name>
+                <name>nps</name>
+                <desc>Text divisions that typically begin on a new page</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:new-page-end</IRI>
+                <name>new page end</name>
+                <name>end new page</name>
+                <name>npe</name>
+                <desc>Text divisions whose termination forces the next text division to start a new
+                    page</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:logical</IRI>
+                <name>logical</name>
+                <name>conceptual</name>
+                <desc>Text division is based on logical units that do not depend upon scripta for
+                    their meaning, e.g., sentence, paragraph. Contrasts with physical,
+                    scriptum-based divisions.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:scriptum</IRI>
+                <name>scriptum</name>
+                <name>scriptum based</name>
+                <name>object</name>
+                <name>physical</name>
+                <name>material</name>
+                <desc>Text division is based on a physical feature in the scriptum, e.g., page,
+                    column, line. Contrasts with logical divisions.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:div:annotation</IRI>
+                <name>annotation</name>
+                <desc>Text division is an annotation. That is, it comments on (and therefore assumes
+                    the proximate existence of) some other text. Most annotations are connected with
+                    the commented text either by placement or some signalling device (e.g., footnote
+                    signals). Excluded from this category are texts that summarize another text.
+                    That is, an annotation either adds new material or attempts to make explicit one
+                    or more points that are deemed implicit.</desc>
+            </item>
+        </group>
+        <group type="attr-n">
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:status</IRI>
+                <name>status</name>
+                <desc>@n is an arbitrary value indicating the stage of editing for the datum.
+                    Possible values: "unchecked"; "to be reviewed"; "questionable". If a datum is
+                    completely edited, it is recommended the &lt;group&gt; be avoided altogether.
+                </desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:base</IRI>
+                <name>base</name>
+                <desc>@n is the result of applying tan:string-base($i), where $i is the value of the
+                    token chosen. </desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:root</IRI>
+                <name>root</name>
+                <desc>@n is the root of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:start1</IRI>
+                <name>^.</name>
+                <name>start1</name>
+                <name>a</name>
+                <desc>@n is the first letter of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:start2</IRI>
+                <name>^..</name>
+                <name>start2</name>
+                <name>ab</name>
+                <desc>@n is the first two letters of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:start3</IRI>
+                <name>^...</name>
+                <name>start3</name>
+                <name>abc</name>
+                <desc>@n is the first three letters of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:end1</IRI>
+                <name>.$</name>
+                <name>end1</name>
+                <name>z</name>
+                <desc>@n is the last letter of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:end2</IRI>
+                <name>..$</name>
+                <name>end2</name>
+                <name>yz</name>
+                <desc>@n is the last two letters of the token chosen</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:group-type:end3</IRI>
+                <name>...$</name>
+                <name>end3</name>
+                <name>xyz</name>
+                <desc>@n is the last three letters of the token chosen</desc>
+            </item>
+        </group>
+        <group type="verb_types">
+            <comment when="2019-08-30" who="kalvesmaki">Items in this group proceed from specific to
+                general. See the comment below for a guide to the conceptual hierarchy.</comment>
+            <!--<textuals>
+                <desc>Texts and those who make texts, not necessarily mutually exclusive categories.
+                    The term "textual entity" refers to complete text makers or textual artefacts,
+                    not specific parts of them.</desc>
+                <text-makers>
+                    <desc>Entities who have some agency, intentional or not, in the creation of a
+                        text.</desc>
+                    <text-creators>
+                        <desc>Entities who have at least some creative force over the creation of a
+                            text</desc>
+                        <members>
+                            <person/>
+                            <organization/>
+                        </members>
+                    </text-creators>
+                    <text-generators>
+                        <desc>Entities who generate text but are not the creative originating force,
+                            e.g., algorithms, scribes, printers)</desc>
+                        <members>
+                            <person/>
+                            <organization/>
+                            <algorithm/>
+                        </members>
+                    </text-generators>
+                </text-makers>
+                <textual-artefacts>
+                    <desc>Texts made by text makers.</desc>
+                    <members>
+                        <scriptum/>
+                        <work/>
+                        <version/>
+                        <source/>
+                    </members>
+                    <textual-passages>
+                        <desc>Specific parts of a textual artefact, normally the members mentioned above, qualified by &lt;ref> or &lt;div>.</desc>
+                    </textual-passages>
+                </textual-artefacts>
+            </textuals>-->
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-passage-subject</IRI>
+                <name>textual passage subject</name>
+                <desc>Verbs whose subjects are specific passages of textual artefacts (scripta,
+                    works, versions, sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-passage-object</IRI>
+                <name>textual passage object</name>
+                <desc>verbs whose objects are specific passages of textual artefacts (scripta,
+                    works, versions, sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-artefact-subject</IRI>
+                <name>whole textual artefact subject</name>
+                <desc>Verbs whose subjects are entire textual artefacts (scripta, works, versions,
+                    sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-artefact-object</IRI>
+                <name>whole textual artefact object</name>
+                <desc>verbs whose objects are entire textual artefacts (scripta, works, versions,
+                    sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-artefact-or-passage-subject</IRI>
+                <name>textual artefact subject</name>
+                <name>textual passage or artefact subject</name>
+                <name>textual artefact or passage subject</name>
+                <desc>Verbs whose subjects are entire textual artefacts or specific passages of
+                    textual artefacts (scripta, works, versions, sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-artefact-or-passage-object</IRI>
+                <name>textual artefact object</name>
+                <name>textual passage or artefact object</name>
+                <name>textual artefact or passage object</name>
+                <desc>Verbs whose objects are entire textual artefacts or specific passages of
+                    textual artefacts (scripta, works, versions, sources).</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-entity-subject</IRI>
+                <name>textual entity subject</name>
+                <desc>verbs whose subjects are creators of texts (persons, organizations) or whole
+                    textual artefacts (scripta, works, versions, sources)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-entity-object</IRI>
+                <name>textual entity object</name>
+                <desc>verbs whose objects are creators of texts (persons, organizations) or whole
+                    textual artefacts (scripta, works, versions, sources)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-subject</IRI>
+                <name>textual subject</name>
+                <desc>verbs whose subjects are text makers or textual artefacts</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:textual-object</IRI>
+                <name>textual object</name>
+                <desc>verbs whose objects are text makers or textual artefacts</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:claim-object</IRI>
+                <name>claim object</name>
+                <desc>verbs whose objects are claims</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:zero-objects</IRI>
+                <name>zero objects</name>
+                <desc>verbs that do not allow objects</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:one-object</IRI>
+                <name>one object</name>
+                <desc>verbs that require only one object</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:one-or-more-objects</IRI>
+                <name>one or more objects</name>
+                <desc>verbs that must take one or more objects</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:verbatim70-100</IRI>
+                <name>near verbatim</name>
+                <desc>verbs where each pair of subject and object textual passages have an agreement
+                    of 70% or greater.</desc>
+                <desc>If subject and object are in the same language, the quantity is measured by
+                    agreement after normalization, ignoring accentuation, capitalization,
+                    punctuation, and word spaces. If they are in different languages, the quantity
+                    is measured by the number of words in one source that correspond to words in the
+                    other.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:verbatim40-70</IRI>
+                <name>similar</name>
+                <desc>verbs where each pair of subject and object textual passages have an agreement
+                    of 40% to 70%</desc>
+                <desc>See description for verbatim.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:verbatim5-40</IRI>
+                <name>somewhat similar</name>
+                <desc>verbs where each pair of subject and object textual passages have an agreement
+                    of 5% to 40%</desc>
+                <desc>See description for verbatim.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:confer</IRI>
+                <name>cf</name>
+                <desc>verbs that indicate a comparison between subject and object</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:symmetry</IRI>
+                <name>symmetry</name>
+                <desc>verbs that permit symmetrical inferences</desc>
+                <desc>If X [verb] Y then Y [verb] X.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:transitivity</IRI>
+                <name>transitivity</name>
+                <desc>verbs that permit transitive inferences</desc>
+                <desc>If X [verb] Y and Y [verb] Z then X [verb] Z.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:subject-postdates-object</IRI>
+                <name>subject postdates object</name>
+                <desc>verbs whose subjects must postdate objects</desc>
+                <desc>If a textual passage is said to quote from another, then the former must
+                    postdate the latter.</desc>
+            </item>
+            <!-- opt-in claim elements -->
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:one-locus</IRI>
+                <IRI>tag:textalign.net,2015:verb:group:one-at-ref</IRI>
+                <name>one locus</name>
+                <name>one at ref</name>
+                <desc>verbs that require only one &lt;at-ref> (locus)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:one-or-more-loci</IRI>
+                <IRI>tag:textalign.net,2015:verb:group:one-or-more-at-refs</IRI>
+                <name>one or more loci</name>
+                <name>one or more at refs</name>
+                <desc>verbs that must take one or more &lt;at-ref>s (loci)</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:verb:group:allows-in-lang</IRI>
+                <name>zero or more in langs</name>
+                <name>allows in lang</name>
+                <desc>verbs that permit the element in-lang</desc>
+            </item>
+        </group>
+    </body>
+</TAN-voc>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-A.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" TAN-version="2021"
+    id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusαʹ">
+    <head>
+        <name>Perseus lexico-morphological permutations devoted exclusively to αʹ</name>
+        <license which="Attribution-ShareAlike 3.0 Unported" licensor="perseus"/>
+        <for-lang>grc</for-lang>
+        <tok-starts-with>αʹ</tok-starts-with>
+        <tok-starts-with>Αʹ</tok-starts-with>
+        <vocabulary-key>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Converter from TAN 2018 to TAN 2019</name>
+                <location
+                    href="../../../TAN-2020/applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl"
+                    accessed-when="2019-04-22T16:45:44.597-04:00"/>
+            </algorithm>
+            <role xml:id="stylesheet" which="stylesheet"/>
+            <algorithm xml:id="xslt1">
+                <IRI>tag:textalign.net,2015:stylesheet:convert:perseus-raw-xml-to-tan-a-lm</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <desc>Stylesheet at:
+                    ../../do%20things/configure%20parameters/parameters-for-TAN-output.xsl</desc>
+                <location
+                    href="../../../TAN-2020/applications/convert/private-convert%20perseus%20raw%20xml%20to%20TAN-A-lm.xsl"
+                    accessed-when="2019-04-22"/>
+            </algorithm>
+            <lexicon xml:id="LSJ">
+                <IRI>http://lccn.loc.gov/95032369</IRI>
+                <name>Liddell-Scott-Jones 9+</name>
+                <name xml:lang="eng">Liddell-Scott-Jones, 9th ed. plus rev. supplement</name>
+            </lexicon>
+            <morphology xml:id="perseus-dik">
+                <IRI>tag:kalvesmaki.com,2014:tan-r-mor:grc:perseus</IRI>
+                <name xml:lang="eng">Perseus Greek morphology</name>
+                <location accessed-when="2020-03-05"
+                    href="../TAN-mor/grc.perseus.tan-mor.xml"/>
+            </morphology>
+            <organization xml:id="perseus">
+                <IRI>http://dbpedia.org/resource/Perseus_Project</IRI>
+                <name>Perseus Project</name>
+            </organization>
+            <person xml:id="dik">
+                <IRI>http://viaf.org/viaf/71547824</IRI>
+                <name>Helma Dik</name>
+            </person>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki.com,2015:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name>Joel Kalvesmaki</name>
+                <name>kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+
+
+
+        <file-resp who="Joel_Kalvesmaki"/>
+        <resp who="xslt2" roles="stylesheet"/>
+        <resp who="xslt1" roles="stylesheet"/>
+        <resp who="perseus dik" roles="creator"/>
+        <resp who="perseus" roles="sponsor"/>
+        <resp who="kalvesmaki" roles="editor"/>
+        <change when="2018-01-11" who="kalvesmaki">Started template file.</change>
+        <change who="xslt1" when="2018-04-20T10:16:15.04-04:00">Conversion of input at
+            file:/Users/joelk/Dropbox/TAN/pre-TAN/language-specific%20morphology/grc/GreekMorph16-%CE%B1%CA%B9.xml
+            to TAN-A-lm at
+            file:/Users/joelk/Dropbox/TAN/library-lm/grc/lm-perseus-2018-04-20/grc-tan-a-lm-.xml</change>
+        <change who="xslt2" when="2019-04-22T16:45:44.597-04:00">Converted from 2018 to 2019
+            schemas.</change>
+        <to-do>
+            <comment who="xslt1" when="2018-04-20T10:16:15.04-04:00">File is still in
+                progress.</comment>
+        </to-do>
+    </head>
+    <body lexicon="LSJ" morphology="perseus-dik" claimant="xslt2">
+        <ana>
+            <tok val="Αʹ"/>
+            <tok val="αʹ"/>
+            <lm>
+                <l>αʹ</l>
+                <m>m</m>
+            </lm>
+        </ana>
+    </body>
+</TAN-A-lm>

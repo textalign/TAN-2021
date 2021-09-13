@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href ="../../schemas/catalog.tan.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href ="../../schemas/catalog.tan.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<collection stable="true" metadata-resolved="false">
+   <doc href="ar.cat.TAN-voc.xml"
+        TAN-version="2020"
+        id="tag:parkj@textalign.net,2015:TAN-key:ar.cat"
+        affects-element="work"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Keywords for Aristotle's Categories</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/TAN-voc/ar.cat.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <adjustments xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="park-projects.TAN-voc.xml"
+        TAN-version="2020"
+        id="tag:parkj@textalign.net,2015:TAN-voc:standard"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Vocabulary for TAN files edited by Jenny Park</name>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park" which="by 4.0"/>
+   </doc>
+</collection>

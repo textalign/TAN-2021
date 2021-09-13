@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-key.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-key.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Manually edit: @id -->
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2020" id="tag:example@gmail.com,2010:transcription-begun-{substring(replace(string(current-dateTime()),'\D',''),1, 14)}">
+    <head>
+        <!-- Manually edit: the name -->
+        <name>{($p1//tei:title)[1]//text()}</name>
+        <!-- Manually edit: license @which (or IRI + name), @licensor -->
+        <license which="by_4.0" licensor="primary-agent"/>
+        <vocabulary-key>
+            <!-- Manually edit. -->
+            <person xml:id="primary-agent">
+                <IRI>tag:example@gmail.com,2010:self</IRI>
+                <name>Name of creator</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="primary-agent"/>
+        <resp roles="creator" who="primary-agent"/>
+        <change when="{string(current-dateTime())}" who="primary-agent">Created new TAN-key file.</change>
+        <to-do>
+            <comment when="{string(current-dateTime())}" who="primary-agent">Check file</comment>
+        </to-do>
+    </head>
+    <body/>
+</TAN-voc>

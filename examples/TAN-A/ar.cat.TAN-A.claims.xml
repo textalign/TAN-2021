@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ar.cat.tan-a:claims">
+    <head>
+        <name>Comments and claims on Aristotle's Categories</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A/ar.cat.tan-a.claims.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+        </license>
+        <token-definition src="*" which="letters only"/>
+        <vocabulary>
+            <IRI>tag:parkj@textalign.net,2015:TAN-key:ar.cat</IRI>
+            <name>Keywords for Aristotle's Categories</name>
+            <location href="../TAN-voc/ar.cat.TAN-voc.xml" accessed-when="2017-03-10T11:50:15.499-05:00"/>
+        </vocabulary>
+        <source xml:id="grc">
+            <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+            <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+            <location href="../ar.cat.grc.1949.minio-paluello.ref-scriptum.xml" accessed-when="2016-07-08T15:17:28.037-04:00"/>
+        </source>
+        <source xml:id="eng">
+            <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:model-object-refs</IRI>
+            <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+            <location href="../ar.cat.eng.1926.edghill.ref-scriptum.xml" accessed-when="2017-12-31"/>
+        </source>
+        <vocabulary-key>
+            <alias xml:id="all" idrefs="grc eng"/>
+            <algorithm xml:id="xslt1">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-05T01:05:10.039-04:00"/>
+            </algorithm>
+            
+            <work xml:id="cat" which="Aristotle, Categories"/>
+            
+            <person xml:id="andronicus">
+                <IRI>https://inpho.cogs.indiana.edu/thinker/2532</IRI>
+                <IRI>http://dbpedia.org/resource/Andronicus_of_Rhodes</IRI>
+                <name>Andronicus of Rhodes</name>
+            </person>
+            <person xml:id="boethus">
+                <IRI>http://dbpedia.org/resource/Boethus_of_Sidon</IRI>
+                <name>Boethus of Sidon</name>
+            </person>
+            <person xml:id="dexippus">
+                <IRI>http://dbpedia.org/resource/Dexippus</IRI>
+                <name>Dexippus</name>
+            </person>
+            <person xml:id="herminus">
+                <IRI>http://dbpedia.org/resource/Herminus</IRI>
+                <name>Herminus</name>
+            </person>
+            <person xml:id="porphyry">
+                <IRI>http://dbpedia.org/resource/Porphyry_(Philosopher)</IRI>
+                <name>Porphyry</name>
+            </person>
+            <person xml:id="lmp">
+                <IRI>http://viaf.org/viaf/9855932/</IRI>
+                <name>Lorenzo Minio-Paluello</name>
+            </person>
+            <person xml:id="nc">
+                <IRI>tag:parkj@textalign.net,2015:person:ita:milan:ambrosianus:L-93:manus-recentior</IRI>
+                <name>Anonymous scribe</name>
+                <desc>A person who sometime after the ninth century added 13a1-30.</desc>
+            </person>
+            <person xml:id="boethius">
+                <IRI>http://dbpedia.org/resource/Boethius</IRI>
+                <name>Anicius Manlius Severinus Boëthius</name>
+            </person>
+            <person xml:id="sergius">
+                <IRI>http://viaf.org/viaf/103637653</IRI>
+                <IRI>http://syriaca.org/work/49</IRI>
+                <name>Sergius of Reshaina</name>
+            </person>
+            <person xml:id="jacob">
+                <IRI>http://viaf.org/viaf/50027842</IRI>
+                <IRI>http://syriaca.org/work/113</IRI>
+                <name>Jacob of Edessa</name>
+            </person>
+            <person xml:id="george">
+                <IRI>http://viaf.org/viaf/88628511</IRI>
+                <IRI>http://syriaca.org/work/122</IRI>
+                <name>George, Bishop of the Arabs</name>
+            </person>
+            <version xml:id="Δ">
+                <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:armenian</IRI>
+                <name>Anonymous Armenian translation</name>
+                <desc>5th-c. translation once ascribed to a translator named David.</desc>
+            </version>
+            <version xml:id="Λ">
+                <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:latin</IRI>
+                <name>Latin translation of Aristotle's Categories by Anicius Manlius Severinus
+                    Boëthius</name>
+            </version>
+            <version xml:id="Ρ">
+                <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:sergius</IRI>
+                <name>Syriac translation of Aristotle's Categories by Sergius of Reshaina</name>
+            </version>
+            <version xml:id="Ι">
+                <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:jacob</IRI>
+                <name>Syriac translation of Aristotle's Categories by Jacob of Edessa</name>
+            </version>
+            <version xml:id="Γ">
+                <IRI>tag:textalign.net,2015:work:aristotle:categories:translation:syriac:george</IRI>
+                <name>Syriac translation of Aristotle's Categories by George, Bishop of the
+                    Arabs</name>
+            </version>
+            <scriptum xml:id="n">
+                <IRI>tag:parkj@textalign.net,2015:scriptum:ita:milan:ambrosianus:L-93</IRI>
+                <name>Ambrosianus L 93</name>
+                <desc>saec. ix</desc>
+            </scriptum>
+            <scriptum xml:id="B">
+                <IRI>tag:parkj@textalign.net,2015:scriptum:ita:venezia:marcianus:201</IRI>
+                <name>Marcianus 201</name>
+                <desc>saec. x</desc>
+            </scriptum>
+            <work xml:id="π" which="Commentarium graecum Porphyrii"/>
+            <work xml:id="δ" which="Commentarium graecum Dexippi"/>
+            <work xml:id="α" which="Lemmata de commentario graeco Ammonii"/>
+            <work xml:id="α.c" which="Explanationes de commentario graeco Ammonii"/>
+            <alias xml:id="α.d" idrefs="α α.c"/>
+            <work xml:id="φ" which="Lemmata de commentario graeco Ioannis Philoponi"/>
+            <work xml:id="φ.c" which="Explanationes de commentario graeco Ioannis Philoponi"/>
+            <alias xml:id="φ.d" idrefs="φ φ.c"/>
+            <work xml:id="ο" which="Lemmata de commentario graeco Olympiodori"/>
+            <work xml:id="ο.c" which="Explanationes de commentario graeco Olympiodori"/>
+            <alias xml:id="ο.d" idrefs="ο ο.c"/>
+            <work xml:id="η" which="Lemmata de commentario graeco Eliae"/>
+            <work xml:id="η.c" which="Explanationes de commentario graeco Eliae"/>
+            <alias xml:id="η.d" idrefs="η η.c"/>
+            <work xml:id="σ" which="Lemmata de commentario graeco Simplicii"/>
+            <work xml:id="σ.c" which="Explanationes de commentario graeco Simplicii"/>
+            <alias xml:id="σ.d" idrefs="σ σ.c"/>
+            <alias xml:id="comm-omnes" idrefs="π δ α.d φ.d ο.d η.d σ.d"/>
+            
+            <verb which="refers or alludes to" xml:id="refers-to"/>
+            <verb xml:id="om">
+                <IRI>tag:parkj@textalign.net,2015:verb:omits</IRI>
+                <name>omits</name>
+                <name>omits text</name>
+                <desc>The subject omits/omitted certain text</desc>
+                <desc>This verb is similar to the standard TAN verb
+                    "lacks", but expands the definition to persons.</desc>
+                <constraints>
+                    <subject status="required" item-type="person work version scriptum"/>
+                    <at-ref status="required"/>
+                    <object status="disallowed"/>
+                </constraints>
+            </verb>
+            <verb xml:id="attests">
+                <IRI>tag:parkj@textalign.net,2015:verb:attests-to</IRI>
+                <name>attests</name>
+                <name>attests to</name>
+                <desc>The subject attests to the text found in the object</desc>
+                <desc>This verb is similar to the standard TAN verb
+                    "matches", but expands the definition to persons.</desc>
+                <constraints>
+                    <subject status="required" item-type="person work version scriptum"/>
+                    <object status="required" item-type="ref"/>
+                </constraints>
+            </verb>
+            
+            <verb xml:id="has-length">
+                <IRI>tag:parkj@textalign.net,2015:verb:scriptum-has-length</IRI>
+                <name>has length</name>
+                <desc>This verb is used to describe the how many pages or folios a scriptum
+                    is.</desc>
+                <constraints>
+                    <subject status="required" item-type="scriptum"/>
+                    <object status="required" content-datatype="integer"
+                        content-lexical-constraint="\d+"/>
+                </constraints>
+            </verb>
+            
+            <unit xml:id="folio">
+                <IRI>http://dbpedia.org/resource/Folio</IRI>
+                <name>folio</name>
+            </unit>
+            
+            <modal which="possibly" xml:id="perhaps"/>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <person xml:id="kim">
+                <IRI>tag:kimr@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Robin Kim</name>
+            </person>
+            <alias xml:id="duo" idrefs="park kim"/>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <period xml:id="per2010s" from="2010-01-01" to="2019-12-31"/>
+            <period xml:id="late-antiquity">
+                <IRI>tag:parkj@textalign.net,2015:period:late-antiquity</IRI>
+                <name>late antiquity</name>
+                <desc>Roughly starting in the second to fourth century and finishing from the sixth
+                    to ninth, depending upon the context. Late antiquity tends to be later than you
+                    think.</desc>
+            </period>
+            <place xml:id="pavia">
+                <IRI>http://dbpedia.org/resource/Pavia</IRI>
+                <name>Pavia</name>
+            </place>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp who="xslt1" roles="stylesheet"/>
+        <resp who="duo" roles="creator"/>
+        <change when="2016-07-07" who="duo">Started file</change>
+        <change who="xslt1" when="2018-08-05T01:05:10.039-04:00">Converted from 2018 to 2019 schemas.</change>
+        <change when="2019-05-03" who="park">Revised claims to match proper nomenclature.</change>
+        <change when="2019-08-12" who="park">Revised to correct use of element at.</change>
+        <to-do>
+            <comment when="2018-08-05-04:00" who="park">Finish file. Only the first couple of claims have been filled in.</comment>
+        </to-do>
+    </head>
+    <body claimant="park" claim-period="per2010s">
+        <!-- examples of claims relevant to the apparatus criticus -->
+        <comment when="2017-03-10-05:00" who="park">The next two claims interpret Minio-Paluello's
+            apparatus criticus entry for 1a2, which claims that Andronicus and Boethus might have
+            omitted τῆς οὐσίας (based on what Porphyry and Dexippus say) and asserts that the
+            reading adopted is found in the seven commentators. The interpretation below sticks
+            close to M-P's original, and does not fill in important gaps. For example, Dexippus's
+            remark comes from his commentary, 1.18 (p. 21.20) and is reliant wholly on a fragment of
+            Porphyry preserved in Simplicius's commentary, p. 30.1-2. Furthermore, a careful reading
+            of these texts shows that Porphyry claimed not that Andronicus and Boethus omitted the
+            text, or relied on sources that had omitted it, but that they observed that there were
+            manuscripts that had done so.</comment>
+        <claim subject="andronicus boethus" adverb="perhaps" verb="om" xml:id="cl1a2a" claim-when="2017-03-10" claimant="park">
+            <at-ref src="grc" ref="1 a 2">
+                <tok pos="3-4"/>
+            </at-ref>
+        </claim>
+        <claim subject="δ π" verb="shows" object="cl1a2a"/>
+        
+        <claim subject="comm-omnes" verb="attests" period="late_antiquity">
+            <object src="grc" ref="1 a 2">
+                <tok pos="3-4"/>
+            </object>
+        </claim>
+        
+        <claim subject="comm-omnes" verb="attests" xml:id="cl1a2b">
+            <object src="grc" ref="1 a 2">
+                <tok pos="3-4"/>
+            </object>
+        </claim>
+        <claim subject="π" verb="shows" object="cl1a2b"/>
+        
+        <comment when="2017-03-10" who="park">The next three claims assert that the reading, ἀποδιδῷ
+            τις, is attested to by π α φ ο but B transposes the words, and perhaps Boethius does as
+            well. The claim sticks close to M-P's syntax, and does not fill in statements he would
+            expect an intelligent reader to supply, e.g., that the claim is not that Boethius's
+            translation perhaps transposed the words, but that Boethius was perhaps following one or
+            more Greek manuscripts that did.</comment>
+        <claim subject="B" verb="reads">
+            <at-ref src="grc" ref="1 a 5">
+                <tok pos="1-2"/>
+            </at-ref>
+            <object>τις ἀποδιδῷ</object>
+        </claim>
+        <claim subject="Λ" adverb="perhaps" verb="reads">
+            <at-ref src="grc" ref="1 a 5">
+                <tok pos="1-2"/>
+            </at-ref>
+            <object>τις ἀποδιδῷ</object>
+        </claim>
+        <claim subject="π α φ ο" verb="matches">
+            <object src="grc" ref="1 a 5">
+                <tok pos="1-2"/>
+            </object>
+        </claim>
+        
+        <!-- examples of a general claims -->
+        <claim verb="refers-to">
+            <subject src="grc" ref="1 b 25"/>
+            <object work="grc" ref="1 a 16"/>
+        </claim>
+        <claim subject="boethius" verb="wrote" object="Λ" where="Pavia"/>
+        
+        <!-- example of scriptum claim -->
+        <claim subject="n" verb="has_length">
+            <object units="folio">160</object>
+        </claim>
+    </body>
+</TAN-A>

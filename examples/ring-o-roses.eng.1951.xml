@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-TEI.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" 
+  xmlns:tan="tag:textalign.net,2015:ns" xmlns:math="http://www.w3.org/1998/Math/MathML" 
+  xmlns="http://www.tei-c.org/ns/1.0" TAN-version="2021" id="tag:parkj@textalign.net,2015:ring04">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title/>
+      </titleStmt>
+      <publicationStmt>
+        <p part="N"/>
+      </publicationStmt>
+      <sourceDesc default="false">
+        <p part="N"/>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc status="draft">
+      <change when-iso="2015-05-14T16:30:25.958-04:00" status="draft"/>
+    </revisionDesc>
+  </teiHeader>
+  <head xmlns="tag:textalign.net,2015:ns">
+    <name>TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+      1883</name>
+    <master-location href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1957.xml"/>
+    <license licensor="park">
+      <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+      <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+        License. The license is granted independent of rights and licenses associated with the
+        source. </name>
+    </license>
+    <work>
+      <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+      <name>Ring around the Rosie</name>
+    </work>
+    <version>
+      <IRI>tag:parkj@textalign.net,2015:work:ring:version:newell-reported</IRI>
+      <name>Ring around the Rosie, second version</name>
+      <name>Ring around the Rosie, version reported by Newell</name>
+    </version>
+    <source>
+      <IRI>http://lccn.loc.gov/51014126</IRI>
+      <name>The Oxford dictionary of nursery rhymes, edited by Iona and Peter Opie.</name>
+      <desc>See p. 364, lines 37-40</desc>
+    </source>
+    <adjustments>
+    </adjustments>
+    <vocabulary-key>
+      <algorithm xml:id="xslt2">
+        <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+        <name>Stylesheet to create a TAN file.</name>
+        <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:14:16.453-04:00"/>
+      </algorithm>
+      <div-type xml:id="l">
+        <IRI>http://dbpedia.org/resource/Line_(poetry)</IRI>
+        <name>line</name>
+      </div-type>
+      <person xml:id="park">
+        <IRI>tag:parkj@textalign.net,2015:self</IRI>
+        <name>Jenny Park</name>
+      </person>
+      <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T11:14:16.453-04:00" href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+      <role xml:id="editor">
+        <IRI>http://schema.org/editor</IRI>
+        <name xml:lang="eng">Editor</name>
+      </role>
+      <role xml:id="stylesheet1" which="stylesheet"/>
+    </vocabulary-key>
+    
+    <file-resp who="park"/>
+    <resp who="xslt2" roles="stylesheet1"/>
+    <resp roles="editor" who="park"/>
+    <resp who="xslt1" roles="stylesheet1"/>
+    <change when="2014-10-28" who="park">Created new TAN-TEI file.</change>
+    <change when="2017-10-21" who="park" flag="error">The unnecessary top-level div, poem, has been removed.</change>
+    <change who="xslt1" when="2017-11-02T22:05:03.898-04:00">TAN file updated to 2018 schemas.</change>
+    <change who="xslt2" when="2018-08-09T11:14:16.453-04:00">Converted from 2018 to 2019 schemas.</change>
+    <to-do/>
+  </head>
+  <text>
+    <body xml:lang="eng">
+      <div type="l" n="1" part="N" org="uniform" sample="complete">
+        <l part="N">Ring a ring a Rosie,</l>
+      </div>
+      <div type="l" n="2" part="N" org="uniform" sample="complete">
+        <l part="N">A bottle full of posie,</l>
+      </div>
+      <div type="l" n="3" part="N" org="uniform" sample="complete">
+        <l part="N">All the girls in our town</l>
+      </div>
+      <div type="l" n="4" part="N" org="uniform" sample="complete">
+        <l part="N">Ring for little Josie.</l>
+      </div>
+    </body>
+  </text>
+</TEI>

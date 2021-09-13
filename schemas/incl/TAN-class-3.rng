@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="TAN-core.rng">
+    <define name="declaration-non-core">
+      <interleave>
+        <ref name="decl-class-3"/>
+        <ref name="decl-non-class-3"/>
+      </interleave>
+    </define>
+    <define name="source-list">
+      <a:documentation>Class 3 files allow zero or many sources</a:documentation>
+      <zeroOrMore>
+        <ref name="link-element-source"/>
+      </zeroOrMore>
+    </define>
+    <define name="source-content">
+      <choice>
+        <ref name="entity-nondigital-no-id"/>
+        <ref name="entity-digital-nontan-no-id"/>
+        <ref name="entity-digital-tan-no-id"/>
+      </choice>
+    </define>
+    <define name="voc-key-non-core">
+      <interleave>
+        <ref name="voc-element-class-3"/>
+        <ref name="voc-element-non-class-3"/>
+      </interleave>
+    </define>
+    <define name="adjust-non-core">
+      <interleave>
+        <ref name="adjust-class-3"/>
+        <ref name="adjust-non-class-3"/>
+      </interleave>
+    </define>
+    <define name="body-content-non-core">
+      <interleave>
+        <ref name="body-content-class-3"/>
+        <ref name="body-content-non-class-3"/>
+      </interleave>
+    </define>
+  </include>
+  <define name="adjust-class-3">
+    <empty/>
+  </define>
+  <define name="adjust-non-class-3">
+    <empty/>
+  </define>
+  <define name="body-content-class-3">
+    <empty/>
+  </define>
+  <define name="body-content-non-class-3">
+    <empty/>
+  </define>
+  <define name="decl-class-3">
+    <empty/>
+  </define>
+  <define name="decl-non-class-3">
+    <empty/>
+  </define>
+  <define name="voc-element-class-3">
+    <zeroOrMore>
+      <ref name="voc-element-group-type"/>
+    </zeroOrMore>
+  </define>
+  <define name="voc-element-non-class-3">
+    <empty/>
+  </define>
+</grammar>

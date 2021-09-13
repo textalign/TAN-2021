@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-mor.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-mor xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:kalvesmaki.com,2014:tan-r-mor:eng:penn">
+   <head>
+      <name>University of Pennsylvania (Penn) Treebank Tag-set</name>
+      <master-location href="https://raw.githubusercontent.com/Arithmeticus/TAN-lexico-morphology/master/TAN-mor/eng.kalvesmaki.com%2C2014.2.xml"/>
+      <license licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <name>This license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <for-lang>eng</for-lang>
+      <source>
+         <IRI>tag:kalvesmaki.com,2014:project:penn-treebank</IRI>
+         <name>University of Pennsylvania (Penn) Treebank</name>
+      </source>
+      <comment when="2015-03-10" who="kalvesmaki">Codes developed as a synthesis of
+         ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz and
+         http://www.comp.leeds.ac.uk/amalgam/tagsets/upenn.html</comment>
+      <vocabulary-key ed-when="2015-03-03" ed-who="kalvesmaki">
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:22:47.928-04:00"/>
+         </algorithm>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <name>Joel Kalvesmaki</name>
+         </person>
+         <algorithm xml:id="xslt1">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI>
+            <name>Stylesheet to populate a TAN-A file from collections.</name>
+            <location accessed-when="2018-08-09T11:22:47.928-04:00"
+               href="../../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"
+            />
+         </algorithm>
+         <feature xml:id="cl-quo">
+            <IRI>tag:textalign.net,2015:morphology:option:quotation-mark-closing</IRI>
+            <name>closing quotation mark</name>
+            <desc>Examples: ' ''</desc>
+         </feature>
+         
+         <feature xml:id="dash">
+            <IRI>http://dbpedia.org/resource/Dash</IRI>
+            <name>dash</name>
+            <desc>Examples: --</desc>
+         </feature>
+         
+         <feature xml:id="x24">
+            <IRI>http://dbpedia.org/resource/Dollar_sign</IRI>
+            <name>dollar</name>
+            <desc>Examples: $ -$ --$ A$ C$ HK$ M$ NZ$ S$ U.S.$ US$</desc>
+         </feature>
+         
+         <feature xml:id="x2E">
+            <IRI>tag:textalign.net,2015:morphology:option:punctuation:sentence-closer</IRI>
+            <name>sentence closer</name>
+            <desc>Examples: ; . ! ?</desc>
+         </feature>
+         
+         <feature xml:id="x3A">
+            <IRI>tag:textalign.net,2015:morphology:option:punctuation:colon-or-ellipsis</IRI>
+            <name>colon or ellipsis</name>
+            <desc>Examples: : ; ...</desc>
+         </feature>
+         
+         <feature xml:id="op-quo">
+            <IRI>tag:textalign.net,2015:morphology:option:quotation-mark-opening</IRI>
+            <name>opening quotation mark</name>
+            <desc>Examples: ` ``</desc>
+         </feature>
+         
+         <feature xml:id="EX">
+            <IRI>tag:textalign.net,2015:morphology:option:eng:there-existential</IRI>
+            <name>existential there</name>
+            <desc>Examples: there</desc>
+         </feature>
+         <feature xml:id="FW">
+            <IRI>tag:textalign.net,2015:morphology:option:foreign-word</IRI>
+            <name>foreign word</name>
+            <desc>Examples: gemeinschaft hund ich jeux habeas Haementeria Herr K'ang-si vous lutihaw
+               alai je jour objets salutaris fille quibusdam pas trop Monte terram fiche oui
+               corporis ...</desc>
+         </feature>
+         <feature xml:id="IN">
+            <IRI>tag:textalign.net,2015:morphology:option:preposition-or-conjunction:subordinating</IRI>
+            <name>preposition or conjunction, subordinating</name>
+            <desc>Examples: astride among upon whether out inside pro despite on by throughout below
+               within for towards near behind atop around if like until below next into if beside
+               ...</desc>
+         </feature>
+         <feature xml:id="JJ">
+            <IRI>http://dbpedia.org/resource/Adjective</IRI>
+            <name>adjective or numeral, ordinal</name>
+            <desc>Examples: third ill-mannered pre-war regrettable oiled calamitous first separable
+               ectoplasmic battery-powered participatory fourth still-to-be-named multilingual
+               multi-disciplinary ...</desc>
+         </feature>
+         <feature xml:id="LS">
+            <IRI>tag:textalign.net,2015:morphology:option:marker:list-item</IRI>
+            <name>list item marker</name>
+            <desc>Examples: A A. B B. C C. D E F First G H I J K One SP-44001 SP-44002 SP-44005
+               SP-44007 Second Third Three Two \* a b c d first five four one six three two</desc>
+         </feature>
+         
+         
+         <feature xml:id="PDT">
+            <IRI>tag:textalign.net,2015:morphology:option:determiner:pre</IRI>
+            <name>pre-determiner</name>
+            <desc>Examples: all both half many quite such sure this</desc>
+         </feature>
+         <feature xml:id="POS">
+            <IRI>tag:textalign.net,2015:morphology:option:marker:genitive</IRI>
+            <name>genitive marker</name>
+            <desc>Examples: ' 's</desc>
+         </feature>
+         
+         <feature xml:id="TO">
+            <IRI>tag:textalign.net,2015:morphology:option:eng:to</IRI>
+            <name>to, as preposition or infinitive marker</name>
+            <desc>Examples: to</desc>
+         </feature>
+         
+         <feature xml:id="VBP">
+            <IRI>tag:textalign.net,2015:morphology:option:verb-present-3s-not</IRI>
+            <name>verb, present tense, not 3rd person singular</name>
+            <desc>Examples: predominate wrap resort sue twist spill cure lengthen brush terminate
+               appear tend stray glisten obtain comprise detest tease attract emphasize mold
+               postpone sever return wag ...</desc>
+         </feature>
+         
+         <feature xml:id="WRB">
+            <IRI>tag:textalign.net,2015:morphology:option:adverb-wh</IRI>
+            <name>Wh-adverb</name>
+            <desc>Examples: how however whence whenever where whereby whereever wherein whereof
+               why</desc>
+         </feature>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp who="xslt2" roles="stylesheet"/>
+      <resp roles="editor" who="kalvesmaki"/>
+      <resp who="xslt1" roles="stylesheet"/>
+      <change who="kalvesmaki" when="2015-03-10">started file</change>
+      <change who="xslt1" when="2017-12-19T12:44:01.725-05:00">TAN file updated to 2018 schemas.</change>
+      <change who="xslt2" when="2018-08-09T11:22:47.928-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do/>
+   </head>
+   <body>
+      <rule m-matches=".+">
+         <assert m-has-how-many-codes="1">Features may not be combined.</assert>
+      </rule>
+      <rule>
+         <where m-has-codes="$"/>
+         <assert tok-matches="$">Only $ may be tagged as a dollar sign.</assert>
+      </rule>
+      <rule m-has-codes="'' . ; :">
+         <report tok-matches="\w">Nothing marked as punctuation should have word
+            characters.</report>
+      </rule>
+      <code feature="closing_quotation_mark">
+         <desc>Examples: ' ''</desc>
+         <val>''</val>
+      </code>
+      <code feature="dash">
+         <desc>Example: --</desc>
+         <val>--</val>
+      </code>
+      <code feature="dollar">
+         <desc>Examples: Examples: $ -$ --$ A$ C$ HK$ M$ NZ$ S$ U.S.$ US$</desc>
+         <val>$</val>
+      </code>
+      <code feature="opening_parenthetical_punctuation">
+         <desc>Examples: ( [ {</desc>
+         <val>[</val>
+      </code>
+      <code feature="closing_parenthetical_punctuation">
+         <desc>Examples: ) ] }</desc>
+         <val>]</val>
+      </code>
+      <code feature="comma">
+         <desc>Examples: ,</desc>
+         <val>;</val>
+      </code>
+      <code feature="sentence_closer">
+         <desc>Examples: ; . ! ?</desc>
+         <val>.</val>
+      </code>
+      <code feature="colon_or_ellipsis">
+         <desc>Examples: : ; ...</desc>
+         <val>:</val>
+      </code>
+      <code feature="opening_quotation_mark">
+         <val>``</val>
+         <desc>Examples: ` ``</desc>
+      </code>
+      <code feature="coordinating_conjunction">
+         <desc>Examples: &amp; 'n and both but either et for less minus neither nor or plus so
+            therefore times v. versus vs. whether yet</desc>
+         <val>CC</val>
+      </code>
+      <code feature="cardinal_number">
+         <desc>Examples: mid-1890 nine-thirty forty-two one-tenth ten million 0.5 one forty-seven
+            1987 twenty '79 zero two 78-degrees eighty-four IX '60s .025 fifteen 271,124 dozen
+            quintillion DM2,000 ...</desc>
+         <val>CD</val>
+      </code>
+      <code feature="determiner">
+         <desc>Examples: all an another any both del each either every half la many much nary
+            neither no some such that the them these this those</desc>
+         <val>DT</val>
+      </code>
+      <code feature="existential_there">
+         <desc>Examples: there</desc>
+         <val>EX</val>
+      </code>
+      <code feature="foreign_word">
+         <desc>Examples: gemeinschaft hund ich jeux habeas Haementeria Herr K'ang-si vous lutihaw
+            alai je jour objets salutaris fille quibusdam pas trop Monte terram fiche oui corporis
+            ...</desc>
+         <val>FW</val>
+      </code>
+      <code feature="preposition_or_conjunction,_subordinating">
+         <desc>Examples: astride among upon whether out inside pro despite on by throughout below
+            within for towards near behind atop around if like until below next into if beside
+            ...</desc>
+         <val>IN</val>
+      </code>
+      <code feature="adjective_or_numeral,_ordinal">
+         <desc>Examples: third ill-mannered pre-war regrettable oiled calamitous first separable
+            ectoplasmic battery-powered participatory fourth still-to-be-named multilingual
+            multi-disciplinary ...</desc>
+         <val>JJ</val>
+      </code>
+      <code feature="comparative adjective">
+         <desc>Examples: bleaker braver breezier briefer brighter brisker broader bumper busier
+            calmer cheaper choosier cleaner clearer closer colder commoner costlier cozier creamier
+            crunchier cuter ...</desc>
+         <val>JJR</val>
+      </code>
+      <code feature="superlative adjective">
+         <desc>Examples: calmest cheapest choicest classiest cleanest clearest closest commonest
+            corniest costliest crassest creepiest crudest cutest darkest deadliest dearest deepest
+            densest dinkiest ...</desc>
+         <val>JJS</val>
+      </code>
+      <code feature="list_item_marker">
+         <desc>Examples: A A. B B. C C. D E F First G H I J K One SP-44001 SP-44002 SP-44005
+            SP-44007 Second Third Three Two \* a b c d first five four one six three two</desc>
+         <val>LS</val>
+      </code>
+      <code feature="modal_verb">
+         <desc>Examples: can cannot could couldn't dare may might must need ought shall should
+            shouldn't will would</desc>
+         <val>MD</val>
+      </code>
+      <code feature="singular common_noun">
+         <desc>Examples: common-carrier cabbage knuckle-duster Casino afghan shed thermostat
+            investment slide humour falloff slick wind hyena override subhumanity machinist
+            ...</desc>
+         <val>NN</val>
+      </code>
+      <code feature="plural common_noun">
+         <val>NNS</val>
+         <desc>Examples: undergraduates scotches bric-a-brac products bodyguards facets coasts
+            divestitures storehouses designs clubs fragrances averages subjectivists apprehensions
+            muses factory-jobs ...</desc>
+      </code>
+      <code feature="singular proper_noun">
+         <desc>Examples: Motown Venneboerger Czestochwa Ranzer Conchita Trumplane Christos Oceanside
+            Escobar Kreisler Sawyer Cougar Yvette Ervin ODI Darryl CTCA Shannon A.K.C. Meltex
+            Liverpool ...</desc>
+         <val>NNP</val>
+      </code>
+      <code feature="plural proper_noun">
+         <desc>Examples: Americans Americas Amharas Amityvilles Amusements Anarcho-Syndicalists
+            Andalusians Andes Andruses Angels Animals Anthony Antilles Antiques Apache Apaches
+            Apocrypha ...</desc>
+         <val>NNPS</val>
+      </code>
+      <code feature="pre-determiner">
+         <desc>Examples: all both half many quite such sure this</desc>
+         <val>PDT</val>
+      </code>
+      <code feature="genitive_marker">
+         <desc>Examples: ' 's</desc>
+         <val>POS</val>
+      </code>
+      <code feature="personal_pronoun">
+         <desc>Examples: hers herself him himself hisself it itself me myself one oneself ours
+            ourselves ownself self she thee theirs them themselves they thou thy us</desc>
+         <val>PRP</val>
+      </code>
+      <code feature="possessive personal_pronoun">
+         <desc>Examples: her his mine my our ours their thy your</desc>
+         <val>PRP$</val>
+      </code>
+      <code feature="adverb">
+         <desc>Examples: occasionally unabatingly maddeningly adventurously professedly stirringly
+            prominently technologically magisterially predominately swiftly fiscally pitilessly
+            ...</desc>
+         <val>RB</val>
+      </code>
+      <code feature="comparative adverb">
+         <desc>Examples: further gloomier grander graver greater grimmer harder harsher healthier
+            heavier higher however larger later leaner lengthier less-perfectly lesser lonelier
+            longer louder lower more ...</desc>
+         <val>RBR</val>
+      </code>
+      <code feature="superlative adverb">
+         <desc>Examples: best biggest bluntest earliest farthest first furthest hardest heartiest
+            highest largest least less most nearest second tightest worst</desc>
+         <val>RBS</val>
+      </code>
+      <code feature="particle">
+         <desc>Examples: aboard about across along apart around aside at away back before behind by
+            crop down ever fast for forth from go high i.e. in into just later low more off on open
+            out over per pie raising start teeth that through under unto up up-pp upon whole with
+            you</desc>
+         <val>RP</val>
+      </code>
+      <code feature="symbol">
+         <desc>Examples: % &amp; * + &lt; = &gt; @</desc>
+         <val>SYM</val>
+      </code>
+      <code feature="to,_as_preposition_or_infinitive_marker">
+         <desc>Examples: to</desc>
+         <val>TO</val>
+      </code>
+      <code feature="interjection">
+         <desc>Examples: Goodbye Goody Gosh Wow Jeepers Jee-sus Hubba Hey Kee-reist Oops amen huh
+            howdy uh dammit whammo shucks heck anyways whodunnit honey golly man baby diddle hush
+            sonuvabitch ...</desc>
+         <val>UH</val>
+      </code>
+      <code feature="verb">
+         <desc>Examples: ask assemble assess assign assume atone attention avoid bake balkanize bank
+            begin behold believe bend benefit bevel beware bless boil bomb boost brace break bring
+            broil brush build ...</desc>
+         <val>VB</val>
+      </code>
+      <code feature="past verb">
+         <desc>Examples: dipped pleaded swiped regummed soaked tidied convened halted registered
+            cushioned exacted snubbed strode aimed adopted belied figgered speculated wore
+            appreciated contemplated ...</desc>
+         <val>VBD</val>
+      </code>
+      <code feature="present_participle">
+         <desc>Examples: telegraphing stirring focusing angering judging stalling lactating
+            hankerin' alleging veering capping approaching traveling besieging encrypting
+            interrupting erasing wincing ...</desc>
+         <val>VBG</val>
+      </code>
+      <code feature="past_participle">
+         <desc>Examples: multihulled dilapidated aerosolized chaired languished panelized used
+            experimented flourished imitated reunifed factored condensed sheared unsettled primed
+            dubbed desired ...</desc>
+         <val>VBN</val>
+      </code>
+      <code feature="verb,_present_tense,_not_3rd_person_singular">
+         <desc>Examples: predominate wrap resort sue twist spill cure lengthen brush terminate
+            appear tend stray glisten obtain comprise detest tease attract emphasize mold postpone
+            sever return wag ...</desc>
+         <val>VBP</val>
+      </code>
+      <code feature="third singular present verb">
+         <desc>Examples: bases reconstructs marks mixes displeases seals carps weaves snatches
+            slumps stretches authorizes smolders pictures emerges stockpiles seduces fizzes uses
+            bolsters slaps speaks pleads ...</desc>
+         <val>VBZ</val>
+      </code>
+      <code feature="whdeterminer">
+         <desc>Examples: that what whatever which whichever</desc>
+         <val>WDT</val>
+      </code>
+      <code feature="whpronoun">
+         <desc>Examples: that what whatever whatsoever which who whom whosoever</desc>
+         <val>WP</val>
+      </code>
+      <code feature="possessive whpronoun">
+         <desc>Examples: whose</desc>
+         <val>WP$</val>
+      </code>
+      <code feature="wh-adverb">
+         <desc>Examples: how however whence whenever where whereby whereever wherein whereof
+            why</desc>
+         <val>WRB</val>
+      </code>
+   </body>
+</TAN-mor>

@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:div-types">
+    <head>
+        <name>TAN keywords for types of divisions</name>
+        <desc>Definitive list of key terms used for textual divisions.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/div-types.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <group-type xml:id="inline-start" which="no new line start"/>
+            <group-type xml:id="inline-end" which="no new line end"/>
+            <group-type xml:id="line-start" which="new line start"/>
+            <group-type xml:id="line-end" which="new line end"/>
+            <group-type xml:id="leading-start" which="space above"/>
+            <group-type xml:id="leading-end" which="space below"/>
+            <group-type xml:id="column-start" which="new column start"/>
+            <group-type xml:id="column-end" which="new column end"/>
+            <group-type xml:id="page-start" which="new page start"/>
+            <group-type xml:id="page-end" which="new page end"/>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-02-02" who="kalvesmaki">Started file</change>
+        <change when="2018-09-14" who="kalvesmaki">Revised for 2019; added Quranic div types.</change>
+        <change when="2020-01-17" who="kalvesmaki">Added annotation group type.</change>
+        <comment when="2020-01-17" who="kalvesmaki">Groups are applied to div types where it seemed
+            clear that div types not falling under that group would be an aberration. Any div types
+            that seem part of a group are not included if a sizeable portion of those div types
+            would not be properly classed as being part of the group. For example, a comment is in
+            most cases a kind of annotation. But it is possible for a comment to be made without any
+            implied base text. Therefore the div type comment is not assigned the group
+            "annotation". </comment>
+        <to-do/>
+    </head>
+    <body affects-element="div-type">
+        <group type="logical">
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:abstract</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:abstract</IRI>
+                <IRI>http://dbpedia.org/resource/Abstract_(summary)</IRI>
+                <name>abstract</name>
+                <name>summary</name>
+                <name>tei abstract</name>
+            </item>
+            <item>
+                <IRI>http://dbpedia.org/resource/Act_(drama)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:act</IRI>
+                <name>act</name>
+                <desc>A division or unit of a theatre work, including a play, film, opera, and
+                    musical theatre</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:ad_praeterea</IRI>
+                <name>ad praeterea</name>
+                <desc>division used particularly by Thomas Aquinas</desc>
+            </item>
+            <item>
+                <!-- Following the lead of Wikipedia, we associate addendum and appendix -->
+                <IRI>tag:textalign.net,2015:div-type:addendum</IRI>
+                <IRI>http://dbpedia.org/resource/Addendum</IRI>
+                <name>addendum</name>
+                <name>appendix</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:address_(postal)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:address</IRI>
+                <IRI>http://dbpedia.org/resource/Address_(geography)</IRI>
+                <name>address (postal)</name>
+                <name>xhtml address</name>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:afterword</IRI>
+                <IRI>http://dbpedia.org/resource/Afterword</IRI>
+                <name>afterword</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:alphabetic-section</IRI>
+                <name>alphabetic entry</name>
+                <name>alphabetic section</name>
+                <desc>Applied to works that have alphabetical divisions.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:amendment</IRI>
+                <name>amendment</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:apologia</IRI>
+                <IRI>http://dbpedia.org/resource/Apologia</IRI>
+                <name>apologia</name>
+                <name>apology</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:apophthegm</IRI>
+                <name>apophthegm</name>
+                <name>saying</name>
+                <name>sententia</name>
+                <desc>Found in saying collections, e.g., the Apophthegmata patrum. This category
+                    encompasses a number of different terms that are sometimes differentiated, but
+                    are difficult for most people to distinguish.</desc>
+            </item>
+            <item group="annotation">
+                <IRI>tag:textalign.net,2015:div-type:apparatus_criticus</IRI>
+                <IRI>http://dbpedia.org/resource/Critical_apparatus</IRI>
+                <name>apparatus criticus</name>
+                <name>critical apparatus</name>
+                <desc>Section of a critical edition, usually at the bottom of the page, indicating
+                    variant readings in the manuscript tradition</desc>
+            </item>
+            <item group="annotation">
+                <IRI>tag:textalign.net,2015:div-type:apparatus_fontium</IRI>
+                <name>apparatus fontium</name>
+                <desc>Section of a critical edition, usually at the bottom of the page, indicating
+                    parallel textual sources</desc>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:āya</IRI>
+                <IRI>http://dbpedia.org/resource/Ayah</IRI>
+                <name>āya</name>
+                <name>aya</name>
+                <name>āyah</name>
+                <name>ayah</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:bibliographic_citation</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:cite</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:bibl</IRI>
+                <IRI>http://dbpedia.org/resource/Citation</IRI>
+                <name>bibliographic citation</name>
+                <name>tei bibl</name>
+                <name>xhtml cite</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:bibliography</IRI>
+                <IRI>http://dbpedia.org/resource/Bibliography</IRI>
+                <name>bibliography</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:bismillah</IRI>
+                <IRI>http://dbpedia.org/resource/Bismillah</IRI>
+                <name>bismillah</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:block_quote</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:blockquote</IRI>
+                <IRI>http://dbpedia.org/resource/Block_quotation</IRI>
+                <name>block quote</name>
+                <name>xhtml blockquote</name>
+                <desc>Equivalent to TEI &lt;quote&gt; that is not in mixed content.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:book</IRI>
+                <IRI>http://dbpedia.org/resource/Book</IRI>
+                <name>book</name>
+                <desc>Conceptual book, not a physical one. For the physical one, see codex.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:canon:law</IRI>
+                <name>canon (law)</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:canon:music</IRI>
+                <name>canon (music)</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:caption</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:figDesc</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:caption</IRI>
+                <IRI>http://dbpedia.org/resource/Photo_caption</IRI>
+                <name>caption</name>
+                <name>tei figdesc</name>
+                <name>xhtml caption</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:castlist</IRI>
+                <IRI>tag:textalign.net,2015:div-type:dramatis-personae</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:castList</IRI>
+                <IRI>http://dbpedia.org/resource/Dramatis_personae</IRI>
+                <name>castlist</name>
+                <name>dramatis personae</name>
+                <name>tei castlist</name>
+                <desc>A list of cast members</desc>
+                <desc>= tei:castList</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:castlist-item</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:castItem</IRI>
+                <name>castlist item</name>
+                <name>tei castitem</name>
+                <desc>An entry within a castlist</desc>
+                <desc>= tei:castItem</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:castlist-item-actor</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:actor</IRI>
+                <name>castlist item actor</name>
+                <name>tei actor</name>
+                <desc>An actor mentioned in a castlist item</desc>
+                <desc>= tei:actor</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:castlist-item-role</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:role</IRI>
+                <name>castlist item role</name>
+                <name>tei role</name>
+                <desc>A role within a castlist item</desc>
+                <desc>= tei:role</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:castlist-item-role-description</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:roleDesc</IRI>
+                <name>castlist item role description</name>
+                <name>tei roledesc</name>
+                <desc>A role description within a castlist item</desc>
+                <desc>= tei:roleDesc</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:causa</IRI>
+                <name>causa</name>
+                <desc>Division in medieval western literature</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:cento</IRI>
+                <IRI>http://dbpedia.org/resource/Cento_(poetry)</IRI>
+                <name>cento</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:century</IRI>
+                <name>century</name>
+                <desc>A textual division that contains 100 chapters or segments.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:chapter</IRI>
+                <IRI>http://dbpedia.org/resource/Chapter_(books)</IRI>
+                <name>chapter</name>
+                <name>capitulum</name>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:character</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:c</IRI>
+                <IRI>http://dbpedia.org/resource/Character_(computing)</IRI>
+                <name>character</name>
+                <name>tei c</name>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:clause_(grammatical)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:cl</IRI>
+                <IRI>http://dbpedia.org/resource/Clause</IRI>
+                <name>clause (grammatical)</name>
+                <name>tei cl</name>
+                <desc>See also independent clause</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:clause_(legal)</IRI>
+                <IRI>http://dbpedia.org/resource/Provision_(contracting)</IRI>
+                <name>clause (legal)</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:colophon</IRI>
+                <IRI>http://dbpedia.org/resource/Colophon</IRI>
+                <name>colophon</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:column_(table)</IRI>
+                <name>column (table)</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:comment</IRI>
+                <name>comment</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:conclusion</IRI>
+                <IRI>http://dbpedia.org/resource/Conclusion_(book)</IRI>
+                <name>conclusion</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:couplet</IRI>
+                <IRI>http://dbpedia.org/resource/Couplet</IRI>
+                <name>couplet</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:declamation</IRI>
+                <IRI>http://dbpedia.org/resource/Declamation</IRI>
+                <name>declamation</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dedication</IRI>
+                <IRI>http://dbpedia.org/resource/Dedication_(publishing)</IRI>
+                <name>dedication</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:definition_list</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:dl</IRI>
+                <name>definition list</name>
+                <name>xhtml dl</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:demonstratio</IRI>
+                <name>demonstratio</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dialexis</IRI>
+                <name>dialexis</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dialogue</IRI>
+                <name>dialogue</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dictionary_entry</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:entry</IRI>
+                <name>dictionary entry</name>
+                <name>tei entry</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dictum_ante_canonem</IRI>
+                <name>dictum ante canonem</name>
+                <name>dictum ante capitulum</name>
+                <desc>Terminology used of medieval works, e.g., Gratian.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dictum_post_canonem</IRI>
+                <name>dictum post canonem</name>
+                <name>dictum post capitulum</name>
+                <desc>Terminology used of medieval works, e.g., Gratian.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:discourse</IRI>
+                <name>discourse</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:distinctio</IRI>
+                <name>distinctio</name>
+                <desc>Terminology used of medieval works, e.g., Gratian.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:dithyramb</IRI>
+                <IRI>http://dbpedia.org/resource/Dithyramb</IRI>
+                <name>dithyramb</name>
+            </item>
+            <item group="line-start line-end annotation">
+                <IRI>tag:textalign.net,2015:div-type:endnote</IRI>
+                <name>endnote</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:ennead</IRI>
+                <IRI>http://dbpedia.org/resource/The_Enneads</IRI>
+                <name>ennead</name>
+                <desc>A set of nine treatises, applied to the extant writings of Plotinus,
+                or to imitative corpora.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:entry</IRI>
+                <name>entry</name>
+                <desc>A section in a larger work customarily called entries, e.g., an encyclopedia,
+                a dictionary.</desc>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:epigram</IRI>
+                <IRI>http://dbpedia.org/resource/Epigram</IRI>
+                <name>epigram</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:epigraph</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:epigraph</IRI>
+                <IRI>http://dbpedia.org/resource/Epigraph_(literature)</IRI>
+                <name>epigraph</name>
+                <name>tei epigraph</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:epilogue</IRI>
+                <IRI>http://dbpedia.org/resource/Epilogue</IRI>
+                <name>epilogue</name>
+                <desc>Some may equate this with postscript.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:excerpt</IRI>
+                <name>excerpt</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:exordium</IRI>
+                <name>exordium</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:explicit</IRI>
+                <name>explicit</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:fable</IRI>
+                <IRI>http://dbpedia.org/resource/Fable</IRI>
+                <name>fable</name>
+            </item>
+            <item group="line-start line-end annotation">
+                <IRI>tag:textalign.net,2015:div-type:footnote</IRI>
+                <name>footnote</name>
+            </item>
+            <item group="line-start line-end page-end">
+                <IRI>tag:textalign.net,2015:div-type:footer</IRI>
+                <name>footer</name>
+                <name>running footer</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:fragment</IRI>
+                <IRI>http://dbpedia.org/resource/Literary_fragment</IRI>
+                <name>fragment</name>
+                <desc>A collection of fragments may be defined rather generally, to mean only direct
+                    quotations of a writing otherwise lost, or it may refer to paraphrases or
+                    summaries. If a distinction is made, use testimony for the latter.</desc>
+            </item>
+            <item group="annotation">
+                <IRI>tag:textalign.net,2015:div-type:gloss</IRI>
+                <IRI>http://dbpedia.org/resource/Gloss_(annotation)</IRI>
+                <name>gloss</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:glossary</IRI>
+                <IRI>http://dbpedia.org/resource/Glossary</IRI>
+                <name>glossary</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:half-line_(verse)</IRI>
+                <name>half line (verse)</name>
+                <desc>Understood to be a semantic division, not a physical line break, for which see
+                    line (physical)</desc>
+            </item>
+            <item group="line-start line-end page-start">
+                <IRI>tag:textalign.net,2015:div-type:header</IRI>
+                <name>header</name>
+                <name>running header</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:head</IRI>
+                <name>heading</name>
+                <name>tei head</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_1</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h1</IRI>
+                <name>heading level 1</name>
+                <name>xhtml h1</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_2</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h2</IRI>
+                <name>heading level 2</name>
+                <name>xhtml h2</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_3</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h3</IRI>
+                <name>heading level 3</name>
+                <name>xhtml h3</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_4</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h4</IRI>
+                <name>heading level 4</name>
+                <name>xhtml h4</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_5</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h5</IRI>
+                <name>heading level 5</name>
+                <name>xhtml h5</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:heading_level_6</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:h6</IRI>
+                <name>heading level 6</name>
+                <name>xhtml h6</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:history</IRI>
+                <name>history</name>
+                <desc>Some literary works are composed of items called histories,
+                e.g., pseudo-Nonnus, Scholia mythologica.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:homily</IRI>
+                <IRI>http://dbpedia.org/resource/Homily</IRI>
+                <name>homily</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:hymn</IRI>
+                <IRI>http://dbpedia.org/resource/Hymn</IRI>
+                <name>hymn</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:hypothesis</IRI>
+                <IRI>http://dbpedia.org/resource/Hypothesis_(drama)</IRI>
+                <name>hypothesis</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:idyll</IRI>
+                <IRI>http://dbpedia.org/resource/Idyll</IRI>
+                <name>idyll</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:incipit</IRI>
+                <IRI>http://dbpedia.org/resource/Incipit</IRI>
+                <name>incipit</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:independent_clause</IRI>
+                <IRI>https://dbpedia.org/resource/Independent_clause</IRI>
+                <name>independent clause</name>
+                <desc>used to identify two or more sentence parts that have a subject and predicate
+                    and function as a sentence.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:index</IRI>
+                <IRI>http://dbpedia.org/resource/Index_(publishing)</IRI>
+                <name>index</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:index_entry</IRI>
+                <name>index entry</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:introduction</IRI>
+                <IRI>http://dbpedia.org/resource/Introduction_(book)</IRI>
+                <name>introduction</name>
+                <desc>Some may equate this type with prologue.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:lecture</IRI>
+                <IRI>http://dbpedia.org/resource/Lecture</IRI>
+                <name>lecture</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:lemma:dictionary</IRI>
+                <IRI>http://dbpedia.org/resource/Headword</IRI>
+                <name>lemma (dictionary)</name>
+                <name>headword</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:lemma:scholion</IRI>
+                <name>lemma (scholion)</name>
+                <desc>A word or phrase quoted from a text that is being annotated by
+                a scholium.</desc>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:letter</IRI>
+                <name>letter</name>
+                <name>epistle</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:line:verse</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:l</IRI>
+                <IRI>http://dbpedia.org/resource/Line_(poetry)</IRI>
+                <name>line (verse)</name>
+                <name>line (poetry)</name>
+                <name>tei l</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:list</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:list</IRI>
+                <IRI>http://dbpedia.org/resource/Enumeration</IRI>
+                <name>list</name>
+                <name>tei list</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:list_item</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:li</IRI>
+                <name>list item</name>
+                <name>xhtml li</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:litany</IRI>
+                <IRI>http://dbpedia.org/resource/Litany</IRI>
+                <name>litany</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:morpheme</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:m</IRI>
+                <IRI>http://dbpedia.org/resource/Morpheme</IRI>
+                <name>morpheme</name>
+                <name>tei m</name>
+            </item>
+            <item group="line-start line-end annotation">
+                <IRI>tag:textalign.net,2015:div-type:note</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:note</IRI>
+                <IRI>http://dbpedia.org/resource/Note_(typography)</IRI>
+                <name>note</name>
+                <name>tei note</name>
+                <desc>Notes placed anywhere, including footnotes and endnotes.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:objection</IRI>
+                <IRI>http://dbpedia.org/resource/Objection_(argument)</IRI>
+                <name>objection</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:octet</IRI>
+                <name>octet</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:ode</IRI>
+                <IRI>http://dbpedia.org/resource/Ode</IRI>
+                <name>ode</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:opusculum</IRI>
+                <name>opusculum</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:oracle</IRI>
+                <name>oracle</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:oration</IRI>
+                <name>oration</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:ordered_list</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:ol</IRI>
+                <name>ordered list</name>
+                <name>xhtml ol</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:paean</IRI>
+                <IRI>http://dbpedia.org/resource/Paean</IRI>
+                <name>paean</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:paragraph</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:p</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:p</IRI>
+                <IRI>http://dbpedia.org/resource/Paragraph</IRI>
+                <name>paragraph</name>
+                <name>tei p</name>
+                <name>xhtml p</name>
+            </item>
+            <item group="inline-start inline-end annotation">
+                <IRI>tag:textalign.net,2015:div-type:gloss:parenthetical</IRI>
+                <name>parenthetical gloss</name>
+                <name>parenthetical aside</name>
+                <name>parenthetical comment</name>
+                <name>inline gloss</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:phrase</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:phr</IRI>
+                <IRI>http://dbpedia.org/resource/Phrase</IRI>
+                <name>phrase</name>
+                <name>tei phr</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:play</IRI>
+                <IRI>http://dbpedia.org/resource/Play_(theatre)</IRI>
+                <name>play</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:poem</IRI>
+                <IRI>http://dbpedia.org/resource/Poetry</IRI>
+                <name>poem</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:postface</IRI>
+                <IRI>http://dbpedia.org/resource/Postface</IRI>
+                <name>postface</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:postscript</IRI>
+                <IRI>http://dbpedia.org/resource/Postscript</IRI>
+                <name>postscript</name>
+                <desc>Some may equate this with epilogue.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:prayer</IRI>
+                <IRI>http://dbpedia.org/resource/Prayer</IRI>
+                <name>prayer</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:preface</IRI>
+                <IRI>http://dbpedia.org/resource/Preface</IRI>
+                <name>preface</name>
+                <desc>Some may equate this with prologue.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:progymnasma</IRI>
+                <IRI>http://dbpedia.org/resource/Progymnasmata</IRI>
+                <name>progymnasma</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:prologue</IRI>
+                <IRI>http://dbpedia.org/resource/Prologue</IRI>
+                <name>prologue</name>
+                <name>prolegomenon</name>
+                <desc>Some may equate this with introduction.</desc>
+                <desc>Some may equate this with preface.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:proverb</IRI>
+                <IRI>http://dbpedia.org/resource/Proverb</IRI>
+                <name>proverb</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:psalm</IRI>
+                <IRI>http://dbpedia.org/resource/Psalm</IRI>
+                <name>psalm</name>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:punctuation_character</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:pc</IRI>
+                <name>punctuation character</name>
+                <name>tei pc</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:quatrain</IRI>
+                <IRI>http://dbpedia.org/resource/Quatrain</IRI>
+                <name>quatrain</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:question</IRI>
+                <IRI>http://dbpedia.org/resource/Question</IRI>
+                <name>question</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:refrain</IRI>
+                <IRI>http://dbpedia.org/resource/Refrain</IRI>
+                <name>refrain</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:respondeo</IRI>
+                <name>respondeo</name>
+                <desc>division used particularly by Thomas Aquinas</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:rubric</IRI>
+                <IRI>http://dbpedia.org/resource/Rubric</IRI>
+                <name>rubric</name>
+            </item>
+            <item>
+                <IRI>http://dbpedia.org/resource/Scene_(drama)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:scene</IRI>
+                <name>scene</name>
+                <desc>A unit of action, often a subdivision of an act</desc>
+            </item>
+            <item group="annotation">
+                <IRI>tag:textalign.net,2015:div-type:scholium</IRI>
+                <IRI>http://dbpedia.org/resource/Scholia</IRI>
+                <name>scholium</name>
+                <name>scholion</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:section</IRI>
+                <IRI>http://dbpedia.org/resource/Section_(typography)</IRI>
+                <name>section</name>
+                <desc>A generic block of text.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:sed_contra</IRI>
+                <name>sed contra</name>
+                <desc>division used particularly by Thomas Aquinas</desc>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:sentence</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:s</IRI>
+                <IRI>http://dbpedia.org/resource/Sentence_(linguistics)</IRI>
+                <name>sentence</name>
+                <name>tei s</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:sestet</IRI>
+                <IRI>http://dbpedia.org/resource/Sestet</IRI>
+                <name>sestet</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:song</IRI>
+                <IRI>http://dbpedia.org/resource/Song</IRI>
+                <name>song</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:sonnet</IRI>
+                <IRI>http://dbpedia.org/resource/Sonnet</IRI>
+                <name>sonnet</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:stage_direction</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:stage</IRI>
+                <name>stage direction</name>
+                <name>tei stage</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:stanza</IRI>
+                <IRI>http://dbpedia.org/resource/Stanza</IRI>
+                <name>stanza</name>
+                <desc>Similar to TEI &lt;lg type="stanza"&gt;</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:strophe</IRI>
+                <IRI>http://dbpedia.org/resource/Strophe</IRI>
+                <name>strophe</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:subchapter</IRI>
+                <name>subchapter</name>
+                <desc>Divisions of a chapter, perhaps without name or label.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:subfragment</IRI>
+                <name>subfragment</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:subsection</IRI>
+                <name>subsection</name>
+                <desc>Divisions of a section, perhaps without name or label.</desc>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:subtitle</IRI>
+                <name>subtitle</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:subsubtitle</IRI>
+                <name>subsubtitle</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:sūra</IRI>
+                <IRI>http://dbpedia.org/resource/Surah</IRI>
+                <name>sūra</name>
+                <name>sura</name>
+                <name>surah</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:syllogism</IRI>
+                <IRI>http://dbpedia.org/resource/Syllogism</IRI>
+                <name>syllogism</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:table</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:table</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:table</IRI>
+                <IRI>http://dbpedia.org/resource/Table_(information)</IRI>
+                <name>table</name>
+                <name>tei table</name>
+                <name>xhtml table</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:table_body</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:tbody</IRI>
+                <name>table body</name>
+                <name>xhtml tbody</name>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:table_cell</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:cell</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:td</IRI>
+                <name>table cell</name>
+                <name>table data cell</name>
+                <name>tei cell</name>
+                <name>xhtml td</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:table_footer</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:tfoot</IRI>
+                <name>table footer</name>
+                <name>xhtml tfoot</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:table_header</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:thead</IRI>
+                <name>table header</name>
+                <name>xhtml thead</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:table_header_cell</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:th</IRI>
+                <name>table header cell</name>
+                <name>xhtml th</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:table_row</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:row</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:tr</IRI>
+                <name>table row</name>
+                <name>tei row</name>
+                <name>xhtml tr</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:tercet</IRI>
+                <IRI>http://dbpedia.org/resource/Tercet</IRI>
+                <name>tercet</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:term_definition</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:dd</IRI>
+                <name>term definition</name>
+                <name>xhtml dd</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:term_to_be_defined</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:dt</IRI>
+                <name>term to be defined</name>
+                <name>xhtml dt</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:testimony</IRI>
+                <name>testimony</name>
+                <name>testamentum</name>
+                <desc>A literary fragment where the author is only loosely quoted or
+                    paraphrased.</desc>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:tetralogy</IRI>
+                <IRI>http://dbpedia.org/resource/Tetralogy</IRI>
+                <name>tetralogy</name>
+            </item>
+            <item group="line-start line-end leading-start leading-end">
+                <IRI>tag:textalign.net,2015:div-type:title</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:title</IRI>
+                <IRI>http://dbpedia.org/resource/Title_(publishing)</IRI>
+                <name>title</name>
+                <name>tei title</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:tristich</IRI>
+                <IRI>http://dbpedia.org/resource/Tristich</IRI>
+                <name>treatise</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:treatise</IRI>
+                <IRI>http://dbpedia.org/resource/Treatise</IRI>
+                <name>tristich</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:unordered_list</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:xhtml:ul</IRI>
+                <name>unordered list</name>
+                <name>xhtml ul</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:variant</IRI>
+                <name>variant</name>
+                <name>variation</name>
+                <desc>An alternative rendition of a passage. It is assumed that every variant will
+                    have at least one sibling.</desc>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:verse_(poetry)</IRI>
+                <IRI>http://dbpedia.org/resource/Verse_(poetry)</IRI>
+                <name>verse (poetry)</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:verse_(scripture)</IRI>
+                <name>verse (scripture)</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:vita</IRI>
+                <IRI>http://dbpedia.org/resource/Hagiography</IRI>
+                <name>vita</name>
+                <name>life</name>
+                <desc>A biography of a historical person; although frequently used of medieval 
+                saints, the term may apply broadly (e.g., the vita of Aeschylus that begins the scholia)</desc>
+            </item>
+            <item group="inline-start inline-end">
+                <IRI>tag:textalign.net,2015:div-type:word</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:w</IRI>
+                <IRI>http://dbpedia.org/resource/Word</IRI>
+                <name>word</name>
+                <name>tei w</name>
+            </item>
+        </group>
+        <group type="scriptum">
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:codex</IRI>
+                <IRI>http://dbpedia.org/resource/Codex</IRI>
+                <name>book (physical)</name>
+                <name>codex</name>
+            </item>
+            <item group="column-start column-end">
+                <IRI>tag:textalign.net,2015:div-type:column_(page)</IRI>
+                <IRI>http://dbpedia.org/resource/Column_(typography)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:cb</IRI>
+                <name>column (page)</name>
+                <name>tei cb</name>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:fascicle</IRI>
+                <IRI>http://dbpedia.org/resource/Serial_(literature)</IRI>
+                <name>fascicle</name>
+                <desc>One of several installments of a book or volume.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:folio</IRI>
+                <IRI>http://dbpedia.org/resource/Recto_and_verso</IRI>
+                <name>folio</name>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:gathering</IRI>
+                <IRI>http://dbpedia.org/resource/Section_(bookbinding)</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:gb</IRI>
+                <name>gathering</name>
+                <name>quire</name>
+                <name>book signature</name>
+                <name>tei gb</name>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:line:physical</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:lb</IRI>
+                <name>line (physical)</name>
+                <name>tei lb</name>
+                <desc>A physical line of text on the page, not to be confused with a line of poetry,
+                    which may take multiple physical lines.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:page</IRI>
+                <IRI>tag:textalign.net,2015:div-type:equiv:tei:pb</IRI>
+                <IRI>http://dbpedia.org/resource/Page_(paper)</IRI>
+                <name>page</name>
+                <name>tei pb</name>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:papyrus</IRI>
+                <IRI>http://dbpedia.org/resource/Papyrus</IRI>
+                <name>papyrus</name>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:side</IRI>
+                <name>side</name>
+                <desc>A side of a scriptum, such for a folio.</desc>
+            </item>
+            <item group="line-start line-end">
+                <IRI>tag:textalign.net,2015:div-type:subcolumn</IRI>
+                <name>subcolumn</name>
+                <desc>Divisions of a column. Many early large books with two columns per page were
+                    printed with a few letters marking the vertical axis of the column, to make
+                    referencing easier. This is seen, for example, in the Patrologia Latina and
+                    Patrologia Graeca.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:tome</IRI>
+                <IRI>http://dbpedia.org/resource/Tome</IRI>
+                <name>tome</name>
+                <desc>A large codex or book. It may be divided into volumes.</desc>
+            </item>
+            <item group="page-start page-end">
+                <IRI>tag:textalign.net,2015:div-type:volume</IRI>
+                <IRI>http://dbpedia.org/resource/Volume_(bibliography)</IRI>
+                <name>volume</name>
+                <desc>A scriptum, normally a printed book, that is a (usually numbered or labeled)
+                    member of a set of scripta, e.g., the volumes in an encyclopedia.</desc>
+            </item>
+        </group>
+        <item>
+            <IRI>tag:textalign.net,2015:div-type:part</IRI>
+            <name>part</name>
+            <desc>A generic division of a larger textual unit. Can be conceptual or physical.</desc>
+        </item>
+    </body>
+</TAN-voc>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:hans@beispiel.com,2014:ringel">
+   <head>
+      <name>TAN Transkription, Ringelreihen mit Riederfallen</name>
+      <master-location href="http://beispiel.com/TAN-T/ringel.xml"/>
+      <license licensor="schmidt">
+         <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+         <name>Creative Commons Namensnennung 4.0 International Lizenz</name>
+         <desc>Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung 4.0
+            International Lizenz.</desc>
+      </license>
+      <reference-system type="logical" wf-ready="false"/>
+      <work>
+         <IRI>tag:beispiel.com,2014:texte:holderbusch</IRI>
+         <name>"Die Kinder auf dem Holderbusch"</name>
+      </work>
+      <version>
+         <IRI>urn:uuid:31648039-3dbb-49b9-b66e-9bd2cd11630e</IRI>
+         <name>zweite Version</name>
+      </version>
+      <numerals priority="letters"/>
+      <source>
+         <IRI>http://www.worldcat.org/oclc/4574384</IRI>
+         <name>Franz Magnus Böhme, Deutsches Kinderlied und Kinderspiel: Volksüberlieferungen aus
+            allen Landen deutscher Zunge, gesammelt, geordnet und mit Angabe der Quellen. Leipzig,
+            1897.</name>
+      </source>
+      <predecessor>
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>TAN Transkription, Ringelreihen mit Riederfallen</name>
+         <location accessed-when="2021-04-29T11:46:36.281-04:00" href="ring-o-roses.deu.1897-prev.xml"/>
+      </predecessor>
+      
+      <adjustments>
+         <normalization>
+            <IRI>tag:kalvesmaki@gmail.com,2014:normalization:hyphens-discretionary-off</IRI>
+            <name>Keine Bindestriche</name>
+         </normalization>
+      </adjustments>
+      <vocabulary-key>
+         <algorithm xml:id="xslt1">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:14:13.596-04:00"/>
+         </algorithm>
+         <div-type xml:id="Zeile">
+            <IRI>http://dbpedia.org/resource/Gedichtzeile</IRI>
+            <name>Gedichtzeile</name>
+         </div-type>
+         <div-type which="poem" xml:id="Gedicht"/>
+         <person xml:id="schmidt">
+            <IRI>tag:hans@beispiel.com,2014:selbst</IRI>
+            <name xml:lang="eng">Hans Schmidt</name>
+         </person>
+         <role xml:id="Produzent">
+            <IRI>http://schema.org/producer</IRI>
+            <name xml:lang="eng">Produzent</name>
+         </role>
+      </vocabulary-key>
+      
+      <file-resp who="schmidt"/>
+      <resp who="xslt1" roles="stylesheet"/>
+      <resp who="schmidt" roles="Produzent"/>
+      <change when="2014-08-13" who="schmidt">Anfang</change>
+      <change who="xslt1" when="2018-08-09T11:14:13.596-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do/>
+      <comment when="2014-08-13" who="schmidt">unten auf der Z. 438, recht</comment>
+   </head>
+   <body xml:lang="deu">
+      <div type="Gedicht" n="1">
+         <div n="a" type="Zeile">Ringel, Ringel, Reihe!</div>
+         <div n="b" type="Zeile">Sind der Kinder dreie,</div>
+         <div n="c" type="Zeile">Sitzen auf dem Holderbuch,</div>
+         <div n="e" type="Zeile">Schreien alle: husch, husch, husch!</div></div>
+   </body>
+</TAN-T>

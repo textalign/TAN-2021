@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a blank TAN-T file meant to be used to fill out the parameters a project might need to construct in preparing a collection of TEI files for TAN-T. -->
+<!-- Certain elements below are rendered invalid because of the use of curly braces. This file is meant to be used
+by a stylesheet that evaluates strings within the curly braces as XPath expressions, using the input document 
+as the context -->
+<!-- Items that you will need to fill out by hand, or think about are marked in comments below with "Manually edit:" -->
+<!-- It is common practice to include processing instructions for both local and web-based versions of the schemas, with one pair commented out -->
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-T.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Manually edit: @id -->
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2020"
+   id="tag:example@gmail.com,2010:transcription-begun-{substring(replace(string(current-dateTime()),'\D',''),1, 14)}">
+   <head>
+      <!-- Manually edit: the name -->
+      <name>{($p1//tei:title)[1]//text()}</name>
+      <!-- Manually edit: license @which (or IRI + name), @licensor -->
+      <license which="by_4.0" licensor="primary-agent"/>
+      <!-- If you are converting a number of TEI files from the same project, you may wish to create ahead of time your own TAN-key file, to which you would point here. 
+         This allows a stylesheet accessing this template to reconcile vocabulary -->
+      <work>
+         <!-- Manually edit: <IRI>, <name> -->
+         <!-- See comment above for <source> -->
+         <IRI>{($p1//tei:titleStmt/tei:title/@ref)[1]}</IRI>
+         <name>{$p1//tei:titleStmt/tei:title[1]/text()}</name>
+      </work>
+      <source>
+         <!-- Manually edit: <IRI>, <name> -->
+         <!-- This next bit may take some work, since TEI's header doesn't require naming the text-bearing object with a URI -->
+         <IRI>tag:example@gmail.com,2010:scriptum:{replace(string-join(($p1//tei:sourceDesc//(tei:author,
+            tei:editor)//text(), $p1//tei:sourceDesc//tei:date//text(),
+            $p1//tei:sourceDesc//tei:title//text()),''),'\s','')}</IRI>
+         <name>{$p1//tei:sourceDesc//(tei:author, tei:editor)//text()}
+            {$p1//tei:sourceDesc//tei:date//text()} {$p1//tei:sourceDesc//tei:title//text()}</name>
+      </source>
+      <adjustments>
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:annotation-content-removed</IRI>
+            <name>Footnotes or endnotes have been deleted.</name>
+         </normalization>
+      </adjustments>
+      <vocabulary-key>
+         <!-- Manually edit. -->
+         <person xml:id="primary-agent">
+            <IRI>tag:example@gmail.com,2010:self</IRI>
+            <name>Name of creator</name>
+         </person>
+      </vocabulary-key>
+      <resp roles="creator" who="primary-agent"/>
+      <change when="{string(current-dateTime())}" who="primary-agent">Created new TAN-TEI
+         file.</change>
+      <to-do>
+         <comment when="{string(current-dateTime())}" who="primary-agent">Check file</comment>
+      </to-do>
+   </head>
+   <body xml:lang="{($p1//tei:body//@xml:lang)[1]}">
+      <div n="title" type="title">placeholder text</div>
+   </body>
+</TAN-T>

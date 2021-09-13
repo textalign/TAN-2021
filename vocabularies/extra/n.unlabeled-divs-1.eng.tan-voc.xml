@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:n:eng:unlabeled-divs-1">
+    <head>
+        <name>Commonly used vocabulary in English for divs that are unnamed, first system</name>
+        <desc>There are a handful of div types that do not easily lend themselves to values of @n
+            because that type of div is traditionally not labeled or numbered. In practice, @n is
+            given a value that is identical to, or looks a lot like, the value of @type. This
+            TAN-voc file provides common nomenclature for such unlabeled div types.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.unlabeled-divs-1.tan-voc.xml"/>
+        <license which="by 4.0" licensor="kalvesmaki"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:person:kalvesmaki</IRI>
+                <IRI>tag:kalvesmaki.com,2014:self</IRI>
+                <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+                <name>Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2018-09-13" who="kalvesmaki">Started file.</change>
+        <to-do>
+            <comment when="2018-09-13" who="kalvesmaki">Need to test against real-life examples, to
+                add other commonly unlabeled div types, and to massage the nomenclature.</comment>
+        </to-do>
+    </head>
+    <body affects-attribute="n">
+        <item>
+            <IRI>tag:textalign.net,2015:n-alias:unlabeled-divs-1:intro</IRI>
+            <name>intro</name>
+            <name>introduction</name>
+            <name>pr</name>
+            <name>pro</name>
+            <name>pref</name>
+            <name>praef</name>
+            <name>preface</name>
+            <name>prologue</name>
+            <desc>This file adopts the assumption that a given div has only one introductory
+                section, whatever it is called.</desc>
+            <desc>Such an introduction excludes titles and subtitles.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:n-alias:unlabeled-divs-1:conc</IRI>
+            <name>conc</name>
+            <name>conclusion</name>
+            <name>ep</name>
+            <name>epi</name>
+            <name>epilogue</name>
+            <name>post</name>
+            <name>postscript</name>
+            <name>postface</name>
+            <desc>This file adopts the assumption that a given div has only one concluding section,
+                whatever it is called.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:n-alias:unlabeled-divs-1:title</IRI>
+            <name>title</name>
+            <name>ti</name>
+        </item>
+    </body>
+</TAN-voc>

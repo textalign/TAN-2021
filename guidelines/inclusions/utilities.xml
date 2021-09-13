@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><section xmlns="http://docbook.org/ns/docbook" xml:id="tan-utilities" version="5.0"><title>TAN Utilities</title><para>Standard TAN utilities are designed to get material into TAN or TEI formats, and
+               to do complex editing tasks within TAN or TEI. These tools can save you many hours of
+               editing. </para><para>Each section below is generated automatically from the master file that drives the
+               process. Any global parameters that are referred to in the discussion are explained in
+               the file itself. </para><section xml:id="Body_Builder"><title>Body Builder</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/Body%20Builder/Body%20Builder.xsl">utilities/Body%20Builder/Body%20Builder.xsl</link></para><para> Suppose you have texts, aspects of whose syntax, structure, or format correspond to TAN or
+      TEI elements or markup. This application allows you to write regular-expression-based rules
+      to convert that text into a TAN or TEI format. Input consists of one or more files in plain
+      text, XML, or Word docx. The input is processed against each rule, in order of appearance,
+      progressively structuring the text. Body Builder is intended for intermediate and advanced
+      users who are comfortable with regular expressions and XML markup. The application is ideal
+      for cases where complex, numerous, or lengthy documents need to be converted into TAN or TEI,
+      as well as for developing workflows where live, ever-changing work needs to be regularly
+      pushed into a TAN or TEI format.</para><para> Version 2021-07-13</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> a TAN-T or TAN-TEI file that represents a target template for the parsed content
+      coming from the secondary input </para><para><emphasis>Secondary input:</emphasis> one or more non-TAN files in plain text, XML, or Word format (docx); perhaps
+      configuration files for the parameters </para><para><emphasis>Primary output:</emphasis> the primary output with its contents replaced by a tree parsed by applying rules to
+      the source </para><para><emphasis>Secondary output:</emphasis> none </para><para> This application is intended to help users convert a text to TAN-T, TAN-TEI, or TAN-A. This is
+      a difficult task, mainly because the source text could be either plain text, an XML file, or a Word
+      document, which requires either going from unstructured to structured text, or from one type of
+      structure to another. If a Word document, the formatting might mean something, or it might not.
+      Structure might be embedded in the text, or in formatting, or both. Users tend to be inconsistent
+      and incomplete, and the docx format has challenges not apparent to the user. The XML structure in a
+      Word file might break up adjacent text identically formatted, because it is preserving a record of
+      editing history, or noting where the cursor was when the document was last edited. In sum, one
+      should not take for granted the challenge of building a pipeline from pre-TAN/TEI files to TAN/TEI
+      ones! </para><para> The "plain" text itself poses challenges. We assume that there are in the text various 
+      numerals or words that signal reference numbers. But there are thousands of ways an editor
+      might choose to use those reference numbers. Some editors interleave into a single document 
+      multiple overlapping or competing reference systems. A TAN file allows only one primary
+      tree, so only one of those reference systems can be used. </para><para> Body Builder handles these problems by allowing the editor to declare a sequence of patterns
+      in the text that are the key to the textual hierarchy. To build that sequence of patterns properly,
+      you must have a very good command of regular expressions. To get you started, some examples have
+      been provided, based on actual conversions into TAN from challenging real-world documents. </para><para> This utility has been designed based on select test cases, and there are no doubt many ways it
+      could be developed and enhanced. If you encounter a problem, raise a ticket in the GitHub account. </para><para> Some assumptions:<itemizedlist><listitem><para>If the catalyzing input file is not a TAN file, then a fallback, generic TAN file should 
+      be used; the specific one is determined by parameters below.</para></listitem><listitem><para>If the catalyzing input file is TAN-T, that means the output will be as well, and only the 
+      structured but plain text will be returned, because TAN-T does not have any internal markup.</para></listitem><listitem><para>If the catalyzing input file is TAN-TEI, the TAN-TEI output will be structured text, with 
+      select internal markup. To coordinate the features of your text with specific TEI markup may
+      require testing with the parameters below.</para></listitem><listitem><para>If the catalyzing input is TAN-A, then output will consist of nothing, at the moment. When
+      this feature is eventually supported, the output TAN-A file will contain structured annotations 
+      on the text. This option will be supported only for Word files, whose comments will be 
+      interpreted as TAN-A claims. 
+   </para></listitem></itemizedlist></para><para> Some tips:<itemizedlist><listitem><para>Build the parameters incrementally. You will find that two or three of the parameters below
+      are a challenge to get right, especially for complicated documents. Begin with one or two 
+      components, test the output, then add more components.</para></listitem><listitem><para>If building up the components in <code>$main-text-to-markup</code>, start with the most general rule
+      first, but put it at the end of the list. Incrementally add more specific rules, placing
+      them before the more general ones.</para></listitem><listitem><para>If you find that the output doesn't match what you intended, try commenting out some of the 
+      elements in <code>$main-text-to-markup.</code>.</para></listitem><listitem><para>Look out for problems in your source document. Sometimes this application results in erroneous
+      output not because of the application, but because the input is not what you expected. In fact,
+      if you are working with live documents that others are providing you, this application may help 
+      you identify inconsistencies and problems in that input. </para></listitem><listitem><para>If there are certain recurrent errors, you can actually plan for them. See the separate CLIO
+      configuration file, which inserts the illegal <code>&lt;unexpected&gt;</code> to signal a problem.
+   </para></listitem></itemizedlist></para><para> Nota bene:<itemizedlist><listitem><para>Many input files will be full of internal inconsistency and error. Do not take results at face
+      value. Scrutinize the output. Sometimes this will reveal that the problem originates with the
+      input: typos, inconsistencies, bad formatting, etc. If you see errors in the input, you can either
+      (1) fix the input or (2) customize this application to make those changes during processing. Option
+      2 is definitely to be preferred if the source text is a live, working document that you have little
+      control over, and there is even the slightest chance it might be revised, and need to be processed
+      again.</para></listitem><listitem><para>This application works well with a TAN file that points to the source file in question, via
+      <code><link linkend="element-source">&lt;source&gt;</link></code> or <code><link linkend="element-predecessor">&lt;predecessor&gt;</link></code>. As that source file gets updated, the TAN file can be re-processed
+      through this application, to refresh the results.</para></listitem><listitem><para>Currently, this application focuses only select Word docx components: the main text, comments,
+      deletions, insertions. No support is yet provided for the header, footer, footnotes, endnotes.</para></listitem><listitem><para>This application was developed in tandem with two sets of actual workflows, whose results have
+      been documented in the files in the config subdirectory. No doubt other concrete examples will 
+      cause this application to grow and change, or bring out bugs. Feel free to register problems
+      or feature requests via github.
+ </para></listitem></itemizedlist></para><para><emphasis role="bold"> Warning: certain features have yet to be implemented </emphasis></para><para><itemizedlist><listitem><para>Anchor comments to gaps between characters, so they are not lost when the anchored text is lost. </para></listitem><listitem><para>Support HTML input </para></listitem><listitem><para>Support ODT input </para></listitem><listitem><para>Let the default template be a document with the root element body. </para></listitem><listitem><para>Support parsing of docx endnotes and footnotes.</para></listitem><listitem><para>Demonstrate how to convert a raw index to TAN-A.</para></listitem></itemizedlist></para></section><section xml:id="Body_Remodeler"><title>Body Remodeler</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/Body%20Remodeler/Body%20Remodeler.xsl">utilities/Body%20Remodeler/Body%20Remodeler.xsl</link></para><para> Suppose you have a text in a well-structured TAN-T file, and you want to use it to model
+      the structure of another version of that same work. This application will take the input, and
+      infuse the text into the structure of the model, using the proportionate lengths of the
+      model's text as a guide where to break the new text. Any two versions of a single work,
+      particularly translations, paraphrases, and other versions, rarely correlate. A translator
+      may begin a work being relatively verbose, and become more economical in later parts. Such
+      uneven correlation means that one-to-one modeling is not a good strategy for aligning the new
+      text. Rather, one should start with the topmost structures and working progressively toward
+      the smallest levels. Body Remodeler supports such an incremental approach, and allows you to
+      restrict the remodeling activity to certain parts of a text. When used in tandem with the TAN
+      editing tools for Oxygen, which allow you to push and pull words, clauses, and sentences from
+      one leaf div to another, you will find that Body Builder can save you hours of editorial
+      work.</para><para> Version 2021-07-13</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> preferably a TAN-T or TAN-TEI file </para><para><emphasis>Secondary input:</emphasis> a TAN-T or TAN-TEI file that has model div and reference system </para><para><emphasis>Primary output:</emphasis> the model, with its div structure intact, but the text replaced with the text of the
+      input, allocated to the new div structure proportionate to the model's text length </para><para><emphasis>Secondary output:</emphasis> none </para><para> Nota bene:<itemizedlist><listitem><para>If the catalyzing input file is not a class-1 file, but just an XML file, it will be read
+      for its string value. The output will be a copy of the model with the string proportionately
+      allocated to its body components.</para></listitem><listitem><para>If you remodel a set of sibling leaf divs but exclude certain intervening leaf divs from 
+      being remodeled, the entire remodel will be placed at the location of the first leaf div only. 
+      That is, that area of the remodel will be consolidated, and the text will no longer
+      reflect the original order. </para></listitem><listitem><para>Because this application produces TAN output, metadata will be supplied to the output, along
+      with a change entry, crediting/blaming the application.</para></listitem><listitem><para>Comparison is made with the model on the basis of resolved, not expanded, class 1 files, and
+      any matches involving <code><link linkend="attribute-n">@n</link></code> or <code>@n-built</code> references will be on the basis of resolved numerals. </para></listitem><listitem><para>Although the model can be a TAN-TEI file, refining the output will not be possible using 
+      the TAN Oxygen editor tools, because pushing a word, clause, or sentence from one leaf div to
+      another will inevitably require splitting and rejoining the host elements. Such a utility is
+      possible, but would require resources for development. 
+   </para></listitem></itemizedlist></para><para><emphasis role="bold"> Warning: certain features have yet to be implemented </emphasis></para><para><itemizedlist><listitem><para>Support the complete-the-square method (model has a redivision that matches the input's div 
+      structure) </para></listitem><listitem><para>Test, troubleshoot against various TEI models </para></listitem></itemizedlist></para><para><emphasis role="bold"> Strategies for use </emphasis></para><para><emphasis>Method:</emphasis> gentle increments </para><para> Use this method in tandem with the TAN editing tools in Oxygen, where you can easily push and 
+    pull entire words, clauses, and sentences from one leaf div to another. When you are editing 
+    (##2, 5), place the model in a parallel window.
+    </para><para> <orderedlist><listitem><para>Run plain text against the model.</para></listitem><listitem><para>Edit the output, focusing only on getting the top-level divisions correct.</para></listitem><listitem><para>Change the parameter <code>$preserve-matching-ref-structures-up-to-what-level</code> to 1.</para></listitem><listitem><para>Run the edited input against the model again. Your top-level divisions should remain intact.</para></listitem><listitem><para>Edit the output, focusing only on getting the 2nd-level divisions correct.</para></listitem><listitem><para>Repeat ##3-5 through the rest of the hierarchy. </para></listitem></orderedlist></para><para><emphasis>Working with non-XML input:</emphasis> You might have text from some non-XML source that you want to feed
+      into this method. If you can get down to the plain text, put it into any XML file, and run it
+      through this application, changing the parameter <code>$model-uri-relative-to-catalyzing-input</code> to specify
+      exactly where the model is. You'll get the model with the text infused. It will need a lot of
+      metadata editing, but at least you'll have a good start for structuring the body. </para></section><section xml:id="Body_Sync"><title>Body Sync</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/Body%20Sync/Body%20Sync.xsl">utilities/Body%20Sync/Body%20Sync.xsl</link></para><para> Version 2021-07-07</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> a class 1 file with a redivision element in the head </para><para><emphasis>Secondary input:</emphasis> the redivision </para><para><emphasis>Primary output:</emphasis> the primary input, with the text of its body revised to match the text in the chosen
+      redivision </para><para><emphasis>Secondary output:</emphasis> none </para><para> Nota bene:<itemizedlist><listitem><para>The comparison can be made only on the basis of space-normalized comparisons, which means that
+      the output will have leaf divs without any internal indentation. </para></listitem><listitem><para>If there are any special end-of-div characters to insert, they will be rendered as hexadecimal 
+      codepoint entities.</para></listitem><listitem><para>Comments and processing instructions inside the body will be retained. If you choose to mark
+      alterations, make sure there aren't already some in your file, otherwise it will all get mixed up.
+   </para></listitem></itemizedlist></para></section><section xml:id="Catalog_Creator"><title>Catalog Creator</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/Catalog%20Creator/Catalog%20Creator.xsl">utilities/Catalog%20Creator/Catalog%20Creator.xsl</link></para><para> Version 2021-07-07</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> any XML file </para><para><emphasis>Secondary input:</emphasis> none </para><para><emphasis>Primary output:</emphasis> perhaps diagnostics </para><para><emphasis>Secondary output:</emphasis> a new catalog file for select files in the input file's directory, and perhaps
+        subdirectories; if the collection is TAN-only, the filename will be catalog.tan.xml, otherwise it
+        will be catalog.xml </para><para> Every catalog file is an XML file with a root element <code><link linkend="element-collection">&lt;collection&gt;</link></code> with children elements <code><link linkend="element-doc">&lt;doc&gt;</link></code>.
+        Both <code><link linkend="element-collection">&lt;collection&gt;</link></code> and <code><link linkend="element-doc">&lt;doc&gt;</link></code> are in no namespace. <code><link linkend="element-doc">&lt;doc&gt;</link></code> can contain anything, but it is arbitrary. </para><para><emphasis>Nota bene:</emphasis> </para><para><itemizedlist><listitem><para>Files with the name catalog.tan.xml and catalog.xml will be ignored. </para></listitem></itemizedlist></para><para><itemizedlist><listitem><para>Only files available as an XML document will be catalogued. </para></listitem></itemizedlist></para></section><section xml:id="File_Copier"><title>File Copier</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/File%20Copier/File%20Copier.xsl">utilities/File%20Copier/File%20Copier.xsl</link></para><para> Version 2021-07-07</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> any XML file </para><para><emphasis>Secondary input:</emphasis> none (but see parameters) </para><para><emphasis>Primary output:</emphasis> none </para><para><emphasis>Secondary output:</emphasis> the file copied to the target location, but with all relative <code>@hrefs</code> revised in
+      light of the target location </para><para> Nota bene:<itemizedlist><listitem><para>Links are based on common constructs. Resolution of <code><link linkend="attribute-href">@href</link></code> is applied everywhere, but <code><link linkend="attribute-src">@src</link></code>, only 
+      in HTML files. </para></listitem><listitem><para>Processing instructions will be parsed for values assigned to any href pseudo-attribute.
+   </para></listitem></itemizedlist></para></section><section xml:id="TAN-A-lm_Builder"><title>TAN-A-lm Builder</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/TAN-A-lm%20Builder/TAN-A-lm%20Builder.xsl">utilities/TAN-A-lm%20Builder/TAN-A-lm%20Builder.xsl</link></para><para> Well-curated lexico-morphological data is highly valuable for a variety of applications such
+      as quotation detection, stylometric analysis, and machine translation. This application will
+      process any TAN-T or TAN-TEI file through existing TAN-A-lm language libraries, and online search
+      services, looking for the best lexico-morphological profiles for the file's tokens. </para><para> Version 2021-09-06</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> a class 1 file </para><para><emphasis>Secondary input:</emphasis> a TAN-A-lm template; language catalogs; perhaps language search services </para><para><emphasis>Primary output:</emphasis> a new TAN-A-lm file freshly populated with lexicomorphological data, sorted with
+        unmatched tokens at the top, followed by ambiguous ones, followed by non-ambiguous ones </para><para><emphasis>Secondary output:</emphasis> none </para><para><emphasis>Optimization strategies adopted:</emphasis> <itemizedlist><listitem><para>Minimize the number of times files in the language catalog must be consulted and resolved </para></listitem><listitem><para>A hit on <code><link linkend="attribute-val">@val</link></code> in a local TAN-A-lm file precludes any follow-up searches based <code><link linkend="attribute-rgx">@rgx</link></code> or 
+        online search services </para></listitem></itemizedlist></para><para><emphasis>Nota bene:</emphasis>  <itemizedlist><listitem><para>There must be access to a language catalog, i.e., a collection of TAN-A-lm files that are 
+        language specific.  </para></listitem><listitem><para>The TAN-A-lm is relied upon as dictating the settings for the file, e.g., tokenization pattern,
+        TAN-mor morphology, etc. </para></listitem><listitem><para>We assume that a search for lexico-morphological data will entail a lot of different
+        TAN-A-lm files with a number of conventions. Codes found in language catalogs must be converted to
+        TAN-standardized feature names, and then reconverted into the codeset of choice, dictated by the
+        <code><link linkend="element-morphology">&lt;morphology&gt;</link></code> in the template TAN-A-lm file. </para></listitem></itemizedlist></para><para><emphasis role="bold"> Warning: certain features have yet to be implemented </emphasis></para><para><itemizedlist><listitem><para>What if the <code><link linkend="attribute-xmllang">@xml:lang</link></code> of the input doesn't match TAN-mor or language catalog files? </para></listitem><listitem><para>What if a morphology has <code><link linkend="attribute-which">@which</link></code>? Will it still work? </para></listitem><listitem><para>Ensure the responsible repopulation of the metadata of the template </para></listitem><listitem><para>Support false value for <code>$retain-morphological-codes-as-is</code>
+    </para></listitem></itemizedlist></para></section><section xml:id="TAN-A-lm_Calibrator"><title>TAN-A-lm Calibrator</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/TAN-A-lm%20Calibrator/TAN-A-lm%20Calibrator.xsl">utilities/TAN-A-lm%20Calibrator/TAN-A-lm%20Calibrator.xsl</link></para><para> This application is useful when editing TAN-A-lm files. Very frequently, when using local
+      language resources to generate a fresh TAN-A-lm file for a class-1 file, the results are very
+      dirty. Cleaning up the file normally involves deleting many entries, so that alternative options'
+      certainty rates no longer add to a whole 1.0. Or perhaps certainty has not even been set, and it
+      needs to be added. This application will refresh the certainty rates of a TAN-A-lm, making it more
+      useful for applications that rely on certainty rates for scoring, such Tangram. A second way this
+      may be useful is for edits to language-specific TAN-A-lm file, where you might be recalibrating the
+      certainty values of some lm combinations. Perhaps a wordform that has ten lexicomorphological
+      resolutions, each one with a detailed <code><link linkend="attribute-cert">@cert</link></code> value. You want to promote one of the options as being
+      slightly more probable, but you do not want to recalculate all the values so they add to 1.0. You
+      can increase or decrease the <code><link linkend="attribute-cert">@cert</link></code> value of an option, then run the file through this application
+      to recalibrate all entries so they add to 1.0 certainty. </para><para> Version 2021-07-07</para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> any TAN-A-lm file </para><para><emphasis>Secondary input:</emphasis> none </para><para><emphasis>Primary output:</emphasis> the TAN-A-lm file with certainty recalibrated </para><para><emphasis>Secondary output:</emphasis> none. </para><para><emphasis role="bold"> Warning: certain features have yet to be implemented </emphasis></para><para><itemizedlist><listitem><para>Look at ways to adjust tok certainty </para></listitem></itemizedlist></para><para><emphasis>Nota bene:</emphasis> <itemizedlist><listitem><para>Input is not resolved ahead of time, so inclusions are ignored. </para></listitem><listitem><para>Calibration is not applied to <code><link linkend="element-tok">&lt;tok&gt;</link></code>, only to <code><link linkend="element-lm">&lt;lm&gt;</link></code>s within any <code><link linkend="element-ana">&lt;ana&gt;</link></code>. The certainty
+        of <code><link linkend="element-tok">&lt;tok&gt;</link></code> is difficult to calibrate because of the complexities involved in <code><link linkend="attribute-ref">@ref</link></code>, <code><link linkend="attribute-rgx">@rgx</link></code>, 
+        and <code><link linkend="attribute-chars">@chars.</link></code>. A future version of this application may support that feature. </para></listitem></itemizedlist></para></section><section xml:id="Updater"><title>Updater</title><para><emphasis>Location: </emphasis><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../utilities/Updater/Updater.xsl">utilities/Updater/Updater.xsl</link></para><para> This master stylesheet is the public interface for the application. The parameters you will most
+      likely want to change are listed and documented below, to help you customize the application to suit
+      your needs. If you are relatively new to XSLT, or TAN applications, see Using TAN Applications and
+      Utilities in the TAN Guidelines for general instructions. If you want to avoid changing the master
+      application file, use the accompanying configuration file. Or make a copy of this file and edit and
+      run it directly. Or create and configure a transformation scenario in Oxygen, defining the relevant
+      parameters as you like. If you are comfortable with XSLT, try creating your own stylesheet, then
+      import this one, and customize the process. To access the code base, follow the link in the
+      <code>&lt;xsl:include&gt;</code> at the bottom of this file. </para><para> Version 2021-07-07</para><para><emphasis role="bold"> Description </emphasis></para><para><emphasis>Primary input:</emphasis> any TAN file version 2020 </para><para><emphasis>Secondary input:</emphasis> none </para><para><emphasis>Primary output:</emphasis> the TAN file converted to the latest version </para><para><emphasis>Secondary output:</emphasis> none </para><para><emphasis>Nota bene:</emphasis> </para><para><itemizedlist><listitem><para>To convert TAN files from a version earlier than 2020, use applications released with  
+        prior alpha versions. </para></listitem></itemizedlist></para></section></section>

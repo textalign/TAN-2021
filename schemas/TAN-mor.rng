@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="incl/TAN-class-3.rng">
+    <start>
+      <element name="TAN-mor">
+        <a:documentation>specifies that the TAN file contains codes and rules for the parts of speech for a language, the codes for those parts, and the rules for combining them. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <define name="decl-non-class-3">
+      <oneOrMore>
+        <ref name="element-for-lang"/>
+      </oneOrMore>
+    </define>
+    <define name="voc-element-non-class-3">
+      <zeroOrMore>
+        <ref name="voc-element-feature"/>
+      </zeroOrMore>
+    </define>
+    <define name="body-content-non-class-3">
+      <ref name="TAN-mor-body"/>
+    </define>
+    <define name="action-condition-attributes">
+      <optional>
+        <ref name="cond-attr-m-matches"/>
+      </optional>
+      <optional>
+        <ref name="cond-attr-tok-matches"/>
+      </optional>
+      <optional>
+        <ref name="cond-attr-m-has-codes"/>
+      </optional>
+      <optional>
+        <ref name="cond-attr-m-has-how-many-codes"/>
+      </optional>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="cond-attr-m-matches">
+    <attribute name="m-matches">
+      <a:documentation>takes a regular expression. The condition is true only if an &lt;m&gt; matches the pattern. </a:documentation>
+      <a:documentation>This is one of four tests for determining whether to process a &lt;report&gt; or &lt;assert&gt; </a:documentation>
+    </attribute>
+  </define>
+  <define name="cond-attr-tok-matches">
+    <attribute name="tok-matches">
+      <a:documentation>takes a regular expression. When validating a given &lt;m&gt;, a test will be made against each companion &lt;tok&gt; (i.e., those &lt;tok&gt;s that have the same ancestral &lt;ana&gt;). The condition will be treated as true only for those matches with the resolved token value. </a:documentation>
+      <a:documentation>This is one of four tests for determining whether to process a &lt;report&gt; or &lt;assert&gt;</a:documentation>
+    </attribute>
+  </define>
+  <define name="cond-attr-m-has-codes">
+    <attribute name="m-has-codes">
+      <a:documentation>specifies one or more features. Values must be separated by spaces or the padded + (a plus sign with surrounding spaces). A plain space is treated  as meaning "or" and the padded + as meaning "and." If there is at least one match between the list and the value of the codes in an &lt;m&gt; then the condition will be treated as true. The padded plus sign specifies that all the items need to be found in the &lt;m&gt;. </a:documentation>
+      <a:documentation>For example, feature-test="A B + C D + E" means that the condition will be true for a given &lt;m&gt; only if that &lt;m&gt; has A or (B and C) or (D and E) present as values. This is one of four tests for determining whether to process a &lt;report&gt; or &lt;assert&gt;</a:documentation>
+      <data type="string">
+        <param name="pattern">[^\s\+]+(\s(\+\s)?[^\s\+]+)*</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="cond-attr-m-has-how-many-codes">
+    <attribute name="m-has-how-many-codes">
+      <a:documentation>specifies a range or sequence of integers (e.g., 2-4). If the quantity of features in an &lt;m&gt; matches a number from that sequence, the condition is true, and false otherwise. If the keyword 'last' or 'max' is used, the total number of features will be substituted. </a:documentation>
+      <a:documentation>This test is useful for non-category based grammars to put a limit on the number of features that can be declared in an &lt;m&gt;. This is one of four tests for determining whether to process a &lt;report&gt; or &lt;assert&gt;</a:documentation>
+      <ref name="data-picker-sequence"/>
+    </attribute>
+  </define>
+  <define name="ptr-attr-feature">
+    <attribute name="feature"/>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-assert">
+    <element name="assert">
+      <a:documentation>names a pattern that, if found to be false in any &lt;m&gt; in a dependent TAN-A-lm file, will return the enclosed message upon validation of the dependent file, along with an error or warning. Modeled on Schematron &lt;report&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;assert&gt;s is immaterial.</a:documentation>
+      <ref name="condition-pattern"/>
+    </element>
+  </define>
+  <define name="element-category">
+    <element name="category">
+      <a:documentation>groups a set of features that share a common grammatical trait such as gender, number, etc.
+The order of consecutive &lt;category&gt;s is important, dictating the sequence in which codes should appear in the values of &lt;m&gt; in a dependent TAN-A-lm file.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="ptr-attr-feature"/>
+          </optional>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <oneOrMore>
+              <ref name="element-code"/>
+            </oneOrMore>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-code">
+    <element name="code">
+      <a:documentation>attaches a grammatical feature to a code, and makes it available to a TAN-A-lm file. </a:documentation>
+      <a:documentation>Because vocabulary item for a grammatical feature is language-agnostic, and because a TAN-mor code is language-specific, guidance to the editor of a TAN-A-lm file may be important. Ihildren &lt;desc&gt;s can be used to provide examples or other guidance.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="ptr-attr-feature"/>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-desc"/>
+            </zeroOrMore>
+            <ref name="element-val"/>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-report">
+    <element name="report">
+      <a:documentation>names a pattern that, if found to be true in any &lt;m&gt; in a dependent TAN-A-lm file, will return the enclosed message upon validation of the dependent file, along with an error or warning. Modeled on Schematron &lt;report&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;report&gt;s is immaterial.</a:documentation>
+      <ref name="condition-pattern"/>
+    </element>
+  </define>
+  <define name="element-rule">
+    <element name="rule">
+      <a:documentation>encloses asserts and reports that should be evaluated provided that the conditions specified in the attributes (or children &lt;where&gt; attributes) are true.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;rule&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="action-condition"/>
+          <oneOrMore>
+            <choice>
+              <ref name="element-assert"/>
+              <ref name="element-report"/>
+            </choice>
+          </oneOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-val">
+    <element name="val">
+      <a:documentation>contains the expected value for a morphological code</a:documentation>
+      <data type="string">
+        <a:documentation>The hyphen is reserved for "not applicable"; spaces and (),| reserved for @feature-test expressions</a:documentation>
+        <param name="pattern">[^\-\+\s]|[^\+\s]+</param>
+      </data>
+    </element>
+  </define>
+  <define name="voc-element-feature">
+    <element name="feature">
+      <a:documentation>names, through its IRI + name pattern, a grammatical feature or concept (e.g., plural, subjunctive, 1st person) that is part of a language. In the context of &lt;category&gt; a @code is always included. The first &lt;feature&gt; of a &lt;category&gt;, however, never has a @code, because it describes the grammatical class of the &lt;category&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;feature&gt;s is immaterial.</a:documentation>
+      <a:documentation>See main.xml#vocabularies-features for a list of standard features.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <!-- PATTERNS -->
+  <define name="condition-pattern">
+    <optional>
+      <ref name="attr-flags-for-errors"/>
+    </optional>
+    <ref name="action-condition-attributes"/>
+    <text/>
+  </define>
+  <define name="TAN-mor-body">
+    <interleave>
+      <choice>
+        <ref name="features-categorized"/>
+        <ref name="features-uncategorized"/>
+      </choice>
+      <zeroOrMore>
+        <ref name="element-rule"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="features-categorized">
+    <oneOrMore>
+      <ref name="element-category"/>
+    </oneOrMore>
+  </define>
+  <define name="features-uncategorized">
+    <oneOrMore>
+      <ref name="element-code"/>
+    </oneOrMore>
+  </define>
+</grammar>

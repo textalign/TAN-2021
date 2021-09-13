@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../TAN-2020/schemas/TAN-T.rnc"?>
+<?xml-model href="../../../TAN-2020/schemas/TAN-T.sch"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2020" id="tag:kalvesmaki.com,2014:patrologia:text:cpg-2437.43:grc:1987:géhin">
+   <head>
+      <name>Greek fragment of the Letters of Evagrius from Géhin's edition of Evagrius's Scholia on
+         Proverbs</name>
+      <master-location href="https://raw.githubusercontent.com/Arithmeticus/TAN-Evagrius/master/cpg2437/cpg2437.43.grc.1987.g%C3%A9hin.xml"/>
+      <license which="by_4.0" licensor="kalvesmaki"/>
+      <work>
+         <IRI>tag:evagriusponticus.net,2015:cpg2437</IRI>
+         <name>Ep</name>
+         <name>Ep.</name>
+         <name>Letters</name>
+         <name xml:lang="lat">Epistulae</name>
+         <name xml:lang="eng">62 Letters</name>
+         <name xml:lang="lat">Epistula lxii</name>
+         <name>cpg2437</name>
+         <desc>The majority of Evagrius's extant letters survive in a corpos of 62 letters of various lengths, all providing spiritual counsel to various figures such as Rufinus, St. Melania the Elder, St. Gregory Nazianzus, Bp. John of Jerusalem. These survive entirely in Syriac, with fragmentary survival in Greek. Some letters may actually be extracts that were, for one reason or another, included in his letters. The Armenian translation of the corpus is restricted to thirty letters, and is framed as if a correspondence between Evagrius and Melania. For letters not included in this corpus, see CPG 2438, 2439; cover letters to other treatises, e.g., CPG 2430, 2434.</desc>
+      </work>
+      
+      <source>
+         <IRI>urn:isbn:2-204-02885-1</IRI>
+         <IRI>tag:evagriusponticus.net,2012:scriptum:géhin-1987</IRI>
+         <name>Evagrius Ponticus and Géhin 1987</name>
+         <name>SC 340</name>
+         <name>géhin 1987</name>
+         <desc>Evagrius Ponticus and Géhin, Paul. Scholies aux Proverbes. Sources chrétiennes 340. Paris: Éditions du Cerf, 1987.</desc>
+      </source>
+
+      <vocabulary-key>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+            <name>Joel Kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp roles="editor" who="kalvesmaki"/>
+      <change when="2020-12-30" who="kalvesmaki">Added @ref-alias</change>
+      <change when="2020-10-02" who="kalvesmaki">Started file.</change>
+      <to-do/>
+   </head>
+   <body xml:lang="grc">
+      <!-- This fragment is found twice in the corpus of letters. @ref-alias allows the one fragment
+         to point to both locations, without repetition of the text. -->
+      <div n="43" type="letter">
+         <div n="3" type="section" ref-alias="59 3">Ἦν ὅτε οὐκ ἦν κακία καὶ ἔσται ὅτε οὐκ ἔσται· οὐκ ἦν δὲ ὅτε οὐκ ἦν
+            ἀρετή, οὐδὲ ἔσται ὅτε οὐκ ἔσται· ἀνεξάλειπτα γὰρ τὰ σπέρματα τῆς ἀρετῆς. Πείθει δέ με
+            καὶ οὗτος παρ' ὀλίγον καὶ οὐ τελείως ἐν παντὶ κακῷ γεγονὼς καὶ ὁ πλούσιος ἐν τῷ ᾅδῃ διὰ
+            κακίαν κρινόμενος καὶ οἰκτείρων τοὺς ἀδελφούς. Τὸ δὲ ἐλεεῖν σπέρμα τυγχάνει τὸ κάλλιστον
+            τῆς ἀρετῆς.</div></div>
+
+   </body>
+</TAN-T>

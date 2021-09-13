@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="TAN-T">
+      <empty/>
+    </element>
+  </start>
+  <!--   1A. ATTRIBUTES -->
+  <define name="attr-accessed-when">
+    <attribute name="accessed-when">
+      <a:documentation>specifies when an electronic file was last examined</a:documentation>
+      <choice>
+        <data type="date"/>
+        <data type="dateTime"/>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-cert">
+    <attribute name="cert">
+      <a:documentation>indicates how certain the claimant is of the claims, expressed as a real number from 0 (no certainty) to 1 (complete certainty).</a:documentation>
+      <a:documentation>This attribute is taken into account before all other attributes except @claimant. That is, @cert is to be interpreted to mean: "@claimant has @cert confidence about the following assertion:...."</a:documentation>
+      <a:documentation>@cert is cumulatively inheritable. Any @cert value should be multiplied against all ancestors' values of @cert. For example, in a TAN-A-tok file, if an &lt;align&gt; has a certainty of 0.6 and a child &lt;tok&gt; has a certainty of 0.3, then that &lt;tok&gt;'s calculated certainty is 0.18. See main.xml#inheritable_attributes</a:documentation>
+      <a:documentation>Any claim inherits as its value of @cert the product of every component @cert. For example, if an &lt;l&gt; and an &lt;m&gt; in a TAN-A-lm file each have a certainty of 0.5, then the lexico-morphological claim that involves them both has a certainty of 0.25. </a:documentation>
+      <ref name="data-certainty"/>
+    </attribute>
+  </define>
+  <define name="attr-cert2">
+    <attribute name="cert2">
+      <a:documentation>provides a second measure of certainty. The value is taken along with @cert as being the low or high limit to the range of certainty. See documentation on @cert. </a:documentation>
+      <ref name="data-certainty"/>
+    </attribute>
+  </define>
+  <define name="attr-content-datatype">
+    <attribute name="content-datatype">
+      <a:documentation>specifies a type of data. This attribute is used in TAN-A claims, and restricts the kind of object a particular verb governs to raw units, not entities definable by the IRI + name pattern. Use this attribute if and only if the verb may not govern objects defined as a vocabulary item.</a:documentation>
+      <choice>
+        <value>string</value>
+        <value>boolean</value>
+        <value>decimal</value>
+        <value>float</value>
+        <value>double</value>
+        <value>duration</value>
+        <value>dateTime</value>
+        <value>time</value>
+        <value>date</value>
+        <value>gYearMonth</value>
+        <value>gYear</value>
+        <value>gMonthDay</value>
+        <value>gDay</value>
+        <value>gMonth</value>
+        <value>hexBinary</value>
+        <value>base64Binary</value>
+        <value>anyURI</value>
+        <value>QName</value>
+        <value>normalizedString</value>
+        <value>token</value>
+        <value>language</value>
+        <value>NMTOKEN</value>
+        <value>NMTOKENS</value>
+        <value>Name</value>
+        <value>NCName</value>
+        <value>ID</value>
+        <value>IDREF</value>
+        <value>IDREFS</value>
+        <value>ENTITY</value>
+        <value>ENTITIES</value>
+        <value>integer</value>
+        <value>nonPositiveInteger</value>
+        <value>negativeInteger</value>
+        <value>long</value>
+        <value>int</value>
+        <value>short</value>
+        <value>byte</value>
+        <value>nonNegativeInteger</value>
+        <value>unsignedLong</value>
+        <value>unsignedInt</value>
+        <value>unsignedShort</value>
+        <value>unsignedByte</value>
+        <value>positiveInteger</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-content-lexical-constraint">
+    <attribute name="content-lexical-constraint">
+      <a:documentation>specifies a regular expression that constrains the value of any &lt;object&gt;. </a:documentation>
+      <a:documentation>Note that the regular expression will be strictly followed, e.g., "\d+" will be satisfied by "a1" (because there is at least one digit). If you wish to constrain the entire value, be sure to use ^ and $, e.g., "^\d+$". </a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-ed-when">
+    <attribute name="ed-when">
+      <a:documentation>marks the date or time when an element or its content was edited (added or modified)</a:documentation>
+      <a:documentation>The value of must always conform to an ISO date or dateTime pattern. See main.xml#date_and_datetime.</a:documentation>
+      <a:documentation>Along with @ed-who, this forms the Edit Stamp pattern. See main.xml#edit_stamp</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-flags-for-errors">
+    <attribute name="flag">
+      <a:documentation>indicates the level of error to be attached to the enclosed message. This attribute is similar to Schematron's @role, but under a different name, to avoid confusion with TAN @roles.</a:documentation>
+      <a:documentation>This attribute is non-inheritable.</a:documentation>
+      <choice>
+        <value>warning</value>
+        <value>error</value>
+        <value>info</value>
+        <value>fatal</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-flags-for-functions">
+    <attribute name="flags">
+      <a:documentation>specifies flags to be applied in an XPath function that uses regular expressions.</a:documentation>
+      <a:documentation>s = dot-all mode; m = multi-line mode; i = case-insensitive mode; x = remove whitespace characters from regular expression; q = no metacharacters </a:documentation>
+      <a:documentation>For more see http://www.w3.org/TR/xpath-functions-30/#flags</a:documentation>
+      <a:documentation>This attribute is non-inheritable.</a:documentation>
+      <data type="string">
+        <param name="pattern">[smixq]+</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="attr-href">
+    <attribute name="href">
+      <a:documentation>points to the location of a file. In some contexts, this attribute is permitted only as a temporary measure, to assist editing via Schematron Quick Fixes.</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-id-alias">
+    <attribute name="id">
+      <a:documentation>provides a unique identifier for an &lt;alias&gt;. Must be unique within a given file. Must consist only of non-spacing characters.</a:documentation>
+      <data type="string">
+        <param name="pattern">\S+</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="attr-id-tan">
+    <attribute name="id">
+      <a:documentation>contains a tag URN that permanently and uniquely names the current file.</a:documentation>
+      <a:documentation>For more on the syntax of tag URNs see main.xml#tag_urn</a:documentation>
+      <ref name="data-tag-uri"/>
+    </attribute>
+  </define>
+  <define name="attr-id-xml">
+    <attribute name="xml:id">
+      <a:documentation>identifies an entity described within an element. Must be unique within a given file. Must consist only of word characters.</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-item-type">
+    <attribute name="item-type">
+      <a:documentation>specifies what type of item a verb's object or subject must be. Expected values are names of elements allowed in any vocabulary.</a:documentation>
+      <a:documentation>To bind the type to a textual reference in a class-1 source, let the value of @item-type be 'ref'; this anticipates a claim with object/subject element with @ref (and either @src or @work).</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-lang-xml">
+    <attribute name="xml:lang">
+      <a:documentation>specifies a language code that names the language of the text enclosed by the parent element. Values are inherited by all descendants except for those that have an @xml:lang and their descendants.  </a:documentation>
+      <a:documentation>Values should adhere to BCP (Best Common Practices) 47, http://www.rfc-editor.org/rfc/bcp/bcp47.txt. For more details see main.xml#language.</a:documentation>
+      <a:documentation>Examples: 'eng' (English), 'grc' (classical Greek), 'lat' (Latin) </a:documentation>
+      <data type="language"/>
+    </attribute>
+  </define>
+  <define name="attr-n">
+    <attribute name="n">
+      <a:documentation>names a &lt;div&gt; or &lt;group&gt;, or refers to a &lt;div&gt;'s @n. </a:documentation>
+      <a:documentation>@n may consist of one or more values, space delimited, which are to be treated as synonyms.</a:documentation>
+      <a:documentation>Any itemized value of @n may be numerical on non-numerical. A numerical value follows one of the supported TAN numeration systems, with commas and hyphens to refer to build sequences or ranges. The order of numerical items in an @n are significant. For example n="6, 8" signifies that the text straddles reference 6 then 8. But n="8, 6" signifies the converse. In the context of a &lt;div&gt;, the implication is that in neither case can the text be securely disentangled so as to create one &lt;div&gt; for 6 and another for 8.</a:documentation>
+      <a:documentation>The hyphen-minus, - (U+002D, the most common form of hyphen), is reserved to specify a range. This feature is useful for cases where a &lt;div&gt; straddles more than one standard reference number (e.g., a translation of Aristotle that cannot be easily tied to Bekker numbers). </a:documentation>
+      <a:documentation>If you need to use a hyphen-like character in an @n that does not specify a range, consider ‐ (U+2010 HYPHEN), ‑ (U+2011 NON-BREAKING HYPHEN), ‒ (U+2012 FIGURE DASH), – (U+2013 EN DASH), or − (U+2212 MINUS SIGN).</a:documentation>
+      <a:documentation>The comma is reserved to delimit items in a sequence of references. </a:documentation>
+      <a:documentation>The space is reserved to separate synonymous values, or to pad commas and hyphens. If you wish to use a value of @n that should not be split at the space, use the underbar, _, instead. </a:documentation>
+      <a:documentation>@n does not permit non-word characters, e.g., the period/full stop or colon. Such non-word characters need to be used by @ref to connect @n's.</a:documentation>
+      <a:documentation>Because @n is used to construct @ref, it is indirectly cumulatively inheritable. See main.xml#inheritable_attributes.</a:documentation>
+      <a:documentation>Extra TAN vocabulary is available for @n, to provide built-in aliases. For more on this feature see main.xml#extra_n_vocabulary. For specific extra vocabulary see main.xml#vocabularies-n-bible-eng main.xml#vocabularies-n-bible-spa main.xml#vocabularies-n-quran-eng-ara main.xml#vocabularies-n-unlabeled-divs-1-eng</a:documentation>
+      <data type="string">
+        <param name="pattern">[\w/_]+([\- ,;]+[\w/_]+)*</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="attr-pattern">
+    <attribute name="pattern">
+      <a:documentation>specifies a regular expression pattern to be searched for or matched. TAN regular expressions support the special escape character \u{}. </a:documentation>
+      <a:documentation>For more see main.xml#regular_expressions and https://www.w3.org/TR/xpath-functions-30/#regex-syntax</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-status">
+    <attribute name="status">
+      <a:documentation>specifies whether an element is required by in any &lt;claim&gt; that uses the &lt;verb&gt; in question.</a:documentation>
+      <choice>
+        <value>required</value>
+        <value>allowed</value>
+        <value>disallowed</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-TAN-ver">
+    <attribute name="TAN-version">
+      <a:documentation>specifies a version of TAN. </a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-when">
+    <attribute name="when">
+      <a:documentation>indicates a date or date and time</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
+    </attribute>
+  </define>
+  <!-- Pointing attributes take idrefs pointing to other nodes -->
+  <define name="ptr-attr-div-type">
+    <attribute name="div-type">
+      <a:documentation>is used by class-2 files to point to one or more &lt;div-type&gt;s in class-1 files or by class-1 files to point to div type vocabulary items. Permits multiple values separated by spaces.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-ed-who">
+    <attribute name="ed-who">
+      <a:documentation>refers to one or more &lt;agent&gt;s who have edited (added or modified) an element or its content.</a:documentation>
+      <a:documentation>Along with @ed-when, this forms the Edit Stamp pattern. See main.xml#edit_stamp</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-group">
+    <attribute name="group">
+      <a:documentation>identifies one or more &lt;group-type&gt;s under which the parent element, and its children, should be grouped.</a:documentation>
+      <a:documentation>This attribute is cumulatively inheritable. An &lt;item&gt; is to be associated by all values of @group in itself and its ancestors.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-idrefs">
+    <attribute name="idrefs">
+      <a:documentation>contains references to one or more values of @xml:id or @id in the file </a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-include">
+    <attribute name="include">
+      <a:documentation>signals that the parent element is to be replaced by all elements of the same name found in the referred &lt;inclusion&gt;.</a:documentation>
+      <a:documentation>A slight exception is made in the case of &lt;div include=""/&gt;, where only the rootmost &lt;div&gt;s are included (which come with all descendant &lt;div&gt;s preserved intact).</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-licensor">
+    <attribute name="licensor">
+      <a:documentation>specifies one or more persons or organizations who hold the rights over the material specified by the parent element (either the data of the current file, or of the source that forms the basis for the data).</a:documentation>
+      <a:documentation>For more, see main.xml#key_declarations</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-period">
+    <attribute name="period">
+      <a:documentation>names via idrefs one or more &lt;period&gt;s.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-relationship">
+    <attribute name="relationship">
+      <a:documentation>names via idrefs one or more &lt;relationship&gt;s</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-role">
+    <attribute name="roles">
+      <a:documentation>refers via idrefs one or more &lt;role&gt;s</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-type">
+    <attribute name="type">
+      <a:documentation>indicates the type of its parent element. In the context of &lt;div&gt; it specifies a type of textual unit, identified by a &lt;div-type&gt;. In the context of &lt;group&gt; it specifies a kind of group identified by a &lt;group-type&gt;. In the context of &lt;category&gt; it specifies a kind of grammatical feature identified by &lt;feature&gt;.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-which">
+    <attribute name="which">
+      <a:documentation>points to a single vocabulary item. Reference is made either via idref or &lt;name&gt;. Because this attribute points to only one vocabulary item, spaces are permitted, if using a vocabulary's &lt;name&gt;. Before evaluation @which will be name-normalized: spaces, hyphens, and underscores will be treated as identical, and text will be rendered lowercase. </a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-who">
+    <attribute name="who">
+      <a:documentation>refers via idrefs to a person, organization, or algorithm.</a:documentation>
+    </attribute>
+  </define>
+  <!-- 1B. DATA PATTERNS -->
+  <define name="data-certainty">
+    <data type="double">
+      <param name="pattern">1|0|(0\.\d*[1-9])</param>
+    </data>
+  </define>
+  <define name="data-div-item-ref">
+    <a:documentation>String for a @ref that specifies a single &lt;div&gt;.</a:documentation>
+    <data type="string">
+      <param name="pattern">([\w_]+([^\w\-][\w_]+)*)|.*\?\?\?.*</param>
+    </data>
+  </define>
+  <define name="data-div-range-ref">
+    <a:documentation>String for a @ref that specifies a range of &lt;div&gt;s: one or more data-div-item-ref patterns separated by a hyphen or a comma.</a:documentation>
+    <data type="string">
+      <param name="pattern">([\w_]+([^\w\-][\w_]+)*)(((\s*-\s*)|(\s*,\s+))([\w_]+([^\w\-][\w_]+)*))*|.*\?\?\?.*</param>
+    </data>
+  </define>
+  <define name="data-IRI">
+    <a:documentation>Any generic IRI identifier.</a:documentation>
+    <data type="anyURI">
+      <param name="pattern">[a-zA-Z][\-.+a-zA-Z0-9]+:\S+</param>
+    </data>
+  </define>
+  <define name="data-picker-item">
+    <a:documentation>String that specifies a single item from a sequence: digits or "last(-digit)?" Similar to ~data-picker-sequence.</a:documentation>
+    <data type="string">
+      <param name="pattern">((last|max)|((last|max)-\d+)|(\d+))|.*\?\?\?.*</param>
+    </data>
+  </define>
+  <define name="data-picker-sequence">
+    <a:documentation>String that specifies a range of items in a sequence: digits or "last(-digit)?" joined by hyphens (ranges) or commas. Similar to ~data-picker-item.</a:documentation>
+    <data type="string">
+      <param name="pattern">((last|max|all|\*)|((last|max)-\d+)|(\d+))(\s*-\s*(((last|max))|((last|max)-\d+)|(\d+)))?(\s*[, ]\s*(((last|max))|((last|max)-\d+)|(\d+))(\s+-\s+(((last|max))|((last|max)-\d+)|(\d+)))?)*|.*\?\?\?.*</param>
+    </data>
+  </define>
+  <define name="data-tag-uri">
+    <a:documentation>Tag URN, mandatory pattern for the IRI name of every TAN file </a:documentation>
+    <data type="anyURI">
+      <param name="pattern">tag:([\-a-zA-Z0-9._%+]+@)?[\-a-zA-Z0-9.]+\.[A-Za-z]{2,4},\d{4}(-(0\d|1[0-2]))?(-([0-2]\d|3[01]))?:\S+</param>
+    </data>
+  </define>
+  <!--
+    
+    1C. ELEMENTS
+  -->
+  <define name="element-adjustments">
+    <element name="adjustments">
+      <a:documentation>declares alterations. In a class-1 file, it specifies alterations that have been made to the underlying source. In a class-2 file, it specifies alterations that should be made to the class-1 source(s) before processing any claims in the &lt;body&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive adjustments matters, in that their contents will be processed first by priority (&lt;skip&gt;, &lt;rename&gt;, &lt;equate&gt;, &lt;reassign&gt;), then in document order. The instructions in one &lt;adjustment&gt; may render null an instruction in a lower-priority, or subsequent adjustment action.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="adjust-condition"/>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <group>
+              <ref name="adjust-core"/>
+              <ref name="adjust-non-core"/>
+            </group>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-at-ref-constraint">
+    <element name="at-ref">
+      <a:documentation>specifies whether a verb uses &lt;at-ref&gt; (default: disallowed).</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+    </element>
+  </define>
+  <define name="element-body">
+    <element name="body">
+      <a:documentation>contains the data of a TAN file.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="body-attributes-non-core"/>
+      <interleave>
+        <ref name="body-content-core"/>
+        <ref name="body-content-non-core"/>
+      </interleave>
+    </element>
+  </define>
+  <define name="element-checksum">
+    <element name="checksum">
+      <a:documentation>specifies some checksum value of a digital file. This element contains other elements that define the type and value of the checksum. Must begin with an IRI + name pattern that identifies the type of checksum being used (e.g., SHA-1).</a:documentation>
+      <a:documentation>This element allows other users to check to see if copies of a file are identical. </a:documentation>
+      <a:documentation>No checksums will be generated, checked, or validated by TAN schemas.</a:documentation>
+      <ref name="entity-nondigital-content"/>
+      <element name="value">
+        <a:documentation>states the value of a &lt;checksum&gt;</a:documentation>
+        <data type="string" datatypeLibrary=""/>
+      </element>
+    </element>
+  </define>
+  <define name="element-change">
+    <oneOrMore>
+      <element name="change">
+        <a:documentation>declares a change made to the current file. Must credit/blame someone, specified by @who, and indicate when the change was made, specified by @when.</a:documentation>
+        <a:documentation>Collectively, &lt;change&gt; elements are called the changelog, the revision history of the document. </a:documentation>
+        <a:documentation>The editor has discretion as to how long or detailed a &lt;change&gt; should be, or how many should be retained in a changelog. Ideally, &lt;change&gt;s documenting every published version should be retained.</a:documentation>
+        <a:documentation>&lt;change&gt; elements may appear in any order, but it is good practice to put the most recent at the top.</a:documentation>
+        <optional>
+          <ref name="ed-stamp"/>
+        </optional>
+        <ref name="attr-when"/>
+        <optional>
+          <ref name="attr-flags-for-errors"/>
+        </optional>
+        <ref name="ptr-attr-who"/>
+        <text/>
+      </element>
+    </oneOrMore>
+  </define>
+  <define name="element-comment">
+    <element name="comment">
+      <a:documentation>discusses issues relevant to nearby data. Must credit someone, specified by @who, and indicate when the comment was made, specified by @when.</a:documentation>
+      <ref name="attr-when"/>
+      <ref name="ptr-attr-who"/>
+      <text/>
+    </element>
+  </define>
+  <define name="element-desc">
+    <element name="desc">
+      <a:documentation>provides a human-readable description of a concept, person, or thing referred to by the parent element (or the current document, if the parent element is &lt;head&gt;). &lt;desc&gt; is, in effect, a &lt;comment&gt; about that concept, person, or thing.</a:documentation>
+      <ref name="metadata-human-readable-attributes"/>
+      <text/>
+    </element>
+  </define>
+  <define name="element-file-resp">
+    <element name="file-resp">
+      <a:documentation>specifies the persons, organizations, or algorithms that are primarily responsible for the file. Any unattributed claims or assertions made in the file will be credited to/blamed upon these agents. At least one of these agents must be given an IRI in the namespace of the file @id. </a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <ref name="ptr-attr-who"/>
+      </choice>
+    </element>
+  </define>
+  <define name="element-for-lang">
+    <element name="for-lang">
+      <a:documentation>specifies a language that is being discussed. This element does not identify the language of the text enclosed by the parent element (one must use @xml:lang for that purpose).</a:documentation>
+      <a:documentation>Values should adhere to BCP (Best Common Practices) 47, http://www.rfc-editor.org/rfc/bcp/bcp47.txt. For more details see main.xml#language.</a:documentation>
+      <a:documentation>Examples: 'eng' (English), 'grc' (classical Greek), 'lat' (Latin). For more see main.xml#language</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;for-lang&gt;s is immaterial.</a:documentation>
+      <data type="language"/>
+    </element>
+  </define>
+  <define name="element-group">
+    <element name="group">
+      <a:documentation>collects items that share a common property, defined by the &lt;group-type&gt; to which it refers.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="group-attributes"/>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <oneOrMore>
+              <choice>
+                <ref name="body-group"/>
+                <ref name="body-item"/>
+              </choice>
+            </oneOrMore>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-head">
+    <element name="head">
+      <a:documentation>contains the metadata (data about the data in the &lt;body&gt;)</a:documentation>
+      <a:documentation>For more see main.xml#metadata_head</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <group>
+          <ref name="entity-digital-tan-self-content"/>
+          <ref name="declaration-list"/>
+          <ref name="networked-files"/>
+          <ref name="adjustment-list"/>
+          <ref name="vocabulary-list"/>
+          <ref name="resp-list"/>
+          <oneOrMore>
+            <ref name="element-change"/>
+          </oneOrMore>
+          <ref name="element-to-do"/>
+        </group>
+      </interleave>
+    </element>
+  </define>
+  <define name="element-in-lang-constraint">
+    <element name="in-lang">
+      <a:documentation>specifies whether a verb uses &lt;in-lang&gt; (default: disallowed).</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+    </element>
+  </define>
+  <define name="element-IRI">
+    <element name="IRI">
+      <a:documentation>contains an International Resource Identifier that names the concept, person, or thing referred to by the parent element. </a:documentation>
+      <a:documentation>Any kind of IRIs are allowed: URLs, tag URNs, UUIDs, etc. For names of well-known resources, an HTTP URL identifier might be preferred, to facilitate linked data. If an entity/resource lacks a suitable URL-type name, you may use or coin any other valid IRI, such as a UUID, a tag URN, or an OID. Some concepts may be difficult to find IRIs for.</a:documentation>
+      <a:documentation>Sibling &lt;IRI&gt;s are to be treated as names for the same thing, not as names of different things. Loosely, sibling &lt;IRI&gt;s can be thought of as synonymous, but technically the are only poecilonymic. In the terms of Web Ontology Language (http://www.w3.org/TR/owl-ref/), sibling &lt;IRI&gt;s cannot be assumed to share the relationship owl:sameAs, because they will draw from independent vocabularies that may identify similar concepts differently. </a:documentation>
+      <a:documentation>An element given multiple &lt;IRI&gt;s refers to one or more items within the intersection, not the union, of the target concepts. Nevertheless, most interpretations of TAN files will draw inferences based upon the union. That is, if item A is assigned IRI X, item B IRIs X and Y, and item C IRI Y, it is likely that users of the data will infer identity between items A and C. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;IRI&gt;s is immaterial.</a:documentation>
+      <a:documentation>The element is named IRI instead of URI to encourage internationalization, and the use of alphabets other than Latin. </a:documentation>
+      <a:documentation>An &lt;IRI&gt; from the standard TAN vocabulary may be overridden locally.</a:documentation>
+      <a:documentation>For more see main.xml#IRIs_and_linked_data.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="data-IRI"/>
+    </element>
+  </define>
+  <define name="element-license">
+    <element name="license">
+      <a:documentation>states the license under which the data is distributed and the rights associated with it, exclusive of any rights attached to the source.</a:documentation>
+      <a:documentation>Diligently check to ensure that the license you have claimed respects the rights of your sources' rightsholders. It is recommended that you license your data under a license that is similar to or more liberal than the one under which your sources have been released.</a:documentation>
+      <a:documentation>For more discussion, see main.xml#key_declarations and for a list of standard TAN vocabulary, main.xml#vocabularies-licenses</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="ptr-attr-licensor"/>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <ref name="entity-nondigital-content"/>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-location">
+    <element name="location">
+      <a:documentation>declares where an electronic file was found and when. </a:documentation>
+      <a:documentation>The URL may be absolute or relative to the current document. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;location&gt;s is important. During TAN validation, the first &lt;location&gt; with an available document will be used, and the following sibling &lt;location&gt;s will be ignored.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-accessed-when"/>
+      <ref name="attr-href"/>
+    </element>
+  </define>
+  <define name="element-master-location">
+    <element name="master-location">
+      <a:documentation>points to a location where a master copy of the file is to be found. Use of this element entails a commitment to updating the TAN file in that location.</a:documentation>
+      <a:documentation>The URL may be absolute or relative to the current document. </a:documentation>
+      <a:documentation>&lt;master-location&gt; does not disallow the file from being kept, published, or distributed elsewhere. It merely indicates where an authoritative version of the file is to be found. </a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-href"/>
+    </element>
+  </define>
+  <define name="element-name">
+    <element name="name">
+      <a:documentation>provides a human-readable name of a concept, person, or thing referred to by the parent element (or the current document, if the parent element is &lt;head&gt;).</a:documentation>
+      <a:documentation>A name must be unique within a file for a given class of items. That is, if "page" is the name of a div type, there must be no other div type vocabulary item with that name, but "page" could still be used as the &lt;name&gt; of a verb or person.  </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;name&gt;s is immaterial. Some applications may adopt the first &lt;name&gt; as the primary one.  </a:documentation>
+      <ref name="metadata-human-readable-attributes"/>
+      <text/>
+    </element>
+  </define>
+  <define name="element-numerals">
+    <element name="numerals">
+      <a:documentation>specifies how nonarabic numerals should be interpreted, as letter numerals or as Roman numerals.</a:documentation>
+      <a:documentation>If &lt;numerals&gt; is not present, any ambiguous numerical values are assumed to be Roman.</a:documentation>
+      <optional>
+        <attribute name="exceptions">
+          <a:documentation>lists strings that should not be interpreted as numerics; this is most commonly used in rare cases where a string label for @n or @ref might be interpreted as a Roman numeral or a letter numeral</a:documentation>
+          <a:documentation>Expected is a space delimited list of atomic values of @n. Because @n is not case-sensitive, every item in @exceptions is as well.</a:documentation>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="priority">
+          <a:documentation>specifies whether roman numerals should have interpretive priority over letter numerals. For example, should "c" be interpreted as 3 or 100? Default is roman.</a:documentation>
+          <choice>
+            <value>letters</value>
+            <value>roman</value>
+          </choice>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <define name="element-object-constraint">
+    <element name="object">
+      <a:documentation>specifies expectations on a verb's use of object. By default, an object is required.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+      <optional>
+        <choice>
+          <ref name="constraint-item-type"/>
+          <ref name="constraint-content"/>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="element-period-constraint">
+    <element name="period">
+      <a:documentation>as a constraint specifies expectations on a verb's use of period. By default, a period is optional.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+    </element>
+  </define>
+  <define name="element-place-constraint">
+    <element name="place">
+      <a:documentation>specifies expectations on a verb's use of place. By default, an place is optional.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+    </element>
+  </define>
+  <define name="element-resp">
+    <element name="resp">
+      <a:documentation>specifies a role held by one or more persons, organizations, or algorithms, perhaps during a specified time period.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;resp&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="ptr-attr-who"/>
+          <ref name="ptr-attr-role"/>
+          <optional>
+            <ref name="ptr-attr-period"/>
+          </optional>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-subject-constraint">
+    <element name="subject">
+      <a:documentation>specifies expectations on a verb's use of subject. By default, a subject is required.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-status"/>
+      <optional>
+        <choice>
+          <ref name="constraint-item-type"/>
+          <ref name="constraint-content"/>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="element-tail">
+    <element name="tail">
+      <a:documentation>permits any arbitrary content. This element is suitable as a placeholder for temporary data, especially to improve the efficiency of applications. </a:documentation>
+      <ref name="any-content"/>
+    </element>
+  </define>
+  <define name="element-to-do">
+    <element name="to-do">
+      <a:documentation>lists tasks that remain to be done (via &lt;comment&gt; children). Lack of content in &lt;to-do&gt; suggests that the file is no longer considered a work in progress, but it does not guarantee that the file will not be changed in the future.</a:documentation>
+      <a:documentation>An empty &lt;to-do&gt; implies stability, so requires a file to have a &lt;master-location&gt;.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="element-token-definition">
+    <element name="token-definition">
+      <a:documentation>defines a word token via a regular expression. The pattern in this element is used to split a string into tokens and non-tokens. </a:documentation>
+      <a:documentation>The attributes of this element mirror the parameters for the function xsl:analyze-string (see https://www.w3.org/TR/xslt-30/#element-analyze-string).</a:documentation>
+      <a:documentation>For more see main.xml#defining_tokens and for standard TAN vocabulary items see  main.xml#vocabularies-token-definitions</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="token-definition-attributes"/>
+          <choice>
+            <ref name="ptr-attr-which"/>
+            <group>
+              <ref name="attr-pattern"/>
+              <optional>
+                <ref name="attr-flags-for-functions"/>
+              </optional>
+            </group>
+          </choice>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-vocabulary-key">
+    <element name="vocabulary-key">
+      <a:documentation>contains vocabulary items for the immediate file.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <ref name="voc-key-core"/>
+        <ref name="voc-key-non-core"/>
+      </interleave>
+    </element>
+  </define>
+  <define name="element-where">
+    <element name="where">
+      <a:documentation>identifies a set of conditions that must be met for any actions to be performed or rules to be evaluated.</a:documentation>
+      <a:documentation>For a &lt;where&gt; to be considered true, each attribute must evaluate as true for the target context. That is, multiple attributes are evaluated as intersection operators (and), not union (or).</a:documentation>
+      <a:documentation>Sibling &lt;where&gt;s provide alternative conditions. If the first &lt;where&gt; evaluates as true, the condition is considered true. If it does not, then the process is applied again to the second &lt;where&gt;. The sequence of consecutive &lt;where&gt;s is immaterial, although they will be processed in document order. It is advisable to start with &lt;where&gt;s that are most likely to make a match.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="action-condition-attributes"/>
+    </element>
+  </define>
+  <!-- Elements that link to other files -->
+  <define name="link-element-companion-version">
+    <element name="companion-version">
+      <a:documentation>identifies a file closely associated with the current one.</a:documentation>
+      <a:documentation>In a class 1 file, &lt;companion-version&gt; points to another class 1 file that has a different version of the same work found in the same scriptum.</a:documentation>
+      <a:documentation>In class 2 and class 3 files, &lt;companion-version&gt; points to a file of the same type, but the nature of the relationship between the two files is not stipulated. It can be used to point to a continuation of a dataset, or to competing one.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;companion-version&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-inclusion">
+    <element name="inclusion">
+      <a:documentation>specifies a TAN file that is available for inclusion. An inclusion occurs whenever an element X points to this inclusion by means of @include. TAN-compliant validators and processors will find every element X that is found in the included file (checked recursively, against any inclusions of X adopted by the inclusion) and insert them at that place in the dependent document.</a:documentation>
+      <a:documentation>Only select elements will be included, not the entire inclusion file. Exactly which elements are included is dictated by @include placed in select empty elements.</a:documentation>
+      <a:documentation>The presence of an &lt;inclusion&gt; does not require its use, although it may add time to the validation process. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;inclusion&gt;s is immaterial.</a:documentation>
+      <a:documentation>For more, see main.xml#inclusions-and-vocabularies</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-id-xml"/>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <ref name="entity-digital-tan-other-content"/>
+      </interleave>
+    </element>
+  </define>
+  <define name="link-element-predecessor">
+    <element name="predecessor">
+      <a:documentation>identifies a file that the current file succeeds. Predecessors may or may not have the same @id value.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;predecessor&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-see-also">
+    <element name="see-also">
+      <a:documentation>identifies a file that is related to the current one.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;see-also&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="ptr-attr-relationship"/>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <choice>
+              <ref name="entity-digital-core-content"/>
+              <ref name="entity-digital-tan-other-content"/>
+            </choice>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="link-element-source">
+    <element name="source">
+      <a:documentation>identifies the source upon which the data in the &lt;body&gt; of the current file depends.</a:documentation>
+      <a:documentation>TAN-T and TAN-A-lm allow only one &lt;source&gt;. TAN-A-tok allows exactly two. All other TAN formats require one or more. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;source&gt;s is immaterial, but it does dictate the order in which sources are validated and processed.</a:documentation>
+      <ref name="source-content"/>
+    </element>
+  </define>
+  <define name="link-element-successor">
+    <element name="successor">
+      <a:documentation>identifies a file that succeeds the current file. Successors may or may not have the same document @id value.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;successor&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <define name="link-element-vocabulary">
+    <element name="vocabulary">
+      <a:documentation>specifies a TAN-voc file that supplies vocabulary items for the host file. For more discussion, see main.xml#TAN-voc</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;vocabulary&gt;s is immaterial.</a:documentation>
+      <ref name="entity-digital-tan-no-id"/>
+    </element>
+  </define>
+  <!-- Vocabulary items: Elements that identify specific things via IRIs, names, and descriptions -->
+  <define name="voc-element-agent">
+    <choice>
+      <ref name="voc-element-person"/>
+      <ref name="voc-element-org"/>
+      <ref name="voc-element-alg"/>
+    </choice>
+  </define>
+  <define name="voc-element-alias">
+    <element name="alias">
+      <a:documentation>assigns a single id (@xml:id or @id) to multiple idrefs. An &lt;alias&gt; effectively groups multiple vocabulary items together. @xml:id and @id are equivalent alternatives. The latter supports characters disallowed by the former (e.g., colons).   </a:documentation>
+      <a:documentation>This feature is useful for creating groups of persons, works, scripta, etc., and referring to them. It is inspired by the model of the critical edition, where multiple manuscripts, each of which have their own identifier, can be assigned a family that has its own special siglum. </a:documentation>
+      <a:documentation>Because ids and idrefs are encapsulated within a single file, and because &lt;alias&gt; serves exclusively idrefs, this element may neither include nor be included.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;alias&gt;es is immaterial.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <group>
+        <choice>
+          <ref name="attr-id-xml"/>
+          <ref name="attr-id-alias"/>
+        </choice>
+        <ref name="ptr-attr-idrefs"/>
+      </group>
+    </element>
+  </define>
+  <define name="voc-element-alg">
+    <element name="algorithm">
+      <a:documentation>contains an IRI + name pattern identifying an algorithm.</a:documentation>
+      <a:documentation>The term "algorithm" covers any set of computational instructions. It does not include the hardware used to run the algorithm, nor does it identify any algorithms used to run an algorithm. For example, an algorithm might identify one or more XSLT stylesheets, but it does not identify the engine (e.g., Saxon), catalyzing software (e.g., oXygen), or operating system (e.g., Windows) used to run the algorithm.  </a:documentation>
+      <ref name="entity-digital-nontan-id"/>
+    </element>
+  </define>
+  <define name="voc-element-div-type">
+    <element name="div-type">
+      <a:documentation>declares a type of textual division (e.g., title, paragraph, stanza). </a:documentation>
+      <a:documentation>For more information, see main.xml#reference_system and main.xml#vocabularies-div-types for standard TAN values. </a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-group-type">
+    <element name="group-type">
+      <a:documentation>names types of &lt;group&gt;s. See main.xml#vocabularies-group-types for standard TAN values.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-org">
+    <element name="organization">
+      <a:documentation>contains an IRI + name pattern identifying an organization: a group of persons, whether formally incorporated or not.</a:documentation>
+      <a:documentation>This term is taken in its loosest sense. "Organization" and "person" are treated as mutually exclusive and exhaustive categories of all human beings, real or fictive. Therefore a tribe or clan, which ordinarily might dislike being thought of as an organization, are nevertheless so classified here.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-period">
+    <element name="period">
+      <a:documentation>identifies or defines a period of time, either through specific dates or dateTimes, or to a vocabulary item that names a more generic period of time.</a:documentation>
+      <choice>
+        <ref name="entity-nondigital-id"/>
+        <group>
+          <optional>
+            <ref name="ed-stamp"/>
+          </optional>
+          <choice>
+            <ref name="inclusion"/>
+            <group>
+              <ref name="attr-id-xml"/>
+              <attribute name="from">
+                <a:documentation>specifies the beginning of a period of time.</a:documentation>
+                <choice>
+                  <data type="dateTime"/>
+                  <data type="date"/>
+                </choice>
+              </attribute>
+              <attribute name="to">
+                <a:documentation>specifies the end of a period of time.</a:documentation>
+                <choice>
+                  <data type="dateTime"/>
+                  <data type="date"/>
+                </choice>
+              </attribute>
+            </group>
+          </choice>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="voc-element-person">
+    <element name="person">
+      <a:documentation>contains an IRI + name pattern identifying an individual human being.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-relationship">
+    <element name="relationship">
+      <a:documentation>specifies a relationship that one document has to another.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-role">
+    <element name="role">
+      <a:documentation>specifies a role (responsibility, task, or activity) that one or more &lt;agent&gt;s had in creating or editing the data.</a:documentation>
+      <a:documentation>A role may be any activity, e.g., editor, funder, supervisor, data-processor, peer reviewer, patron, identified through the enclosed IRI + name pattern.</a:documentation>
+      <a:documentation>See main.xml#vocabularies-roles for standard TAN vocabulary.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-scri">
+    <element name="scriptum">
+      <a:documentation>contains an IRI + name pattern identifying a text-bearing object.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-verb">
+    <element name="verb">
+      <a:documentation>contains an IRI + name pattern identifying a property, relationship, action, or something else that is used to say something about something. </a:documentation>
+      <a:documentation>The preferred term "verb" is equivalent to RDF "predicate." The latter term is avoided, since in regular usage "predicate" signifies both a verb and all the words it governs.</a:documentation>
+      <a:documentation>See main.xml#vocabularies-verbs for standard TAN vocabulary items.</a:documentation>
+      <optional>
+        <ref name="extra-verb-attrs"/>
+      </optional>
+      <ref name="entity-nondigital-constrained"/>
+    </element>
+  </define>
+  <define name="voc-element-work">
+    <element name="work">
+      <a:documentation>identifies a creative textual work, understood conceptually, not physically (e.g., Homer's Iliad, not a particular version or copy of it).</a:documentation>
+      <a:documentation>The term "work" is only loosely defined in TAN. Any text that has enough unity to be referred to in ordinary conversation as a single entity may be identified as a work. A work may be composed of other works, be a part of other works, or even overlap with other works. E.g., Q, the Lord's Prayer, the Gospel of Luke, the Tetravengelion, the New Testament, and the Bible are all valid works, despite their complex interrelationships of nesting and spanning one another.</a:documentation>
+      <a:documentation>This element takes the IRI + name pattern. For more, see main.xml#conceptual_works</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <!--
+    
+      1D. PATTERNS
+  -->
+  <define name="action-condition">
+    <choice>
+      <ref name="action-simple-condition"/>
+      <ref name="action-complex-condition"/>
+    </choice>
+  </define>
+  <define name="action-simple-condition">
+    <ref name="action-condition-attributes"/>
+  </define>
+  <define name="action-condition-attributes">
+    <empty/>
+  </define>
+  <define name="action-complex-condition">
+    <oneOrMore>
+      <ref name="element-where"/>
+    </oneOrMore>
+  </define>
+  <define name="adjustment-list">
+    <zeroOrMore>
+      <ref name="element-adjustments"/>
+    </zeroOrMore>
+  </define>
+  <define name="adjust-condition">
+    <empty/>
+  </define>
+  <define name="adjust-core">
+    <empty/>
+  </define>
+  <define name="adjust-non-core">
+    <empty/>
+  </define>
+  <!-- We omit @xml:id to avoid id conflicts -->
+  <define name="any-attribute">
+    <attribute>
+      <anyName>
+        <except>
+          <name>xml:id</name>
+        </except>
+      </anyName>
+    </attribute>
+  </define>
+  <define name="any-content">
+    <interleave>
+      <zeroOrMore>
+        <ref name="any-element"/>
+      </zeroOrMore>
+      <text/>
+    </interleave>
+  </define>
+  <define name="any-element">
+    <element>
+      <anyName/>
+      <zeroOrMore>
+        <ref name="any-attribute"/>
+      </zeroOrMore>
+      <ref name="any-content"/>
+    </element>
+  </define>
+  <define name="body-attributes-non-core">
+    <empty/>
+  </define>
+  <define name="body-content-core">
+    <zeroOrMore>
+      <ref name="element-comment"/>
+    </zeroOrMore>
+  </define>
+  <define name="body-content-non-core">
+    <empty/>
+  </define>
+  <define name="body-group">
+    <ref name="element-group"/>
+  </define>
+  <!-- items are defined by the master schemas -->
+  <define name="body-item">
+    <empty/>
+  </define>
+  <define name="certainty-stamp">
+    <optional>
+      <ref name="certainty-claim"/>
+    </optional>
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+  </define>
+  <define name="certainty-claim">
+    <ref name="attr-cert"/>
+    <optional>
+      <ref name="attr-cert2"/>
+    </optional>
+  </define>
+  <define name="constraint-content">
+    <ref name="attr-content-datatype"/>
+    <optional>
+      <ref name="attr-content-lexical-constraint"/>
+    </optional>
+  </define>
+  <define name="constraint-item-type">
+    <ref name="attr-item-type"/>
+  </define>
+  <define name="constraints-on-verb">
+    <element name="constraints">
+      <a:documentation>specifies the expectations for a given verb. Any verb without constraints is presumed to be transitive, requiring a subject and an object, allowing adverbs, but disallowing opt-in elements, e.g., &lt;in-lang&gt;.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <optional>
+          <ref name="element-subject-constraint"/>
+        </optional>
+        <optional>
+          <ref name="element-object-constraint"/>
+        </optional>
+        <optional>
+          <ref name="element-at-ref-constraint"/>
+        </optional>
+        <optional>
+          <ref name="element-in-lang-constraint"/>
+        </optional>
+        <optional>
+          <ref name="element-period-constraint"/>
+        </optional>
+        <optional>
+          <ref name="element-place-constraint"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="declaration-list">
+    <interleave>
+      <ref name="declaration-core"/>
+      <ref name="declaration-non-core"/>
+    </interleave>
+  </define>
+  <define name="declaration-core">
+    <interleave>
+      <oneOrMore>
+        <ref name="element-license"/>
+      </oneOrMore>
+      <optional>
+        <ref name="element-numerals"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="declaration-non-core">
+    <empty/>
+  </define>
+  <define name="ed-stamp">
+    <a:documentation>Editorial stamp: who created or edited the enclosed data and when. </a:documentation>
+    <ref name="ptr-attr-ed-who"/>
+    <ref name="attr-ed-when"/>
+  </define>
+  <define name="entity-digital-nontan-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <group>
+        <ref name="attr-id-xml"/>
+        <interleave>
+          <zeroOrMore>
+            <ref name="element-comment"/>
+          </zeroOrMore>
+          <ref name="entity-digital-core-content"/>
+        </interleave>
+      </group>
+    </choice>
+  </define>
+  <define name="entity-digital-nontan-no-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <ref name="entity-digital-core-content"/>
+      </interleave>
+    </choice>
+  </define>
+  <define name="entity-digital-tan-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <group>
+        <ref name="attr-id-xml"/>
+        <interleave>
+          <zeroOrMore>
+            <ref name="element-comment"/>
+          </zeroOrMore>
+          <ref name="entity-digital-tan-other-content"/>
+        </interleave>
+      </group>
+    </choice>
+  </define>
+  <define name="entity-digital-core-content">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="element-IRI"/>
+        </oneOrMore>
+        <ref name="metadata-human-readable"/>
+        <zeroOrMore>
+          <ref name="element-checksum"/>
+        </zeroOrMore>
+        <oneOrMore>
+          <ref name="element-location"/>
+        </oneOrMore>
+      </group>
+      <interleave>
+        <ref name="ptr-attr-which"/>
+        <ref name="attr-accessed-when"/>
+      </interleave>
+    </choice>
+  </define>
+  <define name="entity-digital-tan-no-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <ref name="entity-digital-tan-other-content"/>
+      </interleave>
+    </choice>
+  </define>
+  <!-- attr-href is turned on for TAN files, to allow SQFs to be applied to the element, to autocomplete IRI, name, and location -->
+  <define name="entity-digital-tan-other-content">
+    <choice>
+      <ref name="attr-href"/>
+      <ref name="entity-digital-core-content"/>
+    </choice>
+  </define>
+  <define name="entity-digital-tan-self-content">
+    <ref name="metadata-human-readable"/>
+    <zeroOrMore>
+      <ref name="element-master-location"/>
+    </zeroOrMore>
+  </define>
+  <!-- named patterns that are constrained (verbs) -->
+  <define name="entity-nondigital-constrained">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <group>
+        <optional>
+          <ref name="attr-id-xml"/>
+        </optional>
+        <interleave>
+          <zeroOrMore>
+            <ref name="element-comment"/>
+          </zeroOrMore>
+          <ref name="entity-nondigital-with-constraints-content"/>
+        </interleave>
+      </group>
+    </choice>
+  </define>
+  <define name="entity-nondigital-content">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="element-IRI"/>
+        </oneOrMore>
+        <ref name="metadata-human-readable"/>
+      </group>
+      <ref name="ptr-attr-which"/>
+    </choice>
+  </define>
+  <!-- named patterns that MUST take an id -->
+  <define name="entity-nondigital-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <group>
+        <ref name="attr-id-xml"/>
+        <interleave>
+          <zeroOrMore>
+            <ref name="element-comment"/>
+          </zeroOrMore>
+          <ref name="entity-nondigital-content"/>
+        </interleave>
+      </group>
+    </choice>
+  </define>
+  <!-- named patterns that MAY NOT take an id -->
+  <define name="entity-nondigital-no-id">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <choice>
+      <ref name="inclusion"/>
+      <interleave>
+        <zeroOrMore>
+          <ref name="element-comment"/>
+        </zeroOrMore>
+        <ref name="entity-nondigital-content"/>
+      </interleave>
+    </choice>
+  </define>
+  <define name="entity-nondigital-with-constraints-content">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="element-IRI"/>
+        </oneOrMore>
+        <ref name="metadata-human-readable"/>
+        <optional>
+          <ref name="constraints-on-verb"/>
+        </optional>
+      </group>
+      <ref name="ptr-attr-which"/>
+    </choice>
+  </define>
+  <define name="entity-tok-def">
+    <ref name="element-token-definition"/>
+    <ref name="metadata-human-readable"/>
+  </define>
+  <define name="extra-verb-attrs">
+    <empty/>
+  </define>
+  <define name="group-attributes">
+    <ref name="group-attributes-core"/>
+    <ref name="group-attributes-non-core"/>
+  </define>
+  <define name="group-attributes-core">
+    <optional>
+      <ref name="ptr-attr-type"/>
+    </optional>
+    <optional>
+      <ref name="attr-n"/>
+    </optional>
+  </define>
+  <define name="group-attributes-non-core">
+    <empty/>
+  </define>
+  <define name="inclusion">
+    <ref name="ptr-attr-include"/>
+  </define>
+  <define name="metadata-human-readable">
+    <oneOrMore>
+      <ref name="element-name"/>
+    </oneOrMore>
+    <zeroOrMore>
+      <ref name="element-desc"/>
+    </zeroOrMore>
+  </define>
+  <define name="metadata-human-readable-attributes">
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <optional>
+      <ref name="attr-lang-xml"/>
+    </optional>
+  </define>
+  <define name="networked-files">
+    <interleave>
+      <ref name="networked-files-core"/>
+      <ref name="networked-files-non-core"/>
+    </interleave>
+  </define>
+  <define name="networked-files-core">
+    <interleave>
+      <zeroOrMore>
+        <ref name="link-element-inclusion"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="link-element-vocabulary"/>
+      </zeroOrMore>
+      <ref name="source-list"/>
+      <zeroOrMore>
+        <ref name="link-element-see-also"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="link-element-predecessor"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="link-element-successor"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="link-element-companion-version"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="networked-files-non-core">
+    <empty/>
+  </define>
+  <define name="resp-list">
+    <interleave>
+      <oneOrMore>
+        <ref name="element-resp"/>
+      </oneOrMore>
+      <ref name="element-file-resp"/>
+    </interleave>
+  </define>
+  <define name="source-content">
+    <empty/>
+  </define>
+  <define name="source-list">
+    <ref name="link-element-source"/>
+  </define>
+  <define name="TAN-root">
+    <ref name="attr-id-tan"/>
+    <ref name="attr-TAN-ver"/>
+    <optional>
+      <ref name="ed-stamp"/>
+    </optional>
+    <ref name="element-head"/>
+    <ref name="element-body"/>
+    <optional>
+      <ref name="element-tail"/>
+    </optional>
+  </define>
+  <define name="token-definition-attributes">
+    <empty/>
+  </define>
+  <define name="vocabulary-list">
+    <zeroOrMore>
+      <ref name="link-element-vocabulary"/>
+    </zeroOrMore>
+    <ref name="element-vocabulary-key"/>
+  </define>
+  <define name="voc-key-core">
+    <interleave>
+      <zeroOrMore>
+        <ref name="voc-element-agent"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-role"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-period"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-alias"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-relationship"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="voc-key-non-core">
+    <empty/>
+  </define>
+</grammar>

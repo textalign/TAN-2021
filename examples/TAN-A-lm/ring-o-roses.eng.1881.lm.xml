@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ring01-lm">
+    <head>
+        <name>Part-of-speech analysis of 1881 version of Ring a Ring o' Roses</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A-lm/ring-o-roses.eng.1881.lm.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This license is granted independent of rights and licenses associated with the
+                source. </desc>
+        </license>
+        <token-definition which="letters and punctuation"/>
+        <source>
+            <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+            <name>TAN transcription of Ring a Ring o' Roses</name>
+            <location href="../ring-o-roses.eng.1881.xml" accessed-when="2015-06-08-04:00"/>
+        </source>
+        <vocabulary-key>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:21:18.078-04:00"/>
+            </algorithm>
+            <morphology xml:id="penn" ed-when="2015-08-20-04:00" ed-who="park">
+                <IRI>tag:kalvesmaki.com,2014:tan-r-mor:eng:penn</IRI>
+                <name>Penn Treebank tag set</name>
+                <location href="../TAN-mor/eng.kalvesmaki.com%2C2014.2.xml" accessed-when="2015-11-03-05:00"/>
+            </morphology>
+            <lexicon xml:id="english">
+                <IRI>tag:parkj@textalign.net,2015:lexicon:eng:test</IRI>
+                <name>An English dictionary</name>
+            </lexicon>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name>Jenny Park</name>
+            </person>
+            <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T11:21:18.078-04:00" href="../../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        
+        <file-resp who="park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp who="park" roles="creator"/>
+        <resp who="xslt1" roles="stylesheet1"/>
+        <change when="2015-03-10" who="park">Started file</change>
+        <change who="xslt1" when="2017-11-02T16:49:00.397-04:00">TAN file updated to 2018 schemas.</change>
+        <change when="2018-05-03" who="park">Changed tokenization definition to letters and hyphens.</change>
+        <change who="xslt2" when="2018-08-09T11:21:18.078-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do/>
+    </head>
+    <body lexicon="english" morphology="penn" claimant="xslt2">
+        <ana>
+            <group>
+                <tok ref="1" pos="1 - last-1"/>
+            </group>
+            <lm>
+                <l>ring-a-ring-a-rose</l>
+                <m>NNS</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="1" pos="last"/>
+            <lm>
+                <m>;</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="1"/>
+            <lm>
+                <m>NN</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="2"/>
+            <lm>
+                <m>NN</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="3"/>
+            <lm>
+                <m>JJ</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="4"/>
+            <lm>
+                <m>IN</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="5"/>
+            <lm>
+                <l>posy</l>
+                <m>NNS</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="2" pos="6"/>
+            <lm>
+                <m>:</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok val="Hush"/>
+            <lm>
+                <m>VB</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok val="!"/>
+            <lm>
+                <m>.</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="1"/>
+            <lm>
+                <m>PRP</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="2, 3"/>
+            <lm>
+                <m>VBP</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="4"/>
+            <lm>
+                <m>RB</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="5"/>
+            <lm>
+                <m>VBD</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="6"/>
+            <lm>
+                <m>RP</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok ref="4" pos="7"/>
+            <lm>
+                <m>.</m>
+            </lm>
+        </ana>
+    </body>
+</TAN-A-lm>

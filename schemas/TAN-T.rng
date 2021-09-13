@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="incl/TAN-class-1.rng">
+    <start>
+      <element name="TAN-T">
+        <a:documentation>specifies that the TAN file contains a transcription. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <define name="body-content-non-class-1">
+      <oneOrMore>
+        <ref name="body-item"/>
+      </oneOrMore>
+    </define>
+    <define name="body-attributes-non-core">
+      <ref name="attr-lang-xml"/>
+    </define>
+    <define name="body-item">
+      <ref name="element-div"/>
+    </define>
+  </include>
+  <define name="element-div">
+    <element name="div">
+      <a:documentation>marks a textual unit. Contains other &lt;div&gt;s or text, but not both (i.e., no mixed content).</a:documentation>
+      <a:documentation>TAN's &lt;div&gt; differs from the TEI's, in that the latter is intended for the first level or levels of subdivision in the front, body, or back of a text, but not for paragraphs or anonymous blocks. The TAN &lt;div&gt; better resembles HTML's, and can be applied to any kind of textual division, even a single character.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="ptr-attr-type"/>
+          <ref name="attr-n"/>
+          <optional>
+            <ref name="attr-lang-xml"/>
+          </optional>
+          <optional>
+            <ref name="attr-ref-alias"/>
+          </optional>
+          <choice>
+            <oneOrMore>
+              <ref name="element-div"/>
+            </oneOrMore>
+            <text/>
+          </choice>
+        </group>
+      </choice>
+    </element>
+  </define>
+</grammar>

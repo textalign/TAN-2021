@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-tok.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!--<?xml-model href="http://textalign.net/release/TAN-2020/schemas/TAN-A-tok.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://textalign.net/release/TAN-2020/schemas/TAN-A-tok.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<TAN-A-tok xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:TAN-A-tok,ring01+ring02">
+    <head>
+        <name>token-based alignment of two versions of Ring o Roses</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A-tok/ringoroses.01+02.token.1.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+        </license>
+        <token-definition src="ring1881 ring1987" which="letters"/>
+        <source xml:id="ring1881">
+            <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+            <name>Ring o roses 1881</name>
+            <location href="../ring-o-roses.eng.1881.xml" accessed-when="2015-01-17"/>
+        </source>
+        <source xml:id="ring1987">
+            <IRI>tag:parkj@textalign.net,2015:ring02</IRI>
+            <name>Ring o roses 1987</name>
+            <location href="../ring-o-roses.eng.1987.xml" accessed-when="2015-01-17"/>
+        </source>
+        <vocabulary-key>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T13:17:48.557-04:00"/>
+            </algorithm>
+            <bitext-relation xml:id="B-descends-from-A">
+                <IRI>tag:textalign.net,2015:bitext-relation:a/x+/b</IRI>
+                <name>B descends directly from A, unknown number of intermediaries</name>
+                <desc>The 1987 versions is hypothesized to descend somehow from the 1881 version,
+                    mainly for the sake of illustration.</desc>
+            </bitext-relation>
+            <reuse-type xml:id="adaptation">
+                <IRI>tag:textalign.net,2015:reuse-type:adaptation:general</IRI>
+                <name>general adaptation</name>
+            </reuse-type>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T13:17:48.557-04:00" href="../../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        
+        <file-resp who="park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp who="park" roles="creator"/>
+        <resp who="xslt1" roles="stylesheet1"/>
+        <change when="2015-01-20" who="park">Started file</change>
+        <change who="xslt1" when="2017-11-02T16:44:42.199-04:00">TAN file updated to 2018 schemas.</change>
+        <change who="xslt2" when="2018-08-09T13:17:48.557-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do/>
+    </head>
+    <body bitext-relation="B-descends-from-A" reuse-type="adaptation">
+        <!-- Examples of picking tokens by number -->
+        <align>
+            <tok src="ring1881" ref="1" pos="1"/>
+            <tok src="ring1987" ref="1" pos="1"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="1" pos="2"/>
+            <tok src="ring1987" ref="1" pos="2"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="1" pos="3"/>
+            <tok src="ring1987" ref="1" pos="3"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="1" pos="4"/>
+            <tok src="ring1987" ref="1" pos="4"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="1" pos="5"/>
+            <tok src="ring1987" ref="1" pos="5"/>
+        </align>
+        <!-- Examples of picking tokens by value -->
+        <align>
+            <tok src="ring1881" ref="2" val="A"/>
+            <tok src="ring1987" ref="2" val="A"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="2" val="pocket"/>
+            <tok src="ring1987" ref="2" val="pocket"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="2" val="full"/>
+            <tok src="ring1987" ref="2" val="full"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="2" val="of"/>
+            <tok src="ring1987" ref="2" val="of"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="2" val="posies"/>
+            <tok src="ring1987" ref="2" val="posies"/>
+        </align>
+        <!-- Examples of picking ranges of tokens -->
+        <align>
+            <tok src="ring1881" ref="3" pos="1, 2"/>
+            <tok src="ring1987" ref="3" pos="1"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="3" pos="3 - 4"/>
+            <tok src="ring1987" ref="3" pos="2"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="4" pos="1"/>
+            <tok src="ring1987" ref="4" pos="1"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="4" pos="2"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="4" pos="3"/>
+            <tok src="ring1987" ref="4" pos="2"/>
+        </align>
+        <!-- examples of using "last" -->
+        <align>
+            <tok src="ring1881" ref="4" pos="last-1"/>
+            <tok src="ring1987" ref="4" pos="last-1"/>
+        </align>
+        <align>
+            <tok src="ring1881" ref="4" pos="last"/>
+            <tok src="ring1987" ref="4" pos="last"/>
+        </align>
+    </body>
+</TAN-A-tok>

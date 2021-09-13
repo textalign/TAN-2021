@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:bitext-relation">
+    <head>
+        <name>TAN keywords for types of bitext relations</name>
+        <desc>List of standardized terms used for types of bitext relations.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/bitext-relations.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-05-10" who="kalvesmaki">Started file</change>
+        <to-do/>
+    </head>
+    <body affects-element="bitext-relation">
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:unclear</IRI>
+            <name>unclear</name>
+            <name>unclear relation</name>
+            <desc>The relationship between one source text and the other is unclear.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/b|b/a</IRI>
+            <name>a/b|b/a</name>
+            <desc>direct unmediated descent, unknown direction</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/b</IRI>
+            <name>a/b</name>
+            <desc>direct unmediated descent, B descends from A</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:b/a</IRI>
+            <name>b/a</name>
+            <desc>direct unmediated descent, A descends from B</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:x}y,x//a,y//b</IRI>
+            <name>x}y,x//a,y//b</name>
+            <desc>A and B directly descend from X and Y, respectively, where Y is a major alteration
+                (e.g., translation, paraphrase, adaptation) of X.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:x}y,x//b,y//a</IRI>
+            <name>x}y,x//b,y//a</name>
+            <desc>B and A directly descend from X and Y, respectively, where Y is a major alteration
+                (e.g., translation, paraphrase, adaptation) of X.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/x/b|b/x/a</IRI>
+            <name>a/x/b|b/x/a</name>
+            <desc>direct descent, unknown direction, one mediary</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/x/b</IRI>
+            <name>a/x/b</name>
+            <desc>direct descent, B descends from A, one mediary</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:b/x/a</IRI>
+            <name>b/x/a</name>
+            <desc>direct relationship, A descends from B, one mediary</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/x+/b|b/x+/a</IRI>
+            <name>a/x+/b|b/x+/a</name>
+            <desc>direct descent, unknown direction, one or more mediaries</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:a/x+/b</IRI>
+            <name>a/x+/b</name>
+            <desc>direct descent, B descends from A, one or more mediaries</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:b/x+/a</IRI>
+            <name>b/x+/a</name>
+            <desc>direct relationship, A descends from B, one or more mediaries</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/a,/b</IRI>
+            <name>/a,/b</name>
+            <desc>common parent</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/a,/x/b</IRI>
+            <name>/a,/x/b</name>
+            <desc>parent of A is grandparent of B</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/b,/x/a</IRI>
+            <name>/b,/x/a</name>
+            <desc>parent of B is grandparent of A</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/x/a,/x/b</IRI>
+            <name>/x/a,/x/b</name>
+            <desc>A and B have a common grandparent</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/a,/x*/b</IRI>
+            <name>/a,/x*/b</name>
+            <desc>parent of A is ancestor of B</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/x*/a,/b</IRI>
+            <name>/x*/a,/b</name>
+            <desc>parent of B is ancestor of A</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:bitext-relation:/x*/a,/x*/b</IRI>
+            <name>/x*/a,/x*/b</name>
+            <desc>common ancestor</desc>
+        </item>
+    </body>
+</TAN-voc>

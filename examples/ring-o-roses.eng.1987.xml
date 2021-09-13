@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ring02">
+   <head>
+      <name>TAN transcription of Ring around the Rosie</name>
+      <master-location href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1987.xml"/>
+      <license licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+            License. The license is granted independent of rights and licenses associated with the
+            source. </desc>
+      </license>
+      <work>
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>Ring around the Rosie</name>
+      </work>
+      <version>
+         <IRI>tag:parkj@textalign.net,2015:work:ring02:version:american</IRI>
+         <name>American version of Ring-around-a-rosie</name>
+      </version>
+      <source>
+         <IRI>http://lccn.loc.gov/87042504</IRI>
+         <name>Mother Goose, from nursery to literature / by Gloria T. Delama, 1987.</name>
+         <desc>See p. 38, left column, lines 28-31</desc>
+      </source>
+      <vocabulary>
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Vocabulary for TAN files edited by Jenny Park</name>
+         <location href="TAN-voc/park-projects.TAN-voc.xml" accessed-when="2020-01-10"/>
+      </vocabulary>
+      <model>
+         <IRI>tag:parkj@textalign.net,2015:ring04</IRI>
+         <name>TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+            1883</name>
+         <location accessed-when="2021-04-27-04:00" href="ring-o-roses.eng.1951.xml"/>
+      </model>
+      <adjustments>
+         <normalization which="no hyphens"/>
+      </adjustments>
+      <vocabulary-key ed-who="park" ed-when="2015-10-31">
+         <algorithm xml:id="xslt1">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:14:17.982-04:00"/>
+         </algorithm>
+         <div-type xml:id="l">
+            <IRI>http://dbpedia.org/resource/Line_(poetry)</IRI>
+            <name>line</name>
+         </div-type>
+         <person xml:id="park">
+            <IRI>tag:parkj@textalign.net,2015:self</IRI>
+            <name xml:lang="eng">Jenny Park</name>
+         </person>
+         <role xml:id="creator">
+            <IRI>http://schema.org/creator</IRI>
+            <name xml:lang="eng">creator</name>
+         </role>
+      </vocabulary-key>
+      
+      <file-resp who="park"/>
+      <resp who="xslt1" roles="stylesheet"/>
+      <resp roles="creator" who="park"/>
+      <change when="2014-10-24" who="park">Started file</change>
+      <change who="xslt1" when="2018-08-09T11:14:17.982-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do/>
+      <comment when="2014-10-24" who="park">See p. 39 of source.</comment>
+   </head>
+   <body xml:lang="eng">
+      <div type="l" n="1">Ring-a-round the rosie,</div>
+      <div type="l" n="2">A pocket full of posies,</div>
+      <div type="l" n="3">Ashes! Ashes!</div>
+      <div type="l" n="4">We all fall down.</div>
+   </body>
+</TAN-T>

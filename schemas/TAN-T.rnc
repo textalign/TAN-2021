@@ -1,0 +1,21 @@
+default namespace local = "tag:textalign.net,2015:ns"
+
+include "incl/TAN-class-1.rnc" {
+   start =
+      
+      ## specifies that the TAN file contains a transcription. Root element.
+      element TAN-T { TAN-root }
+   body-content-non-class-1 = body-item+
+   body-attributes-non-core = attr-lang-xml
+   body-item = element-div
+}
+element-div =
+   
+   ## marks a textual unit. Contains other <div>s or text, but not both (i.e., no mixed content).
+   
+   ## TAN's <div> differs from the TEI's, in that the latter is intended for the first level or levels of subdivision in the front, body, or back of a text, but not for paragraphs or anonymous blocks. The TAN <div> better resembles HTML's, and can be applied to any kind of textual division, even a single character.
+   element div {
+      ed-stamp?,
+      (inclusion
+       | (ptr-attr-type, attr-n, attr-lang-xml?, attr-ref-alias?, (element-div+ | text)))
+   }

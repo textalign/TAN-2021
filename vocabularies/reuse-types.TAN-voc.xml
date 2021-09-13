@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:reuse-type">
+    <head>
+        <name>TAN keywords for types of bitext reuse</name>
+        <desc>List of standardized terms used for types of bitext reuse.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/reuse-types.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-05-10" who="kalvesmaki">Started file</change>
+        <to-do/>
+    </head>
+    <body affects-element="reuse-type">
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:translation</IRI>
+            <name>translation</name>
+            <name>general translation</name>
+            <name>translation (general)</name>
+            <desc>One version is a translation of the other. The quality of the
+                translation is not specified.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:translation:literal</IRI>
+            <name>literal translation</name>
+            <desc>One version is a translation of the other. The quality of the
+                translation is literal.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:translation:paraphrastic</IRI>
+            <name>paraphrastic translation</name>
+            <desc>One version is a translation of the other. The quality of the
+                translation is paraphrastic.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:translation:questionable</IRI>
+            <name>questionable translation</name>
+            <desc>One version is a translation of the other. The quality of the
+                translation is questionable or wrong.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:paraphrase</IRI>
+            <name>paraphrase</name>
+            <desc>One version is a paraphrase of the other.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:adaptation:general</IRI>
+            <name>general adaptation</name>
+            <desc>One version is an adaptation of the other. The specific kind of
+                adaptation is not defined.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:plus</IRI>
+            <name>plus</name>
+            <name>general plus</name>
+            <name>plus (general)</name>
+            <desc>The target language text contains a morpheme or lexeme that is either not in the
+                source language text or is there only implicitly.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:plus:stylistic</IRI>
+            <name>stylistic plus</name>
+            <name>plus (stylistic)</name>
+            <desc>An accretion in a translated text attributable to stylistic preference of the
+                translator. That is, the target language text contains one or more morphemes or
+                lexemes that are in the source language text only implicitly, or are there
+                explicitly but the target language text repeats the feature. Omission of the
+                stylistic plus would not be a violation of grammar, although such an omission may
+                render the target language text unnatural or uncolloquial. </desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:plus:cultural</IRI>
+            <name>cultural plus</name>
+            <name>plus (cultural)</name>
+            <desc>An accretion in a translated text attributable to the translator's attempt to
+                supply cultural or contextual background that would be lacking in the target
+                readership. That is, the target language text contains one or more morphemes or
+                lexemes that are in the source language text only implicitly, or are there
+                explicitly but require extra words to translate.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:minus</IRI>
+            <name>minus</name>
+            <name>general minus</name>
+            <name>minus (general)</name>
+            <desc>The target language text either lacks, or leaves implicit, a morpheme or lexeme that
+                is explicitly in the source language text.</desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:minus:stylistic</IRI>
+            <name>stylistic minus</name>
+            <name>minus (stylistic)</name>
+            <desc>An elision in a translated text attributable to stylistic preference of the
+                translator. That is, the target language text lacks, or leaves implicit, one or more
+                morphemes or lexemes that are explictly in the source language text. Replacement of
+                the stylistic minus with its explicit counterpart would not be a violation of
+                grammar, although such an inclusion may render the target language text unnatural or
+                uncolloquial. </desc>
+        </item>
+        <item>
+            <IRI>tag:textalign.net,2015:reuse-type:minus:cultural</IRI>
+            <name>cultural minus</name>
+            <name>minus (cultural)</name>
+            <desc>An elision in a translated text attributable to the translator's attempt to remove
+                cultural or contextual background that is already clear to the target readership.
+                That is, the target language text lacks, or leaves implicit, one or more morphemes
+                or lexemes that are in the source language explicitly and that explain a contextual
+                or cultural concept.</desc>
+        </item>
+    </body>
+</TAN-voc>

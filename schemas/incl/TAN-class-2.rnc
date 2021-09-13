@@ -1,0 +1,242 @@
+namespace ns1 = "tag:textalign.net,2015:ns"
+
+include "TAN-core.rnc" inherit = ns1 {
+   declaration-non-core = decl-class-2 & decl-non-class-2
+   source-content = entity-digital-tan-id
+   token-definition-attributes = ptr-attr-src-many
+   adjust-non-core = adjust-class-2, adjust-non-class-2
+   adjust-condition = action-condition
+   action-condition-attributes = ptr-attr-src-many, ptr-attr-div-type?
+   voc-key-non-core = voc-element-class-2 & voc-element-non-class-2
+   body-content-non-core = body-content-class-2 & body-content-non-class-2
+}
+# ATTRIBUTES
+attr-by =
+   
+   ## specifies an amount by which an series of @n values or the last component in a series of @ref values should be incremented or decremented.
+   attribute by { xsd:integer }
+attr-chars =
+   
+   ## identifies one or more characters, specified through Arabic numerals, or the keywords 'last' or 'last-X' (where X is a valid number), joined with commas or hyphens.
+   
+   ## Examples: '1', 'last', 'last-3 - last-1', '1, 3, 5, 7 - 11, last-8, last'
+   attribute chars { data-picker-sequence }
+attr-claim-period =
+   
+   ## names a vocabulary item that identifies a time when a claim was made.
+   attribute claim-period { text }
+attr-claim-when =
+   
+   ## identifies a time when a claim was made.
+   attribute claim-when { xsd:dateTime | xsd:date }
+attr-new-name =
+   
+   ## provides the new name for an @n that is to be renamed.
+   attribute new { text }
+attr-new-ref =
+   
+   ## provides the new ref for a <div> that is to be renamed.
+   attribute new { data-div-item-ref }
+attr-pos-many =
+   
+   ## lists one or more items by position, specified through Arabic numerals or the keywords 'last' or 'last-X' (where X is a valid number), joined with commas or hyphens.
+   
+   ## Examples: '1', 'last', 'last-3 - last-1', '1, 3, 5, 7 - 11, last-8, last'
+   
+   ## For more see main.xml#attr_pos_and_val
+   attribute pos { data-picker-sequence }
+attr-pos-one =
+   
+   ## lists the position of one item, specified through Arabic numerals and the keyword 'last' or 'last-X' (where X is a valid number).
+   
+   ## Examples: '1', 'last', 'last-3 - last-1'
+   
+   ## For more see main.xml#attr_pos_and_val
+   attribute pos { data-picker-item }
+attr-priority =
+   
+   ## specifies where a renamed div or reassigned passage should be placed relative to the target and other renamed divs or reassigned passages. The target is presumed to be a value of 0. The higher the value of @priority, the earlier the passage is placed. Negative integers specify the material should come after the base target.
+   attribute priority { xsd:integer }
+attr-ref-many =
+   
+   ## lists references to one or more <div>s. It consists of one or more simple references joined by commas or hyphens. A simple reference is a string value that points to a single <div> by joining one of its values of @n with those of its ancestors, e.g., "1 1". 
+   
+   ## Truncation is allowed. For example, 1 1 - 3 will be interpreted first as 1.1 through 1.3; if that is invalid, it will be interpeted as 1.1 through 3. Another example: '2.4 - 7, 9' and 'ii iv - vii, 9' will be treated as identical, to mean 2.4 through 2.7 and 2.9.
+   
+   ## In a range with members of uneven depth, those complete <div>s that are closest to the shallowest member are retrieved. For example, 2 - 4 2 2 might fetch 2, 3, 4.1, and 4.2.1, 4.2.2 (and not 4 as a whole).
+   
+   ## For more, see main.xml#referencing-divisions 
+   attribute ref { data-div-range-ref }
+attr-ref-one =
+   
+   ## refers to a single <div>. It consists of one simple reference e.g., "1 1". 
+   attribute ref { data-div-item-ref }
+attr-rgx =
+   
+   ## contains a regular expression. In the context of <tok> it is an alternative to @val and points to a particular word token according to a match on its string value. Values of @rgx are case-sensitive. The TAN extension character class \u{} may be used. 
+   
+   ## For more see main.xml#attr_pos_and_val
+   attribute rgx {
+      xsd:string { pattern = ".+" }
+   }
+attr-shallow =
+   
+   ## indicates whether skipping should be done shallowly (default) or deeply
+   attribute shallow { xsd:boolean }
+attr-val =
+   
+   ## contains a string that points to a word token by its value. Matches are case-, space-, and accent-sensitive.
+   
+   ## For more see main.xml#attr_pos_and_val
+   attribute val {
+      xsd:string { pattern = ".+" }
+   }
+ptr-attr-claimant =
+   
+   ## points to a <person>, <organization>, or <algorithm> who makes a claim. @claimant within <body> indicates the default persons to be credited or blamed for an assertion. If <body>'s @claimant is absent, the default claimant would be the key agents of the file.
+   
+   ## This attribute is taken into account before all other attributes. That is, @claimant is to be interpreted to mean: "@claimant states the following:...." Multiple values of @claimant are interpreted to mean "and", resulting in distribution of the claim (e.g., claimant="x y" becomes "x claims that..." and "y claims that...").
+   
+   ## In a TAN-A file, nested @claimants mean that claimant X claims that claimant Y claims that... and so forth.
+   
+   ## In other class-2 files, a nested @claimant cancels out any inherited @claimants. 
+   
+   ## This attribute is weakly inheritable. See main.xml#inheritable_attributes
+   attribute claimant { text }
+ptr-attr-src-one =
+   
+   ## refers via idref to only one <source>
+   attribute src { xsd:NCName }
+ptr-attr-src-many =
+   
+   ## refers via idrefs to one or more <source>s 
+   attribute src { text }
+# ELEMENTS
+adj-element-equate =
+   
+   ## declares an ad hoc equivalence in @n values. It behaves like <alias> but has scope only over a particular source. For example, <equate n="pr pref preface introduction"/> specifies that sources with <div> @n values of either "pr", "pref", "preface", or "introduction" should be treated as equivalent. Hence, in the <body> any @ref="pr" will also match a <div n="introduction"/>
+   
+   ## This element does not imply that the @n values are the same. It merely states that, for the purposes of this class-2 file, they should be treated as equivalent.
+   
+   ## Only the first <equate> applying to a <div> in a given source will be applied.
+   element equate { ed-stamp?, (inclusion | attr-n) }
+adj-element-reassign =
+   
+   ## identifies words and phrases that should be moved from one <div> to another in a given source.
+   
+   ## Only the first <reassign> applying to a <div> in a given source will be applied.    
+   element reassign {
+      ed-stamp?,
+      attr-priority?,
+      (inclusion | (element-passage+, element-to))
+   }
+adj-element-rename =
+   
+   ## provisionally reassigns values of @n's in class 1 sources, or their calculated ref value, to another value.
+   
+   ## A <rename> may be applied on the basis of either @n or @ref, but a ref-based <rename> always supersedes an n-based rename. Only the first matching <rename> will be applied to a given <div> in a source.
+   
+   ## A ref-based rename eliminates any alternative values of @n, inherited or native. That is, if a <div> has @n="prol pref" and the rename has @ref="prol" and @new="prologue" then the alternative value "pref" will be ignored.
+   
+   ## Renames override any equate actions. An exception is made when an n-based rename affects one value of @n but an equate affects another value. Ref-based renames always override any equate action.
+   
+   ## If a <div> is renamed such that it needs to be moved elsewhere in the hierarchy, and it matches the reference of another <div>, the text from the renamed <div> will be added to the end of the target <div>.
+   element rename {
+      ed-stamp?,
+      attr-priority?,
+      (inclusion | (simple-rename | complex-rename))
+   }
+adj-element-skip =
+   
+   ## marks parts of a source that have been ignored or should be skipped, either shallowly (default) or deeply.
+   
+   ## Note, the shallow skip of a <div> may result in the creation of empty <div>s, which will be ignored during validation.
+   
+   ## This element is useful for ignoring extraneous divs, e.g., where a source has introduced divs that do not exist in other versions of the same work. For example, a transcription may group the topmost divisions of a text into parts, or may adopt superfluous divisions (e.g., introducing a <div> for chapter in the New Testament book Philemon, which does not have more than one chapter, and can be identified purely by verse).  
+   
+   ## Only the first <skip> applying to a <div> in a given source will be applied.
+   element skip {
+      ed-stamp?,
+      (inclusion
+       | (attr-shallow?,
+          (attr-ref-many
+           | (attr-n | ptr-attr-div-type | (attr-n & ptr-attr-div-type)))))
+   }
+element-from-tok-no-ref =
+   
+   ## points to a single token that is the start of a range of tokens to be selected from a source, but without @ref.
+   element from-tok { tok-selector-attributes-one }
+element-from-tok-with-ref =
+   
+   ## points to a single token that is the start of a range of tokens to be selected from a source, in the context of @ref.
+   element from-tok { attr-ref-one, tok-selector-attributes-one }
+element-group-for-tok =
+   
+   ## groups token references that should be treated as referring to but a single token.
+   element group {
+      ed-stamp?,
+      (inclusion | (group-attributes, default-tok-element+))
+   }
+element-passage =
+   
+   ## specifies a textual passage within a single <div> that should be reassigned to another <div>.
+   element passage { ed-stamp?, attr-ref-one, text-passage-selector-no-ref+ }
+element-to =
+   
+   ## indicates a ref to which the preceding <tok>s should be moved.
+   element to { attr-ref-one }
+element-tok-standard =
+   
+   ## identifies one or more tokens (words or word fragments). Used by class-2 files to make claims about specific words. 
+   
+   ## In TAN-A and TAN-A-tok files, <tok> does not necessarily carry linguistic connotations; in TAN-A-lm, it normally does.
+   
+   ## Most <tok>s are restricted to a single token, or a portion of a single token, perhaps filtered by the value of @chars. But they can refer to multiple tokens through multiple values of @src, @ref, and @pos, to save space and perhaps enhance legibility. For example, <tok src="a b" ref="1.1 - 1.3" pos="1-4"> would point to 24 tokens (assuming that the two sources each have at least four tokens in the three references 1.1, 1.2, and 1.3).
+   
+   ## If you wish to treat multiple word fragments as a single token, use <group>.
+   
+   ## The sequence of consecutive <tok>s is immaterial in the context of TAN-A-lm, and TAN-A-tok, except in the context of <group>, where the sequence dictates how the new token is to be constructed. 
+   
+   ## The sequence of consecutive <tok>s is important in the context of TAN-A, where the sequence specifies the order in which word tokens should be supplied in the context of the <claim>. 
+   element tok {
+      ed-stamp?,
+      tok-sources-ref-opt,
+      attr-ref-many,
+      tok-selector-attributes-many,
+      tok-cert-opt,
+      attr-chars?
+   }
+element-through-tok-no-ref =
+   
+   ## points to a single token that is the end of a range of tokens to be selected from a source, but without @ref.
+   element through-tok { tok-selector-attributes-one }
+element-through-tok-with-ref =
+   
+   ## points to a single token in a single reference that is the end of a range of tokens to be selected from a source, in the context of @ref.
+   element through-tok { attr-ref-one, tok-selector-attributes-one }
+# PATTERNS
+adjust-class-2 = adj-element-skip* & adj-element-rename* & adj-element-equate* & adj-element-reassign*
+adjust-non-class-2 = empty
+body-content-class-2 = claimant-attributes?
+body-content-non-class-2 = body-group* & body-item*
+claimant-attributes = ptr-attr-claimant, (attr-claim-when | attr-claim-period)?
+decl-class-2 = element-token-definition*
+decl-non-class-2 = empty
+default-tok-element = element-tok-standard
+simple-rename = (attr-n, attr-new-name) | (attr-ref-one, attr-new-ref)
+complex-rename = (attr-n | attr-ref-many), (attr-by | attr-new-name)
+text-passage-selector-no-ref = element-from-tok-no-ref, element-through-tok-no-ref
+text-passage-selector-with-ref = element-from-tok-with-ref, element-through-tok-with-ref
+tok-cert-opt = certainty-claim?
+# picking <tok> by means of @val/@rgx + @pos
+tok-selector-attributes-one =
+   (attr-val | attr-rgx)
+   | attr-pos-one
+   | ((attr-val | attr-rgx), attr-pos-one)
+tok-selector-attributes-many =
+   (attr-val | attr-rgx)
+   | attr-pos-many
+   | ((attr-val | attr-rgx), attr-pos-many)
+tok-sources-ref-opt = ptr-attr-src-many
+voc-element-class-2 = voc-element-group-type*
+voc-element-non-class-2 = empty

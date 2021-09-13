@@ -1,0 +1,25 @@
+default namespace = ""
+
+start =
+  element collection {
+    attribute stable { xsd:boolean },
+    attribute id { xsd:anyURI }?,
+    attribute metadata-resolved { xsd:boolean }?,
+    element doc {
+      doc-attributes,
+      nondoc-attributes*,
+      any-content
+    }+
+  }
+
+doc-attributes = attribute href { text },
+      attribute id { xsd:anyURI },
+      attribute root { xsd:NCName }
+nondoc-attributes = attribute * - (href | id | root) { text }
+
+any-content = any-element* & text
+any-element = element * { any-attribute*, any-content }
+# We omit @xml:id to avoid id conflicts
+# any-attribute = attribute * - xml:id { text }
+any-attribute = attribute * { text }
+

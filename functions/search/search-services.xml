@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<search-services>
+    <!-- protocols -->
+    <service>
+        <name>Library of Congress</name>
+        <name>loc</name>
+        <for-element>scriptum</for-element>
+        <for-element>source</for-element>
+        <protocol>sru</protocol>
+        <url-base>http://lx2.loc.gov:210/lcdb?version=1.1&amp;operation=searchRetrieve&amp;</url-base>
+        <param>
+            <name>query</name>
+            <val type="regex">.+</val>
+        </param>
+        <param>
+            <name>recordSchema</name>
+            <val>mods</val>
+            <val>dc</val>
+            <val>marcxml</val>
+        </param>
+    </service>
+    <service>
+        <name>Virtual International Authority File</name>
+        <name>viaf</name>
+        <for-element>person</for-element>
+        <for-element>organization</for-element>
+        <protocol>sru</protocol>
+        <url-base>https://viaf.org/viaf/search?recordPacking=xml&amp;sortKeys=holdingscount&amp;</url-base>
+        <param>
+            <name>query</name>
+            <val type="regex">.+</val>
+        </param>
+        <param>
+            <name>recordSchema</name>
+            <val>http%3A%2F%2Fviaf.org%2FVIAFCluster</val>
+            <val>http%3A%2F%2Fviaf.org%2FBriefVIAFCluster</val>
+        </param>
+    </service>
+    <service>
+        <name>Wikipedia</name>
+        <name>wikipedia</name>
+        <for-element>*</for-element>
+        <protocol>wikipedia</protocol>
+        <url-base>https://en.wikipedia.org/wiki/Special:Search?</url-base>
+        <param>
+            <name>search</name>
+            <val type="regex">.+</val>
+        </param>
+        <param>
+            <name>limit</name>
+            <val type="regex">^\d+$</val>
+        </param>
+        <param>
+            <name>fulltext</name>
+            <val>1</val>
+            <val>0</val>
+        </param>
+    </service>
+    <service>
+        <name>WorldCat</name>
+        <for-element>scriptum</for-element>
+        <for-element>source</for-element>
+        <protocol>WorldCat</protocol>
+        <url-base>http://www.worldcat.org/search?</url-base>
+        <param>
+            <name>q</name>
+            <val type="regex">.+</val>
+        </param>
+    </service>
+    <service>
+        <name>Morpheus</name>
+        <name>morpheus</name>
+        <for-element>ana</for-element>
+        <protocol>morpheus</protocol>
+        <!-- Example: http://services.perseids.org/bsp/morphologyservice/analysis/word?lang=lat&engine=morpheuslat&word=novum -->
+        <url-base>http://services.perseids.org/bsp/morphologyservice/analysis/word?</url-base>
+        <param>
+            <name>lang</name>
+            <val type="regex">grc|lat</val>
+        </param>
+        <param>
+            <name>engine</name>
+            <val type="regex">morpheus(grc|lat)</val>
+        </param>
+        <param>
+            <name>word</name>
+            <val type="regex">.+</val>
+        </param>
+    </service>
+    
+    <!-- true for all services using a specific protocol -->
+    <protocol xml:id="sru">
+        <name>Search/Retrieval via URL</name>
+        <param>
+            <name>maximumRecords</name>
+            <val type="regex">^\d+$</val>
+        </param>
+        <param>
+            <name>recordPosition</name>
+            <val type="regex">^\d+$</val>
+        </param>
+    </protocol>
+</search-services>

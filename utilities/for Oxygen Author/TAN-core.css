@@ -1,0 +1,165 @@
+@namespace tan "tag:textalign.net,2015:ns";
+@namespace tei "http://www.tei-c.org/ns/1.0";
+@namespace oxy url('http://www.oxygenxml.com/extensions/author');
+@namespace xml "http://www.w3.org/XML/1998/namespace";
+/* CSS file intended to be used to configure how TAN files are rendered by oXygen Author */
+/* BACKGROUND */
+head{
+    background: tan
+}
+vocabulary-key{
+    background: #eadbc8
+}
+
+/* BORDERS */
+group{
+    border: 1px solid black
+}
+
+/* COLORS */
+oxy|entity[name^='#']{
+    background-color:green;
+}
+*:before(9){
+    color: blue
+}
+*:before(8){
+    color: green
+}
+
+/* CONTENT */
+*:root,
+head *:before(9),
+group *:before(9),
+TAN-voc > body *:before(9),
+TAN-A-lm > body *:before(9){
+    content: '<' oxy_local-name()'>' ;
+}
+*:root/*,
+head *:before(8),
+group *:before(8),
+TAN-voc > body *:before(8)*/{
+    content: oxy_attributes();
+}
+
+div:before(8){
+    content: attr(type) '.' attr(n) ' ';
+}
+ref:before(8){
+    content: attr(rend);
+}
+milestone:before(8){
+    content: attr(unit) ' ' attr(n);
+}
+tok:before(8){
+    content: attr(rgx) ' ' attr(val) ' ' attr(pos) ' ' attr(chars) ' ' attr(cert);
+}
+lm:before(8){
+    content: attr(cert);
+}
+l:before(8){
+    content: attr(lexicon) ' ' attr(cert) ' ';
+}
+m:before(8){
+    content: attr(morphology) ' ' attr(cert) ' ';
+}
+/* DISPLAY */
+*{
+    display: block;
+}
+comment{
+    display: list-item;
+}
+milestone,
+ref{
+    display: inline;
+}
+/* FONTS */
+*:lang(syr){
+    font-family: noto, 'Serto Urhoy', 'Estrangelo Nisibin';
+    text-align: right;
+}
+*:lang(cop){
+    font-family: antinoou;
+}
+*:lang(grc){
+    font-family: 'Gentium Plus', 'Garamond Premiere Pro', 'Gentium Plus', serif;
+}
+IRI{
+    font-family: monospace;
+    font-size: smaller;
+}
+/* MARGINS */
+* {
+    margin-left: 8px;
+}
+div milestone,
+div ref{
+    margin-left: 0px;
+}
+item {
+    margin-top: 8px;
+}
+/* SPECIAL OXYGEN */
+
+*[which]:before(6){
+    color: darkgreen;
+    content: 
+    'which:' oxy_textfield(edit, "@which");
+}
+/*license[which]:before(6){
+    content: 
+    oxy_combobox(
+edit, "@which", 
+values, oxy_xpath("string-join(root()/\*\/head/vocabulary-key/license/@xml:id, ', ')")
+)
+ oxy_label(text, oxy_xpath("for $i in tokenize(@who,' ') return root()/\*\/head/vocabulary-key/(person, organization, algorithm)[@xml:id = $i]/name[1]/text()"), color, "gray");
+}*/
+vocabulary-key > *[xml|id]:before(7),
+source[xml|id]:before(7){
+    content: 
+    'id:'oxy_textfield(
+edit, "@xml:id");
+}
+*[who]:before(7){
+    content: 
+    oxy_combobox(
+edit, "@who", 
+values, oxy_xpath("string-join(root()/*/head/vocabulary-key/(person, organization, algorithm)/@xml:id, ', ')")
+)
+ oxy_label(text, oxy_xpath("for $i in tokenize(@who,' ') return root()/*/head/vocabulary-key/(person, organization, algorithm)[@xml:id = $i]/name[1]/text()"), color, "gray");
+}
+*[when]:before(8){
+    content: oxy_datePicker(
+edit, "@when", 
+format, "yyyy-MM-dd")
+}
+/**[ref]:before(8){
+    content: oxy_textfield(
+edit, "@ref") oxy_textfield(
+edit, "@val") oxy_textfield(
+edit, "@pos") oxy_textfield(
+edit, "@chars") oxy_textfield(
+edit, "@cert")
+}*/
+
+*[href]{
+    content: 
+    oxy_urlChooser(
+edit, "@href", 
+columns 25);
+}
+*:has(IRI){
+    -oxy-foldable:true;
+    -oxy-folded:true;
+}
+
+div:has(div),
+item,
+group{
+    -oxy-foldable: true
+}
+quote{
+   display: inline;
+   font-style: italic
+}

@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns"
+         TAN-version="2021"
+         id="tag:textalign.net,2015:tan-voc:n:eng-ara:quran">
+   <head>
+      <name>Commonly used names for Surahs in the Quran, incorporating English and Arabic.</name>
+      <master-location
+         href="http://textalign.net/release/TAN-2021/vocabularies/extra/n.quran.eng-ara.tan-voc.xml"/>
+      <license which="by 4.0" licensor="kalvesmaki"/>
+      <vocabulary-key>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/2995827031</IRI>
+            <IRI>tag:textalign.net,2015:person:kalvesmaki1</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self1</IRI>
+            <IRI>tag:kalvesmaki@gmail.com,2014:self1</IRI>
+            <name>joel kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp roles="creator" who="kalvesmaki"/>
+      <change who="kalvesmaki" when="2018-09-14">Started file.</change>
+      <to-do/>
+   </head>
+   <body affects-attribute="n" affects-element="work">
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah1</IRI>
+         <name xml:lang="ara">الفاتحة</name>
+         <name xml:lang="ara">أم الكتاب</name>
+         <name xml:lang="ara">ام الكتاب</name>
+         <name xml:lang="ara">أم القرآن</name>
+         <name xml:lang="ara">ام القران</name>
+         <name xml:lang="ara">السبع المثاني</name>
+         <name xml:lang="ara">الحمد</name>
+         <name xml:lang="ara">الشفاء</name>
+         <name xml:lang="ara">سورة الصلاة</name>
+         <name xml:lang="ara">الأساس</name>
+         <name xml:lang="ara">الاساس</name>
+         <name xml:lang="ara-Latn">al fātiḥa</name>
+         <name xml:lang="ara-Latn">al fatiha</name>
+         <name xml:lang="ara-Latn">umm ul kitab</name>
+         <name xml:lang="ara-Latn">umm ul qur'an</name>
+         <name xml:lang="ara-Latn">as sab' ul mathani</name>
+         <name xml:lang="ara-Latn">al hamd</name>
+         <name xml:lang="ara-Latn">ash shifa'</name>
+         <name xml:lang="ara-Latn">surat as salah</name>
+         <name xml:lang="ara-Latn">al 'asas</name>
+         <name xml:lang="eng">the opening</name>
+         <name xml:lang="eng">mother of the book</name>
+         <name xml:lang="eng">mother of the koran</name>
+         <name xml:lang="eng">the oft recited seven</name>
+         <name xml:lang="eng">praise</name>
+         <name xml:lang="eng">the cure</name>
+         <name xml:lang="eng">chapter of the prayer</name>
+         <name xml:lang="eng">the foundation</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah2</IRI>
+         <name xml:lang="ara">البقرة</name>
+         <name xml:lang="ara-Latn">al baqara</name>
+         <name xml:lang="eng">the cow</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah3</IRI>
+         <name xml:lang="ara">آل عمران</name>
+         <name xml:lang="ara">ال عمران</name>
+         <name xml:lang="ara-Latn">āl ʿimrān</name>
+         <name xml:lang="ara-Latn">al ʿimran</name>
+         <name xml:lang="ara-Latn">ali imran</name>
+         <name xml:lang="eng">the house of imran</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah4</IRI>
+         <name xml:lang="ara">النساء</name>
+         <name xml:lang="ara-Latn">al nisāʾ</name>
+         <name xml:lang="ara-Latn">al nisaʾ</name>
+         <name xml:lang="ara-Latn">an nisa'</name>
+         <name xml:lang="eng">women</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah5</IRI>
+         <name xml:lang="ara">المائدة</name>
+         <name xml:lang="ara">المايدة</name>
+         <name xml:lang="ara-Latn">al māʾida</name>
+         <name xml:lang="ara-Latn">al maʾida</name>
+         <name xml:lang="ara-Latn">al ma'ida</name>
+         <name xml:lang="eng">the table spread</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah6</IRI>
+         <name xml:lang="ara">الأنعام</name>
+         <name xml:lang="ara">الانعام</name>
+         <name xml:lang="ara-Latn">al anʿām</name>
+         <name xml:lang="ara-Latn">al anʿam</name>
+         <name xml:lang="ara-Latn">al an'am</name>
+         <name xml:lang="eng">cattle</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah7</IRI>
+         <name xml:lang="ara">الأعراف</name>
+         <name xml:lang="ara">الاعراف</name>
+         <name xml:lang="ara-Latn">al aʿrāf</name>
+         <name xml:lang="ara-Latn">al aʿraf</name>
+         <name xml:lang="ara-Latn">al a'raf</name>
+         <name xml:lang="eng">the heights</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah8</IRI>
+         <name xml:lang="ara">الأنفال</name>
+         <name xml:lang="ara">الانفال</name>
+         <name xml:lang="ara-Latn">al anfāl</name>
+         <name xml:lang="ara-Latn">al anfal</name>
+         <name xml:lang="eng">spoils of war</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah9</IRI>
+         <name xml:lang="ara">التوبة</name>
+         <name xml:lang="ara">البراءة</name>
+         <name xml:lang="ara-Latn">al tawba</name>
+         <name xml:lang="ara-Latn">at tawba</name>
+         <name xml:lang="ara-Latn">al bara'a</name>
+         <name xml:lang="eng">repentance</name>
+         <name xml:lang="eng">the absolution</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah10</IRI>
+         <name xml:lang="ara">يونس</name>
+         <name xml:lang="ara-Latn">yūnus</name>
+         <name xml:lang="ara-Latn">yunus</name>
+         <name xml:lang="eng">jonah</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah11</IRI>
+         <name xml:lang="ara">هود</name>
+         <name xml:lang="ara-Latn">hūd</name>
+         <name>hud</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah12</IRI>
+         <name xml:lang="ara">يوسف</name>
+         <name xml:lang="ara-Latn">yūsuf</name>
+         <name xml:lang="ara-Latn">yusuf</name>
+         <name xml:lang="eng">joseph</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah13</IRI>
+         <name xml:lang="ara">الرعد</name>
+         <name xml:lang="ara-Latn">al raʿd</name>
+         <name xml:lang="ara-Latn">ar ra'd</name>
+         <name xml:lang="eng">thunder</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah14</IRI>
+         <name xml:lang="ara">إبراهيم</name>
+         <name xml:lang="ara">ابراهيم</name>
+         <name xml:lang="ara-Latn">ibrāhīm</name>
+         <name xml:lang="ara-Latn">ibrahim</name>
+         <name xml:lang="eng">abraham</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah15</IRI>
+         <name xml:lang="ara">الحجر</name>
+         <name xml:lang="ara-Latn">al ḥijr</name>
+         <name xml:lang="ara-Latn">al hijr</name>
+         <name xml:lang="eng">the city of stone</name>
+         <name xml:lang="eng">the rocky plain</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah16</IRI>
+         <name xml:lang="ara">النحل</name>
+         <name xml:lang="ara">النعم</name>
+         <name xml:lang="ara-Latn">al naḥl</name>
+         <name xml:lang="ara-Latn">al nahl</name>
+         <name xml:lang="ara-Latn">an nahl</name>
+         <name xml:lang="ara-Latn">an ni'em</name>
+         <name xml:lang="eng">the bee</name>
+         <name xml:lang="eng">the blessings</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah17</IRI>
+         <name xml:lang="ara">الإسراء</name>
+         <name xml:lang="ara">الاسراء</name>
+         <name xml:lang="ara">بني إسراءيل</name>
+         <name xml:lang="ara">بني اسراءيل</name>
+         <name xml:lang="ara">سبحان</name>
+         <name xml:lang="ara-Latn">al isrāʾ</name>
+         <name xml:lang="ara-Latn">al israʾ</name>
+         <name xml:lang="ara-Latn">al isra'</name>
+         <name xml:lang="ara-Latn">bani isra'eel</name>
+         <name xml:lang="ara-Latn">subhan</name>
+         <name xml:lang="eng">the night journey</name>
+         <name xml:lang="eng">the children of israel</name>
+         <name xml:lang="eng">glory</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah18</IRI>
+         <name xml:lang="ara">الكهف</name>
+         <name xml:lang="ara-Latn">al kahf</name>
+         <name xml:lang="eng">the cave</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah19</IRI>
+         <name xml:lang="ara">مريم</name>
+         <name xml:lang="ara-Latn">maryam</name>
+         <name xml:lang="eng">mary</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah20</IRI>
+         <name xml:lang="ara">طه</name>
+         <name xml:lang="ara-Latn">ṭā hā</name>
+         <name>ta ha</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah21</IRI>
+         <name xml:lang="ara">الأنبياء</name>
+         <name xml:lang="ara">الانبياء</name>
+         <name xml:lang="ara-Latn">al anbiyāʾ</name>
+         <name xml:lang="ara-Latn">al anbiyaʾ</name>
+         <name xml:lang="ara-Latn">al anbiya'</name>
+         <name xml:lang="eng">the prophets</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah22</IRI>
+         <name xml:lang="ara">الحج</name>
+         <name xml:lang="ara-Latn">al ḥajj</name>
+         <name xml:lang="ara-Latn">al hajj</name>
+         <name xml:lang="eng">the pilgrimage</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah23</IRI>
+         <name xml:lang="ara">المؤمنون</name>
+         <name xml:lang="ara">المومنون</name>
+         <name xml:lang="ara-Latn">al muʾminūn</name>
+         <name xml:lang="ara-Latn">al muʾminun</name>
+         <name xml:lang="ara-Latn">al mu'minoon</name>
+         <name xml:lang="eng">the believers</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah24</IRI>
+         <name xml:lang="ara">النور</name>
+         <name xml:lang="ara-Latn">al nūr</name>
+         <name xml:lang="ara-Latn">al nur</name>
+         <name xml:lang="ara-Latn">an nur</name>
+         <name xml:lang="eng">light</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah25</IRI>
+         <name xml:lang="ara">الفرقان</name>
+         <name xml:lang="ara-Latn">al furqān</name>
+         <name xml:lang="ara-Latn">al furqan</name>
+         <name xml:lang="eng">the criterion</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah26</IRI>
+         <name xml:lang="ara">الشعراء</name>
+         <name xml:lang="ara-Latn">al shuʿarāʾ</name>
+         <name xml:lang="ara-Latn">al shuʿaraʾ</name>
+         <name xml:lang="ara-Latn">ash shu'ara</name>
+         <name xml:lang="eng">the poets</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah27</IRI>
+         <name xml:lang="ara">النمل</name>
+         <name xml:lang="ara-Latn">al naml</name>
+         <name xml:lang="ara-Latn">an naml</name>
+         <name xml:lang="eng">the ants</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah28</IRI>
+         <name xml:lang="ara">القصص</name>
+         <name xml:lang="ara-Latn">al qaṣaṣ</name>
+         <name xml:lang="ara-Latn">al qasas</name>
+         <name xml:lang="eng">the story</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah29</IRI>
+         <name xml:lang="ara">العنكبوت</name>
+         <name xml:lang="ara-Latn">al ʿanqabūt</name>
+         <name xml:lang="ara-Latn">al ʿanqabut</name>
+         <name xml:lang="ara-Latn">al ankabut</name>
+         <name xml:lang="eng">the spider</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah30</IRI>
+         <name xml:lang="ara">الروم</name>
+         <name xml:lang="ara-Latn">al rūm</name>
+         <name xml:lang="ara-Latn">al rum</name>
+         <name xml:lang="ara-Latn">ar rum</name>
+         <name xml:lang="eng">byzantium</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah31</IRI>
+         <name xml:lang="ara">لقمان</name>
+         <name xml:lang="ara-Latn">luqmān</name>
+         <name>luqman</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah32</IRI>
+         <name xml:lang="ara">السجدة</name>
+         <name xml:lang="ara">المضاجع</name>
+         <name xml:lang="ara">الم تنزيل</name>
+         <name xml:lang="ara-Latn">al sajda</name>
+         <name xml:lang="ara-Latn">as sajda</name>
+         <name xml:lang="ara-Latn">al madaji'</name>
+         <name xml:lang="ara-Latn">alif lam meem tanzeel</name>
+         <name xml:lang="eng">prostration</name>
+         <name xml:lang="eng">the beds</name>
+         <name xml:lang="eng">alif lam meem revelation</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah33</IRI>
+         <name xml:lang="ara">الأحزاب</name>
+         <name xml:lang="ara">الاحزاب</name>
+         <name xml:lang="ara-Latn">al aḥzāb</name>
+         <name xml:lang="ara-Latn">al ahzab</name>
+         <name xml:lang="eng">the confederates</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah34</IRI>
+         <name xml:lang="ara">سبأ</name>
+         <name xml:lang="ara">سبا</name>
+         <name xml:lang="ara-Latn">sabāʾ</name>
+         <name xml:lang="ara-Latn">sabaʾ</name>
+         <name xml:lang="ara-Latn">saba'</name>
+         <name xml:lang="eng">sheba</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah35</IRI>
+         <name xml:lang="ara">فاطر</name>
+         <name xml:lang="ara">الملائكة</name>
+         <name xml:lang="ara">الملايكة</name>
+         <name xml:lang="ara-Latn">fāṭir</name>
+         <name xml:lang="ara-Latn">fatir</name>
+         <name xml:lang="ara-Latn">al mala'ika</name>
+         <name xml:lang="eng">the originator</name>
+         <name xml:lang="eng">angels</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah36</IRI>
+         <name xml:lang="ara">يس</name>
+         <name xml:lang="ara-Latn">yā sīn</name>
+         <name xml:lang="ara-Latn">ya sin</name>
+         <name>ya seen</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah37</IRI>
+         <name xml:lang="ara">الصافات</name>
+         <name xml:lang="ara-Latn">al ṣāffāt</name>
+         <name xml:lang="ara-Latn">al saffat</name>
+         <name xml:lang="ara-Latn">as saffat</name>
+         <name xml:lang="eng">those ranged in ranks</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah38</IRI>
+         <name xml:lang="ara">ص</name>
+         <name xml:lang="ara">داوود</name>
+         <name xml:lang="ara-Latn">ṣād</name>
+         <name>sad</name>
+         <name xml:lang="ara-Latn">dawood</name>
+         <name xml:lang="eng">david</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah39</IRI>
+         <name xml:lang="ara">الزمر</name>
+         <name xml:lang="ara">الغرف</name>
+         <name xml:lang="ara-Latn">al zumar</name>
+         <name xml:lang="ara-Latn">az zumar</name>
+         <name xml:lang="ara-Latn">al ghuraf</name>
+         <name xml:lang="eng">the crowds</name>
+         <name xml:lang="eng">the dwellings</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah40</IRI>
+         <name xml:lang="ara">غافر</name>
+         <name xml:lang="ara">المؤمن</name>
+         <name xml:lang="ara">المومن</name>
+         <name xml:lang="ara">الفضل</name>
+         <name xml:lang="ara-Latn">al muʾmin</name>
+         <name xml:lang="ara-Latn">ghafir</name>
+         <name xml:lang="ara-Latn">al mu'min</name>
+         <name xml:lang="ara-Latn">al fadhl</name>
+         <name xml:lang="eng">the forgiver</name>
+         <name xml:lang="eng">the believer</name>
+         <name xml:lang="eng">bounty</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah41</IRI>
+         <name xml:lang="ara">فصلت</name>
+         <name xml:lang="ara">حم سجدة</name>
+         <name xml:lang="ara">المصابيح</name>
+         <name xml:lang="ara">الأقوات</name>
+         <name xml:lang="ara">الاقوات</name>
+         <name xml:lang="ara-Latn">fuṣṣilat</name>
+         <name xml:lang="ara-Latn">fussilat</name>
+         <name xml:lang="ara-Latn">ha meem sajda</name>
+         <name xml:lang="ara-Latn">al masabeeh</name>
+         <name xml:lang="ara-Latn">al aquat</name>
+         <name xml:lang="eng">expounded</name>
+         <name xml:lang="eng">ha meem prostration</name>
+         <name xml:lang="eng">lamps</name>
+         <name xml:lang="eng">means of sustenance</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah42</IRI>
+         <name xml:lang="ara">الشورى</name>
+         <name xml:lang="ara">حم عسق</name>
+         <name xml:lang="ara-Latn">al shūrā</name>
+         <name xml:lang="ara-Latn">al shura</name>
+         <name xml:lang="ara-Latn">ash shura</name>
+         <name xml:lang="ara-Latn">ha meem 'ain seen coff</name>
+         <name xml:lang="eng">counsel</name>
+         <name xml:lang="eng">ha meem ain seen coff</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah43</IRI>
+         <name xml:lang="ara">الزخرف</name>
+         <name xml:lang="ara-Latn">al zukhruf</name>
+         <name xml:lang="ara-Latn">az zukhruf</name>
+         <name xml:lang="eng">gold ornaments</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah44</IRI>
+         <name xml:lang="ara">الدخان</name>
+         <name xml:lang="ara-Latn">al dukhān</name>
+         <name xml:lang="ara-Latn">al dukhan</name>
+         <name xml:lang="ara-Latn">ad dukhan</name>
+         <name xml:lang="eng">smoke</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah45</IRI>
+         <name xml:lang="ara">الجاثية</name>
+         <name xml:lang="ara">الشريعة</name>
+         <name xml:lang="ara-Latn">al jāthiya</name>
+         <name xml:lang="ara-Latn">al jathiya</name>
+         <name xml:lang="ara-Latn">ash shari'a</name>
+         <name xml:lang="eng">kneeling</name>
+         <name xml:lang="eng">the clear path</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah46</IRI>
+         <name xml:lang="ara">الأحقاف</name>
+         <name xml:lang="ara">الاحقاف</name>
+         <name xml:lang="ara-Latn">al aḥqāf</name>
+         <name xml:lang="ara-Latn">al ahqaf</name>
+         <name xml:lang="eng">the sand dunes</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah47</IRI>
+         <name xml:lang="ara">محمد</name>
+         <name xml:lang="ara">القتال</name>
+         <name xml:lang="ara-Latn">muḥammad</name>
+         <name>muhammad</name>
+         <name xml:lang="ara-Latn">al qital</name>
+         <name xml:lang="eng">fighting</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah48</IRI>
+         <name xml:lang="ara">الفتح</name>
+         <name xml:lang="ara-Latn">al fatḥ</name>
+         <name xml:lang="ara-Latn">al fath</name>
+         <name xml:lang="eng">victory</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah49</IRI>
+         <name xml:lang="ara">الحجرات</name>
+         <name xml:lang="ara-Latn">al ḥujurāt</name>
+         <name xml:lang="ara-Latn">al hujurat</name>
+         <name xml:lang="eng">the private chambers</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah50</IRI>
+         <name xml:lang="ara">ق</name>
+         <name xml:lang="ara">الباسقات</name>
+         <name xml:lang="ara-Latn">qāf</name>
+         <name>qaf</name>
+         <name xml:lang="ara-Latn">al basiqat</name>
+         <name xml:lang="eng">towering</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah51</IRI>
+         <name xml:lang="ara">الذاريات</name>
+         <name xml:lang="ara-Latn">al dhāriyāt</name>
+         <name xml:lang="ara-Latn">al dhariyat</name>
+         <name xml:lang="ara-Latn">adh dhariyat</name>
+         <name xml:lang="eng">the scattering winds</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah52</IRI>
+         <name xml:lang="ara">الطور</name>
+         <name xml:lang="ara-Latn">al ṭūr</name>
+         <name xml:lang="ara-Latn">al tur</name>
+         <name xml:lang="ara-Latn">at tur</name>
+         <name xml:lang="eng">the mountain</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah53</IRI>
+         <name xml:lang="ara">النجم</name>
+         <name xml:lang="ara-Latn">al najm</name>
+         <name xml:lang="ara-Latn">an najm</name>
+         <name xml:lang="eng">the star</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah54</IRI>
+         <name xml:lang="ara">القمر</name>
+         <name xml:lang="ara">اقتربت الساعة</name>
+         <name xml:lang="ara-Latn">al qamar</name>
+         <name xml:lang="ara-Latn">iqtarabat as sa'a</name>
+         <name xml:lang="eng">the moon</name>
+         <name xml:lang="eng">the hour has drawn near</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah55</IRI>
+         <name xml:lang="ara">الرحمن</name>
+         <name xml:lang="ara-Latn">al raḥmān</name>
+         <name xml:lang="ara-Latn">al rahman</name>
+         <name xml:lang="ara-Latn">ar rahman</name>
+         <name xml:lang="eng">the compassionate</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah56</IRI>
+         <name xml:lang="ara">الواقعة</name>
+         <name xml:lang="ara-Latn">al wāqiʿa</name>
+         <name xml:lang="ara-Latn">al waqiʿa</name>
+         <name xml:lang="ara-Latn">al waqi'a</name>
+         <name xml:lang="eng">the inevitable</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah57</IRI>
+         <name xml:lang="ara">الحديد</name>
+         <name xml:lang="ara-Latn">al ḥadīd</name>
+         <name xml:lang="ara-Latn">al hadid</name>
+         <name xml:lang="eng">iron</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah58</IRI>
+         <name xml:lang="ara">المجادلة</name>
+         <name xml:lang="ara">الظهار</name>
+         <name xml:lang="ara-Latn">al mujādala</name>
+         <name xml:lang="ara-Latn">al mujadala</name>
+         <name xml:lang="ara-Latn">al mujadila</name>
+         <name xml:lang="ara-Latn">eth thihar</name>
+         <name xml:lang="eng">she who disputes</name>
+         <name xml:lang="eng">zihar</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah59</IRI>
+         <name xml:lang="ara">الحشر</name>
+         <name xml:lang="ara">بنو نضير</name>
+         <name xml:lang="ara-Latn">al ḥashr</name>
+         <name xml:lang="ara-Latn">al hashr</name>
+         <name xml:lang="ara-Latn">banu nadeer</name>
+         <name xml:lang="eng">the gathering</name>
+         <name xml:lang="eng">banu nadir</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah60</IRI>
+         <name xml:lang="ara">الممتحنة</name>
+         <name xml:lang="ara">الامتحان</name>
+         <name xml:lang="ara">المودة</name>
+         <name xml:lang="ara-Latn">al mumtaḥana</name>
+         <name xml:lang="ara-Latn">al mumtahana</name>
+         <name xml:lang="ara-Latn">al mumtahina</name>
+         <name xml:lang="ara-Latn">al imtihan</name>
+         <name xml:lang="ara-Latn">al mawada</name>
+         <name xml:lang="eng">she who is examined</name>
+         <name xml:lang="eng">the examination</name>
+         <name xml:lang="eng">affection</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah61</IRI>
+         <name xml:lang="ara">الصف</name>
+         <name xml:lang="ara">الحواريون</name>
+         <name xml:lang="ara">عيسى</name>
+         <name xml:lang="ara-Latn">al ṣaff</name>
+         <name xml:lang="ara-Latn">al saff</name>
+         <name xml:lang="ara-Latn">as saff</name>
+         <name xml:lang="ara-Latn">al hawariyoon</name>
+         <name xml:lang="ara-Latn">esa</name>
+         <name xml:lang="eng">the ranks</name>
+         <name xml:lang="eng">the apostles</name>
+         <name xml:lang="eng">jesus</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah62</IRI>
+         <name xml:lang="ara">الجمعة</name>
+         <name xml:lang="ara-Latn">al jumuʾa</name>
+         <name xml:lang="ara-Latn">al jumu'a</name>
+         <name xml:lang="eng">the congregation</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah63</IRI>
+         <name xml:lang="ara">المنافقون</name>
+         <name xml:lang="ara-Latn">al munāfiqūn</name>
+         <name xml:lang="ara-Latn">al munafiqun</name>
+         <name xml:lang="eng">the hypocrites</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah64</IRI>
+         <name xml:lang="ara">التغابن</name>
+         <name xml:lang="ara-Latn">al taghābun</name>
+         <name xml:lang="ara-Latn">al taghabun</name>
+         <name xml:lang="ara-Latn">at taghabun</name>
+         <name xml:lang="eng">mutual disposession</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah65</IRI>
+         <name xml:lang="ara">الطلاق</name>
+         <name xml:lang="ara">سورة النساء القصرى</name>
+         <name xml:lang="ara-Latn">al ṭalāq</name>
+         <name xml:lang="ara-Latn">al talaq</name>
+         <name xml:lang="ara-Latn">at talaq</name>
+         <name xml:lang="ara-Latn">surat an nisa' al qusra</name>
+         <name xml:lang="eng">divorce</name>
+         <name xml:lang="eng">the shorter chapter of women</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah66</IRI>
+         <name xml:lang="ara">التحريم</name>
+         <name xml:lang="ara">لما تحرم</name>
+         <name xml:lang="ara">المتحرم</name>
+         <name xml:lang="ara">سورة النبي</name>
+         <name xml:lang="ara-Latn">al taḥrīm</name>
+         <name xml:lang="ara-Latn">al tahrim</name>
+         <name xml:lang="ara-Latn">at tahrim</name>
+         <name xml:lang="ara-Latn">lima tuharrim</name>
+         <name xml:lang="ara-Latn">al mutaharrim</name>
+         <name xml:lang="ara-Latn">surat an nabi</name>
+         <name xml:lang="eng">forbiddance</name>
+         <name xml:lang="eng">why do you forbid?</name>
+         <name xml:lang="eng">the forbidden</name>
+         <name xml:lang="eng">chapter of the prophet</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah67</IRI>
+         <name xml:lang="ara">الملك</name>
+         <name xml:lang="ara">تبارك</name>
+         <name xml:lang="ara">تبارك الذي بيده الملك</name>
+         <name xml:lang="ara">المانع</name>
+         <name xml:lang="ara">المنجية</name>
+         <name xml:lang="ara-Latn">al mulk</name>
+         <name xml:lang="ara-Latn">tabarak</name>
+         <name xml:lang="ara-Latn">tabarak aladhee biyedihi al mulk</name>
+         <name xml:lang="ara-Latn">al mani'</name>
+         <name xml:lang="ara-Latn">al munjiyya</name>
+         <name xml:lang="eng">dominion</name>
+         <name xml:lang="eng">blessed</name>
+         <name xml:lang="eng">blessed is the one who holds the dominion</name>
+         <name xml:lang="eng">the shield</name>
+         <name xml:lang="eng">the savior</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah68</IRI>
+         <name xml:lang="ara">القلم</name>
+         <name xml:lang="ara-Latn">al qalam</name>
+         <name xml:lang="eng">the pen</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah69</IRI>
+         <name xml:lang="ara">الحاقة</name>
+         <name xml:lang="ara-Latn">al ḥāqqa</name>
+         <name xml:lang="ara-Latn">al haqqa</name>
+         <name xml:lang="eng">the undeniable reality</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah70</IRI>
+         <name xml:lang="ara">المعارج</name>
+         <name xml:lang="ara">المواقع</name>
+         <name xml:lang="ara">سأل</name>
+         <name xml:lang="ara">سال</name>
+         <name xml:lang="ara-Latn">al maʿārij</name>
+         <name xml:lang="ara-Latn">al maʿarij</name>
+         <name xml:lang="ara-Latn">al ma'arij</name>
+         <name xml:lang="ara-Latn">al mawaqi'</name>
+         <name xml:lang="ara-Latn">sa'ala</name>
+         <name xml:lang="eng">the ascending ways</name>
+         <name xml:lang="eng">the impending matters</name>
+         <name xml:lang="eng">someone asked</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah71</IRI>
+         <name xml:lang="ara">نوح</name>
+         <name xml:lang="ara-Latn">nūḥ</name>
+         <name xml:lang="ara-Latn">nuh</name>
+         <name xml:lang="eng">noah</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah72</IRI>
+         <name xml:lang="ara">الجن</name>
+         <name xml:lang="ara-Latn">al jinn</name>
+         <name xml:lang="eng">the jinn</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah73</IRI>
+         <name xml:lang="ara">المزمل</name>
+         <name xml:lang="ara-Latn">al muzzammil</name>
+         <name xml:lang="eng">the enwrapped one</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah74</IRI>
+         <name xml:lang="ara">المدثر</name>
+         <name xml:lang="ara-Latn">al muddaththir</name>
+         <name xml:lang="ara-Latn">al muddathir</name>
+         <name xml:lang="eng">the covered one</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah75</IRI>
+         <name xml:lang="ara">القيامة</name>
+         <name xml:lang="ara">لا أقسم</name>
+         <name xml:lang="ara">لا اقسم</name>
+         <name xml:lang="ara-Latn">al qiyāma</name>
+         <name xml:lang="ara-Latn">al qiyama</name>
+         <name xml:lang="ara-Latn">la uqsimu</name>
+         <name xml:lang="eng">resurrection</name>
+         <name xml:lang="eng">i swear</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah76</IRI>
+         <name xml:lang="ara">الإنسان</name>
+         <name xml:lang="ara">الانسان</name>
+         <name xml:lang="ara">هل أتى</name>
+         <name xml:lang="ara">هل اتى</name>
+         <name xml:lang="ara">الدهر</name>
+         <name xml:lang="ara">الأبرار</name>
+         <name xml:lang="ara">الابرار</name>
+         <name xml:lang="ara-Latn">al insān</name>
+         <name xml:lang="ara-Latn">al insan</name>
+         <name xml:lang="ara-Latn">hal ataa</name>
+         <name xml:lang="ara-Latn">ad dahr</name>
+         <name xml:lang="ara-Latn">al abrar</name>
+         <name xml:lang="eng">the human</name>
+         <name xml:lang="eng">hasn't there come?</name>
+         <name xml:lang="eng">endless time</name>
+         <name xml:lang="eng">the pious</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah77</IRI>
+         <name xml:lang="ara">المرسلات</name>
+         <name xml:lang="ara-Latn">al mursalāt</name>
+         <name xml:lang="ara-Latn">al mursalat</name>
+         <name xml:lang="eng">those sent forth</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah78</IRI>
+         <name xml:lang="ara">النبأ</name>
+         <name xml:lang="ara">النبا</name>
+         <name xml:lang="ara">المعصرات</name>
+         <name xml:lang="ara">التساءل</name>
+         <name xml:lang="ara-Latn">al nabāʾ</name>
+         <name xml:lang="ara-Latn">al nabaʾ</name>
+         <name xml:lang="ara-Latn">an naba'</name>
+         <name xml:lang="ara-Latn">al mu'sirat</name>
+         <name xml:lang="ara-Latn">at tasa'ul</name>
+         <name xml:lang="eng">the tiding</name>
+         <name xml:lang="eng">rain clouds</name>
+         <name xml:lang="eng">questioning one another</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah79</IRI>
+         <name xml:lang="ara">النازعات</name>
+         <name xml:lang="ara">الساهرة</name>
+         <name xml:lang="ara">الطامة</name>
+         <name xml:lang="ara-Latn">al nāziʿāt</name>
+         <name xml:lang="ara-Latn">al naziʿat</name>
+         <name xml:lang="ara-Latn">an nazi'at</name>
+         <name xml:lang="ara-Latn">es sahira</name>
+         <name xml:lang="ara-Latn">et tomma</name>
+         <name xml:lang="eng">the snatchers</name>
+         <name xml:lang="eng">the wide expanse</name>
+         <name xml:lang="eng">the calamity</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah80</IRI>
+         <name xml:lang="ara">عبس</name>
+         <name xml:lang="ara">الصاخة</name>
+         <name xml:lang="ara">السفرة</name>
+         <name xml:lang="ara-Latn">ʿabasa</name>
+         <name xml:lang="ara-Latn">abasa</name>
+         <name xml:lang="ara-Latn">as saakha</name>
+         <name xml:lang="ara-Latn">as saffara</name>
+         <name xml:lang="eng">he frowned</name>
+         <name xml:lang="eng">the piercing cry</name>
+         <name xml:lang="eng">the scribes</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah81</IRI>
+         <name xml:lang="ara">التكوير</name>
+         <name xml:lang="ara-Latn">al takwīr</name>
+         <name xml:lang="ara-Latn">al takwir</name>
+         <name xml:lang="ara-Latn">at takwir</name>
+         <name xml:lang="eng">the enfolding</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah82</IRI>
+         <name xml:lang="ara">الإنفطار</name>
+         <name xml:lang="ara">الانفطار</name>
+         <name xml:lang="ara-Latn">al infiṭār</name>
+         <name xml:lang="ara-Latn">al infitar</name>
+         <name xml:lang="eng">the splitting</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah83</IRI>
+         <name xml:lang="ara">المطففين</name>
+         <name xml:lang="ara-Latn">al muṭaffifīn</name>
+         <name xml:lang="ara-Latn">al mutaffifin</name>
+         <name xml:lang="ara-Latn">al mutaffifeen</name>
+         <name xml:lang="eng">the defrauders</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah84</IRI>
+         <name xml:lang="ara">الإنشقاق</name>
+         <name xml:lang="ara">الانشقاق</name>
+         <name xml:lang="ara">انشقت</name>
+         <name xml:lang="ara-Latn">al inshiqāq</name>
+         <name xml:lang="ara-Latn">al inshiqaq</name>
+         <name xml:lang="ara-Latn">inshaqat</name>
+         <name xml:lang="eng">the bursting open</name>
+         <name xml:lang="eng">burst open</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah85</IRI>
+         <name xml:lang="ara">البروج</name>
+         <name xml:lang="ara-Latn">al burūj</name>
+         <name xml:lang="ara-Latn">al buruj</name>
+         <name xml:lang="ara-Latn">al burooj</name>
+         <name xml:lang="eng">the constellations</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah86</IRI>
+         <name xml:lang="ara">الطارق</name>
+         <name xml:lang="ara-Latn">al ṭāriq</name>
+         <name xml:lang="ara-Latn">al tariq</name>
+         <name xml:lang="ara-Latn">at tariq</name>
+         <name xml:lang="eng">the night visitant</name>
+         <name xml:lang="eng">the morning star</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah87</IRI>
+         <name xml:lang="ara">الأعلى</name>
+         <name xml:lang="ara">الاعلى</name>
+         <name xml:lang="ara-Latn">al aʿlā</name>
+         <name xml:lang="ara-Latn">al aʿla</name>
+         <name xml:lang="ara-Latn">al a'la</name>
+         <name xml:lang="eng">the highest</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah88</IRI>
+         <name xml:lang="ara">الغاشية</name>
+         <name xml:lang="ara-Latn">al ghāshiya</name>
+         <name xml:lang="ara-Latn">al ghashiya</name>
+         <name xml:lang="eng">the overwhelming event</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah89</IRI>
+         <name xml:lang="ara">الفجر</name>
+         <name xml:lang="ara-Latn">al ajr</name>
+         <name xml:lang="ara-Latn">al fajr</name>
+         <name xml:lang="eng">the dawn</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah90</IRI>
+         <name xml:lang="ara">البلد</name>
+         <name xml:lang="ara-Latn">al balad</name>
+         <name xml:lang="eng">the city</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah91</IRI>
+         <name xml:lang="ara">الشمس</name>
+         <name xml:lang="ara-Latn">al shams</name>
+         <name xml:lang="ara-Latn">ash shams</name>
+         <name xml:lang="eng">the sun</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah92</IRI>
+         <name xml:lang="ara">الليل</name>
+         <name xml:lang="ara-Latn">al layl</name>
+         <name xml:lang="ara-Latn">al lail</name>
+         <name xml:lang="eng">the night</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah93</IRI>
+         <name xml:lang="ara">الضحى</name>
+         <name xml:lang="ara-Latn">al ḍuḥā</name>
+         <name xml:lang="ara-Latn">al duha</name>
+         <name xml:lang="ara-Latn">ad dhuha</name>
+         <name xml:lang="eng">the morning brightness</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah94</IRI>
+         <name xml:lang="ara">الشرح</name>
+         <name xml:lang="ara">الانشراح</name>
+         <name xml:lang="ara-Latn">al sharḥ</name>
+         <name xml:lang="ara-Latn">al sharh</name>
+         <name xml:lang="ara-Latn">ash sharh</name>
+         <name xml:lang="ara-Latn">el inshirah</name>
+         <name xml:lang="eng">expansion</name>
+         <name xml:lang="eng">solace</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah95</IRI>
+         <name xml:lang="ara">التين</name>
+         <name xml:lang="ara-Latn">al tīn</name>
+         <name xml:lang="ara-Latn">al tin</name>
+         <name xml:lang="ara-Latn">at teen</name>
+         <name xml:lang="eng">the fig</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah96</IRI>
+         <name xml:lang="ara">العلق</name>
+         <name xml:lang="ara">اقرأ</name>
+         <name xml:lang="ara">اقرا</name>
+         <name xml:lang="ara-Latn">al ʿalaq</name>
+         <name xml:lang="ara-Latn">al alaq</name>
+         <name xml:lang="ara-Latn">ikra'</name>
+         <name xml:lang="eng">the blood clot</name>
+         <name xml:lang="eng">read!</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah97</IRI>
+         <name xml:lang="ara">القدر</name>
+         <name xml:lang="ara-Latn">al qadr</name>
+         <name xml:lang="eng">the night of power</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah98</IRI>
+         <name xml:lang="ara">البينة</name>
+         <name xml:lang="ara">لم يكن</name>
+         <name xml:lang="ara-Latn">al bayyina</name>
+         <name xml:lang="ara-Latn">lam yakun</name>
+         <name xml:lang="eng">the clear proof</name>
+         <name xml:lang="eng">they will not</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah99</IRI>
+         <name xml:lang="ara">الزلزلة</name>
+         <name xml:lang="ara-Latn">al zalzala</name>
+         <name xml:lang="ara-Latn">az zalzala</name>
+         <name xml:lang="eng">the earthquake</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah100</IRI>
+         <name xml:lang="ara">العاديات</name>
+         <name xml:lang="ara-Latn">al ʿādiyāt</name>
+         <name xml:lang="ara-Latn">al ʿadiyat</name>
+         <name xml:lang="ara-Latn">al 'adiyat</name>
+         <name xml:lang="eng">the chargers</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah101</IRI>
+         <name xml:lang="ara">القارعة</name>
+         <name xml:lang="ara-Latn">al qāriʿa</name>
+         <name xml:lang="ara-Latn">al qariʿa</name>
+         <name xml:lang="ara-Latn">al qari'a</name>
+         <name xml:lang="eng">the catastrophe</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah102</IRI>
+         <name xml:lang="ara">التكاثر</name>
+         <name xml:lang="ara-Latn">al takāthur</name>
+         <name xml:lang="ara-Latn">al takathur</name>
+         <name xml:lang="ara-Latn">at takathur</name>
+         <name xml:lang="eng">vying for increase</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah103</IRI>
+         <name xml:lang="ara">العصر</name>
+         <name xml:lang="ara-Latn">al ʿaṣr</name>
+         <name xml:lang="ara-Latn">al ʿasr</name>
+         <name xml:lang="ara-Latn">al 'asr</name>
+         <name xml:lang="eng">time</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah104</IRI>
+         <name xml:lang="ara">الهمزة</name>
+         <name xml:lang="ara-Latn">al humaza</name>
+         <name xml:lang="eng">the slanderer</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah105</IRI>
+         <name xml:lang="ara">الفيل</name>
+         <name xml:lang="ara-Latn">al fīl</name>
+         <name xml:lang="ara-Latn">al fil</name>
+         <name xml:lang="ara-Latn">al feel</name>
+         <name xml:lang="eng">the elephant</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah106</IRI>
+         <name xml:lang="ara">قريش</name>
+         <name>quraysh</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah107</IRI>
+         <name xml:lang="ara">الماعون</name>
+         <name xml:lang="ara-Latn">al māʿūn</name>
+         <name xml:lang="ara-Latn">al maʿun</name>
+         <name xml:lang="ara-Latn">al ma'oon</name>
+         <name xml:lang="eng">assistance</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah108</IRI>
+         <name xml:lang="ara">الكوثر</name>
+         <name xml:lang="ara-Latn">al kawthar</name>
+         <name xml:lang="eng">abundance</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah109</IRI>
+         <name xml:lang="ara">الكافرون</name>
+         <name xml:lang="ara-Latn">al kāfirūn</name>
+         <name xml:lang="ara-Latn">al kafirun</name>
+         <name xml:lang="ara-Latn">al kafiroon</name>
+         <name xml:lang="eng">disbelievers</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah110</IRI>
+         <name xml:lang="ara">النصر</name>
+         <name xml:lang="ara-Latn">al naṣr</name>
+         <name xml:lang="ara-Latn">al nasr</name>
+         <name xml:lang="ara-Latn">an nasr</name>
+         <name xml:lang="eng">help</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah111</IRI>
+         <name xml:lang="ara">المسد</name>
+         <name xml:lang="ara">اللهب</name>
+         <name xml:lang="ara-Latn">al masad</name>
+         <name xml:lang="ara-Latn">al lahab</name>
+         <name xml:lang="eng">palm fiber</name>
+         <name xml:lang="eng">the flame</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah112</IRI>
+         <name xml:lang="ara">الإخلاص</name>
+         <name xml:lang="ara">الاخلاص</name>
+         <name xml:lang="ara">المنفرة</name>
+         <name xml:lang="ara">النجاة</name>
+         <name xml:lang="ara">المعرفة</name>
+         <name xml:lang="ara">المذكرة</name>
+         <name xml:lang="ara">نور القرآن</name>
+         <name xml:lang="ara">نور القران</name>
+         <name xml:lang="ara-Latn">al ikhlāṣ</name>
+         <name xml:lang="ara-Latn">al ikhlas</name>
+         <name xml:lang="ara-Latn">al munaffira</name>
+         <name xml:lang="ara-Latn">an najah</name>
+         <name xml:lang="ara-Latn">al ma'rifa</name>
+         <name xml:lang="ara-Latn">al mudhekira</name>
+         <name xml:lang="ara-Latn">nur al quran</name>
+         <name xml:lang="eng">sincerity</name>
+         <name xml:lang="eng">casting away</name>
+         <name xml:lang="eng">deliverance</name>
+         <name xml:lang="eng">recognition</name>
+         <name xml:lang="eng">the reminder</name>
+         <name xml:lang="eng">light of the quran</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah113</IRI>
+         <name xml:lang="ara">الفلق</name>
+         <name xml:lang="ara-Latn">al falaq</name>
+         <name xml:lang="eng">daybreak</name>
+      </item>
+      <item>
+         <IRI>tag:textalign.net,2015:n-alias:quran:surah114</IRI>
+         <name xml:lang="ara">الناس</name>
+         <name xml:lang="ara-Latn">al nās</name>
+         <name xml:lang="ara-Latn">al nas</name>
+         <name xml:lang="ara-Latn">an nas</name>
+         <name xml:lang="eng">mankind</name>
+      </item>
+   </body>
+</TAN-voc>

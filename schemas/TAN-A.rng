@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="incl/TAN-class-2.rng">
+    <start>
+      <element name="TAN-A">
+        <a:documentation>specifies that the file is a general TAN alignment file. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <!-- TAN-A files must have zero or more sources -->
+    <define name="source-list">
+      <zeroOrMore>
+        <ref name="link-element-source"/>
+      </zeroOrMore>
+    </define>
+    <define name="voc-element-non-class-2">
+      <ref name="voc-element-tan-a"/>
+    </define>
+    <define name="tok-cert-opt">
+      <empty/>
+    </define>
+    <!-- Redefining TAN-body-core not only defines what is in the body of a TAN-A but also excludes groups from it. -->
+    <define name="body-content-non-class-2">
+      <optional>
+        <ref name="ptr-attr-subject"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-object"/>
+      </optional>
+      <optional>
+        <ref name="ptr-attr-verb"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="element-claim"/>
+      </zeroOrMore>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="attr-in-lang">
+    <attribute name="in-lang">
+      <a:documentation>restricts a claim to a particular language; used with only certain verbs, e.g., "translates"</a:documentation>
+      <a:documentation>By default, this feature is disallowed. A verb's &lt;constraint&gt; must explicitly require or allow it.</a:documentation>
+      <data type="language"/>
+    </attribute>
+  </define>
+  <define name="ptr-attr-modal">
+    <attribute name="adverb">
+      <a:documentation>names a &lt;modal&gt; that qualifies the claim.</a:documentation>
+      <a:documentation>Multiple values of @adverb are interpreted to mean "and" with intersection. No distribution takes place. @adverb="X Y" specifies that the claim is expressed in both X and Y modes. For example, adverb="not probably" means that the claim is probably not true.</a:documentation>
+      <a:documentation>The sequence of multiple values of @adverb is immaterial. This attribute is not inheritable.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-object">
+    <attribute name="object">
+      <a:documentation>takes one or more ID refs of vocabulary items that serve as the grammatical object of a claim. For example, if you wish to say that work A is a commentary on work B, then @object would have the ID ref for work B. @object is used for simple idrefs. For complex objects such as data content or textual references you must use &lt;object&gt;.</a:documentation>
+      <a:documentation>Multiple values of @object are interpreted to mean "and", resulting in distribution of the claim. E.g., object="X Y" means the claim is true about X and about Y.</a:documentation>
+      <a:documentation>In RDF, the concept of object (the third element of a triple) is required. In TAN, the object is not required, since some &lt;verb&gt;s may be intransitive (e.g., "Charlie slept.").</a:documentation>
+      <a:documentation>The sequence of multiple values of @object are immaterial.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-place">
+    <attribute name="where">
+      <a:documentation>restricts the domain of a &lt;claim&gt; to a specific &lt;place&gt;.</a:documentation>
+      <a:documentation>Multiple values of @where are interpreted to mean "or" with union. Unlike most other attributes for &lt;claim&gt;, no distribution takes place. For example, where="X Y" means the claim occured in either X or Y or both.</a:documentation>
+      <a:documentation>The sequence of multiple values of @where is immaterial.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-scriptum">
+    <attribute name="scriptum">
+      <a:documentation>points to one or more ID refs of vocabulary items that are scripta (text-bearing objects).</a:documentation>
+      <a:documentation>Multiple values of @scriptum are interpreted to mean "and", resulting in distribution of the claim.</a:documentation>
+      <a:documentation>The sequence of multiple values of @scriptum is immaterial.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-subject">
+    <attribute name="subject">
+      <a:documentation>points to one or more ID refs of vocabulary items in &lt;head&gt; that serve as the grammatical subject of a claim. @subject within &lt;body&gt; indicates the default subject(s) for &lt;claim&gt;s. @subject is used for idrefs; data content, textual references, or complex objects must be encoded with &lt;subject&gt;.</a:documentation>
+      <a:documentation>Multiple values of @subject are interpreted to mean "and", resulting in distribution of the claim. E.g., subject="X Y" means the claim is true about X and about Y.</a:documentation>
+      <a:documentation>The sequence of multiple values is immaterial.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-units">
+    <attribute name="units">
+      <a:documentation>points to the ID ref of a &lt;unit&gt;, identifying the type of unit.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-verb">
+    <attribute name="verb">
+      <a:documentation>points to one or more &lt;verb&gt;s that serve to assert something of the subject.</a:documentation>
+      <a:documentation>The TAN term "verb" is the preferred equivalent to RDF "predicate."</a:documentation>
+      <a:documentation> Multiple values of @verb are interpreted to mean "and", resulting in distribution of the claim. E.g., verb="X Y" means the claim is true for verb X and verb Y. Any claim with multiple verbs must observe the constraints of each verb.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-work">
+    <attribute name="work">
+      <a:documentation>refers via idrefs to one or more works. The ensuing claim(s) will be considerd to be true of any sources that share the same work.</a:documentation>
+      <a:documentation>If you wish to avoid making a claim applying to all other versions of a work, use @src instead.</a:documentation>
+      <a:documentation>Multiple values of @work are interpreted to mean "and", resulting in distribution of the claim. E.g., work="X Y" means the claim is true for both work X and work Y.</a:documentation>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-claim">
+    <element name="claim">
+      <a:documentation>makes one or more claims (assertions).</a:documentation>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="ed-stamp"/>
+          </optional>
+          <optional>
+            <ref name="attr-id-xml"/>
+          </optional>
+          <optional>
+            <ref name="certainty-claim"/>
+          </optional>
+          <optional>
+            <ref name="claimant-attributes"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-period"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-modal"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-verb"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-place"/>
+          </optional>
+          <interleave>
+            <optional>
+              <ref name="subject"/>
+            </optional>
+            <optional>
+              <ref name="object"/>
+            </optional>
+            <zeroOrMore>
+              <ref name="element-at-ref"/>
+            </zeroOrMore>
+            <optional>
+              <ref name="in-lang"/>
+            </optional>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-at-ref">
+    <element name="at-ref">
+      <a:documentation>restricts a claim to a particular abstract textual reference. </a:documentation>
+      <a:documentation>&lt;at-ref&gt; was designed primarily to serve claims related to apparatus critici. In traditional critical editions, the main text has an apparatus at the bottom of the page, indicating variations in the manuscript, e.g., "A om." or "A: γάρ". These terse statements are shorthand for: "Manuscript A omits the passage at line X word Y" and "Manuscript A reads γάρ in place of the passage at line X word Y." In those statements, the siglum A refers to the subject, and the reading (or lack thereof) is the object. The qualifier "at line X word Y" is the phrase that corresponds to &lt;at-ref&gt;. It functions much like &lt;where&gt;, but the geography is textual rather than spatial. </a:documentation>
+      <a:documentation>&lt;at-ref&gt; is special, and must be explicitly allowed or required by each &lt;verb&gt; or @verb's IRI + name pattern plus constraints. </a:documentation>
+      <a:documentation>&lt;at-ref&gt; contains a textual reference, and will look similar to &lt;subject&gt; or &lt;object&gt; built as a texutal reference. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;at-ref&gt;s is immaterial.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="textual-reference"/>
+    </element>
+  </define>
+  <define name="element-div">
+    <element name="div">
+      <a:documentation>restricts a claim to a particular passage in a subject or object. In this context &lt;div&gt; is especially useful for clarifying which part of a scriptum is meant, e.g., page ranges.</a:documentation>
+      <a:documentation>Unlike class-1 &lt;div&gt;s, this one takes no text and no inclusions.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;div&gt;s in a &lt;subject&gt; or &lt;object&gt; is important. A &lt;div&gt; specifies not only which parts of an &lt;object&gt; or &lt;subject&gt; are relevant, but the sequence of those parts.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="ptr-attr-type"/>
+      <ref name="attr-n"/>
+      <zeroOrMore>
+        <ref name="element-div"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="element-in-lang">
+    <element name="in-lang">
+      <a:documentation>restricts a claim to a particular language; used with only certain verbs, e.g., "translates".</a:documentation>
+      <a:documentation>Multiple values of &lt;in-lang&gt; are interpreted to mean "and", resulting in distribution of the claim. </a:documentation>
+      <a:documentation>By default, &lt;in-lang&gt; is disallowed. A verb's constrained IRI + name pattern must explicitly require or allow it.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <data type="language"/>
+    </element>
+  </define>
+  <define name="element-object">
+    <element name="object">
+      <a:documentation>points to text references that act as the object of the claim.</a:documentation>
+      <a:documentation>Unlike @object, which points to any entity via idrefs, &lt;subject&gt; is intended exclusively to point to data content or a textual subject.</a:documentation>
+      <a:documentation>Each textual &lt;object&gt; is interpreted as a single entity, with all textual references encoded by the element treated as a single, grouped passage. The sequence of its contents is therefore significant.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="nontextual-reference"/>
+        <ref name="textual-reference"/>
+      </choice>
+    </element>
+  </define>
+  <define name="element-subject">
+    <element name="subject">
+      <a:documentation>points to text references that act as the subject of the claim.</a:documentation>
+      <a:documentation>Unlike @subject, which points to any entity via idrefs, &lt;subject&gt; is intended exclusively to point to data content or a textual subject.</a:documentation>
+      <a:documentation>Each textual &lt;subject&gt; is interpreted as a single entity, with all textual references encoded by the element treated as a single, grouped passage. The sequence of its contents is therefore significant.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="nontextual-reference"/>
+        <ref name="textual-reference"/>
+      </choice>
+    </element>
+  </define>
+  <define name="element-tok-for-claim-no-ref">
+    <element name="tok">
+      <a:documentation>points to one or more tokens in the context source or reference.    </a:documentation>
+      <ref name="tok-selector-attributes-many"/>
+      <optional>
+        <ref name="attr-chars"/>
+      </optional>
+    </element>
+  </define>
+  <define name="element-tok-for-claim-with-ref">
+    <element name="tok">
+      <a:documentation>points to one or more tokens in the context source.    </a:documentation>
+      <ref name="attr-ref-many"/>
+      <ref name="tok-selector-attributes-many"/>
+      <optional>
+        <ref name="attr-chars"/>
+      </optional>
+    </element>
+  </define>
+  <!-- VOCABULARY -->
+  <define name="voc-element-tan-a">
+    <interleave>
+      <zeroOrMore>
+        <ref name="voc-element-work"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-place"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-unit"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-div-type"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-modal"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-vers"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-scri"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-topic"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="voc-element-verb"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="voc-element-modal">
+    <element name="modal">
+      <a:documentation>contains an IRI + name pattern identifying a modal or adverb that qualifies the verb of an assertion.</a:documentation>
+      <a:documentation>See main.xml#vocabularies-modals for standard TAN vocabulary.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-place">
+    <element name="place">
+      <a:documentation>contains an IRI + name pattern identifying a spatial location, usually somewhere on earth</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-topic">
+    <element name="topic">
+      <a:documentation>contains an IRI + name pattern identifying a topic.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-unit">
+    <element name="unit">
+      <a:documentation>contains an IRI + name pattern identifying a unit type (e.g., millimeters, seconds, Euros), to be used in conjunction with &lt;object&gt; to specify what quantities measure.</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-vers">
+    <element name="version">
+      <a:documentation>identifies the version of a work. Applicable to sources that contain multiple versions, e.g., original text and facing translations. Like &lt;work&gt;, &lt;version&gt; points to a conceptual entity, not a physical one.</a:documentation>
+      <a:documentation>Very few work-versions have their own URNs. It is advisable to assign a tag URN or a UUID. If you have used an IRI for &lt;work&gt; that you are entitled to modify, you may wish to add a suffix that will name the version. If you need to specify exactly where on a text-bearing object a version appears, &lt;desc&gt; or &lt;comment&gt; should be used.</a:documentation>
+      <a:documentation>For background, see main.xml#conceptual_works</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <!-- PATTERNS -->
+  <define name="in-lang">
+    <choice>
+      <ref name="attr-in-lang"/>
+      <oneOrMore>
+        <ref name="element-in-lang"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="subject">
+    <choice>
+      <ref name="ptr-attr-subject"/>
+      <oneOrMore>
+        <ref name="element-subject"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="object">
+    <choice>
+      <ref name="ptr-attr-object"/>
+      <oneOrMore>
+        <ref name="complex-object"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="complex-object">
+    <choice>
+      <ref name="element-object"/>
+      <oneOrMore>
+        <ref name="element-claim"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="nontextual-reference">
+    <optional>
+      <choice>
+        <ref name="attr-lang-xml"/>
+        <ref name="ptr-attr-units"/>
+      </choice>
+    </optional>
+    <text/>
+  </define>
+  <define name="textual-reference">
+    <choice>
+      <ref name="multi-source-whole-div-textual-reference"/>
+      <ref name="single-source-partial-div-textual-reference"/>
+      <ref name="work-version-reference"/>
+      <ref name="scriptum-reference"/>
+    </choice>
+  </define>
+  <!-- If a textual reference points merely to <div>s then all one need is @src/@work plus @ref -->
+  <define name="multi-source-whole-div-textual-reference">
+    <choice>
+      <ref name="ptr-attr-src-many"/>
+      <ref name="ptr-attr-work"/>
+    </choice>
+    <ref name="attr-ref-many"/>
+  </define>
+  <!-- If a textual reference points to parts of divs, i.e., tokens and token-defined passages, then it is source-specific (@src not @work). -->
+  <define name="single-source-partial-div-textual-reference">
+    <ref name="ptr-attr-src-one"/>
+    <choice>
+      <ref name="single-div-partial-textual-reference"/>
+      <ref name="multi-div-partial-textual-reference"/>
+    </choice>
+  </define>
+  <!-- If a partial textual reference is a subset of a <div> then @ref, pointing to a single <div>, should be in the parent element -->
+  <define name="single-div-partial-textual-reference">
+    <ref name="attr-ref-one"/>
+    <oneOrMore>
+      <choice>
+        <ref name="element-tok-for-claim-no-ref"/>
+        <ref name="text-passage-selector-no-ref"/>
+      </choice>
+    </oneOrMore>
+  </define>
+  <!-- If a partial textual reference is a spans <div>s then @ref should be in the children elements -->
+  <define name="multi-div-partial-textual-reference">
+    <oneOrMore>
+      <choice>
+        <ref name="element-tok-for-claim-with-ref"/>
+        <ref name="text-passage-selector-with-ref"/>
+      </choice>
+    </oneOrMore>
+  </define>
+  <!-- Some textual references point a work or work-version in the abstract -->
+  <define name="work-version-reference">
+    <ref name="ptr-attr-work"/>
+  </define>
+  <!-- Some textual references point to a scriptum, perhaps qualified -->
+  <define name="scriptum-reference">
+    <ref name="ptr-attr-scriptum"/>
+    <optional>
+      <ref name="scriptum-filter"/>
+    </optional>
+  </define>
+  <!-- A region of a scriptum can be constrained through nested divs, pointing to the region of the scriptum intended. -->
+  <define name="scriptum-filter">
+    <oneOrMore>
+      <ref name="element-div"/>
+    </oneOrMore>
+  </define>
+</grammar>

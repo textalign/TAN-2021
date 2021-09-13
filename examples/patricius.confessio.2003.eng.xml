@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-TEI.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" 
+   xmlns:tan="tag:textalign.net,2015:ns" xmlns:math="http://www.w3.org/1998/Math/MathML" 
+   xmlns="http://www.tei-c.org/ns/1.0" TAN-version="2021" 
+   id="tag:parkj@textalign.net,2015:patricius.confession.2003.eng">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">The Confession of St Patrick</title>
+            <title type="sub">A digital edition of the English translation by Pádraig
+               McCarthy</title>
+            <author>
+               <persName instant="false" full="yes">Patrick</persName> (<persName type="latin" instant="false" full="yes">Patricius</persName>, <persName type="old-irish" instant="false" full="yes">Pátraic</persName>, <persName type="irish" instant="false" full="yes">Pádraig</persName>)
+                  <date instant="false">(c.420–490?)</date>
+               <roleName full="yes">Bishop</roleName>, <roleName full="yes">Patron Saint of Ireland</roleName>
+            </author>
+            <author>
+               <persName instant="false" full="yes">Pádraig McCarthy</persName>
+               <roleName full="yes">Translator</roleName>
+            </author>
+            <editor>The Saint Patrick's Confessio Hypertext Stack Project</editor>
+            <principal>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Anthony Harvey</persName>
+                  <roleName full="yes">Project Leader</roleName>
+                  <orgName instant="false" full="yes">Royal Irish Academy</orgName>
+               </name>
+            </principal>
+            <editor>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Franz Fischer</persName>
+                  <roleName full="yes">Postdoctoral Researcher</roleName>
+                  <orgName instant="false" full="yes">Royal Irish Academy</orgName>
+               </name>
+            </editor>
+            <respStmt>
+               <resp>Translation from Latin by</resp>
+               <persName instant="false" full="yes">Pádraig McCarthy</persName>
+            </respStmt>
+            <respStmt>
+               <resp>Project Leader</resp>
+               <persName instant="false" full="yes">Anthony Harvey</persName>
+            </respStmt>
+            <respStmt>
+               <resp>Project Researcher</resp>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Franz Fischer</persName>
+                  <roleName full="yes">Principal Researcher</roleName>
+               </name>
+            </respStmt>
+            <respStmt>
+               <resp>Project Interns</resp>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Roman Bleier</persName>
+                  <roleName full="yes">Erasmus Postgrad Intern 2011</roleName>
+               </name>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Alessio Frenda</persName>
+                  <roleName full="yes">Summer Postgrad Intern 2010</roleName>
+               </name>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Daniela Schulz</persName>
+                  <roleName full="yes">Summer Postgrad Intern 2011</roleName>
+               </name>
+            </respStmt>
+            <respStmt>
+               <resp>Structural Markup Transformation</resp>
+               <name full="yes" instant="false">
+                  <persName instant="false" full="yes">Randall Cream</persName>
+                  <orgName instant="false" full="yes">Digital Humanities Observatory</orgName>
+                  <orgName instant="false" full="yes">Royal Irish Academy</orgName>
+               </name>
+            </respStmt>
+         </titleStmt>
+         <editionStmt>
+            <p part="N">The Stack gathers high resolution scans of all extant manuscript testimonies and – in
+               the form of a meta-edition – reproductions of relevant editions that have been
+               published: From the editio princeps, that is the first ever printed version of the
+               Confessio – edited by Sir James Ware in 1656 and based on the Irish and British
+               manuscript copies only – up to the canonical version of the critical text established
+               in the scholarly edition by Ludwig Bieler in 1950.</p>
+         </editionStmt>
+         <publicationStmt>
+            <p part="N">The Saint Patrick’s Confessio Hypertext Stack Project is funded under the Irish
+               government Programme for Research in Third-Level Institutions (PRTLI), Cycle 4. It is
+               part of the Humanities Serving Irish Society (HSIS) initiative, a partnership of
+               equals committed to developing an inter-institutional research infrastructure for the
+               humanities. The Hyperstack is one of two projects running at Royal Irish Academy
+               under the label ADR, "Academy Digital Resources", supported by the Digital Humanities
+               Observatory (DHO). (The second ADR project being the Doegen Project building up a
+               digital archive of Irish dialect recordings).</p>
+            <p part="N">The Hyperstack Project was conceived and is overseen by Dr Anthony Harvey, editor of
+               the Royal Irish Academy Dictionary of Medieval Latin from Celtic Sources. Since
+               September 2008 Dr Franz Fischer has been the postdoctoral researcher in charge. A
+               series of collaborators facilitate the project and greatly enhance its value. Not
+               least there is a postgrad intern for three months each summer.</p>
+            <p part="N">The St Patrick’s Confessio Hypertext Stack Project aims to give Irish society as
+               direct access as possible to the historical Patrick. In order to achieve this the
+               project aims to build up a comprehensive digital research environment to make
+               accessible to academic specialists, as well as to interested lay people, all the
+               textual aspects of the real St Patrick’s own work.</p>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="main">My Name is Patrick</title>
+               <title type="subtitle">The Confessio of St Patrick and his Letter to the Soldiers of
+                  Coroticus</title>
+               <author>
+                  <persName instant="false" full="yes">Patrick</persName>
+                  <date instant="false">(c.420–490?)</date>
+                  <roleName full="yes">Bishop</roleName>, <roleName full="yes">Patron Saint of Ireland</roleName></author>
+               <author>
+                  <persName instant="false" full="yes">Pádraig McCarthy</persName>
+                  <roleName full="yes">Translator</roleName>
+                  <placeName instant="false" full="yes">St John the Baptist parish, Blackrock, Co. Dublin</placeName>
+               </author>
+               <note type="rights" anchored="true">
+                  <persName instant="false" full="yes">Pádraig McCarthy</persName>
+                  <date instant="false">© 2003</date>
+                  <quote defective="false">You are encouraged to copy this freely, as long as you include the
+                     copyright notice as on the front. Please look only to cover the costs you
+                     incur. </quote>
+               </note>
+            </bibl>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <p part="N">All electronic text versions of St Patrick's Confessio and his his Letter to the
+            Soldiers of Coroticus are structured in correspondence to the original Latin as
+            established by <ref type="biblio" cRef="White1905">N.J. White in his print edition from
+               1905</ref> and as maintained in the <ref type="biblio" cRef="Bieler1950-1951">'canonical edition' by L. Bieler in 1950</ref> in order to align the original with
+            the translations paragraph by paragraph. Bibliographical references refer to the
+            HyperStack bibliography. </p>
+      </encodingDesc>
+   </teiHeader>
+   <head xmlns="tag:textalign.net,2015:ns">
+      <name>The Confession of St Patrick: A digital edition of the English translation by Pádraig
+         McCarthy</name>
+      <master-location href="http://textalign.net/release/TAN-2020/examples/patricius.confessio.2003.eng.xml"/>
+      <license licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+            License. The license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <reference-system type="logical" wf-ready="false"/>
+      <work>
+         <IRI>tag:parkj@textalign.net,2015:work:patricius:confessio</IRI>
+         <name>Confession of St. Patrick</name>
+      </work>
+      <source>
+         <IRI>tag:parkj@textalign.net,2015:source:http://www.confessio.ie/sites/confessio.ie/files/downloads/confessio_english.xml</IRI>
+         <name>The Saint Patrick's Confessio Hypertext Stack Project edition</name>
+         <checksum>
+            <IRI>http://dbpedia.org/resource/Sha-1</IRI>
+            <name>SHA-1</name>
+            <value>91D95564ABDF2B2C1B9EEF016CBA51E8179646CC</value>
+         </checksum>
+         <location href="http://www.confessio.ie/sites/confessio.ie/files/downloads/confessio_english.xml" accessed-when="2015-01-25"/>
+      </source>
+      <adjustments>
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:annotation-content-removed</IRI>
+            <name>Footnotes or endnotes have been deleted.</name>
+         </normalization>
+      </adjustments>
+      <vocabulary-key>
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:14:11.796-04:00"/>
+         </algorithm>
+         <div-type xml:id="sect" which="section"/>
+         <div-type xml:id="para" which="paragraph"/><comment when="2016-01-25-05:00" who="park">The following agents and roles apply only to the
+         preparation of the TAN file, not the original TEI file that serves as the source. See the
+         teiHeader for details on responsibility.</comment>
+         <person xml:id="park">
+            <IRI>tag:parkj@textalign.net,2015:self</IRI>
+            <name xml:lang="eng">Jenny Park</name>
+         </person>
+         <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T11:14:11.796-04:00" href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+         <role xml:id="editor">
+            <IRI>http://schema.org/editor</IRI>
+            <name xml:lang="eng">Editor</name>
+         </role>
+         <role xml:id="stylesheet1" which="stylesheet"/>
+      </vocabulary-key>
+      
+      <file-resp who="park"/>
+      <resp who="xslt2" roles="stylesheet1"/>
+      <resp roles="editor" who="park"/>
+      <resp who="xslt1" roles="stylesheet1"/>
+      
+      <change when="2017-05-15" who="park">Normalized @n</change>
+      <change when="2016-01-25" who="park">Created new TAN-TEI file.</change>
+      <change who="xslt1" when="2017-11-02T22:26:38.519-04:00">TAN file updated to 2018 schemas.</change>
+      <change who="xslt2" when="2018-08-09T11:14:11.796-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do>
+         <comment when="2018-08-09-04:00" who="park">File needs to be checked.</comment>
+      </to-do>
+   </head>
+   <text>
+      <body xml:lang="eng">
+         <div type="title" n="title" part="N" org="uniform" sample="complete"><head>
+            <title>The Confession of St Patrick</title>
+         </head></div>
+         <div xml:id="C01_eng" n="1" part="I" corresp="C01_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">My name is Patrick. I am a sinner, a simple country person, and the least of all
+               believers. I am looked down upon by many.</p></div>
+            <div type="para" n="2" part="N" org="uniform" sample="complete"><p part="N">My father was Calpornius. He was a deacon; his father was Potitus, a priest, who
+               lived at Bannavem Taburniae. His home
+               was near there, and that is where I was taken prisoner. I was about sixteen at the
+               time.</p></div>
+            <div type="para" n="3" part="N" org="uniform" sample="complete"><p part="N">At that time, I did not know the true God. I was taken into captivity in Ireland,
+               along with thousands of others. We deserved this, because we had gone away from God,
+               and did not keep his commandments. We would not listen to our priests, who advised us
+               about how we could be saved. The Lord brought his strong anger upon us, and scattered us
+               among many nations even to the ends of the earth. It was among foreigners that it was
+               seen how little I was. </p></div>
+         </div>
+         <div xml:id="C02_eng" n="2" part="F" corresp="C02_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It was there that the Lord opened up my awareness of my lack of faith. Even though it
+               came about late, I recognised my failings. So I turned with all my heart to the Lord
+               my God, and he looked down on my lowliness and had mercy on my youthful ignorance. He
+               guarded me before I knew him, and before I came to wisdom and could distinguish
+               between good and evil. He protected me and consoled me as a father does for his
+               son.</p></div>
+         </div>
+         <div xml:id="C03_eng" n="3" corresp="C03_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">That is why I cannot be silent – nor would it be good to do so – about such great
+               blessings and such a gift that the Lord so kindly bestowed in the land of my
+               captivity. This is how we can repay such blessings, when our lives change and we come
+               to know God, to praise and bear witness to his great wonders before every nation
+               under heaven.</p></div>
+         </div>
+         <div xml:id="C04_eng" n="4" corresp="C04_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">This is because there is no other God, nor will there ever be, nor was there ever,
+               except God the Father. He is the one who was not begotten, the one without a
+               beginning, the one from whom all beginnings come, the one who holds all things in
+               being – this is our teaching.</p></div>
+            <div type="para" n="2" part="N" org="uniform" sample="complete"><p part="N">And his son, Jesus Christ, whom we testify has always been, since before the
+               beginning of this age, with the father in a spiritual way. He was begotten in an
+               indescribable way before every beginning. Everything we can see, and everything
+               beyond our sight, was made through him. He became a human being; and, having overcome
+               death, was welcomed to the heavens to the Father. The Father gave him all power over
+               every being, both heavenly and earthly and beneath the earth. Let every tongue
+               confess that Jesus Christ, in whom we believe and whom we await to come back to us in
+               the near future, is Lord and God. He is judge of the living and of the dead; he rewards every person
+               according to their deeds. He has generously poured on us the Holy
+                  Spirit, the gift and promise of
+               immortality, who makes believers and those who listen to be children of God and
+               co-heirs with Christ. This is the one we
+               acknowledge and adore – one God in a trinity of the sacred name.</p></div>
+         </div>
+         <div xml:id="C05_eng" n="5" corresp="C05_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">He said through the prophet: ‘Call on me in the day of your distress, and I will set
+               you free, and you will glorify me.’
+               Again he said: ‘It is a matter of honour to reveal and tell forth the works of
+                  God.’</p></div>
+         </div>
+         <div xml:id="C06_eng" n="6" corresp="C06_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Although I am imperfect in many ways, I want my brothers and relations to know what
+               I’m really like, so that they can see what it is that inspires my life.</p></div>
+         </div>
+         <div xml:id="C07_eng" n="7" corresp="C07_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I am not ignoring the evidence of my Lord, who testifies in the psalm: ‘You destroy
+               those who speak lies.’ And again he says: ‘A mouth which lies kills the soul.’
+               And the same Lord says in the gospel: ‘The idle words which people speak, they will
+               account for on the day of judgment.’</p></div>
+         </div>
+         <div xml:id="C08_eng" n="8" corresp="C08_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So I should greatly dread, with fear and trembling, this sentence on that day, where
+               nobody can avoid or escape, but all shall give complete account of the least of sins
+               before the tribunal of the Lord Christ.</p></div>
+         </div>
+         <div xml:id="C09_eng" n="9" corresp="C09_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">This is why I have long thought to write, but up to now I have hesitated, because I
+               feared what people would say. This is because I did not learn as others did, who
+               drank in equally well both the law and the sacred writings, and never had to change
+               their way of speaking since childhood, but always grew better and better at it. For
+               me, however, my speech and words have been translated into a foreign language, as it
+               can be easily seen from my writings the standard of the instruction and learning I
+               have had. As it is said: ‘The wise person is known through speech, and also
+               understanding and knowledge and the teaching of truth.’</p></div>
+         </div>
+         <div xml:id="C10_eng" n="10" corresp="C10_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">However, even though there’s truth in my excuse, it gets me nowhere. Now, in my old
+               age, I want to do what I was unable to do in my youth. My sins then prevented me from
+               really taking in what I read. But who believes me, even were I to repeat what I said
+               previously? I was taken prisoner as a youth, particularly young in the matter of
+               being able to speak, and before I knew what I should seek and what I should avoid.
+               That is why, today, I blush and am afraid to expose my lack of experience, because I
+               can’t express myself with the brief words I would like in my heart and soul.</p></div>
+         </div>
+         <div xml:id="C11_eng" n="11" corresp="C11_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">If I had been given the same chance as other people, I would not be silent, whatever
+               the reward. If I seem to some to be too forward, with my lack of knowledge and my
+               even slower tongue, still it is written: ‘Stammering tongues will quickly learn to
+               speak peace.’ How much more should we want to do
+               this, who are, as it is said, a saving letter of Christ even to the ends of the
+               earth. Although it is not well expressed, still this letter is genuinely and strongly
+               written in your hearts, not with ink, but with the spirit of the living God. The Spirit is a
+               witness that what is of the countryside is also created by the Most High!</p></div>
+         </div>
+         <div xml:id="C12_eng" n="12" corresp="C12_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So I am first of all a simple country person, a refugee, and unlearned. I do not know
+               how to provide for the future. But this I know for certain, that before I was brought
+               low, I was like a stone lying deep in the mud. Then he who is powerful came and in
+               his mercy pulled me out, and lifted me up and placed me on the very top of the
+                  wall. That is why I must shout
+               aloud in return to the Lord for such great good deeds of his, here and now and
+               forever, which the human mind cannot measure.</p></div>
+         </div>
+         <div xml:id="C13_eng" n="13" corresp="C13_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So be amazed, all you people great and small who fear God! You well-educated people
+               in authority, listen and examine this carefully. Who was it who called one as foolish
+               as I am from the middle of those who are seen to be wise and
+               experienced in law and powerful in speech and in everything? If I am most looked down
+               upon, yet he inspired me, before others, so that I would faithfully serve the nations
+               with awe and reverence and without blame: the nations to whom the love of Christ
+               brought me. His gift was that I would spend my life, if I
+               were worthy of it, to serving them in truth and with humility to the end.</p></div>
+         </div>
+         <div xml:id="C14_eng" n="14" part="I" corresp="C14_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">In the knowledge of this faith in the Trinity, and without letting the dangers
+               prevent it, it is right to make known the gift of God and his eternal consolation. It
+               is right to spread abroad the name of God faithfully and without fear, so that even
+               after my death I may leave something of value to the many thousands of my brothers
+               and sisters – the children whom I baptised in the Lord.</p></div>
+         </div>
+         <div xml:id="C15_eng" n="15" part="F" corresp="C15_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I didn’t deserve at all that the Lord would grant such great grace, after hardships
+               and troubles, after captivity, and after so many years among that people. It was
+               something which, when I was young, I never hoped for or even thought of.</p></div>
+         </div>
+         <div xml:id="C16_eng" n="16" part="I" corresp="C16_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">After I arrived in Ireland, I tended sheep every day, and I prayed frequently during
+               the day. More and more the love of God increased, and my sense of awe before God.
+               Faith grew, and my spirit was moved, so that in one day I would pray up to one
+               hundred times, and at night perhaps the same. I even remained in the woods and on the
+               mountain, and I would rise to pray before dawn in snow and ice and rain. I never felt
+               the worse for it, and I never felt lazy – as I realise now, the spirit was burning in
+               me at that time.</p></div>
+         </div>
+         <div xml:id="C17_eng" n="17" part="M" corresp="C17_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It was there one night in my sleep that I heard a voice saying to me: “You have
+               fasted well. Very soon you will return to your native country.” Again after a short
+               while, I heard a someone saying to me: “Look – your ship is ready.” It was not
+               nearby, but a good two hundred miles away. I had never been to the place, nor did I
+               know anyone there. So I ran away then, and left the man with whom I had been for six
+               years. It was in the strength of God that I went – God who turned the direction of my
+               life to good; I feared nothing while I was on the journey to that ship.</p></div>
+         </div>
+         <div xml:id="C18_eng" n="18" part="M" corresp="C18_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">The day I arrived, the ship was about to leave the place. I said I needed to set sail
+               with them, but the captain was not at all pleased. He replied unpleasantly and
+               angrily: “Don’t you dare try to come with us.” When I heard that, I left them and
+               went back to the hut where I had lodgings. I began to pray while I was going; and
+               before I even finished the prayer, I heard one of them shout aloud at me: “Come
+               quickly – those men are calling you!” I turned back right away, and they began to say
+               to me: “Come – we’ll trust you. Prove you’re our friend in any way you wish.” That
+               day, I refused to suck their breasts, because of my reverence for God. They were pagans, and I
+               hoped they might come to faith in Jesus Christ. This is how I got to go with them,
+               and we set sail right away.</p></div>
+         </div>
+         <div xml:id="C19_eng" n="19" part="F" corresp="C19_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">After three days we made it to land, and then for twenty eight days we travelled
+               through a wilderness. Food ran out, and great hunger came over them. The captain
+               turned to me and said: “What about this, Christian? You tell us that your God is
+               great and all-powerful – why can’t you pray for us, since we’re in a bad state with
+               hunger? There’s no sign of us finding a human being anywhere!” Then I said to them
+               with some confidence: “Turn in faith with all your hearts to the Lord my God, because nothing is impossible for him, so that he may put food in your way – even enough to
+               make you fully satisfied! He has an abundance everywhere.” With the help of God, this
+               is actually what happened! A herd of pigs appeared in the way before our eyes! They
+               killed many of them and there they remained for two nights, and were fully restored,
+               and the dogs too were filled. Many of them had grown weak and left half-alive by the
+               way. After this, they gave the greatest of thanks to God, and I was honoured in their
+               eyes. From this day on, they had plenty of food. They also found some wild honey, and
+               offered some of it to me. However, one of them said: “This honey must have been
+               offered in sacrifice to a god.” Thanks be to God, from then on I tasted none of it.
+            </p></div>
+         </div>
+         <div xml:id="C20_eng" n="20" corresp="C20_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">That same night while I was sleeping, Satan strongly put me to the test – I will
+               remember it as long as I live! It was as if an enormous rock fell on me, and I lost
+               all power in my limbs. Although I knew little about the life of the spirit at the
+               time, how was it that I knew to call upon Helias? While these things were happening, I saw the sun rise in the
+               sky, and while I was calling “Helias! Helias!” with all my strength, the splendour of
+               the sun fell on me; and immediately, all that weight was lifted from me. I believe
+               that I was helped by Christ the Lord, and that his spirit cried out for me. I trust
+               that it will be like this whenever I am under stress, as the gospel says: “In that
+               day, the Lord testifies, it will not be you will speak, but the Spirit of your Father
+               who speaks in you.”</p></div>
+         </div>
+         <div xml:id="C21_eng" n="21" corresp="C21_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It happened again after many years that I was taken a prisoner. On the first night I
+               was with them, I heard a divine answer saying to me: “You will be with them for two
+               months.” This is how it was: on the sixtieth night, the Lord freed me from their
+               hands.</p></div>
+         </div>
+         <div xml:id="C22_eng" n="22" corresp="C22_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N"> While we were still on the journey, the Lord provided food and fire and shelter
+               every day until we met some people on the tenth day. As I mentioned above, we
+               travelled for twenty eight days through the wilderness. On the very night we met
+               people, we ran out of food.</p></div>
+         </div>
+         <div xml:id="C23_eng" n="23" corresp="C23_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">A few years later I was again with my parents in Britain. They welcomed me as a son,
+               and they pleaded with me that, after all the many tribulations I had undergone, I
+               should never leave them again. It was while I was there that I saw, in a vision in
+               the night, a man whose name was Victoricus
+               coming as it were from Ireland with so many letters they could not be counted. He
+               gave me one of these, and I read the beginning of the letter, the voice of the Irish
+               people. While I was reading out the beginning of the letter, I thought I heard at
+               that moment the voice of those who were beside the wood of Voclut, near the western
+                  sea. They called out as it were with one voice: “We beg you, holy boy, to come
+               and walk again among us.” This touched my heart deeply, and I could not read any
+               further; I woke up then. Thanks be to God, after many years the Lord granted them
+               what they were calling for.</p></div>
+         </div>
+         <div xml:id="C24_eng" n="24" corresp="C24_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Another night – I do not know, God knows, whether it was within me or beside me
+               – I heard authoritative words which I could hear but not understand, until at the end
+               of the speech it became clear: “The one who gave his life for you, he it is who
+               speaks in you”; and I awoke full of joy.</p></div>
+         </div>
+         <div xml:id="C25_eng" n="25" corresp="C25_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Another time, I saw in me one who was praying. It was as if I were inside my body,
+               and I heard above me, that is, above my inner self. He prayed strongly, with sighs. I
+               was amazed and astonished, and pondered who it was who prayed in me; but at the end
+               of the prayer, it was clear that it was the Spirit. At this I awoke, and I remembered
+               the apostle saying: “The Spirit helps the weaknesses of our prayer; for we do know
+               what it is we should pray, but the very Spirit pleads for us with unspeakable sighs,
+               which cannot be expressed in words.” And again: “The Lord is our advocate,
+               and pleads for us.”</p></div>
+         </div>
+         <div xml:id="C26_eng" n="26" corresp="C26_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">One time I was put to the test by some superiors of mine. They came and put my sins
+               against my hard work as a bishop. This hit me very hard, so much so that it seemed I
+               was about to fall, both here and in eternity. But the Lord in his kindness spared the
+               converts and the strangers for the sake of his name, and strongly supported me when I
+               was so badly treated. I did not slip into sin and disgrace. I pray that God not hold
+               this sin against them.</p></div>
+         </div>
+         <div xml:id="C27_eng" n="27" corresp="C27_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">They brought up against me after thirty years something I had already confessed
+               before I was a deacon. What happened was that, one day when I was feeling anxious and
+               low, with a very dear friend of mine I referred to some things I had done one day –
+               rather, in one hour – when I was young, before I overcame my weakness. I don’t know –
+               God knows – whether I was then fifteen years old at the time, and I did not then
+               believe in the living God, not even when I was a child. In fact, I remained in death
+               and unbelief until I was reproved strongly, and actually brought low by hunger and
+               nakedness daily.</p></div>
+         </div>
+         <div xml:id="C28_eng" n="28" corresp="C28_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">My defence was that I remained on in Ireland, and that not of my own choosing, until
+               I almost perished. However, it was very good for me, since God straightened me out,
+               and he prepared me for what I would be today. I was far different then from what I am
+               now, and I have care for others, and I have enough to do to save them. In those days
+               I did not even have concern for my own welfare.</p></div>
+         </div>
+         <div xml:id="C29_eng" n="29" corresp="C29_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So on the day I was accused by those I mentioned above, that same night I saw in a
+               vision of the night some writing before my dishonoured face. In the middle of this, I
+               heard an answer from God saying to me: “We have seen with displeasure the face of the
+               one who was chosen deprived of his good name.” He did not say: “You have seen with
+               displeasure”, but “We have seen with displeasure”, as if he were identifying himself
+               with me; as he said “He who touches you as it were touches the pupil of my eye.”</p></div>
+         </div>
+         <div xml:id="C30_eng" n="30" corresp="C30_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">For that reason, I give thanks to the one who strengthened me in all things, so that he would not impede me in
+               the course I had undertaken and from the works also which I had learned from Christ
+               my Lord. Rather, I sensed in myself no little strength from him, and my faith passed
+               the test before God and people.</p></div>
+         </div>
+         <div xml:id="C31_eng" n="31" corresp="C31_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I make bold to say that my conscience does not blame me, now and in the future. I have God
+               for witness that I have not told lies in the account I have given you.</p></div>
+         </div>
+         <div xml:id="C32_eng" n="32" corresp="C32_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">But I grieve more for my very dear friend, that we had to hear such an account – the
+               one to whom I entrusted my very soul. I did learn from some brothers before the case
+               was heard that he came to my defence in my absence. I was not there at the time, not
+               even in Britain, and it was not I who brought up the matter. In fact it was he
+               himself who told me from his own mouth: “Look, you are being given the rank of
+               bishop.” That is something I did not deserve. How could he then afterwards come to
+               disgrace me in public before all, both good and bad, about a matter for which he had
+               already freely and joyfully forgiven me, as indeed had God, who is greater than
+               all?</p></div>
+         </div>
+         <div xml:id="C33_eng" n="33" corresp="C33_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I have said enough about that. I must take care not to hide the gift of God which he
+               has generously given us in the land of my captivity. It was then that I looked for
+               him with all my strength, and there I found him, and he protected me from all evils –
+               this is what I believe – on account of his Spirit living and working in me to this
+               very day. I’m proud to tell again of this. God knows, if it were some other person
+               who had said this to me, perhaps I would have said nothing, because of the love of
+               Christ.</p></div>
+         </div>
+         <div xml:id="C34_eng" n="34" corresp="C34_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So I’ll never stop giving thanks to my God, who kept me faithful in the time of my
+               temptation. I can today with confidence offer my soul to Christ my Lord as a living
+                  victim. He is the one who defended me in all my
+               difficulties. I can say: Who am I, Lord, or what is my calling, that you have worked
+               with me with such divine presence? This is how I come to praise and
+               magnify your name among the nations all the time, wherever I am, not only in good
+               times but in the difficult times too. Whatever comes about for me, good or bad, I
+               ought to accept them equally and give thanks to God. He has shown me that I can put
+               my faith in him without wavering and without end. However ignorant I am, he has heard
+               me, so that in these late days I can dare to undertake such a holy and wonderful
+               work. In this way I can imitate somewhat those whom the Lord foretold would announce
+               his gospel in witness to all nations before the end of the world. This is what we see
+               has been fulfilled. Look at us: we are witnesses that the gospel has been preached
+               right out to where there is nobody else there!</p></div>
+         </div>
+         <div xml:id="C35_eng" n="35" corresp="C35_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It’s a long story – to tell each and every deed of mine, or even parts of it. I’ll
+               make it short, as I tell of how the good God often freed me from slavery, and from
+               twelve dangers which threatened my life, as well as from hidden dangers and from
+               things which I have no words to express. I wouldn’t want to hurt my readers! God
+               knows all things even before they are done, and I have him as my authority that he
+               often gave me warnings in heavenly answers, – me, a wretched orphan!</p></div>
+         </div>
+         <div xml:id="C36_eng" n="36" corresp="C36_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">From where did this wisdom come to me, a wisdom which was not in me? I didn’t even know how the number
+               of days, much less did I know God. Where did such a great
+               and life-giving gift come from then, to know and love God, even at the cost of
+               leaving homeland and parents?</p></div>
+         </div>
+         <div xml:id="C37_eng" n="37" part="I" corresp="C37_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">And many were the gifts offered to me, along with sorrow and tears. There were those
+               whom I offended, even against the wishes of some of my superiors; but, with God
+               guiding me, I did not consent nor acquiesce to them. It was not by my own grace, but
+               God who overcame it in me, and resisted them all so that I could come to the peoples
+               of Ireland to preach the gospel. I bore insults from unbelievers, so that I would
+               hear the hatred directed at me for travelling here. I bore many persecutions, even
+               chains, so that I could give up my freeborn state for the sake of others. If I be
+               worthy, I am ready even to give up my life most willingly here and now for his name.
+               It is there that I wish to spend my life until I die, if the Lord should grant it to
+               me.</p></div>
+         </div>
+         <div xml:id="C38_eng" n="38" part="F" corresp="C38_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I am greatly in debt to God. He gave me such great grace, that through me, many
+               people should be born again in God and brought to full life. Also that clerics should
+               be ordained everywhere for this people who have lately come to believe, and who the
+               Lord has taken from the ends of the earth. This is just what he promised in the past
+               through his prophet: “The nations will come to you from the ends of the earth, and
+               they will say: How false are the idols our fathers got for themselves, and they are
+               of no use whatever.” And
+               again: “I have put you as a light to the nations, that you may be their salvation to
+               the end of the earth.”</p></div>
+         </div>
+         <div xml:id="C39_eng" n="39" corresp="C39_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It is there that I await his promise – he is the one who never deceives, as is
+               repeated in the gospel: “They will come from the east and from the west, and they
+               will lie down with Abraham and Isaac and Jacob.” We believe that believing people will come from all over the
+               world. </p></div>
+         </div>
+         <div xml:id="C40_eng" n="40" corresp="C40_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">It is right that we should fish well and diligently, as the Lord directs and teaches
+               when he says: “Follow me, and I will may you fishers of men.” And again he says through the
+               prophets: “Behold, I send many fishers and hunters, says God”; and
+               other such sayings. Therefore it is very right that we should cast our nets, so that
+               a great multitude and crowd will be taken for God. Also that there should be clerics
+               to baptise and encourage a people in need and want. This is what the Lord says in the
+               gospel: he warns and teaches in these words: “Go therefore and teach all nations,
+               baptising them in the name of the Father and of the Son and of the Holy Spirit,
+               teaching them to observe all that I have commanded you; and behold I am with you all
+               days, even to the end of the age.” Again he
+               says: “Go out therefore to the whole world and announce the gospel to every creature.
+               Whoever believes and is baptised will be saved; whoever does not believe will be
+                  condemned.”
+               And yet again: “This gospel of the kingdom will be announced all over the world, as
+               testimony to all the nations; and then will come the end.” In the same way, the Lord foretold this
+               through the prophet as he said: “And it will come about in the last days, says the
+               Lord, that I will pour out my Spirit on all flesh, and your sons and your daughters
+               will prophesy; your young people will see visions and your older people will dream
+               dreams. Indeed, on my servants, men and women, I will pour out my Spirit and they
+               will prophesy.” Hosea says: “Those who were not my people, I will call
+               my people; and her who has not obtained mercy, I will name the one who has obtained
+                  mercy. In the place where it was said: You are not my
+               people: there they will be called children of the living God.”</p></div>
+         </div>
+         <div xml:id="C41_eng" n="41" corresp="C41_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">How has this happened in Ireland? Never before did they know of God except to serve
+               idols and unclean things. But now, they have become the people of the Lord, and are
+               called children of God. The sons and daughters of the leaders of the Irish are seen
+               to be monks and virgins of Christ!</p></div>
+         </div>
+         <div xml:id="C42_eng" n="42" corresp="C42_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">An example is this. There was a blessed Irish woman of noble birth, a most beautiful
+               adult whom I baptised. She came to us a few days later for this reason. She told us
+               that she had received word from a messenger of God, who advised her that she should
+               become a virgin of Christ, and that she should come close to God. Thanks be to God,
+               six days later, enthusiastically and well, she took on the life that all virgins of
+               God do. Their fathers don’t like this, of course. These women suffer persecution and
+               false accusations from their parents, and yet their number grows! We do not know the
+               number of our people who were born there. In addition, there are the widows and the
+               celibates. Of all these, those held in slavery work hardest – they bear even terror
+               and threats, but the Lord gives grace to so many of the women who serve him. Even
+               when it is forbidden, they bravely follow his example.</p></div>
+         </div>
+         <div xml:id="C43_eng" n="43" part="I" corresp="C43_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I could wish to leave them to go to Britain. I would willingly do this, and am
+               prepared for this, as if to visit my home country and my parents. Not only that, but
+               I would like to go to Gaul to visit the brothers and to see the faces of the saints
+               of my Lord. God knows what I would dearly like to do. But I am bound in the Spirit,
+               who assures me that if I were to do this, I would be held guilty. And I fear, also,
+               to lose the work which I began – not so much I as Christ the Lord, who told me to
+               come here to be with these people for the rest of my life. May the Lord will it, and
+               protect me from every wrong path, so that I do not sin before him.</p></div>
+         </div>
+         <div xml:id="C44_eng" n="44" part="F" corresp="C44_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I hope to do what I should. I know I cannot trust myself as long as I am in this body
+               subject to death. There is one who is strong, who
+               tries every day to undermine my faith, and the chastity of genuine religion I have
+               chosen to the end of my life for Christ my Lord. The flesh can be an enemy dragging
+               towards death, that is, towards doing those enticing things which are against the
+               law. I know to some extent how I have not led a perfect life like other believers.
+               But I acknowledge this to my Lord, and I do not blush in his sight. I am not telling
+               lies: from the time in my youth that I came to know him, the love and reverence for
+               God grew in me, and so far, with the Lord’s help, I have kept faith.</p></div>
+         </div>
+         <div xml:id="C45_eng" n="45" corresp="C45_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Those who wish may laugh and insult. But I will not be silent, nor will I hide the
+               signs and wonders which the Lord has shown me even many years before they came about.
+               He knows all things even before the beginning of time.</p></div>
+         </div>
+         <div xml:id="C46_eng" n="46" corresp="C46_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So I want to give thanks to God without ceasing. He frequently forgave my lack of
+               wisdom and my negligence, and more than once did not become very angry with me, the
+               one who was meant to be his helper. I was not quick to accept what he showed me, and
+               so the Spirit prompted me. The Lord was merciful to me a thousand thousand times,
+               because he saw in me that I was ready, but that I did not know what I should do about
+               the state of my life. There were many who forbade this mission. They even told
+               stories among themselves behind my back, and the said: “Why does he put himself in
+               danger among hostile people who do not know God?” It was not that they were malicious
+               – they just did not understand, as I myself can testify, since I was just an
+               unlearned country person. Indeed, I was not quick to recognise the grace that was in
+               me; I know now what I should have done then.</p></div>
+         </div>
+         <div xml:id="C47_eng" n="47" corresp="C47_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Now, therefore, I have informed my brothers and my fellow-servants who believed me,
+               because I gave them warning, and I warn them now, in order to strengthen and confirm
+               your faith. Oh that you would imitate greater things, and do more powerful
+                  things! This will be my glory, since a wise son is the glory of
+               his father!</p></div>
+         </div>
+         <div xml:id="C48_eng" n="48" corresp="C48_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">You all know, and God knows, how I have lived among you since my youth, in true faith
+               and in sincerity of heart. Towards the pagan people too among whom I live, I have
+               lived in good faith, and will continue to do so. God knows that I have not been
+               devious with even one of them, nor do I think of doing so, for the sake of God and
+               his church. I would not want to arouse persecution of them and of all of us; nor
+               would I want that the Lord’s name should be blasphemed on account of me; since it is
+               written: “Woe to the one through whom the name of the Lord is blasphemed.”</p></div>
+         </div>
+         <div xml:id="C49_eng" n="49" corresp="C49_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I know that I am inexperienced in all things. But still, I have tried to keep a guard
+               on myself and for the Christians and virgins of Christ and religious women who were
+               giving me small gifts of their own accord. When they would throw some of their
+               ornaments on the altar, I would give them back to them. They were hurt at me that I
+               would do this. But it was because of the hope of the eternal gift, that I was careful
+               in all things, in case unbelievers would trap me or my ministry of service for any
+               reason. Nor did I want to give those who could not believe even the slightest reason
+               for speaking against me or take my character away.</p></div>
+         </div>
+         <div xml:id="C50_eng" n="50" part="I" corresp="C50_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Perhaps, however, when I baptised so many thousands of people, did I hope to receive
+               even the smallest payment? If so, tell me, and I will return it to you. Or when the
+               Lord ordained clerics everywhere through my poor efforts, and I gave this service to
+               them for free, if I asked them to pay even for the cost of my shoes – tell it against
+               me, and I will return it to you and more.</p></div>
+         </div>
+         <div xml:id="C51_eng" n="51" part="F" corresp="C51_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I spend myself for you, so that you may have me for yours. I have travelled
+               everywhere among you for your own sake, in many dangers, and even to the furthest
+               parts where nobody lived beyond, and where nobody ever went to baptise and to ordain
+               clerics or to bring people to fulfilment. It is only by God’s gift that I diligently
+               and most willingly did all of this for your good.</p></div>
+         </div>
+         <div xml:id="C52_eng" n="52" corresp="C52_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">At times I gave gifts to kings, over and above what I paid to their sons who
+               travelled with me. Despite this, they took me and my companions prisoner, and very
+               much wanted to kill me, but the time had not yet come. They stole everything they
+               found in our possession, and they bound me in iron. On the fourteenth day, the Lord
+               set me free from their power; all our possessions were returned to us for God’s sake,
+               and for the sake of the close friendship we had had previously.</p></div>
+         </div>
+         <div xml:id="C53_eng" n="53" corresp="C53_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">You know yourselves how much I expended on those who were the judges in those regions
+               which I most frequently visited. I estimate that I gave out not less than the price
+               of fifteen persons, so that you might benefit from me, and that I might benefit from
+               you in God. I’m not sorry I did it, nor was it even
+               enough for me – I still spend, and will spend more. The Lord is powerful, and he can
+               grant me still to spend my very self for the sake of your souls.</p></div>
+         </div>
+         <div xml:id="C54_eng" n="54" corresp="C54_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N"> See now: I call on God as witness in my soul that I tell no lie. Nor would I write to
+               you looking for your praise, nor out of greed – it’s not that I hope for honour from
+               any of you for myself. It is the honour which is not yet to be seen, but which is
+               believed in the heart, which is what gives me satisfaction. The one who gave the
+               promise is faithful, and never lies.</p></div>
+         </div>
+         <div xml:id="C55_eng" n="55" corresp="C55_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I see that already in this present age the Lord has given me a greatness more than
+               could be expected. I was not worthy of this, not the kind of person the Lord would do
+               this for, since I know for certain that poverty and calamity are more my style than
+               riches and enjoyment. But Christ the Lord became poor for us; I too am wretched and
+               unhappy. Even if I were to wish for riches, I do not have them. I am not trying to
+               judge myself, since every day there is the chance that I will be killed, or
+               surrounded, or be taken into slavery, or some other such happening. But I fear none
+               of these things, because of the promises of heaven. I have cast myself into the hands
+               of almighty God, who is the ruler of all places, as the prophet says: “Cast your
+               concerns on God, and he will sustain you.”</p></div>
+         </div>
+         <div xml:id="C56_eng" n="56" corresp="C56_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Now I commend my soul to my most faithful God. For him I perform the work
+               of an ambassador, despite my less than noble condition.
+               However, God is not influenced by such personal situations, and he chose me for this
+               task so that I would be one servant of his very least important servants.</p></div>
+         </div>
+         <div xml:id="C57_eng" n="57" corresp="C57_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">So I shall make a return to him for all that he has given to me. But what can I say, or what can I promise to my Lord?
+               There is nothing I have that is not his gift to me. But he knows the depths of my
+               heart, my very gut feelings! He knows that it is enough that I desire very much, and
+               am ready for this, that he would grant me to drink of his chalice, just as he was
+               pleased to do for others who loved him.</p></div>
+         </div>
+         <div xml:id="C58_eng" n="58" part="I" corresp="C58_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">For this reason, may God not let it come about that I would suffer the loss of his
+               people who have become his in the furthermost parts of the earth. I pray that God
+               give me perseverance, and that he grant me to bear faithful witness to him right up
+               to my passing from this life, for the sake of my God.</p></div>
+         </div>
+         <div xml:id="C59_eng" n="59" part="F" corresp="C59_lat" type="sect" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N"> If I have ever imitated anything good for the sake of my God whom I love, I ask that
+               he grant me to be able to shed my blood with these converts and captives – even were
+               I to lack a grave for burial, or my dead body were to be miserably torn apart limb
+               from limb by dogs or wild beasts, or were the birds of heaven to devour it. I declare
+               with certainty that if this were to happen, I would have gained both my soul and my
+               body. There is no doubt whatever that we will rise on the appointed day in the
+               brightness of the sun, that is, in the glory of Christ Jesus our redeemer. We shall
+               be like children of the living God and co-heirs of Christ and
+               to be fashioned in his image, since it is from him and through him and in him that we
+               are to reign.</p></div>
+         </div>
+         <div xml:id="C60_eng" n="60" corresp="C60_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">The sun which we see rising for us each day at his command, that sun will never reign
+               nor will its splendour continue forever; and all those who adore that sun will come
+               to a bad, miserable penalty. We, however, believe in and adore the true sun, that is,
+               Christ, who will never perish. Nor will they perish who do his will but they will
+               abide forever just as Christ will abide forever. He
+               lives with God the Father almighty and with the Holy Spirit before the ages began,
+               and now, and for all the ages of ages. Amen.</p></div>
+         </div>
+         <div xml:id="C61_eng" n="61" corresp="C61_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">Again and again I briefly put before you the words of my confession. I testify in
+               truth and in great joy of heart before God and his holy angels that I never had any
+               other reason for returning to that nation from which I had earlier escaped, except
+               the gospel and God’s promises.</p></div>
+         </div>
+         <div xml:id="C62_eng" n="62" corresp="C62_lat" type="sect" part="N" org="uniform" sample="complete">
+            <div type="para" n="1" part="N" org="uniform" sample="complete"><p part="N">I pray for those who believe in and have reverence for God. Some of them may happen
+               to inspect or come upon this writing which Patrick, a sinner without learning, wrote
+               in Ireland. May none of them ever say that whatever little I did or made known to
+               please God was done through ignorance. Instead, you can judge and believe in all
+               truth that it was a gift of God. This is my confession before I die.</p></div>
+         </div>
+      </body>
+   </text>
+</TEI>

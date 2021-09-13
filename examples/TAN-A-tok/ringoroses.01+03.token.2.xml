@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-tok.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-tok xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:TAN-A-tok,ring01+ring03:alt">
+    <head>
+        <name>token-based alignment of two versions of Ring o Roses</name>
+        <desc>This takes the previous version (see see-also element below) and shows a simpler way
+            to align tokens.</desc>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/TAN-A-tok/ringoroses.01+03.token.2.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This license is granted independent of rights and licenses associated with the
+                source. </desc>
+        </license>
+        <token-definition src="eng ger" which="letters and punctuation"/>
+        <source xml:id="eng">
+            <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+            <name>1881 version of Ring around the Roses</name>
+            <location href="../ring-o-roses.eng.1881.xml" accessed-when="2015-05-24-04:00"/>
+        </source>
+        <source xml:id="ger">
+            <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+            <name>German version of Ring around the Roses</name>
+            <location href="../ring-o-roses.deu.1897.xml" accessed-when="2015-05-24-04:00"/>
+        </source>
+        <adjustments src="ger">
+            <skip div-type="Gedicht"/>
+            <rename ref="1 e" new="4"/>
+        </adjustments>
+        <vocabulary-key>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T13:17:52.897-04:00"/>
+            </algorithm>
+            <bitext-relation xml:id="unclear">
+                <IRI>tag:kalvesmaki@gmail.com,2014:bitext-relation:unclear</IRI>
+                <name>The German and English versions bear some relationship, but what exactly is
+                    unclear.</name>
+            </bitext-relation>
+            <reuse-type xml:id="correlationGeneral">
+                <IRI>tag:kalvesmaki@gmail.com,2014:reuse-type:correlation-general</IRI>
+                <name>Texts are generally correlated, but without specifying the relation</name>
+            </reuse-type>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name>Jenny Park</name>
+            </person>
+            <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T13:17:52.897-04:00" href="../../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        
+        <file-resp who="park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp who="park" roles="creator"/>
+        <resp who="xslt1" roles="stylesheet1"/>
+        <change when="2014-08-17" who="park">Started file</change>
+        <change when="2014-08-22" who="park">Revised in light of major changes in TAN-A
+            schemas</change>
+        <change who="xslt1" when="2017-11-02T16:38:08.464-04:00">TAN file updated to 2018 schemas.</change>
+        <change who="xslt2" when="2018-08-09T13:17:52.897-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do>
+            <comment when="2018-08-09-04:00" who="park">Finish file.</comment>
+        </to-do>
+    </head>
+    <body reuse-type="correlationGeneral" bitext-relation="unclear" claimant="xslt2">
+        <align>
+            <tok src="eng" ref="4" val="all"/>
+            <tok src="ger" ref="4" rgx="alle"/>
+        </align>
+        <align>
+            <tok src="eng" ref="3" pos="1"/>
+            <tok src="ger" ref="4" pos="3"/>
+        </align>
+        <align>
+            <tok src="eng" ref="3" pos="2"/>
+            <tok src="ger" ref="4" pos="4"/>
+        </align>
+        <align>
+            <tok src="eng" ref="3" pos="3"/>
+            <tok src="ger" ref="4" pos="5"/>
+        </align>
+        <align>
+            <tok src="eng" ref="1" pos="1, 2"/>
+            <tok src="ger" ref="1" pos="1"/>
+        </align>
+        <align>
+            <tok src="eng" ref="1" pos="3, 4"/>
+            <tok src="ger" ref="1" pos="2"/>
+        </align>
+        <align>
+            <tok src="eng" ref="1" pos="5" cert="0.3"/>
+            <tok src="ger" ref="1" pos="3" cert="0.3"/>
+        </align>
+    </body>
+</TAN-A-tok>

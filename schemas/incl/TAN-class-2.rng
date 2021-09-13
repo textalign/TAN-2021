@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:ns1="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="TAN-core.rng" ns="tag:textalign.net,2015:ns">
+    <define name="declaration-non-core">
+      <interleave>
+        <ref name="decl-class-2"/>
+        <ref name="decl-non-class-2"/>
+      </interleave>
+    </define>
+    <define name="source-content">
+      <ref name="entity-digital-tan-id"/>
+    </define>
+    <define name="token-definition-attributes">
+      <ref name="ptr-attr-src-many"/>
+    </define>
+    <define name="adjust-non-core">
+      <ref name="adjust-class-2"/>
+      <ref name="adjust-non-class-2"/>
+    </define>
+    <define name="adjust-condition">
+      <ref name="action-condition"/>
+    </define>
+    <define name="action-condition-attributes">
+      <ref name="ptr-attr-src-many"/>
+      <optional>
+        <ref name="ptr-attr-div-type"/>
+      </optional>
+    </define>
+    <define name="voc-key-non-core">
+      <interleave>
+        <ref name="voc-element-class-2"/>
+        <ref name="voc-element-non-class-2"/>
+      </interleave>
+    </define>
+    <define name="body-content-non-core">
+      <interleave>
+        <ref name="body-content-class-2"/>
+        <ref name="body-content-non-class-2"/>
+      </interleave>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="attr-by">
+    <attribute name="by">
+      <a:documentation>specifies an amount by which an series of @n values or the last component in a series of @ref values should be incremented or decremented.</a:documentation>
+      <data type="integer"/>
+    </attribute>
+  </define>
+  <define name="attr-chars">
+    <attribute name="chars">
+      <a:documentation>identifies one or more characters, specified through Arabic numerals, or the keywords 'last' or 'last-X' (where X is a valid number), joined with commas or hyphens.</a:documentation>
+      <a:documentation>Examples: '1', 'last', 'last-3 - last-1', '1, 3, 5, 7 - 11, last-8, last'</a:documentation>
+      <ref name="data-picker-sequence"/>
+    </attribute>
+  </define>
+  <define name="attr-claim-period">
+    <attribute name="claim-period">
+      <a:documentation>names a vocabulary item that identifies a time when a claim was made.</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-claim-when">
+    <attribute name="claim-when">
+      <a:documentation>identifies a time when a claim was made.</a:documentation>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attr-new-name">
+    <attribute name="new">
+      <a:documentation>provides the new name for an @n that is to be renamed.</a:documentation>
+    </attribute>
+  </define>
+  <define name="attr-new-ref">
+    <attribute name="new">
+      <a:documentation>provides the new ref for a &lt;div&gt; that is to be renamed.</a:documentation>
+      <ref name="data-div-item-ref"/>
+    </attribute>
+  </define>
+  <define name="attr-pos-many">
+    <attribute name="pos">
+      <a:documentation>lists one or more items by position, specified through Arabic numerals or the keywords 'last' or 'last-X' (where X is a valid number), joined with commas or hyphens.</a:documentation>
+      <a:documentation>Examples: '1', 'last', 'last-3 - last-1', '1, 3, 5, 7 - 11, last-8, last'</a:documentation>
+      <a:documentation>For more see main.xml#attr_pos_and_val</a:documentation>
+      <ref name="data-picker-sequence"/>
+    </attribute>
+  </define>
+  <define name="attr-pos-one">
+    <attribute name="pos">
+      <a:documentation>lists the position of one item, specified through Arabic numerals and the keyword 'last' or 'last-X' (where X is a valid number).</a:documentation>
+      <a:documentation>Examples: '1', 'last', 'last-3 - last-1'</a:documentation>
+      <a:documentation>For more see main.xml#attr_pos_and_val</a:documentation>
+      <ref name="data-picker-item"/>
+    </attribute>
+  </define>
+  <define name="attr-priority">
+    <attribute name="priority">
+      <a:documentation>specifies where a renamed div or reassigned passage should be placed relative to the target and other renamed divs or reassigned passages. The target is presumed to be a value of 0. The higher the value of @priority, the earlier the passage is placed. Negative integers specify the material should come after the base target.</a:documentation>
+      <data type="integer"/>
+    </attribute>
+  </define>
+  <define name="attr-ref-many">
+    <attribute name="ref">
+      <a:documentation>lists references to one or more &lt;div&gt;s. It consists of one or more simple references joined by commas or hyphens. A simple reference is a string value that points to a single &lt;div&gt; by joining one of its values of @n with those of its ancestors, e.g., "1 1". </a:documentation>
+      <a:documentation>Truncation is allowed. For example, 1 1 - 3 will be interpreted first as 1.1 through 1.3; if that is invalid, it will be interpeted as 1.1 through 3. Another example: '2.4 - 7, 9' and 'ii iv - vii, 9' will be treated as identical, to mean 2.4 through 2.7 and 2.9.</a:documentation>
+      <a:documentation>In a range with members of uneven depth, those complete &lt;div&gt;s that are closest to the shallowest member are retrieved. For example, 2 - 4 2 2 might fetch 2, 3, 4.1, and 4.2.1, 4.2.2 (and not 4 as a whole).</a:documentation>
+      <a:documentation>For more, see main.xml#referencing-divisions </a:documentation>
+      <ref name="data-div-range-ref"/>
+    </attribute>
+  </define>
+  <define name="attr-ref-one">
+    <attribute name="ref">
+      <a:documentation>refers to a single &lt;div&gt;. It consists of one simple reference e.g., "1 1". </a:documentation>
+      <ref name="data-div-item-ref"/>
+    </attribute>
+  </define>
+  <define name="attr-rgx">
+    <attribute name="rgx">
+      <a:documentation>contains a regular expression. In the context of &lt;tok&gt; it is an alternative to @val and points to a particular word token according to a match on its string value. Values of @rgx are case-sensitive. The TAN extension character class \u{} may be used. </a:documentation>
+      <a:documentation>For more see main.xml#attr_pos_and_val</a:documentation>
+      <data type="string">
+        <param name="pattern">.+</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="attr-shallow">
+    <attribute name="shallow">
+      <a:documentation>indicates whether skipping should be done shallowly (default) or deeply</a:documentation>
+      <data type="boolean"/>
+    </attribute>
+  </define>
+  <define name="attr-val">
+    <attribute name="val">
+      <a:documentation>contains a string that points to a word token by its value. Matches are case-, space-, and accent-sensitive.</a:documentation>
+      <a:documentation>For more see main.xml#attr_pos_and_val</a:documentation>
+      <data type="string">
+        <param name="pattern">.+</param>
+      </data>
+    </attribute>
+  </define>
+  <define name="ptr-attr-claimant">
+    <attribute name="claimant">
+      <a:documentation>points to a &lt;person&gt;, &lt;organization&gt;, or &lt;algorithm&gt; who makes a claim. @claimant within &lt;body&gt; indicates the default persons to be credited or blamed for an assertion. If &lt;body&gt;'s @claimant is absent, the default claimant would be the key agents of the file.</a:documentation>
+      <a:documentation>This attribute is taken into account before all other attributes. That is, @claimant is to be interpreted to mean: "@claimant states the following:...." Multiple values of @claimant are interpreted to mean "and", resulting in distribution of the claim (e.g., claimant="x y" becomes "x claims that..." and "y claims that...").</a:documentation>
+      <a:documentation>In a TAN-A file, nested @claimants mean that claimant X claims that claimant Y claims that... and so forth.</a:documentation>
+      <a:documentation>In other class-2 files, a nested @claimant cancels out any inherited @claimants. </a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-src-one">
+    <attribute name="src">
+      <a:documentation>refers via idref to only one &lt;source&gt;</a:documentation>
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="ptr-attr-src-many">
+    <attribute name="src">
+      <a:documentation>refers via idrefs to one or more &lt;source&gt;s </a:documentation>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="adj-element-equate">
+    <element name="equate">
+      <a:documentation>declares an ad hoc equivalence in @n values. It behaves like &lt;alias&gt; but has scope only over a particular source. For example, &lt;equate n="pr pref preface introduction"/&gt; specifies that sources with &lt;div&gt; @n values of either "pr", "pref", "preface", or "introduction" should be treated as equivalent. Hence, in the &lt;body&gt; any @ref="pr" will also match a &lt;div n="introduction"/&gt;</a:documentation>
+      <a:documentation>This element does not imply that the @n values are the same. It merely states that, for the purposes of this class-2 file, they should be treated as equivalent.</a:documentation>
+      <a:documentation>Only the first &lt;equate&gt; applying to a &lt;div&gt; in a given source will be applied.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <ref name="attr-n"/>
+      </choice>
+    </element>
+  </define>
+  <define name="adj-element-reassign">
+    <element name="reassign">
+      <a:documentation>identifies words and phrases that should be moved from one &lt;div&gt; to another in a given source.</a:documentation>
+      <a:documentation>Only the first &lt;reassign&gt; applying to a &lt;div&gt; in a given source will be applied.    </a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <optional>
+        <ref name="attr-priority"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <oneOrMore>
+            <ref name="element-passage"/>
+          </oneOrMore>
+          <ref name="element-to"/>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="adj-element-rename">
+    <element name="rename">
+      <a:documentation>provisionally reassigns values of @n's in class 1 sources, or their calculated ref value, to another value.</a:documentation>
+      <a:documentation>A &lt;rename&gt; may be applied on the basis of either @n or @ref, but a ref-based &lt;rename&gt; always supersedes an n-based rename. Only the first matching &lt;rename&gt; will be applied to a given &lt;div&gt; in a source.</a:documentation>
+      <a:documentation>A ref-based rename eliminates any alternative values of @n, inherited or native. That is, if a &lt;div&gt; has @n="prol pref" and the rename has @ref="prol" and @new="prologue" then the alternative value "pref" will be ignored.</a:documentation>
+      <a:documentation>Renames override any equate actions. An exception is made when an n-based rename affects one value of @n but an equate affects another value. Ref-based renames always override any equate action.</a:documentation>
+      <a:documentation>If a &lt;div&gt; is renamed such that it needs to be moved elsewhere in the hierarchy, and it matches the reference of another &lt;div&gt;, the text from the renamed &lt;div&gt; will be added to the end of the target &lt;div&gt;.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <optional>
+        <ref name="attr-priority"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <choice>
+          <ref name="simple-rename"/>
+          <ref name="complex-rename"/>
+        </choice>
+      </choice>
+    </element>
+  </define>
+  <define name="adj-element-skip">
+    <element name="skip">
+      <a:documentation>marks parts of a source that have been ignored or should be skipped, either shallowly (default) or deeply.</a:documentation>
+      <a:documentation>Note, the shallow skip of a &lt;div&gt; may result in the creation of empty &lt;div&gt;s, which will be ignored during validation.</a:documentation>
+      <a:documentation>This element is useful for ignoring extraneous divs, e.g., where a source has introduced divs that do not exist in other versions of the same work. For example, a transcription may group the topmost divisions of a text into parts, or may adopt superfluous divisions (e.g., introducing a &lt;div&gt; for chapter in the New Testament book Philemon, which does not have more than one chapter, and can be identified purely by verse).  </a:documentation>
+      <a:documentation>Only the first &lt;skip&gt; applying to a &lt;div&gt; in a given source will be applied.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="attr-shallow"/>
+          </optional>
+          <choice>
+            <ref name="attr-ref-many"/>
+            <choice>
+              <ref name="attr-n"/>
+              <ref name="ptr-attr-div-type"/>
+              <interleave>
+                <ref name="attr-n"/>
+                <ref name="ptr-attr-div-type"/>
+              </interleave>
+            </choice>
+          </choice>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-from-tok-no-ref">
+    <element name="from-tok">
+      <a:documentation>points to a single token that is the start of a range of tokens to be selected from a source, but without @ref.</a:documentation>
+      <ref name="tok-selector-attributes-one"/>
+    </element>
+  </define>
+  <define name="element-from-tok-with-ref">
+    <element name="from-tok">
+      <a:documentation>points to a single token that is the start of a range of tokens to be selected from a source, in the context of @ref.</a:documentation>
+      <ref name="attr-ref-one"/>
+      <ref name="tok-selector-attributes-one"/>
+    </element>
+  </define>
+  <define name="element-group-for-tok">
+    <element name="group">
+      <a:documentation>groups token references that should be treated as referring to but a single token.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <ref name="group-attributes"/>
+          <oneOrMore>
+            <ref name="default-tok-element"/>
+          </oneOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="element-passage">
+    <element name="passage">
+      <a:documentation>specifies a textual passage within a single &lt;div&gt; that should be reassigned to another &lt;div&gt;.</a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="attr-ref-one"/>
+      <oneOrMore>
+        <ref name="text-passage-selector-no-ref"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="element-to">
+    <element name="to">
+      <a:documentation>indicates a ref to which the preceding &lt;tok&gt;s should be moved.</a:documentation>
+      <ref name="attr-ref-one"/>
+    </element>
+  </define>
+  <define name="element-tok-standard">
+    <element name="tok">
+      <a:documentation>identifies one or more tokens (words or word fragments). Used by class-2 files to make claims about specific words. </a:documentation>
+      <a:documentation>In TAN-A and TAN-A-tok files, &lt;tok&gt; does not necessarily carry linguistic connotations; in TAN-A-lm, it normally does.</a:documentation>
+      <a:documentation>Most &lt;tok&gt;s are restricted to a single token, or a portion of a single token, perhaps filtered by the value of @chars. But they can refer to multiple tokens through multiple values of @src, @ref, and @pos, to save space and perhaps enhance legibility. For example, &lt;tok src="a b" ref="1.1 - 1.3" pos="1-4"&gt; would point to 24 tokens (assuming that the two sources each have at least four tokens in the three references 1.1, 1.2, and 1.3).</a:documentation>
+      <a:documentation>If you wish to treat multiple word fragments as a single token, use &lt;group&gt;.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;tok&gt;s is immaterial in the context of TAN-A-lm, and TAN-A-tok, except in the context of &lt;group&gt;, where the sequence dictates how the new token is to be constructed. </a:documentation>
+      <a:documentation>The sequence of consecutive &lt;tok&gt;s is important in the context of TAN-A, where the sequence specifies the order in which word tokens should be supplied in the context of the &lt;claim&gt;. </a:documentation>
+      <optional>
+        <ref name="ed-stamp"/>
+      </optional>
+      <ref name="tok-sources-ref-opt"/>
+      <ref name="attr-ref-many"/>
+      <ref name="tok-selector-attributes-many"/>
+      <ref name="tok-cert-opt"/>
+      <optional>
+        <ref name="attr-chars"/>
+      </optional>
+    </element>
+  </define>
+  <define name="element-through-tok-no-ref">
+    <element name="through-tok">
+      <a:documentation>points to a single token that is the end of a range of tokens to be selected from a source, but without @ref.</a:documentation>
+      <ref name="tok-selector-attributes-one"/>
+    </element>
+  </define>
+  <define name="element-through-tok-with-ref">
+    <element name="through-tok">
+      <a:documentation>points to a single token in a single reference that is the end of a range of tokens to be selected from a source, in the context of @ref.</a:documentation>
+      <ref name="attr-ref-one"/>
+      <ref name="tok-selector-attributes-one"/>
+    </element>
+  </define>
+  <!-- PATTERNS -->
+  <define name="adjust-class-2">
+    <interleave>
+      <zeroOrMore>
+        <ref name="adj-element-skip"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="adj-element-rename"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="adj-element-equate"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="adj-element-reassign"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="adjust-non-class-2">
+    <empty/>
+  </define>
+  <define name="body-content-class-2">
+    <optional>
+      <ref name="claimant-attributes"/>
+    </optional>
+  </define>
+  <define name="body-content-non-class-2">
+    <interleave>
+      <zeroOrMore>
+        <ref name="body-group"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="body-item"/>
+      </zeroOrMore>
+    </interleave>
+  </define>
+  <define name="claimant-attributes">
+    <ref name="ptr-attr-claimant"/>
+    <optional>
+      <choice>
+        <ref name="attr-claim-when"/>
+        <ref name="attr-claim-period"/>
+      </choice>
+    </optional>
+  </define>
+  <define name="decl-class-2">
+    <zeroOrMore>
+      <ref name="element-token-definition"/>
+    </zeroOrMore>
+  </define>
+  <define name="decl-non-class-2">
+    <empty/>
+  </define>
+  <define name="default-tok-element">
+    <ref name="element-tok-standard"/>
+  </define>
+  <define name="simple-rename">
+    <choice>
+      <group>
+        <ref name="attr-n"/>
+        <ref name="attr-new-name"/>
+      </group>
+      <group>
+        <ref name="attr-ref-one"/>
+        <ref name="attr-new-ref"/>
+      </group>
+    </choice>
+  </define>
+  <define name="complex-rename">
+    <choice>
+      <ref name="attr-n"/>
+      <ref name="attr-ref-many"/>
+    </choice>
+    <choice>
+      <ref name="attr-by"/>
+      <ref name="attr-new-name"/>
+    </choice>
+  </define>
+  <define name="text-passage-selector-no-ref">
+    <ref name="element-from-tok-no-ref"/>
+    <ref name="element-through-tok-no-ref"/>
+  </define>
+  <define name="text-passage-selector-with-ref">
+    <ref name="element-from-tok-with-ref"/>
+    <ref name="element-through-tok-with-ref"/>
+  </define>
+  <define name="tok-cert-opt">
+    <optional>
+      <ref name="certainty-claim"/>
+    </optional>
+  </define>
+  <!-- picking <tok> by means of @val/@rgx + @pos -->
+  <define name="tok-selector-attributes-one">
+    <choice>
+      <choice>
+        <ref name="attr-val"/>
+        <ref name="attr-rgx"/>
+      </choice>
+      <ref name="attr-pos-one"/>
+      <group>
+        <choice>
+          <ref name="attr-val"/>
+          <ref name="attr-rgx"/>
+        </choice>
+        <ref name="attr-pos-one"/>
+      </group>
+    </choice>
+  </define>
+  <define name="tok-selector-attributes-many">
+    <choice>
+      <choice>
+        <ref name="attr-val"/>
+        <ref name="attr-rgx"/>
+      </choice>
+      <ref name="attr-pos-many"/>
+      <group>
+        <choice>
+          <ref name="attr-val"/>
+          <ref name="attr-rgx"/>
+        </choice>
+        <ref name="attr-pos-many"/>
+      </group>
+    </choice>
+  </define>
+  <define name="tok-sources-ref-opt">
+    <ref name="ptr-attr-src-many"/>
+  </define>
+  <define name="voc-element-class-2">
+    <zeroOrMore>
+      <ref name="voc-element-group-type"/>
+    </zeroOrMore>
+  </define>
+  <define name="voc-element-non-class-2">
+    <empty/>
+  </define>
+</grammar>

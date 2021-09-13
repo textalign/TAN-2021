@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:tokenizations">
+    <head>
+        <name>TAN keywords for types of token definitions</name>
+        <desc>Definitive list of key terms used to name standard token definitions.</desc>
+        <master-location href="http://textalign.net/release/TAN-2021/vocabularies/token-definitions.TAN-voc.xml"/>
+        <license licensor="kalvesmaki" which="by 4.0"/>
+        <vocabulary-key>
+            <person xml:id="kalvesmaki">
+                <IRI>http://viaf.org/viaf/299582703</IRI>
+                <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+                <name xml:lang="eng">Joel Kalvesmaki</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="kalvesmaki"/>
+        <resp roles="creator" who="kalvesmaki"/>
+        <change when="2016-02-02" who="kalvesmaki">Started file</change>
+        <change when="2016-02-22" who="kalvesmaki">Revised to suit new
+            &lt;token-definition&gt;</change>
+        <change when="2020-08-07" who="kalvesmaki">Added U+200B ZERO WIDTH SPACE to token
+            definitions</change>
+        <to-do/>
+    </head>
+    <body affects-element="token-definition">
+        <item>
+            <token-definition pattern="[\w&#xad;&#x200b;​&#x200d;]+"/>
+            <name>letters</name>
+            <name>letters only</name>
+            <name>general word characters only</name>
+            <name>general ignore punctuation</name>
+            <name>gwo</name>
+            <desc>General tokenization pattern for any language, words only. Non-letters such as
+                punctuation are ignored.</desc>
+        </item>
+        <item>
+            <token-definition pattern="[\w&#xad;​&#x200b;&#x200d;-]+"/>
+            <name>letters and hyphens</name>
+            <desc>General tokenization pattern for any language, only word characters (as defined in
+                Unicode) and the hyphen. All other characters are ignored.</desc>
+        </item>
+        <item>
+            <token-definition pattern="[\w&#xad;​&#x200b;&#x200d;'’]+"/>
+            <name>letters and apostrophes</name>
+            <desc>General tokenization pattern for any language, only word characters (as defined in
+                Unicode) and the apostrophe variants ' and ’. All other characters are ignored.
+                Note, this pattern will produce misleading results for texts that use single
+                quotation marks.</desc>
+        </item>
+        <item>
+            <token-definition pattern="[\w&#xad;​&#x200b;&#x200d;'’-]+"/>
+            <name>letters hyphens and apostrophes</name>
+            <name>letters apostrophes and hyphens</name>
+            <name>letters, hyphens and apostrophes</name>
+            <name>letters, apostrophes and hyphens</name>
+            <name>letters, hyphens, and apostrophes</name>
+            <name>letters, apostrophes, and hyphens</name>
+            <desc>General tokenization pattern for any language, only word characters (as defined in
+                Unicode), the hyphen, and the apostrophe variants ' and ’. All other characters are
+                ignored. Note, this pattern will produce misleading results for texts that use
+                single quotation marks.</desc>
+        </item>
+        <item>
+            <token-definition pattern="[\w&#xad;​&#x200b;&#x200d;]+|[^\w&#xad;​&#x200b;&#x200d;\s]"/>
+            <name>letters and punctuation</name>
+            <name>general non space characters</name>
+            <name>general include punctuation</name>
+            <desc>General tokenization pattern for any language, treating not only series of letters
+                as word tokens but also individual non-letter characters (e.g., punctuation).</desc>
+        </item>
+        <item>
+            <token-definition pattern="\S+"/>
+            <name>nonspace</name>
+            <desc>General tokenization pattern for any language, treating any contiguous run of
+                nonspace marks as a word.</desc>
+        </item>
+    </body>
+</TAN-voc>

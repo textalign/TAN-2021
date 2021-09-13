@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-mor.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-mor.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-mor xmlns="tag:textalign.net,2015:ns"
+   TAN-version="2021"
+   id="tag:kalvesmaki.com,2014:tan-r-mor:grc:perseus">
+   <head>
+      <name>Perseus rules for Greek morphology with categorized codes</name>
+      <desc xml:lang="eng">Model of a grammar code to be used in a TAN declaration concerning
+         grammar</desc>
+      <master-location href="https://raw.githubusercontent.com/Arithmeticus/TAN-lexico-morphology/master/grc/grc.perseus.tan-mor.xml"/>
+      <license licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <name>This license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <for-lang>grc</for-lang>
+      <source>
+         <IRI>urn:uuid:147d8040-4ca9-11e3-848f-0002a5d5c51b:2013-11-18</IRI>
+         <name>Perseus codes</name>
+         <desc xml:lang="eng">Perseus's standard code for Greek morphology (a string of 10 chars.),
+            found at http://perseus.uchicago.edu/about.html (accessed 2013-11-18)</desc>
+      </source>
+      <vocabulary-key ed-when="2016-03-31" ed-who="kalvesmaki">
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:kalvesmaki.com,2014:self</IRI>
+            <IRI>tag:kalvesmaki.com,2015:self</IRI>
+            <IRI>tag:kalvesmaki@gmail.com,2014:self</IRI>
+            <name>Joel Kalvesmaki</name>
+            <name>kalvesmaki</name>
+         </person>
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Converter from TAN 2018 to TAN 2019</name>
+            <location href="../../TAN-2020/applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl"
+               accessed-when="2018-09-08T19:40:15.392-04:00"/>
+         </algorithm>
+         <feature xml:id="c2">
+            <IRI>tag:textalign.net,2015:morphology:category:morphosyntactic-secondary</IRI>
+            <name>secondary morphosyntactic category</name>
+         </feature>
+         <comment when="2019-04-29" who="kalvesmaki">I added c2b in light of Morpheus results that
+            listed σοφώτερον vel sim. as primarily and adjective with "gender" as adverbial. One
+            could argue that any word tagged as c2b is both c1a and c1d, regardless which one is
+            chosen for the first code.</comment>
+         <feature xml:id="c2v">
+            <IRI>tag:textalign.net,2015:feature:grc:perseus:adjective-verbal</IRI>
+            <name>verbal</name>
+            <comment when="2015-05-05" who="kalvesmaki">Deprecated option</comment>
+         </feature>
+         <feature xml:id="c7">
+            <IRI>http://dbpedia.org/resource/VoiceFeature</IRI>
+            <name>voice</name>
+         </feature>
+         <feature xml:id="c8">
+            <IRI>http://dbpedia.org/resource/GenderFeature</IRI>
+            <name>gender</name>
+         </feature>
+         <feature xml:id="c9">
+            <IRI>http://dbpedia.org/resource/CaseFeature</IRI>
+            <name>case</name>
+         </feature>
+         <feature xml:id="c10">
+            <IRI>http://dbpedia.org/resource/DegreeFeature</IRI>
+            <name>degree</name>
+         </feature>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp who="xslt2" roles="stylesheet"/>
+      <resp roles="editor" who="kalvesmaki"/>
+      <change when="2015-03-31" who="kalvesmaki">Converted features to standard OLiA ones.</change>
+      <change who="kalvesmaki" when="2015-05-04">Converted IRI scheme to OLiA.</change>
+      <change when="2013-11-18" who="kalvesmaki">Adjusted uuid-date name. Built new roles
+         elements.</change>
+      <change when="2013-11-16" who="kalvesmaki">First draft started.</change>
+      <change when="2016-05-03-04:00" who="kalvesmaki">Substituted ω vocative for OLiA version</change>
+      <change who="xslt2" when="2018-09-08T19:40:15.392-04:00">Converted from 2018 to 2019 schemas.</change>
+      <change when="2019-06-16" who="kalvesmaki">Moved conditions from assert/report to parent rule.</change>
+      <to-do>
+         <comment when="2018-09-08" who="kalvesmaki">Needs to be tested against dependent 2020 files.</comment>
+      </to-do>
+      <comment when="2013-11-16" who="kalvesmaki">This was written to replicate the syntax and rules
+         of the 10-character codes developed by Perseus. </comment>
+   </head>
+   <body>
+      <!-- 1st category -->
+      <rule m-has-how-many-codes="2-10">
+         <report m-matches="^c">A conjunction has no other inflectional
+            properties.</report>
+         <report m-matches="^r">A preposition has no other inflectional
+            properties.</report>
+         <report m-matches="^i">An interjection has no other inflectional
+            properties.</report>
+         <report m-matches="^y">An acronym has no other inflectional properties.</report>
+      </rule>
+      
+      <rule m-matches="^e">
+         <report>Code e has been deprecated. It was used in some cases
+            for ὦ voc., to be distinguished from ὦ as exclamation </report>
+      </rule>
+      <rule m-matches="^g [^-m]">
+         <report>A particle is either qualified as modal (g m) or has no
+            other inflectional properties.</report>
+      </rule>
+      <!-- 2nd category -->
+      <rule m-matches="^. i">
+         <assert m-matches="^[dp]">An interrogative must be either a determiner (d) or a
+            pronoun (p).</assert>
+      </rule>
+      <rule m-matches="^. v">
+         <report>Code v for verbal adjective has been deprecated. </report>
+      </rule>
+      <category feature="morphosyntactic_category">
+         <code feature="adjective"><val>a</val></code>
+         <code feature="conjunction"><val>c</val></code>
+         <code feature="adverb"><val>d</val></code>
+         <code feature="vocative_expression"><val>e</val></code>
+         <code feature="unique"><val>g</val></code>
+         <code feature="interjection"><val>i</val></code>
+         <code feature="number_cardinal"><val>m</val></code>
+         <code feature="noun"><val>n</val></code>
+         <code feature="pronoun"><val>p</val></code>
+         <code feature="preposition"><val>r</val></code>
+         <code feature="verb"><val>v</val></code>
+         <code feature="acronym"><val>y</val></code>
+      </category>
+      <category feature="secondary_morphosyntactic_category">
+         <code feature="article"><val>a</val></code>
+         <code feature="adjectival_adverb"><val>b</val></code>
+         <code feature="pronoun_reciprocal"><val>c</val></code>
+         <code feature="demonstrative_pronoun"><val>d</val></code>
+         <code feature="proper_noun"><val>e</val></code>
+         <code feature="interrogative"><val>i</val></code>
+         <code feature="pronoun_reflexive"><val>k</val></code>
+         <code feature="particle_modal"><val>m</val></code>
+         <code feature="pronoun_personal"><val>p</val></code>
+         <code feature="pronoun_relative"><val>r</val></code>
+         <code feature="pronoun_possessive"><val>s</val></code>
+         <code feature="verbal"><val>v</val></code>
+         <code feature="pronoun_indefinite"><val>x</val></code>
+      </category>
+      <category feature="feature_person">
+         <code feature="first"><val>1</val></code>
+         <code feature="second"><val>2</val></code>
+         <code feature="third"><val>3</val></code>
+      </category>
+      <category feature="feature_number">
+         <code feature="dual"><val>d</val></code>
+         <code feature="plural"><val>p</val></code>
+         <code feature="singular"><val>s</val></code>
+      </category>
+      <category feature="feature_tense">
+         <code feature="aorist"><val>a</val></code>
+         <code feature="future"><val>f</val></code>
+         <code feature="imperfect"><val>i</val></code>
+         <code feature="tense_pluperfect"><val>l</val></code>
+         <code feature="present"><val>p</val></code>
+         <code feature="perfect"><val>r</val></code>
+         <code feature="perfect_future"><val>t</val></code>
+      </category>
+      <category feature="feature_mood">
+         <code feature="mood_indicative"><val>i</val></code>
+         <code feature="verb_imperative"><val>m</val></code>
+         <code feature="infinitive"><val>n</val></code>
+         <code feature="mood_optative"><val>o</val></code>
+         <code feature="participle"><val>p</val></code>
+         <code feature="modality_subjunctive"><val>s</val></code>
+      </category>
+      <category feature="voice">
+         <code feature="voice_active"><val>a</val></code>
+         <code feature="mediopassive"><val>e</val></code>
+         <code feature="voice_middle"><val>m</val></code>
+         <code feature="voice_passive"><val>p</val></code>
+      </category>
+      <category feature="gender">
+         <code feature="gender_common"><val>c</val></code>
+         <code feature="feminine"><val>f</val></code>
+         <code feature="masculine"><val>m</val></code>
+         <code feature="neuter"><val>n</val></code>
+      </category>
+      <category feature="case">
+         <code feature="accusative"><val>a</val></code>
+         <code feature="case_dative"><val>d</val></code>
+         <code feature="case_genitive"><val>g</val></code>
+         <code feature="nominative"><val>n</val></code>
+         <code feature="case_vocative"><val>v</val></code>
+      </category>
+      <category feature="degree">
+         <code feature="comparative"><val>c</val></code>
+         <code feature="superlative"><val>s</val></code>
+      </category>
+   </body>
+</TAN-mor>

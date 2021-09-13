@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-voc.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,2015:tan-voc:modals">
+   <head>
+      <name>TAN keywords for types of modals</name>
+      <desc>This file has been created ad hoc to reflect the kind of modal qualifiers that textual
+         scholars habitually employ to nuance their claims. These categories are not to be seen as
+         necessarily correlating with any branch modal logic. </desc>
+      <master-location href="http://textalign.net/release/TAN-2021/vocabularies/modals.TAN-voc.xml"/>
+      <license licensor="kalvesmaki" which="by 4.0"/>
+      <vocabulary-key>
+         <person xml:id="kalvesmaki">
+            <IRI>http://viaf.org/viaf/299582703</IRI>
+            <IRI>tag:textalign.net,2015:agent:kalvesmaki:joel</IRI>
+            <name xml:lang="eng">Joel Kalvesmaki</name>
+         </person>
+      </vocabulary-key>
+      <file-resp who="kalvesmaki"/>
+      <resp roles="creator" who="kalvesmaki"/>
+      <change when="2016-03-29" who="kalvesmaki">Started file</change>
+      <to-do/>
+   </head>
+    <body affects-element="modal">
+       <item>
+          <IRI>tag:textalign.net,2015:modal:not</IRI>
+          <name>not</name>
+          <desc>Negates a claim.</desc>
+       </item>
+       <item>
+          <IRI>tag:textalign.net,2015:modal:possibly</IRI>
+          <name>possibly</name>
+          <desc>It is possible that the claim is true.</desc>
+       </item>
+       <item>
+          <IRI>tag:textalign.net,2015:modal:probably</IRI>
+          <name>probably</name>
+          <desc>It is probable that the claim is true.</desc>
+       </item>
+       <item>
+          <IRI>tag:textalign.net,2015:modal:improbably</IRI>
+          <name>improbably</name>
+          <desc>It is improbable that the claim is true.</desc>
+       </item>
+       <item>
+          <IRI>tag:textalign.net,2015:modal:partially</IRI>
+          <name>partially</name>
+          <desc>The claim is true for only part of each object.</desc>
+       </item>
+    </body>
+</TAN-voc>

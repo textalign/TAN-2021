@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:parkj@textalign.net,2015:ring01">
+    <head>
+        <name>TAN transcription of Ring a Ring o' Roses</name>
+        <master-location href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1881.xml"/>
+        <license which="by_4.0" licensor="park"/>
+        <work>
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+            <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+        </work>
+        <reference-system type="logical" wf-ready="true"/>
+        <source>
+            <IRI>http://lccn.loc.gov/12032709</IRI>
+            <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+        </source>
+        <vocabulary-key>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name>Jenny Park</name>
+            </person>
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <location href="../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-09T11:14:15.228-04:00"/>
+            </algorithm>
+            <div-type xml:id="line" which="line (verse)"/>
+            <algorithm xml:id="xslt1"><IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI><name>Stylesheet to populate a TAN-A file from collections.</name><location accessed-when="2018-08-09T11:14:15.228-04:00" href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/></algorithm>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        
+        <file-resp who="park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp roles="creator" who="park"/>
+        <resp who="xslt1" roles="stylesheet1"/>
+        <change when="2014-08-13" who="park">Started file</change>
+        <change who="xslt1" when="2017-11-02T22:15:23.904-04:00">TAN file updated to 2018 schemas.</change>
+        <change who="xslt2" when="2018-08-09T11:14:15.228-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do/>
+    </head>
+    <body xml:lang="eng">
+        <div type="line" n="1">Ring-a-ring-a-roses,</div>
+        <div type="line" n="2">A pocket full of posies;</div>
+        <div type="line" n="3">Hush! Hush! Hush! Hush!</div>
+        <div type="line" n="4">We're all tumbled down.</div>
+    </body>
+</TAN-T>

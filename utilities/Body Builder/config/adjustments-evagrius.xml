@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="tag:textalign.net,2015:ns">
+   <!-- These adjustments are written for the TAN application convert to TAN.xsl, and are based upon
+      a series of Word documents that contained the working translation of a team of translators. -->
+   <initial-adjustments>
+      <replace pattern="(Chapter )(\d+)(\s+)\2\.\s*" replacement="$1$2$3" flags="i"
+         message="Removing repeated chapter number $2."/>
+      <replace pattern="\n(S[13]|Severus.+):\s*.+" replacement="" message="Removing entry for $1"/>
+      <replace pattern="(\n)S2:\s*" replacement="$1"/>
+   </initial-adjustments>
+   <main-text-to-markup>
+      <markup>
+         <where pattern="Preface pr" format="Heading1"/>
+         <div level="1" type="preface" n="pr"/>
+      </markup>
+      <markup>
+         <where pattern="Section (\d+)" format="Heading2"/>
+         <div level="2" type="section" n="$1"/>
+      </markup>
+      <markup>
+         <!-- This looks for, e.g., "Pref 1" and converts it to a div marking a section within the preface. -->
+         <where pattern="pref\s*(\d+)" format="Heading2" flags="i"/>
+         <div level="1" type="preface" n="pr"/>
+         <div level="2" type="section" n="$1"/>
+      </markup>
+      <markup>
+         <where pattern="century ([iv]+)" format="Heading1" flags="i"/>
+         <div level="1" type="century" n="$1"/>
+      </markup>
+      <markup>
+         <!-- Note, this particular rule takes priority over the next one, which also
+         looks for "chapter" -->
+         <where pattern="chapter (\d+)" format="Heading2" flags="i"/>
+         <div level="2" type="chapter" n="$1"/>
+      </markup>
+      <markup>
+         <!-- This looks for, e.g., "Chapter 1" and converts it to a top-level div for a chapter. -->
+         <where pattern="chapter (\d+)" flags="i"/>
+         <div level="1" type="chapter" n="$1"/>
+      </markup>
+      <markup>
+         <!-- This looks for, e.g., "head-1" and converts it to a top-level div for a head, and adapts the @n
+            as "head_1". (This is for a text where such heads intermingle with numbered chapters, so the raw
+            number should not be used. -->
+         <where pattern="(head)\D?(\d+)" format="Heading2" flags="i"/>
+         <where pattern="(head) head_(\d+)" format="Heading1" flags="i"/>
+         <div level="1" type="head" n="$1_$2"/>
+      </markup>
+      <markup>
+         <!-- Note, this particular rule takes priority over the next one, which also
+         looks for "epilogue" -->
+         <where pattern="epilogue ep(\d?)" format="Heading1" flags="i"/>
+         <div level="1" type="epilogue" n="ep$1"/>
+      </markup>
+      <markup>
+         <where pattern="epilogue ep(\d?)" format="Heading2" flags="i"/>
+         <div level="2" type="epilogue" n="ep$1"/>
+      </markup>
+      <markup>
+         <!-- This looks for "Epilogue" and marks it as belonging to the epilogue. -->
+         <where pattern="Epilogue\s*(ep)?" flags="i"/>
+         <div level="1" type="epilogue" n="ep"/>
+      </markup>
+      <markup>
+         <where pattern="para (\d+)" format="Heading2" flags="i"/>
+         <div level="2" type="para" n="$1"/>
+      </markup>
+   </main-text-to-markup>
+</configuration>

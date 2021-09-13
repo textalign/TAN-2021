@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schemas/TAN-A-lm.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" TAN-version="2020"
+    id="tag:FIXME.com,2015:tan-a-lm:FIXME">
+    <head xmlns="tag:textalign.net,2015:ns">
+        <name>TAN-A-lm template</name>
+        <!-- Manually edit: license @which (or IRI + name), @licensor -->
+        <license which="by_4.0" licensor="primary-agent"/>
+        <source>
+            <IRI>tag:FIXME.com,2015:FIXME</IRI>
+            <name>FIXME</name>
+            <location href="FIXME.xml" accessed-when="2018-02-15"/>
+        </source>
+        <vocabulary-key>
+            <lexicon xml:id="FIXLEXICON">
+                <IRI>tag:FIXME.com,2015:LEXICON.FIXME</IRI>
+                <name>FIXME</name>
+            </lexicon>
+            <morphology xml:id="FIXMORPHOLOGY">
+                <IRI>tag:FIXME.com,2015:MORPHOLOGY.FIXME</IRI>
+                <name>FIXME</name>
+                <location href="FIXME" accessed-when="2018-02-15"/>
+            </morphology>
+            <person xml:id="FIXME">
+                <IRI>tag:FIXME.com,2015:self</IRI>
+                <name>FIXME</name>
+            </person>
+        </vocabulary-key>
+        <file-resp who="FIXME"/>
+        <resp who="FIXME" roles="editor"/>
+        <change when="2018-02-15" who="FIXME">Created file.</change>
+        <to-do>
+            <comment when="{string(current-dateTime())}" who="primary-agent">Check file</comment>
+        </to-do>
+    </head>
+    <body lexicon="FIXLEXICON" morphology="FIXMORPHOLOGY"/>
+</TAN-A-lm>

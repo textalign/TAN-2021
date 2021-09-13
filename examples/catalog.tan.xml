@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href ="../../../schemas/catalog.tan.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href ="../../../schemas/tan.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<collection stable="true" metadata-resolved="false">
+   <doc href="ar.cat.eng.1926.edghill.ref-logical.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:semantic-refs"
+        TAN-version="2021"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, English translation by E. M. Edghill</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.eng.1926.edghill.ref-logical.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://id.lib.harvard.edu/aleph/007901738/catalog</IRI>
+         <name>Aristotle: Categoriae &amp; De interpretatione by E.M. Edghill. Analytica priora / by
+            A.J. Jenkinson. Analytica posteriora / by G.R.G. Mure. Oxford : Clarendon Press, 1926.
+         </name>
+      </source>
+      <model xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-02-10T14:08:52.058-05:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </model>
+      <see-also xmlns="tag:textalign.net,2015:ns" relationship="alt">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-02-11T12:40:42.823-05:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      </see-also>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:model-object-refs</IRI>
+         <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+         <location accessed-when="2016-06-22T08:13:35.791-04:00"
+                   href="ar.cat.eng.1926.edghill.ref-scriptum.xml"
+                   orig-href="ar.cat.eng.1926.edghill.ref-scriptum.xml"/>
+      </redivision>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.eng.1926.edghill.ref-scriptum.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:model-object-refs"
+        TAN-version="2021"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, English translation by E. M. Edghill</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.eng.1926.edghill.ref-scriptum.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://id.lib.harvard.edu/aleph/007901738/catalog</IRI>
+         <name>Aristotle: Categoriae &amp; De interpretatione by E.M. Edghill. Analytica priora / by
+            A.J. Jenkinson. Analytica posteriora / by G.R.G. Mure. Oxford : Clarendon Press, 1926.
+         </name>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:semantic-refs</IRI>
+         <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+         <location accessed-when="2016-07-07T16:36:28.867-04:00"
+                   href="ar.cat.eng.1926.edghill.ref-logical.xml"
+                   orig-href="ar.cat.eng.1926.edghill.ref-logical.xml"/>
+         <comment who="kalvesmaki" when="2021-02-12">A scan is available here:
+            https://ia600908.us.archive.org/33/items/worksofaristotle01arisuoft/worksofaristotle01arisuoft.pdf</comment>
+      </redivision>
+      <model xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-07-07T16:36:28.867-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      </model>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs-realigned"
+        xml:lang="fra"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Realignment of Categories, Aristotle, French translation by J. Barthélemy
+         Saint-Hilaire</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://id.lib.harvard.edu/aleph/002773288/catalog</IRI>
+         <name>Logique d'Aristote: Traduite en français pour la première fois et accompagnée de
+            notes perpétuelles par J. Barthélemy Saint-Hilaire. Paris : Ladrange, 1839-1844. </name>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs</IRI>
+         <name>Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+         <location accessed-when="2016-07-14T11:38:29.251-04:00"
+                   href="ar.cat.fra.1844.saint-hilaire.ref-logical.xml"
+                   orig-href="ar.cat.fra.1844.saint-hilaire.ref-logical.xml"/>
+      </redivision>
+      <model xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-07-14T11:38:29.251-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </model>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.fra.1844.saint-hilaire.ref-logical.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs"
+        TAN-version="2021"
+        xml:lang="fra"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.fra.1844.saint-hilaire.ref-logical-after.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="true"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name xml:lang="fra">Aristote, Catégories</name>
+         <name xml:lang="eng">Aristotle, Categories</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://id.lib.harvard.edu/aleph/002773288/catalog</IRI>
+         <name>Logique d'Aristote: Traduite en français pour la première fois et accompagnée de
+            notes perpétuelles par J. Barthélemy Saint-Hilaire. Paris : Ladrange, 1839-1844. </name>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs-realigned</IRI>
+         <name>Realignment of Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+         <location accessed-when="2016-07-13T15:08:34.397-04:00"
+                   href="ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"
+                   orig-href="ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"/>
+      </redivision>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+         <normalization which="no ligatures"/>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs"
+        TAN-version="2021"
+        xml:lang="grc"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, Greek text by Minio-Paluello</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or sources listed below, this data file, insofar as it constitutes an independent work, is licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name xml:lang="grc">Ἀριστοτέλης, Κατηγορίαι</name>
+         <name xml:lang="eng">Aristotle, Categories</name>
+      </work>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="true"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/50036648</IRI>
+         <name>L. Minio-Paluello, Aristotelis categoriae et liber de interpretatione. Oxford, 1949</name>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello, object-based references</name>
+         <location accessed-when="2015-09-11-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      </redivision>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs"
+        TAN-version="2021"
+        xml:lang="grc"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, Greek text edited in 1949 by Minio-Paluello, native scriptum-based reference system</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+                sources listed below, this data file, insofar as it constitutes an independent work,
+                is licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <IRI>tag:textalign.net,2015:work:aristotle:categories</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <reference-system xmlns="tag:textalign.net,2015:ns"
+                        type="material"
+                        wf-ready="true"
+                        scriptum="bekker"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/50036648</IRI>
+         <name>L. Minio-Paluello, Aristotelis categoriae et liber de interpretatione. Oxford,
+                1949 </name>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello, semantic-based
+                references</name>
+         <location accessed-when="2015-09-11-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </redivision>
+      <annotation xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:ar.cat.tan-a:claims</IRI>
+         <name>Comments and claims on Aristotle's Categories</name>
+         <location accessed-when="2021-04-29T11:29:58.992-04:00"
+                   href="TAN-A/ar.cat.TAN-A.claims.xml"
+                   orig-href="TAN-A/ar.cat.TAN-A.claims.xml"/>
+      </annotation>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:hyphens-discretionary-removed</IRI>
+            <name>discretionary hyphens suppressed</name>
+         </normalization>
+      </adjustments>
+   </doc>
+   <doc href="ar.cat.lat.1961.minio-paluello.ref-scriptum.xml"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.lat.1961.a.minio-paluello:object-refs"
+        TAN-version="2021"
+        xml:lang="lat"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Categories, Aristotle, Latin translation by Boethius, first recension, edited by
+         Minio-Paluello</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/ar.cat.lat.1949.minio-paluello.ref-scriptum.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Categories_(Aristotle)</IRI>
+         <name>Aristotle, Categories</name>
+      </work>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="material" wf-ready="true"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://id.lib.harvard.edu/aleph/000987221/catalog</IRI>
+         <IRI>http://www.worldcat.org/oclc/912995321</IRI>
+         <name>Aristoteles latinus. 1. 1-5, Categoriae vel praedicamenta : translatio Boethii -
+            editio composita translatio Guillelmi de Moerbeka, lemmata e simplicii commentario
+            decerpta pseudo-Augustini paraphrasis themistiana</name>
+      </source>
+      <see-also xmlns="tag:textalign.net,2015:ns" relationship="alt">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2018-12-11-05:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </see-also>
+   </doc>
+   <doc href="cpg2437.43.grc.1987.gehin.xml"
+        TAN-version="2020"
+        id="tag:kalvesmaki.com,2014:patrologia:text:cpg-2437.43:grc:1987:géhin"
+        xml:lang="grc"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Greek fragment of the Letters of Evagrius from Géhin's edition of Evagrius's Scholia on
+         Proverbs</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/Arithmeticus/TAN-Evagrius/master/cpg2437/cpg2437.43.grc.1987.géhin.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="kalvesmaki"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:evagriusponticus.net,2015:cpg2437</IRI>
+         <name>Ep</name>
+         <name>Ep.</name>
+         <name>Letters</name>
+         <name xml:lang="lat">Epistulae</name>
+         <name xml:lang="eng">62 Letters</name>
+         <name xml:lang="lat">Epistula lxii</name>
+         <name>cpg2437</name>
+         <desc>The majority of Evagrius's extant letters survive in a corpos of 62 letters of various lengths, all providing spiritual counsel to various figures such as Rufinus, St. Melania the Elder, St. Gregory Nazianzus, Bp. John of Jerusalem. These survive entirely in Syriac, with fragmentary survival in Greek. Some letters may actually be extracts that were, for one reason or another, included in his letters. The Armenian translation of the corpus is restricted to thirty letters, and is framed as if a correspondence between Evagrius and Melania. For letters not included in this corpus, see CPG 2438, 2439; cover letters to other treatises, e.g., CPG 2430, 2434.</desc>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>urn:isbn:2-204-02885-1</IRI>
+         <IRI>tag:evagriusponticus.net,2012:scriptum:géhin-1987</IRI>
+         <name>Evagrius Ponticus and Géhin 1987</name>
+         <name>SC 340</name>
+         <name>géhin 1987</name>
+         <desc>Evagrius Ponticus and Géhin, Paul. Scholies aux Proverbes. Sources chrétiennes 340. Paris: Éditions du Cerf, 1987.</desc>
+      </source>
+   </doc>
+   <doc href="gomme.1989.ring-o-roses.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:gomme.1898.ring-o-roses"
+        root="TEI">
+      <name xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">Dictionary entry by Alice Bertha Gomme on Ring a Ring o' Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       xmlns:xi="http://www.w3.org/2001/XInclude"
+                       xmlns:svg="http://www.w3.org/2000/svg"
+                       xmlns:tan="tag:textalign.net,2015:ns"
+                       xmlns:math="http://www.w3.org/1998/Math/MathML"
+                       href="http://textalign.net/release/TAN-2020/examples/gomme.1989.ring-o-roses.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns"
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns:tan="tag:textalign.net,2015:ns"
+               xmlns:math="http://www.w3.org/1998/Math/MathML"
+               licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+        License. The license is granted independent of rights and licenses associated with the
+        source. </name>
+      </license>
+      <reference-system xmlns="tag:textalign.net,2015:ns"
+                        xmlns:xi="http://www.w3.org/2001/XInclude"
+                        xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns:tan="tag:textalign.net,2015:ns"
+                        xmlns:math="http://www.w3.org/1998/Math/MathML"
+                        type="logical"
+                        wf-ready="true"/>
+      <work xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>tag:kalvesmaki@gmail.com,2014:work:gomme.1898.ring-o-roses</IRI>
+         <name>Article by Alice Bertha Gomme on Ring a Ring o' Roses</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns"
+              xmlns:xi="http://www.w3.org/2001/XInclude"
+              xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns:tan="tag:textalign.net,2015:ns"
+              xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>http://www.worldcat.org/oclc/2779087</IRI>
+         <name>The traditional games of England, Scotland, and Ireland : with tunes, singing-rhymes,
+        and methods of playing according to the variants extant and recorded in different parts of
+        the Kingdom</name>
+         <comment when="2015-03-10" who="park">This work is to be found at vol. 2, pp.
+        108-111.</comment>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns"
+                   xmlns:xi="http://www.w3.org/2001/XInclude"
+                   xmlns:svg="http://www.w3.org/2000/svg"
+                   xmlns:tan="tag:textalign.net,2015:ns"
+                   xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:music-printed-removed</IRI>
+            <name>Printed music has been removed.</name>
+         </normalization>
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:hyphens-discretionary-removed</IRI>
+            <name>Suppression of hyphens</name>
+         </normalization>
+         <replace pattern="--" replacement="—" flags="i"/>
+      </adjustments>
+   </doc>
+   <doc href="lords-prayer.eng.kjv.1760.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:bible:matthew:lords-prayer"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Matthew's version of the Lord's Prayer, King James Version of the Bible, 1760
+         edition</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/lords-prayer.eng.kjv.1760.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="park"/>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="false"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Lord%27s_Prayer</IRI>
+         <name>Lord's Prayer</name>
+         <name xml:lang="lat">Pater Noster</name>
+         <desc>Sermon on the Mount, from Matthew 5-7.</desc>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:version:matthews-version-of-the-lords-prayer</IRI>
+         <name>Matthew's version of the Lord's Prayer</name>
+      </version>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Keywords for TAN files edited by Jenny Park</name>
+         <location accessed-when="2019-10-08"
+                   href="TAN-voc/park-projects.TAN-voc.xml"
+                   orig-href="TAN-voc/park-projects.TAN-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns" which="kjv 1760"/>
+   </doc>
+   
+   <doc href="matt.eng.kjv.1760.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:bible:matthew"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Gospel of Matthew, King James Version of the Bible, 1760 edition</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/matt.eng.kjv.1760.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="park"/>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="true"/>
+      <n-alias xmlns="tag:textalign.net,2015:ns" div-type="book"/>
+      <work xmlns="tag:textalign.net,2015:ns" which="matthew"/>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="serm-mount">
+         <IRI>tag:parkj@textalign.net,2015:bible:matthew:sermon-on-the-mount</IRI>
+         <name>Sermon on the Mount, King James Version of the Bible, 1760 edition</name>
+         <location accessed-when="2019-10-09T02:09:11.163-04:00"
+                   href="sermon-on-the-mount.eng.kjv.1760.xml"
+                   orig-href="sermon-on-the-mount.eng.kjv.1760.xml"/>
+      </inclusion>
+      <vocabulary xmlns="tag:textalign.net,2015:ns"
+                  which="bible eng"
+                  accessed-when="2019-10-08"/>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Keywords for TAN files edited by Jenny Park</name>
+         <location accessed-when="2019-10-08"
+                   href="TAN-voc/park-projects.TAN-voc.xml"
+                   orig-href="TAN-voc/park-projects.TAN-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns" which="kjv 1760"/>
+   </doc>
+   
+   <doc href="patricius.confessio.2003.eng.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:patricius.confession.2003.eng"
+        root="TEI">
+      <name xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">The Confession of St Patrick: A digital edition of the English translation by Pádraig
+         McCarthy</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       xmlns:xi="http://www.w3.org/2001/XInclude"
+                       xmlns:svg="http://www.w3.org/2000/svg"
+                       xmlns:tan="tag:textalign.net,2015:ns"
+                       xmlns:math="http://www.w3.org/1998/Math/MathML"
+                       href="http://textalign.net/release/TAN-2020/examples/patricius.confessio.2003.eng.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns"
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns:tan="tag:textalign.net,2015:ns"
+               xmlns:math="http://www.w3.org/1998/Math/MathML"
+               licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+            License. The license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <reference-system xmlns="tag:textalign.net,2015:ns"
+                        xmlns:xi="http://www.w3.org/2001/XInclude"
+                        xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns:tan="tag:textalign.net,2015:ns"
+                        xmlns:math="http://www.w3.org/1998/Math/MathML"
+                        type="logical"
+                        wf-ready="false"/>
+      <work xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>tag:parkj@textalign.net,2015:work:patricius:confessio</IRI>
+         <name>Confession of St. Patrick</name>
+      </work>
+      <source xmlns="tag:textalign.net,2015:ns"
+              xmlns:xi="http://www.w3.org/2001/XInclude"
+              xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns:tan="tag:textalign.net,2015:ns"
+              xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>tag:parkj@textalign.net,2015:source:http://www.confessio.ie/sites/confessio.ie/files/downloads/confessio_english.xml</IRI>
+         <name>The Saint Patrick's Confessio Hypertext Stack Project edition</name>
+         <checksum>
+            <IRI>http://dbpedia.org/resource/Sha-1</IRI>
+            <name>SHA-1</name>
+            <value>91D95564ABDF2B2C1B9EEF016CBA51E8179646CC</value>
+         </checksum>
+         <location accessed-when="2015-01-25"
+                   href="http://www.confessio.ie/sites/confessio.ie/files/downloads/confessio_english.xml"/>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns"
+                   xmlns:xi="http://www.w3.org/2001/XInclude"
+                   xmlns:svg="http://www.w3.org/2000/svg"
+                   xmlns:tan="tag:textalign.net,2015:ns"
+                   xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <normalization>
+            <IRI>tag:textalign.net,2015:normalization:annotation-content-removed</IRI>
+            <name>Footnotes or endnotes have been deleted.</name>
+         </normalization>
+      </adjustments>
+   </doc>
+   <doc href="ring-o-roses.deu.1897-prev.xml"
+        TAN-version="2021"
+        id="tag:hans@beispiel.com,2014:ringel"
+        xml:lang="deu"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN Transkription, Ringelreihen mit Riederfallen</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://beispiel.com/TAN-T/ringel.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="schmidt">
+         <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+         <name>Creative Commons Namensnennung 4.0 International Lizenz</name>
+         <desc>Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung 4.0
+            International Lizenz.</desc>
+      </license>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="false"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:beispiel.com,2014:texte:holderbusch</IRI>
+         <name>"Die Kinder auf dem Holderbusch"</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>urn:uuid:31648039-3dbb-49b9-b66e-9bd2cd11630e</IRI>
+         <name>zweite Version</name>
+      </version>
+      <numerals xmlns="tag:textalign.net,2015:ns" priority="letters"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://www.worldcat.org/oclc/4574384</IRI>
+         <name>Franz Magnus Böhme, Deutsches Kinderlied und Kinderspiel: Volksüberlieferungen aus
+            allen Landen deutscher Zunge, gesammelt, geordnet und mit Angabe der Quellen. Leipzig,
+            1897.</name>
+      </source>
+      <successor xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>TAN Transkription, Ringelreihen mit Riederfallen</name>
+         <location accessed-when="2021-04-29T11:46:04.656-04:00"
+                   href="ring-o-roses.deu.1897.xml"
+                   orig-href="ring-o-roses.deu.1897.xml"/>
+      </successor>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization>
+            <IRI>tag:kalvesmaki@gmail.com,2014:normalization:hyphens-discretionary-off</IRI>
+            <name>Keine Bindestriche</name>
+         </normalization>
+      </adjustments>
+   </doc>
+   <doc href="ring-o-roses.deu.1897.xml"
+        TAN-version="2021"
+        id="tag:hans@beispiel.com,2014:ringel"
+        xml:lang="deu"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN Transkription, Ringelreihen mit Riederfallen</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://beispiel.com/TAN-T/ringel.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="schmidt">
+         <IRI>http://creativecommons.org/licenses/by/4.0/</IRI>
+         <name>Creative Commons Namensnennung 4.0 International Lizenz</name>
+         <desc>Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung 4.0
+            International Lizenz.</desc>
+      </license>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="false"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:beispiel.com,2014:texte:holderbusch</IRI>
+         <name>"Die Kinder auf dem Holderbusch"</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>urn:uuid:31648039-3dbb-49b9-b66e-9bd2cd11630e</IRI>
+         <name>zweite Version</name>
+      </version>
+      <numerals xmlns="tag:textalign.net,2015:ns" priority="letters"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://www.worldcat.org/oclc/4574384</IRI>
+         <name>Franz Magnus Böhme, Deutsches Kinderlied und Kinderspiel: Volksüberlieferungen aus
+            allen Landen deutscher Zunge, gesammelt, geordnet und mit Angabe der Quellen. Leipzig,
+            1897.</name>
+      </source>
+      <predecessor xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>TAN Transkription, Ringelreihen mit Riederfallen</name>
+         <location accessed-when="2021-04-29T11:46:36.281-04:00"
+                   href="ring-o-roses.deu.1897-prev.xml"
+                   orig-href="ring-o-roses.deu.1897-prev.xml"/>
+      </predecessor>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization>
+            <IRI>tag:kalvesmaki@gmail.com,2014:normalization:hyphens-discretionary-off</IRI>
+            <name>Keine Bindestriche</name>
+         </normalization>
+      </adjustments>
+   </doc>
+   <doc href="ring-o-roses.eng.1881.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ring01"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN transcription of Ring a Ring o' Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1881.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+      </work>
+      <reference-system xmlns="tag:textalign.net,2015:ns" type="logical" wf-ready="true"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/12032709</IRI>
+         <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+      </source>
+   </doc>
+   <doc href="ring-o-roses.eng.1951.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ring04"
+        root="TEI">
+      <name xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+      1883</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       xmlns:xi="http://www.w3.org/2001/XInclude"
+                       xmlns:svg="http://www.w3.org/2000/svg"
+                       xmlns:tan="tag:textalign.net,2015:ns"
+                       xmlns:math="http://www.w3.org/1998/Math/MathML"
+                       href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1957.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns"
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns:tan="tag:textalign.net,2015:ns"
+               xmlns:math="http://www.w3.org/1998/Math/MathML"
+               licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>This data file is licensed under a Creative Commons Attribution 4.0 International
+        License. The license is granted independent of rights and licenses associated with the
+        source. </name>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns"
+            xmlns:xi="http://www.w3.org/2001/XInclude"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:tan="tag:textalign.net,2015:ns"
+            xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>Ring around the Rosie</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns"
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               xmlns:svg="http://www.w3.org/2000/svg"
+               xmlns:tan="tag:textalign.net,2015:ns"
+               xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>tag:parkj@textalign.net,2015:work:ring:version:newell-reported</IRI>
+         <name>Ring around the Rosie, second version</name>
+         <name>Ring around the Rosie, version reported by Newell</name>
+      </version>
+      <source xmlns="tag:textalign.net,2015:ns"
+              xmlns:xi="http://www.w3.org/2001/XInclude"
+              xmlns:svg="http://www.w3.org/2000/svg"
+              xmlns:tan="tag:textalign.net,2015:ns"
+              xmlns:math="http://www.w3.org/1998/Math/MathML">
+         <IRI>http://lccn.loc.gov/51014126</IRI>
+         <name>The Oxford dictionary of nursery rhymes, edited by Iona and Peter Opie.</name>
+         <desc>See p. 364, lines 37-40</desc>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns"
+                   xmlns:xi="http://www.w3.org/2001/XInclude"
+                   xmlns:svg="http://www.w3.org/2000/svg"
+                   xmlns:tan="tag:textalign.net,2015:ns"
+                   xmlns:math="http://www.w3.org/1998/Math/MathML">
+    </adjustments>
+   </doc>
+   
+   <doc href="ring-o-roses.eng.1987.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ring02"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN transcription of Ring around the Rosie</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/ring-o-roses.eng.1987.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+            License. The license is granted independent of rights and licenses associated with the
+            source. </desc>
+      </license>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>Ring around the Rosie</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:work:ring02:version:american</IRI>
+         <name>American version of Ring-around-a-rosie</name>
+      </version>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/87042504</IRI>
+         <name>Mother Goose, from nursery to literature / by Gloria T. Delama, 1987.</name>
+         <desc>See p. 38, left column, lines 28-31</desc>
+      </source>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Vocabulary for TAN files edited by Jenny Park</name>
+         <location accessed-when="2020-01-10"
+                   href="TAN-voc/park-projects.TAN-voc.xml"
+                   orig-href="TAN-voc/park-projects.TAN-voc.xml"/>
+      </vocabulary>
+      <model xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:ring04</IRI>
+         <name>TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+            1883</name>
+         <location accessed-when="2021-04-27-04:00"
+                   href="ring-o-roses.eng.1951.xml"
+                   orig-href="ring-o-roses.eng.1951.xml"/>
+      </model>
+      <adjustments xmlns="tag:textalign.net,2015:ns">
+         <normalization which="no hyphens"/>
+      </adjustments>
+   </doc>
+   <doc href="sermon-on-the-mount.eng.kjv.1760.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:bible:matthew:sermon-on-the-mount"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">Sermon on the Mount, King James Version of the Bible, 1760 edition</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/sermon-on-the-mount.eng.kjv.1760.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by 4.0" licensor="park"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Sermon_on_the_Mount</IRI>
+         <name>Sermon on the Mount</name>
+         <desc>Sermon on the Mount, from Matthew 5-7.</desc>
+      </work>
+      <vocabulary xmlns="tag:textalign.net,2015:ns"
+                  which="bible eng"
+                  accessed-when="2019-10-08"/>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:TAN-voc:standard</IRI>
+         <name>Keywords for TAN files edited by Jenny Park</name>
+         <location accessed-when="2019-10-08"
+                   href="TAN-voc/park-projects.TAN-voc.xml"
+                   orig-href="TAN-voc/park-projects.TAN-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns" which="kjv 1760"/>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="lords-prayer">
+         <IRI>tag:parkj@textalign.net,2015:bible:matthew:lords-prayer</IRI>
+         <name>Matthew's version of the Lord's Prayer, King James Version of the Bible, 1760
+            edition</name>
+         <location accessed-when="2019-10-09T02:32:50.973-04:00"
+                   href="lords-prayer.eng.kjv.1760.xml"
+                   orig-href="lords-prayer.eng.kjv.1760.xml"/>
+      </inclusion>
+   </doc>
+   <doc href="TAN-A/ar.cat.TAN-A.claims.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ar.cat.tan-a:claims"
+        claimant="park"
+        claim-period="per2010s"
+        root="TAN-A">
+      <name xmlns="tag:textalign.net,2015:ns">Comments and claims on Aristotle's Categories</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A/ar.cat.tan-a.claims.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns" src="*" which="letters only"/>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:TAN-key:ar.cat</IRI>
+         <name>Keywords for Aristotle's Categories</name>
+         <location accessed-when="2017-03-10T11:50:15.499-05:00"
+                   href="TAN-voc/ar.cat.TAN-voc.xml"
+                   orig-href="../TAN-voc/ar.cat.TAN-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="grc">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-07-08T15:17:28.037-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+                   orig-href="../ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:model-object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2017-12-31"
+                   href="ar.cat.eng.1926.edghill.ref-scriptum.xml"
+                   orig-href="../ar.cat.eng.1926.edghill.ref-scriptum.xml"/>
+      </source>
+   </doc>
+   <doc href="TAN-A/ar.cat.TAN-A.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ar.cat.tan-a"
+        claimant="park"
+        root="TAN-A">
+      <name xmlns="tag:textalign.net,2015:ns">Alignment of Aristotle's Categories</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A/ar.cat.tan-a.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <numerals xmlns="tag:textalign.net,2015:ns" priority="letters"/>
+      <token-definition xmlns="tag:textalign.net,2015:ns" src="fra" pattern="\S+"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="grc">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-07-08T15:17:28.037-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="../ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="fra">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.fra.1844.saint-hilaire:semantic-refs-realigned</IRI>
+         <name>Categories, Aristotle, French translation by J. Barthélemy Saint-Hilaire</name>
+         <location accessed-when="2016-07-11T13:44:25.487-04:00"
+                   href="ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"
+                   orig-href="../ar.cat.fra.1844.saint-hilaire.ref-logical-after-1949.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.eng.1926.edghill:semantic-refs</IRI>
+         <name>Categories, Aristotle, English translation by E. M. Edghill</name>
+         <location accessed-when="2016-07-08T15:18:25.573-04:00"
+                   href="ar.cat.eng.1926.edghill.ref-logical.xml"
+                   orig-href="../ar.cat.eng.1926.edghill.ref-logical.xml"/>
+      </source>
+      <companion-version xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:ar.cat.tan-a:claims</IRI>
+         <name>Comments and claims on Aristotle's Categories</name>
+         <location accessed-when="2021-04-29T11:41:57.716-04:00"
+                   href="TAN-A/ar.cat.TAN-A.claims.xml"
+                   orig-href="ar.cat.TAN-A.claims.xml"/>
+      </companion-version>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="fra">
+         <skip div-type="summ" shallow="false"/>
+         <equate n="ti title"/>
+         <reassign>
+            <passage ref="5 4 7 2">
+               <from-tok val=":" pos="1"/>
+               <through-tok val=":" pos="1"/>
+            </passage>
+            <to ref="5 4 7 1"/>
+         </reassign>
+      </adjustments>
+   </doc>
+   <doc href="TAN-A/patricius.confessio.TAN-A.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:patricius.confessio.tan-a"
+        claimant="park"
+        root="TAN-A">
+      <name xmlns="tag:textalign.net,2015:ns">Annotations on Patricius, Confessio</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A/patricius.confessio.TAN-A.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park" which="by 4.0"/>
+      <numerals xmlns="tag:textalign.net,2015:ns" priority="letters"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="conf">
+         <IRI>tag:parkj@textalign.net,2015:patricius.confession.2003.eng</IRI>
+         <name>The Confession of St Patrick: A digital edition of the English translation by
+                Pádraig McCarthy</name>
+         <location accessed-when="2020-10-14-04:00"
+                   href="patricius.confessio.2003.eng.xml"
+                   orig-href="../patricius.confessio.2003.eng.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="Matt">
+         <IRI>tag:parkj@textalign.net,2015:bible:matthew</IRI>
+         <name>Gospel of Matthew, King James Version of the Bible, 1760 edition</name>
+         <location accessed-when="2020-10-14-04:00"
+                   href="matt.eng.kjv.1760.xml"
+                   orig-href="../matt.eng.kjv.1760.xml"/>
+      </source>
+   </doc>
+   <doc href="TAN-A/ringoroses.div.1.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ring01-TAN-A-ring02"
+        claimant="park"
+        root="TAN-A">
+      <name xmlns="tag:textalign.net,2015:ns">div-based alignment of multiple versions of Ring o Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A/ringoroses.div.1.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <token-definition xmlns="tag:textalign.net,2015:ns" src="eng-us" pattern="[-\w]+"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng-uk">
+         <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+         <name>Transcription of ring around the roses in English (UK)</name>
+         <location accessed-when="2015-03-10"
+                   href="ring-o-roses.eng.1881.xml"
+                   orig-href="../ring-o-roses.eng.1881.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng-us">
+         <IRI>tag:parkj@textalign.net,2015:ring02</IRI>
+         <name>Transcription of ring around the roses in English (US)</name>
+         <location accessed-when="2014-08-13"
+                   href="ring-o-roses.eng.1987.xml"
+                   orig-href="../ring-o-roses.eng.1987.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="ger">
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>Transcription of an ancestor of Ring around the roses in German</name>
+         <location accessed-when="2014-08-13"
+                   href="ring-o-roses.deu.1897.xml"
+                   orig-href="../ring-o-roses.deu.1897.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng-1790">
+         <IRI>tag:parkj@textalign.net,2015:ring04</IRI>
+         <name>TAN transcription of 1790 version of Ring around the Rosie reported by Newell in
+                1883</name>
+         <location accessed-when="2017-10-21"
+                   href="ring-o-roses.eng.1951.xml"
+                   orig-href="../ring-o-roses.eng.1951.xml"/>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="ger">
+         <skip div-type="Gedicht"/>
+         <rename n="e" by="-1"/>
+      </adjustments>
+   </doc>
+   <doc href="TAN-A-lm/ar.cat.grc.1949.minio-paluello-sem-TAN-A-lm-sample.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs:TAN-A-lm:2016-04-05T07:07:40.033-04:00"
+        lexicon="LSJ Lampe new"
+        morphology="Perseus"
+        claimant="xslt2"
+        root="TAN-A-lm">
+      <name xmlns="tag:textalign.net,2015:ns">Lexico-morphological data for Categories, Aristotle, Greek text by Minio-Paluello</name>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns"
+                        pattern="[\w&#xad;&#x200b;&#x200d;]+"/>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="rel">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-09-28T08:50:23.457-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"
+                   orig-href="../ar.cat.grc.1949.minio-paluello.ref-scriptum.xml"/>
+      </inclusion>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location accessed-when="2016-04-05T07:07:40.033-04:00"
+                   href="ar.cat.grc.1949.minio-paluello.ref-logical.xml"
+                   orig-href="../ar.cat.grc.1949.minio-paluello.ref-logical.xml"/>
+      </source>
+   </doc>
+   <doc href="TAN-A-lm/grc-tan-a-lm-α.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusα"
+        lexicon="LSJ"
+        morphology="perseus-dik"
+        claimant="xslt2"
+        root="TAN-A-lm">
+      <name xmlns="tag:textalign.net,2015:ns">Perseus lexico-morphological permutations devoted exclusively to α</name>
+      <license xmlns="tag:textalign.net,2015:ns"
+               which="Attribution-ShareAlike 3.0 Unported"
+               licensor="perseus"/>
+      <for-lang xmlns="tag:textalign.net,2015:ns">grc</for-lang>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ἆ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ἁ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ἅ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ἃ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ᾇ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">Α</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">ά</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">Ἃ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">Ἆ</tok-is>
+      <tok-is xmlns="tag:textalign.net,2015:ns">α</tok-is>
+   </doc>
+   <doc href="TAN-A-lm/grc-tan-a-lm-αʹ.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2015:tan-a-lm:grc:perseusαʹ"
+        lexicon="LSJ"
+        morphology="perseus-dik"
+        claimant="xslt2"
+        root="TAN-A-lm">
+      <name xmlns="tag:textalign.net,2015:ns">Perseus lexico-morphological permutations devoted exclusively to αʹ</name>
+      <license xmlns="tag:textalign.net,2015:ns"
+               which="Attribution-ShareAlike 3.0 Unported"
+               licensor="perseus"/>
+      <for-lang xmlns="tag:textalign.net,2015:ns">grc</for-lang>
+      <tok-starts-with xmlns="tag:textalign.net,2015:ns">αʹ</tok-starts-with>
+      <tok-starts-with xmlns="tag:textalign.net,2015:ns">Αʹ</tok-starts-with>
+   </doc>
+   <doc href="TAN-A-lm/ring-o-roses.eng.1881.lm.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:ring01-lm"
+        lexicon="english"
+        morphology="penn"
+        claimant="xslt2"
+        root="TAN-A-lm">
+      <name xmlns="tag:textalign.net,2015:ns">Part-of-speech analysis of 1881 version of Ring a Ring o' Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A-lm/ring-o-roses.eng.1881.lm.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This license is granted independent of rights and licenses associated with the
+                source. </desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns" which="letters and punctuation"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+         <name>TAN transcription of Ring a Ring o' Roses</name>
+         <location accessed-when="2015-06-08-04:00"
+                   href="ring-o-roses.eng.1881.xml"
+                   orig-href="../ring-o-roses.eng.1881.xml"/>
+      </source>
+   </doc>
+   <doc href="TAN-A-tok/ringoroses.01+02.token.1.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:TAN-A-tok,ring01+ring02"
+        bitext-relation="B-descends-from-A"
+        reuse-type="adaptation"
+        root="TAN-A-tok">
+      <name xmlns="tag:textalign.net,2015:ns">token-based alignment of two versions of Ring o Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A-tok/ringoroses.01+02.token.1.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns"
+                        src="ring1881 ring1987"
+                        which="letters"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="ring1881">
+         <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+         <name>Ring o roses 1881</name>
+         <location accessed-when="2015-01-17"
+                   href="ring-o-roses.eng.1881.xml"
+                   orig-href="../ring-o-roses.eng.1881.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="ring1987">
+         <IRI>tag:parkj@textalign.net,2015:ring02</IRI>
+         <name>Ring o roses 1987</name>
+         <location accessed-when="2015-01-17"
+                   href="ring-o-roses.eng.1987.xml"
+                   orig-href="../ring-o-roses.eng.1987.xml"/>
+      </source>
+   </doc>
+   <doc href="TAN-A-tok/ringoroses.01+03.token.1.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:TAN-A-tok,ring01+ring03"
+        reuse-type="correlationGeneral"
+        bitext-relation="unclear"
+        claimant="xslt2"
+        root="TAN-A-tok">
+      <name xmlns="tag:textalign.net,2015:ns">token-based alignment of two versions of Ring o Roses</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A-tok/ringoroses.01+03.token.1.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This license is granted independent of rights and licenses associated with the
+                source. </desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns" src="eng ger" pattern="\w+"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng">
+         <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+         <name>1881 version of Ring around the Roses</name>
+         <location accessed-when="2015-05-24-04:00"
+                   href="ring-o-roses.eng.1881.xml"
+                   orig-href="../ring-o-roses.eng.1881.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="ger">
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>German version of Ring around the Roses</name>
+         <location accessed-when="2015-05-24-04:00"
+                   href="ring-o-roses.deu.1897.xml"
+                   orig-href="../ring-o-roses.deu.1897.xml"/>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="ger">
+         <skip div-type="Gedicht"/>
+      </adjustments>
+   </doc>
+   <doc href="TAN-A-tok/ringoroses.01+03.token.2.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:TAN-A-tok,ring01+ring03:alt"
+        reuse-type="correlationGeneral"
+        bitext-relation="unclear"
+        claimant="xslt2"
+        root="TAN-A-tok">
+      <name xmlns="tag:textalign.net,2015:ns">token-based alignment of two versions of Ring o Roses</name>
+      <desc xmlns="tag:textalign.net,2015:ns">This takes the previous version (see see-also element below) and shows a simpler way
+            to align tokens.</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="http://textalign.net/release/TAN-2020/examples/TAN-A-tok/ringoroses.01+03.token.2.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This license is granted independent of rights and licenses associated with the
+                source. </desc>
+      </license>
+      <token-definition xmlns="tag:textalign.net,2015:ns"
+                        src="eng ger"
+                        which="letters and punctuation"/>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="eng">
+         <IRI>tag:parkj@textalign.net,2015:ring01</IRI>
+         <name>1881 version of Ring around the Roses</name>
+         <location accessed-when="2015-05-24-04:00"
+                   href="ring-o-roses.eng.1881.xml"
+                   orig-href="../ring-o-roses.eng.1881.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="ger">
+         <IRI>tag:hans@beispiel.com,2014:ringel</IRI>
+         <name>German version of Ring around the Roses</name>
+         <location accessed-when="2015-05-24-04:00"
+                   href="ring-o-roses.deu.1897.xml"
+                   orig-href="../ring-o-roses.deu.1897.xml"/>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="ger">
+         <skip div-type="Gedicht"/>
+         <rename ref="1 e" new="4"/>
+      </adjustments>
+   </doc>
+   <doc href="TAN-mor/eng.kalvesmaki.com,2014.2.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2014:tan-r-mor:eng:penn"
+        root="TAN-mor">
+      <name xmlns="tag:textalign.net,2015:ns">University of Pennsylvania (Penn) Treebank Tag-set</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/Arithmeticus/TAN-lexico-morphology/master/TAN-mor/eng.kalvesmaki.com%2C2014.2.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <name>This license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <for-lang xmlns="tag:textalign.net,2015:ns">eng</for-lang>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:kalvesmaki.com,2014:project:penn-treebank</IRI>
+         <name>University of Pennsylvania (Penn) Treebank</name>
+      </source>
+      <comment xmlns="tag:textalign.net,2015:ns" when="2015-03-10" who="kalvesmaki">Codes developed as a synthesis of
+         ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz and
+         http://www.comp.leeds.ac.uk/amalgam/tagsets/upenn.html</comment>
+   </doc>
+   <doc href="TAN-mor/grc.perseus.tan-mor.xml"
+        TAN-version="2021"
+        id="tag:kalvesmaki.com,2014:tan-r-mor:grc:perseus"
+        root="TAN-mor">
+      <name xmlns="tag:textalign.net,2015:ns">Perseus rules for Greek morphology with categorized codes</name>
+      <desc xmlns="tag:textalign.net,2015:ns" xml:lang="eng">Model of a grammar code to be used in a TAN declaration concerning
+         grammar</desc>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/Arithmeticus/TAN-lexico-morphology/master/grc/grc.perseus.tan-mor.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <name>This license is granted independent of rights and licenses associated with the
+            source. </name>
+      </license>
+      <for-lang xmlns="tag:textalign.net,2015:ns">grc</for-lang>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>urn:uuid:147d8040-4ca9-11e3-848f-0002a5d5c51b:2013-11-18</IRI>
+         <name>Perseus codes</name>
+         <desc xml:lang="eng">Perseus's standard code for Greek morphology (a string of 10 chars.),
+            found at http://perseus.uchicago.edu/about.html (accessed 2013-11-18)</desc>
+      </source>
+   </doc>
+   <doc href="TAN-voc/ar.cat.TAN-voc.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:TAN-key:ar.cat"
+        affects-element="work"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Keywords for Aristotle's Categories</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="https://raw.githubusercontent.com/textalign/TAN-2021/master/examples/TAN-voc/ar.cat.TAN-voc.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <adjustments xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="TAN-voc/park-projects.TAN-voc.xml"
+        TAN-version="2021"
+        id="tag:parkj@textalign.net,2015:TAN-voc:standard"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Vocabulary for TAN files edited by Jenny Park</name>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park" which="by 4.0"/>
+   </doc>
+</collection>

@@ -1,0 +1,216 @@
+default namespace local = "tag:textalign.net,2015:ns"
+
+include "incl/TAN-class-2.rnc" {
+   start =
+      
+      ## specifies that the file is a general TAN alignment file. Root element.
+      element TAN-A { TAN-root }
+   # TAN-A files must have zero or more sources
+   source-list = link-element-source*
+   voc-element-non-class-2 = voc-element-tan-a
+   tok-cert-opt = empty
+   # Redefining TAN-body-core not only defines what is in the body of a TAN-A but also excludes groups from it.
+   body-content-non-class-2 = ptr-attr-subject?, ptr-attr-object?, ptr-attr-verb?, element-claim*
+}
+# ATTRIBUTES
+attr-in-lang =
+   
+   ## restricts a claim to a particular language; used with only certain verbs, e.g., "translates"
+   
+   ## By default, this feature is disallowed. A verb's <constraint> must explicitly require or allow it.
+   attribute in-lang { xsd:language }
+ptr-attr-modal =
+   
+   ## names a <modal> that qualifies the claim.
+   
+   ## Multiple values of @adverb are interpreted to mean "and" with intersection. No distribution takes place. @adverb="X Y" specifies that the claim is expressed in both X and Y modes. For example, adverb="not probably" means that the claim is probably not true.
+   
+   ## The sequence of multiple values of @adverb is immaterial. This attribute is not inheritable.
+   attribute adverb { text }
+ptr-attr-object =
+   
+   ## takes one or more ID refs of vocabulary items that serve as the grammatical object of a claim. For example, if you wish to say that work A is a commentary on work B, then @object would have the ID ref for work B. @object is used for simple idrefs. For complex objects such as data content or textual references you must use <object>.
+   
+   ## Multiple values of @object are interpreted to mean "and", resulting in distribution of the claim. E.g., object="X Y" means the claim is true about X and about Y.
+   
+   ## In RDF, the concept of object (the third element of a triple) is required. In TAN, the object is not required, since some <verb>s may be intransitive (e.g., "Charlie slept.").
+   
+   ## The sequence of multiple values of @object are immaterial.
+   attribute object { text }
+ptr-attr-place =
+   
+   ## restricts the domain of a <claim> to a specific <place>.
+   
+   ## Multiple values of @where are interpreted to mean "or" with union. Unlike most other attributes for <claim>, no distribution takes place. For example, where="X Y" means the claim occured in either X or Y or both.
+   
+   ## The sequence of multiple values of @where is immaterial.
+   attribute where { text }
+ptr-attr-scriptum =
+   
+   ## points to one or more ID refs of vocabulary items that are scripta (text-bearing objects).
+   
+   ## Multiple values of @scriptum are interpreted to mean "and", resulting in distribution of the claim.
+   
+   ## The sequence of multiple values of @scriptum is immaterial.
+   attribute scriptum { text }
+ptr-attr-subject =
+   
+   ## points to one or more ID refs of vocabulary items in <head> that serve as the grammatical subject of a claim. @subject within <body> indicates the default subject(s) for <claim>s. @subject is used for idrefs; data content, textual references, or complex objects must be encoded with <subject>.
+   
+   ## Multiple values of @subject are interpreted to mean "and", resulting in distribution of the claim. E.g., subject="X Y" means the claim is true about X and about Y.
+   
+   ## The sequence of multiple values is immaterial.
+   attribute subject { text }
+ptr-attr-units =
+   
+   ## points to the ID ref of a <unit>, identifying the type of unit.
+   attribute units { text }
+ptr-attr-verb =
+   
+   ## points to one or more <verb>s that serve to assert something of the subject.
+   
+   ## The TAN term "verb" is the preferred equivalent to RDF "predicate."
+   
+   ##  Multiple values of @verb are interpreted to mean "and", resulting in distribution of the claim. E.g., verb="X Y" means the claim is true for verb X and verb Y. Any claim with multiple verbs must observe the constraints of each verb.
+   attribute verb { text }
+ptr-attr-work =
+   
+   ## refers via idrefs to one or more works. The ensuing claim(s) will be considerd to be true of any sources that share the same work.
+   
+   ## If you wish to avoid making a claim applying to all other versions of a work, use @src instead.
+   
+   ## Multiple values of @work are interpreted to mean "and", resulting in distribution of the claim. E.g., work="X Y" means the claim is true for both work X and work Y.
+   attribute work { text }
+# ELEMENTS
+element-claim =
+   
+   ## makes one or more claims (assertions).
+   element claim {
+      inclusion
+      | (ed-stamp?,
+         attr-id-xml?,
+         certainty-claim?,
+         claimant-attributes?,
+         ptr-attr-period?,
+         ptr-attr-modal?,
+         ptr-attr-verb?,
+         ptr-attr-place?,
+         (subject? & object? & element-at-ref* & in-lang?))
+   }
+element-at-ref =
+   
+   ## restricts a claim to a particular abstract textual reference. 
+   
+   ## <at-ref> was designed primarily to serve claims related to apparatus critici. In traditional critical editions, the main text has an apparatus at the bottom of the page, indicating variations in the manuscript, e.g., "A om." or "A: γάρ". These terse statements are shorthand for: "Manuscript A omits the passage at line X word Y" and "Manuscript A reads γάρ in place of the passage at line X word Y." In those statements, the siglum A refers to the subject, and the reading (or lack thereof) is the object. The qualifier "at line X word Y" is the phrase that corresponds to <at-ref>. It functions much like <where>, but the geography is textual rather than spatial. 
+   
+   ## <at-ref> is special, and must be explicitly allowed or required by each <verb> or @verb's IRI + name pattern plus constraints. 
+   
+   ## <at-ref> contains a textual reference, and will look similar to <subject> or <object> built as a texutal reference. 
+   
+   ## The sequence of consecutive <at-ref>s is immaterial.
+   element at-ref { ed-stamp?, textual-reference }
+element-div =
+   
+   ## restricts a claim to a particular passage in a subject or object. In this context <div> is especially useful for clarifying which part of a scriptum is meant, e.g., page ranges.
+   
+   ## Unlike class-1 <div>s, this one takes no text and no inclusions.
+   
+   ## The sequence of consecutive <div>s in a <subject> or <object> is important. A <div> specifies not only which parts of an <object> or <subject> are relevant, but the sequence of those parts.
+   element div { ed-stamp?, ptr-attr-type, attr-n, element-div* }
+element-in-lang =
+   
+   ## restricts a claim to a particular language; used with only certain verbs, e.g., "translates".
+   
+   ## Multiple values of <in-lang> are interpreted to mean "and", resulting in distribution of the claim. 
+   
+   ## By default, <in-lang> is disallowed. A verb's constrained IRI + name pattern must explicitly require or allow it.
+   element in-lang { ed-stamp?, xsd:language }
+element-object =
+   
+   ## points to text references that act as the object of the claim.
+   
+   ## Unlike @object, which points to any entity via idrefs, <subject> is intended exclusively to point to data content or a textual subject.
+   
+   ## Each textual <object> is interpreted as a single entity, with all textual references encoded by the element treated as a single, grouped passage. The sequence of its contents is therefore significant.
+   element object { ed-stamp?, (nontextual-reference | textual-reference) }
+element-subject =
+   
+   ## points to text references that act as the subject of the claim.
+   
+   ## Unlike @subject, which points to any entity via idrefs, <subject> is intended exclusively to point to data content or a textual subject.
+   
+   ## Each textual <subject> is interpreted as a single entity, with all textual references encoded by the element treated as a single, grouped passage. The sequence of its contents is therefore significant.
+   element subject { ed-stamp?, (nontextual-reference | textual-reference) }
+element-tok-for-claim-no-ref =
+   
+   ## points to one or more tokens in the context source or reference.    
+   element tok { tok-selector-attributes-many, attr-chars? }
+element-tok-for-claim-with-ref =
+   
+   ## points to one or more tokens in the context source.    
+   element tok { attr-ref-many, tok-selector-attributes-many, attr-chars? }
+# VOCABULARY
+voc-element-tan-a =
+   voc-element-work*
+   & voc-element-place*
+   & voc-element-unit*
+   & voc-element-div-type*
+   & voc-element-modal*
+   & voc-element-vers*
+   & voc-element-scri*
+   & voc-element-topic*
+   & voc-element-verb*
+voc-element-modal =
+   
+   ## contains an IRI + name pattern identifying a modal or adverb that qualifies the verb of an assertion.
+   
+   ## See main.xml#vocabularies-modals for standard TAN vocabulary.
+   element modal { entity-nondigital-id }
+voc-element-place =
+   
+   ## contains an IRI + name pattern identifying a spatial location, usually somewhere on earth
+   element place { entity-nondigital-id }
+voc-element-topic =
+   
+   ## contains an IRI + name pattern identifying a topic.
+   element topic { entity-nondigital-id }
+voc-element-unit =
+   
+   ## contains an IRI + name pattern identifying a unit type (e.g., millimeters, seconds, Euros), to be used in conjunction with <object> to specify what quantities measure.
+   element unit { entity-nondigital-id }
+voc-element-vers =
+   
+   ## identifies the version of a work. Applicable to sources that contain multiple versions, e.g., original text and facing translations. Like <work>, <version> points to a conceptual entity, not a physical one.
+   
+   ## Very few work-versions have their own URNs. It is advisable to assign a tag URN or a UUID. If you have used an IRI for <work> that you are entitled to modify, you may wish to add a suffix that will name the version. If you need to specify exactly where on a text-bearing object a version appears, <desc> or <comment> should be used.
+   
+   ## For background, see main.xml#conceptual_works
+   element version { entity-nondigital-id }
+# PATTERNS
+in-lang = attr-in-lang | element-in-lang+
+subject = ptr-attr-subject | element-subject+
+object = ptr-attr-object | complex-object+
+complex-object = element-object | element-claim+
+nontextual-reference = (attr-lang-xml | ptr-attr-units)?, text
+textual-reference =
+   multi-source-whole-div-textual-reference
+   | single-source-partial-div-textual-reference
+   | work-version-reference
+   | scriptum-reference
+# If a textual reference points merely to <div>s then all one need is @src/@work plus @ref
+multi-source-whole-div-textual-reference = (ptr-attr-src-many | ptr-attr-work), attr-ref-many
+# If a textual reference points to parts of divs, i.e., tokens and token-defined passages, then it is source-specific (@src not @work). 
+single-source-partial-div-textual-reference =
+   ptr-attr-src-one, (single-div-partial-textual-reference | multi-div-partial-textual-reference)
+# If a partial textual reference is a subset of a <div> then @ref, pointing to a single <div>, should be in the parent element
+single-div-partial-textual-reference =
+   attr-ref-one, (element-tok-for-claim-no-ref | text-passage-selector-no-ref)+
+# If a partial textual reference is a spans <div>s then @ref should be in the children elements
+multi-div-partial-textual-reference =
+   (element-tok-for-claim-with-ref | text-passage-selector-with-ref)+
+# Some textual references point a work or work-version in the abstract
+work-version-reference = ptr-attr-work
+# Some textual references point to a scriptum, perhaps qualified
+scriptum-reference = ptr-attr-scriptum, scriptum-filter?
+# A region of a scriptum can be constrained through nested divs, pointing to the region of the scriptum intended.
+scriptum-filter = element-div+

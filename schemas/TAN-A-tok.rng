@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="tag:textalign.net,2015:ns" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:local="tag:textalign.net,2015:ns" xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="incl/TAN-class-2.rng">
+    <start>
+      <element name="TAN-A-tok">
+        <a:documentation>specifies that the file is contains token-to-token alignments between two sources. Root element.</a:documentation>
+        <ref name="TAN-root"/>
+      </element>
+    </start>
+    <!-- TAN-A-tok files take exactly two sources -->
+    <define name="source-list">
+      <ref name="link-element-source"/>
+      <ref name="link-element-source"/>
+    </define>
+    <define name="voc-element-non-class-2">
+      <interleave>
+        <oneOrMore>
+          <ref name="voc-element-brel"/>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="voc-element-reus"/>
+        </oneOrMore>
+      </interleave>
+    </define>
+    <define name="body-attributes-non-core">
+      <ref name="ptr-attr-bitext-relation"/>
+      <ref name="ptr-attr-reuse-type"/>
+    </define>
+    <define name="body-item">
+      <ref name="element-align"/>
+    </define>
+  </include>
+  <!-- ATTRIBUTES -->
+  <define name="ptr-attr-bitext-relation">
+    <attribute name="bitext-relation">
+      <a:documentation>points via idrefs to one or more bitext-relations. Multiple values are combinatory.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+      <a:documentation>See main.xml#vocabularies-bitext-relations for standard TAN values.</a:documentation>
+    </attribute>
+  </define>
+  <define name="ptr-attr-reuse-type">
+    <attribute name="reuse-type">
+      <a:documentation>points via idrefs to one or more reuse-types. Multiple values are combinatory.</a:documentation>
+      <a:documentation>This attribute is weakly inheritable. See main.xml#inheritable_attributes</a:documentation>
+    </attribute>
+  </define>
+  <!-- ELEMENTS -->
+  <define name="element-align">
+    <element name="align">
+      <a:documentation>declares one or more groups of word-tokens that should be aligned with each other. &lt;align&gt; specifies that all the tokens invoked for one source collectively align with the tokens in the other. No special meaning is attached to sequences of &lt;tok&gt;s that do not follow the source order.</a:documentation>
+      <a:documentation>The sequence of consecutive &lt;align&gt;s is immaterial.</a:documentation>
+      <choice>
+        <ref name="inclusion"/>
+        <group>
+          <optional>
+            <ref name="certainty-stamp"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-bitext-relation"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-reuse-type"/>
+          </optional>
+          <optional>
+            <ref name="ptr-attr-group"/>
+          </optional>
+          <interleave>
+            <zeroOrMore>
+              <ref name="element-comment"/>
+            </zeroOrMore>
+            <oneOrMore>
+              <choice>
+                <ref name="default-tok-element"/>
+                <ref name="element-group-for-tok"/>
+              </choice>
+            </oneOrMore>
+          </interleave>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="voc-element-brel">
+    <element name="bitext-relation">
+      <a:documentation>identifies how the text of one text-bearing object relates to that of another by specifying a relationship, e.g., B is a direct copy of A; B and A descend from a commont parent, etc. See main.xml#tan-a-tok for theoretical background.</a:documentation>
+      <a:documentation>In most cases, there will be need for only one of these elements as a vocabulary item. But multiple values may be helpful for cases where a bitext has a complex history, for example, a textual object that was created over time, and in different phases.</a:documentation>
+      <a:documentation>This element should not be used to describe any activities (e.g., translation, copying), reserved for &lt;reuse-type&gt;. </a:documentation>
+      <a:documentation>For examples see main.xml#vocabularies-bitext-relations</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+  <define name="voc-element-reus">
+    <element name="reuse-type">
+      <a:documentation>identifies a category of text reuse (e.g., translation, mistranslation, paraphrase, ridicule). See main.xml#tan-a-tok for theoretical background.</a:documentation>
+      <a:documentation>For standard TAN vocabulary items see main.xml#vocabularies-reuse-types</a:documentation>
+      <ref name="entity-nondigital-id"/>
+    </element>
+  </define>
+</grammar>
+<!-- PATTERNS -->

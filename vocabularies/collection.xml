@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection stable="true">
+   <doc href="bitext-relations.TAN-voc.xml"/>
+   <doc href="catalog.tan.xml"/>
+   <doc href="div-types.TAN-voc.xml"/>
+   <doc href="features.TAN-voc.xml"/>
+   <doc href="group-types.TAN-voc.xml"/>
+   <doc href="licenses.TAN-voc.xml"/>
+   <doc href="modals.TAN-voc.xml"/>
+   <doc href="normalizations.TAN-voc.xml"/>
+   <doc href="reuse-types.TAN-voc.xml"/>
+   <doc href="roles.TAN-voc.xml"/>
+   <doc href="token-definitions.TAN-voc.xml"/>
+   <doc href="verbs.TAN-voc.xml"/>
+   <doc href="vocabularies.TAN-voc.xml"/>
+   <doc href="extra/n.bible.eng.tan-voc.xml"/>
+   <doc href="extra/n.bible.spa.tan-voc.xml"/>
+   <doc href="extra/n.quran.eng-ara.tan-voc.xml"/>
+   <doc href="extra/n.unlabeled-divs-1.eng.tan-voc.xml"/>
+</collection>

@@ -1,0 +1,5550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs:TAN-A-lm:2016-04-05T07:07:40.033-04:00">
+   <head>
+      <name>Lexico-morphological data for Categories, Aristotle, Greek text by Minio-Paluello</name>
+      <license licensor="kalvesmaki">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>Exclusive of rights held and licenses offered by rightsholders of the source or
+            sources listed below, this data file, insofar as it constitutes an independent work, is
+            licensed under a Creative Commons Attribution 4.0 International License.</desc>
+      </license>
+      <token-definition pattern="[\w&#xad;​&#x200d;]+"/>
+      <inclusion xml:id="rel">
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:object-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location href="../ar.cat.grc.1949.minio-paluello.ref-scriptum.xml" accessed-when="2016-09-28T08:50:23.457-04:00"/>
+      </inclusion>
+      <source>
+         <IRI>tag:kalvesmaki.com,2014:tan-t:ar.cat.grc.1949.minio-paluello:semantic-refs</IRI>
+         <name>Categories, Aristotle, Greek text by Minio-Paluello</name>
+         <location href="../ar.cat.grc.1949.minio-paluello.ref-logical.xml" accessed-when="2016-04-05T07:07:40.033-04:00"/>
+      </source>
+      <vocabulary-key>
+         <algorithm xml:id="xslt2">
+            <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2020</IRI>
+            <name>Stylesheet to create a TAN file.</name>
+            <location href="../../applications/convert/convert%20TAN%202018%20to%20TAN%202020.xsl" accessed-when="2018-08-05T00:42:25.505-04:00"/>
+         </algorithm>
+         <lexicon xml:id="LSJ">
+            <IRI>http://lccn.loc.gov/95032369</IRI>
+            <name xml:lang="eng">Liddell-Scott-Jones, 9th ed. plus rev. supplement</name>
+         </lexicon>
+         <lexicon xml:id="Lampe">
+            <IRI>http://lccn.loc.gov/77372171</IRI>
+            <name xml:lang="eng">G.H.W. Lampe, A Patristic Greek Lexicon, Oxford 1961.</name>
+         </lexicon>
+         <lexicon xml:id="new">
+            <IRI>urn:uuid:d6558d00-8f68-11e3-950a-425861b86ab6</IRI>
+            <name xml:lang="eng">Lexicon generated from words in this document not to be found in
+               any other lexicon.</name>
+         </lexicon>
+         <morphology xml:id="Perseus">
+            <IRI>tag:kalvesmaki.com,2014:tan-r-mor:grc:perseus</IRI>
+            <name xml:lang="eng">Perseus Greek morphology</name>
+            <location href="../../../library-lm/grc/grc.perseus.tan-mor.xml" accessed-when="2021-01-11"/>
+         </morphology>
+         <group-type xml:id="status" which="status"/>
+         <person include="rel"/>
+         <person xml:id="stylesheet">
+            <IRI>tag:textalign.net,2015:stylesheet:create:tan-a-lm-from-tan-t</IRI>
+            <name>TAN stylesheet to create a TAN-A-lm file from a TAN-T(EI)</name>
+         </person>
+         <role xml:id="editor">
+            <IRI>http://schema.org/editor</IRI>
+            <name xml:lang="eng">editor</name>
+         </role>
+         <role xml:id="stylesheet1" which="stylesheet"/>
+      </vocabulary-key>
+      <file-resp include="rel"/>
+      <resp who="xslt2" roles="stylesheet1"/>
+      <resp include="rel"/>
+      <resp roles="editor" who="stylesheet"/>
+      <change when="2016-04-05T07:07:40.033-04:00" who="stylesheet">Created file.</change>
+      <change who="stylesheet" when="2016-04-10T00:47:17.434-04:00"> Reformatted version at
+         file:/C:/Users/jdkalv/Dropbox/TAN/library/TAN-2018/examples/TAN-A-lm/ar.cat.grc.1949.minio-paluello-sem-TAN-A-lm.xml,
+         using the following parameters: Groups before reformatting: 0 Convert to @pos/val: none
+         Recombination: tok-l Sorted by: l (ascending) Groups after reformatting: 1 - 50 </change>
+      <change who="stylesheet" when="2016-09-28T08:19:45.82-04:00"> Reformatted version at
+         file:/C:/Users/jdkalv/Dropbox/TAN/library/TAN-2018/examples/TAN-A-lm/ar.cat.grc.1949.minio-paluello-sem-TAN-A-lm.xml,
+         using the following parameters: Groups before reformatting: 0 Convert to @pos/val: none
+         Recombination: lm Sorted by: (ascending) Groups after reformatting: 0 </change>
+      <change who="xslt2" when="2018-08-05T00:42:25.505-04:00">Converted from 2018 to 2019 schemas.</change>
+      <to-do>
+         <comment when="2018-08-05-04:00" who="kalvesmaki">Adjust file.</comment>
+      </to-do>
+   </head>
+   <body lexicon="LSJ Lampe new" morphology="Perseus" claimant="xslt2">
+      <ana tok-pop="2">
+         <tok ref="11 2 1 1" pos="1"/>
+         <lm>
+            <l>Δῆλος</l>
+            <m>n e - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 6 3 2" pos="4"/>
+         <tok ref="10 6 3 3" pos="15"/>
+         <tok ref="10 6 4 2" pos="37"/>
+         <lm>
+            <l>Σωκράτης</l>
+            <m>n e - s - - - m g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 4" pos="6"/>
+         <tok ref="8 3 7 3" pos="7"/>
+         <lm>
+            <l>αἰσχύνω</l>
+            <m>v - - - a n p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 1 2 1" pos="12"/>
+         <tok ref="7 3 1 3" pos="22"/>
+         <tok ref="7 3 1 3" pos="24"/>
+         <tok ref="7 4 7 3" pos="11"/>
+         <tok ref="7 4 9 1" pos="4"/>
+         <tok ref="7 4 9 2" pos="4"/>
+         <lm>
+            <l>αἴσθησις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 7 1" pos="8"/>
+         <tok ref="7 4 7 2" pos="6"/>
+         <lm>
+            <l>αἴσθησις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 3 3" pos="3"/>
+         <tok ref="14 1 3 4" pos="11"/>
+         <lm>
+            <l>αὐξάνω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 4 3" pos="6"/>
+         <lm>
+            <l>αὐξάνω</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 1 2" pos="3"/>
+         <tok ref="14 1 2 2" pos="10"/>
+         <lm>
+            <l>αὔξησις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="7"/>
+         <lm>
+            <l>βλέπω</l>
+            <m>v - 3 s a i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 5 1" pos="5"/>
+         <lm>
+            <l>βούλομαι</l>
+            <m>v - 3 p p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 4 3" pos="6"/>
+         <lm>
+            <l>βραχύς</l>
+            <m>a - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 2" pos="2"/>
+         <tok ref="1 1 1 3" pos="2"/>
+         <tok ref="1 1 2 2" pos="2"/>
+         <tok ref="1 1 2 3" pos="2"/>
+         <tok ref="2 2 1 2" pos="56"/>
+         <tok ref="2 2 1 4" pos="20"/>
+         <tok ref="2 2 1 6" pos="2"/>
+         <tok ref="3 1 1 4" pos="2"/>
+         <tok ref="3 1 2 2" pos="3"/>
+         <tok ref="3 1 2 3" pos="2"/>
+         <tok ref="3 1 3 2" pos="2"/>
+         <tok ref="4 1 3 2" pos="2"/>
+         <tok ref="5 1 3 2" pos="14"/>
+         <tok ref="5 1 3 3" pos="13"/>
+         <tok ref="5 1 4 3" pos="13"/>
+         <tok ref="5 1 6 2" pos="15"/>
+         <tok ref="5 1 6 4" pos="2"/>
+         <tok ref="5 1 7 2" pos="2"/>
+         <tok ref="5 2 1 2" pos="2"/>
+         <tok ref="5 2 2 1" pos="2"/>
+         <tok ref="5 2 2 2" pos="14"/>
+         <tok ref="5 2 3 3" pos="2"/>
+         <tok ref="5 2 3 4" pos="3"/>
+         <tok ref="5 2 4 2" pos="2"/>
+         <tok ref="5 2 5 2" pos="2"/>
+         <tok ref="5 3 1 2" pos="2"/>
+         <tok ref="5 3 1 3" pos="2"/>
+         <tok ref="5 3 2 3" pos="3"/>
+         <tok ref="5 3 2 4" pos="2"/>
+         <tok ref="5 4 3 2" pos="2"/>
+         <tok ref="5 4 3 2" pos="17"/>
+         <tok ref="5 4 4 2" pos="15"/>
+         <tok ref="5 4 6 2" pos="2"/>
+         <tok ref="5 4 6 2" pos="19"/>
+         <tok ref="5 4 7 2" pos="17"/>
+         <tok ref="5 4 8 2" pos="2"/>
+         <tok ref="5 5 1 2" pos="2"/>
+         <tok ref="5 5 2 1" pos="3"/>
+         <tok ref="5 5 2 1" pos="12"/>
+         <tok ref="5 5 4 1" pos="2"/>
+         <tok ref="5 6 2 2" pos="2"/>
+         <tok ref="5 6 3 2" pos="11"/>
+         <tok ref="5 6 3 4" pos="2"/>
+         <tok ref="5 6 3 4" pos="22"/>
+         <tok ref="5 6 4 2" pos="2"/>
+         <tok ref="5 8 1 2" pos="13"/>
+         <tok ref="5 8 2 1" pos="2"/>
+         <tok ref="5 8 2 3" pos="8"/>
+         <tok ref="5 9 3 2" pos="2"/>
+         <tok ref="5 9 3 4" pos="2"/>
+         <tok ref="5 9 4 2" pos="3"/>
+         <tok ref="5 9 4 2" pos="14"/>
+         <tok ref="5 9 4 2" pos="20"/>
+         <tok ref="5 9 4 4" pos="3"/>
+         <tok ref="5 9 6 2" pos="2"/>
+         <tok ref="5 9 6 3" pos="2"/>
+         <tok ref="5 9 6 4" pos="2"/>
+         <tok ref="5 9 6 6" pos="2"/>
+         <tok ref="6 1 3 1" pos="3"/>
+         <tok ref="6 1 4 2" pos="3"/>
+         <tok ref="6 1 4 3" pos="2"/>
+         <tok ref="6 1 4 5" pos="3"/>
+         <tok ref="6 1 4 6" pos="2"/>
+         <tok ref="6 1 5 2" pos="2"/>
+         <tok ref="6 1 5 3" pos="6"/>
+         <tok ref="6 1 7 2" pos="2"/>
+         <tok ref="6 1 8 2" pos="2"/>
+         <tok ref="6 1 8 5" pos="2"/>
+         <tok ref="6 2 1 2" pos="12"/>
+         <tok ref="6 2 1 3" pos="12"/>
+         <tok ref="6 2 3 3" pos="2"/>
+         <tok ref="6 2 5 2" pos="2"/>
+         <tok ref="6 3 1 2" pos="3"/>
+         <tok ref="6 3 1 3" pos="2"/>
+         <tok ref="6 3 1 4" pos="28"/>
+         <tok ref="6 4 2 2" pos="2"/>
+         <tok ref="6 4 4 2" pos="2"/>
+         <tok ref="6 4 5 2" pos="2"/>
+         <tok ref="6 4 7 2" pos="2"/>
+         <tok ref="6 4 10 2" pos="2"/>
+         <tok ref="6 5 1 1" pos="16"/>
+         <tok ref="6 6 2 1" pos="2"/>
+         <tok ref="7 1 1 2" pos="10"/>
+         <tok ref="7 1 1 2" pos="22"/>
+         <tok ref="7 1 2 2" pos="2"/>
+         <tok ref="7 1 2 3" pos="2"/>
+         <tok ref="7 1 3 2" pos="9"/>
+         <tok ref="7 2 2 2" pos="2"/>
+         <tok ref="7 2 3 2" pos="2"/>
+         <tok ref="7 2 3 3" pos="3"/>
+         <tok ref="7 2 4 2" pos="2"/>
+         <tok ref="7 3 2 3" pos="2"/>
+         <tok ref="7 3 2 4" pos="2"/>
+         <tok ref="7 3 3 2" pos="12"/>
+         <tok ref="7 3 3 3" pos="2"/>
+         <tok ref="7 3 3 5" pos="2"/>
+         <tok ref="7 3 4 1" pos="20"/>
+         <tok ref="7 3 4 3" pos="2"/>
+         <tok ref="7 3 5 2" pos="2"/>
+         <tok ref="7 3 5 3" pos="2"/>
+         <tok ref="7 3 8 3" pos="2"/>
+         <tok ref="7 3 9 3" pos="2"/>
+         <tok ref="7 3 10 2" pos="2"/>
+         <tok ref="7 3 10 3" pos="2"/>
+         <tok ref="7 3 10 3" pos="10"/>
+         <tok ref="7 3 10 5" pos="2"/>
+         <tok ref="7 3 10 6" pos="2"/>
+         <tok ref="7 4 2 2" pos="2"/>
+         <tok ref="7 4 3 2" pos="2"/>
+         <tok ref="7 4 4 2" pos="2"/>
+         <tok ref="7 4 4 3" pos="2"/>
+         <tok ref="7 4 4 4" pos="3"/>
+         <tok ref="7 4 5 2" pos="2"/>
+         <tok ref="7 4 5 2" pos="9"/>
+         <tok ref="7 4 7 2" pos="2"/>
+         <tok ref="7 4 7 3" pos="3"/>
+         <tok ref="7 4 9 2" pos="2"/>
+         <tok ref="7 5 2 1" pos="3"/>
+         <tok ref="7 5 2 2" pos="2"/>
+         <tok ref="7 5 2 3" pos="2"/>
+         <tok ref="7 5 2 5" pos="2"/>
+         <tok ref="7 5 8 2" pos="2"/>
+         <tok ref="7 5 8 3" pos="2"/>
+         <tok ref="7 5 9 2" pos="18"/>
+         <tok ref="7 5 9 4" pos="2"/>
+         <tok ref="7 5 9 5" pos="2"/>
+         <tok ref="7 5 9 6" pos="2"/>
+         <tok ref="7 5 10 2" pos="2"/>
+         <tok ref="8 1 3 3" pos="3"/>
+         <tok ref="8 1 4 2" pos="3"/>
+         <tok ref="8 1 5 2" pos="2"/>
+         <tok ref="8 1 7 2" pos="3"/>
+         <tok ref="8 2 2 1" pos="2"/>
+         <tok ref="8 2 3 2" pos="3"/>
+         <tok ref="8 3 2 2" pos="2"/>
+         <tok ref="8 3 3 2" pos="2"/>
+         <tok ref="8 3 3 4" pos="3"/>
+         <tok ref="8 3 5 2" pos="2"/>
+         <tok ref="8 3 5 4" pos="2"/>
+         <tok ref="8 3 6 2" pos="2"/>
+         <tok ref="8 3 6 2" pos="15"/>
+         <tok ref="8 3 6 2" pos="46"/>
+         <tok ref="8 3 7 2" pos="2"/>
+         <tok ref="8 3 7 3" pos="2"/>
+         <tok ref="8 3 9 1" pos="3"/>
+         <tok ref="8 3 9 2" pos="2"/>
+         <tok ref="8 3 10 2" pos="2"/>
+         <tok ref="8 3 11 2" pos="2"/>
+         <tok ref="8 4 1 2" pos="3"/>
+         <tok ref="8 4 1 3" pos="2"/>
+         <tok ref="8 4 3 2" pos="2"/>
+         <tok ref="8 4 3 3" pos="3"/>
+         <tok ref="8 5 3 3" pos="2"/>
+         <tok ref="8 5 3 3" pos="26"/>
+         <tok ref="8 5 4 2" pos="2"/>
+         <tok ref="8 6 2 2" pos="2"/>
+         <tok ref="8 6 4 2" pos="2"/>
+         <tok ref="9 1 1 2" pos="2"/>
+         <tok ref="9 1 2 1" pos="7"/>
+         <tok ref="9 1 2 3" pos="2"/>
+         <tok ref="9 1 3 1" pos="2"/>
+         <tok ref="9 1 3 2" pos="3"/>
+         <tok ref="9 1 4 2" pos="2"/>
+         <tok ref="9 1 5 2" pos="3"/>
+         <tok ref="9 1 5 3" pos="2"/>
+         <tok ref="9 1 5 4" pos="2"/>
+         <tok ref="9 2 1 2" pos="2"/>
+         <tok ref="9 3 1 2" pos="2"/>
+         <tok ref="9 3 2 1" pos="2"/>
+         <tok ref="9 3 2 2" pos="3"/>
+         <tok ref="9 3 2 2" pos="13"/>
+         <tok ref="9 3 4 2" pos="2"/>
+         <tok ref="9 3 4 2" pos="6"/>
+         <tok ref="9 5 1 2" pos="2"/>
+         <tok ref="9 5 2 2" pos="2"/>
+         <tok ref="10 2 1 5" pos="2"/>
+         <tok ref="10 3 1 3" pos="2"/>
+         <tok ref="10 3 5 2" pos="19"/>
+         <tok ref="10 3 5 4" pos="2"/>
+         <tok ref="10 4 2 2" pos="3"/>
+         <tok ref="10 4 2 3" pos="2"/>
+         <tok ref="10 4 3 2" pos="3"/>
+         <tok ref="10 4 3 3" pos="2"/>
+         <tok ref="10 4 5 2" pos="2"/>
+         <tok ref="10 4 5 3" pos="2"/>
+         <tok ref="10 4 6 2" pos="3"/>
+         <tok ref="10 4 7 2" pos="2"/>
+         <tok ref="10 4 7 3" pos="2"/>
+         <tok ref="10 4 8 2" pos="2"/>
+         <tok ref="10 4 8 3" pos="2"/>
+         <tok ref="10 4 9 3" pos="2"/>
+         <tok ref="10 5 2 1" pos="3"/>
+         <tok ref="10 5 2 2" pos="2"/>
+         <tok ref="10 5 2 4" pos="2"/>
+         <tok ref="10 5 2 4" pos="16"/>
+         <tok ref="10 5 2 7" pos="2"/>
+         <tok ref="10 5 3 2" pos="2"/>
+         <tok ref="10 5 3 2" pos="11"/>
+         <tok ref="10 5 3 4" pos="2"/>
+         <tok ref="10 5 3 5" pos="2"/>
+         <tok ref="10 5 3 5" pos="24"/>
+         <tok ref="10 5 5 2" pos="2"/>
+         <tok ref="10 5 5 3" pos="2"/>
+         <tok ref="10 5 5 5" pos="2"/>
+         <tok ref="10 5 5 8" pos="3"/>
+         <tok ref="10 5 5 9" pos="2"/>
+         <tok ref="10 6 1 2" pos="3"/>
+         <tok ref="10 6 2 1" pos="2"/>
+         <tok ref="10 6 3 1" pos="17"/>
+         <tok ref="10 6 3 2" pos="3"/>
+         <tok ref="10 6 3 3" pos="2"/>
+         <tok ref="10 6 4 2" pos="2"/>
+         <tok ref="10 6 4 2" pos="26"/>
+         <tok ref="10 6 5 2" pos="2"/>
+         <tok ref="10 6 5 3" pos="3"/>
+         <tok ref="11 1 1 2" pos="2"/>
+         <tok ref="11 1 3 2" pos="2"/>
+         <tok ref="11 1 4 2" pos="2"/>
+         <tok ref="11 2 1 2" pos="3"/>
+         <tok ref="11 2 2 2" pos="3"/>
+         <tok ref="11 2 2 2" pos="11"/>
+         <tok ref="11 2 2 2" pos="25"/>
+         <tok ref="12 1 1 2" pos="16"/>
+         <tok ref="12 1 1 4" pos="3"/>
+         <tok ref="12 1 2 2" pos="3"/>
+         <tok ref="12 1 2 2" pos="16"/>
+         <tok ref="12 1 2 2" pos="38"/>
+         <tok ref="12 2 2 2" pos="2"/>
+         <tok ref="12 2 3 2" pos="2"/>
+         <tok ref="12 2 3 3" pos="2"/>
+         <tok ref="12 2 3 4" pos="5"/>
+         <tok ref="12 2 3 6" pos="2"/>
+         <tok ref="13 1 1 2" pos="2"/>
+         <tok ref="13 1 2 2" pos="3"/>
+         <tok ref="13 1 2 2" pos="6"/>
+         <tok ref="13 1 4 2" pos="2"/>
+         <tok ref="13 1 4 3" pos="2"/>
+         <tok ref="13 1 5 3" pos="2"/>
+         <tok ref="14 1 2 2" pos="2"/>
+         <tok ref="14 1 3 2" pos="2"/>
+         <tok ref="14 1 3 3" pos="2"/>
+         <tok ref="14 1 3 4" pos="2"/>
+         <tok ref="14 2 2 1" pos="59"/>
+         <tok ref="14 2 2 3" pos="2"/>
+         <tok ref="15 1 1 2" pos="2"/>
+         <tok ref="15 1 1 2" pos="12"/>
+         <tok ref="15 1 1 3" pos="11"/>
+         <tok ref="15 1 1 7" pos="16"/>
+         <tok ref="15 1 1 10" pos="2"/>
+         <tok ref="15 1 2 3" pos="2"/>
+         <lm>
+            <l>γάρ</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="13 1 1 1" pos="10"/>
+         <tok ref="13 1 6 2" pos="6"/>
+         <tok ref="14 1 1 2" pos="1"/>
+         <tok ref="14 1 2 2" pos="5"/>
+         <lm>
+            <l>γένεσις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 1 1" pos="10"/>
+         <tok ref="5 2 3 5" pos="8"/>
+         <tok ref="13 1 4 2" pos="8"/>
+         <tok ref="13 1 5 1" pos="11"/>
+         <tok ref="13 1 6 1" pos="29"/>
+         <lm>
+            <l>γένος</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 1" pos="20"/>
+         <tok ref="5 9 2 2" pos="16"/>
+         <tok ref="5 9 4 3" pos="21"/>
+         <tok ref="5 9 4 4" pos="21"/>
+         <tok ref="7 3 11 2" pos="9"/>
+         <tok ref="7 5 9 4" pos="5"/>
+         <tok ref="8 3 7 1" pos="9"/>
+         <tok ref="8 3 11 1" pos="6"/>
+         <tok ref="10 5 5 5" pos="6"/>
+         <tok ref="10 5 5 8" pos="9"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 2" pos="24"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - - r n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 4 4" pos="15"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - s p p m f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 3 3" pos="21"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 s a s m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 2" pos="15"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - s p p m m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 1" pos="4"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 p p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 2" pos="5"/>
+         <tok ref="8 3 5 4" pos="12"/>
+         <tok ref="10 5 5 9" pos="12"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 s a i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 4" pos="28"/>
+         <tok ref="10 3 3 1" pos="11"/>
+         <tok ref="10 3 4 1" pos="9"/>
+         <tok ref="10 3 5 2" pos="8"/>
+         <tok ref="10 4 1 2" pos="9"/>
+         <tok ref="10 5 2 1" pos="14"/>
+         <tok ref="11 2 1 1" pos="12"/>
+         <tok ref="14 2 2 2" pos="24"/>
+         <tok ref="14 2 2 2" pos="27"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 6 2" pos="11"/>
+         <tok ref="8 3 9 1" pos="11"/>
+         <tok ref="14 1 4 3" pos="11"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 s r i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 10 1" pos="13"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - 3 p r i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 2 1" pos="12"/>
+         <tok ref="10 5 5 1" pos="13"/>
+         <tok ref="10 5 5 2" pos="11"/>
+         <tok ref="10 5 5 2" pos="26"/>
+         <tok ref="10 5 5 7" pos="13"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - - a n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="4"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - s a p m m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 2 2 3" pos="9"/>
+         <lm>
+            <l>γίγνομαι</l>
+            <m>v - - s p p m f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 3 1" pos="3"/>
+         <tok ref="5 1 3 2" pos="11"/>
+         <tok ref="5 2 3 2" pos="3"/>
+         <tok ref="5 3 2 2" pos="3"/>
+         <tok ref="5 5 4 3" pos="3"/>
+         <tok ref="5 6 3 2" pos="4"/>
+         <tok ref="5 8 2 3" pos="3"/>
+         <tok ref="5 9 2 1" pos="3"/>
+         <tok ref="5 9 4 1" pos="9"/>
+         <tok ref="5 9 6 5" pos="3"/>
+         <tok ref="6 1 3 3" pos="4"/>
+         <tok ref="6 2 3 1" pos="3"/>
+         <tok ref="6 2 3 1" pos="24"/>
+         <tok ref="6 3 1 2" pos="24"/>
+         <tok ref="6 5 1 3" pos="2"/>
+         <tok ref="7 3 4 2" pos="3"/>
+         <tok ref="7 3 7 2" pos="3"/>
+         <tok ref="7 3 10 1" pos="3"/>
+         <tok ref="7 4 9 1" pos="3"/>
+         <tok ref="7 5 3 1" pos="9"/>
+         <tok ref="7 5 10 1" pos="3"/>
+         <tok ref="8 1 5 2" pos="17"/>
+         <tok ref="9 1 4 1" pos="4"/>
+         <tok ref="10 2 1 3" pos="14"/>
+         <tok ref="10 3 3 2" pos="3"/>
+         <tok ref="10 3 4 1" pos="12"/>
+         <tok ref="10 3 4 2" pos="10"/>
+         <tok ref="10 3 4 3" pos="4"/>
+         <tok ref="10 3 5 1" pos="3"/>
+         <tok ref="10 3 5 2" pos="12"/>
+         <tok ref="10 5 3 6" pos="3"/>
+         <tok ref="10 5 5 2" pos="19"/>
+         <tok ref="10 5 5 3" pos="12"/>
+         <tok ref="10 5 5 7" pos="3"/>
+         <tok ref="10 6 2 2" pos="8"/>
+         <tok ref="10 6 2 4" pos="2"/>
+         <tok ref="10 6 4 1" pos="10"/>
+         <tok ref="10 6 4 2" pos="17"/>
+         <tok ref="10 6 5 1" pos="3"/>
+         <tok ref="12 2 3 4" pos="3"/>
+         <tok ref="13 1 4 3" pos="19"/>
+         <tok ref="14 1 2 2" pos="8"/>
+         <lm>
+            <l>γε</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 3" pos="4"/>
+         <lm>
+            <l>γενετή</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 4" pos="9"/>
+         <lm>
+            <l>γεῦσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 1 2" pos="6"/>
+         <tok ref="8 3 3 4" pos="4"/>
+         <lm>
+            <l>γλυκύτης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 2 3" pos="5"/>
+         <lm>
+            <l>γλυκύτης</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 5 3" pos="4"/>
+         <lm>
+            <l>γραμμή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 2 1 2" pos="5"/>
+         <lm>
+            <l>γραμμή</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 3" pos="25"/>
+         <tok ref="12 1 2 2" pos="26"/>
+         <lm>
+            <l>γραμματικός</l>
+            <m>a - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 3 2" pos="30"/>
+         <lm>
+            <l>γραμματικός</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 2 1" pos="4"/>
+         <tok ref="15 1 2 3" pos="6"/>
+         <lm>
+            <l>γυνή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 2 1" pos="8"/>
+         <lm>
+            <l>γυνή</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 1" pos="8"/>
+         <tok ref="1 1 1 2" pos="7"/>
+         <tok ref="1 1 2 1" pos="2"/>
+         <tok ref="1 1 2 2" pos="11"/>
+         <tok ref="2 1 2 2" pos="2"/>
+         <tok ref="2 2 1 1" pos="11"/>
+         <tok ref="2 2 1 1" pos="25"/>
+         <tok ref="2 2 1 2" pos="2"/>
+         <tok ref="2 2 1 2" pos="9"/>
+         <tok ref="2 2 1 2" pos="14"/>
+         <tok ref="2 2 1 2" pos="42"/>
+         <tok ref="2 2 1 2" pos="62"/>
+         <tok ref="2 2 1 3" pos="2"/>
+         <tok ref="2 2 1 3" pos="22"/>
+         <tok ref="2 2 1 4" pos="2"/>
+         <tok ref="2 2 1 5" pos="2"/>
+         <tok ref="2 2 1 5" pos="14"/>
+         <tok ref="3 1 1 2" pos="9"/>
+         <tok ref="3 1 2 2" pos="18"/>
+         <tok ref="3 1 3 1" pos="2"/>
+         <tok ref="4 1 2 1" pos="2"/>
+         <tok ref="4 1 2 2" pos="2"/>
+         <tok ref="4 1 2 3" pos="2"/>
+         <tok ref="4 1 2 4" pos="3"/>
+         <tok ref="4 1 2 5" pos="2"/>
+         <tok ref="4 1 2 6" pos="2"/>
+         <tok ref="4 1 2 7" pos="2"/>
+         <tok ref="4 1 2 8" pos="2"/>
+         <tok ref="4 1 2 9" pos="2"/>
+         <tok ref="4 1 2 10" pos="2"/>
+         <tok ref="4 1 3 1" pos="2"/>
+         <tok ref="4 1 3 1" pos="14"/>
+         <tok ref="4 1 3 2" pos="11"/>
+         <tok ref="5 1 2 1" pos="2"/>
+         <tok ref="5 1 2 2" pos="12"/>
+         <tok ref="5 1 3 1" pos="2"/>
+         <tok ref="5 1 3 3" pos="4"/>
+         <tok ref="5 1 4 2" pos="3"/>
+         <tok ref="5 1 4 2" pos="12"/>
+         <tok ref="5 1 4 3" pos="17"/>
+         <tok ref="5 1 6 1" pos="2"/>
+         <tok ref="5 2 1 1" pos="2"/>
+         <tok ref="5 2 2 2" pos="21"/>
+         <tok ref="5 2 3 2" pos="2"/>
+         <tok ref="5 2 3 4" pos="10"/>
+         <tok ref="5 2 4 1" pos="2"/>
+         <tok ref="5 2 5 1" pos="2"/>
+         <tok ref="5 3 1 1" pos="2"/>
+         <tok ref="5 3 2 2" pos="2"/>
+         <tok ref="5 3 2 5" pos="2"/>
+         <tok ref="5 4 3 1" pos="2"/>
+         <tok ref="5 4 3 2" pos="13"/>
+         <tok ref="5 4 3 3" pos="2"/>
+         <tok ref="5 4 3 3" pos="15"/>
+         <tok ref="5 4 4 1" pos="2"/>
+         <tok ref="5 4 4 1" pos="17"/>
+         <tok ref="5 4 4 2" pos="2"/>
+         <tok ref="5 4 6 1" pos="3"/>
+         <tok ref="5 4 6 2" pos="15"/>
+         <tok ref="5 4 7 1" pos="4"/>
+         <tok ref="5 4 8 1" pos="3"/>
+         <tok ref="5 5 1 1" pos="2"/>
+         <tok ref="5 5 2 2" pos="2"/>
+         <tok ref="5 5 2 2" pos="13"/>
+         <tok ref="5 5 2 3" pos="2"/>
+         <tok ref="5 5 4 2" pos="2"/>
+         <tok ref="5 5 4 3" pos="2"/>
+         <tok ref="5 6 3 1" pos="2"/>
+         <tok ref="5 6 3 3" pos="3"/>
+         <tok ref="5 6 3 4" pos="11"/>
+         <tok ref="5 6 4 1" pos="3"/>
+         <tok ref="5 8 1 1" pos="2"/>
+         <tok ref="5 8 1 2" pos="2"/>
+         <tok ref="5 8 2 2" pos="3"/>
+         <tok ref="5 8 2 3" pos="2"/>
+         <tok ref="5 9 1 1" pos="2"/>
+         <tok ref="5 9 1 3" pos="29"/>
+         <tok ref="5 9 2 1" pos="2"/>
+         <tok ref="5 9 2 2" pos="14"/>
+         <tok ref="5 9 3 1" pos="2"/>
+         <tok ref="5 9 3 3" pos="2"/>
+         <tok ref="5 9 4 1" pos="2"/>
+         <tok ref="5 9 4 2" pos="30"/>
+         <tok ref="5 9 4 3" pos="2"/>
+         <tok ref="5 9 4 3" pos="14"/>
+         <tok ref="5 9 4 4" pos="12"/>
+         <tok ref="5 9 4 4" pos="19"/>
+         <tok ref="5 9 4 5" pos="2"/>
+         <tok ref="5 9 6 1" pos="3"/>
+         <tok ref="5 9 6 5" pos="2"/>
+         <tok ref="6 1 1 1" pos="2"/>
+         <tok ref="6 1 1 1" pos="9"/>
+         <tok ref="6 1 1 2" pos="15"/>
+         <tok ref="6 1 4 1" pos="2"/>
+         <tok ref="6 1 4 4" pos="2"/>
+         <tok ref="6 1 5 1" pos="2"/>
+         <tok ref="6 1 7 1" pos="2"/>
+         <tok ref="6 2 1 1" pos="15"/>
+         <tok ref="6 2 1 3" pos="2"/>
+         <tok ref="6 2 3 1" pos="2"/>
+         <tok ref="6 2 3 3" pos="9"/>
+         <tok ref="6 2 5 1" pos="4"/>
+         <tok ref="6 3 1 1" pos="2"/>
+         <tok ref="6 3 1 1" pos="10"/>
+         <tok ref="6 3 1 5" pos="12"/>
+         <tok ref="6 4 2 1" pos="2"/>
+         <tok ref="6 4 2 2" pos="20"/>
+         <tok ref="6 4 2 2" pos="30"/>
+         <tok ref="6 4 2 3" pos="23"/>
+         <tok ref="6 4 4 1" pos="14"/>
+         <tok ref="6 4 10 1" pos="2"/>
+         <tok ref="6 5 1 1" pos="3"/>
+         <tok ref="6 6 2 2" pos="2"/>
+         <tok ref="7 1 1 1" pos="3"/>
+         <tok ref="7 1 1 3" pos="2"/>
+         <tok ref="7 1 2 1" pos="2"/>
+         <tok ref="7 1 2 3" pos="20"/>
+         <tok ref="7 1 3 2" pos="23"/>
+         <tok ref="7 1 4 1" pos="2"/>
+         <tok ref="7 1 4 1" pos="15"/>
+         <tok ref="7 1 4 2" pos="2"/>
+         <tok ref="7 1 4 2" pos="14"/>
+         <tok ref="7 2 2 1" pos="3"/>
+         <tok ref="7 2 3 1" pos="2"/>
+         <tok ref="7 2 4 1" pos="3"/>
+         <tok ref="7 3 1 1" pos="2"/>
+         <tok ref="7 3 1 2" pos="2"/>
+         <tok ref="7 3 3 1" pos="2"/>
+         <tok ref="7 3 5 1" pos="2"/>
+         <tok ref="7 3 8 1" pos="2"/>
+         <tok ref="7 3 9 1" pos="18"/>
+         <tok ref="7 3 9 2" pos="25"/>
+         <tok ref="7 3 10 1" pos="2"/>
+         <tok ref="7 3 10 1" pos="16"/>
+         <tok ref="7 3 10 4" pos="2"/>
+         <tok ref="7 3 11 2" pos="12"/>
+         <tok ref="7 4 2 3" pos="2"/>
+         <tok ref="7 4 3 1" pos="3"/>
+         <tok ref="7 4 3 3" pos="2"/>
+         <tok ref="7 4 4 1" pos="4"/>
+         <tok ref="7 4 5 1" pos="10"/>
+         <tok ref="7 4 5 2" pos="14"/>
+         <tok ref="7 4 5 3" pos="17"/>
+         <tok ref="7 4 7 1" pos="2"/>
+         <tok ref="7 4 7 3" pos="10"/>
+         <tok ref="7 4 9 1" pos="2"/>
+         <tok ref="7 4 9 2" pos="8"/>
+         <tok ref="7 5 2 4" pos="2"/>
+         <tok ref="7 5 3 1" pos="2"/>
+         <tok ref="7 5 4 1" pos="15"/>
+         <tok ref="7 5 5 2" pos="2"/>
+         <tok ref="7 5 8 2" pos="13"/>
+         <tok ref="7 5 9 1" pos="6"/>
+         <tok ref="7 5 9 3" pos="2"/>
+         <tok ref="7 5 9 3" pos="22"/>
+         <tok ref="7 5 10 1" pos="2"/>
+         <tok ref="7 5 10 1" pos="24"/>
+         <tok ref="7 5 10 4" pos="2"/>
+         <tok ref="8 1 1 1" pos="2"/>
+         <tok ref="8 1 1 2" pos="2"/>
+         <tok ref="8 1 3 1" pos="2"/>
+         <tok ref="8 1 3 2" pos="2"/>
+         <tok ref="8 1 3 4" pos="2"/>
+         <tok ref="8 1 4 1" pos="2"/>
+         <tok ref="8 1 4 2" pos="10"/>
+         <tok ref="8 1 4 3" pos="2"/>
+         <tok ref="8 1 5 1" pos="2"/>
+         <tok ref="8 1 7 1" pos="2"/>
+         <tok ref="8 1 7 1" pos="9"/>
+         <tok ref="8 1 7 2" pos="12"/>
+         <tok ref="8 2 2 2" pos="20"/>
+         <tok ref="8 2 2 2" pos="34"/>
+         <tok ref="8 2 3 1" pos="2"/>
+         <tok ref="8 2 3 2" pos="14"/>
+         <tok ref="8 3 1 1" pos="2"/>
+         <tok ref="8 3 1 2" pos="2"/>
+         <tok ref="8 3 1 2" pos="18"/>
+         <tok ref="8 3 2 4" pos="2"/>
+         <tok ref="8 3 3 1" pos="2"/>
+         <tok ref="8 3 3 3" pos="2"/>
+         <tok ref="8 3 3 3" pos="21"/>
+         <tok ref="8 3 3 4" pos="18"/>
+         <tok ref="8 3 7 1" pos="2"/>
+         <tok ref="8 3 7 4" pos="8"/>
+         <tok ref="8 3 10 1" pos="2"/>
+         <tok ref="8 3 11 1" pos="2"/>
+         <tok ref="8 3 11 3" pos="8"/>
+         <tok ref="8 4 1 1" pos="2"/>
+         <tok ref="8 4 1 1" pos="14"/>
+         <tok ref="8 4 3 1" pos="2"/>
+         <tok ref="8 4 3 1" pos="19"/>
+         <tok ref="8 4 3 3" pos="11"/>
+         <tok ref="8 4 3 4" pos="12"/>
+         <tok ref="8 4 3 4" pos="18"/>
+         <tok ref="8 5 3 1" pos="3"/>
+         <tok ref="8 5 3 3" pos="32"/>
+         <tok ref="8 5 4 1" pos="2"/>
+         <tok ref="8 5 4 3" pos="4"/>
+         <tok ref="8 6 2 1" pos="4"/>
+         <tok ref="8 6 4 1" pos="2"/>
+         <tok ref="8 6 4 1" pos="17"/>
+         <tok ref="8 6 4 3" pos="2"/>
+         <tok ref="9 1 1 1" pos="2"/>
+         <tok ref="9 1 2 1" pos="3"/>
+         <tok ref="9 1 2 2" pos="3"/>
+         <tok ref="9 1 2 3" pos="11"/>
+         <tok ref="9 1 3 2" pos="28"/>
+         <tok ref="9 1 5 1" pos="2"/>
+         <tok ref="9 1 5 2" pos="20"/>
+         <tok ref="9 2 1 1" pos="9"/>
+         <tok ref="9 3 1 1" pos="3"/>
+         <tok ref="9 3 2 1" pos="13"/>
+         <tok ref="9 3 3 1" pos="2"/>
+         <tok ref="9 3 4 1" pos="2"/>
+         <tok ref="9 3 4 4" pos="2"/>
+         <tok ref="9 5 1 1" pos="2"/>
+         <tok ref="9 5 2 1" pos="4"/>
+         <tok ref="9 7 1 2" pos="2"/>
+         <tok ref="9 7 3 2" pos="2"/>
+         <tok ref="10 2 1 3" pos="4"/>
+         <tok ref="10 2 1 4" pos="4"/>
+         <tok ref="10 3 1 2" pos="2"/>
+         <tok ref="10 3 3 1" pos="2"/>
+         <tok ref="10 3 3 2" pos="2"/>
+         <tok ref="10 3 4 2" pos="3"/>
+         <tok ref="10 3 5 1" pos="2"/>
+         <tok ref="10 3 5 3" pos="3"/>
+         <tok ref="10 3 5 3" pos="17"/>
+         <tok ref="10 3 7 2" pos="3"/>
+         <tok ref="10 3 7 2" pos="13"/>
+         <tok ref="10 4 1 1" pos="2"/>
+         <tok ref="10 4 1 2" pos="2"/>
+         <tok ref="10 4 2 1" pos="2"/>
+         <tok ref="10 4 3 1" pos="2"/>
+         <tok ref="10 4 3 2" pos="8"/>
+         <tok ref="10 4 3 2" pos="12"/>
+         <tok ref="10 4 3 3" pos="8"/>
+         <tok ref="10 4 4 2" pos="8"/>
+         <tok ref="10 4 5 1" pos="2"/>
+         <tok ref="10 4 6 1" pos="3"/>
+         <tok ref="10 4 6 2" pos="14"/>
+         <tok ref="10 4 7 1" pos="2"/>
+         <tok ref="10 4 8 1" pos="2"/>
+         <tok ref="10 4 8 4" pos="2"/>
+         <tok ref="10 4 8 4" pos="18"/>
+         <tok ref="10 5 2 3" pos="2"/>
+         <tok ref="10 5 2 5" pos="2"/>
+         <tok ref="10 5 2 6" pos="2"/>
+         <tok ref="10 5 3 1" pos="2"/>
+         <tok ref="10 5 3 6" pos="2"/>
+         <tok ref="10 5 5 4" pos="2"/>
+         <tok ref="10 5 5 7" pos="2"/>
+         <tok ref="10 5 5 8" pos="12"/>
+         <tok ref="10 6 1 1" pos="2"/>
+         <tok ref="10 6 1 2" pos="11"/>
+         <tok ref="10 6 2 1" pos="13"/>
+         <tok ref="10 6 2 3" pos="2"/>
+         <tok ref="10 6 2 5" pos="2"/>
+         <tok ref="10 6 2 6" pos="2"/>
+         <tok ref="10 6 3 1" pos="35"/>
+         <tok ref="10 6 3 2" pos="10"/>
+         <tok ref="10 6 3 2" pos="14"/>
+         <tok ref="10 6 4 1" pos="2"/>
+         <tok ref="10 6 4 1" pos="15"/>
+         <tok ref="10 6 4 2" pos="34"/>
+         <tok ref="10 6 5 1" pos="2"/>
+         <tok ref="10 6 5 1" pos="23"/>
+         <tok ref="10 6 5 3" pos="9"/>
+         <tok ref="11 1 1 1" pos="2"/>
+         <tok ref="11 1 1 1" pos="10"/>
+         <tok ref="11 1 1 1" pos="26"/>
+         <tok ref="11 1 1 1" pos="32"/>
+         <tok ref="11 1 1 1" pos="39"/>
+         <tok ref="11 1 1 3" pos="2"/>
+         <tok ref="11 1 3 2" pos="8"/>
+         <tok ref="11 1 3 3" pos="2"/>
+         <tok ref="11 1 3 3" pos="11"/>
+         <tok ref="11 1 4 1" pos="13"/>
+         <tok ref="11 2 1 1" pos="2"/>
+         <tok ref="11 2 1 2" pos="10"/>
+         <tok ref="11 2 1 2" pos="17"/>
+         <tok ref="11 2 2 1" pos="2"/>
+         <tok ref="11 2 2 2" pos="16"/>
+         <tok ref="11 2 2 2" pos="28"/>
+         <tok ref="11 2 2 2" pos="33"/>
+         <tok ref="12 1 1 3" pos="2"/>
+         <tok ref="12 1 1 4" pos="11"/>
+         <tok ref="12 1 1 4" pos="30"/>
+         <tok ref="12 1 2 1" pos="2"/>
+         <tok ref="12 1 3 2" pos="2"/>
+         <tok ref="12 2 3 5" pos="2"/>
+         <tok ref="13 1 1 1" pos="2"/>
+         <tok ref="13 1 1 3" pos="2"/>
+         <tok ref="13 1 2 1" pos="2"/>
+         <tok ref="13 1 2 1" pos="13"/>
+         <tok ref="13 1 2 2" pos="16"/>
+         <tok ref="13 1 4 1" pos="2"/>
+         <tok ref="13 1 5 2" pos="2"/>
+         <tok ref="13 1 5 4" pos="8"/>
+         <tok ref="13 1 6 1" pos="15"/>
+         <tok ref="13 1 6 2" pos="2"/>
+         <tok ref="14 1 1 1" pos="2"/>
+         <tok ref="14 1 2 2" pos="18"/>
+         <tok ref="14 1 2 3" pos="2"/>
+         <tok ref="14 1 3 1" pos="2"/>
+         <tok ref="14 1 3 3" pos="12"/>
+         <tok ref="14 1 4 1" pos="2"/>
+         <tok ref="14 1 4 3" pos="9"/>
+         <tok ref="14 1 4 4" pos="2"/>
+         <tok ref="14 2 1 1" pos="2"/>
+         <tok ref="14 2 1 2" pos="2"/>
+         <tok ref="14 2 1 2" pos="9"/>
+         <tok ref="14 2 1 3" pos="2"/>
+         <tok ref="14 2 2 1" pos="2"/>
+         <tok ref="14 2 2 1" pos="15"/>
+         <tok ref="15 1 2 1" pos="2"/>
+         <tok ref="15 1 2 2" pos="2"/>
+         <lm>
+            <l>δέ</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 2" pos="7"/>
+         <lm>
+            <l>δέκα</l>
+            <m>m - - p - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 2" pos="10"/>
+         <tok ref="5 9 6 5" pos="9"/>
+         <lm>
+            <l>δέχομαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 6" pos="5"/>
+         <lm>
+            <l>δέχομαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 2 3" pos="6"/>
+         <tok ref="8 3 2 3" pos="15"/>
+         <lm>
+            <l>δέχομαι</l>
+            <m>v - - - r n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 3" pos="3"/>
+         <lm>
+            <l>δή</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 4 2" pos="7"/>
+         <lm>
+            <l>δίκαιος</l>
+            <m>a - - s - - - m n c</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 2 2" pos="16"/>
+         <tok ref="5 4 6 2" pos="6"/>
+         <tok ref="5 4 6 2" pos="25"/>
+         <lm>
+            <l>δίπους</l>
+            <m>n - - s - - - c a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 1 1" pos="12"/>
+         <tok ref="7 3 8 2" pos="6"/>
+         <tok ref="7 3 9 3" pos="4"/>
+         <tok ref="7 3 10 3" pos="12"/>
+         <lm>
+            <l>δεσπότης</l>
+            <m>n - - s - - - m g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 9 2" pos="6"/>
+         <tok ref="7 3 9 2" pos="28"/>
+         <lm>
+            <l>δεσπότης</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 9 2" pos="14"/>
+         <tok ref="7 3 10 2" pos="15"/>
+         <lm>
+            <l>δεσπότης</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 3 3" pos="13"/>
+         <lm>
+            <l>διΐστημι</l>
+            <m>v - - - r n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 1" pos="5"/>
+         <tok ref="5 2 3 1" pos="22"/>
+         <tok ref="5 3 2 1" pos="5"/>
+         <tok ref="7 5 9 3" pos="18"/>
+         <tok ref="8 1 4 3" pos="14"/>
+         <tok ref="8 3 5 1" pos="5"/>
+         <tok ref="8 3 6 2" pos="20"/>
+         <tok ref="8 3 6 2" pos="24"/>
+         <tok ref="8 3 6 2" pos="38"/>
+         <tok ref="8 3 7 3" pos="5"/>
+         <tok ref="8 3 7 3" pos="13"/>
+         <tok ref="8 5 3 1" pos="4"/>
+         <lm>
+            <l>διά</l>
+            <m>r - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 2 2" pos="20"/>
+         <lm>
+            <l>διάγραμμα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 1 2 1" pos="11"/>
+         <tok ref="8 3 5 4" pos="7"/>
+         <tok ref="8 3 5 4" pos="21"/>
+         <lm>
+            <l>διάθεσις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 3 1" pos="4"/>
+         <lm>
+            <l>διάθεσις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 3" pos="23"/>
+         <tok ref="15 1 1 2" pos="6"/>
+         <lm>
+            <l>διάθεσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 2 3" pos="16"/>
+         <lm>
+            <l>διάθεσις</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 2" pos="1"/>
+         <lm>
+            <l>διάκειμαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 2 1" pos="4"/>
+         <tok ref="8 2 2 2" pos="8"/>
+         <lm>
+            <l>διάκειμαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 2 2" pos="41"/>
+         <lm>
+            <l>διήγησις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 3 1" pos="28"/>
+         <lm>
+            <l>διαίρεσις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="13 1 4 1" pos="9"/>
+         <lm>
+            <l>διαίρεσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 3 2" pos="12"/>
+         <lm>
+            <l>διαιρέω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="13 1 4 3" pos="4"/>
+         <lm>
+            <l>διαιρέω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="13 1 4 4" pos="1"/>
+         <lm>
+            <l>διαιρέω</l>
+            <m>v - 3 s a o p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 2 1 2" pos="19"/>
+         <lm>
+            <l>διαλαμβάνω</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 3" pos="6"/>
+         <lm>
+            <l>διατριβή</l>
+            <m>n - - p - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 3 1" pos="11"/>
+         <lm>
+            <l>διαφορά</l>
+            <m>n - - p - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 7 1" pos="8"/>
+         <lm>
+            <l>διαφορά</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 5 1 1" pos="7"/>
+         <lm>
+            <l>διαφορά</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 2 3" pos="3"/>
+         <tok ref="9 1 3 2" pos="4"/>
+         <lm>
+            <l>δικαιοσύνη</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 3 2" pos="1"/>
+         <tok ref="9 1 3 2" pos="23"/>
+         <lm>
+            <l>δικαιοσύνη</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="11 1 1 1" pos="20"/>
+         <lm>
+            <l>δικαιοσύνη</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 2" pos="20"/>
+         <tok ref="6 1 3 4" pos="14"/>
+         <tok ref="6 1 4 6" pos="13"/>
+         <lm>
+            <l>διορίζω</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 3 4" pos="1"/>
+         <lm>
+            <l>διό</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 4" pos="5"/>
+         <lm>
+            <l>δοξάζω</l>
+            <m>v - 3 s p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 1 4" pos="1"/>
+         <lm>
+            <l>δυάω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 3" pos="6"/>
+         <tok ref="5 9 4 5" pos="6"/>
+         <lm>
+            <l>δόξα</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 2 1" pos="12"/>
+         <tok ref="8 2 2 2" pos="12"/>
+         <tok ref="8 2 2 2" pos="23"/>
+         <tok ref="8 2 3 2" pos="7"/>
+         <tok ref="8 5 3 2" pos="9"/>
+         <lm>
+            <l>δύναμις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 3" pos="6"/>
+         <lm>
+            <l>δύναμις</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 3 1 1" pos="1"/>
+         <tok ref="5 3 1 5" pos="2"/>
+         <tok ref="12 2 2 2" pos="16"/>
+         <lm>
+            <l>εἰκός</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 3" pos="6"/>
+         <tok ref="1 1 2 3" pos="9"/>
+         <tok ref="2 2 1 1" pos="13"/>
+         <tok ref="2 2 1 1" pos="27"/>
+         <tok ref="2 2 1 2" pos="6"/>
+         <tok ref="2 2 1 2" pos="29"/>
+         <tok ref="2 2 1 2" pos="37"/>
+         <tok ref="2 2 1 2" pos="52"/>
+         <tok ref="2 2 1 3" pos="10"/>
+         <tok ref="2 2 1 3" pos="17"/>
+         <tok ref="2 2 1 4" pos="6"/>
+         <tok ref="2 2 1 4" pos="26"/>
+         <tok ref="2 2 1 6" pos="8"/>
+         <tok ref="3 1 1 4" pos="7"/>
+         <tok ref="4 1 2 1" pos="1"/>
+         <tok ref="4 1 3 2" pos="21"/>
+         <tok ref="5 1 2 2" pos="15"/>
+         <tok ref="5 1 3 3" pos="18"/>
+         <tok ref="5 1 6 5" pos="16"/>
+         <tok ref="5 1 7 2" pos="14"/>
+         <tok ref="5 2 1 2" pos="6"/>
+         <tok ref="5 2 2 1" pos="9"/>
+         <tok ref="5 2 4 1" pos="7"/>
+         <tok ref="5 2 4 1" pos="14"/>
+         <tok ref="5 2 5 1" pos="12"/>
+         <tok ref="5 3 1 3" pos="9"/>
+         <tok ref="5 4 3 2" pos="15"/>
+         <tok ref="5 4 3 2" pos="24"/>
+         <tok ref="5 4 3 3" pos="14"/>
+         <tok ref="5 4 6 1" pos="14"/>
+         <tok ref="5 4 6 2" pos="17"/>
+         <tok ref="5 4 6 2" pos="23"/>
+         <tok ref="5 4 7 2" pos="18"/>
+         <tok ref="5 5 2 1" pos="8"/>
+         <tok ref="5 6 2 1" pos="10"/>
+         <tok ref="5 6 2 2" pos="8"/>
+         <tok ref="5 6 3 2" pos="13"/>
+         <tok ref="5 8 1 2" pos="8"/>
+         <tok ref="5 8 1 2" pos="16"/>
+         <tok ref="5 8 1 2" pos="23"/>
+         <tok ref="5 8 1 3" pos="3"/>
+         <tok ref="5 8 2 1" pos="3"/>
+         <tok ref="5 8 2 1" pos="11"/>
+         <tok ref="5 8 2 3" pos="21"/>
+         <tok ref="5 9 1 2" pos="13"/>
+         <tok ref="5 9 1 2" pos="22"/>
+         <tok ref="5 9 1 3" pos="5"/>
+         <tok ref="5 9 1 3" pos="36"/>
+         <tok ref="5 9 2 1" pos="13"/>
+         <tok ref="5 9 4 2" pos="12"/>
+         <tok ref="5 9 4 2" pos="42"/>
+         <tok ref="5 9 6 1" pos="2"/>
+         <tok ref="6 1 1 1" pos="6"/>
+         <tok ref="6 1 3 1" pos="8"/>
+         <tok ref="6 1 3 2" pos="5"/>
+         <tok ref="6 1 3 5" pos="7"/>
+         <tok ref="6 1 4 1" pos="8"/>
+         <tok ref="6 1 4 2" pos="5"/>
+         <tok ref="6 1 4 6" pos="3"/>
+         <tok ref="6 1 5 1" pos="5"/>
+         <tok ref="6 1 5 2" pos="1"/>
+         <tok ref="6 1 7 1" pos="1"/>
+         <tok ref="6 1 8 1" pos="6"/>
+         <tok ref="6 2 3 3" pos="11"/>
+         <tok ref="6 2 5 2" pos="12"/>
+         <tok ref="6 3 1 4" pos="9"/>
+         <tok ref="6 4 2 1" pos="4"/>
+         <tok ref="6 4 4 3" pos="8"/>
+         <tok ref="6 4 5 1" pos="14"/>
+         <tok ref="6 4 5 2" pos="4"/>
+         <tok ref="6 4 7 2" pos="3"/>
+         <tok ref="6 4 7 2" pos="12"/>
+         <tok ref="6 4 7 3" pos="4"/>
+         <tok ref="6 4 8 1" pos="2"/>
+         <tok ref="6 5 1 1" pos="17"/>
+         <tok ref="7 1 1 1" pos="10"/>
+         <tok ref="7 1 1 2" pos="6"/>
+         <tok ref="7 1 1 2" pos="20"/>
+         <tok ref="7 1 2 1" pos="1"/>
+         <tok ref="7 1 2 2" pos="7"/>
+         <tok ref="7 1 3 1" pos="4"/>
+         <tok ref="7 1 3 1" pos="8"/>
+         <tok ref="7 1 4 1" pos="1"/>
+         <tok ref="7 2 2 2" pos="5"/>
+         <tok ref="7 3 2 4" pos="6"/>
+         <tok ref="7 3 3 3" pos="1"/>
+         <tok ref="7 3 3 3" pos="6"/>
+         <tok ref="7 3 9 1" pos="16"/>
+         <tok ref="7 3 9 2" pos="12"/>
+         <tok ref="7 3 10 3" pos="15"/>
+         <tok ref="7 4 2 1" pos="7"/>
+         <tok ref="7 4 2 2" pos="5"/>
+         <tok ref="7 4 2 2" pos="12"/>
+         <tok ref="7 4 2 2" pos="17"/>
+         <tok ref="7 4 3 2" pos="6"/>
+         <tok ref="7 4 3 2" pos="13"/>
+         <tok ref="7 4 5 2" pos="6"/>
+         <tok ref="7 4 5 3" pos="8"/>
+         <tok ref="7 4 5 3" pos="14"/>
+         <tok ref="7 4 5 3" pos="20"/>
+         <tok ref="7 4 9 2" pos="20"/>
+         <tok ref="7 5 2 1" pos="8"/>
+         <tok ref="7 5 4 1" pos="9"/>
+         <tok ref="7 5 5 1" pos="18"/>
+         <tok ref="7 5 5 2" pos="6"/>
+         <tok ref="7 5 5 2" pos="14"/>
+         <tok ref="7 5 8 1" pos="7"/>
+         <tok ref="7 5 8 2" pos="11"/>
+         <tok ref="7 5 8 2" pos="12"/>
+         <tok ref="7 5 9 2" pos="8"/>
+         <tok ref="7 5 9 2" pos="13"/>
+         <tok ref="7 5 9 2" pos="27"/>
+         <tok ref="7 5 9 3" pos="10"/>
+         <tok ref="7 5 9 3" pos="14"/>
+         <tok ref="7 5 9 3" pos="26"/>
+         <tok ref="7 5 9 5" pos="7"/>
+         <tok ref="7 5 9 6" pos="6"/>
+         <tok ref="7 5 9 7" pos="5"/>
+         <tok ref="7 5 10 1" pos="18"/>
+         <tok ref="7 5 10 1" pos="20"/>
+         <tok ref="7 5 10 2" pos="11"/>
+         <tok ref="7 5 10 4" pos="4"/>
+         <tok ref="7 5 10 4" pos="18"/>
+         <tok ref="8 1 1 2" pos="1"/>
+         <tok ref="8 1 4 1" pos="5"/>
+         <tok ref="8 1 5 1" pos="9"/>
+         <tok ref="8 3 1 2" pos="1"/>
+         <tok ref="8 3 5 3" pos="15"/>
+         <tok ref="8 3 11 1" pos="13"/>
+         <tok ref="8 4 1 1" pos="25"/>
+         <tok ref="8 5 4 3" pos="7"/>
+         <tok ref="8 6 2 2" pos="11"/>
+         <tok ref="8 6 4 1" pos="10"/>
+         <tok ref="9 1 5 3" pos="9"/>
+         <tok ref="9 2 1 2" pos="6"/>
+         <tok ref="9 2 1 2" pos="14"/>
+         <tok ref="9 3 2 2" pos="9"/>
+         <tok ref="9 3 3 1" pos="8"/>
+         <tok ref="9 5 2 2" pos="6"/>
+         <tok ref="10 2 1 1" pos="11"/>
+         <tok ref="10 2 1 2" pos="8"/>
+         <tok ref="10 2 1 3" pos="19"/>
+         <tok ref="10 2 1 4" pos="7"/>
+         <tok ref="10 3 1 1" pos="10"/>
+         <tok ref="10 3 1 2" pos="9"/>
+         <tok ref="10 3 3 1" pos="6"/>
+         <tok ref="10 3 3 1" pos="21"/>
+         <tok ref="10 3 3 2" pos="9"/>
+         <tok ref="10 3 4 3" pos="3"/>
+         <tok ref="10 3 5 1" pos="9"/>
+         <tok ref="10 3 5 2" pos="25"/>
+         <tok ref="10 3 5 4" pos="8"/>
+         <tok ref="10 4 3 1" pos="10"/>
+         <tok ref="10 4 3 2" pos="4"/>
+         <tok ref="10 4 3 2" pos="17"/>
+         <tok ref="10 4 3 3" pos="6"/>
+         <tok ref="10 4 3 3" pos="14"/>
+         <tok ref="10 4 6 1" pos="2"/>
+         <tok ref="10 4 6 2" pos="6"/>
+         <tok ref="10 4 6 2" pos="21"/>
+         <tok ref="10 4 8 2" pos="6"/>
+         <tok ref="10 4 8 3" pos="5"/>
+         <tok ref="10 5 2 1" pos="7"/>
+         <tok ref="10 5 2 3" pos="3"/>
+         <tok ref="10 5 3 2" pos="32"/>
+         <tok ref="10 5 3 3" pos="5"/>
+         <tok ref="10 5 3 6" pos="7"/>
+         <tok ref="10 6 2 2" pos="13"/>
+         <tok ref="10 6 2 3" pos="16"/>
+         <tok ref="10 6 2 5" pos="13"/>
+         <tok ref="10 6 3 1" pos="24"/>
+         <tok ref="11 1 1 1" pos="3"/>
+         <tok ref="11 1 1 1" pos="37"/>
+         <tok ref="11 1 4 1" pos="10"/>
+         <tok ref="11 2 2 2" pos="37"/>
+         <tok ref="12 1 2 2" pos="45"/>
+         <tok ref="12 1 3 3" pos="1"/>
+         <tok ref="12 2 3 1" pos="3"/>
+         <tok ref="12 2 3 3" pos="3"/>
+         <tok ref="12 2 3 3" pos="11"/>
+         <tok ref="12 2 3 4" pos="12"/>
+         <tok ref="12 2 3 4" pos="14"/>
+         <tok ref="12 2 3 5" pos="1"/>
+         <tok ref="13 1 1 2" pos="6"/>
+         <tok ref="13 1 2 1" pos="19"/>
+         <tok ref="13 1 2 2" pos="8"/>
+         <tok ref="13 1 2 2" pos="14"/>
+         <tok ref="13 1 2 2" pos="21"/>
+         <tok ref="13 1 4 3" pos="24"/>
+         <tok ref="13 1 5 1" pos="16"/>
+         <tok ref="13 1 5 4" pos="5"/>
+         <tok ref="13 1 6 1" pos="23"/>
+         <tok ref="14 1 1 1" pos="3"/>
+         <tok ref="14 1 2 2" pos="3"/>
+         <tok ref="14 1 3 1" pos="5"/>
+         <tok ref="14 1 4 2" pos="2"/>
+         <tok ref="14 2 1 1" pos="1"/>
+         <tok ref="14 2 2 1" pos="12"/>
+         <tok ref="14 2 2 1" pos="58"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 s p i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 3" pos="11"/>
+         <tok ref="1 1 2 3" pos="14"/>
+         <tok ref="2 2 1 2" pos="25"/>
+         <tok ref="2 2 1 5" pos="18"/>
+         <tok ref="3 1 2 3" pos="8"/>
+         <tok ref="3 1 3 1" pos="12"/>
+         <tok ref="4 1 3 2" pos="9"/>
+         <tok ref="5 1 7 1" pos="11"/>
+         <tok ref="5 1 7 3" pos="11"/>
+         <tok ref="5 2 3 1" pos="21"/>
+         <tok ref="5 4 8 1" pos="22"/>
+         <tok ref="5 9 1 1" pos="7"/>
+         <tok ref="5 9 1 1" pos="16"/>
+         <tok ref="5 9 3 1" pos="21"/>
+         <tok ref="5 9 3 2" pos="9"/>
+         <tok ref="5 9 6 2" pos="14"/>
+         <tok ref="5 9 6 3" pos="5"/>
+         <tok ref="5 9 6 3" pos="8"/>
+         <tok ref="5 9 6 3" pos="16"/>
+         <tok ref="5 9 6 3" pos="22"/>
+         <tok ref="5 9 6 6" pos="18"/>
+         <tok ref="6 3 1 2" pos="18"/>
+         <tok ref="6 3 1 2" pos="28"/>
+         <tok ref="6 3 1 4" pos="38"/>
+         <tok ref="6 4 2 2" pos="28"/>
+         <tok ref="6 4 5 1" pos="8"/>
+         <tok ref="6 4 7 1" pos="7"/>
+         <tok ref="6 4 7 3" pos="7"/>
+         <tok ref="7 1 1 1" pos="12"/>
+         <tok ref="7 3 9 2" pos="18"/>
+         <tok ref="7 3 9 2" pos="29"/>
+         <tok ref="7 3 10 2" pos="17"/>
+         <tok ref="7 3 10 4" pos="9"/>
+         <tok ref="7 4 4 1" pos="14"/>
+         <tok ref="7 4 4 2" pos="9"/>
+         <tok ref="7 4 5 2" pos="20"/>
+         <tok ref="7 4 7 2" pos="8"/>
+         <tok ref="7 5 4 2" pos="24"/>
+         <tok ref="7 5 5 2" pos="12"/>
+         <tok ref="7 5 8 2" pos="15"/>
+         <tok ref="8 1 3 1" pos="9"/>
+         <tok ref="8 1 3 3" pos="8"/>
+         <tok ref="8 1 3 5" pos="14"/>
+         <tok ref="8 3 3 3" pos="30"/>
+         <tok ref="8 4 1 3" pos="6"/>
+         <tok ref="8 4 3 1" pos="23"/>
+         <tok ref="8 4 3 3" pos="8"/>
+         <tok ref="9 3 1 2" pos="10"/>
+         <tok ref="10 4 3 2" pos="22"/>
+         <tok ref="10 4 3 3" pos="10"/>
+         <tok ref="10 4 4 1" pos="9"/>
+         <tok ref="10 4 5 3" pos="12"/>
+         <tok ref="10 5 2 4" pos="8"/>
+         <tok ref="10 5 2 5" pos="29"/>
+         <tok ref="10 5 2 7" pos="7"/>
+         <tok ref="10 5 3 5" pos="31"/>
+         <tok ref="10 5 5 1" pos="26"/>
+         <tok ref="10 5 5 3" pos="18"/>
+         <tok ref="10 6 1 2" pos="14"/>
+         <tok ref="10 6 2 1" pos="11"/>
+         <tok ref="10 6 3 1" pos="37"/>
+         <tok ref="10 6 4 2" pos="8"/>
+         <tok ref="10 6 4 2" pos="22"/>
+         <tok ref="10 6 4 2" pos="50"/>
+         <tok ref="10 6 5 4" pos="15"/>
+         <tok ref="11 1 3 1" pos="12"/>
+         <tok ref="11 1 4 1" pos="30"/>
+         <tok ref="11 2 2 1" pos="11"/>
+         <tok ref="11 2 2 1" pos="20"/>
+         <tok ref="12 1 1 2" pos="20"/>
+         <tok ref="12 1 1 3" pos="9"/>
+         <tok ref="12 1 1 4" pos="9"/>
+         <tok ref="12 1 1 4" pos="16"/>
+         <tok ref="12 1 1 4" pos="26"/>
+         <tok ref="12 1 1 4" pos="34"/>
+         <tok ref="12 1 1 4" pos="41"/>
+         <tok ref="12 1 3 1" pos="11"/>
+         <tok ref="12 1 3 2" pos="15"/>
+         <tok ref="12 2 2 1" pos="9"/>
+         <tok ref="12 2 2 2" pos="7"/>
+         <tok ref="12 2 2 2" pos="14"/>
+         <tok ref="12 2 3 2" pos="3"/>
+         <tok ref="12 2 3 2" pos="9"/>
+         <tok ref="12 2 3 5" pos="10"/>
+         <tok ref="12 2 3 5" pos="20"/>
+         <tok ref="12 2 3 6" pos="3"/>
+         <tok ref="13 1 2 1" pos="10"/>
+         <tok ref="13 1 2 1" pos="18"/>
+         <tok ref="13 1 2 2" pos="20"/>
+         <tok ref="13 1 4 3" pos="32"/>
+         <tok ref="13 1 5 3" pos="7"/>
+         <tok ref="13 1 5 4" pos="13"/>
+         <tok ref="13 1 6 1" pos="12"/>
+         <tok ref="13 1 6 1" pos="22"/>
+         <tok ref="14 2 2 1" pos="17"/>
+         <tok ref="15 1 2 2" pos="10"/>
+         <lm>
+            <l def-ref="1">εἰμί</l>
+            <m>v c - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 3 2" pos="14"/>
+         <tok ref="5 4 3 1" pos="11"/>
+         <tok ref="7 1 4 2" pos="11"/>
+         <tok ref="7 3 2 4" pos="9"/>
+         <tok ref="7 5 10 1" pos="13"/>
+         <tok ref="8 1 7 1" pos="1"/>
+         <tok ref="8 3 2 1" pos="6"/>
+         <tok ref="9 1 5 2" pos="18"/>
+         <tok ref="9 3 3 3" pos="6"/>
+         <tok ref="9 3 4 4" pos="4"/>
+         <tok ref="14 1 2 1" pos="10"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 p p i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 3 2" pos="19"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 p f i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 7 1" pos="2"/>
+         <tok ref="5 1 7 3" pos="3"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c - p p p a f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 3 1 4" pos="10"/>
+         <tok ref="5 8 1 3" pos="9"/>
+         <tok ref="5 9 1 3" pos="11"/>
+         <tok ref="5 9 1 3" pos="24"/>
+         <tok ref="5 9 3 2" pos="26"/>
+         <tok ref="7 3 10 5" pos="4"/>
+         <tok ref="7 3 10 6" pos="7"/>
+         <tok ref="7 4 5 2" pos="11"/>
+         <tok ref="7 4 9 2" pos="9"/>
+         <tok ref="10 6 3 2" pos="5"/>
+         <tok ref="10 6 5 1" pos="20"/>
+         <tok ref="11 1 3 2" pos="6"/>
+         <tok ref="11 1 3 3" pos="9"/>
+         <tok ref="13 1 5 1" pos="1"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 s f i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="9"/>
+         <tok ref="8 3 11 2" pos="11"/>
+         <tok ref="10 5 5 9" pos="10"/>
+         <tok ref="10 5 5 9" pos="15"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c - s p p a m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 4" pos="32"/>
+         <tok ref="7 3 3 1" pos="10"/>
+         <tok ref="7 3 9 1" pos="6"/>
+         <tok ref="7 3 11 2" pos="4"/>
+         <tok ref="10 5 3 5" pos="5"/>
+         <tok ref="10 5 5 5" pos="13"/>
+         <tok ref="10 6 5 1" pos="12"/>
+         <tok ref="10 6 5 1" pos="16"/>
+         <tok ref="11 1 3 1" pos="8"/>
+         <tok ref="14 1 2 3" pos="10"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 s p s a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 5 2" pos="10"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c - p p p a m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 5 2" pos="16"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c - s p p a f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 4 3" pos="6"/>
+         <lm>
+            <l>εἰμί</l>
+            <m>v c 3 p p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 9 1" pos="13"/>
+         <lm>
+            <l>εἴπερ</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 2 1" pos="7"/>
+         <lm>
+            <l>εἶδος</l>
+            <m>n - - p - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 2 2" pos="14"/>
+         <tok ref="5 5 2 2" pos="18"/>
+         <lm>
+            <l>εἶδος</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="5"/>
+         <lm>
+            <l>εἷς</l>
+            <m>m - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 1 1" pos="17"/>
+         <lm>
+            <l>εὐθύτης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 3" pos="10"/>
+         <tok ref="1 1 2 3" pos="13"/>
+         <lm>
+            <l>ζῷον</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 1 2" pos="5"/>
+         <tok ref="6 1 1 2" pos="19"/>
+         <tok ref="6 2 1 1" pos="5"/>
+         <tok ref="6 2 1 1" pos="19"/>
+         <tok ref="6 2 1 2" pos="7"/>
+         <tok ref="6 2 1 3" pos="8"/>
+         <tok ref="6 2 3 1" pos="14"/>
+         <tok ref="6 2 3 3" pos="16"/>
+         <tok ref="6 2 6 1" pos="5"/>
+         <tok ref="8 4 3 2" pos="1"/>
+         <lm>
+            <l>θέσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 1 4 2" pos="18"/>
+         <tok ref="9 7 1 2" pos="15"/>
+         <lm>
+            <l>θέσις</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="3"/>
+         <tok ref="9 5 2 2" pos="1"/>
+         <lm>
+            <l>θερμαίνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="9"/>
+         <tok ref="9 5 2 2" pos="8"/>
+         <lm>
+            <l>θερμαίνω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 1" pos="11"/>
+         <tok ref="8 3 1 2" pos="19"/>
+         <tok ref="8 3 3 3" pos="6"/>
+         <tok ref="8 3 3 4" pos="13"/>
+         <lm>
+            <l>θερμότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 4 2" pos="4"/>
+         <lm>
+            <l>θεωρέω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 7" pos="5"/>
+         <tok ref="10 4 7 3" pos="12"/>
+         <tok ref="10 4 7 3" pos="14"/>
+         <lm>
+            <l>κάθημαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 2" pos="18"/>
+         <tok ref="5 9 3 4" pos="7"/>
+         <tok ref="5 9 4 4" pos="9"/>
+         <tok ref="7 1 4 2" pos="7"/>
+         <tok ref="10 4 7 3" pos="23"/>
+         <tok ref="10 4 7 3" pos="25"/>
+         <lm>
+            <l>κάθημαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 2 1 3" pos="30"/>
+         <lm>
+            <l>κάτω</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 2 1 3" pos="24"/>
+         <lm>
+            <l>κάτωθεν</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 2 2" pos="19"/>
+         <tok ref="6 4 2 3" pos="24"/>
+         <lm>
+            <l>κέγχρος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 2" pos="31"/>
+         <tok ref="14 2 1 1" pos="5"/>
+         <lm>
+            <l>κίνησις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 2 3" pos="17"/>
+         <tok ref="14 1 3 2" pos="16"/>
+         <tok ref="14 1 3 4" pos="19"/>
+         <tok ref="14 2 2 1" pos="6"/>
+         <lm>
+            <l>κίνησις</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 4 1" pos="9"/>
+         <lm>
+            <l>κίνησις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 5 2" pos="15"/>
+         <lm>
+            <l>καίτοι</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 9" pos="5"/>
+         <lm>
+            <l>καίω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 10" pos="5"/>
+         <lm>
+            <l>καίω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 2 1" pos="8"/>
+         <tok ref="14 2 2 1" pos="40"/>
+         <lm>
+            <l>καθά</l>
+            <m>d r - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 1 2" pos="1"/>
+         <lm>
+            <l>καθόλου</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 1 1" pos="19"/>
+         <lm>
+            <l>καμπυλότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 1" pos="19"/>
+         <tok ref="4 1 3 2" pos="4"/>
+         <tok ref="10 4 6 1" pos="11"/>
+         <tok ref="10 4 6 2" pos="4"/>
+         <tok ref="10 4 7 1" pos="8"/>
+         <tok ref="10 4 7 3" pos="5"/>
+         <tok ref="10 6 1 1" pos="4"/>
+         <tok ref="10 6 5 4" pos="18"/>
+         <lm>
+            <l>κατάφασις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 6 5 1" pos="5"/>
+         <lm>
+            <l>κατάφασις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 1" pos="13"/>
+         <lm>
+            <l>κατάψυξις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 5 2" pos="7"/>
+         <lm>
+            <l>κατέχω</l>
+            <m>v - - p p p a m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 1 2" pos="7"/>
+         <tok ref="3 1 3 2" pos="8"/>
+         <tok ref="5 1 3 2" pos="10"/>
+         <tok ref="5 1 4 1" pos="15"/>
+         <tok ref="5 1 4 3" pos="9"/>
+         <tok ref="5 1 6 2" pos="7"/>
+         <tok ref="5 2 3 4" pos="8"/>
+         <tok ref="5 3 2 3" pos="7"/>
+         <tok ref="5 4 4 2" pos="5"/>
+         <tok ref="5 4 7 1" pos="5"/>
+         <tok ref="5 5 2 2" pos="11"/>
+         <tok ref="10 3 3 1" pos="14"/>
+         <tok ref="10 3 4 2" pos="7"/>
+         <tok ref="10 3 5 3" pos="6"/>
+         <tok ref="10 3 5 3" pos="23"/>
+         <tok ref="10 5 2 1" pos="17"/>
+         <lm>
+            <l>κατηγορέω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 3 1" pos="17"/>
+         <tok ref="5 1 4 2" pos="8"/>
+         <tok ref="5 2 3 1" pos="17"/>
+         <lm>
+            <l>κατηγορέω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 5 1 2" pos="11"/>
+         <tok ref="5 5 2 3" pos="14"/>
+         <lm>
+            <l>κατηγορέω</l>
+            <m>v - 3 p p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 6 4 2" pos="5"/>
+         <lm>
+            <l>κατηγορία</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 5 2" pos="5"/>
+         <tok ref="7 3 5 3" pos="5"/>
+         <tok ref="7 5 10 1" pos="4"/>
+         <lm>
+            <l>κεφαλή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 7" pos="1"/>
+         <tok ref="8 4 3 4" pos="10"/>
+         <tok ref="8 5 3 1" pos="7"/>
+         <tok ref="9 7 1 2" pos="6"/>
+         <lm>
+            <l>κεῖμαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 2 1 2" pos="14"/>
+         <tok ref="6 2 1 2" pos="24"/>
+         <tok ref="6 2 1 3" pos="17"/>
+         <tok ref="6 2 3 1" pos="20"/>
+         <tok ref="7 3 4 1" pos="22"/>
+         <tok ref="8 5 3 3" pos="3"/>
+         <tok ref="10 3 7 1" pos="6"/>
+         <lm>
+            <l>κεῖμαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 4" pos="9"/>
+         <lm>
+            <l>κινέω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="11"/>
+         <lm>
+            <l>κομήτης</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 5 3" pos="8"/>
+         <lm>
+            <l>κύκλος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 1" pos="2"/>
+         <tok ref="1 1 2 1" pos="3"/>
+         <tok ref="2 2 1 1" pos="8"/>
+         <tok ref="2 2 1 1" pos="19"/>
+         <tok ref="2 2 1 2" pos="11"/>
+         <tok ref="2 2 1 2" pos="44"/>
+         <tok ref="2 2 1 2" pos="64"/>
+         <tok ref="2 2 1 3" pos="6"/>
+         <tok ref="2 2 1 3" pos="23"/>
+         <tok ref="2 2 1 4" pos="10"/>
+         <tok ref="2 2 1 4" pos="30"/>
+         <tok ref="2 2 1 5" pos="11"/>
+         <tok ref="3 1 1 1" pos="13"/>
+         <tok ref="4 1 3 1" pos="12"/>
+         <tok ref="5 1 3 2" pos="5"/>
+         <tok ref="5 1 4 3" pos="15"/>
+         <tok ref="5 1 6 5" pos="11"/>
+         <tok ref="5 1 7 2" pos="9"/>
+         <tok ref="5 4 3 2" pos="10"/>
+         <tok ref="5 4 3 3" pos="9"/>
+         <tok ref="5 4 6 2" pos="10"/>
+         <tok ref="5 4 7 2" pos="7"/>
+         <tok ref="5 5 2 1" pos="14"/>
+         <tok ref="5 5 4 1" pos="6"/>
+         <tok ref="5 6 3 2" pos="25"/>
+         <tok ref="5 8 1 2" pos="25"/>
+         <tok ref="5 8 2 2" pos="8"/>
+         <tok ref="5 8 2 2" pos="16"/>
+         <tok ref="5 8 2 2" pos="27"/>
+         <tok ref="5 8 2 3" pos="6"/>
+         <tok ref="5 8 2 3" pos="15"/>
+         <tok ref="5 9 6 2" pos="16"/>
+         <tok ref="5 9 6 3" pos="17"/>
+         <tok ref="5 9 6 5" pos="14"/>
+         <tok ref="5 9 6 6" pos="20"/>
+         <tok ref="6 3 1 1" pos="6"/>
+         <tok ref="6 3 1 2" pos="13"/>
+         <tok ref="6 3 1 3" pos="8"/>
+         <tok ref="6 3 1 5" pos="8"/>
+         <tok ref="6 4 2 2" pos="7"/>
+         <tok ref="6 4 2 2" pos="18"/>
+         <tok ref="6 5 1 2" pos="15"/>
+         <tok ref="6 5 1 3" pos="9"/>
+         <tok ref="6 5 1 4" pos="12"/>
+         <tok ref="6 6 2 1" pos="10"/>
+         <tok ref="6 6 2 1" pos="17"/>
+         <tok ref="6 6 2 1" pos="24"/>
+         <tok ref="6 6 2 2" pos="14"/>
+         <tok ref="7 1 1 1" pos="6"/>
+         <tok ref="7 1 1 1" pos="13"/>
+         <tok ref="7 1 1 2" pos="8"/>
+         <tok ref="7 1 1 2" pos="12"/>
+         <tok ref="7 1 1 2" pos="17"/>
+         <tok ref="7 1 1 2" pos="24"/>
+         <tok ref="7 1 2 2" pos="9"/>
+         <tok ref="7 1 2 3" pos="6"/>
+         <tok ref="7 1 3 1" pos="10"/>
+         <tok ref="7 1 3 2" pos="4"/>
+         <tok ref="7 1 3 2" pos="11"/>
+         <tok ref="7 1 3 2" pos="19"/>
+         <tok ref="7 1 3 2" pos="29"/>
+         <tok ref="7 1 4 2" pos="19"/>
+         <tok ref="7 2 3 2" pos="6"/>
+         <tok ref="7 2 3 2" pos="12"/>
+         <tok ref="7 2 3 3" pos="7"/>
+         <tok ref="7 2 4 2" pos="5"/>
+         <tok ref="7 3 1 1" pos="8"/>
+         <tok ref="7 3 1 1" pos="13"/>
+         <tok ref="7 3 1 1" pos="20"/>
+         <tok ref="7 3 1 3" pos="13"/>
+         <tok ref="7 3 2 1" pos="13"/>
+         <tok ref="7 3 3 2" pos="19"/>
+         <tok ref="7 3 3 5" pos="5"/>
+         <tok ref="7 3 7 1" pos="11"/>
+         <tok ref="7 3 7 2" pos="13"/>
+         <tok ref="7 3 8 1" pos="27"/>
+         <tok ref="7 3 9 1" pos="9"/>
+         <tok ref="7 3 9 2" pos="7"/>
+         <tok ref="7 3 9 3" pos="6"/>
+         <tok ref="7 3 10 1" pos="10"/>
+         <tok ref="7 3 11 1" pos="9"/>
+         <tok ref="7 5 2 2" pos="10"/>
+         <tok ref="7 5 2 3" pos="6"/>
+         <tok ref="7 5 2 5" pos="6"/>
+         <tok ref="7 5 2 5" pos="18"/>
+         <tok ref="7 5 3 2" pos="5"/>
+         <tok ref="7 5 3 2" pos="21"/>
+         <tok ref="7 5 4 2" pos="5"/>
+         <tok ref="7 5 4 2" pos="11"/>
+         <tok ref="7 5 5 1" pos="27"/>
+         <tok ref="7 5 9 7" pos="17"/>
+         <tok ref="7 5 10 1" pos="25"/>
+         <tok ref="8 2 2 1" pos="9"/>
+         <tok ref="8 2 3 2" pos="5"/>
+         <tok ref="8 3 2 2" pos="5"/>
+         <tok ref="8 3 2 3" pos="7"/>
+         <tok ref="8 3 3 2" pos="8"/>
+         <tok ref="8 3 6 2" pos="13"/>
+         <tok ref="8 3 7 1" pos="11"/>
+         <tok ref="8 3 7 3" pos="9"/>
+         <tok ref="8 3 7 4" pos="6"/>
+         <tok ref="8 3 11 1" pos="8"/>
+         <tok ref="8 3 11 2" pos="3"/>
+         <tok ref="8 3 11 3" pos="4"/>
+         <tok ref="8 4 1 2" pos="7"/>
+         <tok ref="8 4 1 3" pos="9"/>
+         <tok ref="8 5 3 2" pos="16"/>
+         <tok ref="8 5 3 3" pos="28"/>
+         <tok ref="8 5 4 1" pos="7"/>
+         <tok ref="8 5 4 2" pos="6"/>
+         <tok ref="9 1 1 2" pos="8"/>
+         <tok ref="9 1 2 3" pos="5"/>
+         <tok ref="9 1 4 2" pos="5"/>
+         <tok ref="9 2 1 1" pos="16"/>
+         <tok ref="9 3 2 1" pos="11"/>
+         <tok ref="9 3 2 2" pos="11"/>
+         <tok ref="9 3 2 2" pos="15"/>
+         <tok ref="9 3 3 1" pos="10"/>
+         <tok ref="9 3 3 1" pos="15"/>
+         <tok ref="9 3 3 1" pos="33"/>
+         <tok ref="9 3 3 2" pos="4"/>
+         <tok ref="9 7 1 1" pos="6"/>
+         <tok ref="9 7 1 2" pos="16"/>
+         <tok ref="10 2 1 1" pos="14"/>
+         <tok ref="10 2 1 2" pos="10"/>
+         <tok ref="10 2 1 3" pos="13"/>
+         <tok ref="10 2 1 4" pos="11"/>
+         <tok ref="10 2 1 5" pos="5"/>
+         <tok ref="10 3 1 1" pos="17"/>
+         <tok ref="10 3 1 2" pos="13"/>
+         <tok ref="10 3 1 2" pos="17"/>
+         <tok ref="10 3 1 3" pos="7"/>
+         <tok ref="10 4 1 1" pos="5"/>
+         <tok ref="10 4 1 2" pos="12"/>
+         <tok ref="10 4 2 3" pos="12"/>
+         <tok ref="10 4 4 2" pos="4"/>
+         <tok ref="10 4 4 2" pos="12"/>
+         <tok ref="10 4 7 1" pos="1"/>
+         <tok ref="10 4 8 2" pos="3"/>
+         <tok ref="10 4 8 3" pos="13"/>
+         <tok ref="10 4 8 4" pos="16"/>
+         <tok ref="10 4 8 4" pos="21"/>
+         <tok ref="10 4 9 1" pos="8"/>
+         <tok ref="10 4 9 1" pos="23"/>
+         <tok ref="10 4 9 3" pos="3"/>
+         <tok ref="10 5 3 2" pos="21"/>
+         <tok ref="10 6 2 6" pos="7"/>
+         <tok ref="12 1 1 1" pos="4"/>
+         <tok ref="12 1 1 2" pos="14"/>
+         <tok ref="12 1 1 2" pos="25"/>
+         <tok ref="12 1 2 1" pos="7"/>
+         <tok ref="12 2 3 6" pos="13"/>
+         <tok ref="13 1 1 1" pos="3"/>
+         <tok ref="13 1 1 3" pos="7"/>
+         <tok ref="13 1 4 1" pos="3"/>
+         <tok ref="13 1 6 1" pos="5"/>
+         <tok ref="15 1 1 1" pos="6"/>
+         <tok ref="15 1 1 3" pos="10"/>
+         <tok ref="15 1 1 7" pos="20"/>
+         <tok ref="15 1 1 8" pos="4"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 1 1" pos="19"/>
+         <tok ref="5 5 4 1" pos="11"/>
+         <tok ref="7 3 9 1" pos="28"/>
+         <tok ref="7 3 9 2" pos="35"/>
+         <tok ref="7 3 10 1" pos="23"/>
+         <tok ref="7 3 10 3" pos="8"/>
+         <tok ref="9 1 5 2" pos="27"/>
+         <tok ref="10 5 3 5" pos="14"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 3 s f i p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 1" pos="7"/>
+         <tok ref="10 4 1 2" pos="3"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 2 1" pos="4"/>
+         <tok ref="5 1 2 3" pos="4"/>
+         <tok ref="5 2 3 1" pos="26"/>
+         <tok ref="5 3 1 1" pos="17"/>
+         <tok ref="5 3 1 5" pos="8"/>
+         <tok ref="5 3 2 1" pos="13"/>
+         <tok ref="8 1 1 1" pos="8"/>
+         <tok ref="8 1 4 1" pos="3"/>
+         <tok ref="8 2 2 2" pos="5"/>
+         <tok ref="8 2 2 2" pos="21"/>
+         <tok ref="8 3 3 1" pos="4"/>
+         <tok ref="8 3 3 3" pos="12"/>
+         <tok ref="8 3 3 3" pos="34"/>
+         <tok ref="8 3 6 1" pos="17"/>
+         <tok ref="8 3 6 2" pos="44"/>
+         <tok ref="8 3 7 2" pos="3"/>
+         <tok ref="8 3 9 1" pos="13"/>
+         <tok ref="8 3 9 2" pos="5"/>
+         <tok ref="8 3 10 2" pos="5"/>
+         <tok ref="8 5 3 3" pos="11"/>
+         <tok ref="8 5 3 3" pos="24"/>
+         <tok ref="8 5 3 3" pos="38"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 3 p p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 3 2 4" pos="5"/>
+         <tok ref="5 3 2 4" pos="13"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 2 s f i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 7 1" pos="12"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 3 s p s e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 8 2" pos="7"/>
+         <tok ref="6 4 2 3" pos="13"/>
+         <tok ref="6 4 2 3" pos="21"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - 3 s i i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 5 1 1" pos="13"/>
+         <tok ref="8 5 3 1" pos="16"/>
+         <tok ref="9 1 3 2" pos="11"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 4 2" pos="4"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - s a p a m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 10 4" pos="11"/>
+         <tok ref="8 1 5 1" pos="7"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 2" pos="11"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - s p p e m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 2 2 1" pos="7"/>
+         <lm>
+            <l>λέγω</l>
+            <m>v - - p r p e m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 1 3" pos="8"/>
+         <lm>
+            <l>λέξις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 4" pos="7"/>
+         <tok ref="6 1 5 2" pos="3"/>
+         <tok ref="6 4 5 2" pos="8"/>
+         <lm>
+            <l>λαμβάνω</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 4" pos="19"/>
+         <lm>
+            <l>λαμβάνω</l>
+            <m>v - 3 s a o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 5" pos="19"/>
+         <lm>
+            <l>λαμβάνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="12"/>
+         <lm>
+            <l>λευκός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 2 5" pos="34"/>
+         <lm>
+            <l>λευκός</l>
+            <m>a - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 6" pos="7"/>
+         <tok ref="8 3 2 3" pos="14"/>
+         <lm>
+            <l>λευκότης</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 1 2" pos="23"/>
+         <tok ref="11 1 3 3" pos="7"/>
+         <tok ref="11 2 1 2" pos="9"/>
+         <lm>
+            <l>λευκότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 11 1" pos="11"/>
+         <lm>
+            <l>λυπέω</l>
+            <m>v - - s p p e m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="16"/>
+         <tok ref="9 5 2 2" pos="13"/>
+         <lm>
+            <l>λυπέω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 1" pos="11"/>
+         <tok ref="1 1 1 2" pos="10"/>
+         <tok ref="1 1 2 1" pos="13"/>
+         <tok ref="1 1 2 2" pos="10"/>
+         <tok ref="5 1 3 3" pos="3"/>
+         <tok ref="5 1 3 4" pos="6"/>
+         <tok ref="5 1 4 1" pos="14"/>
+         <tok ref="5 1 4 3" pos="18"/>
+         <tok ref="5 4 4 2" pos="8"/>
+         <tok ref="5 4 7 1" pos="3"/>
+         <tok ref="5 4 7 2" pos="10"/>
+         <tok ref="5 5 4 3" pos="11"/>
+         <tok ref="5 9 3 2" pos="4"/>
+         <tok ref="5 9 3 2" pos="16"/>
+         <tok ref="5 9 4 3" pos="3"/>
+         <tok ref="5 9 4 4" pos="4"/>
+         <tok ref="5 9 6 2" pos="3"/>
+         <tok ref="5 9 6 3" pos="12"/>
+         <tok ref="5 9 6 4" pos="8"/>
+         <tok ref="6 1 4 1" pos="5"/>
+         <tok ref="6 1 4 2" pos="7"/>
+         <tok ref="6 2 5 1" pos="3"/>
+         <tok ref="10 4 6 2" pos="5"/>
+         <tok ref="10 4 6 2" pos="11"/>
+         <tok ref="10 4 6 2" pos="22"/>
+         <tok ref="12 2 3 3" pos="7"/>
+         <tok ref="12 2 3 4" pos="8"/>
+         <tok ref="12 2 3 5" pos="6"/>
+         <tok ref="12 2 3 6" pos="10"/>
+         <lm>
+            <l>λόγος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 3" pos="14"/>
+         <tok ref="1 1 2 3" pos="7"/>
+         <tok ref="1 1 2 3" pos="17"/>
+         <tok ref="5 1 3 1" pos="16"/>
+         <tok ref="5 1 4 2" pos="13"/>
+         <tok ref="5 4 4 1" pos="18"/>
+         <tok ref="5 4 4 2" pos="18"/>
+         <tok ref="5 5 4 2" pos="7"/>
+         <tok ref="5 9 3 1" pos="14"/>
+         <tok ref="6 1 4 4" pos="7"/>
+         <tok ref="9 1 5 2" pos="8"/>
+         <tok ref="9 1 5 4" pos="7"/>
+         <tok ref="12 2 3 2" pos="16"/>
+         <tok ref="12 2 3 5" pos="23"/>
+         <lm>
+            <l>λόγος</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 1" pos="24"/>
+         <tok ref="5 9 1 1" pos="1"/>
+         <tok ref="10 6 3 1" pos="4"/>
+         <tok ref="14 2 1 3" pos="10"/>
+         <lm>
+            <l>μάλιστα</l>
+            <m>d - - - - - - - - s</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 7" pos="7"/>
+         <tok ref="15 1 1 7" pos="23"/>
+         <lm>
+            <l>μέδιμνος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 1 2 1" pos="2"/>
+         <tok ref="2 2 1 1" pos="4"/>
+         <tok ref="2 2 1 1" pos="18"/>
+         <tok ref="2 2 1 2" pos="5"/>
+         <tok ref="2 2 1 2" pos="36"/>
+         <tok ref="2 2 1 2" pos="51"/>
+         <tok ref="2 2 1 3" pos="16"/>
+         <tok ref="3 1 2 2" pos="2"/>
+         <tok ref="4 1 2 1" pos="4"/>
+         <tok ref="4 1 3 1" pos="6"/>
+         <tok ref="5 1 2 2" pos="7"/>
+         <tok ref="5 1 4 1" pos="7"/>
+         <tok ref="5 1 4 2" pos="5"/>
+         <tok ref="5 2 2 2" pos="13"/>
+         <tok ref="5 2 3 4" pos="2"/>
+         <tok ref="5 3 1 3" pos="11"/>
+         <tok ref="5 4 3 1" pos="6"/>
+         <tok ref="5 4 3 2" pos="6"/>
+         <tok ref="5 4 3 3" pos="8"/>
+         <tok ref="5 4 4 1" pos="8"/>
+         <tok ref="5 4 6 2" pos="9"/>
+         <tok ref="5 5 2 1" pos="2"/>
+         <tok ref="5 5 2 2" pos="6"/>
+         <tok ref="5 6 2 1" pos="2"/>
+         <tok ref="5 6 3 1" pos="7"/>
+         <tok ref="5 8 1 2" pos="12"/>
+         <tok ref="5 9 1 2" pos="3"/>
+         <tok ref="5 9 2 2" pos="11"/>
+         <tok ref="5 9 4 2" pos="2"/>
+         <tok ref="5 9 4 3" pos="8"/>
+         <tok ref="5 9 4 4" pos="2"/>
+         <tok ref="5 9 4 4" pos="16"/>
+         <tok ref="6 1 1 1" pos="5"/>
+         <tok ref="6 1 1 2" pos="3"/>
+         <tok ref="6 1 3 1" pos="2"/>
+         <tok ref="6 1 3 5" pos="3"/>
+         <tok ref="6 1 4 2" pos="2"/>
+         <tok ref="6 2 1 1" pos="3"/>
+         <tok ref="6 2 1 2" pos="3"/>
+         <tok ref="6 2 6 1" pos="2"/>
+         <tok ref="6 4 2 2" pos="16"/>
+         <tok ref="6 4 2 2" pos="24"/>
+         <tok ref="6 4 2 3" pos="18"/>
+         <tok ref="6 4 4 1" pos="3"/>
+         <tok ref="7 1 4 2" pos="9"/>
+         <tok ref="7 3 9 1" pos="3"/>
+         <tok ref="7 3 10 1" pos="12"/>
+         <tok ref="7 3 11 1" pos="3"/>
+         <tok ref="7 3 11 2" pos="2"/>
+         <tok ref="7 4 2 1" pos="3"/>
+         <tok ref="7 4 5 1" pos="3"/>
+         <tok ref="7 4 5 3" pos="11"/>
+         <tok ref="7 4 7 3" pos="2"/>
+         <tok ref="7 4 9 2" pos="5"/>
+         <tok ref="7 5 2 1" pos="2"/>
+         <tok ref="7 5 4 1" pos="2"/>
+         <tok ref="7 5 5 1" pos="2"/>
+         <tok ref="7 5 8 1" pos="2"/>
+         <tok ref="7 5 10 1" pos="16"/>
+         <tok ref="8 1 4 2" pos="2"/>
+         <tok ref="8 1 7 1" pos="4"/>
+         <tok ref="8 1 7 2" pos="2"/>
+         <tok ref="8 2 3 2" pos="2"/>
+         <tok ref="8 3 2 1" pos="2"/>
+         <tok ref="8 3 5 1" pos="2"/>
+         <tok ref="8 3 6 1" pos="2"/>
+         <tok ref="8 3 7 4" pos="3"/>
+         <tok ref="8 3 11 3" pos="3"/>
+         <tok ref="8 4 3 1" pos="14"/>
+         <tok ref="8 4 3 3" pos="2"/>
+         <tok ref="8 4 3 4" pos="3"/>
+         <tok ref="8 4 3 4" pos="15"/>
+         <tok ref="9 1 3 2" pos="2"/>
+         <tok ref="9 1 5 2" pos="2"/>
+         <tok ref="9 2 1 1" pos="2"/>
+         <tok ref="9 3 2 2" pos="2"/>
+         <tok ref="9 7 1 1" pos="2"/>
+         <tok ref="9 7 3 1" pos="2"/>
+         <tok ref="10 2 1 1" pos="2"/>
+         <tok ref="10 3 1 2" pos="7"/>
+         <tok ref="10 3 5 3" pos="7"/>
+         <tok ref="10 3 7 1" pos="3"/>
+         <tok ref="10 3 7 2" pos="5"/>
+         <tok ref="10 4 1 1" pos="6"/>
+         <tok ref="10 4 3 2" pos="2"/>
+         <tok ref="10 4 4 2" pos="3"/>
+         <tok ref="10 4 6 2" pos="2"/>
+         <tok ref="10 4 8 4" pos="12"/>
+         <tok ref="10 5 2 1" pos="2"/>
+         <tok ref="10 5 2 8" pos="3"/>
+         <tok ref="10 5 5 1" pos="3"/>
+         <tok ref="10 5 5 8" pos="2"/>
+         <tok ref="10 6 1 2" pos="8"/>
+         <tok ref="10 6 2 1" pos="9"/>
+         <tok ref="10 6 3 1" pos="32"/>
+         <tok ref="10 6 3 2" pos="2"/>
+         <tok ref="10 6 3 2" pos="7"/>
+         <tok ref="10 6 5 1" pos="18"/>
+         <tok ref="10 6 5 3" pos="2"/>
+         <tok ref="11 1 1 1" pos="5"/>
+         <tok ref="11 1 1 1" pos="34"/>
+         <tok ref="11 1 3 2" pos="5"/>
+         <tok ref="11 1 3 3" pos="8"/>
+         <tok ref="11 2 1 2" pos="2"/>
+         <tok ref="11 2 2 2" pos="2"/>
+         <tok ref="11 2 2 2" pos="24"/>
+         <tok ref="12 1 1 2" pos="2"/>
+         <tok ref="12 1 1 4" pos="2"/>
+         <tok ref="12 1 3 3" pos="2"/>
+         <tok ref="12 2 3 5" pos="4"/>
+         <tok ref="13 1 1 1" pos="5"/>
+         <tok ref="13 1 2 1" pos="6"/>
+         <tok ref="13 1 2 2" pos="2"/>
+         <tok ref="13 1 5 4" pos="3"/>
+         <tok ref="13 1 6 1" pos="8"/>
+         <tok ref="14 1 2 1" pos="2"/>
+         <tok ref="14 1 4 3" pos="7"/>
+         <tok ref="14 2 1 1" pos="4"/>
+         <tok ref="14 2 1 2" pos="6"/>
+         <lm>
+            <l>μέν</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 3 2" pos="16"/>
+         <tok ref="10 3 1 2" pos="15"/>
+         <tok ref="12 2 3 5" pos="14"/>
+         <lm>
+            <l>μέντοι</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 2 3" pos="8"/>
+         <lm>
+            <l>μήποτε</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 3 2" pos="12"/>
+         <tok ref="10 6 4 2" pos="27"/>
+         <lm>
+            <l>μήπω</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 4 3" pos="4"/>
+         <lm>
+            <l>μακρός</l>
+            <m>a - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 3 3" pos="10"/>
+         <tok ref="14 1 3 4" pos="13"/>
+         <lm>
+            <l>μειόω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 6" pos="9"/>
+         <lm>
+            <l>μελανία</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="11 1 1 3" pos="5"/>
+         <lm>
+            <l>μεσότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 2" pos="18"/>
+         <lm>
+            <l>μεταβάλλω</l>
+            <m>v - 3 s a i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 4" pos="13"/>
+         <lm>
+            <l>μεταβάλλω</l>
+            <m>v - 3 s a o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 2" pos="37"/>
+         <tok ref="10 5 5 1" pos="12"/>
+         <tok ref="10 5 5 7" pos="12"/>
+         <tok ref="14 2 2 1" pos="57"/>
+         <lm>
+            <l>μεταβολή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 1" pos="19"/>
+         <tok ref="13 1 2 1" pos="12"/>
+         <tok ref="13 1 6 1" pos="14"/>
+         <lm>
+            <l>μηδαμῶς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 2" pos="13"/>
+         <tok ref="10 6 2 5" pos="5"/>
+         <lm>
+            <l>μηδείς</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 4" pos="5"/>
+         <lm>
+            <l>μικρός</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 1 1" pos="5"/>
+         <tok ref="5 2 2 2" pos="16"/>
+         <tok ref="5 2 3 5" pos="9"/>
+         <tok ref="5 2 4 1" pos="10"/>
+         <tok ref="5 2 5 1" pos="8"/>
+         <tok ref="5 2 5 2" pos="3"/>
+         <tok ref="5 6 3 2" pos="6"/>
+         <tok ref="5 8 1 1" pos="8"/>
+         <tok ref="5 8 1 2" pos="9"/>
+         <tok ref="5 8 1 2" pos="26"/>
+         <tok ref="5 8 1 3" pos="10"/>
+         <tok ref="5 8 2 1" pos="6"/>
+         <tok ref="5 8 2 1" pos="14"/>
+         <tok ref="5 8 2 1" pos="20"/>
+         <tok ref="5 8 2 2" pos="5"/>
+         <tok ref="5 8 2 2" pos="14"/>
+         <tok ref="5 8 2 2" pos="23"/>
+         <tok ref="5 8 2 3" pos="10"/>
+         <tok ref="5 8 2 4" pos="8"/>
+         <tok ref="6 4 4 1" pos="22"/>
+         <tok ref="6 5 1 1" pos="8"/>
+         <tok ref="6 5 1 1" pos="20"/>
+         <tok ref="6 5 1 2" pos="11"/>
+         <tok ref="6 5 1 3" pos="7"/>
+         <tok ref="6 5 1 4" pos="8"/>
+         <tok ref="6 5 1 5" pos="7"/>
+         <tok ref="7 2 3 1" pos="5"/>
+         <tok ref="7 2 3 2" pos="3"/>
+         <tok ref="7 2 3 2" pos="9"/>
+         <tok ref="7 2 4 1" pos="6"/>
+         <tok ref="7 2 4 2" pos="6"/>
+         <tok ref="8 3 7 3" pos="18"/>
+         <tok ref="8 3 11 2" pos="13"/>
+         <tok ref="8 4 3 2" pos="4"/>
+         <tok ref="9 1 1 1" pos="5"/>
+         <tok ref="9 1 1 2" pos="3"/>
+         <tok ref="9 1 1 2" pos="13"/>
+         <tok ref="9 1 2 3" pos="6"/>
+         <tok ref="9 1 3 2" pos="8"/>
+         <tok ref="9 1 4 1" pos="11"/>
+         <tok ref="9 1 5 1" pos="8"/>
+         <tok ref="9 1 5 2" pos="26"/>
+         <tok ref="9 1 5 3" pos="3"/>
+         <tok ref="9 5 1 1" pos="11"/>
+         <tok ref="9 5 2 1" pos="3"/>
+         <tok ref="9 5 2 2" pos="3"/>
+         <tok ref="9 5 2 2" pos="9"/>
+         <tok ref="9 5 2 2" pos="14"/>
+         <tok ref="9 5 2 3" pos="4"/>
+         <tok ref="12 1 3 2" pos="9"/>
+         <lm>
+            <l>μᾶλλον</l>
+            <m>d - - - - - - - - c</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 2" pos="22"/>
+         <tok ref="10 6 3 1" pos="21"/>
+         <tok ref="10 6 3 3" pos="4"/>
+         <tok ref="10 6 5 2" pos="3"/>
+         <tok ref="10 6 5 2" pos="8"/>
+         <tok ref="10 6 5 3" pos="4"/>
+         <tok ref="10 6 5 3" pos="11"/>
+         <tok ref="11 1 4 1" pos="8"/>
+         <tok ref="11 1 4 2" pos="10"/>
+         <lm>
+            <l>νοσέω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 2" pos="6"/>
+         <lm>
+            <l>νοσέω</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="14"/>
+         <lm>
+            <l>νωδός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 6" pos="1"/>
+         <tok ref="8 3 6 2" pos="21"/>
+         <tok ref="10 3 4 1" pos="20"/>
+         <lm>
+            <l>νόσος</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 3 3" pos="23"/>
+         <tok ref="10 3 4 3" pos="10"/>
+         <tok ref="10 5 2 2" pos="16"/>
+         <lm>
+            <l>νόσος</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 1" pos="15"/>
+         <tok ref="10 3 4 1" pos="2"/>
+         <tok ref="10 6 2 2" pos="4"/>
+         <tok ref="11 1 1 1" pos="18"/>
+         <tok ref="11 1 3 2" pos="7"/>
+         <tok ref="11 2 1 2" pos="1"/>
+         <lm>
+            <l>νόσος</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 8 2 2" pos="17"/>
+         <tok ref="5 8 2 3" pos="11"/>
+         <tok ref="6 1 7 2" pos="3"/>
+         <tok ref="8 3 5 4" pos="3"/>
+         <tok ref="15 1 2 2" pos="5"/>
+         <lm>
+            <l>νῦν</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 10" pos="3"/>
+         <lm>
+            <l>οἰκία</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 9 7" pos="8"/>
+         <lm>
+            <l>οἶδα</l>
+            <m>v - 3 s r s a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 8 2" pos="3"/>
+         <tok ref="7 5 8 2" pos="26"/>
+         <tok ref="7 5 8 3" pos="4"/>
+         <tok ref="7 5 9 2" pos="5"/>
+         <tok ref="7 5 9 2" pos="16"/>
+         <tok ref="7 5 9 2" pos="22"/>
+         <tok ref="7 5 9 2" pos="30"/>
+         <tok ref="7 5 9 3" pos="7"/>
+         <lm>
+            <l>οἶδα</l>
+            <m>v - 3 s r i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 9 3" pos="17"/>
+         <tok ref="7 5 9 7" pos="19"/>
+         <tok ref="7 5 10 1" pos="21"/>
+         <tok ref="7 5 10 2" pos="12"/>
+         <lm>
+            <l>οἶδα</l>
+            <m>v - - - r n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 2 3" pos="1"/>
+         <tok ref="5 2 3 4" pos="15"/>
+         <tok ref="5 4 3 1" pos="10"/>
+         <tok ref="5 4 3 2" pos="14"/>
+         <tok ref="5 4 3 2" pos="16"/>
+         <tok ref="5 4 3 3" pos="13"/>
+         <tok ref="5 4 6 1" pos="1"/>
+         <tok ref="5 4 6 2" pos="16"/>
+         <tok ref="5 4 6 2" pos="18"/>
+         <tok ref="5 4 8 1" pos="18"/>
+         <tok ref="5 4 8 2" pos="1"/>
+         <tok ref="5 6 3 2" pos="1"/>
+         <tok ref="5 6 3 2" pos="10"/>
+         <tok ref="5 6 3 3" pos="1"/>
+         <tok ref="5 8 1 1" pos="5"/>
+         <tok ref="5 8 1 2" pos="3"/>
+         <tok ref="5 8 1 2" pos="7"/>
+         <tok ref="5 8 1 2" pos="24"/>
+         <tok ref="5 8 1 3" pos="8"/>
+         <tok ref="5 8 2 1" pos="1"/>
+         <tok ref="5 8 2 4" pos="2"/>
+         <tok ref="5 9 1 3" pos="10"/>
+         <tok ref="5 9 1 3" pos="23"/>
+         <tok ref="5 9 6 1" pos="1"/>
+         <tok ref="5 9 6 2" pos="7"/>
+         <tok ref="5 9 6 3" pos="18"/>
+         <tok ref="5 9 6 4" pos="14"/>
+         <tok ref="6 1 1 2" pos="16"/>
+         <tok ref="6 1 4 6" pos="1"/>
+         <tok ref="6 2 1 1" pos="16"/>
+         <tok ref="6 2 3 1" pos="6"/>
+         <tok ref="6 2 5 2" pos="11"/>
+         <tok ref="6 3 1 3" pos="1"/>
+         <tok ref="6 4 2 3" pos="14"/>
+         <tok ref="6 4 4 1" pos="18"/>
+         <tok ref="6 4 5 1" pos="13"/>
+         <tok ref="6 4 8 1" pos="1"/>
+         <tok ref="6 5 1 1" pos="1"/>
+         <tok ref="6 5 1 1" pos="15"/>
+         <tok ref="6 5 1 5" pos="4"/>
+         <tok ref="7 1 2 2" pos="11"/>
+         <tok ref="7 1 4 2" pos="10"/>
+         <tok ref="7 2 2 1" pos="1"/>
+         <tok ref="7 2 4 1" pos="1"/>
+         <tok ref="7 2 4 2" pos="4"/>
+         <tok ref="7 3 2 1" pos="1"/>
+         <tok ref="7 3 2 1" pos="5"/>
+         <tok ref="7 3 2 2" pos="7"/>
+         <tok ref="7 3 2 3" pos="1"/>
+         <tok ref="7 3 2 4" pos="8"/>
+         <tok ref="7 3 3 2" pos="7"/>
+         <tok ref="7 3 3 2" pos="11"/>
+         <tok ref="7 3 3 3" pos="5"/>
+         <tok ref="7 3 3 4" pos="2"/>
+         <tok ref="7 3 3 5" pos="4"/>
+         <tok ref="7 3 4 1" pos="21"/>
+         <tok ref="7 3 5 2" pos="1"/>
+         <tok ref="7 3 5 3" pos="6"/>
+         <tok ref="7 3 7 2" pos="14"/>
+         <tok ref="7 3 8 2" pos="16"/>
+         <tok ref="7 3 8 3" pos="1"/>
+         <tok ref="7 3 10 1" pos="22"/>
+         <tok ref="7 3 10 3" pos="1"/>
+         <tok ref="7 3 10 5" pos="1"/>
+         <tok ref="7 4 3 2" pos="5"/>
+         <tok ref="7 4 3 2" pos="12"/>
+         <tok ref="7 4 4 1" pos="1"/>
+         <tok ref="7 4 5 1" pos="14"/>
+         <tok ref="7 4 5 2" pos="5"/>
+         <tok ref="7 4 5 3" pos="13"/>
+         <tok ref="7 4 7 3" pos="14"/>
+         <tok ref="7 4 9 1" pos="7"/>
+         <tok ref="7 5 2 3" pos="5"/>
+         <tok ref="7 5 2 5" pos="5"/>
+         <tok ref="7 5 2 5" pos="17"/>
+         <tok ref="7 5 3 2" pos="4"/>
+         <tok ref="7 5 4 1" pos="8"/>
+         <tok ref="7 5 8 3" pos="3"/>
+         <tok ref="7 5 9 3" pos="20"/>
+         <tok ref="7 5 9 4" pos="6"/>
+         <tok ref="7 5 9 5" pos="1"/>
+         <tok ref="7 5 10 1" pos="26"/>
+         <tok ref="7 5 10 2" pos="10"/>
+         <tok ref="7 5 10 3" pos="2"/>
+         <tok ref="8 1 3 5" pos="11"/>
+         <tok ref="8 1 5 2" pos="11"/>
+         <tok ref="8 1 7 1" pos="11"/>
+         <tok ref="8 1 7 2" pos="14"/>
+         <tok ref="8 2 2 1" pos="1"/>
+         <tok ref="8 2 2 2" pos="6"/>
+         <tok ref="8 3 3 1" pos="5"/>
+         <tok ref="8 3 3 3" pos="13"/>
+         <tok ref="8 3 7 2" pos="1"/>
+         <tok ref="8 3 7 4" pos="9"/>
+         <tok ref="8 3 11 2" pos="1"/>
+         <tok ref="8 3 11 3" pos="9"/>
+         <tok ref="8 5 3 1" pos="11"/>
+         <tok ref="8 5 3 3" pos="1"/>
+         <tok ref="8 5 4 1" pos="6"/>
+         <tok ref="8 5 4 2" pos="8"/>
+         <tok ref="8 5 4 3" pos="1"/>
+         <tok ref="8 6 2 1" pos="1"/>
+         <tok ref="9 1 2 2" pos="1"/>
+         <tok ref="9 1 3 2" pos="5"/>
+         <tok ref="9 1 5 1" pos="5"/>
+         <tok ref="9 2 1 2" pos="5"/>
+         <tok ref="9 3 1 1" pos="1"/>
+         <tok ref="9 3 3 1" pos="14"/>
+         <tok ref="9 3 3 2" pos="7"/>
+         <tok ref="9 3 3 2" pos="15"/>
+         <tok ref="9 3 3 3" pos="5"/>
+         <tok ref="9 3 4 4" pos="3"/>
+         <tok ref="10 3 4 3" pos="2"/>
+         <tok ref="10 3 5 2" pos="10"/>
+         <tok ref="10 3 5 2" pos="18"/>
+         <tok ref="10 3 5 3" pos="15"/>
+         <tok ref="10 3 5 4" pos="1"/>
+         <tok ref="10 3 7 2" pos="6"/>
+         <tok ref="10 4 2 2" pos="5"/>
+         <tok ref="10 4 2 2" pos="12"/>
+         <tok ref="10 4 2 3" pos="11"/>
+         <tok ref="10 4 3 1" pos="9"/>
+         <tok ref="10 4 3 2" pos="16"/>
+         <tok ref="10 4 3 3" pos="12"/>
+         <tok ref="10 4 6 1" pos="1"/>
+         <tok ref="10 4 7 3" pos="13"/>
+         <tok ref="10 4 8 1" pos="8"/>
+         <tok ref="10 4 8 2" pos="1"/>
+         <tok ref="10 4 8 3" pos="4"/>
+         <tok ref="10 4 8 4" pos="20"/>
+         <tok ref="10 4 9 2" pos="2"/>
+         <tok ref="10 4 9 3" pos="1"/>
+         <tok ref="10 5 2 6" pos="9"/>
+         <tok ref="10 5 2 7" pos="1"/>
+         <tok ref="10 5 2 8" pos="4"/>
+         <tok ref="10 5 2 8" pos="24"/>
+         <tok ref="10 5 3 2" pos="23"/>
+         <tok ref="10 5 3 5" pos="17"/>
+         <tok ref="10 5 3 5" pos="23"/>
+         <tok ref="10 6 2 3" pos="15"/>
+         <tok ref="10 6 3 1" pos="1"/>
+         <tok ref="10 6 4 1" pos="16"/>
+         <tok ref="10 6 4 2" pos="18"/>
+         <tok ref="11 1 3 1" pos="4"/>
+         <tok ref="11 1 3 2" pos="9"/>
+         <tok ref="11 1 3 3" pos="12"/>
+         <tok ref="11 1 4 1" pos="19"/>
+         <tok ref="11 1 4 2" pos="6"/>
+         <tok ref="11 2 2 2" pos="36"/>
+         <tok ref="12 1 1 4" pos="13"/>
+         <tok ref="12 1 1 4" pos="18"/>
+         <tok ref="13 1 5 3" pos="1"/>
+         <tok ref="13 1 5 4" pos="10"/>
+         <tok ref="14 1 2 2" pos="1"/>
+         <tok ref="14 1 3 1" pos="3"/>
+         <tok ref="14 1 3 5" pos="2"/>
+         <tok ref="14 1 4 2" pos="6"/>
+         <tok ref="14 2 2 1" pos="7"/>
+         <lm>
+            <l>οὐ</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 4 3" pos="21"/>
+         <tok ref="10 5 2 3" pos="7"/>
+         <tok ref="10 5 3 6" pos="11"/>
+         <lm>
+            <l>οὐδέποτε</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 5 3" pos="15"/>
+         <lm>
+            <l>οὐδέπω</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 3 1 2" pos="10"/>
+         <tok ref="10 4 4 2" pos="11"/>
+         <tok ref="10 4 8 3" pos="10"/>
+         <tok ref="12 2 3 5" pos="7"/>
+         <lm>
+            <l>οὐδαμῶς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 1" pos="10"/>
+         <lm>
+            <l>οὐδείς</l>
+            <m>a - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 2" pos="13"/>
+         <tok ref="14 1 3 2" pos="13"/>
+         <lm>
+            <l>οὐδείς</l>
+            <m>a - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 1 3" pos="1"/>
+         <tok ref="5 1 6 2" pos="8"/>
+         <tok ref="5 1 6 3" pos="6"/>
+         <tok ref="5 3 2 4" pos="7"/>
+         <tok ref="6 1 8 3" pos="1"/>
+         <tok ref="6 4 2 3" pos="1"/>
+         <lm>
+            <l>οὐκοῦν</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 2 1" pos="7"/>
+         <tok ref="5 3 1 2" pos="6"/>
+         <tok ref="5 6 3 4" pos="17"/>
+         <tok ref="5 6 3 4" pos="24"/>
+         <lm>
+            <l>οὐσία</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 5 1 1" pos="4"/>
+         <lm>
+            <l>οὐσία</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 4" pos="3"/>
+         <tok ref="2 2 1 4" pos="7"/>
+         <tok ref="2 2 1 4" pos="23"/>
+         <tok ref="2 2 1 4" pos="27"/>
+         <tok ref="4 1 3 2" pos="17"/>
+         <tok ref="4 1 3 2" pos="19"/>
+         <tok ref="5 1 4 1" pos="10"/>
+         <tok ref="5 1 4 1" pos="12"/>
+         <tok ref="5 8 1 3" pos="14"/>
+         <tok ref="5 8 1 3" pos="17"/>
+         <tok ref="5 9 6 4" pos="6"/>
+         <tok ref="5 9 6 4" pos="10"/>
+         <tok ref="7 5 2 2" pos="1"/>
+         <tok ref="7 5 2 2" pos="5"/>
+         <tok ref="8 3 3 2" pos="1"/>
+         <tok ref="8 3 3 2" pos="10"/>
+         <tok ref="8 3 7 3" pos="1"/>
+         <tok ref="8 3 7 3" pos="10"/>
+         <tok ref="8 6 4 2" pos="9"/>
+         <tok ref="8 6 4 2" pos="11"/>
+         <tok ref="8 6 4 2" pos="14"/>
+         <tok ref="10 3 1 3" pos="1"/>
+         <tok ref="10 3 1 3" pos="11"/>
+         <tok ref="10 3 4 3" pos="9"/>
+         <tok ref="10 3 4 3" pos="13"/>
+         <tok ref="10 3 7 2" pos="24"/>
+         <tok ref="10 3 7 2" pos="26"/>
+         <tok ref="10 3 7 2" pos="29"/>
+         <tok ref="10 3 7 2" pos="31"/>
+         <tok ref="10 4 2 3" pos="5"/>
+         <tok ref="10 4 2 3" pos="7"/>
+         <tok ref="10 5 2 4" pos="1"/>
+         <tok ref="10 5 2 4" pos="11"/>
+         <tok ref="10 5 3 2" pos="16"/>
+         <tok ref="10 5 3 2" pos="18"/>
+         <tok ref="10 5 5 9" pos="1"/>
+         <tok ref="10 5 5 9" pos="8"/>
+         <tok ref="10 5 5 9" pos="13"/>
+         <tok ref="10 6 2 1" pos="1"/>
+         <tok ref="10 6 2 1" pos="15"/>
+         <tok ref="10 6 2 1" pos="20"/>
+         <tok ref="10 6 2 2" pos="9"/>
+         <tok ref="10 6 2 2" pos="11"/>
+         <tok ref="10 6 2 3" pos="19"/>
+         <tok ref="10 6 2 3" pos="21"/>
+         <tok ref="10 6 2 5" pos="9"/>
+         <tok ref="10 6 2 5" pos="11"/>
+         <tok ref="10 6 3 3" pos="1"/>
+         <tok ref="10 6 3 3" pos="6"/>
+         <tok ref="14 1 3 3" pos="1"/>
+         <tok ref="14 1 3 3" pos="9"/>
+         <lm>
+            <l>οὔτε</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 2" pos="11"/>
+         <tok ref="5 3 2 2" pos="12"/>
+         <tok ref="5 4 3 1" pos="8"/>
+         <tok ref="5 4 8 2" pos="3"/>
+         <tok ref="6 3 1 4" pos="15"/>
+         <tok ref="7 3 4 1" pos="9"/>
+         <tok ref="7 5 9 6" pos="3"/>
+         <tok ref="10 4 5 3" pos="8"/>
+         <tok ref="10 4 7 3" pos="15"/>
+         <tok ref="10 6 4 2" pos="39"/>
+         <lm>
+            <l>οὕτως</l>
+            <m>d d - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 1 2 1" pos="3"/>
+         <tok ref="5 1 2 3" pos="2"/>
+         <tok ref="5 1 7 1" pos="3"/>
+         <tok ref="5 6 2 1" pos="3"/>
+         <tok ref="6 2 6 1" pos="3"/>
+         <tok ref="7 1 3 1" pos="3"/>
+         <tok ref="7 3 7 1" pos="2"/>
+         <tok ref="7 5 4 1" pos="3"/>
+         <tok ref="7 5 5 1" pos="3"/>
+         <tok ref="7 5 8 1" pos="3"/>
+         <tok ref="8 3 2 1" pos="3"/>
+         <tok ref="8 3 5 1" pos="3"/>
+         <tok ref="8 3 6 1" pos="3"/>
+         <tok ref="9 1 4 1" pos="2"/>
+         <tok ref="9 2 1 1" pos="3"/>
+         <tok ref="9 5 2 3" pos="2"/>
+         <tok ref="9 7 1 1" pos="3"/>
+         <tok ref="9 7 3 1" pos="3"/>
+         <tok ref="10 2 1 1" pos="3"/>
+         <tok ref="10 3 1 1" pos="2"/>
+         <tok ref="10 3 7 1" pos="4"/>
+         <tok ref="13 1 5 1" pos="2"/>
+         <tok ref="13 1 6 1" pos="2"/>
+         <tok ref="14 1 2 1" pos="3"/>
+         <tok ref="15 1 1 8" pos="2"/>
+         <lm>
+            <l>οὖν</l>
+            <m>g - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 1" pos="20"/>
+         <lm>
+            <l>οὗτος</l>
+            <m>p d - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 3" pos="29"/>
+         <lm>
+            <l>πάθος</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 6 3" pos="1"/>
+         <tok ref="6 1 8 1" pos="1"/>
+         <tok ref="10 5 5 9" pos="6"/>
+         <tok ref="13 1 4 4" pos="9"/>
+         <lm>
+            <l>πάλιν</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 5 1" pos="13"/>
+         <tok ref="8 1 4 3" pos="22"/>
+         <tok ref="8 1 5 2" pos="6"/>
+         <tok ref="9 1 3 2" pos="6"/>
+         <tok ref="10 5 5 4" pos="15"/>
+         <lm>
+            <l>πάνυ</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 10" pos="1"/>
+         <tok ref="8 2 2 1" pos="21"/>
+         <tok ref="8 2 2 2" pos="28"/>
+         <tok ref="8 2 2 2" pos="40"/>
+         <tok ref="9 5 1 1" pos="7"/>
+         <tok ref="9 5 2 3" pos="12"/>
+         <lm>
+            <l>πάσχω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 1" pos="12"/>
+         <tok ref="8 3 3 2" pos="6"/>
+         <tok ref="8 3 3 3" pos="18"/>
+         <tok ref="8 3 7 3" pos="19"/>
+         <tok ref="8 3 11 2" pos="14"/>
+         <lm>
+            <l>πάσχω</l>
+            <m>v - - - r n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 2" pos="3"/>
+         <tok ref="6 1 3 2" pos="15"/>
+         <tok ref="6 1 3 2" pos="18"/>
+         <tok ref="6 5 1 2" pos="9"/>
+         <tok ref="6 5 1 2" pos="12"/>
+         <lm>
+            <l>πέντε</l>
+            <m>m - - p - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 6" pos="5"/>
+         <lm>
+            <l>πέρυσι</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 3 5" pos="6"/>
+         <lm>
+            <l>πηδάλιον</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 4 3" pos="4"/>
+         <lm>
+            <l>πηδάλιον</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 1 2" pos="9"/>
+         <lm>
+            <l>πικρότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 3 2" pos="4"/>
+         <lm>
+            <l>πλοῖον</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 9" pos="1"/>
+         <tok ref="9 5 1 1" pos="5"/>
+         <tok ref="9 5 2 3" pos="9"/>
+         <lm>
+            <l>ποιέω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 4 1" pos="11"/>
+         <lm>
+            <l>ποιέω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 2 1" pos="16"/>
+         <tok ref="8 2 2 2" pos="16"/>
+         <lm>
+            <l>ποιέω</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 1 1" pos="13"/>
+         <lm>
+            <l>ποιέω</l>
+            <m>v - - p a p m m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 3" pos="31"/>
+         <lm>
+            <l>ποιητικός</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 3 4" pos="21"/>
+         <lm>
+            <l>ποιός</l>
+            <m>p x - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 1 2" pos="4"/>
+         <tok ref="8 3 6 2" pos="12"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 1 1" pos="4"/>
+         <tok ref="8 4 1 1" pos="4"/>
+         <tok ref="8 5 3 2" pos="14"/>
+         <tok ref="9 2 1 1" pos="7"/>
+         <tok ref="9 3 1 1" pos="10"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 1" pos="11"/>
+         <tok ref="9 2 1 1" pos="15"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - p - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 3" pos="28"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 1" pos="9"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 2" pos="10"/>
+         <lm>
+            <l>ποιότης</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 2" pos="17"/>
+         <tok ref="10 5 5 4" pos="16"/>
+         <lm>
+            <l>πολύς</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 2" pos="27"/>
+         <lm>
+            <l>πολύς</l>
+            <m>a - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 7 3 2" pos="5"/>
+         <lm>
+            <l>ποσαχῶς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 6" pos="7"/>
+         <lm>
+            <l>πούς</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 2 2" pos="6"/>
+         <lm>
+            <l>προσαγορεύω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 3" pos="31"/>
+         <lm>
+            <l>προσαγορεύω</l>
+            <m>v - 3 s p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 1 1" pos="12"/>
+         <lm>
+            <l>πρόθεσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 2" pos="13"/>
+         <lm>
+            <l>πρότερος</l>
+            <m>a - - p - - - m a c</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 3" pos="15"/>
+         <tok ref="5 9 4 4" pos="13"/>
+         <lm>
+            <l>πρᾶγμα</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 4 3" pos="8"/>
+         <lm>
+            <l>πρᾶγμα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 1 3" pos="18"/>
+         <tok ref="6 3 1 2" pos="21"/>
+         <tok ref="6 3 1 4" pos="8"/>
+         <lm>
+            <l>πρᾶξις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 2 1" pos="6"/>
+         <tok ref="5 3 1 2" pos="5"/>
+         <lm>
+            <l>πρῶτος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 2" pos="6"/>
+         <lm>
+            <l>πυκτικός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 7" pos="9"/>
+         <tok ref="15 1 1 7" pos="24"/>
+         <lm>
+            <l>πυρός</l>
+            <m>n - - p - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 3" pos="10"/>
+         <tok ref="5 9 4 3" pos="11"/>
+         <tok ref="8 1 7 2" pos="15"/>
+         <tok ref="10 3 3 2" pos="13"/>
+         <lm>
+            <l>πᾶς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 2 5" pos="26"/>
+         <tok ref="10 5 5 1" pos="23"/>
+         <lm>
+            <l>πῦρ</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 3 1" pos="15"/>
+         <tok ref="8 4 3 1" pos="17"/>
+         <lm>
+            <l>σημαίνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="24"/>
+         <tok ref="8 5 4 1" pos="19"/>
+         <tok ref="8 5 4 2" pos="5"/>
+         <lm>
+            <l>σπουδαῖος</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 3 1" pos="11"/>
+         <tok ref="10 4 3 2" pos="7"/>
+         <tok ref="10 4 3 3" pos="1"/>
+         <tok ref="10 4 3 3" pos="13"/>
+         <tok ref="10 4 5 1" pos="14"/>
+         <tok ref="10 4 8 1" pos="4"/>
+         <tok ref="10 4 8 4" pos="11"/>
+         <tok ref="10 6 4 2" pos="12"/>
+         <lm>
+            <l>στέρησις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 3 1" pos="4"/>
+         <tok ref="10 5 5 7" pos="5"/>
+         <tok ref="10 5 5 8" pos="14"/>
+         <tok ref="10 6 2 1" pos="25"/>
+         <tok ref="10 6 4 1" pos="4"/>
+         <lm>
+            <l>στέρησις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 1" pos="1"/>
+         <tok ref="10 4 3 1" pos="3"/>
+         <tok ref="10 4 3 3" pos="11"/>
+         <tok ref="10 4 5 1" pos="7"/>
+         <lm>
+            <l>στερέω</l>
+            <m>v - - - r n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 5 2" pos="12"/>
+         <lm>
+            <l>στιγμή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 1 1" pos="18"/>
+         <lm>
+            <l>συγκαταριθμέω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 4 3" pos="3"/>
+         <lm>
+            <l>συλλαβή</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 2 2" pos="31"/>
+         <lm>
+            <l>συλλαβή</l>
+            <m>n - - p - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 6 3 1" pos="9"/>
+         <lm>
+            <l>συμβαίνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 1 2 1" pos="5"/>
+         <tok ref="4 1 3 2" pos="14"/>
+         <tok ref="10 6 2 5" pos="6"/>
+         <tok ref="10 6 3 1" pos="13"/>
+         <lm>
+            <l>συμπλοκή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 1 2 2" pos="4"/>
+         <tok ref="10 6 2 6" pos="6"/>
+         <lm>
+            <l>συμπλοκή</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 1" pos="18"/>
+         <lm>
+            <l>συμπλοκή</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 2 1" pos="1"/>
+         <tok ref="12 1 3 3" pos="4"/>
+         <tok ref="14 1 3 2" pos="1"/>
+         <lm>
+            <l>σχεδόν</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 3 1" pos="10"/>
+         <lm>
+            <l>σχῆμα</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 5 1" pos="13"/>
+         <lm>
+            <l>σχῆμα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 6 1" pos="6"/>
+         <tok ref="8 3 10 1" pos="12"/>
+         <lm>
+            <l>σύμπτωμα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 3 3" pos="7"/>
+         <lm>
+            <l>σύνεγγυς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 4" pos="16"/>
+         <lm>
+            <l>σύστασις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 2" pos="54"/>
+         <tok ref="2 2 1 2" pos="59"/>
+         <tok ref="5 1 4 3" pos="8"/>
+         <tok ref="5 1 6 3" pos="5"/>
+         <tok ref="5 1 6 3" pos="10"/>
+         <tok ref="5 1 6 4" pos="11"/>
+         <tok ref="10 3 4 1" pos="6"/>
+         <tok ref="10 3 4 1" pos="18"/>
+         <tok ref="10 3 5 2" pos="6"/>
+         <tok ref="10 3 5 2" pos="17"/>
+         <tok ref="11 2 1 2" pos="7"/>
+         <tok ref="11 2 1 2" pos="15"/>
+         <lm>
+            <l>σῶμα</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 4 3" pos="24"/>
+         <tok ref="6 1 8 2" pos="6"/>
+         <tok ref="6 1 8 3" pos="12"/>
+         <tok ref="6 1 8 3" pos="24"/>
+         <lm>
+            <l>σῶμα</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 2 1" pos="5"/>
+         <lm>
+            <l>τάξις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 9" pos="4"/>
+         <lm>
+            <l>τέμνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 10" pos="4"/>
+         <lm>
+            <l>τέμνω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 1 1" pos="1"/>
+         <lm>
+            <l>τέταρτος</l>
+            <m>a - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 8 1" pos="2"/>
+         <lm>
+            <l>ταράσσω</l>
+            <m>v - 3 s p m a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 1 1" pos="4"/>
+         <lm>
+            <l>ταράσσω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 1 1" pos="5"/>
+         <lm>
+            <l>τετραχῶς</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 6 2 2" pos="8"/>
+         <lm>
+            <l>τοιοῦτος</l>
+            <m>p d - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 1" pos="10"/>
+         <lm>
+            <l>τρόπος</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 5 2" pos="3"/>
+         <tok ref="10 4 7 2" pos="6"/>
+         <tok ref="12 2 2 1" pos="11"/>
+         <tok ref="15 1 2 2" pos="7"/>
+         <lm>
+            <l>τρόπος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 9 6" pos="4"/>
+         <tok ref="10 5 2 6" pos="11"/>
+         <tok ref="10 5 2 8" pos="26"/>
+         <tok ref="10 5 3 5" pos="22"/>
+         <tok ref="10 5 3 5" pos="34"/>
+         <lm>
+            <l>τυγχάνω</l>
+            <m>v - 3 s a i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 3" pos="13"/>
+         <lm>
+            <l>τυγχάνω</l>
+            <m>v - 3 s p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 4 2" pos="2"/>
+         <tok ref="10 5 5 9" pos="3"/>
+         <lm>
+            <l>τυφλός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 1 1" pos="15"/>
+         <tok ref="10 4 3 2" pos="10"/>
+         <tok ref="10 4 3 2" pos="23"/>
+         <tok ref="10 4 3 3" pos="5"/>
+         <tok ref="10 4 4 1" pos="5"/>
+         <tok ref="10 4 4 2" pos="7"/>
+         <tok ref="10 4 5 3" pos="4"/>
+         <tok ref="10 4 8 4" pos="5"/>
+         <tok ref="10 4 8 4" pos="8"/>
+         <tok ref="10 4 8 4" pos="15"/>
+         <tok ref="10 4 8 4" pos="17"/>
+         <tok ref="10 4 9 1" pos="12"/>
+         <tok ref="10 6 2 4" pos="13"/>
+         <lm>
+            <l>τυφλότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 8 3" pos="6"/>
+         <tok ref="10 4 9 3" pos="6"/>
+         <lm>
+            <l>τυφλότης</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 7 1" pos="8"/>
+         <tok ref="6 1 8 1" pos="3"/>
+         <tok ref="6 1 8 4" pos="7"/>
+         <lm>
+            <l>τόπος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 8 2" pos="1"/>
+         <tok ref="14 1 1 2" pos="7"/>
+         <tok ref="14 1 2 2" pos="15"/>
+         <tok ref="14 2 1 3" pos="4"/>
+         <tok ref="14 2 1 3" pos="8"/>
+         <tok ref="14 2 1 3" pos="20"/>
+         <tok ref="14 2 2 1" pos="45"/>
+         <tok ref="14 2 2 1" pos="49"/>
+         <tok ref="14 2 2 1" pos="56"/>
+         <lm>
+            <l>τόπος</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 8 3" pos="5"/>
+         <lm>
+            <l>τόπος</l>
+            <m>n - - s - - - m g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 1" pos="3"/>
+         <tok ref="10 5 3 5" pos="8"/>
+         <lm>
+            <l>τότε</l>
+            <m>d d - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 1" pos="6"/>
+         <lm>
+            <l>τύπος</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 8 1" pos="21"/>
+         <tok ref="12 1 3 2" pos="14"/>
+         <lm>
+            <l>φάσκω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 1" pos="18"/>
+         <lm>
+            <l>φάσκω</l>
+            <m>v - - s p p a m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 3 1" pos="6"/>
+         <tok ref="5 9 3 1" pos="6"/>
+         <tok ref="8 4 3 2" pos="5"/>
+         <tok ref="12 2 3 5" pos="16"/>
+         <lm>
+            <l>φαίνω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="9"/>
+         <lm>
+            <l>φαλακρός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 7 3" pos="15"/>
+         <lm>
+            <l>φοβέω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 2 1" pos="14"/>
+         <tok ref="8 2 2 2" pos="14"/>
+         <tok ref="8 2 2 2" pos="25"/>
+         <tok ref="8 3 5 4" pos="15"/>
+         <tok ref="8 5 3 2" pos="10"/>
+         <lm>
+            <l>φυσικός</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 9" pos="17"/>
+         <lm>
+            <l>φύω</l>
+            <m>v - 3 s a i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 2 5" pos="4"/>
+         <tok ref="7 5 2 5" pos="9"/>
+         <tok ref="7 5 2 5" pos="12"/>
+         <tok ref="7 5 4 2" pos="9"/>
+         <tok ref="7 5 4 2" pos="12"/>
+         <tok ref="7 5 10 2" pos="9"/>
+         <lm>
+            <l>χείρ</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 10 1" pos="7"/>
+         <tok ref="15 1 1 6" pos="5"/>
+         <lm>
+            <l>χείρ</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 6" pos="4"/>
+         <lm>
+            <l>χθές</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 4" pos="10"/>
+         <lm>
+            <l>χιτών</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 2 5" pos="32"/>
+         <lm>
+            <l>χιών</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 2 7" pos="10"/>
+         <lm>
+            <l>χιών</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 3" pos="13"/>
+         <tok ref="8 3 5 4" pos="26"/>
+         <lm>
+            <l>χροιά</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 6 2 2" pos="9"/>
+         <lm>
+            <l>χροιά</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 7 1" pos="5"/>
+         <tok ref="6 1 7 2" pos="4"/>
+         <tok ref="6 5 1 3" pos="4"/>
+         <tok ref="6 5 1 3" pos="8"/>
+         <lm>
+            <l>χρόνος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 2" pos="26"/>
+         <tok ref="12 1 1 2" pos="6"/>
+         <tok ref="12 1 1 2" pos="18"/>
+         <tok ref="13 1 1 3" pos="5"/>
+         <lm>
+            <l>χρόνος</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 4" pos="11"/>
+         <tok ref="10 5 5 6" pos="13"/>
+         <tok ref="13 1 1 1" pos="14"/>
+         <tok ref="13 1 6 2" pos="10"/>
+         <lm>
+            <l>χρόνος</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 1" pos="9"/>
+         <lm>
+            <l>χρῶμα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 4" pos="11"/>
+         <lm>
+            <l>ψευδής</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="20"/>
+         <tok ref="8 1 4 2" pos="14"/>
+         <lm>
+            <l>ψυχρός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 1 2" pos="21"/>
+         <tok ref="8 3 3 3" pos="9"/>
+         <lm>
+            <l>ψυχρότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="5"/>
+         <lm>
+            <l>ψύχω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="11"/>
+         <lm>
+            <l>ψύχω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 2" pos="10"/>
+         <lm>
+            <l>ἀγαπάω</l>
+            <m>v - - p p p e m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 7" pos="4"/>
+         <tok ref="15 1 1 8" pos="7"/>
+         <lm>
+            <l>ἀγγεῖον</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 1 10" pos="5"/>
+         <lm>
+            <l>ἀγρός</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 6 4 1" pos="14"/>
+         <tok ref="8 6 4 2" pos="8"/>
+         <lm>
+            <l>ἀδικία</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 2 2 2" pos="36"/>
+         <tok ref="8 2 3 2" pos="17"/>
+         <lm>
+            <l>ἀδυναμία</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 4" pos="13"/>
+         <tok ref="7 3 9 1" pos="25"/>
+         <tok ref="7 3 9 2" pos="30"/>
+         <tok ref="10 5 2 1" pos="21"/>
+         <tok ref="10 5 3 2" pos="3"/>
+         <tok ref="10 5 5 5" pos="1"/>
+         <tok ref="10 5 5 6" pos="3"/>
+         <tok ref="10 6 1 2" pos="6"/>
+         <tok ref="10 6 2 1" pos="7"/>
+         <tok ref="10 6 3 1" pos="30"/>
+         <tok ref="10 6 4 1" pos="17"/>
+         <tok ref="10 6 5 1" pos="9"/>
+         <tok ref="10 6 5 4" pos="9"/>
+         <tok ref="13 1 5 2" pos="6"/>
+         <lm>
+            <l>ἀεί</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 3 4" pos="18"/>
+         <lm>
+            <l>ἀκολουθέω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 1 4" pos="24"/>
+         <tok ref="12 1 1 4" pos="42"/>
+         <lm>
+            <l>ἀκολούθησις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 3 4" pos="4"/>
+         <lm>
+            <l>ἀληθής</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 6 1" pos="6"/>
+         <tok ref="5 6 3 2" pos="5"/>
+         <tok ref="5 6 3 2" pos="20"/>
+         <tok ref="5 9 4 1" pos="7"/>
+         <tok ref="5 9 6 2" pos="17"/>
+         <tok ref="6 1 3 2" pos="19"/>
+         <tok ref="6 4 2 1" pos="6"/>
+         <tok ref="6 4 2 2" pos="10"/>
+         <tok ref="6 4 4 1" pos="21"/>
+         <tok ref="6 4 5 2" pos="9"/>
+         <tok ref="6 4 7 3" pos="1"/>
+         <tok ref="7 3 2 1" pos="15"/>
+         <tok ref="7 5 2 5" pos="10"/>
+         <tok ref="7 5 2 5" pos="22"/>
+         <tok ref="7 5 3 2" pos="18"/>
+         <tok ref="8 2 2 1" pos="10"/>
+         <tok ref="8 2 2 2" pos="10"/>
+         <tok ref="8 3 7 3" pos="17"/>
+         <tok ref="8 3 11 2" pos="12"/>
+         <tok ref="9 1 2 2" pos="4"/>
+         <tok ref="10 4 2 2" pos="17"/>
+         <tok ref="10 4 4 2" pos="1"/>
+         <tok ref="10 4 8 4" pos="10"/>
+         <tok ref="10 5 2 8" pos="11"/>
+         <tok ref="10 5 3 6" pos="17"/>
+         <tok ref="10 6 3 1" pos="3"/>
+         <lm>
+            <l>ἀλλά</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 2 1" pos="6"/>
+         <tok ref="3 1 3 1" pos="5"/>
+         <tok ref="4 1 3 1" pos="16"/>
+         <tok ref="6 1 1 2" pos="8"/>
+         <tok ref="6 2 1 1" pos="8"/>
+         <tok ref="6 2 1 2" pos="10"/>
+         <tok ref="6 2 1 3" pos="22"/>
+         <tok ref="6 2 3 1" pos="18"/>
+         <tok ref="6 2 3 1" pos="26"/>
+         <tok ref="7 4 3 1" pos="5"/>
+         <tok ref="10 3 1 1" pos="16"/>
+         <tok ref="10 3 1 2" pos="12"/>
+         <tok ref="10 5 5 1" pos="11"/>
+         <tok ref="10 5 5 7" pos="11"/>
+         <lm>
+            <l>ἀλλήλων</l>
+            <m>p c - p - - - n a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 1 2" pos="5"/>
+         <tok ref="14 1 3 3" pos="26"/>
+         <tok ref="14 2 2 1" pos="61"/>
+         <lm>
+            <l>ἀλλοίωσις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 2 3" pos="4"/>
+         <lm>
+            <l>ἀλλοίωσις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 4 2" pos="19"/>
+         <lm>
+            <l>ἀλλοιόω</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 2 3" pos="18"/>
+         <tok ref="14 1 3 2" pos="10"/>
+         <tok ref="14 1 4 1" pos="11"/>
+         <lm>
+            <l>ἀλλοιόω</l>
+            <m>v - - - p n e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 4 2" pos="7"/>
+         <tok ref="14 2 2 3" pos="1"/>
+         <lm>
+            <l>ἀλλοιόω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 3" pos="5"/>
+         <tok ref="15 1 2 2" pos="3"/>
+         <lm>
+            <l>ἀλλότριος</l>
+            <m>a - - s - - - m n s</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 4 1" pos="20"/>
+         <lm>
+            <l>ἀμφισβήτησις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 7 1" pos="13"/>
+         <tok ref="11 1 1 1" pos="7"/>
+         <lm>
+            <l>ἀνάγκη</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 7" pos="4"/>
+         <lm>
+            <l>ἀνάκειμαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="15 1 2 1" pos="9"/>
+         <lm>
+            <l>ἀνήρ</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 4 8 1" pos="17"/>
+         <lm>
+            <l>ἀναγκάζω</l>
+            <m>v - 1 p a s p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 9 2" pos="6"/>
+         <lm>
+            <l>ἀναιρέω</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 2 2" pos="13"/>
+         <lm>
+            <l>ἀναφέρω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 5 2" pos="5"/>
+         <tok ref="10 4 7 2" pos="8"/>
+         <lm>
+            <l>ἀντίθεσις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 5 1" pos="1"/>
+         <tok ref="10 4 7 1" pos="5"/>
+         <tok ref="14 2 1 3" pos="12"/>
+         <lm>
+            <l>ἀντίκειμαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 2 1 1" pos="8"/>
+         <tok ref="10 2 1 3" pos="11"/>
+         <tok ref="10 3 1 1" pos="3"/>
+         <tok ref="10 4 5 3" pos="7"/>
+         <tok ref="10 4 5 3" pos="16"/>
+         <tok ref="10 4 7 3" pos="9"/>
+         <tok ref="10 4 7 3" pos="21"/>
+         <tok ref="10 4 8 1" pos="9"/>
+         <tok ref="10 6 1 1" pos="7"/>
+         <tok ref="10 6 1 1" pos="15"/>
+         <tok ref="10 6 2 3" pos="13"/>
+         <tok ref="10 6 4 2" pos="10"/>
+         <tok ref="10 6 5 4" pos="21"/>
+         <tok ref="14 2 2 2" pos="2"/>
+         <lm>
+            <l>ἀντίκειμαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 3" pos="3"/>
+         <tok ref="1 1 2 3" pos="3"/>
+         <tok ref="5 2 2 1" pos="3"/>
+         <tok ref="5 3 1 3" pos="6"/>
+         <tok ref="5 3 1 4" pos="7"/>
+         <tok ref="6 3 1 4" pos="3"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - 3 s p s a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 2 1 2" pos="21"/>
+         <tok ref="10 3 7 2" pos="11"/>
+         <tok ref="14 2 2 1" pos="9"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - - - a n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 2 1 3" pos="14"/>
+         <tok ref="7 3 3 1" pos="16"/>
+         <tok ref="7 3 4 1" pos="11"/>
+         <tok ref="7 3 5 1" pos="12"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - 3 s a o p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 2 1" pos="14"/>
+         <tok ref="7 3 2 2" pos="5"/>
+         <tok ref="7 3 2 5" pos="3"/>
+         <tok ref="7 3 3 2" pos="6"/>
+         <tok ref="7 3 4 2" pos="6"/>
+         <tok ref="7 3 8 2" pos="7"/>
+         <tok ref="7 3 10 1" pos="6"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - 3 s a s p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 2 3" pos="6"/>
+         <tok ref="7 5 5 1" pos="10"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 9 1" pos="23"/>
+         <tok ref="7 3 10 1" pos="21"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - 3 s a i p - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 11 1" pos="4"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 2 2 1" pos="5"/>
+         <lm>
+            <l>ἀποδίδωμι</l>
+            <m>v - - p a p p f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 6" pos="10"/>
+         <lm>
+            <l>ἀποκαθίστημι</l>
+            <m>v - 3 s p i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 2 3" pos="7"/>
+         <lm>
+            <l>ἀπορέω2</l>
+            <m>v - 3 s a o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 2 3" pos="7"/>
+         <lm>
+            <l>ἀπορία</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 3 2" pos="10"/>
+         <tok ref="7 3 4 1" pos="6"/>
+         <tok ref="7 3 8 3" pos="5"/>
+         <tok ref="7 3 11 2" pos="8"/>
+         <lm>
+            <l>ἀπόδοσις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 6 1" pos="13"/>
+         <tok ref="10 4 6 2" pos="10"/>
+         <tok ref="10 4 7 1" pos="10"/>
+         <tok ref="10 6 1 1" pos="6"/>
+         <tok ref="10 6 5 4" pos="20"/>
+         <lm>
+            <l>ἀπόφασις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 6 5 1" pos="8"/>
+         <lm>
+            <l>ἀπόφασις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 4 2" pos="3"/>
+         <tok ref="10 5 5 5" pos="5"/>
+         <tok ref="15 1 1 2" pos="16"/>
+         <lm>
+            <l>ἀρετή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 5" pos="7"/>
+         <tok ref="5 6 2 2" pos="5"/>
+         <tok ref="5 9 1 1" pos="12"/>
+         <tok ref="5 9 1 2" pos="17"/>
+         <tok ref="5 9 1 3" pos="9"/>
+         <tok ref="5 9 1 3" pos="22"/>
+         <tok ref="5 9 2 1" pos="8"/>
+         <tok ref="10 3 4 2" pos="13"/>
+         <lm>
+            <l>ἀριθμός</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 5" pos="4"/>
+         <tok ref="6 6 2 1" pos="19"/>
+         <lm>
+            <l>ἀριθμός</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 5" pos="12"/>
+         <lm>
+            <l>ἀρχή</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 4" pos="16"/>
+         <lm>
+            <l>ἁφή</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 3" pos="7"/>
+         <lm>
+            <l>ἄγω</l>
+            <m>v - - s p p e m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 4 1" pos="8"/>
+         <tok ref="15 1 1 2" pos="8"/>
+         <lm>
+            <l>ἄλλος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 1" pos="19"/>
+         <tok ref="1 1 2 1" pos="22"/>
+         <tok ref="2 1 2 1" pos="7"/>
+         <tok ref="2 1 2 1" pos="9"/>
+         <tok ref="2 1 2 2" pos="6"/>
+         <tok ref="2 2 1 1" pos="15"/>
+         <tok ref="2 2 1 4" pos="14"/>
+         <tok ref="3 1 1 2" pos="2"/>
+         <tok ref="3 1 1 4" pos="4"/>
+         <tok ref="3 1 1 4" pos="6"/>
+         <tok ref="4 1 2 1" pos="9"/>
+         <tok ref="4 1 3 2" pos="23"/>
+         <tok ref="5 1 2 2" pos="4"/>
+         <tok ref="5 1 2 3" pos="9"/>
+         <tok ref="5 1 3 2" pos="2"/>
+         <tok ref="5 1 3 3" pos="15"/>
+         <tok ref="5 1 3 3" pos="17"/>
+         <tok ref="5 2 5 2" pos="6"/>
+         <tok ref="5 4 3 2" pos="3"/>
+         <tok ref="5 4 3 2" pos="23"/>
+         <tok ref="5 4 7 2" pos="20"/>
+         <tok ref="5 6 3 2" pos="24"/>
+         <tok ref="5 8 1 3" pos="7"/>
+         <tok ref="5 8 1 3" pos="13"/>
+         <tok ref="5 8 2 1" pos="7"/>
+         <tok ref="5 8 2 3" pos="9"/>
+         <tok ref="5 8 2 3" pos="12"/>
+         <tok ref="5 9 2 2" pos="4"/>
+         <tok ref="7 5 2 3" pos="4"/>
+         <tok ref="7 5 2 3" pos="9"/>
+         <tok ref="7 5 3 2" pos="3"/>
+         <tok ref="7 5 3 2" pos="7"/>
+         <tok ref="8 1 4 2" pos="8"/>
+         <tok ref="10 4 4 2" pos="6"/>
+         <tok ref="10 4 4 2" pos="10"/>
+         <tok ref="12 2 3 3" pos="4"/>
+         <tok ref="12 2 3 3" pos="12"/>
+         <tok ref="12 2 3 4" pos="13"/>
+         <tok ref="12 2 3 4" pos="15"/>
+         <lm>
+            <l>ἄνθρωπος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 1" pos="22"/>
+         <tok ref="3 1 1 2" pos="6"/>
+         <tok ref="3 1 1 2" pos="13"/>
+         <tok ref="3 1 1 3" pos="6"/>
+         <tok ref="5 1 3 2" pos="8"/>
+         <tok ref="5 1 3 2" pos="19"/>
+         <tok ref="5 1 3 3" pos="6"/>
+         <tok ref="5 1 3 3" pos="10"/>
+         <tok ref="5 1 6 2" pos="6"/>
+         <tok ref="5 1 6 2" pos="13"/>
+         <tok ref="5 1 6 2" pos="23"/>
+         <tok ref="5 2 2 2" pos="19"/>
+         <tok ref="5 2 4 2" pos="8"/>
+         <tok ref="5 4 3 2" pos="9"/>
+         <tok ref="5 4 3 3" pos="12"/>
+         <tok ref="5 4 4 2" pos="17"/>
+         <tok ref="5 4 4 2" pos="22"/>
+         <tok ref="5 4 6 2" pos="12"/>
+         <tok ref="5 4 7 2" pos="6"/>
+         <tok ref="5 4 7 2" pos="15"/>
+         <tok ref="7 3 8 2" pos="9"/>
+         <tok ref="7 3 10 2" pos="5"/>
+         <tok ref="7 3 10 2" pos="13"/>
+         <tok ref="10 3 5 3" pos="10"/>
+         <lm>
+            <l>ἄνθρωπος</l>
+            <m>n - - s - - - m g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 2 2" pos="10"/>
+         <tok ref="5 4 3 2" pos="21"/>
+         <tok ref="5 4 3 3" pos="21"/>
+         <tok ref="5 4 6 2" pos="22"/>
+         <tok ref="7 3 9 2" pos="23"/>
+         <lm>
+            <l>ἄνθρωπος</l>
+            <m>n - - s - - - m d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 3 2" pos="15"/>
+         <tok ref="5 2 2 2" pos="4"/>
+         <tok ref="5 2 2 2" pos="8"/>
+         <tok ref="5 2 4 2" pos="10"/>
+         <tok ref="5 3 1 3" pos="4"/>
+         <tok ref="5 3 1 3" pos="22"/>
+         <tok ref="5 3 2 4" pos="4"/>
+         <tok ref="5 3 2 4" pos="9"/>
+         <tok ref="5 6 3 1" pos="18"/>
+         <tok ref="5 6 4 2" pos="11"/>
+         <tok ref="7 3 10 3" pos="7"/>
+         <tok ref="12 2 3 2" pos="4"/>
+         <lm>
+            <l>ἄνθρωπος</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 6 2" pos="20"/>
+         <lm>
+            <l>ἄνθρωπος</l>
+            <m>n - - p - - - m g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 2 1 3" pos="28"/>
+         <lm>
+            <l>ἄνωθεν</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 4" pos="3"/>
+         <lm>
+            <l>ἅπαξ</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 3 2" pos="12"/>
+         <lm>
+            <l>ἐγώ</l>
+            <m>p p - p - - - - d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 3 4" pos="19"/>
+         <lm>
+            <l>ἐλλείπω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 1 3" pos="4"/>
+         <tok ref="7 3 2 1" pos="4"/>
+         <tok ref="7 3 3 1" pos="1"/>
+         <tok ref="8 5 4 1" pos="1"/>
+         <lm>
+            <l>ἐνίοτε</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 6" pos="8"/>
+         <lm>
+            <l>ἐναντίος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 1" pos="8"/>
+         <tok ref="9 5 1 3" pos="3"/>
+         <lm>
+            <l>ἐναντιότης</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 1" pos="12"/>
+         <tok ref="9 1 2 1" pos="10"/>
+         <tok ref="10 5 2 7" pos="3"/>
+         <tok ref="11 1 4 1" pos="12"/>
+         <lm>
+            <l>ἐνδέχομαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="11 1 4 1" pos="21"/>
+         <lm>
+            <l>ἐνδέχομαι</l>
+            <m>v - 3 s p o m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 4" pos="13"/>
+         <lm>
+            <l>ἐνιαύσιος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 6" pos="14"/>
+         <lm>
+            <l>ἐξέργω</l>
+            <m>v - 3 s p s e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 3 2" pos="3"/>
+         <lm>
+            <l>ἐπάνω</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 1 4 1" pos="6"/>
+         <tok ref="5 3 2 5" pos="4"/>
+         <tok ref="5 6 2 1" pos="1"/>
+         <tok ref="5 6 3 1" pos="1"/>
+         <tok ref="5 6 4 1" pos="1"/>
+         <tok ref="5 6 4 2" pos="5"/>
+         <tok ref="5 9 1 2" pos="2"/>
+         <tok ref="5 9 1 3" pos="31"/>
+         <tok ref="5 9 3 1" pos="1"/>
+         <tok ref="5 9 3 3" pos="4"/>
+         <tok ref="5 9 4 2" pos="4"/>
+         <tok ref="5 9 4 2" pos="32"/>
+         <tok ref="5 9 4 5" pos="4"/>
+         <tok ref="6 2 3 1" pos="1"/>
+         <tok ref="6 5 1 2" pos="2"/>
+         <tok ref="6 5 1 4" pos="2"/>
+         <tok ref="6 6 2 2" pos="4"/>
+         <tok ref="7 3 1 2" pos="4"/>
+         <tok ref="7 3 5 1" pos="4"/>
+         <tok ref="7 4 2 1" pos="2"/>
+         <tok ref="7 4 3 3" pos="4"/>
+         <tok ref="7 4 4 1" pos="2"/>
+         <tok ref="7 4 4 3" pos="3"/>
+         <tok ref="7 4 7 1" pos="6"/>
+         <tok ref="7 5 2 1" pos="1"/>
+         <tok ref="7 5 3 1" pos="4"/>
+         <tok ref="7 5 3 1" pos="8"/>
+         <tok ref="7 5 4 1" pos="1"/>
+         <tok ref="7 5 9 1" pos="2"/>
+         <tok ref="8 1 4 3" pos="4"/>
+         <tok ref="8 3 2 4" pos="4"/>
+         <tok ref="8 5 4 3" pos="2"/>
+         <tok ref="8 6 2 1" pos="2"/>
+         <tok ref="8 6 4 3" pos="4"/>
+         <tok ref="9 1 2 3" pos="13"/>
+         <tok ref="9 1 4 2" pos="11"/>
+         <tok ref="9 3 2 1" pos="3"/>
+         <tok ref="10 4 7 2" pos="3"/>
+         <tok ref="10 5 2 2" pos="15"/>
+         <tok ref="10 5 2 6" pos="1"/>
+         <tok ref="10 5 3 1" pos="1"/>
+         <tok ref="10 5 3 6" pos="1"/>
+         <tok ref="10 5 5 1" pos="2"/>
+         <tok ref="10 5 5 7" pos="1"/>
+         <tok ref="10 5 5 8" pos="6"/>
+         <tok ref="10 5 5 8" pos="15"/>
+         <tok ref="10 6 1 2" pos="1"/>
+         <tok ref="10 6 2 1" pos="3"/>
+         <tok ref="10 6 2 1" pos="16"/>
+         <tok ref="10 6 2 1" pos="21"/>
+         <tok ref="10 6 3 1" pos="10"/>
+         <tok ref="10 6 3 1" pos="27"/>
+         <tok ref="10 6 4 1" pos="1"/>
+         <tok ref="10 6 5 1" pos="1"/>
+         <tok ref="10 6 5 4" pos="2"/>
+         <tok ref="11 1 1 1" pos="28"/>
+         <tok ref="12 1 2 1" pos="9"/>
+         <tok ref="12 1 2 2" pos="24"/>
+         <tok ref="12 1 2 2" pos="32"/>
+         <tok ref="13 1 2 1" pos="21"/>
+         <tok ref="14 1 2 3" pos="1"/>
+         <tok ref="14 1 3 3" pos="14"/>
+         <tok ref="14 1 4 4" pos="4"/>
+         <tok ref="14 2 2 1" pos="24"/>
+         <tok ref="14 2 2 1" pos="42"/>
+         <lm>
+            <l>ἐπί</l>
+            <m>r - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 1 2 1" pos="4"/>
+         <tok ref="10 5 5 4" pos="6"/>
+         <tok ref="10 5 5 4" pos="18"/>
+         <tok ref="10 5 5 5" pos="9"/>
+         <tok ref="10 5 5 5" pos="18"/>
+         <lm>
+            <l>ἐπίδοσις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 2 3" pos="6"/>
+         <tok ref="7 3 7 2" pos="1"/>
+         <lm>
+            <l>ἐπεί</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 5 4 2" pos="8"/>
+         <tok ref="6 5 1 5" pos="5"/>
+         <tok ref="7 2 4 1" pos="4"/>
+         <tok ref="9 1 4 1" pos="9"/>
+         <tok ref="9 1 5 4" pos="3"/>
+         <tok ref="9 5 1 3" pos="2"/>
+         <tok ref="9 5 2 3" pos="1"/>
+         <lm>
+            <l>ἐπιδέχομαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 8 1 1" pos="6"/>
+         <tok ref="6 5 1 1" pos="6"/>
+         <tok ref="7 2 3 1" pos="9"/>
+         <tok ref="9 1 5 1" pos="9"/>
+         <lm>
+            <l>ἐπιδέχομαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 1 3" pos="18"/>
+         <tok ref="10 2 1 5" pos="8"/>
+         <lm>
+            <l>ἐπιστήμη</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 4 4" pos="14"/>
+         <tok ref="7 4 5 1" pos="8"/>
+         <tok ref="8 1 3 3" pos="15"/>
+         <tok ref="8 1 5 2" pos="21"/>
+         <tok ref="10 2 1 4" pos="13"/>
+         <tok ref="15 1 1 2" pos="13"/>
+         <lm>
+            <l>ἐπιστήμη</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 3 3" pos="15"/>
+         <tok ref="12 1 2 2" pos="6"/>
+         <lm>
+            <l>ἐπιστήμη</l>
+            <m>n - - p - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 3 1 4" pos="25"/>
+         <lm>
+            <l>ἐπιφάνεια</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 10 1" pos="11"/>
+         <lm>
+            <l>ἐπιφέρω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 2" pos="4"/>
+         <lm>
+            <l>ἐρυθρός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 3 1" pos="8"/>
+         <tok ref="6 3 1 3" pos="4"/>
+         <tok ref="6 3 1 5" pos="17"/>
+         <tok ref="6 4 2 2" pos="5"/>
+         <tok ref="6 4 2 3" pos="9"/>
+         <tok ref="6 4 5 2" pos="7"/>
+         <lm>
+            <l>ἑαυτοῦ</l>
+            <m>p k - s - - - n a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 4 6" pos="16"/>
+         <lm>
+            <l>ἑαυτοῦ</l>
+            <m>p k - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 2" pos="1"/>
+         <lm>
+            <l>ἔθω</l>
+            <m>v - 3 p r i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 9 1" pos="18"/>
+         <lm>
+            <l>ἔκστασις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="11 1 1 2" pos="3"/>
+         <lm>
+            <l>ἔνδεια</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="12 1 3 2" pos="7"/>
+         <lm>
+            <l>ἔντιμος</l>
+            <m>a - - p - - - m a c</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 10 1" pos="1"/>
+         <lm>
+            <l>ἔοικα</l>
+            <m>v - 3 p r i a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 1" pos="1"/>
+         <tok ref="5 3 2 1" pos="1"/>
+         <tok ref="5 4 4 1" pos="1"/>
+         <tok ref="6 2 1 1" pos="1"/>
+         <tok ref="6 4 4 1" pos="1"/>
+         <tok ref="6 4 5 1" pos="1"/>
+         <tok ref="7 3 9 1" pos="1"/>
+         <tok ref="7 3 10 3" pos="3"/>
+         <tok ref="7 3 10 5" pos="3"/>
+         <tok ref="7 4 5 1" pos="1"/>
+         <tok ref="7 4 5 2" pos="10"/>
+         <tok ref="7 5 9 5" pos="3"/>
+         <tok ref="8 3 1 2" pos="17"/>
+         <tok ref="8 4 1 1" pos="13"/>
+         <tok ref="9 1 2 1" pos="9"/>
+         <tok ref="10 4 4 1" pos="1"/>
+         <tok ref="10 4 9 1" pos="1"/>
+         <tok ref="10 5 2 5" pos="1"/>
+         <tok ref="10 5 5 1" pos="1"/>
+         <tok ref="11 1 3 1" pos="1"/>
+         <tok ref="11 1 4 1" pos="1"/>
+         <tok ref="12 1 3 1" pos="1"/>
+         <lm>
+            <l>ἔτι</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 8" pos="1"/>
+         <tok ref="7 5 5 2" pos="19"/>
+         <tok ref="7 5 8 2" pos="24"/>
+         <tok ref="8 1 5 2" pos="14"/>
+         <tok ref="8 2 2 1" pos="13"/>
+         <tok ref="8 2 2 2" pos="13"/>
+         <tok ref="8 2 2 2" pos="24"/>
+         <tok ref="8 2 2 2" pos="37"/>
+         <tok ref="8 2 3 2" pos="8"/>
+         <tok ref="8 2 3 2" pos="18"/>
+         <tok ref="8 3 5 3" pos="16"/>
+         <tok ref="8 5 4 2" pos="4"/>
+         <tok ref="9 1 3 2" pos="17"/>
+         <tok ref="9 3 4 2" pos="9"/>
+         <tok ref="10 4 2 1" pos="18"/>
+         <tok ref="10 4 2 2" pos="23"/>
+         <tok ref="10 4 3 1" pos="6"/>
+         <tok ref="10 4 3 2" pos="13"/>
+         <tok ref="10 4 5 1" pos="12"/>
+         <tok ref="10 4 5 3" pos="15"/>
+         <tok ref="10 5 3 2" pos="15"/>
+         <tok ref="10 5 3 2" pos="20"/>
+         <tok ref="10 5 3 5" pos="6"/>
+         <tok ref="10 6 4 2" pos="4"/>
+         <tok ref="10 6 4 2" pos="29"/>
+         <tok ref="10 6 4 2" pos="46"/>
+         <tok ref="15 1 1 1" pos="2"/>
+         <tok ref="15 1 1 2" pos="14"/>
+         <tok ref="15 1 1 3" pos="14"/>
+         <tok ref="15 1 1 7" pos="17"/>
+         <tok ref="15 1 1 8" pos="3"/>
+         <tok ref="15 1 1 10" pos="1"/>
+         <tok ref="15 1 2 1" pos="5"/>
+         <tok ref="15 1 2 2" pos="9"/>
+         <tok ref="15 1 2 3" pos="5"/>
+         <lm>
+            <l>ἔχω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 1 2" pos="8"/>
+         <tok ref="6 2 3 1" pos="8"/>
+         <tok ref="6 2 3 3" pos="18"/>
+         <lm>
+            <l>ἔχω</l>
+            <m>v - 3 s p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 4" pos="4"/>
+         <tok ref="6 2 1 2" pos="17"/>
+         <lm>
+            <l>ἔχω</l>
+            <m>v - 2 s p o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 3 3" pos="25"/>
+         <lm>
+            <l>ἕκαστος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="14 1 1 1" pos="5"/>
+         <lm>
+            <l>ἕξ</l>
+            <m>m - - p - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 3" pos="29"/>
+         <tok ref="8 1 5 2" pos="13"/>
+         <tok ref="8 1 7 2" pos="17"/>
+         <tok ref="10 4 3 1" pos="8"/>
+         <tok ref="10 4 5 1" pos="11"/>
+         <tok ref="10 5 5 6" pos="9"/>
+         <tok ref="10 5 5 8" pos="17"/>
+         <tok ref="10 6 2 4" pos="7"/>
+         <tok ref="15 1 1 2" pos="4"/>
+         <lm>
+            <l>ἕξις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 1" pos="8"/>
+         <tok ref="10 5 3 1" pos="7"/>
+         <tok ref="10 5 5 7" pos="8"/>
+         <tok ref="10 5 5 8" pos="5"/>
+         <tok ref="10 6 2 1" pos="23"/>
+         <tok ref="10 6 4 1" pos="7"/>
+         <lm>
+            <l>ἕξις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 1 1" pos="14"/>
+         <tok ref="1 1 1 2" pos="13"/>
+         <tok ref="5 8 1 3" pos="18"/>
+         <tok ref="5 8 2 1" pos="4"/>
+         <tok ref="6 5 1 3" pos="5"/>
+         <tok ref="9 1 4 2" pos="3"/>
+         <tok ref="12 2 2 1" pos="8"/>
+         <lm>
+            <l>ἕτερος</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 3" pos="17"/>
+         <tok ref="8 1 4 3" pos="30"/>
+         <tok ref="10 5 3 5" pos="3"/>
+         <lm>
+            <l>ἤδη</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 5 1 2" pos="14"/>
+         <lm>
+            <l>ἥδομαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 6 2 1" pos="21"/>
+         <tok ref="6 6 2 1" pos="30"/>
+         <lm>
+            <l>ἴσος</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="2 2 1 4" pos="18"/>
+         <tok ref="4 1 2 1" pos="10"/>
+         <lm>
+            <l>ἵππος</l>
+            <m>n - - s - - - c n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 4 2" pos="16"/>
+         <lm>
+            <l>ἵππος</l>
+            <m>n - - s - - - c g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 4 2" pos="18"/>
+         <lm>
+            <l>ἵππος</l>
+            <m>n - - s - - - c a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 1 4 2" pos="5"/>
+         <lm>
+            <l>ἵστημι</l>
+            <m>v - - - r n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 2" pos="9"/>
+         <tok ref="10 4 2 3" pos="8"/>
+         <tok ref="10 5 5 9" pos="16"/>
+         <lm>
+            <l>ὀδούς</l>
+            <m>n - - p - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 3 1" pos="4"/>
+         <tok ref="7 3 11 2" pos="15"/>
+         <lm>
+            <l>ὀνοματοποιέω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 11 2" pos="4"/>
+         <lm>
+            <l>ὀργίλος</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 1 1" pos="17"/>
+         <lm>
+            <l>ὀφθαλμός</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="4 1 2 8" pos="5"/>
+         <lm>
+            <l>ὁπλίζω</l>
+            <m>v - 3 s r i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 1 1 1" pos="15"/>
+         <tok ref="7 1 3 1" pos="12"/>
+         <tok ref="7 3 4 1" pos="17"/>
+         <tok ref="10 2 1 1" pos="16"/>
+         <tok ref="12 2 2 2" pos="11"/>
+         <lm>
+            <l>ὁπωσοῦν</l>
+            <m>d x - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 4 4 4" pos="7"/>
+         <lm>
+            <l>ὁράω</l>
+            <m>v - 3 s a o a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 10 2" pos="12"/>
+         <lm>
+            <l>ὁρίζω</l>
+            <m>v - 3 p p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 3 7 2" pos="21"/>
+         <lm>
+            <l>ὁρίζω</l>
+            <m>v - 3 s p i e - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 4 10 1" pos="8"/>
+         <lm>
+            <l>ὁρισμός</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 5 1" pos="9"/>
+         <lm>
+            <l>ὁρισμός</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 5 5 5" pos="8"/>
+         <lm>
+            <l>ὁστισοῦν</l>
+            <m>p x - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="1 1 2 2" pos="5"/>
+         <tok ref="10 3 7 2" pos="4"/>
+         <lm>
+            <l>ὄνομα</l>
+            <m>n - - s - - - n d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 8 1" pos="11"/>
+         <lm>
+            <l>ὄνομα</l>
+            <m>n - - p - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 5 4 1" pos="4"/>
+         <lm>
+            <l>ὄνομα</l>
+            <m>n - - s - - - n g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 3 2 2" pos="6"/>
+         <tok ref="7 3 2 3" pos="8"/>
+         <tok ref="7 3 10 2" pos="9"/>
+         <tok ref="7 3 10 4" pos="5"/>
+         <lm>
+            <l>ὄρνις</l>
+            <m>n - - s - - - c g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 2 2" pos="16"/>
+         <tok ref="10 4 2 3" pos="6"/>
+         <tok ref="10 4 3 2" pos="15"/>
+         <tok ref="10 4 5 3" pos="14"/>
+         <tok ref="10 5 3 2" pos="14"/>
+         <tok ref="10 5 3 2" pos="19"/>
+         <tok ref="10 5 3 5" pos="7"/>
+         <tok ref="10 5 3 5" pos="13"/>
+         <tok ref="10 5 3 5" pos="29"/>
+         <tok ref="10 6 4 2" pos="3"/>
+         <tok ref="10 6 4 2" pos="44"/>
+         <lm>
+            <l>ὄψις</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 4 8 4" pos="9"/>
+         <tok ref="10 4 8 4" pos="13"/>
+         <tok ref="10 4 8 4" pos="19"/>
+         <lm>
+            <l>ὄψις</l>
+            <m>n - - s - - - f g -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 3" pos="12"/>
+         <tok ref="8 3 5 4" pos="27"/>
+         <lm>
+            <l>ὅμοιος</l>
+            <m>a - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 3 1 1" pos="14"/>
+         <lm>
+            <l>ὅπως</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 1" pos="10"/>
+         <tok ref="6 1 4 6" pos="5"/>
+         <lm>
+            <l>ὅρος</l>
+            <m>n - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="6 1 3 2" pos="12"/>
+         <tok ref="6 1 3 3" pos="11"/>
+         <tok ref="6 1 3 4" pos="9"/>
+         <tok ref="6 1 4 5" pos="5"/>
+         <tok ref="6 1 5 2" pos="5"/>
+         <tok ref="6 1 5 3" pos="13"/>
+         <tok ref="6 1 8 2" pos="13"/>
+         <tok ref="6 1 8 3" pos="17"/>
+         <tok ref="6 1 8 5" pos="5"/>
+         <lm>
+            <l>ὅρος</l>
+            <m>n - - s - - - m a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 4" pos="1"/>
+         <lm>
+            <l>ὅστις</l>
+            <m>p r - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="3 1 1 1" pos="1"/>
+         <tok ref="5 6 3 1" pos="16"/>
+         <tok ref="10 4 2 1" pos="10"/>
+         <tok ref="10 5 3 5" pos="1"/>
+         <lm>
+            <l>ὅταν</l>
+            <m>c - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 2 2" pos="10"/>
+         <tok ref="5 9 2 2" pos="13"/>
+         <tok ref="5 9 4 4" pos="15"/>
+         <tok ref="5 9 4 4" pos="18"/>
+         <tok ref="11 1 1 1" pos="33"/>
+         <tok ref="11 1 1 1" pos="38"/>
+         <lm>
+            <l>ὅτε</l>
+            <m>d x - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 9 6 6" pos="4"/>
+         <tok ref="9 1 3 2" pos="13"/>
+         <tok ref="9 1 3 2" pos="20"/>
+         <tok ref="10 3 4 1" pos="22"/>
+         <lm>
+            <l>ὑγίεια</l>
+            <m>n - - s - - - f a -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="11 1 1 1" pos="17"/>
+         <lm>
+            <l>ὑγίεια</l>
+            <m>n - - s - - - f d -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 4 2" pos="19"/>
+         <tok ref="10 6 3 1" pos="18"/>
+         <tok ref="10 6 3 3" pos="8"/>
+         <tok ref="11 1 4 1" pos="5"/>
+         <tok ref="11 1 4 2" pos="5"/>
+         <lm>
+            <l>ὑγιαίνω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="10 3 3 1" pos="18"/>
+         <tok ref="10 3 3 2" pos="7"/>
+         <tok ref="10 3 4 1" pos="14"/>
+         <tok ref="10 3 4 2" pos="14"/>
+         <tok ref="10 3 5 1" pos="7"/>
+         <tok ref="10 3 5 2" pos="15"/>
+         <tok ref="10 3 5 3" pos="20"/>
+         <tok ref="10 4 2 1" pos="14"/>
+         <tok ref="10 5 2 1" pos="20"/>
+         <tok ref="10 5 2 2" pos="13"/>
+         <tok ref="10 5 2 3" pos="10"/>
+         <tok ref="10 5 2 4" pos="22"/>
+         <tok ref="10 5 2 5" pos="14"/>
+         <tok ref="10 5 2 6" pos="7"/>
+         <tok ref="10 5 2 8" pos="10"/>
+         <tok ref="10 5 3 2" pos="9"/>
+         <tok ref="10 5 3 4" pos="9"/>
+         <tok ref="10 5 3 6" pos="16"/>
+         <tok ref="11 1 4 1" pos="18"/>
+         <lm>
+            <l>ὑπάρχω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="9 3 1 1" pos="9"/>
+         <tok ref="9 7 1 1" pos="1"/>
+         <tok ref="9 7 1 2" pos="4"/>
+         <tok ref="9 7 3 1" pos="1"/>
+         <lm>
+            <l>ὑπέρ</l>
+            <m>r - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 4 3 4" pos="16"/>
+         <lm>
+            <l>ὑπερέχω</l>
+            <m>v - - - p n a - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 1 3 3" pos="22"/>
+         <tok ref="8 2 2 2" pos="29"/>
+         <tok ref="10 4 6 1" pos="6"/>
+         <tok ref="10 4 6 2" pos="15"/>
+         <lm>
+            <l>ὑπό</l>
+            <m>r - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 1" pos="10"/>
+         <tok ref="5 3 2 1" pos="10"/>
+         <lm>
+            <l>ὑπόκειμαι</l>
+            <m>v - - - p n m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 3 3" pos="1"/>
+         <lm>
+            <l>ὑπόκειμαι</l>
+            <m>v - 3 s p i m - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="7 5 9 4" pos="1"/>
+         <lm>
+            <l>ὑπόληψις</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 5 2" pos="8"/>
+         <lm>
+            <l>ὠχρός</l>
+            <m>a - - s - - - m n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="8 3 6 2" pos="8"/>
+         <tok ref="8 3 6 2" pos="29"/>
+         <lm>
+            <l>ὠχρότης</l>
+            <m>n - - s - - - f n -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 2 5 1" pos="1"/>
+         <tok ref="5 3 2 5" pos="1"/>
+         <tok ref="5 4 3 3" pos="1"/>
+         <tok ref="5 5 2 3" pos="1"/>
+         <tok ref="5 5 4 2" pos="1"/>
+         <tok ref="5 9 1 3" pos="28"/>
+         <tok ref="5 9 3 3" pos="1"/>
+         <tok ref="5 9 4 2" pos="29"/>
+         <tok ref="5 9 4 5" pos="1"/>
+         <tok ref="6 1 4 1" pos="1"/>
+         <tok ref="6 2 1 3" pos="1"/>
+         <tok ref="6 2 5 1" pos="5"/>
+         <tok ref="6 6 2 2" pos="1"/>
+         <tok ref="7 1 1 3" pos="1"/>
+         <tok ref="7 1 2 3" pos="21"/>
+         <tok ref="7 1 3 2" pos="26"/>
+         <tok ref="7 3 1 2" pos="1"/>
+         <tok ref="7 3 5 1" pos="1"/>
+         <tok ref="7 3 10 4" pos="1"/>
+         <tok ref="7 4 3 3" pos="1"/>
+         <tok ref="7 5 2 4" pos="1"/>
+         <tok ref="7 5 3 1" pos="1"/>
+         <tok ref="7 5 9 3" pos="1"/>
+         <tok ref="8 1 3 4" pos="1"/>
+         <tok ref="8 1 4 3" pos="1"/>
+         <tok ref="8 3 2 4" pos="1"/>
+         <tok ref="8 6 4 3" pos="1"/>
+         <tok ref="9 1 3 2" pos="27"/>
+         <tok ref="9 1 4 2" pos="14"/>
+         <tok ref="10 4 8 4" pos="1"/>
+         <tok ref="10 6 2 3" pos="1"/>
+         <tok ref="14 1 2 2" pos="17"/>
+         <tok ref="14 1 3 3" pos="11"/>
+         <tok ref="14 1 4 1" pos="1"/>
+         <tok ref="14 1 4 4" pos="1"/>
+         <lm>
+            <l>ὡσαύτως</l>
+            <m>d - - - - - - - - -</m>
+         </lm>
+      </ana>
+      <ana>
+         <tok ref="5 6 3 2" pos="16"/>
+         <tok ref="5 6 3 3" pos="7"/>
+         <tok ref="5 8 2 1" pos="8"/>
+         <tok ref="8 5 3 3" pos="12"/>
+         <lm>
+            <l>ὥσπερ</l>
+            <m>d r - - - - - - - -</m>
+         </lm>
+      </ana>
+   </body>
+</TAN-A-lm>
