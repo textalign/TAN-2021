@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" type="application/xml" phase="verbose" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- this test file primed for verbose validation -->
+<!-- verbose: cat01 cat04 cat07 
+    cat03 (because error test 4 has a bogus id in catalog.tan.xml) wrn04
+-->
+<TAN-A xmlns="tag:textalign.net,2015:ns" id="tag:textalign.net,2015:error-test" TAN-version="2021">
+    <head>
+        <name>Error test tan-a</name>
+        <!-- tan15 wrn01 -->
+        <master-location href="../../templates/template.docx"/>
+        <!-- whi01 tan05 -->
+        <license which="4.0" licensor="park"/>
+        <numerals priority="roman"/>
+        <!-- cl202 -->
+        <token-definition which="letters and punctuation" src="*"/>
+        <!-- cl202 -->
+        <token-definition src="test-4" which="letters and punctuation"/>
+        <!-- wrn02 wrn03 wrn07 inc03 -->
+        <inclusion xml:id="test-6">
+            <IRI>tag:textalign.net,2015:error-test-6</IRI>
+            <name>test 3</name>
+            <location href="error-test-6.tan-mor.xml" accessed-when="2019-02-20"/>
+        </inclusion>
+        <!-- whi02 tan11 wrn03 wrn05 inc05 (because this doc's @id duplicates test-1's @id) -->
+        <vocabulary>
+            <IRI>tag:textalign.net,9999:error-test-2</IRI>
+            <name>Vocabulary</name>
+            <location href="error-test-2.tan-voc.xml" accessed-when="2019-01-07"/>
+        </vocabulary>
+        <!-- loc03 tan16 cl201 -->
+        <source xml:id="test-1">
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>error tan-t</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2020-02-27"/>
+            <!-- tan23 wrn01 -->
+            <location href="c:/mydrive/error-test-1.tan-t.xml" accessed-when="2020-02-27"/>
+        </source>
+        <!-- wrn02 -->
+        <source xml:id="test-4">
+            <IRI>tag:textalign.net,2015:error-test-4</IRI>
+            <name>Test 4</name>
+            <location href="error-test-4.tan-tei.xml" accessed-when="2019-01-23"/>
+        </source>
+        <!-- wrn02 -->
+        <source xml:id="test-8">
+            <IRI>tag:textalign.net,2015:error-test-8</IRI>
+            <name>error test 8 tan-t</name>
+            <location href="error-test-8.tan-t.xml" accessed-when="2019-02-20"/>
+        </source>
+        <adjustments src="test-1">
+            <!-- cl215 seq05 -->
+            <skip n="bad - worse"/>
+            <!-- dty01 -->
+            <skip div-type="chapter"/>
+            <!-- cl215 cl203 -->
+            <rename n="bad" new="bad"/>
+            <!-- cl207 -->
+            <equate n="bill ball"/>
+        </adjustments>
+        <adjustments src="test-4">
+            <skip ref="2"/>
+            <!-- cl219 -->
+            <skip ref="2"/>
+            <!-- cl213 cl215 -->
+            <rename n="huh" by="4"/>
+            <!-- ref01 cl216 -->
+            <rename ref="7.4-6" new="8.2"/>
+            <!-- cl219 -->
+            <rename ref="2" by="4"/>
+            <rename ref="preface" new="pref1"/>
+            <!-- cl219 -->
+            <rename ref="preface" new="pref3"/>
+            <!-- cl219 -->
+            <rename n="preface" new="pref2"/>
+            <!-- cl217 -->
+            <rename ref="test3" new="3"/>
+            <rename n="test4" new="test5"/>
+            <!-- cl205 cl219 -->
+            <equate n="3 iii"/>
+            <!-- cl219 -->
+            <equate n="test4 test6"/>
+            <reassign>
+                <!-- rea04 -->
+                <passage ref="2a">
+                    <!-- tok01 -->
+                    <from-tok pos="1"/>
+                    <!-- tok01 -->
+                    <through-tok pos="1"/>
+                </passage>
+                <passage ref="2a.3">
+                    <from-tok pos="2"/>
+                    <!-- rea01 -->
+                    <through-tok pos="1"/>
+                </passage>
+                <!-- ref01 -->
+                <passage ref="test4">
+                    <!-- tok01 -->
+                    <from-tok val="Test"/>
+                    <!-- tok01 -->
+                    <through-tok pos="2"/>
+                </passage>
+                <!-- rea02 -->
+                <passage ref="test5">
+                    <from-tok val="Plus"/>
+                    <through-tok val="another"/>
+                </passage>
+                <!-- rea02 -->
+                <passage ref="test5">
+                    <from-tok val="another"/>
+                    <through-tok pos="last"/>
+                </passage>
+                <!-- cl217 -->
+                <passage ref="pref1">
+                    <from-tok pos="1"/>
+                    <through-tok pos="1"/>
+                </passage>
+                <to ref="3"/>
+            </reassign>
+        </adjustments>
+        <vocabulary-key>
+            <organization xml:id="org1">
+                <IRI>tag:textalign.net,2015:test:organization:org1</IRI>
+                <name>a made-up organization</name>
+            </organization>
+            <scriptum xml:id="scr-a">
+                <IRI>tag:textalign.net,2015:test:scriptum:a</IRI>
+                <name>a made up scriptum</name>
+            </scriptum>
+            <verb xml:id="weighs">
+                <IRI>tag:textalign.net,2015:test:verb:weighs</IRI>
+                <name>X weighs a certain amount</name>
+                <constraints>
+                    <object status="required" content-datatype="double"/>
+                </constraints>
+            </verb>
+            <verb xml:id="has_title">
+                <IRI>tag:textalign.net,2015:test:verb:has-title</IRI>
+                <name>X has a title</name>
+                <constraints>
+                    <object status="required" content-datatype="string" content-lexical-constraint="Mr.?|Mr?s.?|Dr.?"/>
+                </constraints>
+            </verb>
+            <verb xml:id="no-sub">
+                <IRI>tag:textalign.net,2015:test:verb:no-sub</IRI>
+                <name>no subject</name>
+                <constraints>
+                    <subject status="disallowed"/>
+                </constraints>
+            </verb>
+            <verb xml:id="no-obj">
+                <IRI>tag:textalign.net,2015:test:verb:no-obj</IRI>
+                <name>no object</name>
+                <constraints>
+                    <object status="disallowed"/>
+                </constraints>
+            </verb>
+            <topic xml:id="craziness">
+                <IRI>tag:textalign.net,2015:test:topic:craziness</IRI>
+                <name>craziness</name>
+            </topic>
+            <unit xml:id="inches">
+                <IRI>tag:textalign.net,2015:test:unit:inches</IRI>
+                <name>inches</name>
+            </unit>
+            <!-- inc02 -->
+            <organization include="test-6"/>
+        </vocabulary-key>
+        <resp who="person_1" roles="editor"/>
+        <!-- tan01 -->
+        <file-resp who="person_1"/>
+        <change when="2019-01-07" who="person_1"/>
+        <to-do/>
+    </head>
+    <body claimant="person_1">
+        <claim verb="quotes">
+            <!-- ref01 -->
+            <subject src="test-1" ref="2">
+                <!-- tan07 tok01 -->
+                <tok rgx="\z+"/>
+            </subject>
+            <object src="test-4" ref="1">
+                <!-- seq02 seq03 tok01 -->
+                <tok rgx=".+" pos="2-1, 8"/>
+                <tok val="Line"/>
+                <!-- seq01 seq02 tok01 -->
+                <tok rgx=".+" pos="last-100, 1000"/>
+            </object>
+            <!-- ref02 verbose -->
+            <object work="test-4" ref="test999"/>
+            <object src="test-4" ref="3.a">
+                <!-- seq02 -->
+                <tok val="Some" chars="5"/>
+                <!-- chr01 -->
+                <tok rgx="Som.+" chars="5"/>
+            </object>
+            <!-- ref01 -->
+            <object src="test-4" ref="bad4"/>
+        </claim>
+        <!-- clm08 -->
+        <claim verb="reads">
+            <!-- ref03 -->
+            <subject src="test-4" ref="3 - 1"/>
+            <object>one version</object>
+            <object>another version</object>
+        </claim>
+        <!-- clm08 -->
+        <claim subject="craziness" verb="lacks_text">
+            <at-ref src="test-4" ref="3.a"/>
+            <in-lang>grc</in-lang>
+        </claim>
+        <!-- clm08 -->
+        <claim subject="person_1" verb="paraphrases" object="craziness"/>
+        <!-- clm01 clm02 clm03 clm08 -->
+        <claim verb="parallels weighs" subject="org1" object="person_1"/>
+        <!-- clm01 -->
+        <claim verb="weighs" subject="org1">
+            <!-- clm03 -->
+            <object>many</object>
+        </claim>
+        <!-- clm02 clm08 clm09 -->
+        <claim subject="person_1" verb="has_title no-obj">
+            <!-- clm04 clm05 -->
+            <object units="inches">what?</object>
+        </claim>
+        <!-- clm07 -->
+        <claim object="org1"/>
+        <!-- clm08 clm09 -->
+        <claim subject="person_1 craziness" verb="no-sub claims">
+            <at-ref src="test-4" ref="3.a"/>
+        </claim>
+        <!-- clm08 -->
+        <claim subject="test-1" verb="lacks_text" object="craziness">
+            <at-ref src="test-4" ref="3.a"/>
+        </claim>
+    </body>
+</TAN-A>

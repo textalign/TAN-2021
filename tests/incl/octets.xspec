@@ -1,0 +1,154 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+   xmlns:tan="tag:textalign.net,2015:ns"
+   stylesheet="../../functions-2/TAN-function-library.xsl">
+   
+   <x:param name="tan:stylesheet-iri">tag:textalign.net,2015:test:octets</x:param>
+   <x:param name="tan:stylesheet-url" select="static-base-uri()"/>
+   <x:param name="tan:change-message">Testing octet functions.</x:param>
+
+   <x:scenario>
+      <x:label>Interchange between UTF-8 (Unicode) strings and octets</x:label>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:string-to-utf-8-octets()</x:label>
+         <x:call function="tan:string-to-utf-8-octets">
+            <x:param name="str" select="'abcd'"/>
+         </x:call>
+         <x:expect label="'abcd' > octets 97, 98, 99, 100" select="97, 98, 99, 100"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:string-to-utf-8-octets()</x:label>
+         <x:call function="tan:string-to-utf-8-octets">
+            <x:param name="str" select="'¶'"/>
+         </x:call>
+         <x:expect label="'¶' > octets 194, 182" select="194, 182"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:string-to-utf-8-octets()</x:label>
+         <x:call function="tan:string-to-utf-8-octets">
+            <x:param name="str" select="'&#x127;'"/>
+         </x:call>
+         <x:expect label="'&#x127;' (delete) > octets 196, 167" select="196, 167"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:string-to-utf-8-octets()</x:label>
+         <x:call function="tan:string-to-utf-8-octets">
+            <x:param name="str" select="'÷ȒΦҊؼ⅒␂臖'"/>
+         </x:call>
+         <x:expect label="'÷ȒΦҊؼ⅒␂臖' > octets "
+            select="195, 183, 200, 146, 206, 166, 210, 138, 216, 188, 226, 133, 146, 226, 144, 130, 232, 135, 150"
+         />
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="97, 98, 99, 100"/>
+         </x:call>
+         <x:expect label="octets 97, 98, 99, 100 > 'abcd'" select="'abcd'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="tan:hex-to-dec('24')"/>
+         </x:call>
+         <x:expect label="hex 24 > '$'" select="'$'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="tan:hex-to-dec('C2'), tan:hex-to-dec('A2')"/>
+         </x:call>
+         <x:expect label="hex C2 A2 > '¢'" select="'¢'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="tan:hex-to-dec('E2'), tan:hex-to-dec('82'), tan:hex-to-dec('AC')"/>
+         </x:call>
+         <x:expect label="hex E2 82 AC > '€'" select="'€'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="tan:hex-to-dec('F0'), tan:hex-to-dec('90'), tan:hex-to-dec('8D'), tan:hex-to-dec('88')"/>
+         </x:call>
+         <x:expect label="hex F0 90 8D 88 > '𐍈' (hwair U+10348)" select="'𐍈'"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="0"/>
+         </x:call>
+         <x:expect label="octet 0 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g8')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:octet-error-key('g8'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="1"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="194"/>
+         </x:call>
+         <x:expect label="octet 194 followed by nothing = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g9')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:octet-error-key('g9'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="1"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="128, 64"/>
+         </x:call>
+         <x:expect label="octet 128 followed by 64 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g15')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:octet-error-key('g15'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="1"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="194, 64"/>
+         </x:call>
+         <x:expect label="octet 192 followed by 64 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g12')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:octet-error-key('g12'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="1"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="194, 162"/>
+         </x:call>
+         <x:expect label="octets 194, 162 > '¢'" select="'¢'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="195, 162"/>
+         </x:call>
+         <x:expect label="octets 195, 162 > 'â'" select="'â'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:utf-8-octets-to-string()</x:label>
+         <x:call function="tan:utf-8-octets-to-string">
+            <x:param name="in" select="195, 194"/>
+         </x:call>
+         <x:expect label="octets 195, 194 > 'Â'" select="'Â'"/>
+      </x:scenario>
+  
+      
+   </x:scenario>
+   
+   
+</x:description>

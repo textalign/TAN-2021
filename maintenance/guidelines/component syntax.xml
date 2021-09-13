@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-syntax xmlns="tag:textalign.net,2015:ns" name-matches="\i\c*" name-replacement="\\i\\c*">
+    <!-- This document is used by the stylesheet that generates the TAN guidelines to define how plain-text references to attributes, elements, and so forth are to be found and then rendered. --> 
+    <!-- Dependent functions will assume that the string 'name' is a placeholder for a name, and can be swapped out (e.g., '@name' would become regular expression '@\w+'); anyone writing dependent functions must think about whether one wishes to capture the namespace prefix or not, e.g., 'tan:name' versus 'name' -->
+    <!-- @xpath-matching-pattern is used to identify the component in an XPath expression. -->
+    <!-- @string-matching-pattern is used to find references to the component in ordinary prose -->
+    <component type="attribute" syntax="@name" string-matching-pattern="@name"
+        xpath-matching-pattern="@name"/>
+    <component type="element" syntax="&lt;name>" string-matching-pattern="&lt;name>"
+        xpath-matching-pattern="^name$|^name\C|\Cname$|\Cname\C>"/>
+    <component type="pattern define" syntax="~name" string-matching-pattern="~name"/>
+    <component type="key xsl:key" syntax="ʞ name" string-matching-pattern="ʞ ?name"
+        xpath-matching-pattern="key\(\Cname"/>
+    <component type="function xsl:function" syntax="name()" string-matching-pattern="name\(\)?"
+        xpath-matching-pattern="name\("/>
+    <component type="variable xsl:variable param xsl:param" syntax="$name" string-matching-pattern="\$name"
+        xpath-matching-pattern="\$name"/>
+    <component type="template xsl:template named-template" syntax="Ŧ name" string-matching-pattern="Ŧ name"/>
+    <component type="template xsl:template template-mode" mode="true" syntax="ŧ name"
+        string-matching-pattern="ŧ name"/>
+    <component type="warning warn" syntax="??name" string-matching-pattern="\?\?name"
+        xpath-matching-pattern="tan:error\(\Cname"/>
+    <component type="error" syntax="!!name" string-matching-pattern="!!name"
+        xpath-matching-pattern="tan:error\(\Cname"/>
+    <component type="fatal" syntax="!!!name" string-matching-pattern="!!!name"
+        xpath-matching-pattern="tan:error\(\Cname"/>
+</component-syntax>

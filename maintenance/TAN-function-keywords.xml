@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<function-keywords xmlns="tag:textalign.net,2015:ns">
+   <item>
+      <keyword>Arabic</keyword>
+      <desc>functions related to the Arabic language</desc>
+      <xref>language</xref>
+   </item>
+   <item>
+      <keyword>Greek</keyword>
+      <desc>functions related to the Greek language</desc>
+      <xref>language</xref>
+   </item>
+   <item>
+      <keyword>Latin</keyword>
+      <desc>functions related to the Latin language</desc>
+      <xref>language</xref>
+   </item>
+   <item>
+      <keyword>Syriac</keyword>
+      <desc>functions related to the Syriac language</desc>
+      <xref>language</xref>
+   </item>
+   <item>
+      <keyword>archives</keyword>
+      <desc>functions dealing with compressed files: zip, docx, xlsx</desc>
+   </item>
+   <item>
+      <keyword>arrays</keyword>
+      <desc>functions dealing with arrays</desc>
+   </item>
+   <item>
+      <keyword>attributes</keyword>
+      <desc>functions that create or analyze attributes</desc>
+   </item>
+   <item>
+      <keyword>binary</keyword>
+      <desc>functions that process or produce bits (handled as booleans), hexBinary, and base64Binary</desc>
+      <xref>booleans</xref>
+      <xref>numerics</xref>
+   </item>
+   <item>
+      <keyword>booleans</keyword>
+      <desc>functions that process or produce booleans</desc>
+      <xref>binary</xref>
+   </item>
+   <item>
+      <keyword>checksums</keyword>
+      <desc>functions that create hashes or checksums</desc>
+   </item>
+   <item>
+      <keyword>codepoints</keyword>
+      <desc>functions that process or create codepoints</desc>
+      <xref>strings</xref>
+   </item>
+   <item>
+      <keyword>colors</keyword>
+      <desc>functions that process colors (handled as arrays of integers)</desc>
+      <xref>html</xref>
+   </item>
+   <item>
+      <keyword>datatypes</keyword>
+      <desc>functions that inspect data types</desc>
+   </item>
+   <item>
+      <keyword>diff</keyword>
+      <desc>functions that compare two or more strings, or handle the output of tan:diff() or
+         tan:collate()</desc>
+   </item>
+   <item>
+      <keyword>docx</keyword>
+      <desc>functions that process Word files (docx)</desc>
+      <xref>archives</xref>
+      <xref>files</xref>
+   </item>
+   <item>
+      <keyword>expansion</keyword>
+      <desc>functions that expand TAN files</desc>
+   </item>
+   <item>
+      <keyword>filenames</keyword>
+      <desc>functions that process file names, file paths, and file uris/urls</desc>
+      <xref>files</xref>
+      <xref>uris</xref>
+   </item>
+   <item>
+      <keyword>files</keyword>
+      <desc>functions that find, open, and save files</desc>
+      <xref>filenames</xref>
+   </item>
+   <item>
+      <keyword>grouping</keyword>
+      <desc>functions that group sequences of various items</desc>
+      <xref>merging</xref>
+   </item>
+   <item>
+      <keyword>html</keyword>
+      <desc>functions that create or process HTML components</desc>
+   </item>
+   <item>
+      <keyword>identifiers</keyword>
+      <desc>functions that create or process strings, attributes, or nodes that identify something</desc>
+   </item>
+   <item>
+      <keyword>items</keyword>
+      <desc>functions that process sequences of items of any type</desc>
+   </item>
+   <item>
+      <keyword>language</keyword>
+      <desc>functions that deal with natural languages</desc>
+      <xref>Arabic</xref>
+      <xref>Greek</xref>
+      <xref>Latin</xref>
+      <xref>Syriac</xref>
+      <xref>lexicomorphology</xref>
+   </item>
+   <item>
+      <keyword>lexicomorphology</keyword>
+      <desc>functions that deal with natural languages</desc>
+      <xref>language</xref>
+   </item>
+   <item>
+      <keyword>maps</keyword>
+      <desc>functions that process or create maps</desc>
+   </item>
+   <item>
+      <keyword>merging</keyword>
+      <desc>functions that merge various items</desc>
+      <xref>grouping</xref>
+   </item>
+   <item>
+      <keyword>namespaces</keyword>
+      <desc>functions that process namespaces</desc>
+   </item>
+   <item>
+      <keyword>nodes</keyword>
+      <desc>functions that process nodes (documents, elements, comments, processing instructions, text)</desc>
+   </item>
+   <item>
+      <keyword>numerals</keyword>
+      <desc>functions that process or numbers expressed in natural language</desc>
+      <xref>numerics</xref>
+   </item>
+   <item>
+      <keyword>numerics</keyword>
+      <desc>functions that process or create numbers (base-2 binary, octets, integers, hexadecimal, decimals, doubles)</desc>
+      <xref>numerals</xref>
+      <xref>binary</xref>
+   </item>
+   <item>
+      <keyword>pointers</keyword>
+      <desc>functions that process or create pointers relevant to TAN files</desc>
+   </item>
+   <item>
+      <keyword>regular expressions</keyword>
+      <desc>functions that use or expand regular expressions</desc>
+   </item>
+   <item>
+      <keyword>resolution</keyword>
+      <desc>functions that resolve TAN documents or URIs</desc>
+   </item>
+   <item>
+      <keyword>search</keyword>
+      <desc>functions that query search services or process search results</desc>
+   </item>
+   <item>
+      <keyword>sequences</keyword>
+      <desc>functions that process or create sequences of items</desc>
+   </item>
+   <item>
+      <keyword>serialization</keyword>
+      <desc>functions that translate data structures or objects into a data format</desc>
+   </item>
+   <item>
+      <keyword>spacing</keyword>
+      <desc>functions that process or create space (word spaces, tabs, carriage returns, line feeds)</desc>
+   </item>
+   <item>
+      <keyword>statistics</keyword>
+      <desc>functions that process or create statistics</desc>
+   </item>
+   <item>
+      <keyword>strings</keyword>
+      <desc>functions that process strings</desc>
+      <xref>codepoints</xref>
+   </item>
+   <item>
+      <keyword>tree manipulation</keyword>
+      <desc>functions that manipulate trees (XML structures or fragments)</desc>
+   </item>
+   <item>
+      <keyword>uris</keyword>
+      <desc>functions that process or create URIs</desc>
+      <xref>filenames</xref>
+   </item>
+   <item>
+      <keyword>versioning</keyword>
+      <desc>functions that process versioning in TAN files</desc>
+   </item>
+   <item>
+      <keyword>vocabulary</keyword>
+      <desc>functions that process or create TAN vocabulary</desc>
+   </item>
+</function-keywords>

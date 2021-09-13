@@ -1,0 +1,935 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+   xmlns:tan="tag:textalign.net,2015:ns"
+   stylesheet="../../functions-2/TAN-function-library.xsl">
+   
+   <x:param name="tan:stylesheet-iri">tag:textalign.net,2015:test:binary</x:param>
+   <x:param name="tan:stylesheet-url" select="static-base-uri()"/>
+   <x:param name="tan:change-message">Testing binary functions.</x:param>
+   
+   <x:variable name="bits-TTT" select="true(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTT" select="true(), true(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-TTFF" select="true(), true(), false(), false()" as="xs:boolean+"/>
+   <x:variable name="bits-FFTT" select="false(), false(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-FFFF" select="false(), false(), false(), false()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTTTTTT" select="true(), true(), true(), true(), true(), true(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTTFFTT" select="true(), true(), true(), true(), false(), false(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTTFFFT" select="true(), true(), true(), true(), false(), false(), false(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTTFFFF" select="true(), true(), true(), true(), false(), false(), false(), false()" as="xs:boolean+"/>
+   <x:variable name="bits-TTTFFFFF" select="true(), true(), true(), false(), false(), false(), false(), false()" as="xs:boolean+"/>
+   <x:variable name="bits-TFFFTFFF" select="true(), false(), false(), false(), true(), false(), false(), false()" as="xs:boolean+"/>
+   <x:variable name="bits-FFFTTTTT" select="false(), false(), false(), true(), true(), true(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-FFFFFTTT" select="false(), false(), false(), false(), false(), true(), true(), true()" as="xs:boolean+"/>
+   <x:variable name="bits-FFFFFFFF" select="false(), false(), false(), false(), false(), false(), false(), false()" as="xs:boolean+"/>
+   
+   
+   <x:scenario>
+      <x:label>Binary: bit handling</x:label>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:pad-bits()</x:label>
+         <x:call function="tan:pad-bits">
+            <x:param name="input-bits" select="$bits-TTT, $bits-TTT"/>
+            <x:param name="big-endian" select="true()"/>
+            <x:param name="item-size" select="4"/>
+         </x:call>
+         <x:expect label="TTTTTT BE > 4-padded FFTT TTTT" select="$bits-FFTT, $bits-TTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:pad-bits()</x:label>
+         <x:call function="tan:pad-bits">
+            <x:param name="input-bits" select="$bits-TTT, $bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+            <x:param name="item-size" select="8"/>
+         </x:call>
+         <x:expect label="TTTTTT LE > 4-padded TTTT TTFF" select="$bits-TTTT, $bits-TTFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:pad-bits()</x:label>
+         <x:call function="tan:pad-bits">
+            <x:param name="input-bits" select="$bits-TTT, $bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+            <x:param name="item-size" select="0"/>
+         </x:call>
+         <x:expect label="TTTTTT LE > 0-padded TTTTTT" select="$bits-TTT, $bits-TTT"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:pad-bits()</x:label>
+         <x:call function="tan:pad-bits">
+            <x:param name="input-bits" select="$bits-TTT, $bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+            <x:param name="item-size" select="-2"/>
+         </x:call>
+         <x:expect label="Item size negative = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g3')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g3'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="-2"/>
+      </x:scenario>
+      
+      
+      <x:scenario>
+         <x:label>tan:bits-to-byte()</x:label>
+         <x:call function="tan:bits-to-byte">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTT BE > byte FFFFFTTT" select="$bits-FFFFFTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-byte()</x:label>
+         <x:call function="tan:bits-to-byte">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TTT LE > byte TTTFFFFF" select="$bits-TTTFFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-byte()</x:label>
+         <x:call function="tan:bits-to-byte">
+            <x:param name="input-bits" select="()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="null LE > byte null" select="()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-byte()</x:label>
+         <x:call function="tan:bits-to-byte">
+            <!-- Even though the input is expressed as 3 + 8 bits, the pattern cannot be detected by the function (no grouping in
+            sequences). Because the input is big-endian, the input is treated as 8 + 3 -->
+            <x:param name="input-bits" select="$bits-TTT, $bits-TFFFTFFF"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTTTFFFTFFF BE > byte FFFFFTTT TFFFTFFF" select="$bits-FFFFFTTT, $bits-TFFFTFFF"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bits-to-word()</x:label>
+         <x:call function="tan:bits-to-word">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTT BE > word F8 F8 F8 FFFFFTTT"
+            select="$bits-FFFFFFFF, $bits-FFFFFFFF, $bits-FFFFFFFF, $bits-FFFFFTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-word()</x:label>
+         <x:call function="tan:bits-to-word">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TTT LE > word TTTFFFFF F8 F8 F8"
+            select="$bits-TTTFFFFF, $bits-FFFFFFFF, $bits-FFFFFFFF, $bits-FFFFFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-word()</x:label>
+         <x:call function="tan:bits-to-word">
+            <x:param name="input-bits" select="()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="null LE > word null" select="()"/>
+      </x:scenario>
+      
+      
+   </x:scenario>
+   
+   <x:scenario>
+      <x:label>Casting between binary types: bits, hexBinary, base64Binary</x:label>
+      
+      <x:scenario>
+         <x:label>tan:bits-to-hexBinary()</x:label>
+         <x:call function="tan:bits-to-hexBinary">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTT BE > hexBinary('07')" select="xs:hexBinary('07')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-hexBinary()</x:label>
+         <x:call function="tan:bits-to-hexBinary">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TTT LE > hexBinary('07')" select="xs:hexBinary('E0')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-hexBinary()</x:label>
+         <x:call function="tan:bits-to-hexBinary">
+            <x:param name="input-bits" select="true(), false()"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TF BE > hexBinary('02')" select="xs:hexBinary('02')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-hexBinary()</x:label>
+         <x:call function="tan:bits-to-hexBinary">
+            <x:param name="input-bits" select="true(), false()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TF LE > hexBinary('01')" select="xs:hexBinary('80')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-hexBinary()</x:label>
+         <x:call function="tan:bits-to-hexBinary">
+            <x:param name="input-bits" select="()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="null > hexBinary null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:hexBinary-to-bits()</x:label>
+         <x:call function="tan:hexBinary-to-bits">
+            <x:param name="in" select="xs:hexBinary('07')"/>
+         </x:call>
+         <x:expect label="hexBinary('07') > bits FFFFFTTT" select="$bits-FFFFFTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-bits()</x:label>
+         <x:call function="tan:hexBinary-to-bits">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="hexBinary null > bits null" select="()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-bits()</x:label>
+         <x:call function="tan:hexBinary-to-bits">
+            <x:param name="in" select="xs:hexBinary('1F0F')"/>
+         </x:call>
+         <x:expect label="hexBinary 1F0F > bits FFFTTTTT FFFFTTTT" select="$bits-FFFTTTTT, $bits-FFFF, $bits-TTTT"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bits-to-base64Binary()</x:label>
+         <x:call function="tan:bits-to-base64Binary">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="bits TTT BE > base64Binary Bw==" select="xs:base64Binary('Bw==')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-base64Binary()</x:label>
+         <x:call function="tan:bits-to-base64Binary">
+            <x:param name="input-bits" select="$bits-TTT"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="bits TTT LE > base64Binary 4A==" select="xs:base64Binary('4A==')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-base64Binary()</x:label>
+         <x:call function="tan:bits-to-base64Binary">
+            <x:param name="input-bits" select="$bits-TTTT, $bits-FFFTTTTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="bits TTTTFFFTTTTT BE > base64Binary Dx8=" select="xs:base64Binary('Dx8=')"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-base64Binary()</x:label>
+         <x:call function="tan:bits-to-base64Binary">
+            <x:param name="input-bits" select="()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="null > base64Binary null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:base64Binary-to-bits()</x:label>
+         <x:call function="tan:base64Binary-to-bits">
+            <x:param name="in" select="xs:base64Binary('0A==')"/>
+         </x:call>
+         <x:expect label="base64Binary('0A==') > bits TTFTFFFF" select="true(), true(), false(), true(), $bits-FFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-bits()</x:label>
+         <x:call function="tan:base64Binary-to-bits">
+            <x:param name="in" select="xs:base64Binary('Bw==')"/>
+         </x:call>
+         <x:expect label="base64Binary('Bw==') > bits FFFFFTTT" select="$bits-FFFFFTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-bits()</x:label>
+         <x:call function="tan:base64Binary-to-bits">
+            <x:param name="in" select="xs:base64Binary('4A==')"/>
+         </x:call>
+         <x:expect label="base64Binary('4A==') > bits TTTFFFFF" select="$bits-TTTFFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-bits()</x:label>
+         <x:call function="tan:base64Binary-to-bits">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="base64Binary null > bits null" select="()"/>
+      </x:scenario>
+      
+   </x:scenario>
+   
+   
+   <x:scenario>
+      <x:label>Casting binary types to/from octets</x:label>
+      
+      <x:scenario>
+         <x:label>tan:bits-to-octets()</x:label>
+         <x:call function="tan:bits-to-octets">
+            <x:param name="in" select="$bits-TTTT, $bits-FFFF"/>
+         </x:call>
+         <x:expect label="bits TTTTFFFF > octet 128" select="240"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:bits-to-octets()</x:label>
+         <x:call function="tan:bits-to-octets">
+            <x:param name="in" select="$bits-TTT"/>
+         </x:call>
+         <x:expect label="negative octets = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g5')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g5'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="3"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-octets()</x:label>
+         <x:call function="tan:bits-to-octets">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="bits null > octet null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:octets-to-bits()</x:label>
+         <x:call function="tan:octets-to-bits">
+            <x:param name="in" select="255, 0"/>
+         </x:call>
+         <x:expect label="octets 255, 0 > bits TTTTTTTT FFFFFFFF"
+            select="$bits-TTTTTTTT, $bits-FFFFFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:octets-to-bits()</x:label>
+         <x:call function="tan:octets-to-bits">
+            <x:param name="in" select="136"/>
+         </x:call>
+         <x:expect label="octets 136 > bits TFFFTFFF " select="$bits-TFFFTFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:octets-to-bits()</x:label>
+         <x:call function="tan:octets-to-bits">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="octets null > bits null " select="()"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:octets-to-bits()</x:label>
+         <x:call function="tan:octets-to-bits">
+            <x:param name="in" select="-136"/>
+         </x:call>
+         <x:expect label="negative octets = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g4')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g4'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="-136"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:hexBinary-to-octets()</x:label>
+         <x:call function="tan:hexBinary-to-octets">
+            <x:param name="in" select="xs:hexBinary('07')"/>
+         </x:call>
+         <x:expect label="hexBinary('07') > octet 7" select="7"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-octets()</x:label>
+         <x:call function="tan:hexBinary-to-octets">
+            <x:param name="in" select="xs:hexBinary('F1AA01')"/>
+         </x:call>
+         <x:expect label="hexBinary('F1AA01') > octets 241, 170, 1" select="241, 170, 1"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-octets()</x:label>
+         <x:call function="tan:hexBinary-to-octets">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="hexBinary null > octet null" select="()"/>
+      </x:scenario>
+
+
+      <x:scenario>
+         <x:label>tan:octets-to-hexBinary()</x:label>
+         <x:call function="tan:octets-to-hexBinary">
+            <x:param name="in" select="0, 1, 2"/>
+         </x:call>
+         <x:expect label="octets 0, 1, 2 > hexBinary 000102" select="xs:hexBinary('000102')"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:octets-to-hexBinary()</x:label>
+         <x:call function="tan:octets-to-hexBinary">
+            <x:param name="in" select="0, -1, -2"/>
+         </x:call>
+         <x:expect label="negative octets = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g4')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g4'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="-1, -2"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:octets-to-hexBinary()</x:label>
+         <x:call function="tan:octets-to-hexBinary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="octets null > hexBinary null" select="()"/>
+      </x:scenario>
+      
+
+
+
+      <x:scenario>
+         <x:label>tan:base64Binary-to-octets()</x:label>
+         <x:call function="tan:base64Binary-to-octets">
+            <x:param name="in" select="xs:base64Binary('Bw==')"/>
+         </x:call>
+         <x:expect label="base64Binary('Bw==') > octet 7" select="7"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-octets()</x:label>
+         <x:call function="tan:base64Binary-to-octets">
+            <x:param name="in" select="xs:base64Binary('8aoB')"/>
+         </x:call>
+         <x:expect label="base64Binary('8aoB') > octets 241, 170, 1" select="241, 170, 1"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-octets()</x:label>
+         <x:call function="tan:base64Binary-to-octets">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="base64Binary null > octet null" select="()"/>
+      </x:scenario>
+
+
+      <x:scenario>
+         <x:label>tan:octets-to-base64Binary()</x:label>
+         <x:call function="tan:octets-to-base64Binary">
+            <x:param name="in" select="0, 1, 2"/>
+         </x:call>
+         <x:expect label="octets 0, 1, 2 > base64Binary AAEC" select="xs:base64Binary('AAEC')"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:octets-to-base64Binary()</x:label>
+         <x:call function="tan:octets-to-base64Binary">
+            <x:param name="in" select="0, -1, -2"/>
+         </x:call>
+         <x:expect label="negative octets = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g4')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g4'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="-1, -2"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:octets-to-base64Binary()</x:label>
+         <x:call function="tan:octets-to-base64Binary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="octets null > base64Binary null" select="()"/>
+      </x:scenario>
+      
+   </x:scenario>
+   
+   
+   
+   <x:scenario>
+      <x:label>Casting binary types to/from strings</x:label>
+      
+      
+      <x:scenario>
+         <x:label>tan:bits-to-eight-bit-chars()</x:label>
+         <x:call function="tan:bits-to-eight-bit-chars">
+            <x:param name="bits" select="$bits-TTTTFFFF"/>
+         </x:call>
+         <x:expect label="bits TTTTFFFF > 'ð'" select="'ð'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-eight-bit-chars()</x:label>
+         <x:call function="tan:bits-to-eight-bit-chars">
+            <x:param name="bits" select="$bits-FFFFFFFF, $bits-TTTTFFFF"/>
+         </x:call>
+         <x:expect label="bits F8 TTTTFFFF > '␀j'" select="'␀ð'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bits-to-eight-bit-chars()</x:label>
+         <x:call function="tan:bits-to-eight-bit-chars">
+            <x:param name="bits" select="()"/>
+         </x:call>
+         <x:expect label="bits null > string null" select="()"/>
+      </x:scenario>
+
+
+      
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-bits()</x:label>
+         <x:call function="tan:eight-bit-chars-to-bits">
+            <x:param name="in" select="'ð'"/>
+         </x:call>
+         <x:expect label="'ð' > bits 6A" select="$bits-TTTTFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-bits()</x:label>
+         <x:call function="tan:eight-bit-chars-to-bits">
+            <x:param name="in" select="'␀ð'"/>
+         </x:call>
+         <x:expect label="'␀ð' > bits F8 TTTTFFFF" select="$bits-FFFFFFFF, $bits-TTTTFFFF"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:eight-bit-chars-to-bits()</x:label>
+         <x:call function="tan:eight-bit-chars-to-bits">
+            <x:param name="in" select="'λόγος'"/>
+         </x:call>
+         <x:expect label="non-ASCII string = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g6')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g6'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="955, 972, 947, 959, 962"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-bits()</x:label>
+         <x:call function="tan:eight-bit-chars-to-bits">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="string null > bits null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:hexBinary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:hexBinary-to-eight-bit-chars">
+            <x:param name="hexBinary" select="xs:hexBinary('6A')"/>
+         </x:call>
+         <x:expect label="hexBinary 6A > 'j'" select="'j'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:hexBinary-to-eight-bit-chars">
+            <x:param name="hexBinary" select="xs:hexBinary('006A')"/>
+         </x:call>
+         <x:expect label="hexBinary 6A > '␀j'" select="'␀j'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:hexBinary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:hexBinary-to-eight-bit-chars">
+            <x:param name="hexBinary" select="()"/>
+         </x:call>
+         <x:expect label="hexBinary null > string null" select="()"/>
+      </x:scenario>
+
+
+      
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-hexBinary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-hexBinary">
+            <x:param name="in" select="'j'"/>
+         </x:call>
+         <x:expect label="'j' > hexBinary 6A" select="xs:hexBinary('6A')"/>
+      </x:scenario>
+      <!-- The process currently doesn't handle characters allowed in XML 1.1 -->
+      <!--<x:scenario>
+         <x:label>tan:eight-bit-chars-to-hexBinary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-hexBinary">
+            <x:param name="in" select="'&#x18;'"/>
+         </x:call>
+         <x:expect label="U+0018 > hexBinary 18" select="xs:hexBinary('18')"/>
+      </x:scenario>-->
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-hexBinary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-hexBinary">
+            <x:param name="in" select="'␀j'"/>
+         </x:call>
+         <x:expect label="'␀j' > hexBinary 006A" select="xs:hexBinary('006A')"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:eight-bit-chars-to-hexBinary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-hexBinary">
+            <x:param name="in" select="'λόγος'"/>
+         </x:call>
+         <x:expect label="non-ASCII string = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g6')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g6'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="955, 972, 947, 959, 962"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-hexBinary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-hexBinary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="string null > hexBinary null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:base64Binary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:base64Binary-to-eight-bit-chars">
+            <x:param name="base64Binary" select="xs:base64Binary('ag==')"/>
+         </x:call>
+         <x:expect label="base64Binary ag== > 'j'" select="'j'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:base64Binary-to-eight-bit-chars">
+            <x:param name="base64Binary" select="xs:base64Binary('AGo=')"/>
+         </x:call>
+         <x:expect label="base64Binary AGo= > '␀j'" select="'␀j'"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:base64Binary-to-eight-bit-chars()</x:label>
+         <x:call function="tan:base64Binary-to-eight-bit-chars">
+            <x:param name="base64Binary" select="()"/>
+         </x:call>
+         <x:expect label="base64Binary null > string null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-base64Binary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-base64Binary">
+            <x:param name="in" select="'j'"/>
+         </x:call>
+         <x:expect label="'j' > base64Binary ag==" select="xs:base64Binary('ag==')"/>
+      </x:scenario>
+      <!-- The process currently doesn't handle characters allowed in XML 1.1 -->
+      <!--<x:scenario>
+         <x:label>tan:eight-bit-chars-to-base64Binary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-base64Binary">
+            <x:param name="in" select="'&#x18;'"/>
+         </x:call>
+         <x:expect label="U+0018 > base64Binary 18" select="xs:base64Binary('18')"/>
+      </x:scenario>-->
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-base64Binary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-base64Binary">
+            <x:param name="in" select="'␀j'"/>
+         </x:call>
+         <x:expect label="'␀j' > base64Binary AGo=" select="xs:base64Binary('AGo=')"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:eight-bit-chars-to-base64Binary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-base64Binary">
+            <x:param name="in" select="'λόγος'"/>
+         </x:call>
+         <x:expect label="non-ASCII string = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g6')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g6'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="955, 972, 947, 959, 962"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:eight-bit-chars-to-base64Binary()</x:label>
+         <x:call function="tan:eight-bit-chars-to-base64Binary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="string null > base64Binary null" select="()"/>
+      </x:scenario>
+      
+   </x:scenario>
+   
+   
+   
+   <x:scenario>
+      <x:label>Bitwise operations</x:label>
+      
+      <x:scenario>
+         <x:label>tan:bitwise-not()</x:label>
+         <x:call function="tan:bitwise-not">
+            <x:param name="boolean" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTT > FFFF" select="$bits-FFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-not()</x:label>
+         <x:call function="tan:bitwise-not">
+            <x:param name="boolean" select="$bits-FFFTTTTT"/>
+         </x:call>
+         <x:expect label="FFFTTTTT > TTTFFFFF" select="$bits-TTTFFFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-not()</x:label>
+         <x:call function="tan:bitwise-not">
+            <x:param name="boolean" select="()"/>
+         </x:call>
+         <x:expect label="null > null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bitwise-or()</x:label>
+         <x:call function="tan:bitwise-or">
+            <x:param name="bit-sequence-a" select="$bits-TTTT"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTT, TTTT > TTTT" select="$bits-TTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-or()</x:label>
+         <x:call function="tan:bitwise-or">
+            <x:param name="bit-sequence-a" select="true(), true(), false(), false()"/>
+            <x:param name="bit-sequence-b" select="true(), false(), true(), false()"/>
+         </x:call>
+         <x:expect label="TTFF, TFTF > TTTF" select="true(), true(), true(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-or()</x:label>
+         <x:call function="tan:bitwise-or">
+            <x:param name="bit-sequence-a" select="$bits-TTTT, $bits-FFFF"/>
+            <x:param name="bit-sequence-b" select="$bits-FFFF, $bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTTFFFF, FFFFTTTT > TTTTTTTT" select="$bits-TTTTTTTT"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:bitwise-or()</x:label>
+         <x:call function="tan:bitwise-or">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="non-ASCII string = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g7')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g7'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="0, 4"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-or()</x:label>
+         <x:call function="tan:bitwise-or">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="()"/>
+         </x:call>
+         <x:expect label="null, null > null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bitwise-and()</x:label>
+         <x:call function="tan:bitwise-and">
+            <x:param name="bit-sequence-a" select="$bits-TTTT"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTT, TTTT > TTTT" select="$bits-TTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-and()</x:label>
+         <x:call function="tan:bitwise-and">
+            <x:param name="bit-sequence-a" select="true(), true(), false(), false()"/>
+            <x:param name="bit-sequence-b" select="true(), false(), true(), false()"/>
+         </x:call>
+         <x:expect label="TTFF, TFTF > TFFF" select="true(), false(), false(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-and()</x:label>
+         <x:call function="tan:bitwise-and">
+            <x:param name="bit-sequence-a" select="$bits-TTTT, $bits-FFFF"/>
+            <x:param name="bit-sequence-b" select="$bits-FFFF, $bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTTFFFF, FFFFTTTT > FFFFFFFF" select="$bits-FFFF, $bits-FFFF"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:bitwise-and()</x:label>
+         <x:call function="tan:bitwise-and">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="non-ASCII string = errand code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g7')"/>
+         <x:expect label="errand description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g7'))"/>
+         <x:expect label="errand value" test="$x:result?err?value" select="0, 4"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-and()</x:label>
+         <x:call function="tan:bitwise-and">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="()"/>
+         </x:call>
+         <x:expect label="null, null > null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bitwise-xor()</x:label>
+         <x:call function="tan:bitwise-xor">
+            <x:param name="bit-sequence-a" select="$bits-TTTT"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTT, TTTT > FFFF" select="$bits-FFFF"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-xor()</x:label>
+         <x:call function="tan:bitwise-xor">
+            <x:param name="bit-sequence-a" select="true(), true(), false(), false()"/>
+            <x:param name="bit-sequence-b" select="true(), false(), true(), false()"/>
+         </x:call>
+         <x:expect label="TTFF, TFTF > FTTF" select="false(), true(), true(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-xor()</x:label>
+         <x:call function="tan:bitwise-xor">
+            <x:param name="bit-sequence-a" select="$bits-TTTT, $bits-FFFF"/>
+            <x:param name="bit-sequence-b" select="$bits-FFFF, $bits-TTTT"/>
+         </x:call>
+         <x:expect label="TTTTFFFF, FFFFTTTT > TTTTTTTT" select="$bits-TTTT, $bits-TTTT"/>
+      </x:scenario>
+      <x:scenario catch="yes">
+         <x:label>tan:bitwise-xor()</x:label>
+         <x:call function="tan:bitwise-xor">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+         </x:call>
+         <x:expect label="non-ASCII string = errand code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g7')"/>
+         <x:expect label="errand description" test="$x:result?err?description"
+            select="string($tan:binary-error-key('g7'))"/>
+         <x:expect label="errand value" test="$x:result?err?value" select="0, 4"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-xor()</x:label>
+         <x:call function="tan:bitwise-xor">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="()"/>
+         </x:call>
+         <x:expect label="null, null > null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="$bits-TTTT"/>
+            <x:param name="bit-sequence-b" select="$bits-TTTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTTT + TTTT = TTTTF" select="$bits-TTTT, false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="true(), true(), false(), false()"/>
+            <x:param name="bit-sequence-b" select="true(), false(), true(), false()"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTFF + TFTF BE = TFTTF" select="true(), false(), true(), true(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="true(), true(), false(), false()"/>
+            <x:param name="bit-sequence-b" select="true(), false(), true(), false()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TTFF + TFTF LE = FFFT" select="false(), false(), false(), true()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="$bits-TTTT, $bits-FFFF"/>
+            <x:param name="bit-sequence-b" select="$bits-FFFF, $bits-TTTT"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTTTFFFF + FFFFTTTT > TTTTTTTT" select="$bits-TTTT, $bits-TTTT"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="tan:bin-to-bits(tan:dec-to-bin(1111))"/>
+            <x:param name="bit-sequence-b" select="tan:bin-to-bits(tan:dec-to-bin(2222))"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="1111 + 2222 = 3333" select="tan:bin-to-bits(tan:dec-to-bin(3333))"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="$bits-TTFF"/>
+            <x:param name="bit-sequence-b" select="true()"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="TTFF + T BE = TTFT" select="true(), true(), false(), true()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="$bits-TTFF"/>
+            <x:param name="bit-sequence-b" select="true()"/>
+            <x:param name="big-endian" select="false()"/>
+         </x:call>
+         <x:expect label="TTFF + T LE = FFTF" select="false(), false(), true(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-plus()</x:label>
+         <x:call function="tan:bitwise-plus">
+            <x:param name="bit-sequence-a" select="()"/>
+            <x:param name="bit-sequence-b" select="()"/>
+            <x:param name="big-endian" select="true()"/>
+         </x:call>
+         <x:expect label="null, null > null" select="()"/>
+      </x:scenario>
+      
+      
+      
+      
+      
+      <x:scenario>
+         <x:label>tan:bitwise-rotate()</x:label>
+         <x:call function="tan:bitwise-rotate">
+            <x:param name="bit-sequence" select="$bits-TTFF"/>
+            <x:param name="rotate-left" select="1"/>
+         </x:call>
+         <x:expect label="rotate TTFF 1 > TFFT" select="true(), false(), false(), true()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-rotate()</x:label>
+         <x:call function="tan:bitwise-rotate">
+            <x:param name="bit-sequence" select="$bits-TTFF"/>
+            <x:param name="rotate-left" select="5"/>
+         </x:call>
+         <x:expect label="rotate TTFF 5 > TFFT" select="true(), false(), false(), true()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-rotate()</x:label>
+         <x:call function="tan:bitwise-rotate">
+            <x:param name="bit-sequence" select="$bits-TTFF"/>
+            <x:param name="rotate-left" select="-1"/>
+         </x:call>
+         <x:expect label="rotate TTFF -1 > FTTF" select="false(), true(), true(), false()"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:bitwise-rotate()</x:label>
+         <x:call function="tan:bitwise-rotate">
+            <x:param name="bit-sequence" select="()"/>
+            <x:param name="rotate-left" select="1"/>
+         </x:call>
+         <x:expect label="rotate null 1 > null" select="()"/>
+      </x:scenario>
+      
+      
+   </x:scenario>
+   
+</x:description>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href ="../../schemas/catalog.tan.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href ="../../schemas/catalog.tan.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<collection stable="true" metadata-resolved="false">
+   <doc id="nonexistent-doc" href="nonexistent-doc.xml" root="TAN-T"/>
+   <doc href="error-test-1.tan-t.xml"
+        TAN-version="20209"
+        id="tag:textalign.net,2015:error-test"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN transcription of Ring a Ring o' Roses</name>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-english</IRI>
+         <!-- tan19 -->
+         <IRI>urn:myname:1234567</IRI>
+         <name>English version of RRoR</name>
+      </version>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="bad-inc">
+         <IRI>tag:some-iri</IRI>
+         <name>xslt file</name>
+         <location accessed-when="2012-12-20"
+                   href="TAN-core-errors.xsl"
+                   orig-href="TAN-core-errors.xsl"/>
+      </inclusion>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="test-4">
+         <IRI>tag:textalign.net,2015:error-test-4</IRI>
+         <name>test file 4</name>
+         <location accessed-when="2019-01-30"
+                   href="error-test-4.tan-tei.xml"
+                   orig-href="error-test-4.tan-tei.xml"/>
+      </inclusion>
+      <see-also xmlns="tag:textalign.net,2015:ns" relationship="badidref">
+            <!-- tan10 -->
+         <IRI>tag:textalign.net,2015:bad-name</IRI>
+         <name>Test Vocabulary</name>
+         <location accessed-when="2012-12-11"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </see-also>
+      <see-also xmlns="tag:textalign.net,2015:ns" relationship="">
+         <IRI>tag:textalign.net,2015:a-bad-iri-that-wont-be-flagged-because-it-is-in-see-also</IRI>
+         <name>some random file</name>
+         <!-- wrn01 -->
+         <location accessed-when="2012-11-30"
+                   href="missing-file.xsl"
+                   orig-href="missing-file.xsl"/>
+      </see-also>
+      <model xmlns="tag:textalign.net,2015:ns">
+            <!-- tan09 -->
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>Bad model</name>
+         <location accessed-when="2019-01-01"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </model>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+            <!-- tan10 -->
+         <IRI>tag:something.com,2014:made-up-iri</IRI>
+         <name>Vocabulary</name>
+         <location accessed-when="2012-12-01"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns">
+            <!-- tan09 -->
+         <IRI>http://lccn.loc.gov/12032709</IRI>
+         <!-- tan09 -->
+         <IRI>http://lccn.loc.gov/12032709</IRI>
+         <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+         <!-- wrn10 or wrn11 -->
+         <location accessed-when="2018-12-12"
+                   href="http://badurl.com/ring-o-roses.eng.1881.xhtml"/>
+         <!-- self-referential pointing -->
+         <!-- tan17 whe02 -->
+         <location accessed-when="3030-12-12"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </source>
+      <see-also xmlns="tag:textalign.net,2015:ns"
+                relationship="park"
+                href="error-test-1.tan-t.xml"
+                orig-href=""/>
+      <annotation xmlns="tag:textalign.net,2015:ns">
+            <!-- tan09 -->
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>Error test 2</name>
+         <location accessed-when="2018-12-29"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </annotation>
+      <vocabulary xmlns="tag:textalign.net,2015:ns"
+                  which="bad"
+                  accessed-when="2019-05-31"/>
+   </doc>
+   <doc href="error-test-2.tan-voc.xml"
+        TAN-version="2020"
+        id="tag:textalign.net,9999:error-test-2"
+        affects-element="work"
+        root="TAN-voc">
+      <name xmlns="tag:textalign.net,2015:ns">Keywords for Aristotle's Categories</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="error-test-1.tan-t.xml"
+                       orig-href="error-test-1.tan-t.xml"/>
+      <license xmlns="tag:textalign.net,2015:ns" licensor="park">
+         <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+         <name>Creative Commons Attribution 4.0 International License</name>
+         <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+      </license>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="test-1">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>Error test 1</name>
+         <location accessed-when="2018-12-11"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </inclusion>
+      <successor xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>Error test 1</name>
+         <location accessed-when="2018-12-29"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </successor>
+      <adjustments xmlns="tag:textalign.net,2015:ns"/>
+   </doc>
+   <doc href="error-test-3.tan-a.xml"
+        id="tag:textalign.net,2015:error-test"
+        TAN-version="2020"
+        claimant="person_1"
+        root="TAN-A">
+      <name xmlns="tag:textalign.net,2015:ns">Error test tan-a</name>
+      <master-location xmlns="tag:textalign.net,2015:ns"
+                       href="../templates/template.docx"
+                       orig-href="../../templates/template.docx"/>
+      <license xmlns="tag:textalign.net,2015:ns" which="4.0" licensor="park"/>
+      <numerals xmlns="tag:textalign.net,2015:ns" priority="roman"/>
+      <token-definition xmlns="tag:textalign.net,2015:ns"
+                        which="letters and punctuation"
+                        src="*"/>
+      <token-definition xmlns="tag:textalign.net,2015:ns"
+                        src="test-4"
+                        which="letters and punctuation"/>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="test-6">
+         <IRI>tag:textalign.net,2015:error-test-6</IRI>
+         <name>test 3</name>
+         <location accessed-when="2019-02-20"
+                   href="error-test-6.tan-mor.xml"
+                   orig-href="error-test-6.tan-mor.xml"/>
+      </inclusion>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>Vocabulary</name>
+         <location accessed-when="2019-01-07"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="test-1">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>error tan-t</name>
+         <location accessed-when="2020-02-27"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="test-4">
+         <IRI>tag:textalign.net,2015:error-test-4</IRI>
+         <name>Test 4</name>
+         <location accessed-when="2019-01-23"
+                   href="error-test-4.tan-tei.xml"
+                   orig-href="error-test-4.tan-tei.xml"/>
+      </source>
+      <source xmlns="tag:textalign.net,2015:ns" xml:id="test-8">
+         <IRI>tag:textalign.net,2015:error-test-8</IRI>
+         <name>error test 8 tan-t</name>
+         <location accessed-when="2019-02-20"
+                   href="error-test-8.tan-t.xml"
+                   orig-href="error-test-8.tan-t.xml"/>
+      </source>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="test-1">
+            <!-- cl215 seq05 -->
+         <skip n="bad - worse"/>
+         <!-- dty01 -->
+         <skip div-type="chapter"/>
+         <!-- cl215 cl203 -->
+         <rename n="bad" new="bad"/>
+         <!-- cl207 -->
+         <equate n="bill ball"/>
+      </adjustments>
+      <adjustments xmlns="tag:textalign.net,2015:ns" src="test-4">
+         <skip ref="2"/>
+         <!-- cl214 -->
+         <skip ref="2"/>
+         <!-- cl213 cl215 -->
+         <rename n="huh" by="4"/>
+         <!-- ref01 cl216 -->
+         <rename ref="7.4-6" new="8.2"/>
+         <!-- cl218 -->
+         <rename ref="2" by="4"/>
+         <rename ref="preface" new="pref1"/>
+         <!-- cl212 -->
+         <rename ref="preface" new="pref3"/>
+         <!-- cl206 -->
+         <rename n="preface" new="pref2"/>
+         <!-- cl217 -->
+         <rename ref="test3" new="3"/>
+         <!-- rea03 -->
+         <rename n="test4" new="test5"/>
+         <!-- cl205 -->
+         <equate n="3 iii"/>
+         <!-- cl204 -->
+         <equate n="test4 test6"/>
+         <reassign>
+                <!-- rea04 rea02 (because tokenization will still be tried on nonleaf divs) -->
+            <passage ref="2a">
+               <from-tok pos="1"/>
+               <through-tok pos="1"/>
+            </passage>
+            <!-- rea02 -->
+            <passage ref="2a.3">
+               <from-tok pos="2"/>
+               <!-- rea01 -->
+               <through-tok pos="1"/>
+            </passage>
+            <!-- rea03 -->
+            <passage ref="test5">
+               <from-tok val="Test"/>
+               <through-tok pos="2"/>
+            </passage>
+            <!-- rea02 -->
+            <passage ref="test5">
+               <from-tok val="Plus"/>
+               <through-tok val="another"/>
+            </passage>
+            <!-- rea02 -->
+            <passage ref="test5">
+               <from-tok val="another"/>
+               <through-tok pos="last"/>
+            </passage>
+            <to ref="3"/>
+         </reassign>
+      </adjustments>
+   </doc>
+   <doc href="error-test-4.tan-tei.xml"
+        TAN-version="2020"
+        id="tag:textalign.net,2015:error-test-4-bogus"
+        root="TEI">
+      <name xmlns="tag:textalign.net,2015:ns">TAN-TEI transcription of Ring a Ring o' Roses</name>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-badIRI</IRI>
+         <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-english-wrong</IRI>
+         <name>English version of RRoR</name>
+      </version>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/12032709-bad</IRI>
+         <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+         <location accessed-when="2018-12-12"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </source>
+      <redivision xmlns="tag:textalign.net,2015:ns">
+            <!-- tan09 -->
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>test 1</name>
+         <location accessed-when="2019-01-20"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </redivision>
+      <model xmlns="tag:textalign.net,2015:ns">
+            <!-- tan09 -->
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>test 1</name>
+         <location accessed-when="2019-02-01"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </model>
+      <predecessor xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:error-test-2</IRI>
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>test 2</name>
+         <!-- wrn01 -->
+         <location accessed-when="2019-01-22"
+                   href="error-test-2.tan-voc.xml-bad-url"
+                   orig-href="error-test-2.tan-voc.xml-bad-url"/>
+      </predecessor>
+   </doc>
+   <doc href="error-test-5.tan-a-lm.xml"
+        id="tag:textalign.net,2015:error-test-5"
+        TAN-version="2020"
+        lexicon="lex"
+        morphology="morph"
+        claimant="park"
+        root="TAN-A-lm">
+      <name xmlns="tag:textalign.net,2015:ns">Error test tan-a-lm</name>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>error tan-t</name>
+         <location accessed-when="2019-01-07"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </source>
+   </doc>
+   <doc href="error-test-6.tan-mor.xml"
+        id="tag:textalign.net,2015:error-test-6"
+        TAN-version="2020"
+        root="TAN-mor">
+      <name xmlns="tag:textalign.net,2015:ns">Error test tan-mor</name>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="person_1"/>
+      <for-lang xmlns="tag:textalign.net,2015:ns">eng</for-lang>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="test-3">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>test 3</name>
+         <location accessed-when="2019-02-20"
+                   href="error-test-3.tan-a.xml"
+                   orig-href="error-test-3.tan-a.xml"/>
+      </inclusion>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>Vocabulary</name>
+         <location accessed-when="2019-01-07"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </vocabulary>
+   </doc>
+   <doc href="error-test-8.tan-t.xml"
+        TAN-version="20209"
+        id="tag:textalign.net,2015:error-test-8"
+        xml:lang="eng"
+        root="TAN-T">
+      <name xmlns="tag:textalign.net,2015:ns">TAN transcription of Ring a Ring o' Roses</name>
+      <license xmlns="tag:textalign.net,2015:ns" which="by_4.0" licensor="park"/>
+      <work xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+         <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+      </work>
+      <version xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-english</IRI>
+         <!-- tan19 -->
+         <IRI>urn:myname:1234567</IRI>
+         <name>English version of RRoR</name>
+      </version>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="bad-inc">
+         <IRI>tag:some-iri</IRI>
+         <name>xslt file</name>
+         <location accessed-when="2012-12-20"
+                   href="TAN-core-errors.xsl"
+                   orig-href="TAN-core-errors.xsl"/>
+      </inclusion>
+      <inclusion xmlns="tag:textalign.net,2015:ns" xml:id="test-4">
+         <IRI>tag:textalign.net,2015:error-test-4</IRI>
+         <name>test file 4</name>
+         <location accessed-when="2019-01-30"
+                   href="error-test-4.tan-tei.xml"
+                   orig-href="error-test-4.tan-tei.xml"/>
+      </inclusion>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+            <!-- tan10 -->
+         <IRI>tag:something.com,2014:made-up-iri</IRI>
+         <name>Vocabulary</name>
+         <location accessed-when="2012-12-01"
+                   href="error-test-2.tan-voc.xml"
+                   orig-href="error-test-2.tan-voc.xml"/>
+      </vocabulary>
+      <vocabulary xmlns="tag:textalign.net,2015:ns">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>Error test file 1</name>
+         <location accessed-when="2019-10-10"
+                   href="error-test-1.tan-t.xml"
+                   orig-href="error-test-1.tan-t.xml"/>
+      </vocabulary>
+      <source xmlns="tag:textalign.net,2015:ns">
+         <IRI>http://lccn.loc.gov/12032709</IRI>
+         <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+      </source>
+   </doc>
+</collection>

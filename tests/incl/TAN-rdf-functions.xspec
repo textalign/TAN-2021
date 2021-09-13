@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tan="tag:textalign.net,2015:ns"
+   xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../functions/TAN-functions.xsl">
+   
+   <x:variable name="class-1-sample" as="document-node()" href="../../examples/ring-o-roses.eng.1987.xml"/>
+   
+   <x:variable name="work-uri-1" as="xs:string"
+      select="'http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses'"/>
+   
+   <!-- Delamar, Mother Goose, 1987 -->
+   <x:variable name="scriptum-uri-1" as="xs:string"
+      select="'http://lccn.loc.gov/87042504'"/>
+   <!-- Opie, The Oxford dictionary of nursery rhymes, 1951 -->
+   <x:variable name="scriptum-uri-2" as="xs:string"
+      select="'http://lccn.loc.gov/51014126'"/>
+   <!-- Burkert, Lore and Science, 2003 -->
+   <x:variable name="scriptum-uri-3" as="xs:string"
+      select="'http://www.worldcat.org/oclc/860129739'"/>
+   
+   
+   <!-- Line one of Ring-a-ring-a-rosie -->
+   <x:variable name="lf-work-uri-1a" as="xs:string"
+      select="$work-uri-1 || '#$lf0:a=w;t=l;r=' || $scriptum-uri-1 || ';1$'"/>
+   
+   <x:variable name="lf-work-uri-1a-parsed-map" as="map(*)"
+      select="map{
+         'base-uri' : $work-uri-1,
+         'fragment-start' : '',
+         'fragment-end' : '',
+         'lf-fragment' : '$lf0:a=w;t=l;r=' || $scriptum-uri-1 || ';1$',
+         
+         'lf-version' : '0',
+         'lf-uri-type' : 'work',
+         'lf-work-constraint-uri' : '',
+         'lf-ref-system-type' : 'l',
+         'lf-ref-scriptum-uri' : $scriptum-uri-1,
+         
+         'lf-references' : map{
+            1 : map{
+               'is-range' : false(),
+               'is-fusion' : false(),
+               1 : map{
+                  'steps' : '1'
+               }
+            }
+         }
+      }"
+   />
+   
+   
+   <!-- The following LF URI is syntactically valid but disallowed, because the scriptum in question has multiple versions of Ring-a-roses.
+      The proper approach would be to use a URI that specifies exactly which version of Ring-a-roses is meant. But even then, the URI below
+      is suboptimal, because it is tethered to the page-line numbers of a particular edition and that numbering system is nowhere else common,
+      so the URI will not match very few if any . In fact, this is a poem, where the logical line numbers are the key unit. But 
+   we construct a suboptimal URI here for testing and documentation. -->
+   <x:variable name="lf-work-uri-1b" as="xs:string" 
+      select="$work-uri-1 || '#$lf0:a=w;t=m;r=' || $scriptum-uri-1 || ';38:28$'"/>
+   <x:variable name="lf-work-uri-1b-parsed-map" as="map(*)"
+      select="map{
+         'base-uri' : $work-uri-1,
+         'fragment-start' : '',
+         'fragment-end' : '',
+         'lf-fragment' : '$lf0:a=w;t=m;r=' || $scriptum-uri-1 || ';38:28$',
+         
+         'lf-version' : '0',
+         'lf-uri-type' : 'work',
+         'lf-work-constraint-uri' : '',
+         'lf-ref-system-type' : 'm',
+         'lf-ref-scriptum-uri' : $scriptum-uri-1,
+         
+         'lf-references' : map{
+            1 : map{
+               'is-range' : false(),
+               'is-fusion' : false(),
+               1 : map{
+                  'steps' : ('38', '28')
+               }
+            }
+         }
+      }"
+   />
+   
+   
+   
+   <x:scenario>
+      <x:label>Literature Fragids</x:label>
+      
+      <x:scenario>
+         <x:label>tan:parse-lf-uri</x:label>
+         <x:call function="tan:parse-lf-uri">
+            <x:param name="lf-uri" select="$lf-work-uri-1a"/>
+         </x:call>
+         <x:expect label="Work URI 1a" select="$lf-work-uri-1a-parsed-map"/>
+      </x:scenario>
+      <x:scenario>
+         <x:label>tan:parse-lf-uri</x:label>
+         <x:call function="tan:parse-lf-uri">
+            <x:param name="lf-uri" select="$lf-work-uri-1b"/>
+         </x:call>
+         <x:expect label="Work URI 1b" select="$lf-work-uri-1b-parsed-map"/>
+      </x:scenario>
+      
+      <x:pending>
+         <x:scenario>
+            <x:label>tan:is-valid-lf-uri()</x:label>
+            <x:call function="tan:is-valid-lf-uri">
+               <x:param name="lf-uri" select="''"/>
+            </x:call>
+            <x:expect label="zero-length string is not an LF URI" select="false()"/>
+         </x:scenario>
+         <x:scenario>
+            <x:label>tan:is-valid-lf-uri()</x:label>
+            <x:call function="tan:is-valid-lf-uri">
+               <x:param name="lf-uri" select="$work-uri-1"/>
+            </x:call>
+            <x:expect label="A URI without a fragment part is not an LF URI" select="false()"/>
+         </x:scenario>
+      </x:pending>
+      
+   </x:scenario>
+   
+   <x:pending>
+      <x:scenario>
+         <x:label>Class 1 files and Literature Fragid URIs</x:label>
+
+         <x:scenario>
+            <x:label>tan:get-class-1-fragment()</x:label>
+            <x:call function="tan:get-class-1-fragment">
+               <x:param name="lf-uri"
+                  select="$lf-work-uri-1a"/>
+               <x:param name="resolved-class-1-file" select="tan:resolve-doc($class-1-sample)"/>
+            </x:call>
+            <x:expect>
+               <x:label>Ring a Ring a roses line 1</x:label>
+               <tan:div type="l" n="1" q="d21e115">Ring-a-round the rosie, </tan:div>
+            </x:expect>
+         </x:scenario>
+      </x:scenario>
+   </x:pending>
+</x:description>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test>
+   <!-- lev 1 comment -->
+   <?pi lev 1 pi ?>
+   <a>Sentence 
+      <d/> a</a>
+   <b>Sentence <!-- comment --> b</b>
+   <c>Sentence <?pi sample pi ?> c</c>
+</test>

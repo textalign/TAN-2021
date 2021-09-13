@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:tan="tag:textalign.net,2015:ns"
+   xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../functions/TAN-function-library.xsl">
+   
+   <x:variable name="n-string-1" as="xs:string" select="'Rev 23:4, 8-9; 25:1, 2-14'"/>
+   
+   <x:scenario>
+      <x:label>Sequence Functions</x:label>
+      
+      <x:scenario>
+         <x:label>tan:item-type()</x:label>
+         <x:scenario>
+            <x:label>string</x:label>
+            <x:call function="tan:item-type">
+               <x:param name="xml-items" select="$n-string-1"/>
+            </x:call>
+            <x:expect label="xs:string" select="'xs:string'"/>
+         </x:scenario>
+         <x:scenario>
+            <x:label>document node</x:label>
+            <x:call function="tan:item-type">
+               <x:param name="xml-items" select="$tan:empty-document"/>
+            </x:call>
+            <x:expect label="document-node" select="'document-node'"/>
+         </x:scenario>
+      </x:scenario>
+      
+      <!--<x:scenario>
+         <x:label>Normalize sequence</x:label>
+         <x:call function="tan:normalize-sequence">
+            <x:param name="sequence-string" select="$n-string-1"/>
+            <x:param name="attribute-name" select="'n'"/>
+         </x:call>
+         <x:expect label="Normalize sequence 1" select="'rev 23.4'"/>
+      </x:scenario>-->
+      
+      <!--<x:scenario>
+         <x:label>Analyze sequence</x:label>
+         <x:call function="tan:analyze-sequence">
+            <x:param name="sequence-string" select="$n-string-1"/>
+            <x:param name="name-of-attribute" select="'n'"/>
+            <x:param name="expand-ranges" select="false()"/>
+         </x:call>
+         <x:expect label="Analyze sequence 1" select="'rev 23.4'"/>
+      </x:scenario>-->
+      
+   </x:scenario>
+   
+   
+</x:description>

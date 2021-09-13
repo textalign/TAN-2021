@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+   xmlns:tan="tag:textalign.net,2015:ns"
+   xmlns:err="http://www.w3.org/2005/xqt-errors"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   stylesheet="../../functions-2/TAN-function-library.xsl"> 
+   
+   <x:param name="tan:stylesheet-iri">tag:textalign.net,2015:test:numeric-conversion</x:param>
+   <x:param name="tan:stylesheet-url" select="static-base-uri()"/>
+   <x:param name="tan:change-message">Testing numeric conversion functions.</x:param>
+   
+   
+      <x:scenario>
+      <x:label>Numeric conversion: Generic base functions</x:label>
+      <x:scenario label="Scenario for testing function dec-to-n">
+         <x:call function="tan:dec-to-n">
+            <x:param name="in" select="3"/>
+            <x:param name="base" select="2"/>
+         </x:call>
+         <x:expect label="Decimal 3 = binary 11" select="'11'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-n">
+         <x:call function="tan:dec-to-n">
+            <x:param name="in" select="-4"/>
+            <x:param name="base" select="3"/>
+         </x:call>
+         <x:expect label="Decimal -4 = base 3 -11" select="'-11'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-n">
+         <x:call function="tan:dec-to-n">
+            <x:param name="in" select="()"/>
+            <x:param name="base" select="3"/>
+         </x:call>
+         <x:expect label="Decimal null = base 3 null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-n" catch="yes">
+         <x:call function="tan:dec-to-n">
+            <x:param name="in" select="4"/>
+            <x:param name="base" select="222"/>
+         </x:call>
+         <x:expect label="Base-222 4 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g1')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g1'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="222"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function n-to-dec">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="'11'"/>
+            <x:param name="base-n" select="2"/>
+         </x:call>
+         <x:expect label="Binary 11 = decimal 3" select="3"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function n-to-dec" catch="yes">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="'gg'"/>
+            <x:param name="base-n" select="2"/>
+         </x:call>
+         <x:expect label="Base-2 4 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'gg'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function n-to-dec">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="''"/>
+            <x:param name="base-n" select="5"/>
+         </x:call>
+         <x:expect label="Input empty string = decimal null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function n-to-dec">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="()"/>
+            <x:param name="base-n" select="6"/>
+         </x:call>
+         <x:expect label="Input null = decimal null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function n-to-dec" catch="yes">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="'4'"/>
+            <x:param name="base-n" select="2"/>
+         </x:call>
+         <x:expect label="Base-2 4 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'4'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function n-to-dec" catch="yes">
+         <x:call function="tan:n-to-dec">
+            <x:param name="input" select="'4'"/>
+            <x:param name="base-n" select="222"/>
+         </x:call>
+         <x:expect label="Base-222 4 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g1')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g1'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="222"/>
+      </x:scenario>
+      
+   </x:scenario>   
+      
+      
+      
+   
+   
+
+   <!-- DECIMAL TO OTHER SYSTEMS -->
+   <x:scenario>
+      <x:label>Numerics: Conversion from decimal to common systems</x:label>
+
+      <x:scenario label="Scenario for testing function dec-to-bin">
+         <x:call function="tan:dec-to-bin">
+            <x:param name="in" select="8"/>
+         </x:call>
+         <x:expect label="Decimal 10 = binary 100" select="'1000'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-bin">
+         <x:call function="tan:dec-to-bin">
+            <x:param name="in" select="-8"/>
+         </x:call>
+         <x:expect label="Decimal -8 = binary -1000" select="'-1000'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-bin">
+         <x:call function="tan:dec-to-bin">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function dec-to-hex">
+         <x:call function="tan:dec-to-hex">
+            <x:param name="in" select="10"/>
+         </x:call>
+         <x:expect label="Decimal 10 = hex A" select="'A'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-hex">
+         <x:call function="tan:dec-to-hex">
+            <x:param name="in" select="-100"/>
+         </x:call>
+         <x:expect label="Decimal -100 = hex -64" select="'-64'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-hex">
+         <x:call function="tan:dec-to-hex">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function dec-to-base26">
+         <x:call function="tan:dec-to-base26">
+            <x:param name="in" select="27"/>
+         </x:call>
+         <x:expect label="Decimal 27 = base 26 BB" select="'BB'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-base26">
+         <x:call function="tan:dec-to-base26">
+            <x:param name="in" select="-703"/>
+         </x:call>
+         <x:expect label="Decimal -703 = base 26 BBB" select="'-BBB'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-base26">
+         <x:call function="tan:dec-to-base26">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function dec-to-base64">
+         <x:call function="tan:dec-to-base64">
+            <x:param name="in" select="27"/>
+         </x:call>
+         <x:expect label="Decimal 27 = base 64 b" select="'b'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-base64">
+         <x:call function="tan:dec-to-base64">
+            <x:param name="in" select="-703"/>
+         </x:call>
+         <x:expect label="Decimal -703 = base 64 -K/" select="'-K/'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function dec-to-base64">
+         <x:call function="tan:dec-to-base64">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+
+   </x:scenario>
+   
+
+   <!-- OTHER SYSTEMS TO DECIMAL -->
+   <x:scenario>
+      <x:label>Numerics: Conversion from common systems to decimal</x:label>
+
+      <x:scenario label="Scenario for testing function bin-to-dec">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="'1000'"/>
+         </x:call>
+         <x:expect label="Binary 1000 = decimal 8" select="8"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-dec">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="'-11001'"/>
+         </x:call>
+         <x:expect label="Binary -11001 = decimal -25" select="-25"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-dec">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="'000101'"/>
+         </x:call>
+         <x:expect label="Binary 000101 = decimal 5" select="5"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-dec">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Binary null = decimal null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-dec">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Binary '' = decimal null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-dec" catch="yes">
+         <x:call function="tan:bin-to-dec">
+            <x:param name="in" select="'5'"/>
+         </x:call>
+         <x:expect label="Base-2 5 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'5'"/>
+         
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function hex-to-dec">
+         <x:call function="tan:hex-to-dec">
+            <x:param name="in" select="'A'"/>
+         </x:call>
+         <x:expect label="Hex A = decimal 10" select="10"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-dec">
+         <x:call function="tan:hex-to-dec">
+            <x:param name="in" select="'-FA'"/>
+         </x:call>
+         <x:expect label="Hex -FA = decimal -250" select="-250"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-dec">
+         <x:call function="tan:hex-to-dec">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="empty input = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-dec">
+         <x:call function="tan:hex-to-dec">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null input = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-dec" catch="yes">
+         <x:call function="tan:hex-to-dec">
+            <x:param name="in" select="'Z'"/>
+         </x:call>
+         <x:expect label="Base-16 Z = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'Z'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function base26-to-dec">
+         <x:call function="tan:base26-to-dec">
+            <x:param name="in" select="'BA'"/>
+         </x:call>
+         <x:expect label="Base 26 ba = decimal 26" select="26"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base26-to-dec">
+         <x:call function="tan:base26-to-dec">
+            <x:param name="in" select="'-CBA'"/>
+         </x:call>
+         <x:expect label="Base 26 -CBA = decimal -1378" select="-1378"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base26-to-dec">
+         <x:call function="tan:base26-to-dec">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base26-to-dec">
+         <x:call function="tan:base26-to-dec">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base26-to-dec" catch="yes">
+         <x:call function="tan:base26-to-dec">
+            <x:param name="in" select="'%'"/>
+         </x:call>
+         <x:expect label="Base-26 % = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'%'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function base64-to-dec">
+         <x:call function="tan:base64-to-dec">
+            <x:param name="in" select="'BA'"/>
+         </x:call>
+         <x:expect label="Base 64 BA = decimal 64" select="64"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-dec">
+         <x:call function="tan:base64-to-dec">
+            <x:param name="in" select="'-//'"/>
+         </x:call>
+         <x:expect label="Base 64 -// = decimal -4095" select="-4095"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-dec">
+         <x:call function="tan:base64-to-dec">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-dec">
+         <x:call function="tan:base64-to-dec">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-dec" catch="yes">
+         <x:call function="tan:base64-to-dec">
+            <x:param name="in" select="'!'"/>
+         </x:call>
+         <x:expect label="Base-64 ! = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'!'"/>
+      </x:scenario>
+
+
+   </x:scenario>
+   
+   <x:scenario>
+      <x:label>Conversions of base 2, 16, 64</x:label>
+
+      <x:scenario label="Scenario for testing function bin-to-hex">
+         <x:call function="tan:bin-to-hex">
+            <x:param name="in" select="'11111'"/>
+         </x:call>
+         <x:expect label="Binary 11111 = hex AF" select="'1F'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hex">
+         <x:call function="tan:bin-to-hex">
+            <x:param name="in" select="'-000111'"/>
+         </x:call>
+         <x:expect label="Binary -000111 = hex -07" select="'-07'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hex">
+         <x:call function="tan:bin-to-hex">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Binary null = hex null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hex">
+         <x:call function="tan:bin-to-hex">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Binary '' = hex '' (zero-length string)" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hex" catch="yes">
+         <x:call function="tan:bin-to-hex">
+            <x:param name="in" select="'3'"/>
+         </x:call>
+         <x:expect label="Base-2 3 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'3'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function hex-to-bin">
+         <x:call function="tan:hex-to-bin">
+            <x:param name="in" select="'FA1'"/>
+         </x:call>
+         <x:expect label="Hex FA1 = binary 111110100001" select="'111110100001'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bin">
+         <x:call function="tan:hex-to-bin">
+            <x:param name="in" select="'-3E'"/>
+         </x:call>
+         <x:expect label="Hex -3E = binary -00111110" select="'-00111110'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bin">
+         <x:call function="tan:hex-to-bin">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Hex '' = binary ''" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bin">
+         <x:call function="tan:hex-to-bin">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bin" catch="yes">
+         <x:call function="tan:hex-to-bin">
+            <x:param name="in" select="'!@#$'"/>
+         </x:call>
+         <x:expect label="Hex !@#$ = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'!@#$'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function bin-to-base64">
+         <x:call function="tan:bin-to-base64">
+            <x:param name="in" select="'11111'"/>
+         </x:call>
+         <x:expect label="Binary 11111 = base64 f" select="'f'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64">
+         <x:call function="tan:bin-to-base64">
+            <x:param name="in" select="'-000111'"/>
+         </x:call>
+         <x:expect label="Binary -000111 = base64 -H" select="'-H'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64">
+         <x:call function="tan:bin-to-base64">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64">
+         <x:call function="tan:bin-to-base64">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = ''" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64" catch="yes">
+         <x:call function="tan:bin-to-base64">
+            <x:param name="in" select="'5'"/>
+         </x:call>
+         <x:expect label="Base-2 5 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'5'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="'A+'"/>
+         </x:call>
+         <x:expect label="base64 A+ = binary 000000111110" select="'000000111110'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="'-fQ'"/>
+         </x:call>
+         <x:expect label="base64 -fQ = binary -011111010000" select="'-011111010000'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="'aA'"/>
+         </x:call>
+         <x:expect label="Base 64 aA = binary 011010000000" select="'011010000000'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="'-/'"/>
+         </x:call>
+         <x:expect label="Base 64 -/ = binary -0000000000111111" select="'-111111'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = ''" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-bin" catch="yes">
+         <x:call function="tan:base64-to-bin">
+            <x:param name="in" select="'!@#$'"/>
+         </x:call>
+         <x:expect label="Base-64 !@#$ = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'!@#$'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function hex-to-base64">
+         <x:call function="tan:hex-to-base64">
+            <x:param name="in" select="'D'"/>
+         </x:call>
+         <x:expect label="hex D = base64 N" select="'N'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-base64">
+         <x:call function="tan:hex-to-base64">
+            <x:param name="in" select="'-7D0'"/>
+         </x:call>
+         <x:expect label="hex -7D0 = base64 -fQ" select="'-fQ'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-base64">
+         <x:call function="tan:hex-to-base64">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = ''" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-base64">
+         <x:call function="tan:hex-to-base64">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-base64" catch="yes">
+         <x:call function="tan:hex-to-base64">
+            <x:param name="in" select="'##'"/>
+         </x:call>
+         <x:expect label="Base-16 ## = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'##'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="'A+'"/>
+         </x:call>
+         <x:expect label="base64 A+ = hex 03E" select="'03E'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="'F'"/>
+         </x:call>
+         <x:expect label="base64 F = hex 05" select="'05'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="'A+=='"/>
+         </x:call>
+         <x:expect label="base64 A+== (padded) = hex 03E" select="'03E'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="'-fQ'"/>
+         </x:call>
+         <x:expect label="base64 -fQ = hex -7D0" select="'-7D0'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="'' = ''" select="''"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-hex" catch="yes">
+         <x:call function="tan:base64-to-hex">
+            <x:param name="in" select="'###'"/>
+         </x:call>
+         <x:expect label="Base-64 ### = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'###'"/>
+      </x:scenario>
+
+   </x:scenario>
+   
+   
+   
+   
+   
+   <x:scenario>
+      <x:label>Casting base-2 numerals to/from data types</x:label>
+
+      <x:scenario label="Scenario for testing function bin-to-bits">
+         <x:call function="tan:bin-to-bits">
+            <x:param name="base-2-binary" select="'100'"/>
+         </x:call>
+         <x:expect label="Binary 100 = bits TFF" select="true(), false(), false()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-bits">
+         <x:call function="tan:bin-to-bits">
+            <x:param name="base-2-binary" select="'-0100'"/>
+         </x:call>
+         <x:expect label="Binary -0100 = bits FTFF" select="false(), true(), false(), false()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-bits">
+         <x:call function="tan:bin-to-bits">
+            <x:param name="base-2-binary" select="''"/>
+         </x:call>
+         <x:expect label="Binary '' = bits null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-bits">
+         <x:call function="tan:bin-to-bits">
+            <x:param name="base-2-binary" select="()"/>
+         </x:call>
+         <x:expect label="null = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-bits" catch="yes">
+         <x:call function="tan:bin-to-bits">
+            <x:param name="base-2-binary" select="'5'"/>
+         </x:call>
+         <x:expect label="Base-2 5 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'5'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function bits-to-bin">
+         <x:call function="tan:bits-to-bin">
+            <x:param name="bits" select="true(), false(), false()"/>
+         </x:call>
+         <x:expect label="Bits TFF = binary 100" select="'100'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bits-to-bin">
+         <x:call function="tan:bits-to-bin">
+            <x:param name="bits" select="false(), false(), true(), false(), false()"/>
+         </x:call>
+         <x:expect label="Bits FFTFF = binary 00100" select="'00100'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bits-to-bin">
+         <x:call function="tan:bits-to-bin">
+            <x:param name="bits" select="()"/>
+         </x:call>
+         <x:expect label="Bits empty = binary empty" select="()"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function bin-to-hexBinary">
+         <x:call function="tan:bin-to-hexBinary">
+            <x:param name="in" select="'001000'"/>
+         </x:call>
+         <x:expect label="Base 2 001000 = xs:hexBinary('08')" select="xs:hexBinary('08')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hexBinary">
+         <x:call function="tan:bin-to-hexBinary">
+            <x:param name="in" select="'-11111'"/>
+         </x:call>
+         <x:expect label="Base 2 -11111 = xs:hexBinary('1F')" select="xs:hexBinary('1F')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hexBinary">
+         <x:call function="tan:bin-to-hexBinary">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Base 2 '' = xs:hexBinary(())" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hexBinary">
+         <x:call function="tan:bin-to-hexBinary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Base 2 null = xs:hexBinary(())" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-hexBinary" catch="yes">
+         <x:call function="tan:bin-to-hexBinary">
+            <x:param name="in" select="'5'"/>
+         </x:call>
+         <x:expect label="Base-2 5 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'5'"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function hexBinary-to-bin">
+         <x:call function="tan:hexBinary-to-bin">
+            <x:param name="in" select="xs:hexBinary('08')"/>
+         </x:call>
+         <x:expect label="xs:hexBinary('08') = base 2 00001000" select="'00001000'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hexBinary-to-bin">
+         <x:call function="tan:hexBinary-to-bin">
+            <x:param name="in" select="xs:hexBinary('00FFFF')"/>
+         </x:call>
+         <x:expect label="xs:hexBinary('00FFFF') = base 2 000000001111111111111111"
+            select="'000000001111111111111111'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hexBinary-to-bin">
+         <x:call function="tan:hexBinary-to-bin">
+            <x:param name="in" select="xs:hexBinary('')"/>
+         </x:call>
+         <x:expect label="xs:hexBinary('') = base 2 null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hexBinary-to-bin">
+         <x:call function="tan:hexBinary-to-bin">
+            <x:param name="in" select="xs:hexBinary(())"/>
+         </x:call>
+         <x:expect label="xs:hexBinary(()) = base 2 null" select="()"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function bin-to-base64Binary">
+         <x:call function="tan:bin-to-base64Binary">
+            <x:param name="in" select="'001000'"/>
+         </x:call>
+         <x:expect label="Base 2 001000 = xs:base64Binary('CA==')" select="xs:base64Binary('CA==')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64Binary">
+         <x:call function="tan:bin-to-base64Binary">
+            <x:param name="in" select="'-11111'"/>
+         </x:call>
+         <x:expect label="Base 2 -11111 = xs:base64Binary('Hw==')" select="xs:base64Binary('Hw==')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64Binary">
+         <x:call function="tan:bin-to-base64Binary">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Base 2 '' = xs:base64Binary(())" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64Binary">
+         <x:call function="tan:bin-to-base64Binary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Base 2 null = xs:base64Binary(())" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bin-to-base64Binary" catch="yes">
+         <x:call function="tan:bin-to-base64Binary">
+            <x:param name="in" select="'5'"/>
+         </x:call>
+         <x:expect label="Base-2 5 = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'5'"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function base64Binary-to-bin">
+         <x:call function="tan:base64Binary-to-bin">
+            <x:param name="in" select="xs:base64Binary('Ag==')"/>
+         </x:call>
+         <x:expect label="xs:base64Binary('Ag==') = base 2 00000010" select="'00000010'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-bin">
+         <x:call function="tan:base64Binary-to-bin">
+            <x:param name="in" select="xs:base64Binary('AAg7A+/M')"/>
+         </x:call>
+         <x:expect
+            label="xs:base64Binary('AAg7A+/M') = base 2 000000000000100000111011000000111110111111001100"
+            select="'000000000000100000111011000000111110111111001100'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-bin">
+         <x:call function="tan:base64Binary-to-bin">
+            <x:param name="in" select="xs:base64Binary('')"/>
+         </x:call>
+         <x:expect label="xs:base64Binary('') = base 2 null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-bin">
+         <x:call function="tan:base64Binary-to-bin">
+            <x:param name="in" select="xs:base64Binary(())"/>
+         </x:call>
+         <x:expect label="xs:base64Binary(()) = base 2 null" select="()"/>
+      </x:scenario>
+      
+   </x:scenario>
+   
+   <x:scenario>
+      <x:label>Casting hexadecimal to/from datatypes</x:label>
+      
+      <x:scenario label="Scenario for testing function hex-to-bits">
+         <x:call function="tan:hex-to-bits">
+            <x:param name="in" select="'-F'"/>
+         </x:call>
+         <x:expect label="Hex -F = bits TTTT " select="true(), true(), true(), true()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bits">
+         <x:call function="tan:hex-to-bits">
+            <x:param name="in" select="'0'"/>
+         </x:call>
+         <x:expect label="Hex 0 = bits FFFF " select="false(), false(), false(), false()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bits">
+         <x:call function="tan:hex-to-bits">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Hex '' = bits null " select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bits">
+         <x:call function="tan:hex-to-bits">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Hex null = bits null " select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-bits" catch="yes">
+         <x:call function="tan:hex-to-bits">
+            <x:param name="in" select="'Z'"/>
+         </x:call>
+         <x:expect label="Hex Z = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'Z'"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function bits-to-hex">
+         <x:call function="tan:bits-to-hex">
+            <x:param name="in" select="true(), true()"/>
+         </x:call>
+         <x:expect label="Bits TT = hex 3" select="'3'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bits-to-hex">
+         <x:call function="tan:bits-to-hex">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Bits empty = hex empty" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function bits-to-hex">
+         <x:call function="tan:bits-to-hex">
+            <x:param name="in" select="false()"/>
+         </x:call>
+         <x:expect label="Bits F = hex 0" select="'0'"/>
+      </x:scenario>
+      
+      
+      <x:scenario label="Scenario for testing function hex-to-hexBinary">
+         <x:call function="tan:hex-to-hexBinary">
+            <x:param name="in" select="'-F'"/>
+         </x:call>
+         <x:expect label="Hex -F = xs:hexBinary('0F')" select="xs:hexBinary('0F')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-hexBinary">
+         <x:call function="tan:hex-to-hexBinary">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Hex '' = xs:hexBinary null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-hexBinary">
+         <x:call function="tan:hex-to-hexBinary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Hex null = xs:hexBinary null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hex-to-hexBinary" catch="yes">
+         <x:call function="tan:hex-to-hexBinary">
+            <x:param name="in" select="'Z'"/>
+         </x:call>
+         <x:expect label="Hex Z = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'Z'"/>
+      </x:scenario>
+      
+      <x:scenario label="Scenario for testing function hexBinary-to-hex">
+         <x:call function="tan:hexBinary-to-hex">
+            <x:param name="in" select="xs:hexBinary('0F')"/>
+         </x:call>
+         <x:expect label="xs:hexBinary('0F') = hex F" select="'0F'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function hexBinary-to-hex">
+         <x:call function="tan:hexBinary-to-hex">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="xs:hexBinary null = hex null" select="()"/>
+      </x:scenario>
+      
+   </x:scenario>
+   
+   <x:scenario>
+      <x:label>Casting base 64 to/from datatypes</x:label>
+      <x:scenario label="Scenario for testing function base64-to-base64Binary">
+         <x:call function="tan:base64-to-base64Binary">
+            <x:param name="in" select="'-s'"/>
+         </x:call>
+         <x:expect label="Base-64 -s = xs:base64Binary('LA==')" select="xs:base64Binary('LA==')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-base64Binary">
+         <x:call function="tan:base64-to-base64Binary">
+            <x:param name="in" select="'AF'"/>
+         </x:call>
+         <x:expect label="Base-64 AF (= hex 05 = bin 000000 000000 0101) = xs:base64Binary('AAU=')"
+            select="xs:base64Binary('AAU=')"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-base64Binary">
+         <x:call function="tan:base64-to-base64Binary">
+            <x:param name="in" select="''"/>
+         </x:call>
+         <x:expect label="Base-64 '' = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-base64Binary">
+         <x:call function="tan:base64-to-base64Binary">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="Base-64 '' = null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64-to-base64Binary" catch="yes">
+         <x:call function="tan:base64-to-base64Binary">
+            <x:param name="in" select="'!@#$'"/>
+         </x:call>
+         <x:expect label="Base-64 !@#$ = error code" test="$x:result?err?code"
+            select="QName($tan:TAN-namespace, 'g2')"/>
+         <x:expect label="error description" test="$x:result?err?description"
+            select="string($tan:error-key('g2'))"/>
+         <x:expect label="error value" test="$x:result?err?value" select="'!@#$'"/>
+      </x:scenario>
+
+      <x:scenario label="Scenario for testing function base64Binary-to-base64">
+         <x:call function="tan:base64Binary-to-base64">
+            <x:param name="in" select="xs:base64Binary('BQ==')"/>
+         </x:call>
+         <x:expect label="base64Binary BQ== is base-64 F" select="'F'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-base64">
+         <x:call function="tan:base64Binary-to-base64">
+            <x:param name="in" select="xs:base64Binary('AAAAAAFA')"/>
+         </x:call>
+         <x:expect label="base64Binary AAAAAAFA is base-64 AAAAAAFA" select="'AAAAAAFA'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-base64">
+         <x:call function="tan:base64Binary-to-base64">
+            <x:param name="in" select="xs:base64Binary('')"/>
+         </x:call>
+         <x:expect label="base64Binary '' is base-64 null" select="()"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function base64Binary-to-base64">
+         <x:call function="tan:base64Binary-to-base64">
+            <x:param name="in" select="()"/>
+         </x:call>
+         <x:expect label="base64Binary null is base-64 null" select="()"/>
+      </x:scenario>
+
+   </x:scenario>
+   
+
+</x:description>

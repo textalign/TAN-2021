@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-mor.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN-mor.sch" phase="normal" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- wrn04 wrn07 -->
+<TAN-mor xmlns="tag:textalign.net,2015:ns"
+         id="tag:textalign.net,2015:error-test-6"
+         TAN-version="2021">
+   <head>
+      <name>Error test tan-mor</name>
+      <license which="by_4.0" licensor="person_1"/>
+      <for-lang>eng</for-lang>
+      <!-- inc03 wrn02 -->
+      <inclusion xml:id="test-3">
+         <IRI>tag:textalign.net,2015:error-test</IRI>
+         <name>test 3</name>
+         <location href="error-test-3.tan-a.xml" accessed-when="2019-02-20"/>
+      </inclusion>
+      <!-- whi02 tan11 wrn03 wrn05 -->
+      <vocabulary>
+         <IRI>tag:textalign.net,9999:error-test-2</IRI>
+         <name>Vocabulary</name>
+         <location href="error-test-2.tan-voc.xml" accessed-when="2019-01-07"/>
+      </vocabulary>
+      <vocabulary-key>
+            <!-- inc02  
+                ! this is an example of an inclusion that itself tries to include organization, but can't do so because of circularity rules -->
+         <organization include="test-3"/>
+         <organization xml:id="org2">
+            <IRI>tag:textalign.net,2015:test:organization:org2</IRI>
+            <name>a second made-up organization</name>
+         </organization>
+         <feature xml:id="major">
+            <IRI>tag:textalign.net,2015:test:feature:major</IRI>
+            <name>major part of speech</name>
+         </feature>
+         <feature xml:id="number">
+            <IRI>tag:textalign.net,2015:test:feature:number</IRI>
+            <name>number</name>
+         </feature>
+         <!-- loc04 -->
+         <algorithm xml:id="algorithm1">
+            <IRI>tag:textalign.net,2015:application:convert-tan-file</IRI>
+            <name>TAN conversion</name>
+            <!-- wrn01 -->
+            <location href="../../applications/convert/incl/convert%20TAN%202020%20to%202021%20core.xsl"
+                      accessed-when="2021-04-29T02:46:00.609-04:00"/>
+         </algorithm>
+      </vocabulary-key>
+      <resp who="person_1" roles="editor"/>
+      <resp who="algorithm1" roles="stylesheet"/>
+      <!-- tan01 -->
+      <file-resp who="person_1"/>
+      <change who="algorithm1" when="2021-04-29T02:46:00.609-04:00">Converted tag:textalign.net,2015:error-test-6 to version 2021</change>
+      <change when="2019-01-07" who="person_1"/>
+      <to-do>
+         <comment when="2019-02-20" who="person_1">test comment</comment>
+      </to-do>
+   </head>
+   <body>
+      <rule m-has-how-many-codes="2">
+         <report>M should not have only two features</report>
+      </rule>
+      <category feature="major_part_of_speech">
+         <code feature="adjective">
+            <!-- tmo02 -->
+            <val>a</val>
+         </code>
+         <code feature="adjective">
+            <!-- tmo02 -->
+            <val>A</val>
+         </code>
+      </category>
+      <category feature="number">
+         <code feature="adjective">
+            <val>b1</val>
+         </code>
+         <code feature="dual">
+            <val>b</val>
+         </code>
+      </category>
+   </body>
+</TAN-mor>

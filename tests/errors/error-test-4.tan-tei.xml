@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-TEI.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" phase="verbose" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- this test file primed for verbose validation -->
+<!-- cat01 verbose cat04 verbose cat07 verbose cat03 verbose (make sure catalog.tan.xml has a bogus id in it for this file) 
+    cat06 verbose (provided catalog doesn't have entry for this file)
+    wrn04
+-->
+<TEI xmlns="http://www.tei-c.org/ns/1.0" TAN-version="2021" id="tag:textalign.net,2015:error-test-4">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <head xmlns="tag:textalign.net,2015:ns">
+        <name>TAN-TEI transcription of Ring a Ring o' Roses</name>
+        <license which="by_4.0" licensor="park"/>
+        <work>
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-badIRI</IRI>
+            <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+        </work>
+        <version>
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-english-wrong</IRI>
+            <name>English version of RRoR</name>
+        </version>
+        <!-- cl114 -->
+        <source>
+            <IRI>http://lccn.loc.gov/12032709-bad</IRI>
+            <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+            <location accessed-when="2018-12-12" href="error-test-1.tan-t.xml"/>
+        </source>
+        <!-- wrn02 wrn07 cl101 cl102 cl103 cl104 verbose -->
+        <redivision>
+            <!-- tan09 -->
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>test 1</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2019-01-20"/>
+        </redivision>
+        <!-- cl102 cl107 verbose wrn02 wrn07 -->
+        <model>
+            <!-- tan09 -->
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>test 1</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2019-02-01"/>
+        </model>
+        <!-- loc01 -->
+        <predecessor>
+            <IRI>tag:textalign.net,2015:error-test-2</IRI>
+            <IRI>tag:textalign.net,9999:error-test-2</IRI>
+            <name>test 2</name>
+            <!-- wrn01 -->
+            <location href="error-test-2.tan-voc.xml-bad-url" accessed-when="2019-01-22"/>
+        </predecessor>
+        <vocabulary-key>
+            <div-type xml:id="line" which="line (verse)"/>
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <IRI>tag:textalign.net,2015:person:park</IRI>
+                <name>Jenny Park</name>
+            </person>
+        </vocabulary-key>
+        <!-- verbose tan21 -->
+        <file-resp who="park Jenny_Park"/>
+        <resp roles="creator" who="park"/>
+        <change when="2014-08-13" who="park">Started file</change>
+        <!-- tan02 -->
+        <to-do/>
+    </head>
+    <text>
+        <body xml:lang="eng">
+            <!-- cl104 verbose cl107 verbose -->
+            <div type="preface" n="preface"><p>This is a preface</p></div>
+            <!-- cl104 verbose cl107 -->
+            <div type="line" n="1"><p>Line 1</p></div>
+            <!-- cl107 -->
+            <div type="line" n="2">
+                <!-- cl115 verbose cl104 verbose cl107 verbose -->
+                <div type="part" n="iii"><p>3. Line 3, non-leaf div</p></div>
+            </div>
+            <!-- cl107 verbose -->
+            <div type="line" n="2a">
+                <!-- cl104 verbose cl107 verbose -->
+                <div type="part" n="iii"><p>A strange nonleaf div.</p></div>
+            </div>
+            <div type="line" n="3">
+                <!-- cl107 verbose cl116 verbose cl104 verbose -->
+                <div type="part" n="a"><p>3.a. Some text with bad |<!-- tei04 tei05 --><lb/>line<!-- tei06 --><lb break="no"/> breaks.</p></div>
+            </div>
+            <!-- cl104 verbose cl107 verbose -->
+            <div type="part" n="test3"><p>Test line 3.</p></div>
+            <!-- cl104 verbose cl107 verbose -->
+            <div type="part" n="test4"><p>Test line 4.</p><p>Plus another paragraph.</p></div>
+        </body>
+    </text>
+</TEI>

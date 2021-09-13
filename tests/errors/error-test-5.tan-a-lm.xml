@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-A-lm.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" phase="normal" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- wrn04 -->
+<TAN-A-lm xmlns="tag:textalign.net,2015:ns" id="tag:textalign.net,2015:error-test-5" TAN-version="2021">
+    <head>
+        <name>Error test tan-a-lm</name>
+        <license which="by_4.0" licensor="park"/>
+        <!-- wrn02 wrn07 -->
+        <source>
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>error tan-t</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2019-01-07"/>
+        </source>
+        <vocabulary-key>
+            <!-- wrn03 wrn02 wrn07 -->
+            <morphology xml:id="morph">
+                <IRI>tag:textalign.net,2015:error-test-6</IRI>
+                <name>test morphology</name>
+                <location href="error-test-6.tan-mor.xml" accessed-when="2019-02-20"/>
+            </morphology>
+            <!-- lnk06 -->
+            <morphology xml:id="badmorph">
+                <IRI>tag:textalign.net,2015:error-test-7</IRI>
+                <name>test morphology</name>
+                <location href="error-test-7.catalog.tan.xml" accessed-when="2019-02-20"/>
+            </morphology>
+            <lexicon xml:id="lex">
+                <IRI>tag:textalign.net,2015:test:lexicon</IRI>
+                <name>fictitious lexicon</name>
+            </lexicon>
+            <person xml:id="park">
+                <IRI>tag:textalign.net,2015:test:park</IRI>
+                <name>Jenny Park</name>
+            </person>
+        </vocabulary-key>
+        <resp who="park" roles="editor"/>
+        <file-resp who="park"/>
+        <change when="2019-01-07" who="park"/>
+        <to-do>
+            <comment when="2019-02-20" who="park">test comment</comment>
+        </to-do>
+    </head>
+    <body lexicon="lex" morphology="morph" claimant="park">
+        <ana>
+            <tok val="unnormalized"/>
+            <!-- tok01 -->
+            <tok val="mistake"/>
+            <lm>
+                <!-- tlm02 tlm03 -->
+                <m>a b c</m>
+                <!-- tlm04 -->
+                <m>a b</m>
+            </lm>
+        </ana>
+        <ana>
+            <tok val="Books" ref="7"/>
+            <lm>
+                <m>a</m>
+            </lm>
+        </ana>
+    </body>
+</TAN-A-lm>

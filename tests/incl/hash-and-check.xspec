@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+   xmlns:tan="tag:textalign.net,2015:ns"
+   stylesheet="../../functions-2/TAN-function-library.xsl">
+   
+   <x:param name="tan:stylesheet-iri">tag:textalign.net,2015:test:numeric-conversion</x:param>
+   <x:param name="tan:stylesheet-url" select="static-base-uri()"/>
+   <x:param name="tan:change-message">Testing numeric conversion functions.</x:param>
+   
+   
+   
+   <x:scenario>
+      <x:label>Fletcher 16</x:label>
+      <x:scenario label="Scenario for testing function checksum-fletcher-16">
+         <x:call function="tan:checksum-fletcher-16">
+            <x:param name="str" select="'abcde'"/>
+         </x:call>
+         <x:expect label="abcde > C8F0" select="'C8F0'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-16">
+         <x:call function="tan:checksum-fletcher-16">
+            <x:param name="str" select="'abcdef'"/>
+         </x:call>
+         <x:expect label="abcdef > 2057" select="'2057'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-16">
+         <x:call function="tan:checksum-fletcher-16">
+            <x:param name="str" select="'abcdefgh'"/>
+         </x:call>
+         <x:expect label="abcdefgh > 0627" select="'0627'"/>
+      </x:scenario>
+   </x:scenario>
+
+   <x:scenario>
+      <x:label>Fletcher 32</x:label>
+      <x:scenario label="Scenario for testing function checksum-fletcher-32">
+         <x:call function="tan:checksum-fletcher-32">
+            <x:param name="str" select="'abcde'"/>
+         </x:call>
+         <x:expect label="abcde > F04FC729" select="'F04FC729'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-32">
+         <x:call function="tan:checksum-fletcher-32">
+            <x:param name="str" select="'abcdef'"/>
+         </x:call>
+         <x:expect label="abcdef > 56502D2A" select="'56502D2A'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-32">
+         <x:call function="tan:checksum-fletcher-32">
+            <x:param name="str" select="'abcdefgh'"/>
+         </x:call>
+         <x:expect label="abcdefgh > EBE19591" select="'EBE19591'"/>
+      </x:scenario>
+   </x:scenario>
+
+   <x:scenario>
+      <x:label>Fletcher 64</x:label>
+      <x:scenario label="Scenario for testing function checksum-fletcher-64">
+         <x:call function="tan:checksum-fletcher-64">
+            <x:param name="str" select="'abcde'"/>
+         </x:call>
+         <x:expect label="abcde > C8C6C527646362C6" select="'C8C6C527646362C6'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-64">
+         <x:call function="tan:checksum-fletcher-64">
+            <x:param name="str" select="'abcdef'"/>
+         </x:call>
+         <x:expect label="abcdef > C8C72B276463C8C6" select="'C8C72B276463C8C6'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher-64">
+         <x:call function="tan:checksum-fletcher-64">
+            <x:param name="str" select="'abcdefgh'"/>
+         </x:call>
+         <x:expect label="abcdefgh > 312E2B28CCCAC8C6" select="'312E2B28CCCAC8C6'"/>
+      </x:scenario>
+   </x:scenario>
+
+   <x:scenario>
+      <x:label>Fletcher general</x:label>
+      <x:scenario label="Scenario for testing function checksum-fletcher">
+         <x:call function="tan:checksum-fletcher">
+            <x:param name="str" select="'abcde'"/>
+            <x:param name="byte-size" select="29"/>
+            <x:param name="output-hex" select="true()"/>
+         </x:call>
+         <x:expect label="abcde illegal byte size 29 > C8F0 (defaults to byte size 1)" select="'C8F0'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function checksum-fletcher">
+         <x:call function="tan:checksum-fletcher">
+            <x:param name="str" select="()"/>
+            <x:param name="byte-size" select="29"/>
+            <x:param name="output-hex" select="true()"/>
+         </x:call>
+         <x:expect label="string null > null" select="()"/>
+      </x:scenario>
+   </x:scenario>
+   
+   <x:scenario>
+      <x:label>MD5</x:label>
+
+      <x:scenario label="Scenario for testing function md5">
+         <x:call function="tan:md5">
+            <x:param name="input" select="''"/>
+         </x:call>
+         <x:expect
+            label="'' > MD5 hash d41d8cd98f00b204e9800998ecf8427e"
+            select="'d41d8cd98f00b204e9800998ecf8427e'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function md5">
+         <x:call function="tan:md5">
+            <x:param name="input" select="'A'"/>
+         </x:call>
+         <x:expect
+            label="'A' > MD5 hash 7fc56270e7a70fa81a5935b72eacbe29"
+            select="'7fc56270e7a70fa81a5935b72eacbe29'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function md5">
+         <x:call function="tan:md5">
+            <x:param name="input" select="'AB'"/>
+         </x:call>
+         <x:expect
+            label="'AB' > MD5 hash b86fc6b051f63d73de262d4c34e3a0a9"
+            select="'b86fc6b051f63d73de262d4c34e3a0a9'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function md5">
+         <x:call function="tan:md5">
+            <x:param name="input" select="'The quick brown fox jumps over the lazy dog'"/>
+         </x:call>
+         <x:expect
+            label="The quick brown fox jumps over the lazy dog > MD5 hash 9e107d9d372bb6826bd81d3542a419d6"
+            select="'9e107d9d372bb6826bd81d3542a419d6'"/>
+      </x:scenario>
+      <x:scenario label="Scenario for testing function md5">
+         <x:call function="tan:md5">
+            <x:param name="input" select="'The quick brown fox jumps over the lazy dog.'"/>
+         </x:call>
+         <x:expect
+            label="The quick brown fox jumps over the lazy dog. > MD5 hash e4d909c290d0fb1ca068ffaddf22cbd0"
+            select="'e4d909c290d0fb1ca068ffaddf22cbd0'"/>
+      </x:scenario>
+      
+   </x:scenario>
+
+</x:description>

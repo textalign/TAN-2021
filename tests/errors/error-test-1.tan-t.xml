@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-T.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" phase="normal" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- wrn07 tan20 -->
+<TAN-T xmlns="tag:textalign.net,2015:ns" TAN-version="20209" id="tag:textalign.net,2015:error-test">
+    <head>
+        <name>TAN transcription of Ring a Ring o' Roses</name>
+        <license which="by_4.0" licensor="park"/>
+        <work>
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses</IRI>
+            <name>"Ring a Ring o' Roses" or "Ring Around the Rosie"</name>
+        </work>
+        <version>
+            <IRI>http://dbpedia.org/resource/Ring_a_Ring_o%27_Roses-english</IRI>
+            <!-- tan19 -->
+            <IRI>urn:myname:1234567</IRI>
+            <name>English version of RRoR</name>
+        </version>
+        <!-- cl120 -->
+        <reference-system type="logical" scriptum="scr01"/>
+        <!-- inc04 lnk01 lnk07 -->
+        <inclusion xml:id="bad-inc">
+            <IRI>tag:some-iri</IRI>
+            <name>xslt file</name>
+            <location href="../TAN-function-library.xspec" accessed-when="2012-12-20"/>
+        </inclusion>
+        <!-- wrn02 -->
+        <inclusion xml:id="test-4">
+            <IRI>tag:textalign.net,2015:error-test-4</IRI>
+            <name>test file 4</name>
+            <location href="error-test-4.tan-tei.xml" accessed-when="2019-01-30"/>
+        </inclusion>
+        <!-- inc04 inc06 wrn02 -->
+        <inclusion xml:id="test-8">
+            <IRI>tag:textalign.net,2015:error-test-8</IRI>
+            <name>test file 8</name>
+            <location href="error-test-8.tan-t.xml" accessed-when="2019-01-30"/>
+        </inclusion>
+        <!-- loc02 wrn02 wrn03 wrn05 tan05 -->
+        <see-also relationship="badidref">
+            <!-- tan10 -->
+            <IRI>tag:textalign.net,2015:bad-name</IRI>
+            <name>Test Vocabulary</name>
+            <location href="error-test-2.tan-voc.xml" accessed-when="2012-12-11"/>
+        </see-also>
+        <!-- loc04 tan05 -->
+        <see-also relationship="">
+            <IRI>tag:textalign.net,2015:a-bad-iri-that-wont-be-flagged-because-it-is-in-see-also</IRI>
+            <name>some random file</name>
+            <!-- wrn01 -->
+            <location href="missing-file.xsl" accessed-when="2012-11-30"/>
+        </see-also>
+        <!-- wrn03 wrn05 lnk03 cl102 -->
+        <model>
+            <!-- tan09 -->
+            <IRI>tag:textalign.net,9999:error-test-2</IRI>
+            <name>Bad model</name>
+            <location href="error-test-2.tan-voc.xml" accessed-when="2019-01-01"/>
+        </model>
+        
+        <!-- wrn02 whi02 loc02 tan11 wrn03 wrn05 inc05 -->
+        <vocabulary>
+            <!-- tan10 -->
+            <IRI>tag:something.com,2014:made-up-iri</IRI>
+            <name>Vocabulary</name>
+            <location href="error-test-2.tan-voc.xml" accessed-when="2012-12-01"/>
+        </vocabulary>
+        <!-- tan16 -->
+        <source>
+            <!-- tan09 -->
+            <IRI>http://lccn.loc.gov/12032709</IRI>
+            <!-- tan09 -->
+            <IRI>http://lccn.loc.gov/12032709</IRI>
+            <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+            <!-- wrn10 or wrn11 -->
+            <location accessed-when="2018-12-12" href="http://badurl.com/ring-o-roses.eng.1881.xhtml"/>
+            <!-- self-referential pointing -->
+            <!-- tan17 whe02 -->
+            <location href="error-test-1.tan-t.xml" accessed-when="3030-12-12"/>
+        </source>
+        <!-- tan05 tan08 -->
+        <see-also href="" relationship="park"/>
+        <!-- lnk04 wrn03 wrn05 -->
+        <annotation>
+            <!-- tan09 -->
+            <IRI>tag:textalign.net,9999:error-test-2</IRI>
+            <name>Error test 2</name>
+            <location href="error-test-2.tan-voc.xml" accessed-when="2018-12-29"/>
+        </annotation>
+        <!-- whi04 whi05 lnk05 -->
+        <vocabulary which="bad" accessed-when="2019-05-31"/>
+        <vocabulary-key>
+            <!-- loc04 -->
+            <algorithm xml:id="xslt2">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2019</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <name>xslt2</name>
+                <!-- wrn01 -->
+                <location href="../../bad-url/applications/convert/convert%20TAN%202018%20to%20TAN%202019.xsl" accessed-when="2018-08-09T11:14:15.228-04:00"/>
+            </algorithm>
+            <div-type xml:id="line" which="line (verse)"/>
+            <!-- tan03 -->
+            <div-type xml:id="park" which="page"/>
+            <!-- tan12 -->
+            <div-type xml:id="section" which="section"/>
+            <alias id="doubleline" idrefs="line park"/>
+            <!-- tan14 -->
+            <alias id="loop1" idrefs="loop2"/>
+            <!-- tan14 -->
+            <alias id="loop2" idrefs="loop1"/>
+            <!-- tan22 -->
+            <alias id="special" idrefs="notanidref"/>
+            <!-- tan03 -->
+            <person xml:id="park">
+                <IRI>tag:parkj@textalign.net,2015:self</IRI>
+                <name>Jenny Park</name>
+            </person>
+            <scriptum xml:id="scr01">
+                <!-- tan09 -->
+                <IRI>http://lccn.loc.gov/12032709</IRI>
+                <name>Kate Greenaway, Mother Goose, New York, G. Routledge and sons [1881]</name>
+            </scriptum>
+            <!-- inc02 -->
+            <person include="bad-inc"/>
+            <!-- loc04 -->
+            <algorithm xml:id="xslt1">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2017-to-tan2018</IRI>
+                <name>Stylesheet to populate a TAN-A file from collections.</name>
+                <!-- wrn01 -->
+                <location accessed-when="2018-08-09T11:14:15.228-04:00"
+                    href="../applications/convert/convert%20TAN%202017%20to%20TAN%202018.xsl"/>
+            </algorithm>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+            <!-- whe03 -->
+            <period xml:id="lastmonth" from="2018-12-12" to="2018-12-11"/>
+        </vocabulary-key>
+        <!-- tan06 tan01 tan21 -->
+        <file-resp who="park park"/>
+        <resp who="xslt2" roles="stylesheet1"/>
+        <resp roles="creator" who="park"/>
+        <resp who="xslt1" roles="stylesheet1"/>
+        <resp include="test-8"/>
+        <change when="2014-08-13" who="park">Started file</change>
+        <change who="xslt1" when="2017-11-02T22:15:23.904-04:00">TAN file updated to 2018 schemas.</change>
+        <change who="xslt2" when="2018-08-09T11:14:15.228-04:00">Converted from 2018 to 2019 schemas.</change>
+        <!-- tan02 -->
+        <to-do/>
+    </head>
+    <body xml:lang="eng">
+        <!-- tan04 tan21 cl109 cl118 -->
+        <div type="doubleline line" n="1">unnormalized unicode: ό</div>
+        <!-- cl109 cl118 (from the @ref-alias below) -->
+        <div type="line" n="2">A pocket full of posies;</div>
+        <div type="line" n="3">Hush! Hush! Hush! Hush!</div>
+        <!-- cl109 cl118 -->
+        <div type="line" n="1">
+            <!-- cl119 cl118 cl109 -->
+            <div type="part" ref-alias="2" n="a">We're all </div>
+            <div type="part" ref-alias="2 2" n="b"> tumbled down.</div>
+        </div>
+        <!-- cl110 -->
+        <div type="line" n="5"> </div>
+        <!-- cl111 cl112 cl113 cl117 -->
+        <div type="line" n="06">̐ Opening modifier; disallowed character:  . Space then modifier: ̋.</div>
+        <div type="book" n="7-8">Books 7-8</div>
+    </body>
+</TAN-T>

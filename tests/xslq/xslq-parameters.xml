@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xslq:parameters xmlns:xslq="https://github.com/mricaud/xsl-quality">
+   <xslq:use-oxygen-documentation>false</xslq:use-oxygen-documentation>
+   <xslq:check-global-parameters-and-variables>false</xslq:check-global-parameters-and-variables>
+   <xslq:allow-no-namespace>true</xslq:allow-no-namespace>
+</xslq:parameters>

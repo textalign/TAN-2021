@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href ="../../schemas/catalog.tan.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href ="../../schemas/tan.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<collection stable="true" id="tag:textalign.net,2015:error-test-7">
+   <!-- cat02 cat03 cat04 -->
+   <doc id="" href="" root="TAN-T"/>
+   <!-- cat01 cat04 cat05 -->
+   <doc id="" href="badurl.xml" root="TAN-T"/>
+   <!-- cat01 cat05 -->
+   <doc id="oops" href="badurl.xml" root="TAN-T"/>
+   <!-- cat02 cat04 -->
+   <doc id="tag:textalign.net,2015:error-test" href="error-test-1.tan-t.xml" root="TAN-A"/>
+   <!-- cat04 -->
+   <doc id="tag:textalign.net,2015:error-test" href="error-test-3.tan-a.xml" root="TAN-A"/>
+</collection>

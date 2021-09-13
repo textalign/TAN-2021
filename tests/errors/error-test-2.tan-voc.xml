@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schemas/TAN-voc.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schemas/TAN.sch" phase="normal" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- wrn04 -->
+<TAN-voc xmlns="tag:textalign.net,2015:ns" TAN-version="2021" id="tag:textalign.net,9999:error-test-2">
+    <head>
+        <name>Keywords for Aristotle's Categories</name>
+        <!-- tan18 -->
+        <master-location href="error-test-1.tan-t.xml"/>
+        <license licensor="park">
+            <IRI>http://creativecommons.org/licenses/by/4.0/deed.en_US</IRI>
+            <name>Creative Commons Attribution 4.0 International License</name>
+            <desc>This data file is licensed under a Creative Commons Attribution 4.0 International
+                License. The license is granted independent of rights and licenses associated with
+                the source. </desc>
+        </license>
+        <!-- wrn02 wrn07 -->
+        <inclusion xml:id="test-1">
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>Error test 1</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2018-12-11"/>
+        </inclusion>
+        <!-- lnk02 wrn02 wrn07 -->
+        <successor>
+            <IRI>tag:textalign.net,2015:error-test</IRI>
+            <name>Error test 1</name>
+            <location href="error-test-1.tan-t.xml" accessed-when="2018-12-29"/>
+        </successor>
+        <adjustments/>
+        <vocabulary-key>
+            <!-- wrn09 or loc04 (only if internet is available) -->
+            <algorithm xml:id="xslt3">
+                <IRI>tag:textalign.net,2015:stylesheet:convert-tan2018-to-tan2019</IRI>
+                <name>Stylesheet to create a TAN file.</name>
+                <!-- wrn10 or wrn11-->
+                <location href="http://textalign.net/applications/convert/convert%20TAN%202018%20to%20TAN%202019.xsl" accessed-when="2018-08-05T00:30:17.756-04:00"/>
+            </algorithm>
+            <person xml:id="park">
+                <IRI>tag:textalign.net,2015:park</IRI>
+                <IRI>tag:textalign.net,9999:person-test</IRI>
+                <name xml:lang="eng">Jenny Park</name>
+            </person>
+            <role xml:id="creator">
+                <IRI>http://schema.org/creator</IRI>
+                <name xml:lang="eng">creator</name>
+            </role>
+            <role xml:id="stylesheet1" which="stylesheet"/>
+        </vocabulary-key>
+        <file-resp who="park"/>
+        <resp who="xslt3" roles="stylesheet1"/>
+        <resp roles="creator" who="park"/>
+        <change when="2016-07-07" who="park">Started file</change>
+        <change who="xslt3" when="2018-08-05T00:30:17.756-04:00">Converted from 2018 to 2019 schemas.</change>
+        <to-do>
+            <comment when="2018-12-12" who="park">test comment</comment>
+        </to-do>
+    </head>
+    <body affects-element="work">
+        <!-- voc04 -->
+        <item>
+            <IRI>tag:parkj@textalign.net,2015:work:porphyry:on-aristotles-categories</IRI>
+            <!-- voc07 -->
+            <name xml:lang="lat">Commentarium graecum Porphyrii</name>
+        </item>
+        <!-- voc04 -->
+        <item affects-element="person">
+            <IRI>tag:parkj@textalign.net,2015:person-test</IRI>
+            <name>person 1</name>
+        </item>
+        <!-- voc03 voc06 -->
+        <group affects-element="div-type body vocabulary">
+            <!-- voc04 -->
+            <verb>
+                <!-- tan09 -->
+                <IRI>tag:sample.com,2000:duplicateiri</IRI>
+                <!-- voc02 -->
+                <name>another</name>
+                <constraints>
+                    <object status="required" content-datatype="string"/>
+                </constraints>
+            </verb>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:bibliography</IRI>
+                <!-- tan09 -->
+                <IRI>tag:sample.com,2000:duplicateiri</IRI>
+                <!-- voc01 -->
+                <name>bibliography</name>
+                <!-- voc07 -->
+                <name>Another</name>
+            </item>
+            <item>
+                <IRI>tag:textalign.net,2015:div-type:bibliography:two</IRI>
+                <name>bibliography again</name>
+                <!-- voc07 -->
+                <name>Another</name>
+            </item>
+        </group>
+    </body>
+</TAN-voc>
