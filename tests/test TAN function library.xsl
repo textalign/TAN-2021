@@ -24,7 +24,7 @@
    <xsl:param name="tan:stylesheet-iri">tag:textalign.net,2015:algorithm:tan-library-test</xsl:param>
    <xsl:param name="tan:stylesheet-url" as="xs:string" select="static-base-uri()"/>
    
-   <xsl:param name="tan:default-validation-phase">verbose</xsl:param>
+   <xsl:param name="tan:default-validation-phase">terse</xsl:param>
    
    <xsl:variable name="string-1" as="xs:string" select="'Once again, we have much to thank you for.'"/>
    <xsl:variable name="string-2" as="xs:string" select="'nce again, have we weirdness uch to ank u for.'"/>
@@ -33,8 +33,8 @@
    <xsl:variable name="string-5" as="xs:string" select="codepoints-to-string((10, 49))"/>
    <xsl:variable name="diff-1" as="element()" select="tan:diff($string-1, $string-2, false())"/>
    <xsl:variable name="diff-2" as="element()" select="tan:diff($string-2, $string-3, false())"/>
-   <xsl:variable name="delta-1" as="document-node()" select="tan:diff-to-delta($diff-1)"/>
-   <xsl:variable name="delta-2" as="document-node()" select="tan:diff-to-delta($diff-2)"/>
+   <!--<xsl:variable name="delta-1" as="document-node()" select="tan:diff-to-delta($diff-1)"/>-->
+   <!--<xsl:variable name="delta-2" as="document-node()" select="tan:diff-to-delta($diff-2)"/>-->
    
    <xsl:template match="/">
       <xsl:variable name="values" select="(1,2,3,4,5)" as="xs:double+"/>

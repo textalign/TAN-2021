@@ -291,7 +291,7 @@
    
    <xsl:template match="/" priority="-1">
       
-      <xsl:result-document format="xml" href="../output/{tan:cfn(/)}-diagnostics.xml">
+      <xsl:result-document method="xml" href="../output/{tan:cfn(/)}-diagnostics.xml">
          <test>
          <ellipses><xsl:copy-of select="tan:ellipses('abcdefghijk', 2)"/></ellipses>
          <!--<kg-uris>

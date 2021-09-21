@@ -38,7 +38,7 @@ Below is an ordered list of resources, sorted by importance. The goal is to get 
     * Every example file should validate, perhaps with warnings.
     * Any TAN element or attribute should be represented by at least one example file.  To be checked when refreshing the Guidelines.
     * Deleting or adding a file requires repopulating the TAN catalog file.
-    * Make sure any master-locations point to the future version
+    * Make sure any master-locations, whether at textalign.net or github.com point to the future version
 1. **other TAN collections**. Do as for examples (above), but don't commit changes, unless if done in a dev branch, because these will be useless without the dev release available.
     * Aristotle collection
     * Language library
