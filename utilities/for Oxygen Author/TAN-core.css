@@ -35,6 +35,9 @@ TAN-voc > body *:before(9),
 TAN-A-lm > body *:before(9){
     content: '<' oxy_local-name()'>' ;
 }
+TAN-A-lm > body oxy|comment:before(9){
+   content: '';
+}
 *:root/*,
 head *:before(8),
 group *:before(8),
@@ -51,9 +54,39 @@ ref:before(8){
 milestone:before(8){
     content: attr(unit) ' ' attr(n);
 }
-tok:before(8){
-    content: attr(rgx) ' ' attr(val) ' ' attr(pos) ' ' attr(chars) ' ' attr(cert);
+
+/* <tok> content */
+tok[rgx]:before(8){
+    content: ' rgx: ' oxy_textfield(edit, "@rgx");
+    font-size: larger;
 }
+tok[val]:before(8){
+    /*content: ' ' attr(val);*/
+    content: 
+    ' ' oxy_textfield(edit, "@val");
+    font-size: larger;
+}
+tok[ref]:before(7){
+    content: oxy_textfield(edit, "@ref");
+}
+tok[pos]:before(6){
+    /*content: ' ' attr(val);*/
+    content: 
+    'pos: ' oxy_textfield(edit, "@pos");
+}
+tok[chars]:before(5){
+    /*content: ' ' attr(val);*/
+    content: 
+    'chars: ' oxy_textfield(edit, "@chars");
+}
+tok[cert]:before(5){
+    /*content: ' ' attr(val);*/
+    content: 
+    'cert: ' oxy_textfield(edit, "@cert") '-' oxy_textfield(edit, "@cert2");
+}
+
+
+/* <lm>, <l>, <m> content */
 lm:before(8){
     content: attr(cert);
 }

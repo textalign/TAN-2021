@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<serialized version="22.1" xml:space="preserve">
+<serialized xml:space="preserve">
 	<serializableOrderedMap>
 		<entry>
 			<String>document.types</String>
@@ -5184,6 +5184,831 @@ process-link-to
 											<Boolean>false</Boolean>
 										</field>
 									</action>
+									<action>
+										<field name="id">
+											<String>mark-link-to-annotation</String>
+										</field>
+										<field name="name">
+											<String>Mark link-to for annotation</String>
+										</field>
+										<field name="description">
+											<String>Insert a &lt;link-to> before &lt;adjustments> or &lt;vocabulary-key>, as the first step in creating an &lt;annotation> to another file.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;link-to element-name="annotation" xml:base="${cfdu}/${cfne}">${ask('Link to what TAN file?', relative_url, 'inclusion.${xpath_eval(name(/*))}.xml')}&lt;/link-to></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>/*/*:head/(*:adjustments, *:vocabulary-key)[1]</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Before</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>add-annotation</String>
+										</field>
+										<field name="name">
+											<String>Add annotation</String>
+										</field>
+										<field name="description">
+											<String>Add an annotation to the &lt;head></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M1 M3 A</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>/*:TEI/descendant-or-self::* | /*:TAN-T/descendant-or-self::*</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-link-to-annotation
+process-link-to
+</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>get-lm-data</String>
+										</field>
+										<field name="name">
+											<String>Get LM data</String>
+										</field>
+										<field name="description">
+											<String>Insert an &lt;lm> with data from tan:lm-data(), placed where the current &lt;ana>'s &lt;mark> is (where the cursor is assumed to be currently)</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Replace</String>
+															</entry>
+															<entry>
+																<String>caretPosition</String>
+																<String>Before</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/get-lm-data.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>/*</String>
+															</entry>
+															<entry>
+																<String>suspendTrackChanges</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-ana-for-lm-data</String>
+										</field>
+										<field name="name">
+											<String>mark ana for lm data</String>
+										</field>
+										<field name="description">
+											<String>Mark an &lt;ana> with &lt;_mark/>, so lm data can be inserted</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;_mark val="${ask('Insert LM data for what values (space-delimited)?', generic, '${xpath_eval(string-join(distinct-values(ancestor-or-self::*:ana/*:tok/@val), ' '))}')}">${caret}&lt;/_mark></String>
+															</entry>
+															<entry>
+																<String>goToNextEditablePosition</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::*:ana</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Inside as last child</String>
+															</entry>
+															<entry>
+																<String>schemaAware</String>
+																<String>false</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>insert-lm-data</String>
+										</field>
+										<field name="name">
+											<String>insert lm data</String>
+										</field>
+										<field name="description">
+											<String>Get and insert &lt;lm> data in the current &lt;ana></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M1 L</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-ana-for-lm-data
+get-lm-data
+</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-ms</String>
+										</field>
+										<field name="name">
+											<String>mark ms</String>
+										</field>
+										<field name="description">
+											<String>Mark each descendant or self &lt;m> with &lt;_mark/>, so other alterations can be performed on it</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;_mark/></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>descendant-or-self::*:m</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>get-m-names</String>
+										</field>
+										<field name="name">
+											<String>Get m names</String>
+										</field>
+										<field name="description">
+											<String>Before each &lt;m> insert a comment that contains the first name in the IRI+name pattern behind each code</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Replace</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/get-m-names.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>/*</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>insert-m-name-help</String>
+										</field>
+										<field name="name">
+											<String>insert m name help</String>
+										</field>
+										<field name="description">
+											<String>Get and insert names for the descendant &lt;m> codes</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M1 I</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::*:lm | self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-to-refactor
+get-m-names
+</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana[*:lm[*:m]]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>go-to-first-lm
+mark-to-refactor
+get-m-names
+</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-to-refactor</String>
+										</field>
+										<field name="name">
+											<String>mark to refactor</String>
+										</field>
+										<field name="description">
+											<String>Mark an &lt;lm> or &lt;m> with &lt;_refactor/> as a first child, so it can be refactored.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::*:lm | self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>${caret}&lt;_refactor/></String>
+															</entry>
+															<entry>
+																<String>goToNextEditablePosition</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>insertEvenIfInvalid</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>insert-one-lm-per-tok-val</String>
+										</field>
+										<field name="name">
+											<String>Insert one blank lm per tok @val</String>
+										</field>
+										<field name="description">
+											<String>Insert one &lt;lm> per &lt;tok> with @val, making each &lt;l> in the &lt;lm> the token value. No &lt;m>s will be provided.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana[*:tok[@val]]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Inside as last child</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/insert-one-lm-per-tok-val.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>ancestor-or-self::*:ana</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>ancestor-or-self::*:ana</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>go-to-first-lm</String>
+										</field>
+										<field name="name">
+											<String>go to first lm</String>
+										</field>
+										<field name="description">
+											<String>Go to first &lt;lm> in an &lt;ana></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::tan:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>xpathLocation</String>
+																<String>ancestor-or-self::*:ana/*:lm</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.MoveCaretOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>drop-other-ms</String>
+										</field>
+										<field name="name">
+											<String>Drop other &lt;m>s</String>
+										</field>
+										<field name="description">
+											<String>Keep the current &lt;m>, and drop all other &lt;m>s, retaining as comments.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-m-to-keep
+mark-common-m-ancestor-to-refactor
+refactor-ms-to-drop</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-m-to-keep</String>
+										</field>
+										<field name="name">
+											<String>mark m to keep</String>
+										</field>
+										<field name="description">
+											<String>Mark the current &lt;m> to keep</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 1</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;_keep/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-common-m-ancestor-to-refactor</String>
+										</field>
+										<field name="name">
+											<String>mark common &lt;m> ancestor to refactor</String>
+										</field>
+										<field name="description">
+											<String>Mark the common ancestor of all &lt;m>s in the current &lt;ana> with a &lt;_refactor> as the first child, so that things can be done to it.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 2</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>${caret}&lt;_refactor/></String>
+															</entry>
+															<entry>
+																<String>goToNextEditablePosition</String>
+																<String>false</String>
+															</entry>
+															<entry>
+																<String>insertEvenIfInvalid</String>
+																<String>true</String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>ancestor-or-self::*:ana[count(*:lm) ne 1] | ancestor-or-self::*:ana[count(*:lm) eq 1]/*:lm</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>refactor-ms-to-drop</String>
+										</field>
+										<field name="name">
+											<String>refactor ms to drop</String>
+										</field>
+										<field name="description">
+											<String>Process refactor operation for dropping ms</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 3</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Replace</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/drop-ms.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>/*</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
 								</action-array>
 							</field>
 							<field name="menubarDescriptor">
@@ -5244,6 +6069,11 @@ process-link-to
 														<menuItem>
 															<field name="actionID">
 																<String>add-vocabulary</String>
+															</field>
+														</menuItem>
+														<menuItem>
+															<field name="actionID">
+																<String>add-annotation</String>
 															</field>
 														</menuItem>
 														<menuItem>
@@ -5523,6 +6353,44 @@ process-link-to
 													<null/>
 												</field>
 											</menu>
+											<menu>
+												<field name="label">
+													<String>LM</String>
+												</field>
+												<field name="accessKey">
+													<String>l</String>
+												</field>
+												<field name="iconPath">
+													<String></String>
+												</field>
+												<field name="menuEntriesDescriptorList">
+													<menuEntry-array>
+														<menuItem>
+															<field name="actionID">
+																<String>insert-lm-data</String>
+															</field>
+														</menuItem>
+														<menuItem>
+															<field name="actionID">
+																<String>insert-m-name-help</String>
+															</field>
+														</menuItem>
+														<menuItem>
+															<field name="actionID">
+																<String>insert-one-lm-per-tok-val</String>
+															</field>
+														</menuItem>
+														<menuItem>
+															<field name="actionID">
+																<String>drop-other-ms</String>
+															</field>
+														</menuItem>
+													</menuEntry-array>
+												</field>
+												<field name="context">
+													<null/>
+												</field>
+											</menu>
 										</menuEntry-array>
 									</field>
 									<field name="context">
@@ -5593,6 +6461,11 @@ process-link-to
 														<menuItem>
 															<field name="actionID">
 																<String>add-vocabulary</String>
+															</field>
+														</menuItem>
+														<menuItem>
+															<field name="actionID">
+																<String>add-inclusion</String>
 															</field>
 														</menuItem>
 														<menuItem>
@@ -6116,6 +6989,16 @@ process-link-to
 												<toolbarItem>
 													<field name="actionID">
 														<String>add-vocabulary</String>
+													</field>
+												</toolbarItem>
+												<toolbarItem>
+													<field name="actionID">
+														<String>add-annotation</String>
+													</field>
+												</toolbarItem>
+												<toolbarItem>
+													<field name="actionID">
+														<String>add-model</String>
 													</field>
 												</toolbarItem>
 											</toolbarEntry-array>
