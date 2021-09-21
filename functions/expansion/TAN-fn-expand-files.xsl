@@ -1162,11 +1162,28 @@
             <xsl:variable name="this-attr-name" as="xs:string" select="$grouping-keys[1]"/>
             <xsl:variable name="this-parent-name" as="xs:string?" select="$grouping-keys[2]"/>
             <xsl:variable name="this-is-which" as="xs:boolean" select="$this-attr-name eq 'which'"/>
-            <xsl:variable name="these-target-element-names" select="
+            <!--<xsl:variable name="these-target-element-names" select="
                   if ($this-is-which) then
                      $this-parent-name
                   else
-                     tan:target-element-names($this-attr-name)"/>
+                     tan:target-element-names($this-attr-name)"/>-->
+            
+            <xsl:variable name="these-target-element-names" as="xs:string+">
+               <xsl:choose>
+                  <xsl:when test="$this-is-which">
+                     <xsl:sequence select="$this-parent-name"/>
+                  </xsl:when>
+                  <xsl:when test="($this-parent-name eq 'category') and ($this-attr-name eq 'type')">
+                     <xsl:sequence select="'feature'"/>
+                  </xsl:when>
+                  <xsl:when test="$this-attr-name eq 'type'">
+                     <xsl:sequence select="$this-parent-name || '-' || $this-attr-name"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:sequence select="tan:target-element-names($this-attr-name)"/>
+                  </xsl:otherwise>
+               </xsl:choose>
+            </xsl:variable>
             
             <!-- Group 2: by inclusion -->
             <xsl:for-each-group select="current-group()"
@@ -1193,30 +1210,16 @@
                   </xsl:choose>
                </xsl:variable>
 
-               <xsl:variable name="empty-attrs" select="current-group()[. = '']"/>
-
                <context include="{$this-include-idref}">
-                  <xsl:if test="exists($empty-attrs)">
-                     <xsl:variable name="this-message"
-                        select="$this-attr-name || ' has zero-length value'"/>
-                     <insertion>
-                        <xsl:copy-of select="$empty-attrs[1]"/>
-                        <xsl:copy-of
-                           select="
-                              if ($this-is-which) then
-                                 tan:error('whi01')
-                              else
-                                 tan:error('tan05')"
-                        />
-                     </insertion>
-                  </xsl:if>
                   <!-- Group 3: by atomic value -->
-                  <xsl:for-each-group select="current-group()"
-                     group-by="
-                        if ($this-is-which) then
-                           tan:normalize-name(.)
+                  <xsl:for-each-group select="current-group()" group-by="
+                        if (. eq '') then
+                           ''
                         else
-                           tokenize(normalize-space(.), ' ')">
+                           if ($this-is-which) then
+                              tan:normalize-name(.)
+                           else
+                              tokenize(normalize-space(.), ' ')">
                      <xsl:variable name="this-val" as="xs:string" select="current-grouping-key()"/>
                      <xsl:variable name="this-is-joker" as="xs:boolean" select="$this-val eq '*'"/>
                      <xsl:variable name="these-vals" as="xs:string*"
@@ -1227,8 +1230,6 @@
                               ()"/>
                      <xsl:variable name="variable-repeats-itself"
                         select="count($these-vals[. = $this-val]) gt 1"/>
-                     <!--<xsl:variable name="this-val-esc" select="tan:escape($this-val)"/>-->
-
                      <xsl:variable name="this-val-without-help-request" as="element()?"
                         select="tan:help-extracted($this-val)"/>
                      <xsl:variable name="this-val-name-normalized" as="xs:string" select="
@@ -1315,9 +1316,15 @@
                                        select="exists(tan:id[matches(string(.), $this-val-esc, 'i')])"
                                     />
                                     <xsl:sort/>
-                                    <xsl:variable name="this-val" select="(tan:id, @xml:id, tan:name)[1]"/>
+                                    <!--<xsl:variable name="this-val" select="(tan:id, @xml:id, tan:name)[1]"/>-->
+                                    <xsl:variable name="this-val" select="(tan:id, tan:name)[1]"/>
                                     <element>
-                                       <xsl:attribute name="{$this-attr-name}" select="$this-val"/>
+                                       <xsl:attribute name="{$this-attr-name}" select="
+                                             if ($this-is-which) then
+                                                $this-val
+                                             else
+                                                replace($this-val, ' ', '_')"
+                                       />
                                     </element>
                                  </xsl:for-each>
                               </xsl:variable>
