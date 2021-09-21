@@ -5,7 +5,7 @@
    xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns:functx="http://www.functx.com"
    xmlns:sch="http://purl.oclc.org/dsdl/schematron" exclude-result-prefixes="#all" version="3.0">
 
-   <!-- The parameters in this file are to be used in the core validation function files. -->
+   <!-- Use the parameters in this file to configure Schematron validation. -->
 
    <!-- What string in an attribute value should be interpreted as a request for help? -->
    <xsl:param name="tan:help-trigger" select="'???'"/>
@@ -16,14 +16,11 @@
    <!-- Should validation routines avoid checking non-local files (those available only on the Internet)? -->
    <xsl:param name="tan:do-not-access-internet" as="xs:boolean" select="false()"/>
    
-   <!-- What should the default whitespace indentation value be? -->
+   <!-- What should the default whitespace indentation value be? This value primarily affects
+      tree fragments that are inserted via Schematron Quick Fixes, when the local indentation
+      cannot be easily detected.
+   -->
    <xsl:param name="tan:default-indent-value" select="3"/>
-   
-   <!-- During expansion, should every value for every attribute that points to a vocabulary item 
-      have the vocabulary imprinted with the value? This is used primarily in non-validation applications, 
-      where immediate, quick access to the vocabulary is required. Caution: setting this value to true may 
-      result in very large files. -->
-   <xsl:param name="tan:distribute-vocabulary" select="false() and $tan:validation-mode-on"/>
    
    <!-- If an item is invalid, what is the maximum number of suggestions that should be offered? -->
    <xsl:param name="tan:help-suggestions-maximum" select="50"/>
@@ -33,8 +30,21 @@
       the omitted text replaced by ellipses. -->
    <xsl:param name="tan:validation-context-string-length-max" as="xs:integer" select="50"/>
    
-   <!-- Should any elided text (see above) be replaced with a number indicating how many characters have 
-      been elided? -->
+   <!-- Should any elided text in the validation context (see above) be replaced with a number indicating 
+      how many characters have been elided? -->
    <xsl:param name="tan:validation-context-supply-length-of-elision" as="xs:boolean" select="true()"/>
+   
+   <!-- Long files can be time-consuming to validate. What is the maximum number of siblings that should
+      be validated? The default value below finds the declaration of the Schematron validation file,
+      and looks for a pseudo-parameter called truncate. That allows you to control truncation directly
+      within a file. This setting affects only the immediate children of a file's <body>.
+   -->
+   <xsl:param name="tan:validation-truncation-point" as="xs:integer?">
+      <xsl:analyze-string select="/processing-instruction()[matches(., 'schematron')]" regex="truncate=.(\d+)">
+         <xsl:matching-substring>
+            <xsl:sequence select="regex-group(1) => xs:integer()"/>
+         </xsl:matching-substring>
+      </xsl:analyze-string>
+   </xsl:param>
    
 </xsl:stylesheet>

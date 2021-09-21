@@ -761,6 +761,38 @@
         </xsl:processing-instruction>
    </xsl:template>
    
+   
+   <xsl:template match="*:body/*" priority="1" mode="tan:first-stamp-shallow-copy">
+      <xsl:param name="doc-base-uri" tunnel="yes"/>
+      <!-- Validation can be configured to avoid evaluating overly lengthy 
+         files. -->
+      <xsl:choose>
+         <xsl:when test="$tan:validation-mode-on 
+            and ($tan:validation-truncation-point gt 0)
+            and ($doc-base-uri eq $tan:doc-uri)">
+            <xsl:variable name="this-name" as="xs:string" select="name(.)"/>
+            <xsl:variable name="this-el-count" as="xs:integer" select="count(preceding-sibling::*[name(.) eq $this-name]) + 1"/>
+            <xsl:variable name="is-first-element-to-be-cut" as="xs:boolean" select="$tan:validation-truncation-point + 1 eq $this-el-count"/>
+            <xsl:variable name="is-cut" as="xs:boolean" select="$this-el-count gt ($tan:validation-truncation-point)"/>
+            <xsl:choose>
+               <xsl:when test="$is-first-element-to-be-cut">
+                  <_cut>
+                     <xsl:attribute name="q" select="generate-id(.)"/>
+                     <xsl:copy-of select="tan:error('wrn12', 'Validation stops after ' || string($tan:validation-truncation-point))"/>
+                  </_cut>
+               </xsl:when>
+               <xsl:when test="$is-cut"/>
+               <xsl:otherwise>
+                  <xsl:next-match/>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:next-match/>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
    <xsl:template match="*" mode="tan:first-stamp-shallow-copy">
       <xsl:param name="add-q-ids" as="xs:boolean" tunnel="yes"/>
       <xsl:param name="doc-base-uri" tunnel="yes"/>

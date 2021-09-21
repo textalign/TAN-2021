@@ -33,8 +33,15 @@
    
    
    
+   
    <!-- MID-PROCESS PARAMETERS -->
 
+   <!-- During expansion, should every value for every attribute that points to a vocabulary item 
+      have the vocabulary imprinted with the value? This is used primarily in non-validation applications, 
+      where immediate, quick access to the vocabulary is required. Caution: setting this value to true may 
+      result in very large files. -->
+   <xsl:param name="tan:distribute-vocabulary" select="false()"/>
+   
    <!-- If a file to be opened cannot be read as Unicode, what is the preferred default encoding that should be tried? -->
    <xsl:param name="tan:fallback-encoding" as="xs:string?" select="'cp1252'"/>
    
@@ -62,6 +69,9 @@
    
    <!-- Where is the default TAN-T template? -->
    <xsl:param name="tan:default-tan-t-template-uri-resolved" as="xs:string" select="resolve-uri('../templates/template-tan-t.xml', static-base-uri())"/>
+   
+   <!-- Where is the default TAN-A-lm template? -->
+   <xsl:param name="tan:default-tan-a-lm-template-uri-resolved" as="xs:string" select="resolve-uri('../templates/template-tan-a-lm.xml', static-base-uri())"/>
    
    <!-- Where is the default HTML template? -->
    <xsl:param name="tan:default-html-template-uri-resolved" as="xs:string" select="resolve-uri('../templates/template.html', static-base-uri())"/>

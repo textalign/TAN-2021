@@ -150,12 +150,19 @@
       'urn-1', 'urn-2', 'urn-3', 'urn-4', 'urn-5', 'urn-6', 'urn-7')"
    />
    
+   <xsl:variable name="tan:drop-self-content" as="xs:boolean"
+      select="$tan:validation-mode-on and $tan:validation-is-empty"/>
+   
    <!-- TAN file components -->
    
    <!-- self -->
    <!-- We make a copy of the original, because much later in the process we will need to compare it against target files. -->
    <xsl:variable name="tan:orig-self" select="/" as="document-node()"/>
-   <xsl:variable name="tan:self-resolved" select="tan:resolve-doc(/)" as="document-node()"/>
+   <xsl:variable name="tan:self-resolved" select="
+         if ($tan:drop-self-content) then
+            $tan:empty-doc
+         else
+            tan:resolve-doc(/)" as="document-node()"/>
    <!-- More than one document is allowed in self expansions, because class-2 expansions must go hand-in-hand with the expansion of their class-1 dependencies. -->
    <xsl:variable name="tan:self-expanded" select="tan:expand-doc($tan:self-resolved)" as="document-node()+"/>
    

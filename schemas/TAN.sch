@@ -8,27 +8,33 @@
    <xsl:param name="tan:validation-mode-on" as="xs:boolean" select="true()" static="yes"/>
    <xsl:include href="../functions/TAN-function-library.xsl"/>
    
-   <phase id="terse" xmlns="http://purl.oclc.org/dsdl/schematron">
+   <phase id="terse">
       <active pattern="terse-true"/>
       <active pattern="core-tests"/>
    </phase>
-   <phase id="normal" xmlns="http://purl.oclc.org/dsdl/schematron">
+   <phase id="normal">
       <active pattern="normal-true"/>
       <active pattern="core-tests"/>
    </phase>
-   <phase id="verbose" xmlns="http://purl.oclc.org/dsdl/schematron">
+   <phase id="verbose">
       <active pattern="verbose-true"/>
       <active pattern="core-tests"/>
    </phase>
+   <phase id="off">
+      <active pattern="verbose-off"/>
+   </phase>
 
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="terse-true">
+   <pattern id="terse-true">
       <xsl:param name="tan:validation-is-terse" select="true()" as="xs:boolean"/>
    </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="normal-true">
-      <xsl:param name="tan:validation-is-normal" select="true()"/>
+   <pattern id="normal-true">
+      <xsl:param name="tan:validation-is-normal" select="true()" as="xs:boolean"/>
    </pattern>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="verbose-true">
-      <xsl:param name="tan:validation-is-verbose" select="true()"/>
+   <pattern id="verbose-true">
+      <xsl:param name="tan:validation-is-verbose" select="true()" as="xs:boolean"/>
+   </pattern>
+   <pattern id="verbose-off">
+      <xsl:param name="tan:validation-is-empty" select="true()" as="xs:boolean"/>
    </pattern>
    <pattern id="core-tests">
       <title>Core Schematron tests for all TAN files.</title>
