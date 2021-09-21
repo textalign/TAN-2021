@@ -30,6 +30,19 @@
         unmatched tokens at the top, followed by ambiguous ones, followed by non-ambiguous ones -->
     <!-- Secondary output: none -->
     
+    <!-- This tool is ideally used incrementally, as part of an editing strategy. The following is one
+        method that has worked:
+        - run TAN-A-lm Builder on a class 1 file, making sure context is inserted with $insert-tok-context
+        - open the output and review the top entries, which will be tokens that could not be identified.
+            Every one of these will be either a typo or a token that should be learned. At this stage,
+            focus only on typos, correcting the class 1 source. If you find a typo, you can frequently use
+            the tok context to find the text in the source class 1 file. F3 lets you quickly find a match.
+            TAN-A-lm Builder can be a critical asset in proofreading your text!
+        - repeat the previous two steps until typos are no longer apparent; at this point the topmost
+            of the three tiers of tokens will be new entries
+        
+    -->
+    
     <!-- Optimization strategies adopted: 
         * Minimize the number of times files in the language catalog must be consulted and resolved 
         * A hit on @val in a local TAN-A-lm file precludes any follow-up searches based @rgx or 
@@ -68,6 +81,10 @@
         select="base-uri($tan:annotations-1st-da[tan:TAN-A-lm][1])"/>
     
     <!-- LEXICOMORPHOLOGICAL DATA SOURCES: LANGUAGE CATALOGS AND SEARCH SERVICES -->
+    
+    <!-- If there is not an exact match on a token in the local language catalog, should a search be 
+        performed again removing accents (if present)? -->
+    <xsl:param name="use-string-base-as-backup" as="xs:boolean" select="true()"/>
     
     <!-- Do you want to search for lexicomorphological data through a supported internet-based service?
         At present, only Morpheus's service, for Greek and Latin, is supported. -->

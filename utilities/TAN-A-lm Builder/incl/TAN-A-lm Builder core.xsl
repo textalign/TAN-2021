@@ -8,6 +8,8 @@
     <!-- Core application for creating a TAN-A-lm file. -->
     
     <xsl:import href="../../../functions/TAN-function-library.xsl"/>
+    <!-- TODO: create function to make a TAN-A-lm file -->
+    <!--<xsl:include href="make-TAN-A-lm.xsl"/>-->
     
     <xsl:output indent="yes"/>
     
@@ -60,6 +62,12 @@
     
     <!-- TEMPLATE, TAN-MOR -->
     
+    <xsl:variable name="template-tan-a-lm-is-ok" as="xs:boolean" select="doc-available($template-tan-a-lm-uri-resolved)"/>
+    <xsl:variable name="template-tan-a-lm-uri-resolved-norm" select="
+            if ($template-tan-a-lm-resolved) then
+                $template-tan-a-lm-uri-resolved
+            else
+                $tan:default-tan-a-lm-template-uri-resolved"/>
     <xsl:variable name="template-tan-a-lm-original" as="document-node()?" select="doc($template-tan-a-lm-uri-resolved)"/>
     <xsl:variable name="template-tan-a-lm-resolved" as="document-node()?"
         select="tan:resolve-doc($template-tan-a-lm-original)"/>
@@ -93,6 +101,17 @@
     <xsl:variable name="default-tok-indentation" as="xs:string"
         select="tan:fill(' ', xs:integer(avg(tan:indent-value($template-tan-a-lm-original/*/*/*/*))))"/>
     
+    <xsl:variable name="notices" as="element()">
+        <notices>
+            <input>
+                <xsl:if test="not($template-tan-a-lm-is-ok)">
+                    <xsl:message select="'Supplied resolved URI for TAN-A-lm template, ' || $template-tan-a-lm-uri-resolved 
+                        || ', does not point to a valid file. Trying instead ' || $template-tan-a-lm-uri-resolved-norm"/>
+                </xsl:if>
+            </input>
+        </notices>
+    </xsl:variable>
+    
     <!-- LANGUAGES, LANGUAGE CATALOG FILES -->
     
     <xsl:param name="lang-catalogs" select="tan:lang-catalog($tan:self-resolved/(tan:TAN-T, tei:TEI/tei:text)/*:body/@xml:lang)"
@@ -110,7 +129,7 @@
         </xsl:apply-templates>
     </xsl:variable>
     
-    <xsl:template match="tan:head | tei:teiHeader" mode="tan:tokenize-div"/>
+    <xsl:template match="tan:head | tei:teiHeader | comment()" mode="tan:tokenize-div"/>
     
     
     <!-- PASS 2: BUILD TOKEN MAP AND SEARCH LOCAL LANGUAGE CATALOGS FOR LEXICOMORPHOLOGICAL DATA -->
@@ -192,13 +211,28 @@
                                 <xsl:map>
                                     <xsl:map-entry key="3"/>
                                     <xsl:for-each-group select="current-group()" group-by=".">
-                                        <xsl:variable name="this-tok"
+                                        <xsl:variable name="this-tok" as="xs:string"
                                             select="current-grouping-key()"/>
-                                        <xsl:variable name="ana-tok-matches" as="element()*"
+                                        <xsl:variable name="this-tok-fallback" as="xs:string"
+                                            select="
+                                                if ($use-string-base-as-backup) then
+                                                    tan:string-base($this-tok)
+                                                else
+                                                    $this-tok"
+                                        />
+                                        <xsl:variable name="ana-tok-matches-pass-1" as="element()*"
                                             select="$this-tan-a-lm-ready-to-search/tan:TAN-A-lm/tan:body//tan:ana/tan:tok[@val eq $this-tok or matches(@rgx, '^' || tan:escape($this-tok) || '$')]"/>
-                                        <xsl:if test="exists($ana-tok-matches)">
+                                        <xsl:variable name="ana-tok-matches-pass-2" as="element()*"
+                                            select="
+                                                if (not(exists($ana-tok-matches-pass-1)) and $use-string-base-as-backup and ($this-tok ne $this-tok-fallback))
+                                                then
+                                                    $this-tan-a-lm-ready-to-search/tan:TAN-A-lm/tan:body//tan:ana/tan:tok[@val eq $this-tok-fallback or matches(@rgx, '^' || tan:escape($this-tok-fallback) || '$')]
+                                                else
+                                                    ()"
+                                        />
+                                        <xsl:if test="exists($ana-tok-matches-pass-1) or exists($ana-tok-matches-pass-2)">
                                             <xsl:map-entry key="$this-tok">
-                                                <xsl:apply-templates select="$ana-tok-matches"
+                                                <xsl:apply-templates select="$ana-tok-matches-pass-1, $ana-tok-matches-pass-2"
                                                   mode="resolve-anas"/>
                                             </xsl:map-entry>
                                         </xsl:if>
@@ -633,9 +667,10 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:param name="output-diagnostics-on" as="xs:boolean" static="yes" select="false()"/>
+    <xsl:param name="output-diagnostics-on" as="xs:boolean" static="yes" select="true()"/>
     
     <xsl:template match="/" priority="1" use-when="$output-diagnostics-on">
+        <xsl:message select="'Output diagnostics on for ' || static-base-uri()"/>
         <diagnostics>
             <!--<default-token-indentation><xsl:copy-of select="$default-tok-indentation"/></default-token-indentation>-->
             <!--<template-tan-a-lm-resolved><xsl:copy-of select="tan:trim-long-tree($template-tan-a-lm-resolved, 10, 20)"/></template-tan-a-lm-resolved>-->
