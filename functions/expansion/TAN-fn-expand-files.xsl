@@ -2215,7 +2215,7 @@
       </xsl:copy>
    </xsl:template>
    <xsl:template match="tan:error | tan:help | tan:warning | tan:fix | tan:fatal | tan:info"
-      priority="-1" mode="tan:strip-for-validation">
+      mode="tan:strip-for-validation">
       <xsl:copy-of select="."/>
    </xsl:template>
    <xsl:template match="/*" priority="-1" mode="tan:strip-for-validation">

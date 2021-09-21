@@ -888,6 +888,7 @@
             else
                matches($next-text-joined, '^\s'))"
       />
+
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:if test="exists($break-mark-check) and not(exists(@rend))">

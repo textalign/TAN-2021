@@ -1559,8 +1559,11 @@
    <!-- The pattern *[text()[matches(., '\S')]] ensures that any outer indentations are ignored, and that
       the process begins only at an element that has a non-space text node. Special characters will be
       removed only once, in the last text node for the context. That principle will not be applied to any 
-      descendants. -->
-   <xsl:template match="*:div[not(*:div)] | *[text()[matches(., '\S')]]" mode="tan:normalize-tree-space">
+      descendants. Once a TEI element that is phrase-like is reached, the search should go no deeper, lest 
+      its constituent parts get spaces added at the end.
+   -->
+   <xsl:template match="*:div[not(*:div)] | *[text()[matches(., '\S')]] | 
+      tei:cl | tei:m | tei:pc | tei:phr | tei:s | tei:seg | tei:w" mode="tan:normalize-tree-space">
       <xsl:param name="remove-special-end-div-chars" tunnel="yes" as="xs:boolean"/>
       
       <!-- Convert the tree to a sequence of nodes -->
