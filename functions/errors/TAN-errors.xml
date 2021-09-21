@@ -110,7 +110,7 @@
         <error xml:id="loc01"><rule>An element that has a &lt;location> and is key for validation should have at least one document available.</rule></error>
         <error xml:id="loc02"><rule>Every TAN file referred to by way of an element containing &lt;location> should have an @id that matches the &lt;IRI> of the parent of the &lt;location></rule></error>
         <error xml:id="loc03"><rule>No element may point to a TAN file that has an identical @id value; the only exception is &lt;predecessor> and &lt;successor>.</rule></error>
-        <warning xml:id="wrn03"><rule>If a target file has children items in the &lt;to-do>the corresponding comments will be returned as warnings.</rule></warning>
+        <warning xml:id="wrn03"><rule>If a target file has children items in the &lt;to-do> the corresponding comments will be returned as warnings.</rule></warning>
         <warning xml:id="wrn05"><rule>If a target file has a &lt;successor> a warning will be returned, noting the update.</rule></warning>
         <warning xml:id="wrn09"><rule>If a target file points only to non-local locations and no internet is available, the following message will be returned.</rule><message>No internet available.</message></warning>
     </group>
@@ -176,6 +176,10 @@
     <group affects-element="div" affects-attribute="n">
         <warning xml:id="cl115"><rule>An @n's value should not appear in the text.</rule></warning>
         <warning xml:id="cl116"><rule>A &lt;div>'s reference (self and ancestor @ns, concatenated) should not appear in the text.</rule></warning>
+        <error xml:id="tei01"><rule>Every &lt;div> in a TEI's body must have @n (except when @include is present)</rule></error>
+    </group>
+    <group affects-element="div" affects-attribute="type">
+        <error xml:id="tei02"><rule>Every &lt;div> in a TEI's body must have @n (except when @include is present)</rule></error>
     </group>
     <group affects-element="tei:lb tei:pb tei:cb" affects-attribute="rend">
         <warning xml:id="tei04"><rule>Text that represents a line, column, or page break should be moved into a @rend within a &lt;lb>, &lt;pb>, or &lt;cb>.</rule></warning>

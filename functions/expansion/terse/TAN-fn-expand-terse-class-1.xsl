@@ -389,6 +389,18 @@
                   satisfies matches(., '^0\d')">
             <xsl:copy-of select="tan:error('cl117')"/>
          </xsl:if>
+         <xsl:if test="$is-tei and not(@n)">
+            <xsl:variable name="this-fix" as="element()">
+               <empty n=""/>
+            </xsl:variable>
+            <xsl:copy-of select="tan:error('tei01', (), $this-fix, 'copy-attributes')"/>
+         </xsl:if>
+         <xsl:if test="$is-tei and not(@type)">
+            <xsl:variable name="this-fix" as="element()">
+               <empty type=""/>
+            </xsl:variable>
+            <xsl:copy-of select="tan:error('tei02', (), $this-fix, 'copy-attributes')"/>
+         </xsl:if>
          <xsl:apply-templates mode="#current">
             <xsl:with-param name="parent-new-refs" select="$new-refs"/>
          </xsl:apply-templates>
@@ -876,6 +888,7 @@
             else
                matches($next-text-joined, '^\s'))"
       />
+      
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:if test="exists($break-mark-check) and not(exists(@rend))">

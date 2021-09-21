@@ -1450,6 +1450,16 @@
    <!-- Remove indentations that first enter the template -->
    <xsl:template match="text()[not(matches(., '\S'))]" mode="tan:strip-outer-indentation"/>
    
+   <xsl:template match="tei:cl | tei:m | tei:pc | tei:phr | tei:s | tei:seg | tei:w" priority="1" 
+      mode="tan:strip-outer-indentation">
+      <!-- In some TEI elements, the lack of a text node with non-space text may be confused
+         as indentation. We draw from model.segLike for the list of elements whose enclosed
+         white space should not be interpreted as indentation:
+         https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-model.segLike.html
+      -->
+      <xsl:copy-of select="."/>
+   </xsl:template>
+   
    <xsl:template match="*[text()]" mode="tan:strip-outer-indentation">
       <xsl:variable name="text-children-are-indentation-only" as="xs:boolean" select="
          every $i in text()

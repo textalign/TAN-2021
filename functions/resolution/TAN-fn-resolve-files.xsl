@@ -429,7 +429,6 @@
                <xsl:message select="'attributes to add to root element:', $attributes-to-add-to-root-element"/>
                <xsl:message select="'urls already visited:', $urls-already-visited"/>
                <xsl:message select="'doc ids already visited:', $doc-ids-already-visited"/>
-               <xsl:message select="'relationship to previous doc:', $relationship-to-prev-doc"/>
                <xsl:message select="'Inbound element filters:', $element-filters"/>
                <xsl:message select="'loop counter:', $loop-counter"/>
                <xsl:message select="'Doc stamped: ', $doc-stamped"/>
@@ -638,6 +637,7 @@
                -->
                <xsl:with-param name="children-to-append" select="$matching-element-filters/(tan:id, tan:alias)"/>
                <xsl:with-param name="inclusion-filters" select="$matching-element-filters"/>
+               <xsl:with-param name="copy-id-to-element" as="xs:boolean" tunnel="yes" select="false()"/>
             </xsl:apply-templates>
          </xsl:when>
          <xsl:otherwise>
@@ -767,11 +767,12 @@
       <xsl:param name="resolved-aliases" tunnel="yes" as="element()*"/>
       <xsl:param name="children-to-append" as="element()*"/>
       <xsl:param name="inclusion-filters" as="element()*"/>
+      <!-- This tunnel parameter introduced to put up a firewall between a file's vocabulary's @xml:id in -->
+      <xsl:param name="copy-id-to-element" as="xs:boolean" tunnel="yes" select="exists(self::tan:*)"/>
 
       <xsl:variable name="this-element-name" select="name(.)"/>
       <xsl:variable name="this-href" select="@href"/>
       <xsl:variable name="this-id" as="xs:string?" select="(@xml:id, @id)[1]"/>
-      <xsl:variable name="copy-id-to-element" as="xs:boolean" select="exists(self::tan:*)"/>
       
       <!-- Some elements are the kind that would be suited to IRI + name patterns, but don't need them because
       of native conventions used within the attributes. For those elements, we construct an IRI + name pattern,
@@ -793,7 +794,7 @@
                   select="root(.)/tan:TAN-voc/tan:head/tan:vocabulary-key"/>
                <xsl:variable name="matching-vocab-items"
                   select="$this-vocabulary-key/*[tan:normalize-name(@which) = $these-names-normalized]"/>
-               <xsl:if test="exists($matching-vocab-items/@xml:id)">
+               <xsl:if test="$copy-id-to-element and exists($matching-vocab-items/@xml:id)">
                   <id>
                      <xsl:value-of select="$matching-vocab-items/@xml:id"/>
                   </id>
@@ -1333,7 +1334,7 @@
       <xsl:param name="n-alias-div-type-constraints" as="xs:string*" tunnel="yes"/>
       
       <xsl:variable name="these-n-vals" select="tokenize(normalize-space(@n), ' ')" as="xs:string*"/>
-      <xsl:variable name="these-div-types" select="tokenize(@type, '\s+')" as="xs:string+"/>
+      <xsl:variable name="these-div-types" select="tokenize(@type, '\s+')" as="xs:string*"/>
       <xsl:variable name="n-aliases-should-be-checked" as="xs:boolean"
          select="not(exists($n-alias-div-type-constraints)) or ($these-div-types = $n-alias-div-type-constraints)"/>
       <xsl:variable name="n-aliases-to-process" as="element()*"

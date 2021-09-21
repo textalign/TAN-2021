@@ -71,7 +71,7 @@
                creating and editing text annotations such as quotations, translation clusters
                (word-to-word), and linguistic features. </para>
             <para>The foundation of TAN is a suite of XML formats, each designed for a specific
-               task. The extensive valid routines maximize the syntactic and semantic
+               task. The extensive validation routines maximize the syntactic and semantic
                interoperability of texts, annotations, and language resources. TAN comes with
                applications and utilities that open new frontiers in scholarly publishing, research,
                and teaching. </para>
