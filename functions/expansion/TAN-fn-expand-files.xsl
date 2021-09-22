@@ -1167,7 +1167,6 @@
                      $this-parent-name
                   else
                      tan:target-element-names($this-attr-name)"/>-->
-            
             <xsl:variable name="these-target-element-names" as="xs:string+">
                <xsl:choose>
                   <xsl:when test="$this-is-which">
@@ -1211,6 +1210,7 @@
                </xsl:variable>
 
                <context include="{$this-include-idref}">
+                  
                   <!-- Group 3: by atomic value -->
                   <xsl:for-each-group select="current-group()" group-by="
                         if (. eq '') then
@@ -1230,6 +1230,7 @@
                               ()"/>
                      <xsl:variable name="variable-repeats-itself"
                         select="count($these-vals[. = $this-val]) gt 1"/>
+
                      <xsl:variable name="this-val-without-help-request" as="element()?"
                         select="tan:help-extracted($this-val)"/>
                      <xsl:variable name="this-val-name-normalized" as="xs:string" select="
@@ -1244,7 +1245,7 @@
                            else
                               exists($this-val-without-help-request/@help)"/>
                      <xsl:variable name="this-val-esc" as="xs:string" select="tan:escape($this-val-name-normalized)"/>
-                     
+
 
                      <xsl:variable name="this-vocabulary"
                         select="tan:vocabulary($these-target-element-names, $this-val-without-help-request, $these-appropriate-vocabulary-nodes-without-inclusions)"/>
@@ -1284,7 +1285,7 @@
                         <xsl:message select="'Vocabulary nodes (no inclusions)', $these-appropriate-vocabulary-nodes-without-inclusions"/>
                         <xsl:message select="'This vocabulary:', $this-vocabulary"/>
                      </xsl:if>
-                     
+
                      <xsl:if test="$variable-repeats-itself">
                         <insertion>
                            <xsl:copy-of select="current-group()[1]"/>
@@ -1306,7 +1307,7 @@
                            </xsl:if>
                            <!-- If tan:vocabulary() finds errors, copy them. -->
                            <xsl:copy-of select="$this-vocabulary/self::tan:error"/>
-                           
+
                            <xsl:if
                               test="$help-requested or $item-is-erroneous">
                               <xsl:variable name="local-fixes" as="element()*">
@@ -1343,7 +1344,7 @@
                                     <element>
                                        <xsl:attribute name="{$this-attr-name}" select="$this-val"/>
                                     </element>
-                                    
+
                                  </xsl:for-each>
                               </xsl:variable>
                               <xsl:variable name="this-message" select="
@@ -1416,7 +1417,7 @@
                               </xsl:choose>
 
                            </xsl:element>
-                           
+
                            <!-- This clause expands aliases. -->
                            <!-- We don't expand work aliases, because sources need to be queried first. -->
                            <xsl:if test="not($this-attr-name = 'work')">
@@ -1682,8 +1683,8 @@
                      <IRI>
                         <xsl:value-of select="$target-IRI"/>
                      </IRI>
-                     <xsl:copy-of select="$target-name"/>
-                     <xsl:copy-of select="$target-desc"/>
+                     <xsl:copy-of select="$target-name" copy-namespaces="no"/>
+                     <xsl:copy-of select="$target-desc" copy-namespaces="no"/>
                      <location accessed-when="{current-dateTime()}"
                         href="{tan:uri-relative-to(., $tan:doc-uri)}"/>
                   </xsl:element>

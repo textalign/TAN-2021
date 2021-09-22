@@ -108,7 +108,7 @@
     <!-- What directory or directories has the main input files? Any relative path will be calculated
       against the location of this application file. Multiple directories may be supplied. Too many files?
       Results can be filtered below. -->
-    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string+" select="$directory-5-uri"/>
+    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string+" select="$directory-4-uri"/>
 
     <!-- What pattern must each filename match (a regular expression, case-insensitive)? Of the files 
         in the directories chosen, only those whose names match this pattern will be included. A null 

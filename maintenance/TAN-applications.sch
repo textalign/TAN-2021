@@ -9,7 +9,8 @@
    
    <xsl:include href="TAN-application-maintenance.xsl"/>
    
-   <sch:let name="is-blank-configuration-file" value="contains(base-uri(.), 'configuration') and count(/*/*) eq 1"/>
+   <sch:let name="is-configuration-file" value="contains(base-uri(.), 'configuration')"/>
+   <sch:let name="is-blank-configuration-file" value="$is-configuration-file and count(/*/*) eq 1"/>
    
    <sch:let name="top-level-comments" value="/*/comment()"/>
    <sch:let name="welcome-message" value="/*/comment()[contains(normalize-space(.), $tan:welcome-message-starter)]"/>
@@ -50,7 +51,7 @@
    
    
    <sch:pattern>
-      <sch:rule context="/*[count(*) eq 1][contains(base-uri(.), 'configuration')]">
+      <sch:rule context="/*[$is-configuration-file]">
          <sch:assert test="exists($config-preamble-1)" sqf:fix="config-preamble-1">Every blank
             configuration file must include the first preamble.</sch:assert>
          <sch:assert test="exists($config-preamble-2)" sqf:fix="config-preamble-2">Every blank
