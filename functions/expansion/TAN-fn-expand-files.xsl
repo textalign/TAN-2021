@@ -1688,8 +1688,8 @@
                      <IRI>
                         <xsl:value-of select="$target-IRI"/>
                      </IRI>
-                     <xsl:copy-of select="$target-name"/>
-                     <xsl:copy-of select="$target-desc"/>
+                     <xsl:copy-of select="$target-name" copy-namespaces="no"/>
+                     <xsl:copy-of select="$target-desc" copy-namespaces="no"/>
                      <location accessed-when="{current-dateTime()}"
                         href="{tan:uri-relative-to(., $tan:doc-uri)}"/>
                   </xsl:element>
