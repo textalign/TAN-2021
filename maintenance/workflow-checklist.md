@@ -108,6 +108,7 @@ Below is an ordered list of resources, sorted by importance. The goal is to get 
    * `git push -u origin master`
 1. Make new branch `git branch dev`
 1. Now set up git for FTP via git bash: `git ftp init -u "tanftp@textalign.net" -p "[PASSWORD]" "ftp://ftp.tanarchive.net/release/TAN-2021"`
+1. If you ever need to push to the FTP server again, try `git ftp push --user "tanftp@textalign.net" --passwd [PASSWORD] ftp://ftp.tanarchive.net/release/TAN-2021`.
 1. Hand copy the pdf and xhtml files into the FTP server's appropriate subdirectories of `release/TAN-2021/guidelines`
 1. Switch to dev branch and edit `changes.md`. Add development directories then commit them. Now `git push origin dev`
 
