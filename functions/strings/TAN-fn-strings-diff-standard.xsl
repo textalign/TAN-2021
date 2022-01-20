@@ -1817,7 +1817,7 @@
       length and the starting positions for a and b -->
       <!-- This function produces output analogous to tan:stamp-tree-with-text-data() -->
       <!--kw: strings, tree manipulation, attributes -->
-      <xsl:param name="diff-result" as="element(tan:diff)?"/>
+      <xsl:param name="diff-result" as="element()?"/>
       
       <xsl:apply-templates select="$diff-result" mode="tan:stamp-diff-with-text-data"/>
       

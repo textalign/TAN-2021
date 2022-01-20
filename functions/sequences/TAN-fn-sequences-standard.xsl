@@ -373,7 +373,7 @@
       <!-- Here we're targeting tan:analyze-elements-with-numeral-attributes() template mode arabic-numerals, prelude to tan:sequence-expand(), tan:normalize-refs() -->
       <xsl:param name="sequence-string" as="xs:string?"/>
       <xsl:param name="attribute-name" as="xs:string"/>
-      <xsl:variable name="seq-string-pass-1" select="
+      <xsl:variable name="seq-string-pass-1" as="xs:string" select="
             if ($attribute-name = $tan:names-of-attributes-that-are-case-indifferent) then
                lower-case(normalize-space($sequence-string))
             else
@@ -387,6 +387,7 @@
       <xsl:variable name="primary-tokenization-pattern" as="xs:string">
          <xsl:choose>
             <xsl:when test="$attribute-name eq 'n'">[,; ]+</xsl:when>
+            <xsl:when test="$attribute-name eq 'ref'"> ?[,;]+ ?</xsl:when>
             <xsl:when
                test="$attribute-name = $tan:names-of-attributes-that-may-take-multiple-space-delimited-values"
                > +</xsl:when>
