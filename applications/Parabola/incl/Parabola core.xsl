@@ -371,7 +371,7 @@
                     satisfies tan:satisfies-regexes($i, $level-1-div-ns-must-match-regex, $level-1-div-ns-must-not-match-regex))"
         />
         
-        <xsl:variable name="these-div-types" as="xs:string+"
+        <xsl:variable name="these-div-types" as="xs:string*"
             select="tan:type, tokenize(normalize-space(@type), ' ')"/>
         <xsl:variable name="div-types-are-ok" as="xs:boolean" select="
                 not(exists($these-div-types))
