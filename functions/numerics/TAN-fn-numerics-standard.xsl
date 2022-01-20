@@ -12,31 +12,42 @@
       The last item always returns 1. Anything not castable to a double will be given the empty sequence. -->
       <!--kw: numerics -->
       <xsl:param name="numbers" as="item()*"/>
+      <xsl:variable name="uncastable-numbers" as="item()*" select="$numbers[not(. castable as xs:double)]"/>
       <xsl:variable name="this-sum" select="
-         sum(for $i in $numbers[. castable as xs:double]
-         return
-         number($i))" as="xs:double?"/>
-      <xsl:iterate select="$numbers">
-         <xsl:param name="last-portion-end" as="xs:double" select="0"/>
-         <xsl:variable name="this-is-castable-as-double" select=". castable as xs:double" as="xs:boolean"/>
-         <xsl:variable name="this-double" as="xs:double" select="
-               if ($this-is-castable-as-double) then
-                  xs:double(.)
-               else
-                  0"/>
-         <xsl:variable name="new-portion-end" select="$this-double + $last-portion-end" as="xs:double"/>
-         <xsl:choose>
-            <xsl:when test="$this-is-castable-as-double">
-               <xsl:sequence select="xs:decimal($new-portion-end div $this-sum)"/>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:sequence select="()"/>
-            </xsl:otherwise>
-         </xsl:choose>
-         <xsl:next-iteration>
-            <xsl:with-param name="last-portion-end" as="xs:double" select="$new-portion-end"/>
-         </xsl:next-iteration>
-      </xsl:iterate>
+            sum(for $i in $numbers[. castable as xs:double]
+            return
+               number($i))" as="xs:double?"/>
+      <xsl:choose>
+         <xsl:when test="exists($uncastable-numbers)">
+            <xsl:message select="'The following items cannot be cast to doubles: ', $uncastable-numbers"/>
+         </xsl:when>
+         <xsl:when test="$this-sum eq 0">
+            <xsl:message select="'Cannot work with a sequence whose sum is zero'"/>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:iterate select="$numbers">
+               <xsl:param name="last-portion-end" as="xs:double" select="0"/>
+               <xsl:variable name="this-is-castable-as-double" select=". castable as xs:double" as="xs:boolean"/>
+               <xsl:variable name="this-double" as="xs:double" select="
+                     if ($this-is-castable-as-double) then
+                        xs:double(.)
+                     else
+                        0"/>
+               <xsl:variable name="new-portion-end" select="$this-double + $last-portion-end" as="xs:double"/>
+               <xsl:choose>
+                  <xsl:when test="$this-is-castable-as-double">
+                     <xsl:sequence select="xs:decimal($new-portion-end div $this-sum)"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:sequence select="()"/>
+                  </xsl:otherwise>
+               </xsl:choose>
+               <xsl:next-iteration>
+                  <xsl:with-param name="last-portion-end" as="xs:double" select="$new-portion-end"/>
+               </xsl:next-iteration>
+            </xsl:iterate>
+         </xsl:otherwise>
+      </xsl:choose>
    </xsl:function>
    
    

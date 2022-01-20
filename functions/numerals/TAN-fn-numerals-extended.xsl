@@ -208,6 +208,44 @@
          </xsl:if>
       </xsl:for-each>
    </xsl:function>
+
+   <xsl:function name="tan:int-to-syr" as="xs:string*" visibility="public">
+      <!-- Input: any integers -->
+      <!-- Output: the integers expressed as Syriac alphabetic numerals -->
+      <!--kw: numerals, numerics, Syriac -->
+      <xsl:param name="integers" as="xs:integer*"/>
+      <xsl:variable name="arabic-numerals" select="'123456789'"/>
+      <xsl:variable name="syriac-units" select="'ܐܒܓܕܗܘܙܚܛ'"/>
+      <xsl:variable name="syriac-tens" select="'ܝܟܠܡܢܣܥܦܨ'"/>
+      <xsl:variable name="syriac-hundreds" select="'ܩܪܫܬܢܣܥܦܨ'"/>
+      <xsl:for-each select="$integers">
+         <xsl:variable name="this-numeral" select="format-number(., '0')"/>
+         <xsl:variable name="these-digits" select="tan:chop-string($this-numeral)"/>
+         <xsl:variable name="new-digits-reversed" as="xs:string*">
+            <xsl:for-each select="reverse($these-digits)">
+               <xsl:variable name="pos" select="position()"/>
+               <xsl:choose>
+                  <xsl:when test=". = '0'"/>
+                  <xsl:when test="$pos mod 3 = 1">
+                     <xsl:value-of select="translate(., $arabic-numerals, $syriac-units)"/>
+                  </xsl:when>
+                  <xsl:when test="$pos mod 3 = 2">
+                     <xsl:value-of select="translate(., $arabic-numerals, $syriac-tens)"/>
+                  </xsl:when>
+                  <xsl:when test="$pos mod 3 = 0">
+                     
+                     <xsl:variable name="hundred" as="xs:string"
+                        select="translate(., $arabic-numerals, $syriac-hundreds)"/>
+                     <xsl:value-of select="replace($hundred, '([ܢܣܥܦܨ])', '$1&#x73f;')"/>
+                  </xsl:when>
+               </xsl:choose>
+            </xsl:for-each>
+         </xsl:variable>
+         <xsl:if test="count($new-digits-reversed) gt 0">
+            <xsl:value-of select="string-join(reverse($new-digits-reversed), '')"/>
+         </xsl:if>
+      </xsl:for-each>
+   </xsl:function>
    
    
    <xsl:function name="tan:integers-to-expression" as="xs:string?" visibility="public">
