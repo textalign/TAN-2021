@@ -267,6 +267,12 @@
                                     <xsl:value-of select="$this-val"/>
                                  </name>
                                  <xsl:copy-of select="current-group()/../(tan:id, tan:alias)"/>
+                                 <!-- 2021-12-25: added because tan:id seems not to have yet been constructed. -->
+                                 <xsl:for-each select="current-group()/../@xml:id">
+                                    <idref>
+                                       <xsl:value-of select="."/>
+                                    </idref>
+                                 </xsl:for-each>
                               </filter>
                            </xsl:for-each-group>
                         </xsl:for-each-group>
@@ -421,10 +427,11 @@
                </xsl:choose>
             </xsl:variable>
             
+
             
             <xsl:variable name="diagnostics-on" select="false()"/>
             <xsl:if test="$diagnostics-on">
-               <xsl:message select="'Diagnostics on, tan:resolve-doc-loop()'"/>
+               <xsl:message select="'Diagnostics on, tan:resolve-doc-loop() on doc with id ' || $this-doc-id"/>
                <xsl:message select="'add @q ids?', $add-q-ids"/>
                <xsl:message select="'attributes to add to root element:', $attributes-to-add-to-root-element"/>
                <xsl:message select="'urls already visited:', $urls-already-visited"/>
@@ -447,8 +454,9 @@
                   <xsl:document>
                      <diagnostics>
                         <doc-stamped><xsl:copy-of select="$doc-stamped"/></doc-stamped>
+                        <element-filters-incoming><xsl:copy-of select="$element-filters"/></element-filters-incoming>
                         <elements-with-attr-include><xsl:copy-of select="$elements-with-attr-include"/></elements-with-attr-include>
-                        <element-filters-incl><xsl:copy-of select="$element-filters-for-inclusions"/></element-filters-incl>
+                        <element-filters-for-inclusions><xsl:copy-of select="$element-filters-for-inclusions"/></element-filters-for-inclusions>
                         <attrs-that-take-vocab count="{count($attributes-that-take-vocabulary)}">
                            <xsl:for-each-group select="$attributes-that-take-vocabulary" group-by="name(.)">
                               <group count="{count(current-group())}"><xsl:value-of select="current-grouping-key()"/></group>
@@ -457,7 +465,6 @@
                         <element-filters-vocab-1><xsl:copy-of select="$element-filters-for-vocabularies-pass-1"/></element-filters-vocab-1>
                         <element-filters-vocab-2><xsl:copy-of select="$element-filters-for-vocabularies-pass-2"/></element-filters-vocab-2>
                         <attribute-filters-vocab><xsl:copy-of select="$attribute-filters-for-vocabularies"/></attribute-filters-vocab>
-                        <element-filters-for-inclusions><xsl:copy-of select="$element-filters-for-inclusions"/></element-filters-for-inclusions>
                         <doc-and-crit-dep-resolved><xsl:copy-of select="$doc-with-critical-dependencies-resolved"/></doc-and-crit-dep-resolved>
                         <doc-and-inclusions-applied-and-vocabulary-adjusted><xsl:copy-of select="$doc-with-inclusions-applied-and-vocabulary-adjusted"/></doc-and-inclusions-applied-and-vocabulary-adjusted>
                         <doc-with-n-and-ref-converted><xsl:copy-of select="$doc-with-n-and-ref-converted"/></doc-with-n-and-ref-converted>
@@ -632,12 +639,14 @@
       <xsl:choose>
          <xsl:when test="exists($matching-element-filters)">
             <xsl:apply-templates select="." mode="tan:first-stamp-shallow-copy">
-               <!-- When building the vocabulary filter, we pushed ahead the <id> and <alias> values, so they could be
-                  inserted into the relevant full vocabulary item
+               <!-- When building the vocabulary filter, we pushed ahead the <id> and <alias> values, so that 
+                  at this point they can be inserted into the relevant full vocabulary item. This presumes that
+                  we are pushing the filters into a vocabulary file.
                -->
-               <xsl:with-param name="children-to-append" select="$matching-element-filters/(tan:id, tan:alias)"/>
+               <xsl:with-param name="children-to-append" select="$matching-element-filters/(tan:id | tan:idref | tan:alias)"/>
                <xsl:with-param name="inclusion-filters" select="$matching-element-filters"/>
-            <xsl:with-param name="copy-id-to-element" as="xs:boolean" tunnel="yes" select="false()"/>
+               <xsl:with-param name="copy-id-to-element" as="xs:boolean" tunnel="yes"
+                  select="exists(ancestor::tan:TAN-voc)"/>
             </xsl:apply-templates>
          </xsl:when>
          <xsl:otherwise>
@@ -800,12 +809,13 @@
       <xsl:param name="children-to-append" as="element()*"/>
       <xsl:param name="inclusion-filters" as="element()*"/>
 
-      <!-- This tunnel parameter introduced to put up a firewall between a file's vocabulary's @xml:id in -->
+      <!-- This tunnel parameter introduced to put up a firewall between a file's vocabulary's @xml:id -->
       <xsl:param name="copy-id-to-element" as="xs:boolean" tunnel="yes" select="exists(self::tan:*)"/>
 
       <xsl:variable name="this-element-name" select="name(.)"/>
       <xsl:variable name="this-href" select="@href"/>
       <xsl:variable name="this-id" as="xs:string?" select="(@xml:id, @id)[1]"/>
+      <xsl:variable name="this-is-voc-item" as="xs:boolean" select="$this-element-name = ('item', 'verb')"/>
       <!-- Some elements are the kind that would be suited to IRI + name patterns, but don't need them because
       of native conventions used within the attributes. For those elements, we construct an IRI + name pattern,
       to facilitate vocabulary searches. -->
@@ -821,7 +831,7 @@
             </xsl:when>
             <xsl:when test="self::tan:item[ancestor::tan:TAN-voc][tan:name]">
                <!-- If it's a vocab item of a TAN-voc file, imprint any @xml:ids found in the <vocabulary-key> -->
-               <xsl:variable name="these-names-normalized" select="tan:normalize-name(tan:name)"/>
+               <xsl:variable name="these-names-normalized" as="xs:string+" select="tan:normalize-name(tan:name)"/>
                <xsl:variable name="this-vocabulary-key"
                   select="root(.)/tan:TAN-voc/tan:head/tan:vocabulary-key"/>
                <xsl:variable name="matching-vocab-items"
@@ -864,7 +874,7 @@
             </id>
             <xsl:copy-of select="$matching-aliases/tan:alias"/>
          </xsl:if>
-         <xsl:if test="$this-element-name = ('item', 'verb')">
+         <xsl:if test="$this-is-voc-item">
             <xsl:variable name="attributes-of-interest"
                select="
                   self::tan:item/ancestor-or-self::*[@affects-element][1]/@affects-element,
@@ -1223,25 +1233,47 @@
       <xsl:param name="vocabulary-attribute-filters" tunnel="yes" as="element()*"/>
       <xsl:variable name="these-element-names" select="name(.), tan:affects-element"/>
       <xsl:variable name="these-attribute-names" select="tan:affects-attribute"/>
-      <xsl:variable name="filter-matches" select="$vocabulary-element-filters[(tan:element-name = $these-element-names)], 
+      <xsl:variable name="this-voc-item-names" as="xs:string*" select="tan:name | tan:id | tan:alias"/>
+      <xsl:variable name="filter-match-candidates" as="element()*" select="$vocabulary-element-filters[(tan:element-name = $these-element-names)], 
          $vocabulary-attribute-filters[(tan:attribute-name = $these-attribute-names)]"/>
-      <xsl:if test="exists($filter-matches)">
+      <xsl:if test="exists($filter-match-candidates)">
+         <xsl:variable name="filter-matches" as="element()*"
+            select="$filter-match-candidates[(tan:name | tan:idref | tan:alias) = $this-voc-item-names]"
+         />
+         
          <xsl:choose>
             <xsl:when test="$tan:validation-mode-on">
                <!-- If validating, we want all options for a given category, to supply help for errors -->
-               <xsl:copy-of select="."/>
+               <!--<xsl:copy-of select="."/>-->
+               <xsl:copy>
+                  <xsl:copy-of select="@*"/>
+                  <xsl:copy-of select="node()"/>
+                  <!-- TODO: rethink the entire approach of fetching inclusions/vocabulary in inserted idrefs -->
+                  <xsl:for-each select="distinct-values($filter-matches/tan:idref)">
+                     <id><xsl:value-of select="."/></id>
+                  </xsl:for-each>
+               </xsl:copy>
             </xsl:when>
-            <xsl:when test="$filter-matches/tan:idref = '*' and exists($filter-matches/tan:idref)">
+            <xsl:when test="$filter-match-candidates/tan:idref = '*' and exists($filter-match-candidates/tan:idref)">
                <!-- If the <idref> is a joker character, it means any vocabulary item with an id. -->
                <xsl:copy-of select="."/>
             </xsl:when>
-            <xsl:when test="$filter-matches/tan:name = '*'">
+            <xsl:when test="$filter-match-candidates/tan:name = '*'">
                <!-- We want all options if the <name> is a joker character -->
                <xsl:copy-of select="."/>
             </xsl:when>
-            <xsl:when test="((tan:name | tan:id | tan:alias) = $filter-matches/(tan:name | tan:idref | tan:alias))">
-               <!-- Otherwise, we want only relevant vocabulary items -->
-               <xsl:copy-of select="."/>
+            <xsl:when test="exists($filter-matches)">
+               <!-- Otherwise, we want only relevant vocabulary items, inserting any filter matches' idrefs -->
+               <!-- 2021-12: need to fix -->
+               <!--<xsl:copy-of select="."/>-->
+               <xsl:copy>
+                  <xsl:copy-of select="@*"/>
+                  <xsl:copy-of select="node()"/>
+                  <!-- TODO: rethink the entire approach of fetching inclusions/vocabulary in inserted idrefs -->
+                  <xsl:for-each select="distinct-values($filter-matches/tan:idref)">
+                     <id><xsl:value-of select="."/></id>
+                  </xsl:for-each>
+               </xsl:copy>
             </xsl:when>
          </xsl:choose>
          
