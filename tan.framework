@@ -5419,7 +5419,7 @@ process-link-to
 											<String>insert-lm-data</String>
 										</field>
 										<field name="name">
-											<String>insert lm data</String>
+											<String>Insert lm data</String>
 										</field>
 										<field name="description">
 											<String>Get and insert &lt;lm> data in the current &lt;ana></String>
@@ -5575,7 +5575,7 @@ get-lm-data
 											<String>insert-m-name-help</String>
 										</field>
 										<field name="name">
-											<String>insert m name help</String>
+											<String>Insert m name help</String>
 										</field>
 										<field name="description">
 											<String>Get and insert names for the descendant &lt;m> codes</String>
@@ -5867,7 +5867,7 @@ refactor-ms-to-drop</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>M3 1</String>
+											<null/>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -5913,7 +5913,7 @@ refactor-ms-to-drop</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>M3 2</String>
+											<null/>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -5971,7 +5971,7 @@ refactor-ms-to-drop</String>
 											<String></String>
 										</field>
 										<field name="accelerator">
-											<String>M3 3</String>
+											<null/>
 										</field>
 										<field name="actionModes">
 											<actionMode-array>
@@ -6009,6 +6009,610 @@ refactor-ms-to-drop</String>
 											<Boolean>false</Boolean>
 										</field>
 									</action>
+									<action>
+										<field name="id">
+											<String>convert-m-codes</String>
+										</field>
+										<field name="name">
+											<String>Convert m codes</String>
+										</field>
+										<field name="description">
+											<String>Convert codes from one morphological code system to another.</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>root()/*:TAN-A-lm/*:head[count(.//*:morphology) eq 1]</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Replace</String>
+															</entry>
+															<entry>
+																<String>externalParams</String>
+																<String>new-TAN-mor-uri=${ask('Select target TAN-mor file', url, '${xpath_eval((root()/*/*:head//*:morphology/*:location/@href)[1])}')}
+</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/convert-m-codes.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>/*</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>/*</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-ana-step</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from ana step</String>
+										</field>
+										<field name="description">
+											<String>Remove comments from a current ana element</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>caretPosition</String>
+																<String>Preserve</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/remove-comments.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>ancestor-or-self::*:ana</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>ancestor-or-self::*:ana</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>mark-current-caret-position</String>
+										</field>
+										<field name="name">
+											<String>Mark current caret position</String>
+										</field>
+										<field name="description">
+											<String>Mark the current caret position</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 5</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>self::* or self::text()</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;_caret/></String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>true()</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>fragment</String>
+																<String>&lt;_caret/></String>
+															</entry>
+															<entry>
+																<String>insertLocation</String>
+																<String>parent::*[1]</String>
+															</entry>
+															<entry>
+																<String>insertPosition</String>
+																<String>Before</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-ana</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from ana</String>
+										</field>
+										<field name="description">
+											<String>Delete comments from ana</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:ana</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-current-caret-position
+delete-comments-ana-step</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-group-step</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from group step</String>
+										</field>
+										<field name="description">
+											<String>Remove comments from a current group element</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:group</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>caretPosition</String>
+																<String>Preserve</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/remove-comments.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>ancestor-or-self::*:group</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>ancestor-or-self::*:group</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-group</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from group</String>
+										</field>
+										<field name="description">
+											<String>Delete comments from group</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:group</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-current-caret-position
+delete-comments-group-step</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-body-step</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from body step</String>
+										</field>
+										<field name="description">
+											<String>Remove comments from a current body element</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:body</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>caretPosition</String>
+																<String>Preserve</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/remove-comments.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>ancestor-or-self::*:body</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>ancestor-or-self::*:body</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-comments-body</String>
+										</field>
+										<field name="name">
+											<String>Delete comments from body</String>
+										</field>
+										<field name="description">
+											<String>Delete comments from body</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<null/>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:body</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-current-caret-position
+delete-comments-body-step</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>comment-out-alternative-lms-step</String>
+										</field>
+										<field name="name">
+											<String>Comment out alternative lm options</String>
+										</field>
+										<field name="description">
+											<String>In a given &lt;l> or &lt;m> comment out local alternatives, and comment out any other &lt;lm>s</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 4</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:l or ancestor-or-self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>action</String>
+																<String>Replace</String>
+															</entry>
+															<entry>
+																<String>caretPosition</String>
+																<String>Preserve</String>
+															</entry>
+															<entry>
+																<String>script</String>
+																<String>${framework}/utilities/for%20Oxygen%20Author/comment-out-alternative-LMs.xsl</String>
+															</entry>
+															<entry>
+																<String>sourceLocation</String>
+																<String>ancestor::*:body</String>
+															</entry>
+															<entry>
+																<String>targetLocation</String>
+																<String>ancestor::*:body</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.XSLTOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>comment-out-alternative-lms</String>
+										</field>
+										<field name="name">
+											<String>Comment out alternative L/Ms</String>
+										</field>
+										<field name="description">
+											<String>Comment out alternative</String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 1</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String>ancestor-or-self::*:l or ancestor-or-self::*:m</String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>actionIDs</String>
+																<String>mark-current-caret-position
+comment-out-alternative-lms-step
+delete-preceding-lms</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.ExecuteMultipleActionsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
+									<action>
+										<field name="id">
+											<String>delete-preceding-lms</String>
+										</field>
+										<field name="name">
+											<String>Delete preceding lms</String>
+										</field>
+										<field name="description">
+											<String>Delete &lt;lm>s that precede &lt;_delete-preceding-lms></String>
+										</field>
+										<field name="largeIconPath">
+											<String></String>
+										</field>
+										<field name="smallIconPath">
+											<String></String>
+										</field>
+										<field name="accessKey">
+											<String></String>
+										</field>
+										<field name="accelerator">
+											<String>M3 3</String>
+										</field>
+										<field name="actionModes">
+											<actionMode-array>
+												<actionMode>
+													<field name="xpathCondition">
+														<String></String>
+													</field>
+													<field name="argValues">
+														<serializableOrderedMap>
+															<entry>
+																<String>elementLocations</String>
+																<String>ancestor::*:ana/*:_delete-preceding-lms/(self::*, preceding-sibling::*:lm)</String>
+															</entry>
+														</serializableOrderedMap>
+													</field>
+													<field name="operationID">
+														<String>ro.sync.ecss.extensions.commons.operations.DeleteElementsOperation</String>
+													</field>
+												</actionMode>
+											</actionMode-array>
+										</field>
+										<field name="enabledInReadOnlyContext">
+											<Boolean>false</Boolean>
+										</field>
+									</action>
 								</action-array>
 							</field>
 							<field name="menubarDescriptor">
@@ -6017,7 +6621,7 @@ refactor-ms-to-drop</String>
 										<String>TAN</String>
 									</field>
 									<field name="accessKey">
-										<String></String>
+										<String>a</String>
 									</field>
 									<field name="iconPath">
 										<String></String>
@@ -6054,7 +6658,7 @@ refactor-ms-to-drop</String>
 													<String>Add link</String>
 												</field>
 												<field name="accessKey">
-													<String></String>
+													<String>a</String>
 												</field>
 												<field name="iconPath">
 													<String></String>
@@ -6097,7 +6701,7 @@ refactor-ms-to-drop</String>
 													<String>Edit</String>
 												</field>
 												<field name="accessKey">
-													<String></String>
+													<String>e</String>
 												</field>
 												<field name="iconPath">
 													<String></String>
@@ -6125,7 +6729,7 @@ refactor-ms-to-drop</String>
 													<String>Go to</String>
 												</field>
 												<field name="accessKey">
-													<String></String>
+													<String>g</String>
 												</field>
 												<field name="iconPath">
 													<String></String>
@@ -6325,7 +6929,7 @@ refactor-ms-to-drop</String>
 													<String>IRI+name</String>
 												</field>
 												<field name="accessKey">
-													<String></String>
+													<String>i</String>
 												</field>
 												<field name="iconPath">
 													<String></String>
@@ -6385,6 +6989,80 @@ refactor-ms-to-drop</String>
 																<String>drop-other-ms</String>
 															</field>
 														</menuItem>
+														<menu>
+															<field name="label">
+																<String>Local ana changes</String>
+															</field>
+															<field name="accessKey">
+																<String>a</String>
+															</field>
+															<field name="iconPath">
+																<String></String>
+															</field>
+															<field name="menuEntriesDescriptorList">
+																<menuEntry-array>
+																	<menuItem>
+																		<field name="actionID">
+																			<String>delete-comments-ana</String>
+																		</field>
+																	</menuItem>
+																</menuEntry-array>
+															</field>
+															<field name="context">
+																<null/>
+															</field>
+														</menu>
+														<menu>
+															<field name="label">
+																<String>Local group changes</String>
+															</field>
+															<field name="accessKey">
+																<String>g</String>
+															</field>
+															<field name="iconPath">
+																<String></String>
+															</field>
+															<field name="menuEntriesDescriptorList">
+																<menuEntry-array>
+																	<menuItem>
+																		<field name="actionID">
+																			<String>delete-comments-group</String>
+																		</field>
+																	</menuItem>
+																</menuEntry-array>
+															</field>
+															<field name="context">
+																<null/>
+															</field>
+														</menu>
+														<menu>
+															<field name="label">
+																<String>Global body changes</String>
+															</field>
+															<field name="accessKey">
+																<String>b</String>
+															</field>
+															<field name="iconPath">
+																<String></String>
+															</field>
+															<field name="menuEntriesDescriptorList">
+																<menuEntry-array>
+																	<menuItem>
+																		<field name="actionID">
+																			<String>delete-comments-body</String>
+																		</field>
+																	</menuItem>
+																	<menuItem>
+																		<field name="actionID">
+																			<String>convert-m-codes</String>
+																		</field>
+																	</menuItem>
+																</menuEntry-array>
+															</field>
+															<field name="context">
+																<null/>
+															</field>
+														</menu>
 													</menuEntry-array>
 												</field>
 												<field name="context">
@@ -7080,7 +7758,33 @@ refactor-ms-to-drop</String>
 							<field name="contextualItems">
 								<contextProvider>
 									<field name="items">
-										<contextItem-array/>
+										<contextItem-array>
+											<contextItem>
+												<field name="targets">
+													<list>
+														<Integer>0</Integer>
+													</list>
+												</field>
+												<field name="actionID">
+													<String>insert-one-lm-per-tok-val</String>
+												</field>
+												<field name="alias">
+													<null/>
+												</field>
+												<field name="replacementFor">
+													<null/>
+												</field>
+												<field name="replacedElementNs">
+													<String></String>
+												</field>
+												<field name="displayOnlyWhenElementAllowed">
+													<Boolean>false</Boolean>
+												</field>
+												<field name="useReplaceElementName">
+													<Boolean>false</Boolean>
+												</field>
+											</contextItem>
+										</contextItem-array>
 									</field>
 									<field name="removeItems">
 										<null/>

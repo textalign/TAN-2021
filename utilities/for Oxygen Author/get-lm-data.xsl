@@ -24,6 +24,7 @@
         
     </xsl:template>
     
+    <xsl:variable name="morphology-base-uri" as="xs:anyURI" select="tan:base-uri($tan:morphologies-resolved[1])"/>
     <xsl:variable name="for-langs" as="element()*" select="root()/tan:TAN-A-lm/tan:head/tan:for-lang"/>
     <xsl:variable name="source-lang" as="xs:string*" select="
             if (exists($for-langs)) then
@@ -53,9 +54,23 @@
                 return
                     $i || ' (' || tan:lang-name($i) || ')', ', ') || ', searching for: ' || string-join($distinct-toks, ', ')"/>
         <xsl:for-each select="$distinct-toks">
-            <xsl:copy-of select="tan:lm-data(., $detected-langs)//tan:lm"/>
+            <xsl:variable name="lm-data" as="element()*" select="tan:lm-data(., $detected-langs)"/>
+            <xsl:variable name="lm-data-converted" as="element()*"
+                select="tan:convert-lm-data-output($lm-data, $morphology-base-uri)"/>
+            
+            <xsl:apply-templates select="$lm-data-converted" mode="trim-lm-output"/>
         </xsl:for-each>
 
+    </xsl:template>
+    
+    <xsl:mode name="trim-lm-output" on-no-match="shallow-skip"/>
+    
+    <xsl:template match="tan:lm" mode="trim-lm-output">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="parent::tan:ana/comment()"/>
+            <xsl:copy-of select="node()"/>
+        </xsl:copy>
     </xsl:template>
     
 </xsl:stylesheet>
