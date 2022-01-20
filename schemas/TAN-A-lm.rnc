@@ -43,7 +43,7 @@ attr-tok-pop =
     attribute tok-pop { xsd:integer }
 ptr-attr-morphology =
     
-    ## points to one or more <morphology> IDs
+    ## points to the id of one <morphology>
     
     ## This attribute is inheritable. See main.xml#inheritable_attributes
     attribute morphology { text }

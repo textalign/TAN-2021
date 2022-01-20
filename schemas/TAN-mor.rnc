@@ -62,11 +62,11 @@ element-code =
    
    ## attaches a grammatical feature to a code, and makes it available to a TAN-A-lm file. 
    
-   ## Because vocabulary item for a grammatical feature is language-agnostic, and because a TAN-mor code is language-specific, guidance to the editor of a TAN-A-lm file may be important. Ihildren <desc>s can be used to provide examples or other guidance.
+   ## Because vocabulary item for a grammatical feature is language-agnostic, and because a TAN-mor code is language-specific, guidance to the editor of a TAN-A-lm file may be important. Children <desc>s can be used to provide examples or other guidance.
    element code {
       ed-stamp?,
       (inclusion
-       | (ptr-attr-feature, (element-desc* & element-val)))
+       | (ptr-attr-feature, (element-desc* & element-val+)))
    }
 element-report =
    
@@ -86,7 +86,7 @@ element-rule =
    }
 element-val =
    
-   ## contains the expected value for a morphological code
+   ## contains an allowed value for a morphological code. The first instance is considered the default form, and subsequent forms are alternative forms.
    element val {
       
       ## The hyphen is reserved for "not applicable"; spaces and (),| reserved for @feature-test expressions

@@ -249,7 +249,7 @@ data-div-item-ref = xsd:string { pattern = "([\w_]+([^\w\-][\w_]+)*)|.*\?\?\?.*"
 data-div-range-ref =
    xsd:string {
       pattern =
-         "([\w_]+([^\w\-][\w_]+)*)(((\s*-\s*)|(\s*,\s+))([\w_]+([^\w\-][\w_]+)*))*|.*\?\?\?.*"
+         "([\w_]+([^\w\-][\w_]+)*)(((\s*-\s*)|(\s*[,;]\s+))([\w_]+([^\w\-][\w_]+)*))*|.*\?\?\?.*"
    }
 
 ## Any generic IRI identifier.

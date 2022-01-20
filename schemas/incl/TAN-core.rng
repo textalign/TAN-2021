@@ -289,7 +289,7 @@
   <define name="data-div-range-ref">
     <a:documentation>String for a @ref that specifies a range of &lt;div&gt;s: one or more data-div-item-ref patterns separated by a hyphen or a comma.</a:documentation>
     <data type="string">
-      <param name="pattern">([\w_]+([^\w\-][\w_]+)*)(((\s*-\s*)|(\s*,\s+))([\w_]+([^\w\-][\w_]+)*))*|.*\?\?\?.*</param>
+      <param name="pattern">([\w_]+([^\w\-][\w_]+)*)(((\s*-\s*)|(\s*[,;]\s+))([\w_]+([^\w\-][\w_]+)*))*|.*\?\?\?.*</param>
     </data>
   </define>
   <define name="data-IRI">
