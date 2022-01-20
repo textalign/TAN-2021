@@ -25,9 +25,11 @@ $("table.e-stats .switch").click(function () {
    $(this).parents("tr").first().toggleClass('suppressed');
    var arOn =[];
    $(this).parents("table.e-stats").find("tbody > tr:not(.suppressed):not(.averages):not(.a-diff):not(.a-collation)").each(function () {
-      thisAttrClass = $(this).attr("class").match(/a-w-\S+|e-[ab]/g)[0];
-      console.log("this attr class:", thisAttrClass);
-      arOn.push(thisAttrClass);
+      thisAttrClass = $(this).attr("class").match(/a-w-\S+|e-[ab]/g);
+      if (thisAttrClass.length > 0) {
+         console.log("this attr class:", thisAttrClass);
+         arOn.push(thisAttrClass[0]);
+      }
    });
    console.log("Witnesses to show: ", arOn, arOn.length);
    /* ("div.e-u, div.e-a, div.e-b") */
