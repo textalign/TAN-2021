@@ -13,9 +13,9 @@
    <xsl:variable name="total-indentation" as="xs:integer" select="$top-level-comment-depth * $each-indentation-amount"/>
    <xsl:variable name="maximum-column-width-for-comments" as="xs:integer" select="100"/>
    
-   <xsl:variable name="tan:import-to-main-application" select="/*/xsl:import[1]"/>
+   <xsl:variable name="tan:include-to-main-application" select="/*/xsl:include[1]"/>
    <xsl:variable name="tan:main-application"
-      select="doc(resolve-uri($tan:import-to-main-application/@href, base-uri()))"/>
+      select="doc(resolve-uri($tan:include-to-main-application/@href, base-uri()))"/>
    
    <xsl:variable name="tan:app-iri" as="element()?" select="$tan:main-application/*/xsl:param[@name eq 'tan:stylesheet-iri']"/>
    <xsl:variable name="tan:app-name" as="element()?" select="$tan:main-application/*/xsl:param[@name eq 'tan:stylesheet-name']"/>
