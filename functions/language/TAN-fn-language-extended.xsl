@@ -8,11 +8,30 @@
    <!-- TAN Function Library extended language functions. -->
 
    <xsl:function name="tan:lm-data" as="element()*" visibility="public">
-      <!-- Input: token value; a language code -->
+      <!-- Two-param version of the full one, below -->
+      <xsl:param name="token-value" as="xs:string?"/>
+      <xsl:param name="lang-codes" as="xs:string*"/>
+      <xsl:sequence select="tan:lm-data($token-value, $lang-codes, true())"/>
+   </xsl:function>
+
+   <xsl:function name="tan:lm-data" as="element()*" visibility="public">
+      <!-- Input: token value; a language code; a boolean -->
       <!-- Output: <lm> data for that token value from any available resources -->
+      <!-- If the third parameter is true, then an internet search, if available, will
+         be conducted only if local values are not found; otherwise, it always conducts
+         any internet search that is available. -->
+      <!-- Output will be either <ana>s if drawn from local language catalogs or 
+         <claim> if drawn from online searches. -->
+      <!-- Output from local catalog files will be tethered to the original document 
+         context, so it is possible to post-process results, e.g., convert to another
+         TAN-mor. Online search results will always be converted into output that uses 
+         IRI + name patterns, to allow conversion to a favored TAN-mor configuration.
+         See tan:convert-lm-data-output() for one way of handling output.
+      -->
       <!--kw: language, lexicomorphology -->
       <xsl:param name="token-value" as="xs:string?"/>
       <xsl:param name="lang-codes" as="xs:string*"/>
+      <xsl:param name="search-online-only-if-local-data-not-found" as="xs:boolean"/>
 
       <!-- First, look in the local language catalog and get relevant TAN-A-lm files -->
       <xsl:variable name="lang-catalogs" select="tan:lang-catalog($lang-codes)"
@@ -35,34 +54,46 @@
       </xsl:variable>
 
       <!-- Look for easy, exact matches -->
-      <xsl:variable name="lex-val-matches" select="
+      <xsl:variable name="lex-val-matches" as="element()*" select="
             for $i in $these-tan-a-lm-files
             return
                key('tan:get-ana', $token-value, $i)"/>
 
       <!-- If there's no exact match, look for a near match -->
-      <xsl:variable name="this-string-approx" select="tan:string-base($token-value)"/>
-      <xsl:variable name="lex-rgx-and-approx-matches" select="
-            $these-tan-a-lm-files/tan:TAN-A-lm/tan:body/tan:ana[tan:tok[@val = $this-string-approx or (if (string-length(@rgx) gt 0)
-            then
-               matches($token-value, @rgx)
+      <xsl:variable name="this-string-approx" as="xs:string?" select="tan:string-base($token-value)"/>
+      <xsl:variable name="lex-rgx-and-approx-matches" as="element()*" select="
+            if (not(exists($lex-val-matches))) then
+               $these-tan-a-lm-files/tan:TAN-A-lm/tan:body/tan:ana[tan:tok[(@val eq $this-string-approx) or (if (string-length(@rgx) gt 0)
+               then
+                  matches($token-value, @rgx)
+               else
+                  false())]]
             else
-               false())]]"/>
+               ()"/>
 
       <!-- If there's not even a near match, see if there's a search service -->
       <xsl:variable name="lex-matches-via-search" as="element()*">
-         <xsl:if test="matches($lang-codes, '^(lat|grc)')">
-            <xsl:variable name="this-raw-search" select="tan:search-morpheus($token-value)"/>
-            <xsl:copy-of select="tan:search-results-to-claims($this-raw-search, 'morpheus')/*"/>
+         <xsl:if test="($search-online-only-if-local-data-not-found eq false()) or (exists($lex-val-matches) or exists($lex-rgx-and-approx-matches))">
+            <xsl:if test="matches($lang-codes, '^(lat|grc)')">
+               <xsl:variable name="this-raw-search" select="tan:search-morpheus($token-value)"/>
+               <xsl:copy-of select="tan:search-results-to-claims($this-raw-search, 'morpheus')/*"/>
+            </xsl:if>
          </xsl:if>
       </xsl:variable>
+
 
       <xsl:choose>
          <xsl:when test="exists($lex-val-matches)">
             <xsl:sequence select="$lex-val-matches"/>
+            <xsl:if test="$search-online-only-if-local-data-not-found eq false()">
+               <xsl:sequence select="$lex-matches-via-search"/>
+            </xsl:if>
          </xsl:when>
          <xsl:when test="exists($lex-rgx-and-approx-matches)">
             <xsl:sequence select="$lex-rgx-and-approx-matches"/>
+            <xsl:if test="$search-online-only-if-local-data-not-found eq false()">
+               <xsl:sequence select="$lex-matches-via-search"/>
+            </xsl:if>
          </xsl:when>
          <xsl:when test="exists($lex-matches-via-search)">
             <xsl:sequence select="$lex-matches-via-search"/>
@@ -74,8 +105,184 @@
             <xsl:message select="'No data found for', $token-value, 'in language', $lang-codes"/>
          </xsl:otherwise>
       </xsl:choose>
+      
 
    </xsl:function>
+   
+   
+   
+   <xsl:function name="tan:convert-lm-data-output" as="element()*" visibility="public">
+      <!-- Input: a sequence of <ana> and <claim> output from tan:lm-data(); a resolved 
+         uri to a TAN-mor file -->
+      <!-- Output: a sequence of <ana>s with all <m>s converted to the default code
+         system of the input TAN-mor file. -->
+      <xsl:param name="lm-data-output" as="element()*"/>
+      <xsl:param name="resolved-uri-to-target-TAN-mor" as="xs:string"/>
+      
+      <xsl:variable name="target-TAN-mor-resolved" as="document-node()?"
+         select="tan:resolve-doc(doc($resolved-uri-to-target-TAN-mor))"/>
+      <xsl:variable name="target-TAN-mor-code-tree" as="document-node()?"
+         select="tan:tan-mor-feature-and-rule-tree($target-TAN-mor-resolved)"/>
+      
+      <xsl:variable name="source-TAN-A-lm-files-resolved-and-trimmed" as="document-node()*">
+         <xsl:for-each-group select="$lm-data-output[self::tan:ana]" group-by="base-uri(.)">
+            <xsl:variable name="current-doc" as="document-node()" select="root(current-group()[1])"/>
+            <xsl:variable name="current-TAN-A-lm-slimmed" as="document-node()">
+               <xsl:document>
+                  <TAN-A-lm>
+                     <xsl:copy-of select="$current-doc/tan:TAN-A-lm/@*"/>
+                     <xsl:attribute name="xml:base" select="current-grouping-key()"/>
+                     <xsl:copy-of select="$current-doc/tan:TAN-A-lm/tan:head"/>
+                     <body/>
+                  </TAN-A-lm>
+               </xsl:document>
+            </xsl:variable>
+            <xsl:variable name="current-TAN-A-lm-resolved" as="document-node()"
+               select="tan:resolve-doc($current-TAN-A-lm-slimmed, false(), ())"/>
+            <xsl:variable name="source-morphology-vocabulary" as="element()*"
+               select="tan:vocabulary('morphology', (), $current-TAN-A-lm-resolved/tan:TAN-A-lm/tan:head)"/>
+            
+            <xsl:variable name="inserted-comment" as="comment()">
+               <xsl:comment select="'From ' || current-grouping-key()"/>
+            </xsl:variable>
+            
+            <xsl:document>
+               <TAN-A-lm>
+                  <xsl:copy-of select="$current-TAN-A-lm-slimmed/*/@*"/>
+                  <head>
+                     <morphology>
+                        <xsl:copy-of select="$source-morphology-vocabulary/(tan:morphology | tan:item[tan:affects-element eq 'morphology'])[1]/*"/>
+                     </morphology>
+                  </head>
+                  <body>
+                     <xsl:copy-of select="tan:insert-as-first-child(current-group(), $inserted-comment,'ana')"/>
+                  </body>
+               </TAN-A-lm>
+            </xsl:document>
+            
+         </xsl:for-each-group> 
+      </xsl:variable>
+      
+      <xsl:variable name="source-TAN-A-lm-files-consolidated-and-converted" as="document-node()*">
+         <xsl:for-each-group select="$source-TAN-A-lm-files-resolved-and-trimmed" group-by="tan:TAN-A-lm/tan:head/tan:morphology/tan:IRI">
+            <xsl:variable name="consolidated-TAN-A-lm" as="document-node()">
+               <xsl:document>
+                  <TAN-A-lm>
+                     <xsl:copy-of select="current-group()[1]/*/@*"/>
+                     <xsl:copy-of select="current-group()[1]/tan:TAN-A-lm/tan:head"/>
+                     <body>
+                        <xsl:copy-of select="current-group()/tan:TAN-A-lm/tan:body/*"/>
+                     </body>
+                  </TAN-A-lm>
+               </xsl:document>
+            </xsl:variable>
+            
+            <xsl:copy-of select="tan:convert-TAN-A-lm-codes($consolidated-TAN-A-lm, $resolved-uri-to-target-TAN-mor)"/>
+            
+         </xsl:for-each-group> 
+      </xsl:variable>
+      
+      <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
+      <xsl:if test="$diagnostics-on">
+         <xsl:message select="'Diagnostics on, tan:convert-lm-data-output()'"/>
+         <xsl:message select="'Input from tan:lm-data(): ', $lm-data-output"/>
+         <xsl:message select="'Target TAN-mor uri: ' || $resolved-uri-to-target-TAN-mor"/>
+         <xsl:message select="'Target TAN-mor resolved: ', $target-TAN-mor-resolved"/>
+         <xsl:message select="'Target TAN-mor code tree: ', $target-TAN-mor-code-tree"/>
+         <xsl:message select="'Source TAN-A-lm files resolved and trimmed: ', $source-TAN-A-lm-files-resolved-and-trimmed"/>
+         <xsl:message select="'Source TAN-A-lm files consolidated and converted: ', $source-TAN-A-lm-files-consolidated-and-converted"/>
+      </xsl:if>
+      
+      <xsl:choose>
+         <xsl:when test="not(exists($target-TAN-mor-resolved/tan:TAN-mor))">
+            <xsl:message select="'Input file is not in TAN-mor format.'"/>
+         </xsl:when>
+         <xsl:when test="not(exists($target-TAN-mor-resolved/tan:TAN-mor/tan:stamped))">
+            <xsl:message select="'Input TAN-mor is not resolved.'"/>
+         </xsl:when>
+         <xsl:otherwise>
+            <!-- <ana>s converted to the target codes -->
+            <xsl:copy-of select="$source-TAN-A-lm-files-consolidated-and-converted/tan:TAN-A-lm/tan:body/*"/>
+            <!-- search results come after local results -->
+            <xsl:apply-templates select="$lm-data-output/tan:ana" mode="claims-to-tan-a-lm-anas">
+               <xsl:with-param name="TAN-mor-code-tree" tunnel="yes" select="$target-TAN-mor-code-tree"/>
+            </xsl:apply-templates>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:function>
+   
+   
+   <xsl:mode name="claims-to-tan-a-lm-anas" on-no-match="shallow-copy"/>
+   
+   <xsl:template match="tan:for-lang" mode="claims-to-tan-a-lm-anas"/>
+   
+   <xsl:template match="tan:lm/tan:m" mode="claims-to-tan-a-lm-anas">
+      <xsl:param name="TAN-mor-code-tree" tunnel="yes" as="document-node()?"/>
+      <xsl:variable name="unsupported-features" as="element()*"
+         select="tan:feature[not(tan:IRI = $TAN-mor-code-tree/*/tan:features/tan:category/tan:code/tan:IRI)]"
+      />
+      <xsl:variable name="results-pass-1" as="element()*">
+         <xsl:apply-templates select="$TAN-mor-code-tree" mode="claims-to-tan-a-lm-anas-2">
+            <xsl:with-param name="features" tunnel="yes" select="tan:feature"/>
+         </xsl:apply-templates>
+      </xsl:variable>
+      
+      <xsl:if test="exists($unsupported-features)">
+         <xsl:message
+            select="string(count($unsupported-features)) || ' features are not found in the target TAN-A-lm file ' || tan:cfn($TAN-mor-code-tree/*/@xml:base)"
+         />
+         <xsl:for-each select="$unsupported-features">
+            <xsl:message select="'Cannot find ' || string-join(tan:name, ', ') || '; IRIs: ' || string-join(tan:IRI, ' ')"/>
+         </xsl:for-each>
+      </xsl:if>
+      
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:choose>
+            <xsl:when test="count($results-pass-1[tan:val]) gt 1">
+               <!-- Multi-category TAN-mor -->
+               <xsl:variable name="results-pass-2" as="xs:string" select="
+                     string-join(for $i in $results-pass-1
+                     return
+                        (
+                        if (exists($i/tan:val)) then
+                           string-join($i/tan:val, ' ')
+                        else
+                           '-'
+                        ), ' ')"/>
+               <xsl:value-of select="replace($results-pass-2, '( -)+$', '')"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:value-of select="string-join($results-pass-1/tan:val, ' ')"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:copy>
+      
+   </xsl:template>
+   
+   <xsl:mode name="claims-to-tan-a-lm-anas-2" on-no-match="shallow-skip"/>
+   
+   <xsl:template match="tan:category" mode="claims-to-tan-a-lm-anas-2">
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+   </xsl:template>
+   
+   <xsl:template match="tan:code" mode="claims-to-tan-a-lm-anas-2">
+      <xsl:param name="features" tunnel="yes" as="element()*"/>
+      <xsl:variable name="these-IRIs" as="element()*" select="tan:IRI"/>
+      <xsl:variable name="matching-features" as="element()*" select="$features[tan:IRI = $these-IRIs]"/>
+      <xsl:if test="count($matching-features) gt 1">
+         <xsl:message select="
+               string(count($matching-features)) || ' source features match a single target feature: '
+               || string-join($matching-features/tan:name, ', ') || ' match ' || tan:name[1]"
+         />
+      </xsl:if>
+      <xsl:if test="exists($matching-features)">
+         <xsl:copy-of select="tan:val[1]"/>
+      </xsl:if>
+   </xsl:template>
 
 
    
@@ -403,26 +610,39 @@
       <xsl:param name="source-TAN-mor-resolved" as="document-node()"/>
       <xsl:param name="target-TAN-mor-resolved" as="document-node()"/>
       
-      <xsl:variable name="source-feature-vocabulary" as="element()*"
+      <xsl:variable name="source-expanded" as="document-node()" select="tan:expand-doc($source-TAN-mor-resolved, 'terse', false())"/>
+      <xsl:variable name="target-expanded" as="document-node()" select="tan:expand-doc($target-TAN-mor-resolved, 'terse', false())"/>
+      
+      <!--<xsl:variable name="source-feature-vocabulary" as="element()*"
          select="tan:vocabulary('feature', (), $source-TAN-mor-resolved/tan:TAN-mor/tan:head)"
+      />-->
+      <xsl:variable name="source-feature-vocabulary" as="element()*"
+         select="tan:vocabulary('feature', (), $source-expanded/tan:TAN-mor/tan:head)"
       />
-      <xsl:variable name="target-feature-vocabulary" as="element()*"
+      <!--<xsl:variable name="target-feature-vocabulary" as="element()*"
          select="tan:vocabulary('feature', (), $target-TAN-mor-resolved/tan:TAN-mor/tan:head)"
+      />-->
+      <xsl:variable name="target-feature-vocabulary" as="element()*"
+         select="tan:vocabulary('feature', (), $target-expanded/tan:TAN-mor/tan:head)"
       />
       
       <xsl:variable name="sf-vocab-with-categories" as="element()*">
          <xsl:apply-templates select="$source-feature-vocabulary" mode="tan:add-category-position">
+            <!--<xsl:with-param name="categories" as="element()*" tunnel="yes"
+               select="$source-TAN-mor-resolved/tan:TAN-mor/tan:body/tan:category"/>-->
             <xsl:with-param name="categories" as="element()*" tunnel="yes"
-               select="$source-TAN-mor-resolved/tan:TAN-mor/tan:body/tan:category"/>
+               select="$source-expanded/tan:TAN-mor/tan:body/tan:category"/>
          </xsl:apply-templates>
       </xsl:variable>
       <xsl:variable name="tf-vocab-with-categories" as="element()*">
          <xsl:apply-templates select="$target-feature-vocabulary" mode="tan:add-category-position">
+            <!--<xsl:with-param name="categories" as="element()*" tunnel="yes"
+               select="$target-TAN-mor-resolved/tan:TAN-mor/tan:body/tan:category"/>-->
             <xsl:with-param name="categories" as="element()*" tunnel="yes"
-               select="$target-TAN-mor-resolved/tan:TAN-mor/tan:body/tan:category"/>
+               select="$target-expanded/tan:TAN-mor/tan:body/tan:category"/>
          </xsl:apply-templates>
       </xsl:variable>
-      <!-- Aliases combining features implies "and" not "or", so every category
+      <!-- Aliases that combine features imply "and" not "or", so every category
          must be true. Complex aliases for features is supported only in TAN-mor files without
          categories. -->
       <xsl:variable name="complex-target-aliases" as="element()*"
@@ -575,26 +795,47 @@
    
    <xsl:template match="tan:feature | tan:item[tan:affects-element = 'feature']" mode="tan:add-category-position">
       <xsl:param name="categories" as="element()*" tunnel="yes"/>
+      
+      <xsl:variable name="current-feature" as="element()" select="."/>
       <xsl:variable name="these-ids" select="tan:id | tan:alias"/>
+      <xsl:variable name="categories-exist" as="xs:boolean" select="exists($categories)"/>
+      <xsl:variable name="categories-prepped" as="element()*">
+         <xsl:for-each select="$categories">
+            <xsl:variable name="this-pos" as="xs:integer" select="position()"/>
+            <xsl:variable name="feature-of-interest" as="element()*" 
+               select="tan:code[tokenize(@feature, ' ') = $current-feature/(tan:id | tan:alias | tan:name)]"/>
+            <!--<xsl:variable name="feature-of-interest" as="element()*" 
+               select="tan:feature[tokenize(@type, ' ') = $these-ids]"/>-->
+            <!--<xsl:for-each select="$feature-of-interest">
+               <category>
+                  <xsl:copy-of select="@code"/>
+                  <xsl:value-of select="$this-pos"/>
+               </category>
+            </xsl:for-each>-->
+            <xsl:for-each select="$feature-of-interest/tan:val">
+               <category code="{.}">
+                  <xsl:value-of select="$this-pos"/>
+               </category>
+            </xsl:for-each>
+         </xsl:for-each>
+      </xsl:variable>
+      
+      <xsl:variable name="diagnostics-on" as="xs:boolean" select="not(exists($categories-prepped))"/>
+      <xsl:if test="$diagnostics-on">
+         <xsl:message select="'Diagnostics on, template mode tan:add-category-position'"/>
+         <xsl:message select="'Current node: ', ."/>
+         <xsl:message select="'Inherited categories: ', $categories"/>
+      </xsl:if>
       
       <xsl:copy>
          <xsl:copy-of select="@*"/>
          <xsl:choose>
-            <xsl:when test="not(exists($categories))">
+            <xsl:when test="not($categories-exist)">
                <!-- Zero means that the code is not place-dependent -->
                <category>0</category>
             </xsl:when>
             <xsl:otherwise>
-               <xsl:for-each select="$categories">
-                  <xsl:variable name="this-pos" as="xs:integer" select="position()"/>
-                  <xsl:variable name="feature-of-interest" as="element()*" select="tan:feature[tokenize(@type, ' ') = $these-ids]"/>
-                  <xsl:for-each select="$feature-of-interest">
-                     <category>
-                        <xsl:copy-of select="@code"/>
-                        <xsl:value-of select="$this-pos"/>
-                     </category>
-                  </xsl:for-each>
-               </xsl:for-each>
+               <xsl:copy-of select="$categories-prepped"/>
             </xsl:otherwise>
          </xsl:choose>
          <xsl:apply-templates mode="#current"/>
@@ -633,9 +874,22 @@
    <xsl:mode name="tan:convert-morphological-codes" on-no-match="shallow-copy"/>
    
    
+   <xsl:template match="tan:m" mode="tan:convert-morphological-codes" priority="1">
+      <xsl:param name="morphology-code-conversion-maps" as="map(*)*" tunnel="yes"/>
+      <xsl:choose>
+         <xsl:when test="count($morphology-code-conversion-maps) gt 0">
+            <xsl:next-match/>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:copy-of select="."/>
+         </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:template>
+   
    <xsl:template match="tan:m" mode="tan:convert-morphological-codes">
       <xsl:param name="morphology-ids" as="xs:string*" tunnel="yes"/>
-      <xsl:param name="morphology-code-conversion-maps" as="map(*)*" tunnel="yes"/>
+      <xsl:param name="morphology-code-conversion-maps" as="map(*)+" tunnel="yes"/>
       <xsl:variable name="governing-morphologies" as="xs:string*"
          select="tokenize(ancestor-or-self::*[@morphology][1]/@morphology, ' ')"/>
       <xsl:variable name="convert-these-codes" as="xs:boolean" select="$governing-morphologies = $morphology-ids"/>
@@ -643,8 +897,9 @@
       <xsl:variable name="this-code-norm" as="xs:string" select="normalize-space(lower-case(string-join(text())))"/>
       <xsl:variable name="these-codes" as="xs:string*" select="tokenize($this-code-norm, ' ')"/>
       
-      <xsl:variable name="keys-to-complex-constructions" as="xs:string*" select="map:keys($morphology-code-conversion-maps[1])[contains(., ' ')
-         or matches(., '^^.+\( \|\$\)')]"/>
+      <xsl:variable name="keys-to-complex-constructions" as="xs:string*" select="
+            map:keys($morphology-code-conversion-maps[1])[contains(., ' ')
+            or matches(., '^^.+\( \|\$\)')]"/>
       
       <xsl:variable name="matching-keys-to-complex-constructions" as="array(*)*">
          <!-- Establish a nexus between the current codes and the target code they should be replaced by. We use
@@ -894,6 +1149,437 @@
                (string($l), string(.), $context-cert * $inherited-cert, $context-cert2 * $inherited-cert2),
                $ana-id, $lm-id, $l-id, generate-id(.)
             }"/>
+   </xsl:template>
+   
+   
+   
+   
+   <!-- OCTOBER 2021 REVISED ATTEMPT AT TAN-MOR MAPS/TREES + CONVERSION -->
+   <!-- First function: a distillation of TAN-mor -->
+   <!-- Second function: a document that maps one TAN-mor set of codes to another -->
+   <!-- Third function: conversion of a TAN-A-lm file -->
+   
+   <!-- First function: distillation -->
+   
+   <xsl:function name="tan:tan-mor-feature-and-rule-tree" as="document-node()?" visibility="private">
+      <!-- Input: a TAN-mor file resolved -->
+      <!-- Output: the file simplified to a tree of features and rules -->
+      <!-- The goal is to create a streamlined version of a TAN-mor file, for validation, 
+         conversion, and other purposes. -->
+      <xsl:param name="tan-mor-resolved" as="document-node()?"/>
+      
+      <xsl:variable name="feature-vocabulary" as="element()*"
+         select="tan:vocabulary('feature', '', $tan-mor-resolved/*/tan:head)"/>
+      <xsl:variable name="feature-vocabulary-normalized" as="element()*">
+         <xsl:apply-templates select="$feature-vocabulary" mode="tan:normalize-vocabulary"/>
+      </xsl:variable>
+      
+      <xsl:variable name="output-pass-1" as="document-node()?">
+         <xsl:apply-templates select="$tan-mor-resolved" mode="tan:tan-mor-feature-and-rule-tree">
+            <xsl:with-param name="feature-vocabulary" tunnel="yes" select="$feature-vocabulary-normalized"/>
+         </xsl:apply-templates>
+      </xsl:variable>
+      
+      <xsl:variable name="output-diagnostics-on" as="xs:boolean" select="false()"/>
+
+      <xsl:choose>
+         <xsl:when test="$output-diagnostics-on">
+            <xsl:document>
+               <diagnostics>
+                  <feature-vocabulary-norm><xsl:copy-of select="$feature-vocabulary-normalized"/></feature-vocabulary-norm>
+                  <output-pass-1><xsl:copy-of select="$output-pass-1"/></output-pass-1>
+               </diagnostics>
+            </xsl:document>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:copy-of select="$output-pass-1"/>
+         </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:function>
+   
+   
+   <xsl:mode name="tan:normalize-vocabulary" on-no-match="shallow-copy"/>
+   
+   <xsl:template match="tan:name" mode="tan:normalize-vocabulary">
+      <xsl:apply-templates select="." mode="tan:first-stamp-shallow-copy">
+         <xsl:with-param name="add-q-ids" tunnel="yes" select="false()"/>
+      </xsl:apply-templates>
+   </xsl:template>
+   
+   
+   <xsl:mode name="tan:tan-mor-feature-and-rule-tree" on-no-match="shallow-copy"/>
+   
+   <xsl:template match="tan:TAN-mor/* | processing-instruction() | @q" priority="-1" mode="tan:tan-mor-feature-and-rule-tree"/>
+   
+   <xsl:template match="tan:body" mode="tan:tan-mor-feature-and-rule-tree">
+      <features>
+         <xsl:choose>
+            <xsl:when test="exists(tan:category)">
+               <xsl:apply-templates select="tan:category" mode="#current"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <category>
+                  <xsl:apply-templates select="tan:code" mode="#current"/>
+               </category>
+            </xsl:otherwise>
+         </xsl:choose>
+      </features>
+      <rules>
+         <xsl:apply-templates select="tan:rule" mode="#current"/>
+      </rules>
+   </xsl:template>
+   
+   <xsl:template match="tan:code" mode="tan:tan-mor-feature-and-rule-tree">
+      <xsl:param name="feature-vocabulary" tunnel="yes" as="element()*"/>
+      <xsl:variable name="current-feature-names" as="xs:string*" select="
+            for $i in tokenize(normalize-space(@feature), ' ')
+            return
+               tan:normalize-name($i)"/>
+      
+      <xsl:copy>
+         <!-- We do not need @feature any more because we're infusing the vocabulary directly into the 
+         element. -->
+         <!--<xsl:copy-of select="@*"/>-->
+         <xsl:apply-templates mode="#current"/>
+         <xsl:copy-of select="$feature-vocabulary/*[tan:name = $current-feature-names]/(tan:IRI | tan:name | tan:id | tan:alias)"/>
+      </xsl:copy>
+      
+   </xsl:template>
+   
+   
+   
+   <!-- Second function: a document that maps one TAN-mor code set to another -->
+   
+   <xsl:function name="tan:tan-mor-conversion" visibility="private" as="document-node()?">
+      <!-- Input: two TAN-mor files resolved -->
+      <!-- Output: the codes of the first mapped to the codes of the second -->
+      <!-- Strategy:
+         uncategorized > uncategorized
+         uncategorized > categorized
+         *categorized > uncategorized
+         categorized > categorized
+         
+      -->
+      
+      <xsl:param name="source-TAN-mor-file-resolved" as="document-node()?"/>
+      <xsl:param name="target-TAN-mor-file-resolved" as="document-node()?"/>
+      
+      <xsl:variable name="source-feature-and-rule-tree" as="document-node()?"
+         select="tan:tan-mor-feature-and-rule-tree($source-TAN-mor-file-resolved)"/>
+      <xsl:variable name="target-feature-and-rule-tree" as="document-node()?"
+         select="tan:tan-mor-feature-and-rule-tree($target-TAN-mor-file-resolved)"/>
+      
+      <xsl:variable name="output-pass-1" as="document-node()?">
+         <xsl:apply-templates select="$source-feature-and-rule-tree" mode="tan-mor-conversion">
+            <xsl:with-param name="target-feature-and-rule-tree" tunnel="yes" select="$target-feature-and-rule-tree"/>
+         </xsl:apply-templates>
+      </xsl:variable>
+      
+      <xsl:variable name="output-pass-2" as="document-node()?">
+         <xsl:apply-templates select="$output-pass-1" mode="check-tan-mor-conversion"/>
+      </xsl:variable>
+      
+      <xsl:variable name="source-langs" as="xs:string*" select="$source-TAN-mor-file-resolved/*/tan:head/tan:for-lang"/>
+      <xsl:variable name="target-langs" as="xs:string*" select="$target-TAN-mor-file-resolved/*/tan:head/tan:for-lang"/>
+      
+      <xsl:if test="$source-langs != $target-langs">
+         <xsl:message select="
+               'Warning: the source TAN-mor is for language ' || string-join((for $i in $source-langs
+               return
+                  tan:lang-name($i)), ', ') || ' but the target TAN-mor is for language ' || string-join((for $i in $target-langs
+               return
+                  tan:lang-name($i)), ', ')"/>
+      </xsl:if>
+      
+      <!--<xsl:copy-of select="$output-pass-1"/>-->
+      <xsl:copy-of select="$output-pass-2"/>
+   </xsl:function>
+   
+   
+   <xsl:mode name="tan-mor-conversion" on-no-match="shallow-copy"/>
+   <xsl:mode name="tan-mor-conversion-2" on-no-match="shallow-skip"/>
+   
+   <xsl:template match="tan:rules" mode="tan-mor-conversion"/>
+   <xsl:template match="tan:features" mode="tan-mor-conversion">
+      <xsl:param name="target-feature-and-rule-tree" tunnel="yes" as="document-node()?"/>
+      <xsl:variable name="these-IRIs" as="element()*" select=".//tan:IRI"/>
+      
+      <xsl:for-each select="$target-feature-and-rule-tree/*/tan:features/tan:category/tan:code[not(tan:IRI = $these-IRIs)]">
+         <xsl:message
+            select="'Target feature ' || tan:name[1] || ' does not have a counterpart in the source TAN-mor file.'"
+         />
+      </xsl:for-each>
+      
+      <target>
+         <xsl:copy-of select="tan:shallow-copy($target-feature-and-rule-tree/*)"/>
+      </target>
+      <!-- We skip the current element, because we are interested only in features, not rules, so no wrapper is needed. -->
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
+   
+   <xsl:template match="tan:code" mode="tan-mor-conversion">
+      <xsl:param name="target-feature-and-rule-tree" tunnel="yes" as="document-node()?"/>
+      <xsl:variable name="these-IRIs" as="element()*" select="tan:IRI"/>
+      <xsl:variable name="target-codes" as="element()*"
+         select="$target-feature-and-rule-tree/*/tan:features/tan:category/tan:code[tan:IRI = $these-IRIs]"
+      />
+      
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+         <target>
+            <xsl:apply-templates select="$target-feature-and-rule-tree" mode="tan-mor-conversion-2">
+               <xsl:with-param name="source-IRIs" tunnel="yes" select="$these-IRIs"/>
+            </xsl:apply-templates>
+         </target>
+      </xsl:copy>
+   </xsl:template>
+   
+   <xsl:template match="tan:category" mode="tan-mor-conversion-2">
+      <xsl:copy>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+   </xsl:template>
+   <xsl:template match="tan:code" mode="tan-mor-conversion-2">
+      <xsl:param name="source-IRIs" tunnel="yes" as="element()*"/>
+      <xsl:if test="tan:IRI = $source-IRIs">
+         <xsl:copy-of select="tan:val[1]"/>
+      </xsl:if>
+   </xsl:template>
+   
+   
+   <xsl:mode name="check-tan-mor-conversion" on-no-match="shallow-copy"/>
+   
+   <xsl:template match="tan:IRI | tan:name" mode="check-tan-mor-conversion"/>
+   
+   <xsl:template match="tan:TAN-mor[tan:target]" mode="check-tan-mor-conversion">
+      <xsl:variable name="all-target-codes" as="xs:string*" select="
+            for $i in tan:category/tan:code/tan:target/tan:category[tan:val]
+            return
+               (string(count($i/preceding-sibling::tan:category) + 1) || ' ' || $i/tan:val[1])"/>
+      <xsl:variable name="duplicate-target-codes" as="xs:string*"
+         select="tan:duplicate-values($all-target-codes)"/>
+      
+      <xsl:for-each select="$duplicate-target-codes">
+         <xsl:variable name="code-parts" as="xs:string+" select="tokenize(., ' ')"/>
+         <xsl:message select="
+               'Source TAN-mor maps to target TAN-mor code ' || $code-parts[2] || ' '
+               || (if ($code-parts[1] ne '1') then
+                  (' (category ' || $code-parts[1] || ')')
+               else
+                  ())
+               || string(count(index-of($all-target-codes, .))) || ' times.'"/>
+      </xsl:for-each>
+      
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+   </xsl:template>
+   <xsl:template match="tan:code[tan:target[not(exists(tan:category/tan:val))]]" mode="check-tan-mor-conversion">
+      <xsl:message select="
+            'Source code ' || tan:val[1] ||
+            ' (' ||
+            (if (count(ancestor::tan:TAN-mor/tan:category) gt 1) then
+               ('category ' || string(count(ancestor::tan:category/preceding-sibling::tan:category) + 1) || ', ')
+            else
+               ())
+            || 'feature: ' || tan:name[1]
+            || ') does not have any counterpart in the target TAN-mor file.'"/>
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+   </xsl:template>
+   <xsl:template match="tan:code[count(tan:target/tan:category[tan:val]) gt 1]" mode="check-tan-mor-conversion">
+      <xsl:message select="'Source code ' || tan:val[1] || ' has ' || string(count(tan:target/tan:category[tan:val])) || ' counterparts in the target TAN-mor file.'"/>
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+   </xsl:template>
+   
+   
+   <!-- Third function: Take a TAN-A-lm file and convert morphological codes -->
+   
+   <xsl:function name="tan:convert-TAN-A-lm-codes" visibility="private" as="document-node()?">
+      <!-- Input: a TAN-A-lm document; a resolved URI as a string, pointing to a TAN-mor file -->
+      <!-- Output: the TAN-A-lm document, with every <m> converted from the old TAN-mor system to the new -->
+      <!-- Notes: 
+           * Does not matter whether the input TAN-A-lm is raw, resolved, or expanded.
+           * The TAN-A-lm must have one and only one morphology.
+           * The current <morphology> will be replaced by a new one with the appropriate IRI + name pattern
+      -->
+      <xsl:param name="TAN-A-lm-document" as="document-node()?"/>
+      <xsl:param name="resolved-uri-to-target-TAN-mor" as="xs:string"/>
+      
+      <!-- Unpack the source -->
+      <xsl:variable name="source-TAN-A-lm-is-resolved" as="xs:boolean" select="exists($TAN-A-lm-document/tan:TAN-A-lm/tan:stamped)"/>
+      <xsl:variable name="source-morphology-vocabulary" as="element()*">
+         <xsl:choose>
+            <xsl:when test="not($source-TAN-A-lm-is-resolved)">
+               <xsl:copy-of select="tan:vocabulary('morphology', (), tan:resolve-doc($TAN-A-lm-document)/tan:TAN-A-lm/tan:head)"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:copy-of select="tan:vocabulary('morphology', (), $TAN-A-lm-document/tan:TAN-A-lm/tan:head)"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
+      <xsl:variable name="source-TAN-mor-resolved" as="document-node()?"
+         select="tan:get-1st-doc($source-morphology-vocabulary/(tan:morphology | tan:item[tan:affects-element eq 'morphology']))[1] => tan:resolve-doc()"/>
+      
+      <xsl:variable name="source-morphology-element" as="element()*" select="$TAN-A-lm-document/tan:TAN-A-lm/tan:head//tan:morphology"/>
+      
+      <!-- Unpack the target -->
+      <xsl:variable name="target-TAN-mor-resolved" as="document-node()?" select="tan:resolve-doc(doc($resolved-uri-to-target-TAN-mor))"/>
+      
+      <!-- Map the source TAN-mor to the target TAN-mor -->
+      <xsl:variable name="TAN-mor-conversion-tree" as="document-node()?" select="tan:tan-mor-conversion($source-TAN-mor-resolved, $target-TAN-mor-resolved)"/>
+      
+      <xsl:choose>
+         <xsl:when test="not(exists($TAN-A-lm-document/tan:TAN-A-lm))">
+            <xsl:message select="'Input file is not a TAN-A-lm; root element name: ' || name($target-TAN-mor-resolved/*)"/>
+         </xsl:when>
+         <xsl:when test="not(exists($source-morphology-element))">
+            <xsl:message select="'No morphology element exists in the input TAN-A-lm file.'"/>
+         </xsl:when>
+         <xsl:when test="count($source-morphology-element) gt 1">
+            <xsl:message select="string(count($source-morphology-element)) || ' morphology elements exist in the input TAN-A-lm file. This function applies only to those TAN-A-lm files with a single morphology element.'"/>
+         </xsl:when>
+         <xsl:when test="not(doc-available($resolved-uri-to-target-TAN-mor))">
+            <xsl:message select="$resolved-uri-to-target-TAN-mor || ' does not lead to an available XML document.'"/>
+         </xsl:when>
+         <xsl:when test="not(exists($source-TAN-mor-resolved/tan:TAN-mor))">
+            <xsl:message select="'The source TAN-mor file could not be resolved.'"/>
+         </xsl:when>
+         <xsl:when test="not(exists($target-TAN-mor-resolved/tan:TAN-mor))">
+            <xsl:message select="$resolved-uri-to-target-TAN-mor || ' does not point to a TAN-mor file; root element name: ' || name($target-TAN-mor-resolved/*)"/>
+         </xsl:when>
+         <xsl:otherwise>
+            
+            <xsl:variable name="output-pass-1" as="document-node()?">
+               <xsl:apply-templates select="$TAN-A-lm-document" mode="convert-TAN-A-lm-codes">
+                  <xsl:with-param name="TAN-mor-conversion-tree" tunnel="yes" select="$TAN-mor-conversion-tree"/>
+                  <xsl:with-param name="target-TAN-mor-resolved" tunnel="yes" select="$target-TAN-mor-resolved"/>
+                  <xsl:with-param name="target-category-count" as="xs:integer" tunnel="yes"
+                     select="max((count($target-TAN-mor-resolved/tan:TAN-mor/tan:body/tan:category), 1))"/>
+               </xsl:apply-templates>
+            </xsl:variable>
+            
+            <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
+            <xsl:if test="$diagnostics-on">
+               <xsl:message select="'Diagnostics on, tan:convert-TAN-A-lm-codes()'"/>
+               <xsl:message select="'TAN-A-lm document: ', $TAN-A-lm-document => tan:trim-long-tree(10, 20)"/>
+               <xsl:message select="'Resolved uri to target TAN-mor: ' || $resolved-uri-to-target-TAN-mor"/>
+               <xsl:message select="'Source TAN-A-lm is resolved?: ', $source-TAN-A-lm-is-resolved"/>
+               <xsl:message select="'Source morphology vocabulary: ', $source-morphology-vocabulary"/>
+               <xsl:message select="'Source morphology element: ', $source-morphology-element"/>
+               <xsl:message select="'Source TAN-mor resolved: ', $source-TAN-mor-resolved => tan:trim-long-tree(10, 20)"/>
+               <xsl:message select="'Target TAN-mor resolved: ', $target-TAN-mor-resolved => tan:trim-long-tree(10, 20)"/>
+               <xsl:message select="'TAN-mor conversion tree: ', $TAN-mor-conversion-tree"/>
+            </xsl:if>
+            
+            <xsl:if test="($source-TAN-mor-resolved/*/@id eq $target-TAN-mor-resolved/*/@id)
+               or (base-uri($source-TAN-mor-resolved) eq $resolved-uri-to-target-TAN-mor)">
+               <xsl:message select="'The source TAN-mor is identical to the target TAN-mor'"/>
+            </xsl:if>
+            
+            <xsl:copy-of select="$output-pass-1"/>
+            
+         </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:function>
+   
+   
+   <xsl:mode name="convert-TAN-A-lm-codes" on-no-match="shallow-copy"/>
+   
+   <xsl:template match="tan:morphology" mode="convert-TAN-A-lm-codes">
+      <xsl:param name="target-TAN-mor-resolved" tunnel="yes" as="document-node()"/>
+      <xsl:copy>
+         <xsl:copy-of select="@xml:id"/>
+         <IRI><xsl:value-of select="$target-TAN-mor-resolved/tan:TAN-mor/@id"/></IRI>
+         <xsl:for-each select="$target-TAN-mor-resolved/tan:TAN-mor/tan:head/(tan:name[not(@norm)] | tan:desc)">
+            <xsl:copy>
+               <xsl:copy-of select="@* except @q"/>
+               <xsl:value-of select="."/>
+            </xsl:copy>
+         </xsl:for-each>
+         <location href="{$target-TAN-mor-resolved/tan:TAN-mor/@xml:base}"
+            accessed-when="{current-date()}"/>
+      </xsl:copy>
+   </xsl:template>
+   
+   <xsl:template match="tan:m[text()]" mode="convert-TAN-A-lm-codes">
+      <xsl:param name="TAN-mor-conversion-tree" tunnel="yes" as="document-node()"/>
+      <xsl:param name="target-category-count" tunnel="yes" as="xs:integer"/>
+      
+      <xsl:variable name="these-code-parts" as="xs:string+" select="tokenize(normalize-space(string-join(text())), ' ')"/>
+      
+      <xsl:variable name="codes-pass-1" as="element()">
+         <codes>
+            <xsl:for-each select="$these-code-parts">
+               <xsl:variable name="this-code" as="xs:string" select="."/>
+               <xsl:variable name="this-pos" as="xs:integer" select="position()"/>
+               <xsl:variable name="this-category" as="element()?" select="$TAN-mor-conversion-tree/*/(tan:category[$this-pos], tan:category[1])[1]"/>
+               <xsl:variable name="this-entry" select="$this-category/tan:code[tan:val = $this-code]"/>
+               <xsl:choose>
+                  <xsl:when test="$this-code eq '-'">
+                     <xsl:sequence select="$this-code"/>
+                  </xsl:when>
+                  <xsl:when test="not(exists($this-category))">
+                     <xsl:message select="'Category ' || string($this-pos) || ' does not exist in the source TAN-mor file.'"/>
+                  </xsl:when>
+                  <xsl:when test="not(exists($this-entry))">
+                     <xsl:message select="
+                           'No entry exists in the source TAN-mor file for ' || $this-code
+                           || (if ($this-pos gt 1) then
+                              (' (position ' || string($this-pos) || ')')
+                           else
+                              ())"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <code>
+                        <xsl:copy-of select="$this-entry/tan:target/tan:category"/>
+                     </code>
+                  </xsl:otherwise>
+               </xsl:choose>
+            </xsl:for-each>
+         </codes>
+      </xsl:variable>
+      <xsl:variable name="new-code" as="xs:string*">
+         <xsl:for-each select="1 to $target-category-count">
+            <xsl:variable name="this-pos" as="xs:integer" select="."/>
+            <xsl:variable name="target-vals" as="element()*" select="$codes-pass-1/tan:code/tan:category[$this-pos]/tan:val"/>
+            <xsl:variable name="these-codes" as="xs:string*" select="distinct-values($target-vals)"/>
+            <xsl:choose>
+               <xsl:when test="position() gt 1">
+                  <xsl:if test="count($these-codes) gt 1">
+                     <xsl:message
+                        select="string(count($these-codes)) || ' replacement codes found at position ' || string(position()) || ': ' || string-join($these-codes, ', ') || '; using only the first'"
+                     />
+                     
+                  </xsl:if>
+                  <xsl:value-of select="' ' || ($these-codes, '-')[1]"/>
+               </xsl:when>
+               <xsl:when test="not(exists($these-codes))">
+                  <xsl:value-of select="'-'"/>
+               </xsl:when>
+               <xsl:otherwise>
+                  <xsl:value-of select="string-join($these-codes, ' ')"/>
+               </xsl:otherwise>
+            </xsl:choose>
+         </xsl:for-each>
+         <!--<xsl:for-each-group select="$codes-pass-1/tan:code/tan:category" group-by="count(preceding-sibling::tan:category)">
+         </xsl:for-each-group>--> 
+      </xsl:variable>
+      
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates select="node() except text()" mode="#current"/>
+         <xsl:value-of select="replace(string-join($new-code), '( -)+$', '')"/>
+      </xsl:copy>
    </xsl:template>
    
    
