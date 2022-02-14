@@ -1013,6 +1013,18 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
     @pos -->
     <xsl:template match="tan:wit" mode="adjust-diff-infusion"/>
 
+    <xsl:template match="tan:a/text() | tan:b/text() | tan:common/text() | tan:u/tan:txt/text()" mode="adjust-diff-infusion">
+        <!-- We're getting this ready for HTML, and spaces should be preserved -->
+        <xsl:analyze-string select="." regex="  +">
+            <xsl:matching-substring>
+                <xsl:variable name="len" as="xs:integer" select="string-length(.)"/>
+                <xsl:value-of select="' ' || tan:fill('&#xa0;', $len - 1)"/>
+            </xsl:matching-substring>
+            <xsl:non-matching-substring>
+                <xsl:value-of select="."/>
+            </xsl:non-matching-substring>
+        </xsl:analyze-string>
+    </xsl:template>
 
 
 
