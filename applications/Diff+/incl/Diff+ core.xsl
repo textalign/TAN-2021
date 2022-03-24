@@ -1019,10 +1019,15 @@
     
     <xsl:template match="html:script/@src | @href" mode="return-final-messages">
         <xsl:variable name="target-uri" select="root(.)/*/@_target-uri" as="xs:string"/>
-        <xsl:variable name="this-link-resolved" select="resolve-uri(., $target-uri)" as="xs:anyURI"/>
-        <xsl:if test="not(unparsed-text-available($this-link-resolved))">
-            <xsl:message select="'Unparsed text not available at ' || . || ' relative to ' || $target-uri || '. See ' || path(.)"/>
-        </xsl:if>
+        <xsl:try>
+            <xsl:variable name="this-link-resolved" select="resolve-uri(., $target-uri)" as="xs:anyURI"/>
+            <xsl:if test="not(unparsed-text-available($this-link-resolved))">
+                <xsl:message select="'Unparsed text not available at ' || . || ' relative to ' || $target-uri || '. See ' || path(.)"/>
+            </xsl:if>
+            <xsl:catch>
+                <xsl:message select=". || ' cannot be parsed as a uri'"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:template>
     
     <xsl:template match="tan:global-notices/*" mode="return-final-messages">
