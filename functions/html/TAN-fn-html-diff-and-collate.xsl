@@ -103,6 +103,8 @@
         <!-- Steps and output -->
 
         <xsl:variable name="html-output-pass-1" as="element()?">
+            <!-- TODO: simplify, clarify the logic in processing this version, which has many
+                twists and turns. -->
             <xsl:apply-templates select="$diff-or-collate-results" mode="diff-or-collate-to-html-output-pass-1">
                 <xsl:with-param name="last-wit-idref" tunnel="yes" as="xs:string?"
                     select="$primary-version-ref-adjusted"/>
@@ -131,7 +133,6 @@
             <xsl:message select="'output pass 2: ', tan:trim-long-tree($html-output-pass-2, 10, 20)"/>
             <xsl:message select="'output pass 3: ', tan:trim-long-tree($html-output-pass-3, 10, 20)"/>
         </xsl:if>
-        
         
         <xsl:sequence select="$html-output-pass-3"/>
 
@@ -197,7 +198,7 @@
                     <tbody>
                         <!-- The following witnesses will normally be in order from most common to
                         the group to least common -->
-                        <xsl:apply-templates select="../tan:collation/tan:witness" mode="#current">
+                        <xsl:apply-templates select="../tan:collation/tan:witness" mode="build-pairwise-similarity-table">
                             <xsl:with-param name="witness-ids" select="$witness-ids"/>
                         </xsl:apply-templates>
                     </tbody>
@@ -205,6 +206,34 @@
             </div>
         </xsl:if>
 
+    </xsl:template>
+    
+    <xsl:mode name="build-pairwise-similarity-table" on-no-match="shallow-copy"/>
+    <xsl:template match="tan:witness" mode="build-pairwise-similarity-table">
+        <!-- This template completes the <table> designed to show pairwise similarity, currently
+        placed just after <stats> -->
+        <xsl:param name="witness-ids"/>
+        <xsl:variable name="commonality-children" select="tan:commonality"/>
+        <tr>
+            <td>
+                <xsl:value-of select="@id"/>
+            </td>
+            <xsl:for-each select="$witness-ids">
+                <xsl:variable name="this-id" select="."/>
+                <xsl:variable name="this-commonality"
+                    select="$commonality-children[@with = $this-id]"/>
+                <td>
+                    <xsl:if test="exists($this-commonality)">
+                        <xsl:variable name="this-commonality-number"
+                            select="number($this-commonality)"/>
+                        <xsl:attribute name="style"
+                            select="'background-color: rgba(0, 128, 0, ' || string($this-commonality-number * $this-commonality-number * 0.6) || ')'"/>
+                        <xsl:value-of select="format-number($this-commonality-number * 100, '0.0')"
+                        />
+                    </xsl:if>
+                </td>
+            </xsl:for-each>
+        </tr>
     </xsl:template>
 
     <xsl:template match="tan:stats/tan:witness | tan:stats/tan:collation | tan:stats/tan:diff" 
@@ -892,7 +921,7 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
         <xsl:copy>
             <xsl:if test="not(exists($primary-version-tree))">
                 <xsl:copy-of select="@*"/>
-                <xsl:apply-templates mode="#current"/>
+                <xsl:apply-templates mode="adjust-diff-infusion"/>
             </xsl:if>
             <xsl:apply-templates select="$primary-file-adjusted"
                 mode="infuse-primary-file-with-diff-results">
@@ -902,33 +931,11 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
         </xsl:copy>
 
     </xsl:template>
-
-    <xsl:template match="tan:witness" mode="diff-or-collate-to-html-output-pass-1">
-        <!-- This template completes the <table> designed to show pairwise similarity, currently
-        placed just after <stats> -->
-        <xsl:param name="witness-ids"/>
-        <xsl:variable name="commonality-children" select="tan:commonality"/>
-        <tr>
-            <td>
-                <xsl:value-of select="@id"/>
-            </td>
-            <xsl:for-each select="$witness-ids">
-                <xsl:variable name="this-id" select="."/>
-                <xsl:variable name="this-commonality"
-                    select="$commonality-children[@with = $this-id]"/>
-                <td>
-                    <xsl:if test="exists($this-commonality)">
-                        <xsl:variable name="this-commonality-number"
-                            select="number($this-commonality)"/>
-                        <xsl:attribute name="style"
-                            select="'background-color: rgba(0, 128, 0, ' || string($this-commonality-number * $this-commonality-number * 0.6) || ')'"/>
-                        <xsl:value-of select="format-number($this-commonality-number * 100, '0.0')"
-                        />
-                    </xsl:if>
-                </td>
-            </xsl:for-each>
-        </tr>
-    </xsl:template>
+    
+    <!-- The collation witnesses have been moved up into the statistics section and the pairwise 
+        similarity table. -->
+    <xsl:template match="tan:collation/tan:witness"
+        mode="diff-or-collate-to-html-output-pass-1 adjust-diff-infusion"/>
 
 
 
@@ -937,13 +944,7 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
     <xsl:template match="comment() | processing-instruction()"
         mode="infuse-primary-file-with-diff-results"/>
 
-    <xsl:template match="tan:unparsed-text | w:document" mode="infuse-primary-file-with-diff-results">
-        <!-- TODO: support the bare bones of a Word docx structure -->
-        <xsl:param name="element-replacements" tunnel="yes" as="element()*"/>
-        <xsl:apply-templates select="$element-replacements" mode="adjust-diff-infusion"/>
-    </xsl:template>
-
-    <xsl:template match="*[@q or @id]" mode="infuse-primary-file-with-diff-results">
+    <xsl:template match="*[@q or @id]" priority="1" mode="infuse-primary-file-with-diff-results">
         <xsl:param name="element-replacements" tunnel="yes" as="element()*"/>
         <xsl:variable name="context-q" as="xs:string" select="(@q, @id)[1]"/>
         <xsl:variable name="this-substitute" select="$element-replacements[@q eq $context-q]"/>
@@ -952,11 +953,15 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
                 <xsl:apply-templates select="$this-substitute" mode="adjust-diff-infusion"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:copy>
-                    <xsl:apply-templates select="@* | node()" mode="#current"/>
-                </xsl:copy>
+                <xsl:next-match/>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+
+    <xsl:template match="tan:unparsed-text | w:document" mode="infuse-primary-file-with-diff-results">
+        <!-- TODO: support the bare bones of a Word docx structure -->
+        <xsl:param name="element-replacements" tunnel="yes" as="element()*"/>
+        <xsl:apply-templates select="$element-replacements" mode="adjust-diff-infusion"/>
     </xsl:template>
 
     <!-- get rid of attributes we will not use for the rest of the process, and do not want
@@ -973,7 +978,10 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
 
-    <xsl:template match="tan:c | tan:u" mode="adjust-diff-infusion">
+    <!-- February 2022: adding second template mode, infuse-primary-file-with-diff-results, 
+        to deal with material not substituted -->
+    
+    <xsl:template match="tan:c | tan:u" mode="adjust-diff-infusion infuse-primary-file-with-diff-results">
         <xsl:param name="last-wit-idref" as="xs:string?" tunnel="yes"/>
         <xsl:variable name="wit-refs" as="xs:string*" select="tan:wit/@ref"/>
         <xsl:variable name="class-values" as="xs:string*" select="
@@ -1000,7 +1008,7 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="tan:b" mode="adjust-diff-infusion">
+    <xsl:template match="tan:b" mode="adjust-diff-infusion infuse-primary-file-with-diff-results">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:attribute name="class" select="'a-last a-other'"/>
@@ -1011,9 +1019,9 @@ div.selectAll(".venn-circle path").style("fill-opacity", .6);
     <!-- We don't need the witnesses in the HTML file because a tooltip lets the reader know which 
     witnesses attest to a given reading. But this could be adapted in the future, esp. to make use of
     @pos -->
-    <xsl:template match="tan:wit" mode="adjust-diff-infusion"/>
+    <xsl:template match="tan:wit" mode="adjust-diff-infusion infuse-primary-file-with-diff-results"/>
 
-    <xsl:template match="tan:a/text() | tan:b/text() | tan:common/text() | tan:u/tan:txt/text()" mode="adjust-diff-infusion">
+    <xsl:template match="tan:a/text() | tan:b/text() | tan:common/text() | tan:u/tan:txt/text()" mode="adjust-diff-infusion infuse-primary-file-with-diff-results">
         <!-- We're getting this ready for HTML, and spaces should be preserved -->
         <xsl:analyze-string select="." regex="  +">
             <xsl:matching-substring>

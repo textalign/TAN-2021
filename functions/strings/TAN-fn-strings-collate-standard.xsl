@@ -39,6 +39,26 @@
    
    
    <xsl:function name="tan:collate" as="element()?" visibility="public">
+      <!-- 1-parameter version of fuller one, below -->
+      <xsl:param name="strings-to-collate" as="xs:string*"/>
+      <xsl:variable name="string-labels" as="xs:string+">
+         <xsl:for-each select="$strings-to-collate">
+            <xsl:value-of select="position()"/>
+         </xsl:for-each>
+      </xsl:variable>
+      <xsl:sequence select="tan:collate($strings-to-collate, $string-labels)"/>
+   </xsl:function>
+   
+   <xsl:function name="tan:collate" as="element()?" visibility="public">
+      <!-- 2-parameter version of fuller one, below -->
+      <xsl:param name="strings-to-collate" as="xs:string*"/>
+      <xsl:param name="string-labels" as="xs:string*"/>
+      <xsl:sequence
+         select="tan:collate($strings-to-collate, $string-labels, true())"
+      />
+   </xsl:function>
+   
+   <xsl:function name="tan:collate" as="element()?" visibility="public">
       <!-- 3-parameter version of fuller one, below -->
       <xsl:param name="strings-to-collate" as="xs:string*"/>
       <xsl:param name="string-labels" as="xs:string*"/>
