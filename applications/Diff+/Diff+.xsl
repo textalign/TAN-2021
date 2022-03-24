@@ -6,7 +6,7 @@
     xmlns:tan="tag:textalign.net,2015:ns" exclude-result-prefixes="#all" version="3.0">
     
     <!-- Welcome to Diff+, the TAN application that finds and analyzes text differences-->
-    <!-- Version 2022-02-14 -->
+    <!-- Version 2022-03-24 -->
     <!-- Take any number of versions of a text, compare them, and view and study all the text
         differences in an HTML page. The HTML output allows you to see precisely where one version
         differs from the other. A small Javascript library allows you to change focus, remove
@@ -107,7 +107,14 @@
     <!-- What directory or directories has the main input files? Any relative path will be calculated
       against the location of this application file. Multiple directories may be supplied. Too many files?
       Results can be filtered below. -->
-    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string+" select="$directory-4-uri"/>
+    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string*" select="$directory-4-uri"/>
+    
+    <!-- Alternatively, you can point to one or more plain text files, each with list of paths to files 
+        that should be processed. Every path must start with "file:" and use regular slashes, e.g.,
+        e.g., file:/d:/test/item.docx. This parameter is used by command line utilities, so if it is
+        populated, the previous parameter will be ignored. The regular expression filters (see below)
+        are still enforced. -->
+    <xsl:param name="resolved-uris-to-lists-of-main-input-resolved-uris" as="xs:string*"/>
 
     <!-- What pattern must each filename match (a regular expression, case-insensitive)? Of the files 
         in the directories chosen, only those whose names match this pattern will be included. A null 
@@ -121,22 +128,21 @@
     
     <!-- Each diff or collation is performed against a group of files, and there may be one or more
         groups. How shall groups be created? Options:
-        1. Detected language (default). Group by detected @xml:lang value; if not present, assume the
-        default language (see parameter $default-language).
+        1. Detected language (default). Group by detected @xml:lang value; if not present in a particular
+        file, assume it belongs to the predefined default language (see parameter $default-language).
         2. Filename only. Group by the filename of the files, perhaps after replacements (see parameter
         $filename-adjustments-before-grouping below).
         3. Filename and language, a synthesis of the previous two options.
     -->
     <xsl:param name="file-group-option" as="xs:integer" select="1"/>
     
-    <!-- What changes if any should be made to a filename before attempting to group it with other
-        files? The desired changes must be expressed as batch replacements. A batch replacement consists 
-        of a sequence of elements, each one with attributes @pattern and @replacement and perhaps 
-        attributes @flags and @message. For examples of batch replacements, see 
-        ../../parameters/params-application-language.xsl. Note, in most systems filenames are fundamentally
-        not case-sensitive, but have mixed case. Therefore in this parameter an attribute flags="i" is
-        normally desirable.
-    -->
+    <!-- What changes if any should be made to a filename before attempting to group it with other files? The
+      desired changes must be expressed as batch replacements. A batch replacement consists of a sequence
+      of elements, each one with attributes @pattern and @replacement and perhaps attributes @flags and
+      @message. For examples of batch replacements, see ../../parameters/params-application-language.xsl.
+      Note, in most systems filenames are fundamentally not case-sensitive, but have mixed case.
+      Therefore in this parameter an attribute flags="i" is normally desirable.
+ -->
     <xsl:param name="filename-adjustments-before-grouping" as="element()*">
         <!-- The next example removes an ISO-style date-time stamp from the filename. -->
         <!--<replace pattern="\d{{8}}" replacement="" flags="i" message="stripping date-time stamp from filename"/>-->

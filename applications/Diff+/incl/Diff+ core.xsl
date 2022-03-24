@@ -78,6 +78,9 @@
         of input XML, to compare XML structures more closely; supported output suffixes; ellision of lengthy text in HTML output;
         finer control of location of target CSS and JavaScript libraries; more grouping options, based on adjusted filenames
         and languages.</change>
+        <change xmlns="tag:textalign.net,2015:ns" who="kalvesmaki" when="2022-03-24">Added new
+            parameter $resolved-uris-to-lists-of-main-input-resolved-uris and batch file, for more
+            convenient processing. Made some patches to underlying code.</change>
     </xsl:param>
     <xsl:param name="tan:stylesheet-to-do-list">
         <to-do xmlns="tag:textalign.net,2015:ns">
@@ -97,13 +100,30 @@
                 string(resolve-uri($i, $calling-stylesheet-uri))"/>
     
     <xsl:variable name="main-input-resolved-uris" as="xs:string*">
-        <xsl:for-each select="$main-input-resolved-uri-directories">
-            <xsl:try select="uri-collection(.)">
-                <xsl:catch>
-                    <xsl:message select="'Unable to get a uri collection from ' || ."/>
-                </xsl:catch>
-            </xsl:try>
-        </xsl:for-each>
+        <xsl:choose>
+            <xsl:when test="count($resolved-uris-to-lists-of-main-input-resolved-uris) gt 0">
+                <xsl:for-each select="$resolved-uris-to-lists-of-main-input-resolved-uris">
+                    <xsl:choose>
+                        <xsl:when test="unparsed-text-available(.)">
+                            <xsl:message select="'Consulting list of uris at ' || ."/>
+                            <xsl:sequence select="unparsed-text-lines(.)[matches(., '\S')]"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:message select="'Cannot find list of uris at ' || ."/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:for-each select="$main-input-resolved-uri-directories">
+                    <xsl:try select="uri-collection(.)">
+                        <xsl:catch>
+                            <xsl:message select="'Unable to get a uri collection from ' || ."/>
+                        </xsl:catch>
+                    </xsl:try>
+                </xsl:for-each>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:variable>
     
     <xsl:variable name="mirus-chosen" as="xs:string*"
