@@ -1870,7 +1870,9 @@
                             <xsl:apply-templates select="tan:display-n | tan:n | tan:ref"
                                 mode="#current"/>
                         </td>
-                        
+                        <!--<test18a>
+                            <xsl:copy-of select="$these-divs-diffed"/>
+                        </test18a>-->
                         <xsl:apply-templates select="$these-divs-diffed" mode="tan-to-html-pass-2-build-version-table"/>
                     </tr>
                     <!-- Dec 2020 delete, relic of @n handling -->
@@ -1893,8 +1895,8 @@
     <xsl:template match="html:h2 | html:table[@class = 'e-stats']/html:thead/html:tr/html:th[2] | 
         html:table[@class = 'e-stats']/html:tbody/html:tr/html:td[2]" 
         mode="adjust-diff-or-collate-for-merged-display"/>
-    <xsl:template match="html:*[html:div[@class = ('collation', 'e-diff')]]" mode="adjust-diff-or-collate-for-merged-display">
-        <xsl:variable name="this-collation" select="html:div[@class = ('collation', 'e-diff')]"/>
+    <xsl:template match="html:*[html:div[@class = ('e-collation', 'collation', 'e-diff')]]" mode="adjust-diff-or-collate-for-merged-display">
+        <xsl:variable name="this-collation" select="html:div[@class = ('e-collation', 'collation', 'e-diff')]"/>
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <div class="collation-head">
@@ -2351,7 +2353,7 @@
             <!--<src-id-sequence><xsl:value-of select="$src-id-sequence"/></src-id-sequence>-->
             <!--<sort-and-group-by-what-alias><xsl:value-of select="$sort-and-group-by-what-alias-idrefs"/></sort-and-group-by-what-alias>-->
             <!--<self-resolved><xsl:copy-of select="$self-resolved"/></self-resolved>-->
-            <sources-resolved><xsl:copy-of select="$tan:sources-resolved"/></sources-resolved>
+            <!--<sources-resolved><xsl:copy-of select="$tan:sources-resolved"/></sources-resolved>-->
             <!--<source-group-and-sort-pattern><xsl:copy-of select="$source-group-and-sort-pattern"/></source-group-and-sort-pattern>-->
             <!--<TAN-A-self-expanded><xsl:copy-of select="$self-expanded[tan:TAN-A]"/></TAN-A-self-expanded>-->
             <!--<src-ids><xsl:value-of select="$src-ids"/></src-ids>-->
@@ -2368,14 +2370,14 @@
             <!--<input-pass-2b><xsl:copy-of select="$input-pass-2b"/></input-pass-2b>-->
             <!--<input-pass-3><xsl:copy-of select="$input-pass-3"/></input-pass-3>-->
             <!--<input-pass-3a><xsl:copy-of select="$input-pass-3a"/></input-pass-3a>-->
-            <!--<input-pass-3b><xsl:copy-of select="$input-pass-3b"/></input-pass-3b>-->
-            <!--<input-pass-3c><xsl:copy-of select="$input-pass-3c"/></input-pass-3c>-->
+            <input-pass-3b><xsl:copy-of select="$input-pass-3b"/></input-pass-3b>
+            <input-pass-3c><xsl:copy-of select="$input-pass-3c"/></input-pass-3c>
             <!--<source-bibliography><xsl:copy-of select="$source-bibliography"/></source-bibliography>-->
-            <!--<input-pass-4><xsl:copy-of select="$input-pass-4"/></input-pass-4>-->
+            <input-pass-4><xsl:copy-of select="$input-pass-4"/></input-pass-4>
             <!--<html-template-url-resolved><xsl:value-of select="$html-template-uri-resolved"/></html-template-url-resolved>-->
             <!--<html-template-doc><xsl:copy-of select="$html-template-doc"/></html-template-doc>-->
-            <!--<template-infused><xsl:copy-of select="$template-infused-with-revised-input"/></template-infused>-->
-            <!--<output-revised><xsl:copy-of select="$output-revised"/></output-revised>-->
+            <template-infused><xsl:copy-of select="$template-infused-with-revised-input"/></template-infused>
+            <output-revised><xsl:copy-of select="$output-revised"/></output-revised>
         </diagnostics>
     </xsl:template>
     <xsl:template match="/">

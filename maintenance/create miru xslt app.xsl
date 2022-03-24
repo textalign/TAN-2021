@@ -76,7 +76,8 @@
     <xsl:param name="function-saxon-evaluate-available" static="yes" select="function-available('saxon:evaluate')"/>
     
     <!-- What are the resolved uris for the XSLT files that should have an app created? -->
-    <xsl:param name="main-input-resolved-uris" as="xs:string*"/>
+    <xsl:param name="main-input-resolved-uris" as="xs:string*"
+        select="resolve-uri('../applications/Diff+/Diff+.xsl', static-base-uri())"/>
     
     <!-- Alternatively, you might provide resolved URIs pointing to a plain-text list of resolved URIs, each on a separate line -->
     <xsl:param name="resolved-uris-to-lists-of-main-input-resolved-uris" as="xs:string*"/>
