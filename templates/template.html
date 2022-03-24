@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <!-- General HTML template for TAN output. Includes all commonly used CSS and JavaScript files,
+   to be omitted as needed. -->
+   <head>
+      <title></title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      <!-- JQuery is a basic ingredient for many of the following JavaScript libraries. -->
+      <script type="text/javascript" src="../output/js/jquery.js"></script>
+      <!-- The Javascript UI allows one to drag blocks and rearrange them -->
+      <script type="application/javascript" src="../output/js/jquery-ui-1.12.1/jquery-ui.js"></script>
+      <link rel="stylesheet" type="text/css" href="../output/js/tablesorter/css/theme.default.css"></link>
+      <!-- Many times tables are used, and to make them sortable, Tablesorter is preferred. -->
+      <script type="text/javascript" src="../output/js/tablesorter/js/jquery.tablesorter.combined.js"/>
+      <!-- Standard TAN JS library, for some commonly used operations. -->
+      <script type="text/javascript" src="../output/js/tan2020.js"></script>
+      <!-- D3JS is a dependency for the Venn JS library -->
+      <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+      <!-- Venn JS library, for visualizing the relative distance of sets of 3 versions of a collation -->
+      <script type="text/javascript" src="../output/js/venn.js/venn.js"></script>
+      <!-- Standard TAN CSS -->
+      <link rel="stylesheet" type="text/css" href="../output/css/tan2020.css"></link>
+      <!-- Standard CSS for viewing diff and collation results in HTML -->
+      <link rel="stylesheet" type="text/css" href="../output/css/diff.css"></link>
+
+      <script type="text/javascript">
+                $(function(){
+                $('table').tablesorter({
+                widgets: ["filter"],
+                widgetOptions : {
+                filter_external : '.search',
+                filter_defaultFilter: { 1 : '~{query}' },
+                filter_columnFilters: false,
+                filter_placeholder: { search : 'Search...' },
+                filter_saveFilters : true,
+                filter_reset: '.reset'}
+                });
+                });
+            </script>
+   </head>
+   <body>
+      <!-- new content goes here -->
+      <script type="text/javascript" src="../output/js/diff.js"></script>
+   </body>
+</html>

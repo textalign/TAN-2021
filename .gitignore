@@ -1,6 +1,4 @@
 # The following files are suppressed
-*.html
-*.xhtml
 *.pdf
 *.xml_xslt
 *.sh

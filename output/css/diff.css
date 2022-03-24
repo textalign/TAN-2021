@@ -213,6 +213,7 @@ body > * > .label {
 
 /* PADDING */
 div.collation div,
+div.e-collation div,
 div.e-diff div{
    padding: 0px;
 }
