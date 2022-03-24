@@ -508,7 +508,7 @@
         </xsl:choose>
     </xsl:function>
     <xsl:function name="tan:open-archive-loop" as="document-node()*" use-when="not($advanced-functions-available)" visibility="private">
-        <!-- Input: a base uri for a archive; a sequence of strings of uris relative to the base uri -->
+        <!-- Input: a base uri for an archive; a sequence of strings of uris relative to the base uri -->
         <!-- Output: each component found converted to a document; for each component found, a search will be made for _rels/[NAME].rels
         and the function will be run recursively against any @Target that is found-->
         <xsl:param name="archive-base-uri" as="xs:string"/>
@@ -520,10 +520,10 @@
             <xsl:variable name="this-local-archive-subdirectory" select="replace($this-component-relative-uri, '[^/]+$', '')"/>
             <xsl:variable name="this-rels-relative-uri" select="replace($this-component-relative-uri, '([^/]+)$', '_rels/$1.rels')"/>
             <xsl:variable name="this-rels-component" select="tan:extract-archive-component($archive-base-uri, $this-rels-relative-uri)"/>
-            <xsl:variable name="these-rels-target-attributes" select="$this-rels-component//@Target"/>
+            <xsl:variable name="these-rels-target-attributes" select="$this-rels-component//*[not(@TargetMode eq 'External')]/@Target"/>
             <xsl:if test="not(exists($this-component))">
                 <xsl:message
-                    select="'Target component ' || $this-component-relative-uri || . || ' is either a binary file (in which case it will be skipped, because advanced functions are not available) or is missing.'"/>
+                    select="'Target component ' || $this-component-relative-uri || ' from base uri ' || $archive-base-uri || ' is either a binary file (in which case it will be skipped, because advanced functions are not available) or is missing.'"/>
             </xsl:if>
             <xsl:sequence select="$this-component, $this-rels-component"/>
             <xsl:choose>
