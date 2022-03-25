@@ -467,9 +467,11 @@
             return
                (map:get($morpheus-map, $i), $i)[1]"/>
       <xsl:variable name="diagnostics-on" select="false()"/>
+      
       <xsl:if test="$diagnostics-on">
          <xsl:message select="'diagnostics on for template mode build-morpheus-ana'"/>
       </xsl:if>
+      
       <xsl:for-each select="$these-vals-norm">
          <xsl:variable name="this-atomic-val" select="."/>
          <xsl:variable name="this-feature-vocabulary"

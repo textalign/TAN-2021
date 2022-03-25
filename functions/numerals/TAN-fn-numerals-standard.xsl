@@ -289,15 +289,6 @@
             
             <xsl:variable name="default-name" as="xs:string?">
                <xsl:choose>
-                  <xsl:when test="$place eq 2 and . eq '1'">ten</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '2'">twenty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '3'">thirty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '4'">forty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '5'">fifty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '6'">sixty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '7'">seventy</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '8'">eighty</xsl:when>
-                  <xsl:when test="$place eq 2 and . eq '9'">ninety</xsl:when>
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'one'">eleven</xsl:when>
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'two'">twelve</xsl:when>
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'three'">thirteen</xsl:when>
@@ -307,6 +298,15 @@
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'seven'">seventeen</xsl:when>
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'eight'">eighteen</xsl:when>
                   <xsl:when test="$place eq 2 and . eq '1' and $prev-string eq 'nine'">nineteen</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '1'">ten</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '2'">twenty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '3'">thirty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '4'">forty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '5'">fifty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '6'">sixty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '7'">seventy</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '8'">eighty</xsl:when>
+                  <xsl:when test="$place eq 2 and . eq '9'">ninety</xsl:when>
                   <xsl:when test=". eq '0'">zero</xsl:when>
                   <xsl:when test=". eq '1'">one</xsl:when>
                   <xsl:when test=". eq '2'">two</xsl:when>

@@ -3,6 +3,7 @@
     xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:tan="tag:textalign.net,2015:ns"
     xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    expand-text="yes"
     exclude-result-prefixes="#all" version="3.0">
 
     <!-- Core application for comparing texts. -->
@@ -10,7 +11,7 @@
     <xsl:include href="../../../functions/TAN-function-library.xsl"/>
     
     <xsl:variable name="output-directory-uri-resolved" as="xs:anyURI"
-        select="resolve-uri($output-directory-uri, $calling-stylesheet-uri)"/>
+        select="resolve-uri(replace($output-directory-uri, '([^/])$', '$1/'), $calling-stylesheet-uri)"/>
     
 
     <!-- About this stylesheet -->
@@ -73,11 +74,17 @@
             space-normalization problems.</change>
         <change xmlns="tag:textalign.net,2015:ns" who="kalvesmaki" when="2021-07-07">Edited,
             prepared for TAN 2021 release.</change>
+        <change xmlns="tag:textalign.net,2015:ns" who="kalvesmaki" when="2022-02-14">Added new functionality: serialization
+        of input XML, to compare XML structures more closely; supported output suffixes; ellision of lengthy text in HTML output;
+        finer control of location of target CSS and JavaScript libraries; more grouping options, based on adjusted filenames
+        and languages.</change>
+        <change xmlns="tag:textalign.net,2015:ns" who="kalvesmaki" when="2022-03-24">Added new
+            parameter $resolved-uris-to-lists-of-main-input-resolved-uris and batch file, for more
+            convenient processing. Made some patches to underlying code.</change>
     </xsl:param>
     <xsl:param name="tan:stylesheet-to-do-list">
         <to-do xmlns="tag:textalign.net,2015:ns">
             <comment who="kalvesmaki" when="2020-10-06">Revise process that reinfuses a class 1 file with a diff/collate into a standard extra TAN function.</comment>
-            <comment who="kalvesmaki" when="2021-09-06">Add parameter to allow serialization of input XML, for closer comparison of XML structures.</comment>
         </to-do>
     </xsl:param>
     
@@ -93,13 +100,30 @@
                 string(resolve-uri($i, $calling-stylesheet-uri))"/>
     
     <xsl:variable name="main-input-resolved-uris" as="xs:string*">
-        <xsl:for-each select="$main-input-resolved-uri-directories">
-            <xsl:try select="uri-collection(.)">
-                <xsl:catch>
-                    <xsl:message select="'Unable to get a uri collection from ' || ."/>
-                </xsl:catch>
-            </xsl:try>
-        </xsl:for-each>
+        <xsl:choose>
+            <xsl:when test="count($resolved-uris-to-lists-of-main-input-resolved-uris) gt 0">
+                <xsl:for-each select="$resolved-uris-to-lists-of-main-input-resolved-uris">
+                    <xsl:choose>
+                        <xsl:when test="unparsed-text-available(.)">
+                            <xsl:message select="'Consulting list of uris at ' || ."/>
+                            <xsl:sequence select="unparsed-text-lines(.)[matches(., '\S')]"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:message select="'Cannot find list of uris at ' || ."/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:for-each select="$main-input-resolved-uri-directories">
+                    <xsl:try select="uri-collection(.)">
+                        <xsl:catch>
+                            <xsl:message select="'Unable to get a uri collection from ' || ."/>
+                        </xsl:catch>
+                    </xsl:try>
+                </xsl:for-each>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:variable>
     
     <xsl:variable name="mirus-chosen" as="xs:string*"
@@ -108,6 +132,7 @@
     
     <xsl:variable name="check-top-level-div-ns" as="xs:boolean" select="string-length($exclude-top-level-divs-with-attr-n-matching-what) gt 0"/>
     
+    <xsl:variable name="elision-trigger-point-norm" as="xs:integer" select="max(($elision-minimum-point, 5))"/>
     
     
     
@@ -117,7 +142,7 @@
     <xsl:variable name="notices" as="element()">
         <notices>
             <input_selection>
-                <message><xsl:value-of select="'Main input directory: ' || $main-input-resolved-uri-directories"/></message>
+                <message><xsl:value-of select="'Main input directory: ' || string-join($main-input-resolved-uri-directories, ', ')"/></message>
                 <xsl:if test="string-length($tan:input-filenames-must-match-regex) gt 0">
                     <message><xsl:value-of select="'Restricted to files with filenames matching: ' || $tan:input-filenames-must-match-regex"/></message>
                 </xsl:if>
@@ -129,6 +154,8 @@
                     <message><xsl:value-of select="'Excluding top-level divs whose @n values match ' || $exclude-top-level-divs-with-attr-n-matching-what"/></message>
                 </xsl:if>
                 <message><xsl:value-of select="'Exclude orphaned top-level divs? ' || $restrict-to-matching-top-level-div-attr-ns"/></message>
+                <message><xsl:value-of select="'XML handling option ' || $xml-handling-option"/></message>
+                <message><xsl:value-of select="'File group option ' || $file-group-option"/></message>
             </input_selection>
             <input_alteration>
                 <xsl:if test="count($tan:diff-and-collate-input-batch-replacements) gt 0">
@@ -196,7 +223,30 @@
     
     <!-- Beginning of main input -->
     
-    <xsl:variable name="main-input-files" select="tan:open-file($mirus-chosen)" as="document-node()*"/>
+    <xsl:variable name="main-input-files" as="document-node()*">
+        <xsl:choose>
+            <xsl:when test="$xml-handling-option eq 1">
+                <xsl:for-each select="$mirus-chosen">
+                    <xsl:choose>
+                        <xsl:when test="doc-available(.)">
+                            <xsl:document>
+                                <unparsed-text>
+                                    <xsl:attribute name="xml:base" select="."/>
+                                    <xsl:value-of select="unparsed-text(.)"/>
+                                </unparsed-text>
+                            </xsl:document>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:sequence select="tan:open-file(.)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="tan:open-file($mirus-chosen)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
     
     <xsl:variable name="main-input-files-filtered" as="document-node()*">
         <xsl:for-each select="$main-input-files">
@@ -204,8 +254,10 @@
                 <xsl:when
                     test="$restrict-to-matching-top-level-div-attr-ns and not(exists(*/tan:head))"/>
                 <xsl:when test="exists(*[@_archive-path][not(self::w:document)])"/>
+                <xsl:when test="not(exists(/*/@TAN-version))">
+                    <xsl:sequence select="."/>
+                </xsl:when>
                 <xsl:otherwise>
-                    <!--<xsl:sequence select="."/>-->
                     <xsl:apply-templates select="." mode="filter-input-files"/>
                 </xsl:otherwise>
             </xsl:choose>
@@ -270,10 +322,24 @@
     <!-- Word documents get plain text only -->
     <xsl:template match="/w:document" priority="1" mode="prepare-input">
         <xsl:variable name="this-filename" as="xs:string" select="tan:cfn(@xml:base)"/>
+        <xsl:variable name="filename-group" as="xs:string"
+            select="tan:batch-replace($this-filename, $filename-adjustments-before-grouping)"/>
         <xsl:copy>
             <xsl:attribute name="xml:lang" select="$default-language"/>
             <xsl:attribute name="xml:base" select="replace(@xml:base, '^jar:|!/$', '')"/>
-            <xsl:attribute name="grouping-key" select="$default-language"/>
+            <xsl:attribute name="grouping-key">
+                <xsl:choose>
+                    <xsl:when test="$file-group-option eq 2">
+                        <xsl:sequence select="$filename-group"/>
+                    </xsl:when>
+                    <xsl:when test="$file-group-option eq 3">
+                        <xsl:sequence select="$filename-group || ' ' || $default-language"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:sequence select="$default-language"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
             <xsl:attribute name="sort-key" select="$this-filename"/>
             <xsl:attribute name="label" select="replace($this-filename, '(%20|\.)', '_')"/>
             <xsl:sequence select="tan:docx-to-text(.)"/>
@@ -284,13 +350,31 @@
     <xsl:template match="/*" mode="prepare-input">
         <xsl:variable name="this-base-uri" as="xs:anyURI" select="tan:base-uri(.)"/>
         <xsl:variable name="this-filename" as="xs:string" select="tan:cfn($this-base-uri)"/>
+        <xsl:variable name="filename-group" as="xs:string"
+            select="tan:batch-replace($this-filename, $filename-adjustments-before-grouping)"/>
         <xsl:variable name="first-language" select="(descendant-or-self::*[@xml:lang][1]/@xml:lang)[1]" as="xs:string?"/>
         <xsl:copy>
             <xsl:attribute name="xml:base" select="$this-base-uri"/>
             <xsl:attribute name="xml:lang" select="($first-language, $default-language)[1]"/>
-            <xsl:attribute name="grouping-key" select="($first-language, $default-language)[1]"/>
+            <xsl:attribute name="grouping-key">
+                <xsl:choose>
+                    <xsl:when test="$file-group-option eq 2">
+                        <xsl:sequence select="$filename-group"/>
+                    </xsl:when>
+                    <xsl:when test="$file-group-option eq 3">
+                        <xsl:sequence select="$filename-group || ' ' || ($first-language, $default-language)[1]"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:sequence select="($first-language, $default-language)[1]"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
             <xsl:attribute name="sort-key" select="$this-filename"/>
             <xsl:attribute name="label" select="replace($this-filename, '(%20|\.)', '_')"/>
+            <xsl:attribute name="_orig-attr-names" select="
+                    string-join((for $i in @*
+                    return
+                        name($i)), ' ')"/>
             <xsl:apply-templates select="@* | node()" mode="#current"/>
         </xsl:copy>
     </xsl:template>
@@ -310,7 +394,9 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="*[not(@q)]" priority="-1" mode="prepare-input">
+    <xsl:template match="*[$xml-handling-option ne 3][not(@q)]" priority="-1" mode="prepare-input">
+        <!-- Add a @q, so that diff results can be replaced by the original material. But if the
+            user wants to serialize, do not add this attribute. -->
         <xsl:copy>
             <xsl:attribute name="q" select="generate-id(.)"/>
             <xsl:apply-templates select="@* | node()" mode="#current"/>
@@ -318,17 +404,76 @@
     </xsl:template>
     
     
-    <!-- Normalize string value of TAN files -->
-    <xsl:variable name="main-input-files-space-normalized" as="document-node()*" select="
+    <!-- Normalize spacing in TAN files, and perhaps serialize -->
+    <!--<xsl:variable name="main-input-files-space-normalized" as="document-node()*" select="
             for $i in $main-input-files-prepped
             return
                 if (
                 (not(exists($i/*/@TAN-version)) and not($space-normalize-non-tan-input))
                 or exists($i/*/@_archive-path) (: don't space-normalize docx components :)
                 ) then
-                    $i
+                    if ($xml-handling-option eq 3 and not(exists($i/*/@_archive-path)
+                    and not(exists($i/*:unparsed-text))
+                    and not(exists($i/*:base64Binary))
+                    )) then
+                        ()
+                    else
+                        $i
                 else
-                    tan:normalize-tree-space($i, true())"/>
+                    tan:normalize-tree-space($i, true())"/>-->
+    <xsl:variable name="main-input-files-space-normalized" as="document-node()*">
+        <xsl:apply-templates select="$main-input-files-prepped"
+            mode="space-normalize-or-serialize-input"/>
+    </xsl:variable>
+    
+    <xsl:mode name="space-normalize-or-serialize-input" on-no-match="shallow-copy"/>
+    
+    <xsl:template match="document-node()[*/@_archive-path] | document-node()[tan:unparsed-text] 
+        | document-node()[tan:base64Binary]" priority="2"
+        mode="space-normalize-or-serialize-input">
+        <!-- Do not space normalize or adjust any of the following: docx components, unparsed text,
+            base-64 binary. -->
+        <xsl:sequence select="."/>
+    </xsl:template>
+    <xsl:template match="document-node()[*/@TAN-version]" priority="2" mode="space-normalize-or-serialize-input">
+        <xsl:sequence select="tan:normalize-tree-space(., true())"/>
+    </xsl:template>
+    <xsl:template match="document-node()[$space-normalize-non-tan-input]" priority="1" mode="space-normalize-or-serialize-input">
+        <xsl:variable name="item-so-far" as="document-node()" select="tan:normalize-tree-space(., true())"/>
+        <xsl:next-match>
+            <xsl:with-param name="self-changed" as="document-node()?" tunnel="yes" select="$item-so-far"/>
+        </xsl:next-match>
+    </xsl:template>
+    <xsl:template match="document-node()[$xml-handling-option eq 3]" mode="space-normalize-or-serialize-input">
+        <xsl:param name="self-changed" as="document-node()?" tunnel="yes"/>
+        <xsl:variable name="doc-with-orig-root-element-attrs-restored" as="document-node()">
+            <xsl:apply-templates select="
+                    if (exists($self-changed)) then
+                        $self-changed
+                    else
+                        ." mode="revert-to-original-root-element-attributes"/>
+        </xsl:variable>
+        <xsl:document>
+            <unparsed-text>
+                <xsl:copy-of select="*/@*"/>
+                <xsl:value-of select="serialize($doc-with-orig-root-element-attrs-restored)"/>
+            </unparsed-text>
+        </xsl:document>
+    </xsl:template>
+    <xsl:template match="document-node()" mode="space-normalize-or-serialize-input" priority="-1">
+        <xsl:param name="self-changed" as="document-node()?" tunnel="yes"/>
+        <xsl:sequence select="($self-changed, .)[1]"/>
+    </xsl:template>
+    
+    <xsl:mode name="revert-to-original-root-element-attributes" on-no-match="shallow-copy"/>
+    <xsl:template match="*[@_orig-attr-names]" mode="revert-to-original-root-element-attributes">
+        <xsl:variable name="orig-attr-names" as="xs:string+" select="tokenize(@_orig-attr-names, ' ')"/>
+        <xsl:copy>
+            <xsl:apply-templates select="@*[name(.) = $orig-attr-names]" mode="#current"/>
+            <xsl:apply-templates select="node()" mode="#current"/>
+        </xsl:copy>
+    </xsl:template>
+    <xsl:template match="@_orig-attr-names" mode="revert-to-original-root-element-attributes"/>
     
     <xsl:variable name="main-input-files-non-mixed" as="document-node()*" select="
             for $i in $main-input-files-space-normalized
@@ -344,19 +489,19 @@
             <xsl:variable name="this-base-filename" as="xs:string">
                 <xsl:choose>
                     <xsl:when test="string-length($output-base-filename) gt 0 and position() eq 1">
-                        <xsl:sequence select="$output-base-filename"/>
+                        <xsl:sequence select="$output-base-filename || $output-filename-suffix"/>
                     </xsl:when>
                     <xsl:when test="string-length($output-base-filename) gt 0">
-                        <xsl:sequence select="$output-base-filename || '-' || string(position())"/>
+                        <xsl:sequence select="$output-base-filename || $output-filename-suffix || '-' || string(position())"/>
                     </xsl:when>
                     <xsl:when test="exists(current-group()[1]/*/@xml:base)">
-                        <xsl:sequence select="tan:cfn(current-group()[1]/*/@xml:base) || '-compared'"/>
+                        <xsl:sequence select="tan:cfn(current-group()[1]/*/@xml:base) || $output-filename-suffix"/>
                     </xsl:when>
                     <xsl:when test="position() eq 1">
-                        <xsl:sequence select="$this-group-name || '-compared'"/>
+                        <xsl:sequence select="$this-group-name || $output-filename-suffix"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:sequence select="$this-group-name || '-' || string(position()) || '-compared'"/>
+                        <xsl:sequence select="$this-group-name || $output-filename-suffix || '-' || string(position())"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
@@ -516,7 +661,7 @@
                 <!-- Ignore groups beyond the threshold -->
                 <xsl:when test="count($this-group) lt 2">
                     <xsl:message
-                        select="'Ignoring ' || $this-group/*/@xml:base || ' because it has no pair.'"
+                        select="'Ignoring ' || $this-group/*/@xml:base || ' because it has no pair. Grouped as: ' || $this-group-name"
                     />
                 </xsl:when>
                 <xsl:when
@@ -750,9 +895,12 @@
                 || ' files'"
             />
         </xsl:variable>
-        <xsl:variable name="this-subtitle" as="xs:string?"
-            select="'String differences and analyses across ' || replace(string-join(tan:cfne(tan:find-class(., 'e-file')/*[tan:has-class(., 'a-uri')]), ', '), '%20', ' ')"
-        />
+        <xsl:variable name="this-subtitle" as="xs:string?" select="
+                'String differences and analyses across ' ||
+                replace(string-join(
+                for $i in html:table[tan:has-class(., 'e-stats')]//html:tr[not(tan:has-class(., ('a-collation', 'a-diff', 'averages')))]/html:td[tan:has-class(., ('a-uri', 'e-uri'))]
+                return
+                    tan:cfne(string($i)), ', '), '%20', ' ')"/>
         <xsl:variable name="this-target-uri" select="replace(@_target-uri, '\w+$', 'html')"/>
         <html xmlns="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="_target-format">xhtml-noindent</xsl:attribute>
@@ -804,15 +952,29 @@
     </xsl:template>
     
     <xsl:template match="html:div[tan:has-class(., ('e-txt', 'e-a', 'e-b', 'e-common'))]/text()" mode="html-output-pass-2">
-        <xsl:analyze-string select="." regex="\r?\n">
-            <xsl:matching-substring>
-                <xsl:text>¶</xsl:text>
-                <xsl:element name="br" namespace="http://www.w3.org/1999/xhtml"/>
-            </xsl:matching-substring>
-            <xsl:non-matching-substring>
-                <xsl:sequence select="tan:parse-a-hrefs(.)"/>
-            </xsl:non-matching-substring>
-        </xsl:analyze-string>
+        <xsl:variable name="this-text-length" as="xs:integer" select="string-length(.)"/>
+        <xsl:variable name="estimated-length-of-message" as="xs:integer" select="40"/>
+        <xsl:variable name="elide-this-text" as="xs:boolean" select="$elide-lengthy-text and ($this-text-length gt $elision-trigger-point-norm + $estimated-length-of-message)"/>
+        <xsl:variable name="text-parts" as="xs:string+" select="
+                if ($elide-this-text)
+                then
+                    (substring(., 1, $elision-trigger-point-norm idiv 2), substring(., string-length(.) - $elision-trigger-point-norm idiv 2))
+                else
+                    ."/>
+        <xsl:for-each select="$text-parts">
+            <xsl:if test="$elide-this-text and position() gt 1">
+                <div class="elision">…[{$this-text-length - (2 * ($elision-trigger-point-norm idiv 2))} chars]…</div>
+            </xsl:if>
+            <xsl:analyze-string select="." regex="\n">
+                <xsl:matching-substring>
+                    <xsl:text>¶</xsl:text>
+                    <xsl:element name="br" namespace="http://www.w3.org/1999/xhtml"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <xsl:sequence select="tan:parse-a-hrefs(tan:controls-to-pictures(.))"/>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:for-each>
     </xsl:template>
     
     <xsl:template
@@ -821,29 +983,51 @@
         mode="html-output-pass-2"/>
     
     
+    <xsl:variable name="resolved-uri-to-css-dir" as="xs:string" select="
+            if (string-length($output-css-library-directory-uri) gt 0 and matches($output-css-library-directory-uri, '\S'))
+            then
+                (resolve-uri(replace($output-css-library-directory-uri, '([^/])$', '$1/'), $calling-stylesheet-uri))
+            else
+                $output-directory-uri-resolved || 'css/'"/>
+    <xsl:variable name="resolved-uri-to-js-dir" as="xs:string" select="
+            if (string-length($output-javascript-library-directory-uri) gt 0 and matches($output-javascript-library-directory-uri, '\S'))
+            then
+                (resolve-uri(replace($output-javascript-library-directory-uri, '([^/])$', '$1/'), $calling-stylesheet-uri))
+            else
+                $output-directory-uri-resolved || 'js/'"/>
     
     <xsl:variable name="resolved-uri-to-diff-css" as="xs:string"
-        select="($output-directory-uri-resolved || 'css/diff.css')"/>
+        select="($resolved-uri-to-css-dir || 'diff.css')"/>
     <xsl:variable name="resolved-uri-to-TAN-js" as="xs:string"
-        select="($output-directory-uri-resolved || 'js/tan2020.js')"/>
+        select="($resolved-uri-to-js-dir || 'tan2020.js')"/>
     <xsl:variable name="resolved-uri-to-diff-js" as="xs:string"
-        select="($output-directory-uri-resolved || 'js/diff.js')"/>
+        select="($resolved-uri-to-js-dir || 'diff.js')"/>
     <xsl:variable name="resolved-uri-to-jquery" as="xs:string"
-        select="($output-directory-uri-resolved || 'js/jquery.js')"/>
+        select="($resolved-uri-to-js-dir || 'jquery.js')"/>
     <xsl:variable name="resolved-uri-to-venn-js" as="xs:string"
-        select="($output-directory-uri-resolved || 'js/venn.js/venn.js')"/>
+        select="($resolved-uri-to-js-dir || 'venn.js/venn.js')"/>
     
 
     
     
     <xsl:mode name="return-final-messages" on-no-match="shallow-skip"/>
     
+    <!-- The messages are handled by $notices, not the html file, and we do not want to check whether
+        @href points to a file, because directories are referred to. Same with the stats table, which 
+        simply derives from the input, or points to expected secondary output. -->
+    <xsl:template match="html:div[tan:has-class(., 'e-message')] | html:table[tan:has-class(., 'e-stats')]" mode="return-final-messages"/>
+    
     <xsl:template match="html:script/@src | @href" mode="return-final-messages">
         <xsl:variable name="target-uri" select="root(.)/*/@_target-uri" as="xs:string"/>
-        <xsl:variable name="this-link-resolved" select="resolve-uri(., $target-uri)" as="xs:anyURI"/>
-        <xsl:if test="not(unparsed-text-available($this-link-resolved))">
-            <xsl:message select="'Unparsed text not available at ' || . || ' relative to ' || $target-uri || '. See ' || path(.)"/>
-        </xsl:if>
+        <xsl:try>
+            <xsl:variable name="this-link-resolved" select="resolve-uri(., $target-uri)" as="xs:anyURI"/>
+            <xsl:if test="not(unparsed-text-available($this-link-resolved))">
+                <xsl:message select="'Unparsed text not available at ' || . || ' relative to ' || $target-uri || '. See ' || path(.)"/>
+            </xsl:if>
+            <xsl:catch>
+                <xsl:message select=". || ' cannot be parsed as a uri'"/>
+            </xsl:catch>
+        </xsl:try>
     </xsl:template>
     
     <xsl:template match="tan:global-notices/*" mode="return-final-messages">
@@ -866,18 +1050,18 @@
         <xsl:message select="'Output diagnostics on for ' || static-base-uri()"/>
         <xsl:apply-templates select="$notices" mode="return-final-messages"/>
         <diagnostics>
-            <input-directories count="{count($main-input-resolved-uri-directories)}"><xsl:sequence select="$main-input-resolved-uri-directories"/></input-directories>
-            <main-input-resolved-uris count="{count($main-input-resolved-uris)}"><xsl:sequence select="$main-input-resolved-uris"/></main-input-resolved-uris>
-            <MIRUs-chosen count="{count($mirus-chosen)}"><xsl:sequence select="$mirus-chosen"/></MIRUs-chosen>
-            <main-input-files count="{count($main-input-files)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files, 10, 20)"/></main-input-files>
-            <main-input-files-filtered count="{count($main-input-files-filtered)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files-filtered, 10, 20)"/></main-input-files-filtered>
-            <main-input-files-resolved count="{count($main-input-files-resolved)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-resolved, 10, 20)"/></main-input-files-resolved>
-            <main-input-files-prepped count="{count($main-input-files-prepped)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-prepped, 10, 20)"/></main-input-files-prepped>
+            <!--<input-directories count="{count($main-input-resolved-uri-directories)}"><xsl:sequence select="$main-input-resolved-uri-directories"/></input-directories>-->
+            <!--<main-input-resolved-uris count="{count($main-input-resolved-uris)}"><xsl:sequence select="$main-input-resolved-uris"/></main-input-resolved-uris>-->
+            <!--<MIRUs-chosen count="{count($mirus-chosen)}"><xsl:sequence select="$mirus-chosen"/></MIRUs-chosen>-->
+            <!--<main-input-files count="{count($main-input-files)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files, 10, 20)"/></main-input-files>-->
+            <!--<main-input-files-filtered count="{count($main-input-files-filtered)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files-filtered, 10, 20)"/></main-input-files-filtered>-->
+            <!--<main-input-files-resolved count="{count($main-input-files-resolved)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-resolved, 10, 20)"/></main-input-files-resolved>-->
+            <!--<main-input-files-prepped count="{count($main-input-files-prepped)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-prepped, 10, 20)"/></main-input-files-prepped>-->
             <!--<main-input-files-space-norm count="{count($main-input-files-space-normalized)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-space-normalized, 10, 20)"/></main-input-files-space-norm>-->
-            <main-input-files-non-mixed count="{count($main-input-files-non-mixed)}"><xsl:sequence select="$main-input-files-non-mixed"/></main-input-files-non-mixed>
-            <output-dir><xsl:value-of select="$output-directory-uri-resolved"/></output-dir>
-            <file-groups-diffed-and-collated><xsl:copy-of select="tan:trim-long-tree($file-groups-diffed-and-collated, 10, 20)"/></file-groups-diffed-and-collated>
-            <xml-output-pass-1><xsl:copy-of select="tan:trim-long-tree($xml-output-pass-1, 10, 20)"/></xml-output-pass-1>
+            <!--<main-input-files-non-mixed count="{count($main-input-files-non-mixed)}"><xsl:sequence select="$main-input-files-non-mixed"/></main-input-files-non-mixed>-->
+            <!--<output-dir><xsl:value-of select="$output-directory-uri-resolved"/></output-dir>-->
+            <!--<file-groups-diffed-and-collated><xsl:copy-of select="tan:trim-long-tree($file-groups-diffed-and-collated, 10, 20)"/></file-groups-diffed-and-collated>-->
+            <!--<xml-output-pass-1><xsl:copy-of select="tan:trim-long-tree($xml-output-pass-1, 10, 20)"/></xml-output-pass-1>-->
             <xml-to-html-prep><xsl:copy-of select="tan:trim-long-tree($xml-to-html-prep, 10, 20)"/></xml-to-html-prep>
             <html-output-pass-1><xsl:copy-of select="tan:trim-long-tree($html-output-pass-1, 10, 20)"/></html-output-pass-1>
             <html-output-pass-2><xsl:copy-of select="tan:trim-long-tree($html-output-pass-2, 10, 20)"/></html-output-pass-2>

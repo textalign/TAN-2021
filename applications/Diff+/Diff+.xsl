@@ -6,7 +6,7 @@
     xmlns:tan="tag:textalign.net,2015:ns" exclude-result-prefixes="#all" version="3.0">
     
     <!-- Welcome to Diff+, the TAN application that finds and analyzes text differences-->
-    <!-- Version 2021-09-06 -->
+    <!-- Version 2022-03-24 -->
     <!-- Take any number of versions of a text, compare them, and view and study all the text
         differences in an HTML page. The HTML output allows you to see precisely where one version
         differs from the other. A small Javascript library allows you to change focus, remove
@@ -67,7 +67,6 @@
     <!-- WARNING: CERTAIN FEATURES HAVE YET TO BE IMPLEMENTED-->
     <!-- * Revise process that reinfuses a class 1 file with a diff/collate into a standard extra
         TAN function.
-        * Add parameter to allow serialization of input XML, for closer comparison of XML structures.
     -->
     
     <!-- This application currently just scratches the surface of what is possible. New features are
@@ -108,7 +107,14 @@
     <!-- What directory or directories has the main input files? Any relative path will be calculated
       against the location of this application file. Multiple directories may be supplied. Too many files?
       Results can be filtered below. -->
-    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string+" select="$directory-5-uri"/>
+    <xsl:param name="tan:main-input-relative-uri-directories" as="xs:string*" select="$directory-4-uri"/>
+    
+    <!-- Alternatively, you can point to one or more plain text files, each with list of paths to files 
+        that should be processed. Every path must start with "file:" and use regular slashes, e.g.,
+        e.g., file:/d:/test/item.docx. This parameter is used by command line utilities, so if it is
+        populated, the previous parameter will be ignored. The regular expression filters (see below)
+        are still enforced. -->
+    <xsl:param name="resolved-uris-to-lists-of-main-input-resolved-uris" as="xs:string*"/>
 
     <!-- What pattern must each filename match (a regular expression, case-insensitive)? Of the files 
         in the directories chosen, only those whose names match this pattern will be included. A null 
@@ -120,6 +126,29 @@
         or empty string means ignore this parameter. -->
     <xsl:param name="tan:input-filenames-must-not-match-regex" as="xs:string?" select="''"/>
     
+    <!-- Each diff or collation is performed against a group of files, and there may be one or more
+        groups. How shall groups be created? Options:
+        1. Detected language (default). Group by detected @xml:lang value; if not present in a particular
+        file, assume it belongs to the predefined default language (see parameter $default-language).
+        2. Filename only. Group by the filename of the files, perhaps after replacements (see parameter
+        $filename-adjustments-before-grouping below).
+        3. Filename and language, a synthesis of the previous two options.
+    -->
+    <xsl:param name="file-group-option" as="xs:integer" select="1"/>
+    
+    <!-- What changes if any should be made to a filename before attempting to group it with other files? The
+      desired changes must be expressed as batch replacements. A batch replacement consists of a sequence
+      of elements, each one with attributes @pattern and @replacement and perhaps attributes @flags and
+      @message. For examples of batch replacements, see ../../parameters/params-application-language.xsl.
+      Note, in most systems filenames are fundamentally not case-sensitive, but have mixed case.
+      Therefore in this parameter an attribute flags="i" is normally desirable.
+ -->
+    <xsl:param name="filename-adjustments-before-grouping" as="element()*">
+        <!-- The next example removes an ISO-style date-time stamp from the filename. -->
+        <!--<replace pattern="\d{{8}}" replacement="" flags="i" message="stripping date-time stamp from filename"/>-->
+        <!-- The next example ignores filename extensions. -->
+        <!--<replace pattern="\.\w+$" replacement="" flags="i" message="stripping filename extension"/>-->
+    </xsl:param>
 
 
     <!-- STEP TWO: REFINE INPUT FILES -->
@@ -146,6 +175,22 @@
     <!-- Should non-TAN input be space-normalized before processing? Note, all TAN files will be space
         normalized before processing. -->
     <xsl:param name="space-normalize-non-tan-input" as="xs:boolean" select="false()"/>
+    
+    <!-- How do you wish to handle input files that are XML? Options:
+        1. (default) Compare only the text values of the XML files. If a TAN or TAN-TEI file,
+        only the normalized body text will be compared. For all other XML structures, the entire
+        text will be taken into account.
+        2. Treat the XML file as plain text. Choose this option if you are interested
+        in comparing XML structures to each other. Each XML file will be serialized as a string and 
+        compared.
+        3. Load an XML file, convert to plain text later. Choose this option if you want to normalize
+        your XML input, and perhaps adjust them, before they are compared later as strings. To do that
+        adjustment, it is recommended you add templates to the mode prepare-input, keeping in mind that
+        an important template is applied by Diff+ to the root element, to prepare it for grouping.
+    -->
+    <xsl:param name="xml-handling-option" as="xs:integer" select="1"/>
+    
+    
     
     
     
@@ -176,11 +221,9 @@
     <!-- Should punctuation be ignored? -->
     <xsl:param name="tan:ignore-punctuation-differences" as="xs:boolean" select="true()"/>
     
-    <!-- What additional batch replacements if any should be applied? A batch replacement consists of a sequence
-      of elements, each one with attributes @pattern and @replacement and perhaps attributes @flags and
-      @message. For examples of batch replacements, see ../../parameters/params-application-language.xsl.
-      These ad-hoc batch replacements will be applied before any other batch replacements invoked by the
-      parameters above.
+    <!-- What additional batch replacements if any should be applied? On batch replacements see
+        above. These ad-hoc batch replacements will be applied before any other batch replacements 
+        invoked by the parameters above.
     -->
     <xsl:param name="additional-batch-replacements" as="element()*">
         <!-- Here's what an example batch replacement element looks like. Remember, these will be processed
@@ -231,11 +274,14 @@
     <!-- In what directory should the output be saved? -->
     <xsl:param name="output-directory-uri" as="xs:string" select="$tan:default-output-directory-resolved"/>
     
-    <!-- What should the base output filename be? If missing, the base filename of the first item in
-      each group will be used, with suffixes of "-compared.xml" and "-compared.html". If multiple
-      comparisons are made on the same output base filename, they will be numerically incremented. The
-      outcome of this process will overwrite any files. -->
+    <!-- What should the base output filename be? If missing, the name of each group will be used, 
+        perhaps with a suffix, and the extensions ".xml" and ".html". If the output base filename
+        exists, and there is more than one of comparisons group, each set of output will be numerically 
+        incremented. This process will overwrite any files already present. -->
     <xsl:param name="output-base-filename" as="xs:string?"/>
+    
+    <!-- What suffix, if any, should be appended to output filenames? -->
+    <xsl:param name="output-filename-suffix" as="xs:string?" select="'-compared'"/>
     
     
     <!-- Statistics -->
@@ -248,6 +294,18 @@
     
     <!-- Important settings also at ../../parameters/params-application-html-output.xsl -->
     
+    <!-- TAN Diff+'s HTML output relies upon a small core of javascript and css assets, currently in the TAN 
+        package in the folders output/css and output/js, with the assumption that multiple files in the parent 
+        directory will point to those libraries. But you may want another configuration. -->
+    
+    <!-- Where are the javascript assets? If this parameter is blank, the default directory will be the
+        subdirectory js off $output-directory-uri. -->
+    <xsl:param name="output-javascript-library-directory-uri" as="xs:string?"/>
+    
+    <!-- Where are the CSS assets? If this parameter is blank, the default directory will be the
+        subdirectory css off $output-directory-uri. -->
+    <xsl:param name="output-css-library-directory-uri" as="xs:string?"/>
+    
     <!-- In the HTML output, should an attempt be made to convert resultant diffs back to their pre-adjustment 
         forms or not? -->
     <xsl:param name="replace-diff-results-with-pre-alteration-forms" as="xs:boolean" select="true()"/>
@@ -257,6 +315,18 @@
         all in the text that will be compared. Rather, this makes sure they do not feature in the HTML 
         output. -->
     <xsl:param name="input-attributes-to-remove-regex" as="xs:string?" select="''"/>
+    
+    <!-- Should long stretches of text be elided in the HTML output? This is useful for cases where you want 
+        to quickly identify differences, particularly in long texts. -->
+    <xsl:param name="elide-lengthy-text" as="xs:boolean" select="false()"/>
+    
+    <!-- If text should be elided, at what point should elision be introduced? Because the elision message
+        might be more than the amount elided, the elision message, estimated at forty characters, will be silently 
+        added to the number below. Any number below five will be normalized to five. This parameter has no
+        effect if the parameter $elide-lengthy-text is not true. So if the following value is 5 or less,
+        elision will not occur unless the text is longer than 45 charaters (but only five characters will
+        be retained in the output). -->
+    <xsl:param name="elision-minimum-point" as="xs:integer?" select="1000"/>
     
     
     

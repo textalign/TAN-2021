@@ -325,7 +325,7 @@
    <!-- How similar should a group of versions in a div be before they are rendered as a difference or collation?
       Anything other than a number between 0 and 1 will be ignored. If the aggregate difference of a
       group of versions is less than the decimal provided, no diff/collate will be substituted. -->
-   <xsl:param name="render-as-diff-threshhold" as="xs:decimal?" select="1.0"/>
+   <xsl:param name="render-as-diff-threshhold" as="xs:decimal?" select="0.6"/>
    <!-- What text differences should be ignored when compiling difference statistics? These are built 
       into a series of elements that group <c>s, e.g. <alias><c>'</c><c>"</c></alias> would, for 
       statistical purposes, ignore differences merely of a single apostrophe and quotation mark. 
