@@ -77,7 +77,7 @@
       <xsl:param name="adjust-diffs-during-preoptimization" as="xs:boolean"/>
       <xsl:param name="clean-up-collation" as="xs:boolean"/>
       <xsl:sequence
-         select="tan:collate($strings-to-collate, $string-labels, $preoptimize-string-order, $adjust-diffs-during-preoptimization, $clean-up-collation, false())"
+         select="tan:collate($strings-to-collate, $string-labels, $preoptimize-string-order, $adjust-diffs-during-preoptimization, $clean-up-collation, $tan:snap-to-word)"
       />
    </xsl:function>
    
@@ -221,14 +221,14 @@
             <xsl:variable name="iteration" select="position() + 2"/>
             <xsl:variable name="this-label" select="$string-labels-re-sorted[$iteration]"/>
 
-            <xsl:variable name="this-diff"
+            <xsl:variable name="this-diff" as="element()"
                select="tan:diff-cache($previous-string, ., $snap-to-word, true())"/>
-            <xsl:variable name="this-diff-adjusted" select="
+            <xsl:variable name="this-diff-adjusted" as="element()" select="
                   if ($adjust-diffs-during-preoptimization) then
                      tan:adjust-diff($this-diff)
                   else
                      $this-diff"/>
-            <xsl:variable name="this-diff-collation"
+            <xsl:variable name="this-diff-collation" as="element()"
                select="tan:diff-to-collation($this-diff-adjusted, $previous-string-label, $this-label)"/>
 
             <!-- The linking text is split in different ways, both in the base collation and the collation to add. Each of those
@@ -776,13 +776,11 @@
                         </xsl:if>
                         
                         <xsl:for-each select="$these-us-recollated/(* except tan:witness)">
-                           <xsl:variable name="this-element-name"
-                              select="
-                              if (count(tan:wit) eq $witness-count) then
-                              'c'
-                              else
-                              'u'"
-                           />
+                           <xsl:variable name="this-element-name" select="
+                                 if (count(tan:wit) eq $witness-count) then
+                                    'c'
+                                 else
+                                    'u'"/>
                            <xsl:element name="{$this-element-name}">
                               <xsl:apply-templates select="* except tan:x" mode="tan:add-collation-pos-offset">
                                  <xsl:with-param name="offsets" select="$these-offsets"/>
