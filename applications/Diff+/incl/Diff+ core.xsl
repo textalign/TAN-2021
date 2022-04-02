@@ -225,7 +225,7 @@
     
     <xsl:variable name="main-input-files" as="document-node()*">
         <xsl:choose>
-            <xsl:when test="$xml-handling-option eq 1">
+            <xsl:when test="$xml-handling-option eq 2">
                 <xsl:for-each select="$mirus-chosen">
                     <xsl:choose>
                         <xsl:when test="doc-available(.)">
