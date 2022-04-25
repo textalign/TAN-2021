@@ -986,13 +986,13 @@
     <xsl:variable name="resolved-uri-to-css-dir" as="xs:string" select="
             if (string-length($output-css-library-directory-uri) gt 0 and matches($output-css-library-directory-uri, '\S'))
             then
-                (resolve-uri(replace($output-css-library-directory-uri, '([^/])$', '$1/'), $calling-stylesheet-uri))
+                (resolve-uri(replace(normalize-space($output-css-library-directory-uri), '([^/])$', '$1/'), $calling-stylesheet-uri))
             else
                 $output-directory-uri-resolved || 'css/'"/>
     <xsl:variable name="resolved-uri-to-js-dir" as="xs:string" select="
             if (string-length($output-javascript-library-directory-uri) gt 0 and matches($output-javascript-library-directory-uri, '\S'))
             then
-                (resolve-uri(replace($output-javascript-library-directory-uri, '([^/])$', '$1/'), $calling-stylesheet-uri))
+                (resolve-uri(replace(normalize-space($output-javascript-library-directory-uri), '([^/])$', '$1/'), $calling-stylesheet-uri))
             else
                 $output-directory-uri-resolved || 'js/'"/>
     
@@ -1053,18 +1053,18 @@
             <!--<input-directories count="{count($main-input-resolved-uri-directories)}"><xsl:sequence select="$main-input-resolved-uri-directories"/></input-directories>-->
             <!--<main-input-resolved-uris count="{count($main-input-resolved-uris)}"><xsl:sequence select="$main-input-resolved-uris"/></main-input-resolved-uris>-->
             <!--<MIRUs-chosen count="{count($mirus-chosen)}"><xsl:sequence select="$mirus-chosen"/></MIRUs-chosen>-->
-            <!--<main-input-files count="{count($main-input-files)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files, 10, 20)"/></main-input-files>-->
-            <!--<main-input-files-filtered count="{count($main-input-files-filtered)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files-filtered, 10, 20)"/></main-input-files-filtered>-->
-            <!--<main-input-files-resolved count="{count($main-input-files-resolved)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-resolved, 10, 20)"/></main-input-files-resolved>-->
-            <!--<main-input-files-prepped count="{count($main-input-files-prepped)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-prepped, 10, 20)"/></main-input-files-prepped>-->
-            <!--<main-input-files-space-norm count="{count($main-input-files-space-normalized)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-space-normalized, 10, 20)"/></main-input-files-space-norm>-->
-            <!--<main-input-files-non-mixed count="{count($main-input-files-non-mixed)}"><xsl:sequence select="$main-input-files-non-mixed"/></main-input-files-non-mixed>-->
+            <main-input-files count="{count($main-input-files)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files, 10, 20)"/></main-input-files>
+            <main-input-files-filtered count="{count($main-input-files-filtered)}"><xsl:copy-of select="tan:trim-long-tree($main-input-files-filtered, 10, 20)"/></main-input-files-filtered>
+            <main-input-files-resolved count="{count($main-input-files-resolved)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-resolved, 10, 20)"/></main-input-files-resolved>
+            <main-input-files-prepped count="{count($main-input-files-prepped)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-prepped, 10, 20)"/></main-input-files-prepped>
+            <main-input-files-space-norm count="{count($main-input-files-space-normalized)}"><xsl:sequence select="tan:trim-long-tree($main-input-files-space-normalized, 10, 20)"/></main-input-files-space-norm>
+            <main-input-files-non-mixed count="{count($main-input-files-non-mixed)}"><xsl:sequence select="$main-input-files-non-mixed"/></main-input-files-non-mixed>
             <!--<output-dir><xsl:value-of select="$output-directory-uri-resolved"/></output-dir>-->
-            <!--<file-groups-diffed-and-collated><xsl:copy-of select="tan:trim-long-tree($file-groups-diffed-and-collated, 10, 20)"/></file-groups-diffed-and-collated>-->
+            <file-groups-diffed-and-collated><xsl:copy-of select="tan:trim-long-tree($file-groups-diffed-and-collated, 10, 20)"/></file-groups-diffed-and-collated>
             <!--<xml-output-pass-1><xsl:copy-of select="tan:trim-long-tree($xml-output-pass-1, 10, 20)"/></xml-output-pass-1>-->
-            <xml-to-html-prep><xsl:copy-of select="tan:trim-long-tree($xml-to-html-prep, 10, 20)"/></xml-to-html-prep>
-            <html-output-pass-1><xsl:copy-of select="tan:trim-long-tree($html-output-pass-1, 10, 20)"/></html-output-pass-1>
-            <html-output-pass-2><xsl:copy-of select="tan:trim-long-tree($html-output-pass-2, 10, 20)"/></html-output-pass-2>
+            <!--<xml-to-html-prep><xsl:copy-of select="tan:trim-long-tree($xml-to-html-prep, 10, 20)"/></xml-to-html-prep>-->
+            <!--<html-output-pass-1><xsl:copy-of select="tan:trim-long-tree($html-output-pass-1, 10, 20)"/></html-output-pass-1>-->
+            <!--<html-output-pass-2><xsl:copy-of select="tan:trim-long-tree($html-output-pass-2, 10, 20)"/></html-output-pass-2>-->
         </diagnostics>
     </xsl:template>
     <xsl:template match="/">

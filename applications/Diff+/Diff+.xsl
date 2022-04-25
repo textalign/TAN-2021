@@ -102,7 +102,7 @@
     <xsl:param name="directory-2-uri" select="'../../../library-arithmeticus/evagrius/cpg2455'" as="xs:string?"/>
     <xsl:param name="directory-3-uri" select="'../../../library-arithmeticus/bible'" as="xs:string?"/>
     <xsl:param name="directory-4-uri" select="'../../../library-arithmeticus/test/ring1'" as="xs:string?"/>
-    <xsl:param name="directory-5-uri" select="'../../../library-arithmeticus/test/ring2'" as="xs:string?"/>
+    <xsl:param name="directory-5-uri" select="'../../../promo/presentations/test/ring2'" as="xs:string?"/>
     
     <!-- What directory or directories has the main input files? Any relative path will be calculated
       against the location of this application file. Multiple directories may be supplied. Too many files?
@@ -228,7 +228,7 @@
     <xsl:param name="additional-batch-replacements" as="element()*">
         <!-- Here's what an example batch replacement element looks like. Remember, these will be processed
             in order, so watch out for conflicts. -->
-        <!--<replace pattern="(abc)(def)" replacement="$2$1" message="example batch replacement"/>-->
+        <!--<replace pattern="philosophy" replacement="anthropology" flags="i" message="example batch replacement"/>-->
     </xsl:param>
     
     
@@ -314,7 +314,7 @@
         must be a regular expression matching attribute names. These input attributes play no factor at 
         all in the text that will be compared. Rather, this makes sure they do not feature in the HTML 
         output. -->
-    <xsl:param name="input-attributes-to-remove-regex" as="xs:string?" select="''"/>
+    <xsl:param name="input-attributes-to-remove-regex" as="xs:string?" select="'.+'"/>
     
     <!-- Should long stretches of text be elided in the HTML output? This is useful for cases where you want 
         to quickly identify differences, particularly in long texts. -->
