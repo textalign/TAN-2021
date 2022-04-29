@@ -429,6 +429,7 @@
       <xsl:variable name="diagnostics-on" select="false()"/>
       <xsl:if test="$diagnostics-on">
          <xsl:message select="'diagnostics on for tan:tokenize-text()'"/>
+         <xsl:message select="'Input token definition: ', $token-definition"/>
          <xsl:message select="'this token definition pattern: ', string($pattern)"/>
          <xsl:message select="'pattern codepoints: ', string-to-codepoints($pattern)"/>
          <xsl:message select="'this token definition pattern adjusted: ', string($pattern-adjusted)"/>
@@ -678,184 +679,218 @@
       
       <xsl:variable name="string-a-length" as="xs:integer" select="string-length($string-a)"/>
       <xsl:variable name="string-b-length" as="xs:integer" select="string-length($string-b)"/>
-      <xsl:variable name="number-of-blocks" as="xs:integer" select="min(($string-a-length, $string-b-length)) idiv $block-size"/>
-      <xsl:variable name="binary-val" as="xs:integer"
-         select="tan:log2(min(($string-a-length, $string-b-length))) => xs:integer()"/>
-      <xsl:variable name="binary-progression" as="xs:integer+" select="
-            for $i in (0 to $binary-val)
-            return
-               xs:integer(math:pow(2, $i))"/>
-      
-      <xsl:variable name="commonality" as="xs:integer*">
-         <xsl:choose>
-            <xsl:when test="$try-binary-search">
-               <xsl:iterate select="reverse($binary-progression)">
-                  <!-- This iteration applies a binary search method to finding the first common substring -->
-                  <xsl:param name="amount-matching" as="xs:integer" select="0"/>
-                  <xsl:param name="last-step" as="xs:integer" select="0"/>
-                  <xsl:param name="go-ahead" as="xs:boolean" select="true()"/>
-                  
-                  <xsl:on-completion select="$amount-matching"/>
-                  
-                  <xsl:variable name="this-step" as="xs:integer" select="
-                        if ($go-ahead) then
-                           ($last-step + .)
-                        else
-                           ($last-step - .)"/>
-                  <xsl:variable name="substring-a" as="xs:string" select="
-                        if ($find-common-start) then
-                           substring($string-a, 1, $this-step)
-                        else
-                           substring($string-a, $string-a-length - $this-step + 1)"/>
-                  <xsl:variable name="substring-b" as="xs:string" select="
-                        if ($find-common-start) then
-                           substring($string-b, 1, $this-step)
-                        else
-                           substring($string-b, $string-b-length - $this-step + 1)"/>
-                  <xsl:variable name="is-match" as="xs:boolean" select="$substring-a eq $substring-b"/>
-                  
-                  <xsl:variable name="inner-diagnostics-on" as="xs:boolean" select="true()"/>
-                  <xsl:if test="$inner-diagnostics-on">
-                     <xsl:message select="'=== iteration ' || position()"/>
-                     <xsl:message select="'last step: ' || $last-step"/>
-                     <xsl:message select="'amount matching: ' || $amount-matching"/>
-                     <xsl:message select="'go ahead? ', $go-ahead"/>
-                     <xsl:message select="'current step: ' || ."/>
-                     <xsl:message select="'this step: ' || $this-step"/>
-                     <xsl:message select="
-                           'substring a: ' || (if ($find-common-start) then
-                              tan:ellipses($substring-a, 100)
-                           else
-                              tan:ellipses($substring-a, 0, 100))"/>
-                     <xsl:message select="
-                           'substring b: ' || (if ($find-common-start) then
-                              tan:ellipses($substring-b, 100)
-                           else
-                              tan:ellipses($substring-b, 0, 100))"/>
-                     <xsl:message select="'is match? ', $is-match"/>
-                  </xsl:if>
-                  
-                  <xsl:next-iteration>
-                     <xsl:with-param name="last-step" select="$this-step"/>
-                     <xsl:with-param name="amount-matching" select="
-                           if ($is-match) then
-                              $this-step
-                           else
-                              $amount-matching"/>
-                     <xsl:with-param name="go-ahead" select="$is-match"/>
-                  </xsl:next-iteration>
-                  
-               </xsl:iterate>
-            </xsl:when>
-            <xsl:otherwise>
-               
-               <xsl:iterate select="0 to $number-of-blocks">
-                  <xsl:variable name="this-block" as="xs:integer" select="."/>
-                  <xsl:variable name="substring-a" as="xs:string" select="
-                        if ($find-common-start) then
-                           substring($string-a, (($this-block * $block-size) + 1), $block-size)
-                        else
-                           substring($string-a, $string-a-length - (($this-block * $block-size) + 1), $block-size)"/>
-                  <xsl:variable name="substring-b" as="xs:string" select="
-                        if ($find-common-start) then
-                           substring($string-b, (($this-block * $block-size) + 1), $block-size)
-                        else
-                           substring($string-b, $string-b-length - (($this-block * $block-size) + 1), $block-size)"/>
-                  <xsl:variable name="is-match" as="xs:boolean" select="$substring-a eq $substring-b"/>
-                  <xsl:variable name="a-codepoints" as="xs:integer*" select="
-                        if ($find-common-start) then
-                           string-to-codepoints($substring-a)
-                        else
-                           reverse(string-to-codepoints($substring-a))"/>
-                  <xsl:variable name="b-codepoints" as="xs:integer*" select="
-                        if ($find-common-start) then
-                           string-to-codepoints($substring-b)
-                        else
-                           reverse(string-to-codepoints($substring-b))"/>
-                  <xsl:variable name="second-best-substring-codepoints" as="xs:integer*">
-                     <xsl:if test="not($is-match)">
-                        <xsl:iterate select="$a-codepoints">
-                           <xsl:param name="codepoints-to-compare" select="$b-codepoints" as="xs:integer*"/>
-                           <xsl:variable name="this-a-point" as="xs:integer" select="."/>
-                           <xsl:variable name="this-b-point" as="xs:integer?"
-                              select="$codepoints-to-compare[1]"/>
-                           <xsl:variable name="next-b-codepoints" as="xs:integer*"
-                              select="tail($codepoints-to-compare)"/>
-                           <xsl:choose>
-                              <xsl:when
-                                 test="not($this-a-point eq $this-b-point) or not(exists($codepoints-to-compare))">
-                                 <xsl:break/>
-                              </xsl:when>
-                              <xsl:otherwise>
-                                 <xsl:sequence select="$this-a-point"/>
-                                 <xsl:next-iteration>
-                                    <xsl:with-param name="codepoints-to-compare"
-                                       select="$next-b-codepoints"/>
-                                 </xsl:next-iteration>
-                              </xsl:otherwise>
-                           </xsl:choose>
-                        </xsl:iterate>
-                     </xsl:if>
-                  </xsl:variable>
-                  
-                  <xsl:choose>
-                     <xsl:when test="not($is-match)">
-                        <xsl:sequence select="$second-best-substring-codepoints"/>
-                        <xsl:break/>
-                     </xsl:when>
-                     <xsl:otherwise>
-                        <xsl:sequence select="$a-codepoints"/>
-                        <xsl:next-iteration/>
-                     </xsl:otherwise>
-                  </xsl:choose>
-               </xsl:iterate>
-            </xsl:otherwise>
-         </xsl:choose>
-         
-      </xsl:variable>
-      
-      <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
-      <xsl:if test="$diagnostics-on">
-         <xsl:message select="'Diagnostics on, tan:common-start-or-end-string()'"/>
-         <xsl:message select="'Input string a: ' || tan:ellipses($string-a, 100, 100)"/>
-         <xsl:message select="'Input string b: ' || tan:ellipses($string-b, 100, 100)"/>
-         <xsl:message select="'Find common start?', $find-common-start"/>
-         <xsl:choose>
-            <xsl:when test="$try-binary-search">
-               <xsl:message select="'Trying binary search approach; binary progression: ', $binary-progression"/>
-               <xsl:message select="
-                     'Commonality: ' || (if ($find-common-start)
-                     then
-                        tan:ellipses(substring($string-a, 1, $commonality), 100)
-                     else
-                        tan:ellipses(substring($string-a, $string-a-length + 1 - $commonality), 0, 100))"
-               />
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:message select="'Trying block approach; block size: ' || $block-size"/>
-               <xsl:message select="
-                     'Commonality: ' || (if ($find-common-start) then
-                        tan:ellipses(codepoints-to-string($commonality), 100)
-                     else
-                        tan:ellipses(codepoints-to-string(reverse($commonality)), 0, 100))"/>
-            </xsl:otherwise>
-         </xsl:choose>
-      </xsl:if>
+      <xsl:variable name="min-string-length" as="xs:integer" select="min(($string-a-length, $string-b-length))"/>
       
       <xsl:choose>
-         <xsl:when test="$find-common-start and $try-binary-search">
-            <xsl:value-of select="substring($string-a, 1, $commonality)"/>
-         </xsl:when>
-         <xsl:when test="$try-binary-search">
-            <xsl:value-of select="substring($string-a, $string-a-length + 1 - $commonality)"/>
-         </xsl:when>
-         <xsl:when test="$find-common-start">
-            <xsl:value-of select="codepoints-to-string($commonality)"/>
+         <!-- Weed out tiny conditions -->
+         <xsl:when test="$min-string-length eq 0"/>
+         <xsl:when test="$min-string-length eq 1">
+            <xsl:choose>
+               <xsl:when test="$string-a-length eq 1 and $find-common-start">
+                  <xsl:if test="starts-with($string-b, $string-a)">
+                     <xsl:sequence select="$string-a"/>
+                  </xsl:if>
+               </xsl:when>
+               <xsl:when test="$string-a-length eq 1">
+                  <xsl:if test="ends-with($string-b, $string-a)">
+                     <xsl:sequence select="$string-a"/>
+                  </xsl:if>
+               </xsl:when>
+               <xsl:when test="$find-common-start">
+                  <xsl:if test="starts-with($string-a, $string-b)">
+                     <xsl:sequence select="$string-b"/>
+                  </xsl:if>
+               </xsl:when>
+               <xsl:otherwise>
+                  <xsl:if test="ends-with($string-a, $string-b)">
+                     <xsl:sequence select="$string-b"/>
+                  </xsl:if>
+               </xsl:otherwise>
+            </xsl:choose>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:value-of select="codepoints-to-string(reverse($commonality))"/>
+            <!-- In this case, both a and b are two characters or longer -->
+            <xsl:variable name="number-of-blocks" as="xs:integer" select="$min-string-length idiv $block-size"/>
+            <xsl:variable name="binary-val" as="xs:integer"
+               select="tan:log2($min-string-length) => xs:integer()"/>
+            <xsl:variable name="binary-progression" as="xs:integer+" select="
+                  for $i in (0 to $binary-val)
+                  return
+                     xs:integer(math:pow(2, $i))"/>
+            
+            <xsl:variable name="commonality" as="xs:integer*">
+               <xsl:choose>
+                  <xsl:when test="$try-binary-search">
+                     <xsl:iterate select="reverse($binary-progression)">
+                        <!-- This iteration applies a binary search method to finding the first common substring -->
+                        <xsl:param name="amount-matching" as="xs:integer" select="0"/>
+                        <xsl:param name="last-step" as="xs:integer" select="0"/>
+                        <xsl:param name="go-ahead" as="xs:boolean" select="true()"/>
+                        
+                        <xsl:on-completion select="$amount-matching"/>
+                        
+                        <xsl:variable name="this-step" as="xs:integer" select="
+                              if ($go-ahead) then
+                                 ($last-step + .)
+                              else
+                                 ($last-step - .)"/>
+                        <xsl:variable name="substring-a" as="xs:string" select="
+                              if ($find-common-start) then
+                                 substring($string-a, 1, $this-step)
+                              else
+                                 substring($string-a, $string-a-length - $this-step + 1)"/>
+                        <xsl:variable name="substring-b" as="xs:string" select="
+                              if ($find-common-start) then
+                                 substring($string-b, 1, $this-step)
+                              else
+                                 substring($string-b, $string-b-length - $this-step + 1)"/>
+                        <xsl:variable name="is-match" as="xs:boolean" select="$substring-a eq $substring-b"/>
+                        
+                        <xsl:variable name="inner-diagnostics-on" as="xs:boolean" select="true()"/>
+                        <xsl:if test="$inner-diagnostics-on">
+                           <xsl:message select="'=== iteration ' || position()"/>
+                           <xsl:message select="'last step: ' || $last-step"/>
+                           <xsl:message select="'amount matching: ' || $amount-matching"/>
+                           <xsl:message select="'go ahead? ', $go-ahead"/>
+                           <xsl:message select="'current step: ' || ."/>
+                           <xsl:message select="'this step: ' || $this-step"/>
+                           <xsl:message select="
+                                 'substring a: ' || (if ($find-common-start) then
+                                    tan:ellipses($substring-a, 100)
+                                 else
+                                    tan:ellipses($substring-a, 0, 100))"/>
+                           <xsl:message select="
+                                 'substring b: ' || (if ($find-common-start) then
+                                    tan:ellipses($substring-b, 100)
+                                 else
+                                    tan:ellipses($substring-b, 0, 100))"/>
+                           <xsl:message select="'is match? ', $is-match"/>
+                        </xsl:if>
+                        
+                        <xsl:next-iteration>
+                           <xsl:with-param name="last-step" select="$this-step"/>
+                           <xsl:with-param name="amount-matching" select="
+                                 if ($is-match) then
+                                    $this-step
+                                 else
+                                    $amount-matching"/>
+                           <xsl:with-param name="go-ahead" select="$is-match"/>
+                        </xsl:next-iteration>
+                        
+                     </xsl:iterate>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     
+                     <xsl:iterate select="0 to $number-of-blocks">
+                        <xsl:variable name="this-block" as="xs:integer" select="."/>
+                        <xsl:variable name="substring-a" as="xs:string" select="
+                              if ($find-common-start) then
+                                 substring($string-a, (($this-block * $block-size) + 1), $block-size)
+                              else
+                                 substring($string-a, $string-a-length - (($this-block * $block-size) + 1), $block-size)"/>
+                        <xsl:variable name="substring-b" as="xs:string" select="
+                              if ($find-common-start) then
+                                 substring($string-b, (($this-block * $block-size) + 1), $block-size)
+                              else
+                                 substring($string-b, $string-b-length - (($this-block * $block-size) + 1), $block-size)"/>
+                        <xsl:variable name="is-match" as="xs:boolean" select="$substring-a eq $substring-b"/>
+                        <xsl:variable name="a-codepoints" as="xs:integer*" select="
+                              if ($find-common-start) then
+                                 string-to-codepoints($substring-a)
+                              else
+                                 reverse(string-to-codepoints($substring-a))"/>
+                        <xsl:variable name="b-codepoints" as="xs:integer*" select="
+                              if ($find-common-start) then
+                                 string-to-codepoints($substring-b)
+                              else
+                                 reverse(string-to-codepoints($substring-b))"/>
+                        <xsl:variable name="second-best-substring-codepoints" as="xs:integer*">
+                           <xsl:if test="not($is-match)">
+                              <xsl:iterate select="$a-codepoints">
+                                 <xsl:param name="codepoints-to-compare" select="$b-codepoints" as="xs:integer*"/>
+                                 <xsl:variable name="this-a-point" as="xs:integer" select="."/>
+                                 <xsl:variable name="this-b-point" as="xs:integer?"
+                                    select="$codepoints-to-compare[1]"/>
+                                 <xsl:variable name="next-b-codepoints" as="xs:integer*"
+                                    select="tail($codepoints-to-compare)"/>
+                                 <xsl:choose>
+                                    <xsl:when
+                                       test="not($this-a-point eq $this-b-point) or not(exists($codepoints-to-compare))">
+                                       <xsl:break/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                       <xsl:sequence select="$this-a-point"/>
+                                       <xsl:next-iteration>
+                                          <xsl:with-param name="codepoints-to-compare"
+                                             select="$next-b-codepoints"/>
+                                       </xsl:next-iteration>
+                                    </xsl:otherwise>
+                                 </xsl:choose>
+                              </xsl:iterate>
+                           </xsl:if>
+                        </xsl:variable>
+                        
+                        <xsl:choose>
+                           <xsl:when test="not($is-match)">
+                              <xsl:sequence select="$second-best-substring-codepoints"/>
+                              <xsl:break/>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:sequence select="$a-codepoints"/>
+                              <xsl:next-iteration/>
+                           </xsl:otherwise>
+                        </xsl:choose>
+                     </xsl:iterate>
+                  </xsl:otherwise>
+               </xsl:choose>
+               
+            </xsl:variable>
+            
+            <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
+            <xsl:if test="$diagnostics-on">
+               <xsl:message select="'Diagnostics on, tan:common-start-or-end-string()'"/>
+               <xsl:message select="'Input string a: ' || tan:ellipses($string-a, 100, 100)"/>
+               <xsl:message select="'Input string b: ' || tan:ellipses($string-b, 100, 100)"/>
+               <xsl:message select="'Find common start?', $find-common-start"/>
+               <xsl:choose>
+                  <xsl:when test="$try-binary-search">
+                     <xsl:message select="'Trying binary search approach; binary progression: ', $binary-progression"/>
+                     <xsl:message select="
+                           'Commonality: ' || (if ($find-common-start)
+                           then
+                              tan:ellipses(substring($string-a, 1, $commonality), 100)
+                           else
+                              tan:ellipses(substring($string-a, $string-a-length + 1 - $commonality), 0, 100))"
+                     />
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:message select="'Trying block approach; block size: ' || $block-size"/>
+                     <xsl:message select="
+                           'Commonality: ' || (if ($find-common-start) then
+                              tan:ellipses(codepoints-to-string($commonality), 100)
+                           else
+                              tan:ellipses(codepoints-to-string(reverse($commonality)), 0, 100))"/>
+                  </xsl:otherwise>
+               </xsl:choose>
+            </xsl:if>
+            
+            <xsl:choose>
+               <xsl:when test="$find-common-start and $try-binary-search">
+                  <xsl:value-of select="substring($string-a, 1, $commonality)"/>
+               </xsl:when>
+               <xsl:when test="$try-binary-search">
+                  <xsl:value-of select="substring($string-a, $string-a-length + 1 - $commonality)"/>
+               </xsl:when>
+               <xsl:when test="$find-common-start">
+                  <xsl:value-of select="codepoints-to-string($commonality)"/>
+               </xsl:when>
+               <xsl:otherwise>
+                  <xsl:value-of select="codepoints-to-string(reverse($commonality))"/>
+               </xsl:otherwise>
+            </xsl:choose>
          </xsl:otherwise>
       </xsl:choose>
+      
       
    </xsl:function>
    
