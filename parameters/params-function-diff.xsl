@@ -10,6 +10,12 @@
    
    <!-- DIFF ALGORITHM SETTINGS -->
    
+   <!-- Should tan:diff() output by default be rendered word-for-word (true) or character-for-character? 
+      The former produces results that are imprecise but more legible; the latter, precise but sometimes 
+      illegible. -->
+   <xsl:param name="tan:snap-to-word" as="xs:boolean" select="true()"/>
+   
+   
    <!-- How many vertical stops should be used in tan:diff()? Large numbers do not penalize performance. Short numbers will
       exhaust loop tolerance on long texts and turn the operation over to the longest common substring program. When this
       parameter is set to 80, and the other parameters are given their default values, the final sample size in the vertical 

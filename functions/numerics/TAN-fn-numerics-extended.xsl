@@ -22,20 +22,6 @@
                   $seq[$j])"/>
    </xsl:function>
 
-   <xsl:function name="tan:lengths-to-positions" as="xs:integer*" visibility="public">
-      <!-- Input: sequence of numbers representing legnths of items.  -->
-      <!-- Output: sequence of numbers representing the first position of each input item, if the sequence concatenated.
-      E.g., (4, 12, 0, 7) - > (1, 5, 17, 17)-->
-      <!--kw: numerics, sequences -->
-      <xsl:param name="seq" as="xs:integer*"/>
-      <xsl:copy-of select="
-            for $i in (1 to count($seq))
-            return
-               sum(for $j in (1 to $i)
-               return
-                  $seq[$j]) - $seq[$i] + 1"/>
-   </xsl:function>
-
    <xsl:function name="tan:product" as="xs:anyAtomicType?" visibility="public">
       <!-- Input: a sequence of numbers -->
       <!-- Output: the product of those numbers -->

@@ -287,7 +287,7 @@
    <xsl:variable name="tan:token-definition-nonspace" as="element()?"
       select="$tan:token-definitions-reserved[../tan:name = 'nonspace']"/>
    <xsl:variable name="tan:token-definition-default" as="element()?"
-      select="$tan:token-definitions-reserved[1]"/>
+      select="$tan:token-definitions-reserved[1]" use-when="$tan:validation-mode-on"/>
    
    
    

@@ -94,9 +94,9 @@
     </vocabulary-key>
     
     <file-resp who="park"/>
-    <resp who="xslt2" roles="stylesheet1"/>
+    <resp who="xslt2" roles="stylesheet"/>
     <resp roles="editor" who="park"/>
-    <resp who="xslt1" roles="stylesheet1"/>
+    <resp who="xslt1" roles="stylesheet"/>
     <change when="2021-02-13" who="park">Replaced ever • with an em dash</change>
     <change when="2015-03-10" who="park">Created new TAN-TEI file.</change>
     <change who="xslt1" when="2017-11-02T22:22:13.424-04:00">TAN file updated to 2018 schemas.</change>

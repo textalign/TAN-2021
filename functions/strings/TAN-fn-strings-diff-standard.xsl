@@ -1243,6 +1243,239 @@
       <!-- This function makes the precise output of tan:diff() more legible for humans. -->
       <xsl:param name="diff-output" as="element()?"/>
       
+      <xsl:variable name="string-a" as="xs:string?" select="string-join($diff-output/(tan:a | tan:common))"/>
+      <xsl:variable name="string-b" as="xs:string?" select="string-join($diff-output/(tan:b | tan:common))"/>
+      <xsl:variable name="string-a-toks" as="element()" select="tan:tokenize-text($string-a)"/>
+      <xsl:variable name="string-b-toks" as="element()" select="tan:tokenize-text($string-b)"/>
+      <xsl:variable name="tok-a-lengths" as="xs:integer*" select="
+            for $i in $string-a-toks/*
+            return
+               string-length($i)"/>
+      <xsl:variable name="tok-b-lengths" as="xs:integer*" select="
+            for $i in $string-b-toks/*
+            return
+               string-length($i)"/>
+      <xsl:variable name="tok-and-non-tok-starts-a" as="xs:integer+" select="tan:lengths-to-positions($tok-a-lengths)"/>
+      <xsl:variable name="tok-and-non-tok-starts-b" as="xs:integer+" select="tan:lengths-to-positions($tok-b-lengths)"/>
+      
+      <xsl:variable name="snapped-diff" as="element()">
+         <diff>
+            <xsl:iterate select="$diff-output/*">
+               <xsl:param name="curr-a-pos" as="xs:integer" select="1"/>
+               <xsl:param name="curr-b-pos" as="xs:integer" select="1"/>
+               <xsl:param name="tok-and-non-tok-starts-a" as="xs:integer*" select="$tok-and-non-tok-starts-a"/>
+               <xsl:param name="tok-and-non-tok-starts-b" as="xs:integer*" select="$tok-and-non-tok-starts-b"/>
+               
+               <xsl:variable name="el-name" as="xs:string" select="name(.)"/>
+               <xsl:variable name="is-a" as="xs:boolean" select="$el-name eq 'a'"/>
+               <xsl:variable name="is-b" as="xs:boolean" select="$el-name eq 'b'"/>
+               <xsl:variable name="curr-len" as="xs:integer" select="string-length(.)"/>
+               
+               <xsl:variable name="new-a-pos" as="xs:integer" select="
+                     if ($is-b) then
+                        $curr-a-pos
+                     else
+                        $curr-a-pos + $curr-len"/>
+               <xsl:variable name="new-b-pos" as="xs:integer" select="
+                     if ($is-a) then
+                        $curr-b-pos
+                     else
+                        $curr-b-pos + $curr-len"/>
+               
+               <xsl:variable name="relevant-tok-and-non-tok-starts-a" as="xs:integer*">
+                  <xsl:if test="not($is-b)">
+                     <xsl:iterate select="$tok-and-non-tok-starts-a">
+                        <xsl:choose>
+                           <xsl:when test=". ge $new-a-pos">
+                              <xsl:break/>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:sequence select="."/>
+                              <xsl:next-iteration/>
+                           </xsl:otherwise>
+                        </xsl:choose>
+                     </xsl:iterate>
+                  </xsl:if>
+               </xsl:variable>
+               <xsl:variable name="relevant-tok-and-non-tok-starts-b" as="xs:integer*">
+                  <xsl:if test="not($is-a)">
+                     <xsl:iterate select="$tok-and-non-tok-starts-b">
+                        <xsl:choose>
+                           <xsl:when test=". ge $new-b-pos">
+                              <xsl:break/>
+                           </xsl:when>
+                           <xsl:otherwise>
+                              <xsl:sequence select="."/>
+                              <xsl:next-iteration/>
+                           </xsl:otherwise>
+                        </xsl:choose>
+                     </xsl:iterate>
+                  </xsl:if>
+               </xsl:variable>
+               <xsl:variable name="relevant-start-count-a" as="xs:integer" select="count($relevant-tok-and-non-tok-starts-a)"/>
+               <xsl:variable name="relevant-start-count-b" as="xs:integer" select="count($relevant-tok-and-non-tok-starts-b)"/>
+               <xsl:variable name="new-tok-and-non-tok-starts-a" as="xs:integer*"
+                  select="$tok-and-non-tok-starts-a[position() gt $relevant-start-count-a]"
+               />
+               <xsl:variable name="new-tok-and-non-tok-starts-b" as="xs:integer*"
+                  select="$tok-and-non-tok-starts-b[position() gt $relevant-start-count-b]"
+               />
+               <!--<xsl:variable name="this-item-starts-new-tok-or-non-tok" as="xs:boolean" select="
+                  ($curr-a-pos eq $relevant-tok-and-non-tok-starts-a[1])
+                  and
+                  ($curr-b-pos eq $relevant-tok-and-non-tok-starts-b[1])"/>-->
+               <!-- The first common start should be position 1 only if both a and b agree. -->
+               <xsl:variable name="first-common-tok-or-non-tok-start" as="xs:integer?" select="
+                     if (($curr-a-pos ne $relevant-tok-and-non-tok-starts-a[1]) or ($curr-b-pos eq $relevant-tok-and-non-tok-starts-b[1]))
+                     then
+                        $relevant-tok-and-non-tok-starts-a[1]
+                     else
+                        $relevant-tok-and-non-tok-starts-a[2]"/>
+               <xsl:variable name="next-item-starts-new-tok-or-non-tok" as="xs:boolean" select="
+                  (not(exists($new-tok-and-non-tok-starts-a)) or ($new-tok-and-non-tok-starts-a[1] eq $new-a-pos))
+                  and
+                  (not(exists($new-tok-and-non-tok-starts-b)) or ($new-tok-and-non-tok-starts-b[1] eq $new-b-pos))"
+               />
+               
+               <xsl:variable name="diagnostics-on" as="xs:boolean" select="$el-name eq 'common'"/>
+               <xsl:if test="$diagnostics-on">
+                  <xsl:message select="'Diagnostics on, snap-to-word'"/>
+                  <xsl:message select="'Curr element: ', ."/>
+                  <xsl:message select="'Curr length: ', $curr-len"/>
+                  <xsl:message select="'curr a/b pos:', $curr-a-pos, $curr-b-pos"/>
+                  <xsl:message select="'new a/b pos:', $new-a-pos, $new-b-pos"/>
+                  <xsl:message select="'relevant a starts: ', $relevant-tok-and-non-tok-starts-a"/>
+                  <xsl:message select="'relevant b starts: ', $relevant-tok-and-non-tok-starts-b"/>
+                  <xsl:message select="'First common tok/nontok start: ', $first-common-tok-or-non-tok-start"/>
+                  <xsl:message select="'Last tok/nontok start: ', $relevant-tok-and-non-tok-starts-a[last()]"/>
+                  <xsl:message select="'Next item starts new tok/nontok?: ', $next-item-starts-new-tok-or-non-tok"/>
+               </xsl:if>
+               
+               <xsl:choose>
+                  <xsl:when test="$is-a or $is-b">
+                     <xsl:copy-of select="."/>
+                  </xsl:when>
+                  <!-- From here down, the element must be <common>. We follow the start count supplied by string a. -->
+                  <xsl:when test="
+                        ($relevant-start-count-a eq 0)
+                        or
+                        not(exists($first-common-tok-or-non-tok-start))">
+                     <!-- This common cannot be initial (it would always have 1 as a start), so it
+                     follows an a or b and some tok/nontok start. This is, as it were, cruft, and
+                     should be broken out between a and b. The same situation if there is no
+                     start to a tok/non-tok shared by both a and b in the common element.
+                  -->
+                     <a>
+                        <xsl:value-of select="."/>
+                     </a>
+                     <b>
+                        <xsl:value-of select="."/>
+                     </b>
+                  </xsl:when>
+                  <xsl:when test="$next-item-starts-new-tok-or-non-tok">
+                     <!-- The common has at least one tok/nontok start, and the next a and b begins 
+                     a new tok/nontok start. Everything from the first start onward should be kept
+                     in common. Only any text before that start should be split into a and b tracks.
+                     -->
+                     <!--<xsl:variable name="first-start" as="xs:integer" select="
+                           if (($relevant-tok-and-non-tok-starts-a[1] eq $curr-a-pos) and not($this-item-starts-new-tok-or-non-tok)) then
+                              $relevant-tok-and-non-tok-starts-a[2]
+                           else
+                              $relevant-tok-and-non-tok-starts-a[1]"/>-->
+                     <xsl:variable name="init-frag-len" as="xs:integer"
+                        select="$first-common-tok-or-non-tok-start - $curr-a-pos"/>
+                     <xsl:if test="$init-frag-len gt 0">
+                        <xsl:variable name="init-frag" as="xs:string" select="substring(., 1, $init-frag-len)"/>
+                        <a><xsl:value-of select="$init-frag"/></a>
+                        <b><xsl:value-of select="$init-frag"/></b>
+                     </xsl:if>
+                     <xsl:copy>
+                        <xsl:value-of select="substring(., $init-frag-len + 1)"/>
+                     </xsl:copy>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <!-- The common has at least one start. Any text before that start is a fragment
+                     that should be split into a and b tracks. Same for any text after the last 
+                     start. -->
+                     <!--<xsl:variable name="first-start" as="xs:integer" select="
+                           if (($relevant-tok-and-non-tok-starts-a[1] eq $curr-a-pos) and not($this-item-starts-new-tok-or-non-tok)) then
+                              $relevant-tok-and-non-tok-starts-a[2]
+                           else
+                              $relevant-tok-and-non-tok-starts-a[1]"/>-->
+                     <xsl:variable name="last-start" as="xs:integer" select="$relevant-tok-and-non-tok-starts-a[last()]"/>
+                     <xsl:variable name="init-frag-len" as="xs:integer"
+                        select="$first-common-tok-or-non-tok-start - $curr-a-pos"/>
+                     <xsl:if test="$init-frag-len gt 0">
+                        <xsl:variable name="init-frag" as="xs:string" select="substring(., 1, $init-frag-len)"/>
+                        <a><xsl:value-of select="$init-frag"/></a>
+                        <b><xsl:value-of select="$init-frag"/></b>
+                     </xsl:if>
+                     <xsl:if test="$first-common-tok-or-non-tok-start lt $last-start">
+                        <common><xsl:value-of select="substring(., $init-frag-len + 1, $last-start - $first-common-tok-or-non-tok-start)"/></common>
+                     </xsl:if>
+                     <a><xsl:value-of select="substring(., $last-start - $curr-a-pos + 1)"/></a>
+                     <b><xsl:value-of select="substring(., $last-start - $curr-a-pos + 1)"/></b>
+                  </xsl:otherwise>
+               </xsl:choose>
+               
+               <xsl:next-iteration>
+                  <xsl:with-param name="curr-a-pos" select="$new-a-pos"/>
+                  <xsl:with-param name="curr-b-pos" select="$new-b-pos"/>
+                  <xsl:with-param name="tok-and-non-tok-starts-a" select="$new-tok-and-non-tok-starts-a"/>
+                  <xsl:with-param name="tok-and-non-tok-starts-b" select="$new-tok-and-non-tok-starts-b"/>
+               </xsl:next-iteration>
+            </xsl:iterate>
+         </diff>
+      </xsl:variable>
+      
+      <xsl:variable name="final-diff" as="element()">
+         <diff>
+            <xsl:for-each-group select="$snapped-diff/*" group-starting-with="tan:common[text()]">
+               <xsl:copy-of select="current-group()/self::tan:common[text()]"/>
+               <xsl:if test="exists(current-group()/self::tan:a[text()])">
+                  <a><xsl:value-of select="string-join(current-group()/self::tan:a)"/></a>
+               </xsl:if>
+               <xsl:if test="exists(current-group()/self::tan:b[text()])">
+                  <b><xsl:value-of select="string-join(current-group()/self::tan:b)"/></b>
+               </xsl:if>
+            </xsl:for-each-group> 
+         </diff>
+      </xsl:variable>
+      
+      <xsl:variable name="output-diagnostics-on" as="xs:boolean" select="false()"/>
+      <xsl:choose>
+         <xsl:when test="$output-diagnostics-on">
+            <xsl:variable name="string-a-rev" as="xs:string" select="string-join($final-diff/(tan:a | tan:common))"/>
+            <xsl:variable name="string-b-rev" as="xs:string" select="string-join($final-diff/(tan:b | tan:common))"/>
+            <diagnostics>
+               <tok-a-lengths><xsl:copy-of select="$tok-a-lengths"/></tok-a-lengths>
+               <tok-b-lengths><xsl:copy-of select="$tok-b-lengths"/></tok-b-lengths>
+               <incoming-diff-output><xsl:copy-of select="$diff-output"/></incoming-diff-output>
+               <diff-snapped><xsl:copy-of select="$snapped-diff"/></diff-snapped>
+               <final-diff><xsl:copy-of select="$final-diff"/></final-diff>
+               <xsl:if test="not($string-a eq $string-a-rev)">
+                  <xsl:message select="'String a does not match revised string a'"/>
+                  <xsl:copy-of select="tan:diff($string-a, $string-a-rev, false())"/>
+               </xsl:if>
+               <xsl:if test="not($string-b eq $string-b-rev)">
+                  <xsl:message select="'String b does not match revised string b'"/>
+                  <xsl:copy-of select="tan:diff($string-b, $string-b-rev, false())"/>
+               </xsl:if>
+            </diagnostics>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:copy-of select="$final-diff"/>
+         </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:function>
+   
+   <xsl:function name="tan:snap-diff-to-word-old" as="element()?" visibility="private">
+      <!-- Input: the output of tan:diff() -->
+      <!-- Output: the output adjusted so that divisions occur only at word boundaries -->
+      <!-- This function makes the precise output of tan:diff() more legible for humans. -->
+      <xsl:param name="diff-output" as="element()?"/>
+      
       <xsl:variable name="snap1" as="element()">
          <xsl:apply-templates select="$diff-output" mode="tan:snap-to-word-pass-1"/>
       </xsl:variable>
@@ -1256,7 +1489,7 @@
                <xsl:variable name="text-b"
                   select="string-join(current-group()/(self::tan:b, self::tan:a-or-b), '')"/>
                <xsl:variable name="a-toks" as="xs:string*">
-                  <xsl:analyze-string select="$text-a" regex="\s+">
+                  <xsl:analyze-string select="$text-a" regex="{$tan:token-definition-default}">
                      <xsl:matching-substring>
                         <xsl:value-of select="."/>
                      </xsl:matching-substring>
@@ -1266,7 +1499,7 @@
                   </xsl:analyze-string>
                </xsl:variable>
                <xsl:variable name="b-toks" as="xs:string*">
-                  <xsl:analyze-string select="$text-b" regex="\s+">
+                  <xsl:analyze-string select="$text-b" regex="{$tan:token-definition-default}">
                      <xsl:matching-substring>
                         <xsl:value-of select="."/>
                      </xsl:matching-substring>
@@ -1371,15 +1604,15 @@
       <xsl:choose>
          <xsl:when test="exists($preceding-diff) or exists($following-diff)">
             <xsl:variable name="regex-1" select="
-               if (exists($preceding-diff)) then
-               '^\w+'
-               else
-               ()"/>
+                  if (exists($preceding-diff)) then
+                     ('^' || $tan:token-definition-default)
+                  else
+                     ()"/>
             <xsl:variable name="regex-2" select="
-               if (exists($following-diff)) then
-               '\w+$'
-               else
-               ()"/>
+                  if (exists($following-diff)) then
+                     ($tan:token-definition-default || '$')
+                  else
+                     ()"/>
             <xsl:variable name="content-analyzed" as="element()">
                <content>
                   <xsl:analyze-string select="text()"

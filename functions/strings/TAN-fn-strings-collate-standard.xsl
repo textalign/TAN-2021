@@ -169,13 +169,33 @@
          </xsl:for-each-group>
       </xsl:variable>
 
-      <xsl:variable name="string-labels-re-sorted" select="
+      <!-- April 2022: trying a different algorithm, based on average global commonality, 
+         not pairwise. -->
+      <!--<xsl:variable name="string-labels-re-sorted" select="
             if ($preoptimize-string-order) then
                distinct-values(for $i in $diffs-sorted
                return
                   ($i/@a, $i/@b))
             else
-               $string-labels-norm"/>
+               $string-labels-norm"/>-->
+      <xsl:variable name="string-labels-re-sorted" as="xs:string+">
+         <xsl:choose>
+            <xsl:when test="$preoptimize-string-order">
+               <xsl:for-each select="$string-labels-norm">
+                  <xsl:sort select="
+                        sum((let $this := .
+                        return
+                           for $i in $diffs-sorted[(@a, @b) = $this]
+                           return
+                              number($i/@commonality)))" order="descending"/>
+                  <xsl:sequence select="."/>
+               </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:sequence select="$string-labels-norm"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
 
       <xsl:variable name="strings-re-sorted" select="
             if ($preoptimize-string-order) then
@@ -767,8 +787,10 @@
                   
                   <xsl:choose>
                      <xsl:when test="$these-us-should-be-recollated">
+                        <!-- TODO: revise so that the last parameter can be set to $tan:snap-to-word. Currently
+                           most word-snapped output from tan:collate() runs into problems. -->
                         <xsl:variable name="these-us-recollated"
-                           select="tan:collate($these-u-strings, $these-u-wit-refs, true(), true(), false())"
+                           select="tan:collate($these-u-strings, $these-u-wit-refs, true(), true(), false(), false())"
                            as="element()"/>
                         
                         <xsl:if test="$diagnostics-on">

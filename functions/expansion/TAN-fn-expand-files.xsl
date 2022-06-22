@@ -1103,6 +1103,9 @@
    <!-- We ignore TEI attributes that are not tethered to the TAN vocabulary system -->
    <xsl:template match="tei:teiHeader | tan:tail | tei:div[not(tei:div)]/node()"
       mode="tan:core-expansion-prep-for-attr-query"/>
+   <!-- We ignore the <reference-system>'s @type, because it is unlike the other @types,
+      with only two permissible values. -->
+   <xsl:template match="tan:reference-system/@type" mode="tan:core-expansion-prep-for-attr-query"/>
    
    
    <xsl:template match="tan:inclusion | *[@include]" mode="tan:attributes-not-in-inclusions"/>

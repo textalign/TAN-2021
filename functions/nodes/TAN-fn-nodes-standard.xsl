@@ -1729,7 +1729,7 @@
    
    <xsl:mode name="tan:selectively-adjust-tei-space" on-no-match="shallow-copy"/>
    
-   <xsl:template match="text()[matches(., '\S')]" mode="tan:selectively-adjust-tei-space">
+   <xsl:template match="text()[matches(., '\S')]" priority="-1" mode="tan:selectively-adjust-tei-space">
       <!-- Sometimes tei space should be fully normalized, other times not; it is difficult
          to lay down a policy. This is the fallback, a kind of soft space normalization upon
          text nodes that have non-space text. -->
@@ -1743,7 +1743,7 @@
    </xsl:template>
    
    <xsl:template match="tei:div[not(tei:div)]/node()[last()]/node()[last()]/self::tei:*"
-      mode="tan:selectively-adjust-tei-space" priority="1">
+      mode="tan:selectively-adjust-tei-space" priority="2">
       <!-- given a tei leaf div, if the final grandchild is an element, not a text node, make sure it is followed by the titular space
          marking the end of a div. We do it in the grandchild position, because technically no text is allowed as a child of 
          a tei div, even a leaf one. We try a next match, in case that final grandchild element needs to have its space adjusted. -->
@@ -1751,16 +1751,16 @@
       <xsl:value-of select="' '"/>
    </xsl:template>
    
-   <xsl:template match="*[tei:app/tei:lem[matches(., '^\s|\s$')]]/node()"
+   <xsl:template match="*[tei:app/tei:lem[matches(., '^\s|\s$')]]/node()" priority="1"
       mode="tan:selectively-adjust-tei-space">
       <!-- A <tei:lem> should not be anchored to text that begins with or ends with space, because apparatus critici are
          not concerned with initial or trailing space. -->
       <!-- We pull in the space from <lem>, but further down we also make sure <rdg> does not have initial or terminal space. -->
       
       <xsl:variable name="follows-rdg-with-appended-space" as="xs:boolean"
-         select="exists(preceding-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s|\s$')])"/>
+         select="exists(preceding-sibling::node()[1]/self::tei:app/tei:lem[matches(., '\s$')])"/>
       <xsl:variable name="precedes-rdg-with-prepended-space" as="xs:boolean"
-         select="exists(following-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s|\s$')])"/>
+         select="exists(following-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s')])"/>
       
       <xsl:if test="$follows-rdg-with-appended-space">
          <xsl:value-of select="' '"/>
