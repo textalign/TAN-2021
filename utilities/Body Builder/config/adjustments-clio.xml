@@ -85,6 +85,9 @@
       <!-- CLIO: Griffolini and Montfaucon -->
       <!-- milestones -->
       
+      <!-- B = 1462 -->
+      <!-- F = 1470 -->
+      
       <!-- The following is for an exception that occurs twice. Normally the more specific
          the exception, the earlier it should appear. -->
       <markup>
@@ -99,13 +102,13 @@
       <markup>
          <where pattern="\[(1530|1603|1728):? (p)\.\s*([\d/]+)\]"/>
          <where pattern="\[(1556|1862):? (col)\.\s*([\d/]+)\]"/>
-         <where pattern="\[(1462|1470|1486):? (fol)\.\s*(\d+[rvabis]*)\]"/>
+         <where pattern="\[(1462|B|1470|F|1486):? (fol)\.\s*(\d+[rvabis]*)\]"/>
          <milestone edRef="#W$1" unit="$2" n="$3" rend="$0"/>
          <maintext/>
       </markup>
       
       <markup>
-         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); ?(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <where pattern="\[(1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); ?(1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
          <milestone edRef="#W$1" unit="$2" n="$3"/>
          <milestone edRef="#W$4" unit="$5" n="$6" rend="$0"/>
          <maintext/>
@@ -113,7 +116,7 @@
       <!-- [1470: fol.128v; 1530: p.872] -->
       
       <markup>
-         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <where pattern="\[(1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
          <milestone edRef="#W$1" unit="$2" n="$3"/>
          <milestone edRef="#W$4" unit="$5" n="$6"/>
          <milestone edRef="#W$7" unit="$8" n="$9" rend="$0"/>
@@ -121,11 +124,21 @@
       </markup>
       
       <markup>
-         <where pattern="\[(1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|1470|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <where pattern="\[(1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
          <milestone edRef="#W$1" unit="$2" n="$3"/>
          <milestone edRef="#W$4" unit="$5" n="$6"/>
          <milestone edRef="#W$7" unit="$8" n="$9"/>
          <milestone edRef="#W$10" unit="$11" n="$12" rend="$0"/>
+         <maintext/>
+      </markup>
+
+      <markup>
+         <where pattern="\[(1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*); (1462|B|1470|F|1486|1530|1556|1603|1728|1862):? (fol|p|col)\.\s*(\d+[rvabis\d/]*)\]"/>
+         <milestone edRef="#W$1" unit="$2" n="$3"/>
+         <milestone edRef="#W$4" unit="$5" n="$6"/>
+         <milestone edRef="#W$7" unit="$8" n="$9"/>
+         <milestone edRef="#W$10" unit="$11" n="$12"/>
+         <milestone edRef="#W$13" unit="$14" n="$15" rend="$0"/>
          <maintext/>
       </markup>
       
@@ -137,7 +150,7 @@
       <!-- for complex comments combining a 2-siglum variant reading with a 
          one-siglum milestone, e.g., Griffolini 39.2.22 -->
       <markup cuts="true">
-         <where pattern="((1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+))(\((1462|1470|1486|1530|1556|1603|1728|1862):\s*(fol|p|col)\.\s*(\d+[rvabis\d/]*)\))"/>
+         <where pattern="((1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+))(\((1462|B|1470|F|1486|1530|1556|1603|1728|1862):\s*(fol|p|col)\.\s*(\d+[rvabis\d/]*)\))"/>
          <milestone edRef="#W$7" unit="$8" n="$9" rend="$6"/>
          <app rend="$1">
             <lem>
@@ -149,7 +162,7 @@
       
       <!-- for 2 witnesses followed by 1 witness -->
       <markup cuts="true">
-         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
@@ -161,7 +174,7 @@
       
       <!-- for 1 witness followed by 2 witnesses -->
       <markup cuts="true">
-         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
@@ -171,9 +184,21 @@
          </app>
       </markup>
       
+      <!-- for 1 witness followed by 3 witnesses -->
+      <markup cuts="true">
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1">$3</rdg>
+            <rdg wit="#W$4 #W$5 #W$6">$8</rdg>
+         </app>
+      </markup>
+      
       <!-- for 1 witness followed by 1 witness -->
       <markup cuts="true">
-         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where exclude-pattern="(fol|p|col)\.\s*(\d+[rvabis\d/]*)" pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*);\s+(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
@@ -185,17 +210,28 @@
       
       <!-- These patterns complain about unexpected complex comments. -->
       <markup cuts="true">
-         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+)\(.*\)" message="unexpected complex comment; parentheses not anticipated: $0"/>
-         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+);.*\d" exclude-pattern="[\[\]]" message="unexpected complex comment; semicolon not anticipated: $0"/>
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+)\(.*\)" message="unexpected complex comment; parentheses not anticipated: $0"/>
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.+);.*\d" exclude-pattern="[\[\]]" message="unexpected complex comment; semicolon not anticipated: $0"/>
          <unexpected/>
          <maintext/>
       </markup>
       
       <!-- variant readings, generally -->
       
+      <!-- for 4 witnesses -->
+      <markup cuts="true">
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <app rend="$0">
+            <lem>
+               <maintext/>
+            </lem>
+            <rdg wit="#W$1 #W$2 #W$3 #W$4">$5</rdg>
+         </app>
+      </markup>
+
       <!-- for 3 witnesses -->
       <markup cuts="true">
-         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
@@ -206,7 +242,7 @@
 
       <!-- for 2 witnesses -->
       <markup cuts="true">
-         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862)/(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862)/(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
@@ -217,7 +253,7 @@
       
       <!-- for 1 witness; sometimes the colon is dropped -->
       <markup cuts="true">
-         <where pattern="(1462|1470|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
+         <where pattern="(1462|B|1470|F|1486|1530|1556|1603|1728|1862):?\s+(om\.)?(.*)"/>
          <app rend="$0">
             <lem>
                <maintext/>
