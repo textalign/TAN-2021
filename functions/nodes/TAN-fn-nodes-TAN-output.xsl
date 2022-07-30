@@ -334,9 +334,8 @@
    
    <xsl:template match="tan:head/tan:change[1] | tan:head[not(tan:change)]/tan:to-do" mode="tan:update-TAN-change-log">
       <xsl:param name="new-change-message" tunnel="yes" as="element()"/>
-      <xsl:copy-of select="preceding-sibling::node()[1]/self::text()"/>
       <xsl:copy-of select="$new-change-message"/>
-      <xsl:copy-of select="."/>
+      <xsl:copy-of select="tan:copy-indentation(., .)"/>
    </xsl:template>
    
    <xsl:template match="tan:head/tan:resp[last()] | tan:head[not(tan:resp)]/tan:file-resp" priority="1" mode="tan:update-TAN-change-log">

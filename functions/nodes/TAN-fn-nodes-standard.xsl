@@ -1743,7 +1743,7 @@
    </xsl:template>
    
    <xsl:template match="tei:div[not(tei:div)]/node()[last()]/node()[last()]/self::tei:*"
-      mode="tan:selectively-adjust-tei-space" priority="1">
+      mode="tan:selectively-adjust-tei-space" priority="2">
       <!-- given a tei leaf div, if the final grandchild is an element, not a text node, make sure it is followed by the titular space
          marking the end of a div. We do it in the grandchild position, because technically no text is allowed as a child of 
          a tei div, even a leaf one. We try a next match, in case that final grandchild element needs to have its space adjusted. -->
@@ -1751,7 +1751,7 @@
       <xsl:value-of select="' '"/>
    </xsl:template>
    
-   <xsl:template match="*[tei:app/tei:lem[matches(., '^\s|\s$')]]/node()"
+   <xsl:template match="*[tei:app/tei:lem[matches(., '^\s|\s$')]]/node()" priority="1"
       mode="tan:selectively-adjust-tei-space">
       <!-- A <tei:lem> should not be anchored to text that begins with or ends with space, because apparatus critici are
          not concerned with initial or trailing space. -->
