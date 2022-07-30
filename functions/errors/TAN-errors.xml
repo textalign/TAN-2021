@@ -23,6 +23,7 @@
         <!-- The next element should be marked as an error under phase missing-and-strays, if the TAN version is being deployed for stable production -->
         <warning xml:id="wrn04"><rule>Users should be warned about versions of TAN that are under development.</rule><message>This version of TAN is under development, and is subject to change. Participants in developing the TAN schemas, functions, and guidelines are welcome. See http://textalign.net for details.</message></warning>
         <warning xml:id="wrn07"><rule>Users should be warned about TAN files whose last change was made by an algorithm.</rule></warning>
+        <warning xml:id="wrn12"><rule>Users should be warned when validation truncation precludes some elements from being validated.</rule></warning>
     </group>
     <group affects-attribute="TAN-version">
         <warning xml:id="tan20"><rule>TAN files using a version other than the current version will be marked with a warning.</rule></warning>
@@ -176,7 +177,7 @@
     <group affects-element="div" affects-attribute="n">
         <warning xml:id="cl115"><rule>An @n's value should not appear in the text.</rule></warning>
         <warning xml:id="cl116"><rule>A &lt;div>'s reference (self and ancestor @ns, concatenated) should not appear in the text.</rule></warning>
-        <error xml:id="tei01"><rule>Every &lt;div> in a TEI's body must have @n (except when @include is present)</rule></error>
+    <error xml:id="tei01"><rule>Every &lt;div> in a TEI's body must have @n (except when @include is present)</rule></error>
     </group>
     <group affects-element="div" affects-attribute="type">
         <error xml:id="tei02"><rule>Every &lt;div> in a TEI's body must have @n (except when @include is present)</rule></error>

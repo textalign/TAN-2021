@@ -83,7 +83,12 @@ ref{
     font-family: antinoou;
 }
 *:lang(grc){
-    font-family: 'Gentium Plus', 'Garamond Premiere Pro', 'Gentium Plus', serif;
+    font-family: 'Gentium Plus', 'Garamond Premiere Pro', serif;
+}
+*:lang(ar),
+*:lang(ara){
+    font-family: 'Gentium Plus', serif;
+    text-align: right;
 }
 IRI{
     font-family: monospace;

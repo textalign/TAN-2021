@@ -16,6 +16,4 @@
         you are using Oxygen XML Editor, you should also adjust the entries in Configure Transformation
         Scenario(s) dialogue. -->
     
-    
-    
 </xsl:stylesheet>

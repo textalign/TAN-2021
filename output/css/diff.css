@@ -30,7 +30,8 @@ div.e-u:hover {
 {
    background-color: aliceblue;
 }
-.fragment
+.fragment,
+.elision
 {
    background-color: lightgray;
 }
@@ -70,8 +71,12 @@ thead > tr:first-of-type > th[colspan] {
 .e-div > .e-ref,
 .e-div > .a-n,
 .title,
-.subtitle{
+.subtitle
+{
     color: blue
+}
+.elision{
+    color: dimgray;
 }
 
 /* CURSOR */
@@ -101,7 +106,8 @@ div.e-collation > *,
 .fragment,
 .bottomline,
 .e-div > *,
-.e-ab > *{
+.e-ab > *,
+.elision{
    display: inline
 }
 body .e-div > .e-div{
@@ -207,6 +213,7 @@ body > * > .label {
 
 /* PADDING */
 div.collation div,
+div.e-collation div,
 div.e-diff div{
    padding: 0px;
 }

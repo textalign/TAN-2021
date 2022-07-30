@@ -39,6 +39,26 @@
    
    
    <xsl:function name="tan:collate" as="element()?" visibility="public">
+      <!-- 1-parameter version of fuller one, below -->
+      <xsl:param name="strings-to-collate" as="xs:string*"/>
+      <xsl:variable name="string-labels" as="xs:string+">
+         <xsl:for-each select="$strings-to-collate">
+            <xsl:value-of select="position()"/>
+         </xsl:for-each>
+      </xsl:variable>
+      <xsl:sequence select="tan:collate($strings-to-collate, $string-labels)"/>
+   </xsl:function>
+   
+   <xsl:function name="tan:collate" as="element()?" visibility="public">
+      <!-- 2-parameter version of fuller one, below -->
+      <xsl:param name="strings-to-collate" as="xs:string*"/>
+      <xsl:param name="string-labels" as="xs:string*"/>
+      <xsl:sequence
+         select="tan:collate($strings-to-collate, $string-labels, true())"
+      />
+   </xsl:function>
+   
+   <xsl:function name="tan:collate" as="element()?" visibility="public">
       <!-- 3-parameter version of fuller one, below -->
       <xsl:param name="strings-to-collate" as="xs:string*"/>
       <xsl:param name="string-labels" as="xs:string*"/>
@@ -57,7 +77,7 @@
       <xsl:param name="adjust-diffs-during-preoptimization" as="xs:boolean"/>
       <xsl:param name="clean-up-collation" as="xs:boolean"/>
       <xsl:sequence
-         select="tan:collate($strings-to-collate, $string-labels, $preoptimize-string-order, $adjust-diffs-during-preoptimization, $clean-up-collation, false())"
+         select="tan:collate($strings-to-collate, $string-labels, $preoptimize-string-order, $adjust-diffs-during-preoptimization, $clean-up-collation, $tan:snap-to-word)"
       />
    </xsl:function>
    
@@ -149,13 +169,33 @@
          </xsl:for-each-group>
       </xsl:variable>
 
-      <xsl:variable name="string-labels-re-sorted" select="
+      <!-- April 2022: trying a different algorithm, based on average global commonality, 
+         not pairwise. -->
+      <!--<xsl:variable name="string-labels-re-sorted" select="
             if ($preoptimize-string-order) then
                distinct-values(for $i in $diffs-sorted
                return
                   ($i/@a, $i/@b))
             else
-               $string-labels-norm"/>
+               $string-labels-norm"/>-->
+      <xsl:variable name="string-labels-re-sorted" as="xs:string+">
+         <xsl:choose>
+            <xsl:when test="$preoptimize-string-order">
+               <xsl:for-each select="$string-labels-norm">
+                  <xsl:sort select="
+                        sum((let $this := .
+                        return
+                           for $i in $diffs-sorted[(@a, @b) = $this]
+                           return
+                              number($i/@commonality)))" order="descending"/>
+                  <xsl:sequence select="."/>
+               </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:sequence select="$string-labels-norm"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:variable>
 
       <xsl:variable name="strings-re-sorted" select="
             if ($preoptimize-string-order) then
@@ -201,14 +241,14 @@
             <xsl:variable name="iteration" select="position() + 2"/>
             <xsl:variable name="this-label" select="$string-labels-re-sorted[$iteration]"/>
 
-            <xsl:variable name="this-diff"
+            <xsl:variable name="this-diff" as="element()"
                select="tan:diff-cache($previous-string, ., $snap-to-word, true())"/>
-            <xsl:variable name="this-diff-adjusted" select="
+            <xsl:variable name="this-diff-adjusted" as="element()" select="
                   if ($adjust-diffs-during-preoptimization) then
                      tan:adjust-diff($this-diff)
                   else
                      $this-diff"/>
-            <xsl:variable name="this-diff-collation"
+            <xsl:variable name="this-diff-collation" as="element()"
                select="tan:diff-to-collation($this-diff-adjusted, $previous-string-label, $this-label)"/>
 
             <!-- The linking text is split in different ways, both in the base collation and the collation to add. Each of those
@@ -747,8 +787,10 @@
                   
                   <xsl:choose>
                      <xsl:when test="$these-us-should-be-recollated">
+                        <!-- TODO: revise so that the last parameter can be set to $tan:snap-to-word. Currently
+                           most word-snapped output from tan:collate() runs into problems. -->
                         <xsl:variable name="these-us-recollated"
-                           select="tan:collate($these-u-strings, $these-u-wit-refs, true(), true(), false())"
+                           select="tan:collate($these-u-strings, $these-u-wit-refs, true(), true(), false(), false())"
                            as="element()"/>
                         
                         <xsl:if test="$diagnostics-on">
@@ -756,13 +798,11 @@
                         </xsl:if>
                         
                         <xsl:for-each select="$these-us-recollated/(* except tan:witness)">
-                           <xsl:variable name="this-element-name"
-                              select="
-                              if (count(tan:wit) eq $witness-count) then
-                              'c'
-                              else
-                              'u'"
-                           />
+                           <xsl:variable name="this-element-name" select="
+                                 if (count(tan:wit) eq $witness-count) then
+                                    'c'
+                                 else
+                                    'u'"/>
                            <xsl:element name="{$this-element-name}">
                               <xsl:apply-templates select="* except tan:x" mode="tan:add-collation-pos-offset">
                                  <xsl:with-param name="offsets" select="$these-offsets"/>

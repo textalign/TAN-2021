@@ -25,13 +25,6 @@
    <xsl:param name="tan:ignore-case-differences" as="xs:boolean?" select="false()"/>
    
    
-   <!-- DIFF/COLLATE PROCESS PARAMETERS -->
-   
-   <!-- Should diffs by default be rendered word-for-word (true) or character-for-character? The former 
-      renders imprecise but more legible results; the latter, precise but sometimes illegible results. -->
-   <xsl:param name="tan:snap-to-word" as="xs:boolean" select="true()"/>
-   
-   
    <!-- DIFF/COLLATE STATISTICS -->
    
    <!-- Should Venn diagrams be inserted for collations of 3 or more versions? If true, processing will take 

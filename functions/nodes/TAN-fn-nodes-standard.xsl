@@ -1729,7 +1729,7 @@
    
    <xsl:mode name="tan:selectively-adjust-tei-space" on-no-match="shallow-copy"/>
    
-   <xsl:template match="text()[matches(., '\S')]" mode="tan:selectively-adjust-tei-space">
+   <xsl:template match="text()[matches(., '\S')]" priority="-1" mode="tan:selectively-adjust-tei-space">
       <!-- Sometimes tei space should be fully normalized, other times not; it is difficult
          to lay down a policy. This is the fallback, a kind of soft space normalization upon
          text nodes that have non-space text. -->
@@ -1758,9 +1758,9 @@
       <!-- We pull in the space from <lem>, but further down we also make sure <rdg> does not have initial or terminal space. -->
       
       <xsl:variable name="follows-rdg-with-appended-space" as="xs:boolean"
-         select="exists(preceding-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s|\s$')])"/>
+         select="exists(preceding-sibling::node()[1]/self::tei:app/tei:lem[matches(., '\s$')])"/>
       <xsl:variable name="precedes-rdg-with-prepended-space" as="xs:boolean"
-         select="exists(following-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s|\s$')])"/>
+         select="exists(following-sibling::node()[1]/self::tei:app/tei:lem[matches(., '^\s')])"/>
       
       <xsl:if test="$follows-rdg-with-appended-space">
          <xsl:value-of select="' '"/>

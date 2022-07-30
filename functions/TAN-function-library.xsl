@@ -28,8 +28,11 @@
    <xsl:import href="setup/TAN-parameters-static.xsl"/>
 
    <!-- DYNAMIC PARAMETERS -->
+   <!-- setup parameters are not intended for users to configure; they are there to allow 
+      an application or program to control certain settings. -->
    <xsl:import href="setup/TAN-parameters-validation.xsl"/>
    <xsl:import href="setup/TAN-parameters-extended.xsl" use-when="not($tan:validation-mode-on)"/>
+   <!-- The rest of the parameters are intended for users to configure. -->
    <xsl:import href="../parameters/params-application.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:import href="../parameters/params-application-diff.xsl"
       use-when="not($tan:validation-mode-on)"/>
@@ -119,6 +122,8 @@
    <xsl:include href="checksums/TAN-fn-hash-and-check.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- docx -->
    <xsl:include href="docx/TAN-fn-docx.xsl" use-when="not($tan:validation-mode-on)"/>
+   <!-- tei -->
+   <xsl:include href="tei/TAN-fn-tei.xsl" use-when="not($tan:validation-mode-on)"/>
 
 
    <!-- PROCESSES -->

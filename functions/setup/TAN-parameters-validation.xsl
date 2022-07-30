@@ -23,16 +23,30 @@
    <xsl:param name="tan:validation-is-normal" as="xs:boolean" select="false()"/>
    <!-- If a TAN file is validated, should it be expanded verbosely? -->
    <xsl:param name="tan:validation-is-verbose" as="xs:boolean" select="false()"/>
+   <!-- If a TAN file is validated, Schematron validation be turned off? -->
+   <xsl:param name="tan:validation-is-empty" as="xs:boolean" select="false()"/>
 
    <!-- What should the default validation phase be? Expected values: terse (default), normal, verbose -->
    <xsl:param name="tan:default-validation-phase" as="xs:string" select="
-         if ($tan:validation-is-verbose)
-         then
-            'verbose'
+         if ($tan:validation-is-empty) then
+            'empty'
          else
-            if ($tan:validation-is-normal) then
-               'normal'
+            if ($tan:validation-is-verbose)
+            then
+               'verbose'
             else
-               'terse'"/>
+               if ($tan:validation-is-normal) then
+                  'normal'
+               else
+                  'terse'"/>
+   
+   
+   <!-- During expansion, should every value for every attribute that points to a vocabulary item 
+      have the vocabulary imprinted with the value? This is used primarily in non-validation applications, 
+      where immediate, quick access to the vocabulary is required. Caution: setting this value to true may 
+      result in very large files. -->
+   <xsl:param name="tan:distribute-vocabulary" select="false() and $tan:validation-mode-on"/>
+   
+   
 
 </xsl:stylesheet>
