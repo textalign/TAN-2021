@@ -92,5 +92,14 @@
    
    
    
-
+   <!-- ENVIRONMENT PARAMETERS -->
+   
+   <!-- If called from a Java application, tan:collate() with the superskeleton method can crash because
+      of a bug in the handling of array:join() on around 10,000 items or more. See 
+      https://saxonica.plan.io/issues/5600. If a function uses array:join() what threshold should trigger
+      a fallback parallel function, if one is available? Any value less than 1 turns the feature off.
+   -->
+   <xsl:param name="tan:array-join-population-max" as="xs:integer" select="-1"/>
+   
+   
 </xsl:stylesheet>

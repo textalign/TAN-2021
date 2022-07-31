@@ -8,7 +8,7 @@
       This stylesheet is meant to be imported (not included) by other stylesheets, so that the
       parameter values can be changed. -->
    
-   <!-- DIFF ALGORITHM SETTINGS -->
+   <!-- TAN:DIFF() SETTINGS -->
    
    <!-- Should tan:diff() output by default be rendered word-for-word (true) or character-for-character? 
       The former produces results that are imprecise but more legible; the latter, precise but sometimes 
@@ -105,5 +105,34 @@
    <xsl:param name="tan:diff-min-count-giant-string-segments" as="xs:integer" select="2"/>
    
    
+   <!-- TAN:COLLATE() SETTINGS -->
    
+   <!-- When using the superskeleton method in tan:collate(), should the minimum length of the sample 
+      size be set automatically? If true, then if the smallest input string is 10 characters or fewer,
+      the minimum size will be 1. If 100 or fewer, 2; if 1000 or fewer, 3 (log10 of the input length).
+      This generally helps avoid small anchors liable to misplacement. 
+   -->
+   <xsl:param name="tan:collate-superskeleton-autoset-min-sample-size" as="xs:boolean" select="true()"/>
+   
+   <!-- When using the superskeleton method in tan:collate(), what is the minimum length of the sample 
+      size? This value is ignored if tan:collate-superskeleton-autoset-min-sample-size is true or if 
+      its value is less than one. Recommended: 2, to avoid single-letter anchors that are likely to be 
+      out of sync with each other. -->
+   <xsl:param name="tan:collate-superskeleton-min-sample-size" as="xs:integer" select="2"/>
+   
+   <!-- When looking for a superskeletion in tan:collate(), a sample might be found multiple times in each
+      string. To determine the best match, the algorithm looks for the closest cluster. But if you have,
+      say, four strings, and the sample is found twenty times in each one, a cluster comparison would involve
+      evaluating 160,000 permutations. That may entail a stack overflow. Or it could be symptomatic of an
+      overly ambiguous match that is not really a suitable candidate for an anchor across all the versions.
+      The following parameter provides a kind of escape hatch, allowing the algorithm to skip over matches
+      whose combinations are too numerous to be of significance and too numerous to efficiently process.
+      Recommended value: 1000. Note, this ceiling will be assessed only after some simplification is done
+      on the combinations of matches. For example, if three versions share a match, and the sample appears
+      in the first two 100 times and the third only one time (potentially 10,000 combinations), then that 
+      set is automatically simplified to a set of 2, 2, and 1 (only 4 combinations). Please note: in the
+      future, this parameter will be renamed, to reflect its application not merely in tan:collate() but
+      tan:diff().
+   -->
+   <xsl:param name="tan:collate-superskeleton-match-ambiguity-check-ceiling" as="xs:integer" select="1000"/>
 </xsl:stylesheet>
