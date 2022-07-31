@@ -153,6 +153,9 @@
    </xsl:template>
    
    
+   <!-- MANIPULATION FUNCTIONS -->
+   
+   
    <xsl:function name="tan:array-permutations" as="array(*)" visibility="public">
       <!-- Input: any array -->
       <!-- Output: an array whose members are sequences representing the permutations of each item in each member in the 
@@ -163,36 +166,103 @@
       <!--kw: arrays -->
       <xsl:param name="input-array" as="array(*)"/>
       <xsl:variable name="array-size" as="xs:integer" select="array:size($input-array)"/>
-      <xsl:variable name="array-parts" as="array(*)*">
+      <xsl:variable name="output-array" as="array(*)">
          <xsl:iterate select="1 to $array-size">
-            <xsl:param name="permutations-so-far" as="array(*)*"/>
+            <xsl:param name="permutations-so-far" as="array(*)" select="[]"/>
             <xsl:on-completion select="$permutations-so-far"/>
+            
             <xsl:variable name="this-member-number" as="xs:integer" select="."/>
-            <xsl:variable name="array-member" as="item()*" select="$input-array($this-member-number)"/>
-            <xsl:variable name="new-permutations" as="array(*)+">
+            <xsl:variable name="items-to-permute" as="item()*" select="$input-array($this-member-number)"/>
+            
+            <xsl:variable name="new-permutations" as="array(*)">
                <xsl:choose>
                   <xsl:when test="$this-member-number eq 1">
-                     <xsl:sequence select="
-                           for $i in $array-member
-                           return
-                              [$i]"/>
+                     <xsl:sequence select="array{$items-to-permute}"/>
                   </xsl:when>
                   <xsl:otherwise>
-                     <xsl:sequence select="
-                           for $i in $permutations-so-far,
-                              $j in $array-member
-                           return
-                              [($i(1), $j)]"/>
+                     <xsl:variable name="size-of-permutations-so-far" as="xs:integer" select="array:size($permutations-so-far)"/>
+                     
+                     <xsl:iterate select="1 to $size-of-permutations-so-far">
+                        <xsl:param name="interim-array1" as="array(*)" select="[]"/>
+                        <xsl:on-completion select="$interim-array1"/>
+                        
+                        <xsl:variable name="member-number" as="xs:integer" select="."/>
+                        <xsl:variable name="base-items" as="item()+" select="$permutations-so-far($member-number)"/>
+                        <xsl:variable name="new-interim-array1" as="array(*)">
+                           <xsl:iterate select="$items-to-permute">
+                              <xsl:param name="new-interim-array2" as="array(*)" select="$interim-array1"/>
+                              <xsl:on-completion select="$new-interim-array2"/>
+                              
+                              <xsl:variable name="new-item" as="item()" select="."/>
+                              <xsl:next-iteration>
+                                 <xsl:with-param name="new-interim-array2"
+                                    select="array:append($new-interim-array2, ($base-items, $new-item))"
+                                 />
+                              </xsl:next-iteration>
+                           </xsl:iterate>
+                        </xsl:variable>
+                        
+                        <xsl:next-iteration>
+                           <xsl:with-param name="interim-array1" select="$new-interim-array1"/>
+                        </xsl:next-iteration>
+                     </xsl:iterate>
                   </xsl:otherwise>
                </xsl:choose>
             </xsl:variable>
+            
             <xsl:next-iteration>
                <xsl:with-param name="permutations-so-far" select="$new-permutations"/>
             </xsl:next-iteration>
          </xsl:iterate>
       </xsl:variable>
-      <xsl:sequence select="array:join($array-parts)"/>
+      
+      <xsl:sequence select="$output-array"/>
    </xsl:function>
+   
+   
+   <xsl:function name="tan:array-permutations-fallback" as="element()" visibility="private">
+      <!-- An alternative to tan:array-permutations(), for cases where Java cannot balance
+         long arrays. See https://saxonica.plan.io/issues/5600 -->
+      <!-- The whole point of this fallback function is to avoid array:join(). Therefore results 
+         are returned as an element tree, and not re-converted using tan:xml-to-array(), which
+         depends upon array:join(). It is up to client functions to do with the output what is 
+         most appropriate. -->
+      <xsl:param name="input-array" as="array(*)"/>
+      <xsl:variable name="array-size" as="xs:integer" select="array:size($input-array)"/>
+      <xsl:variable name="input-as-xml" as="element()" select="tan:array-to-xml($input-array)"/>
+      <xsl:variable name="results" as="element()">
+         <array xmlns="http://www.w3.org/2005/xpath-functions/array">
+            <xsl:apply-templates select="$input-as-xml/array:member[1]" mode="tan:array-permutations">
+               <xsl:with-param name="members-with-items-to-permute" tunnel="yes" as="element()*"
+                  select="$input-as-xml/array:member[position() gt 1]"/>
+            </xsl:apply-templates>
+         </array>
+      </xsl:variable>
+      
+      <xsl:sequence select="$results"/>
+   </xsl:function>
+   
+   <xsl:mode name="tan:array-permutations" on-no-match="shallow-skip"/>
+   <xsl:template match="array:item" mode="tan:array-permutations">
+      <xsl:param name="members-with-items-to-permute" tunnel="yes" as="element()*"/>
+      <xsl:param name="permuted-set-so-far" tunnel="yes" as="element(array:item)*"/>
+      <xsl:choose>
+         <xsl:when test="count($members-with-items-to-permute) eq 0">
+            <member xmlns="http://www.w3.org/2005/xpath-functions/array">
+               <xsl:sequence select="$permuted-set-so-far, ."/>
+            </member>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:apply-templates select="head($members-with-items-to-permute)" mode="#current">
+               <xsl:with-param name="members-with-items-to-permute" tunnel="yes" as="element()*"
+                  select="tail($members-with-items-to-permute)"/>
+               <xsl:with-param name="permuted-set-so-far" tunnel="yes" select="$permuted-set-so-far, ."/>
+            </xsl:apply-templates>
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
+   
+   
    
    
 </xsl:stylesheet>
