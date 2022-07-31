@@ -1,6 +1,8 @@
 <xsl:stylesheet exclude-result-prefixes="#all" 
    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
    xmlns:tan="tag:textalign.net,2015:ns"
+   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+   xmlns:array="http://www.w3.org/2005/xpath-functions/array"
    xmlns="tag:textalign.net,2015:ns"
    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
@@ -1518,6 +1520,434 @@
             return
                string-length($i))"/>
    </xsl:function>
+   
+   
+   
+   <!-- TODO: develop this function so it can completely replace tan:diff-loop() -->
+   <xsl:function name="tan:multiple-string-diff-loop" visibility="private" as="element()*">
+      <!-- This function is an experiment in using the staggered sample technique
+         on multiple strings -->
+      <xsl:param name="str-sequence" as="xs:string*"/>
+      <xsl:param name="str-labels" as="xs:string*"/>
+      <xsl:param name="str-positions" as="xs:integer*"/>
+      <xsl:param name="vertical-stops-to-process" as="xs:double*"/>
+      <xsl:param name="min-sample-size" as="xs:integer?"/>
+      <xsl:param name="loop-counter" as="xs:integer"/>
+
+      <xsl:variable name="str-count" as="xs:integer" select="count($str-sequence)"/>
+      <xsl:variable name="str-lengths" as="xs:integer+" select="
+            for $i in $str-sequence
+            return
+               string-length($i)"/>
+      <xsl:variable name="shortest-length" as="xs:integer" select="min($str-lengths)"/>
+      <xsl:variable name="longest-length" as="xs:integer" select="max($str-lengths)"/>
+      <xsl:variable name="shortest-pos" as="xs:integer"
+         select="index-of($str-lengths, $shortest-length)[1]"/>
+      <xsl:variable name="shortest-string-label" as="xs:string?" select="$str-labels[$shortest-pos]"/>
+      <xsl:variable name="shortest-string" as="xs:string?" select="$str-sequence[$shortest-pos]"/>
+      <xsl:variable name="longest-strings" as="xs:string*"
+         select="$str-sequence[position() ne $shortest-pos]"/>
+
+      <xsl:variable name="at-least-one-input-is-empty" select="$shortest-length lt 1"
+         as="xs:boolean"/>
+      <xsl:variable name="loop-is-excessive" select="$loop-counter ge $tan:loop-tolerance"
+         as="xs:boolean"/>
+      <xsl:variable name="out-of-vertical-stops" select="count($vertical-stops-to-process) lt 1"
+         as="xs:boolean"/>
+
+      <xsl:variable name="no-match-result-tree" as="element()*">
+         <xsl:for-each select="1 to $str-count">
+            <xsl:variable name="i" as="xs:integer" select="."/>
+            <xsl:variable name="currtext" as="xs:string" select="$str-sequence[$i]"/>
+            <xsl:if test="string-length($currtext) gt 0">
+               <u>
+                  <txt>
+                     <xsl:value-of select="$currtext"/>
+                  </txt>
+                  <wit ref="{$str-labels[$i]}" pos="{$str-positions[$i]}"/>
+               </u>
+            </xsl:if>
+         </xsl:for-each>
+      </xsl:variable>
+      
+      <xsl:variable name="min-sample-size-norm" as="xs:integer" select="
+            if ($min-sample-size gt 0) then
+               min(($min-sample-size, $shortest-length))
+            else
+               if ($tan:collate-superskeleton-autoset-min-sample-size) then
+                  xs:integer(ceiling(math:log10(max(($shortest-length, 1)))))
+               else
+                  max(($tan:collate-superskeleton-min-sample-size, 1))"/>
+      
+      
+
+      <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
+      <xsl:if test="$diagnostics-on">
+         <xsl:message select="'diagnostics on for tan:multiple-string-diff-loop()'"/>
+         <xsl:message select="'loop number: ', string($loop-counter)"/>
+         <xsl:message select="
+               'string lengths: ', string-join(for $i in $str-lengths
+               return
+                  string($i), ', ')"/>
+         <xsl:message select="
+               'string positions: ', string-join(for $i in $str-positions
+               return
+                  string($i), ', ')"/>
+         <xsl:message select="'$vertical-stops-to-process:', $vertical-stops-to-process"/>
+         <xsl:message select="'Minimum sample size:', $min-sample-size-norm"/>
+      </xsl:if>
+
+      <xsl:choose>
+         <xsl:when test="$longest-length eq 0"/>
+
+         <xsl:when
+            test="not($at-least-one-input-is-empty) and count(distinct-values($str-sequence)) eq 1">
+            <c>
+               <xsl:copy-of select="$outer-loop-attr" use-when="$tan:infuse-diff-diagnostics"/>
+               <txt>
+                  <xsl:value-of select="$str-sequence[1]"/>
+               </txt>
+               <xsl:for-each select="1 to $str-count">
+                  <xsl:variable name="i" as="xs:integer" select="."/>
+                  <wit ref="{$str-labels[$i]}" pos="{$str-positions[$i]}"/>
+               </xsl:for-each>
+            </c>
+         </xsl:when>
+
+         <xsl:when
+            test="$at-least-one-input-is-empty or $loop-is-excessive or $out-of-vertical-stops">
+            <xsl:if test="$diagnostics-on">
+               <xsl:message select="'empty input? ', $at-least-one-input-is-empty"/>
+               <xsl:message select="'loop overload? ', $loop-is-excessive"/>
+               <xsl:message select="'out of vertical stops? ', $out-of-vertical-stops"/>
+            </xsl:if>
+            <xsl:if test="$loop-is-excessive">
+               <xsl:message select="
+                     'tan:diff() cannot loop beyond ' || xs:string($tan:loop-tolerance) ||
+                     ' passes; any remaining will not search for the superskeleton. '
+                     || (for $i in (1 to count($str-sequence))
+                     return
+                        ('String ' || $str-labels[$i] || ': ' || tan:ellipses($str-sequence[$i], 20)))
+                     "/>
+            </xsl:if>
+            <!-- Apply the standard tan:collate(), but without superskeleton on, and pass results 
+               through template to make sure positions are correct. -->
+            <xsl:apply-templates select="tan:collate($str-sequence, $str-labels, false(), true())"
+               mode="adjust-collation-pos-attrs">
+               <xsl:with-param name="string-labels" tunnel="yes" select="$str-labels"/>
+               <xsl:with-param name="position-offsets" tunnel="yes" select="$str-positions"/>
+            </xsl:apply-templates>
+         </xsl:when>
+
+         <xsl:otherwise>
+            <!-- Now we can search for parts of the short string within each of the longer strings -->
+
+            <xsl:iterate select="$vertical-stops-to-process">
+
+               <xsl:on-completion>
+                  <!-- If we have gotten to this stage, no vertical stops work, and the strings are
+                     for all intents and purposes unique -->
+                  <xsl:sequence select="$no-match-result-tree"/>
+               </xsl:on-completion>
+
+               <xsl:variable name="this-vertical-stop" select="." as="xs:double"/>
+               <xsl:variable name="percent-of-short-to-check"
+                  select="min((max(($this-vertical-stop, 0.0000001)), 1.0))" as="xs:double"/>
+               <xsl:variable name="length-of-sample" as="xs:integer"
+                  select="xs:integer(ceiling($shortest-length * $percent-of-short-to-check))"/>
+               <!-- If the sample size is at or below a certain predetermined threshold, draw the maximum number of samples that
+                  the short string will allow. Otherwise, -->
+               <xsl:variable name="number-of-horizontal-passes" select="
+                     if ($length-of-sample le $tan:diff-suspend-horizontal-pass-maximum-when-sample-sizes-reach-what) then
+                        $longest-length - $length-of-sample + 1
+                     else
+                        xs:integer(math:pow(1 - $percent-of-short-to-check, (1 div $tan:diff-horizontal-pass-frequency-rate)) * $tan:diff-maximum-number-of-horizontal-passes) + 1"
+                  as="xs:integer"/>
+               <xsl:variable name="length-of-play-in-short" as="xs:integer"
+                  select="$shortest-length - $length-of-sample"/>
+               <xsl:variable name="horizontal-stagger" as="xs:double"
+                  select="$length-of-play-in-short div max(($number-of-horizontal-passes - 1, 1))"/>
+               <xsl:variable name="starting-horizontal-locs" as="xs:integer+" select="
+                     distinct-values(for $i in (1 to $number-of-horizontal-passes)
+                     return
+                        xs:integer(ceiling(($i - 1) * $horizontal-stagger) + 1))"/>
+
+               <xsl:variable name="horizontal-search" as="element()*">
+                  <!-- Look for a match horizontally -->
+                  <xsl:iterate select="$starting-horizontal-locs">
+                     <xsl:variable name="this-search-string" as="xs:string"
+                        select="substring($shortest-string, ., $length-of-sample)"/>
+
+                     <xsl:variable name="skeleton-is-detected" as="xs:boolean" select="
+                           every $i in $longest-strings
+                              satisfies
+                              contains($i, $this-search-string)"/>
+
+                     <!-- The superskeleton is ambiguous when there are multiple instances in at least one version -->
+                     <!-- Unlike tan:diff(), the strategy here is to find the aggregate mean instance, then to find in each
+                           version the instance shares the closest position that mean does to its context -->
+                     <xsl:variable name="skeleton-match-is-unambiguous" as="xs:boolean">
+                        <xsl:try select="
+                              $skeleton-is-detected and
+                              (every $i in $str-sequence
+                                 satisfies
+                                 (let $k := substring-after($i, $this-search-string)
+                                 return
+                                    not(contains($k, $this-search-string))))">
+                           <xsl:catch>
+                              <xsl:message
+                                 select="'Oops, not too sure what happened, but could not see if skeleton is unambiguous'"/>
+                              <xsl:sequence select="true()"/>
+                           </xsl:catch>
+                        </xsl:try>
+                     </xsl:variable>
+
+                     <xsl:choose>
+                        <!-- The following happens when the $length-of-short-substring is 0 -->
+                        <xsl:when test="$this-search-string eq ''"/>
+                        <!-- If we are down to undesired anchor sizes, drop out -->
+                        <xsl:when test="$length-of-sample lt $min-sample-size-norm">
+                           <xsl:break/>
+                        </xsl:when>
+
+                        <xsl:when test="$skeleton-is-detected">
+
+                           <!-- Ah, but what about if there are multiple hits? -->
+                           <xsl:variable name="tok-input" as="element()*">
+                              <xsl:if test="not($skeleton-match-is-unambiguous)">
+                                 <xsl:sequence select="
+                                       for $i in $str-sequence
+                                       return
+                                          analyze-string($i, $this-search-string, 'q')"
+                                 />
+                              </xsl:if>
+                           </xsl:variable>
+                           <xsl:variable name="tok-input-min" as="xs:integer?" select="
+                                 min(for $i in $tok-input
+                                 return
+                                    count($i/*:match))"/>
+                           <!-- In simplified cluster -->
+                           <xsl:variable name="match-permutations" as="xs:integer?"
+                              select="math:pow($tok-input-min * 2, $str-count) idiv 2"/>
+                           <!-- TODO: when reconciling this loop with the core tan:loop() the
+                              global parameter will need to be renamed, and redocumented to
+                              point to the more generalized approach to resolution of 
+                              ambiguity. -->
+                           <xsl:variable name="resolving-match-ambiguity-is-worthwhile"
+                              as="xs:boolean" select="
+                                 exists($match-permutations) and
+                                 $match-permutations lt $tan:collate-superskeleton-match-ambiguity-check-ceiling"
+                           />
+                           
+                           <xsl:if test="$skeleton-match-is-unambiguous or $resolving-match-ambiguity-is-worthwhile">
+                              
+                              <xsl:variable name="tok-positions" as="array(xs:decimal+)?">
+                                 <xsl:if test="not($skeleton-match-is-unambiguous)">
+                                    <xsl:sequence select="
+                                          array:join(
+                                          for $i in (1 to $str-count)
+                                          return
+                                             [
+                                                for $j in $tok-input[$i]/*:match
+                                                return
+                                                   (string-length(string-join($j/preceding-sibling::*)) + 1) div $str-lengths[$i]
+                                             ]
+                                          )"/>
+                                 </xsl:if>
+                              </xsl:variable>
+                              <xsl:variable name="best-cluster" as="xs:decimal*">
+                                 <xsl:if test="not($skeleton-match-is-unambiguous)">
+                                    <xsl:sequence select="tan:closest-cluster($tok-positions)"/>
+                                 </xsl:if>
+                              </xsl:variable>
+                              <xsl:variable name="best-positions" as="xs:integer*">
+                                 <xsl:if test="not($skeleton-match-is-unambiguous)">
+                                    <xsl:sequence select="
+                                          for $i in (1 to $str-count)
+                                          return
+                                             index-of($tok-positions($i), $best-cluster[$i])[1]"
+                                    />
+                                 </xsl:if>
+                              </xsl:variable>
+   
+   
+                              <xsl:variable name="head-string-sequence" as="xs:string*" select="
+                                    if ($skeleton-match-is-unambiguous) then
+                                       for $i in $str-sequence
+                                       return
+                                          substring-before($i, $this-search-string)
+                                    else
+                                       (for $i in (1 to $str-count)
+                                       return
+                                          string-join($tok-input[$i]/*:match[$best-positions[$i]]/preceding-sibling::*))"/>
+                              <xsl:variable name="tail-string-sequence" as="xs:string*" select="
+                                    if ($skeleton-match-is-unambiguous) then
+                                       for $i in $str-sequence
+                                       return
+                                          substring-after($i, $this-search-string)
+                                    else
+                                       (for $i in (1 to $str-count)
+                                       return
+                                          string-join($tok-input[$i]/*:match[$best-positions[$i]]/following-sibling::*))"/>
+                              <xsl:variable name="anchor-head-addendum" as="xs:string?"
+                                 select="tan:common-end-string($head-string-sequence)"/>
+                              <xsl:variable name="anchor-tail-addendum" as="xs:string?"
+                                 select="tan:common-start-string($tail-string-sequence)"/>
+                              <xsl:variable name="full-anchor" as="xs:string"
+                                 select="$anchor-head-addendum || $this-search-string || $anchor-tail-addendum"/>
+                              <xsl:variable name="full-anchor-length" as="xs:integer"
+                                 select="string-length($full-anchor)"/>
+                              <xsl:variable name="head-addendum-length" as="xs:integer"
+                                 select="string-length($anchor-head-addendum)"/>
+                              <xsl:variable name="tail-addendum-length" as="xs:integer"
+                                 select="string-length($anchor-tail-addendum)"/>
+   
+                              <xsl:variable name="head-strings-to-reevaluate" as="xs:string*" select="
+                                    for $i in $head-string-sequence
+                                    return
+                                       substring($i, 1, string-length($i) - $head-addendum-length)"/>
+                              <xsl:variable name="tail-strings-to-reevaluate" as="xs:string*" select="
+                                    for $i in $tail-string-sequence
+                                    return
+                                       substring($i, $tail-addendum-length + 1)"/>
+                              <xsl:variable name="tail-str-positions" as="xs:integer*" select="
+                                    for $i in (1 to $str-count)
+                                    return
+                                       $str-positions[$i] + string-length($head-strings-to-reevaluate[$i]) + $full-anchor-length"/>
+   
+                              <xsl:variable name="inner-diagnostics-on" as="xs:boolean"
+                                 select="false()"/>
+                              <xsl:if test="$inner-diagnostics-on">
+                                 <xsl:message
+                                    select="'Inner diagnostics on, tan:multiple-string-diff-loop, $horizontal-search'"/>
+                                 <xsl:message select="'Search string: ', $this-search-string"/>
+                                 <xsl:message select="'Skeleton detected?: ', $skeleton-is-detected"/>
+                                 <xsl:message
+                                    select="'Skeleton is unambiguous?: ', $skeleton-match-is-unambiguous"/>
+                                 <xsl:if test="not($skeleton-match-is-unambiguous)">
+                                    <xsl:message select="'tok input: ', $tok-input"/>
+                                    <xsl:message
+                                       select="'tok positions: ', tan:array-to-xml($tok-positions)"/>
+                                    <xsl:message select="'best cluster: ', $best-cluster"/>
+                                    <xsl:message select="'best positions: ', $best-positions"/>
+                                 </xsl:if>
+                                 <xsl:message
+                                    select="'head string sequence: [', string-join($head-string-sequence, ' ], [ '), ']'"/>
+                                 <xsl:message
+                                    select="'tail string sequence: [', string-join($tail-string-sequence, ' ], [ '), ']'"
+                                 />
+                              </xsl:if>
+   
+                              <!-- Output -->
+   
+                              <!-- Reevaluate the head -->
+                              <xsl:sequence select="
+                                    tan:multiple-string-diff-loop($head-strings-to-reevaluate, $str-labels, $str-positions,
+                                    $vertical-stops-to-process, $min-sample-size-norm, $loop-counter + 1)"/>
+   
+                              <!-- Write the anchor -->
+                              <c>
+                                 <txt>
+                                    <xsl:value-of select="$full-anchor"/>
+                                 </txt>
+                                 <xsl:for-each select="1 to $str-count">
+                                    <xsl:variable name="i" as="xs:integer" select="."/>
+                                    <wit ref="{$str-labels[$i]}"
+                                       pos="{$str-positions[$i] + string-length($head-strings-to-reevaluate[$i])}"
+                                    />
+                                 </xsl:for-each>
+                              </c>
+                              <!-- Reevaluate the tail -->
+                              <xsl:sequence select="
+                                    tan:multiple-string-diff-loop($tail-strings-to-reevaluate, $str-labels, $tail-str-positions,
+                                    $vertical-stops-to-process, $min-sample-size-norm, $loop-counter + 1)"/>
+                              <!-- Stop iterating -->
+                              <xsl:break/>
+                           </xsl:if>
+                        </xsl:when>
+
+
+                        <xsl:otherwise>
+                           <xsl:next-iteration/>
+                        </xsl:otherwise>
+                     </xsl:choose>
+                  </xsl:iterate>
+               </xsl:variable>
+
+               <xsl:if test="$diagnostics-on">
+                  <xsl:message select="'loop counter', $loop-counter"/>
+                  <xsl:message select="'string count: ', $str-count"/>
+                  <xsl:for-each select="1 to $str-count">
+                     <xsl:variable name="this-pos" as="xs:integer" select="."/>
+                     <xsl:message
+                        select="$str-labels[$this-pos], ': ', tan:ellipses($str-sequence[$this-pos], 11)"
+                     />
+                  </xsl:for-each>
+                  <xsl:message select="'$short-size:', $shortest-length"/>
+                  <xsl:message select="'$this-vertical-stop:', $this-vertical-stop"/>
+                  <xsl:message select="'$percent-of-short-to-check:', $percent-of-short-to-check"/>
+                  <xsl:message select="'$length-of-sample:', $length-of-sample"/>
+                  <xsl:message select="'$number-of-horizontal-passes:', $number-of-horizontal-passes"/>
+                  <xsl:message select="'$horizontal-stagger:', $horizontal-stagger"/>
+                  <xsl:message select="'$starting-horizontal-locs:', $starting-horizontal-locs"/>
+                  <xsl:message select="'$length-of-play-in-short:', $length-of-play-in-short"/>
+                  <xsl:message select="'horizontal search: ', $horizontal-search"/>
+               </xsl:if>
+
+               <xsl:choose>
+
+                  <xsl:when test="exists($horizontal-search)">
+                     <xsl:break select="$horizontal-search"/>
+                  </xsl:when>
+                  <xsl:when test="$length-of-sample le 1">
+                     <xsl:break select="$no-match-result-tree"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:next-iteration/>
+                  </xsl:otherwise>
+               </xsl:choose>
+
+            </xsl:iterate>
+
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:function>
+   
+   <xsl:mode name="adjust-collation-pos-attrs" on-no-match="shallow-copy"/>
+   <xsl:template match="tan:witness" mode="adjust-collation-pos-attrs"/>
+   <xsl:template match="tan:collation" mode="adjust-collation-pos-attrs">
+      <xsl:apply-templates mode="#current"/>
+   </xsl:template>
+   <xsl:template match="tan:wit[@ref][@pos]" mode="adjust-collation-pos-attrs">
+      <xsl:param name="string-labels" tunnel="yes" as="xs:string*"/>
+      <xsl:param name="position-offsets" tunnel="yes" as="xs:integer*"/>
+      <xsl:variable name="index" as="xs:integer*" select="index-of($string-labels, @ref)"/>
+      <xsl:variable name="curr-offset" as="xs:integer?" select="$position-offsets[$index[1]] - 1"/>
+      
+      <xsl:copy>
+         <xsl:copy-of select="@* except @pos"/>
+         <xsl:choose>
+            <xsl:when test="count($index) eq 0">
+               <xsl:message select="'No index entry found for ' || @ref"/>
+               <xsl:copy-of select="@pos"/>
+            </xsl:when>
+            <xsl:when test="count($index) gt 1">
+               <xsl:message select="'Multiple index entries found for ' || @ref"/>
+               <xsl:copy-of select="@pos"/>
+            </xsl:when>
+            <xsl:when test="not(exists($curr-offset))">
+               <xsl:message select="'No offset value was found for ' || @ref"/>
+               <xsl:copy-of select="@pos"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:attribute name="pos" select="xs:integer(@pos) + $curr-offset"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:copy>
+      
+   </xsl:template>
+   
+   
    
    
    
