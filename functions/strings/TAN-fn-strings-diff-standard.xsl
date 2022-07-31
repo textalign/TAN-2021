@@ -3,6 +3,7 @@
    xmlns:tan="tag:textalign.net,2015:ns"
    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+   xmlns:array="http://www.w3.org/2005/xpath-functions/array"
    xmlns="tag:textalign.net,2015:ns"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
@@ -695,7 +696,9 @@
 
 
 
-   <!-- The actual diff engine -->
+   <!-- The actual diff engine. TODO: replace this function with tan:multiple-string-diff-loop(),
+      in TAN-fn-strings-diff-extended.xsl, which approaches the problem in a way generalizable and
+      probably more efficiently. -->
    <xsl:function name="tan:diff-loop" visibility="private" as="element()*">
       <xsl:param name="str-a" as="xs:string?"/>
       <xsl:param name="str-b" as="xs:string?"/>
@@ -826,6 +829,11 @@
                      $str-a-size
                   else
                      $str-b-size"/>
+            <xsl:variable name="long-length" as="xs:integer" select="
+                  if ($a-is-short) then
+                     $str-b-size
+                  else
+                     $str-a-size"/>
             <xsl:iterate select="$vertical-stops-to-process">
                
                <xsl:on-completion>
@@ -882,39 +890,51 @@
                                     ()
                                  else
                                     tokenize($short-string, $this-search-string, 'q')"/>
+                           <xsl:variable name="short-tokenized-count" as="xs:integer" select="count($short-tokenized)"/>
                            <xsl:variable name="long-tokenized" as="xs:string*" select="
                                  if ($match-is-unambiguous) then
                                     ()
                                  else
                                     tokenize($long-string, $this-search-string, 'q')"/>
+                           <xsl:variable name="long-tokenized-count" as="xs:integer" select="count($long-tokenized)"/>
                            <xsl:variable name="short-tok-pos" as="xs:integer*">
-                              <xsl:iterate select="$short-tokenized">
-                                 <xsl:param name="pos-so-far" as="xs:integer" select="1"/>
-                                 <xsl:variable name="this-length" as="xs:integer" select="string-length(.)"/>
-                                 <xsl:sequence select="$pos-so-far + $this-length"/>
-                                 <xsl:next-iteration>
-                                    <xsl:with-param name="pos-so-far"
-                                       select="$pos-so-far + $this-length + $length-of-short-substring"/>
-                                 </xsl:next-iteration>
-                              </xsl:iterate>
+                              <xsl:if test="$match-is-unambiguous">
+                                 <xsl:iterate select="$short-tokenized[position() lt $short-tokenized-count]">
+                                    <xsl:param name="pos-so-far" as="xs:integer" select="1"/>
+                                    <xsl:variable name="this-length" as="xs:integer" select="string-length(.)"/>
+                                    <xsl:variable name="this-pos" as="xs:integer" select="$pos-so-far + $this-length"/>
+                                    <xsl:if test="not($this-pos gt $short-length)">
+                                       <xsl:sequence select="$this-pos"/>
+                                    </xsl:if>
+                                    <xsl:next-iteration>
+                                       <xsl:with-param name="pos-so-far"
+                                          select="$pos-so-far + $this-length + $length-of-short-substring"/>
+                                    </xsl:next-iteration>
+                                 </xsl:iterate>
+                              </xsl:if>
                            </xsl:variable>
                            <xsl:variable name="long-tok-pos" as="xs:integer*">
-                              <xsl:iterate select="$long-tokenized">
-                                 <xsl:param name="pos-so-far" as="xs:integer" select="1"/>
-                                 <xsl:variable name="this-length" as="xs:integer" select="string-length(.)"/>
-                                 <xsl:sequence select="$pos-so-far + $this-length"/>
-                                 <xsl:next-iteration>
-                                    <xsl:with-param name="pos-so-far"
-                                       select="$pos-so-far + $this-length + $length-of-short-substring"/>
-                                 </xsl:next-iteration>
-                              </xsl:iterate>
+                              <xsl:if test="$match-is-unambiguous">
+                                 <xsl:iterate select="$long-tokenized[position() lt $long-tokenized-count]">
+                                    <xsl:param name="pos-so-far" as="xs:integer" select="1"/>
+                                    <xsl:variable name="this-length" as="xs:integer" select="string-length(.)"/>
+                                    <xsl:variable name="this-pos" as="xs:integer" select="$pos-so-far + $this-length"/>
+                                    <xsl:if test="not($this-pos gt $short-length)">
+                                       <xsl:sequence select="$this-pos"/>
+                                    </xsl:if>
+                                    <xsl:next-iteration>
+                                       <xsl:with-param name="pos-so-far"
+                                          select="$pos-so-far + $this-length + $length-of-short-substring"/>
+                                    </xsl:next-iteration>
+                                 </xsl:iterate>
+                              </xsl:if>
                            </xsl:variable>
                            <xsl:variable name="best-matching-pair" as="xs:integer*" select="
                                  if ($match-is-unambiguous) then
                                     ()
                                  else
-                                    tan:best-integer-pair($short-tok-pos[position() ne last()], $long-tok-pos[position() ne last()],
-                                    $short-tok-pos[last()], $long-tok-pos[last()])"
+                                    tan:best-integer-pair($short-tok-pos, $long-tok-pos,
+                                    $short-length, $long-length)"
                            />
                            
                            <xsl:variable name="this-long-head" select="
@@ -1035,6 +1055,7 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:function>
+
    
    
    
@@ -1103,9 +1124,11 @@
          </new>
       </xsl:variable>
       
-      <common>
-         <xsl:value-of select="$this-common-start"/>
-      </common>
+      <xsl:if test="string-length($this-common-start) gt 0">
+         <common>
+            <xsl:value-of select="$this-common-start"/>
+         </common>
+      </xsl:if>
 
       <xsl:sequence
          select="tan:diff-loop($new-elements/tan:a, $new-elements/tan:b, tan:vertical-stops($new-elements/*[1]), $loop-counter + 1)"
@@ -1147,9 +1170,11 @@
          select="tan:diff-loop($new-elements/tan:a, $new-elements/tan:b, tan:vertical-stops($new-elements/*[1]), $loop-counter + 1)"
       />
       
-      <common>
-         <xsl:value-of select="$this-common-end"/>
-      </common>
+      <xsl:if test="$this-common-end-length gt 0">
+         <common>
+            <xsl:value-of select="$this-common-end"/>
+         </common>
+      </xsl:if>
       
    </xsl:template>
 
@@ -1202,17 +1227,21 @@
          </new>
       </xsl:variable>
       
-      <common>
-         <xsl:value-of select="$this-common-start"/>
-      </common>
+      <xsl:if test="$this-common-start-length gt 0">
+         <common>
+            <xsl:value-of select="$this-common-start"/>
+         </common>
+      </xsl:if>
       
       <xsl:sequence
          select="tan:diff-loop($new-elements/tan:a, $new-elements/tan:b, tan:vertical-stops($new-elements/*[1]), $loop-counter + 1)"
       />
       
-      <common>
-         <xsl:value-of select="$this-common-end"/>
-      </common>
+      <xsl:if test="$this-common-end-length gt 0">
+         <common>
+            <xsl:value-of select="$this-common-end"/>
+         </common>
+      </xsl:if>
       
    </xsl:template>
    
@@ -1227,9 +1256,7 @@
       </xsl:copy>
    </xsl:template>
 
-   
 
-   
    
    
    
@@ -1237,10 +1264,12 @@
    
    <!-- Snap diff output to words -->
    
-   <xsl:function name="tan:snap-diff-to-word" as="element()?" visibility="private">
+   <xsl:function name="tan:snap-diff-to-word-inefficient" as="element()?" visibility="private">
       <!-- Input: the output of tan:diff() -->
       <!-- Output: the output adjusted so that divisions occur only at word boundaries -->
       <!-- This function makes the precise output of tan:diff() more legible for humans. -->
+      <!-- Written summer 2022 to replace the other tan:snap-diff-to-word() but this replacement
+         proved to be VERY time consuming on strings of length 10K and greater. -->
       <xsl:param name="diff-output" as="element()?"/>
       
       <xsl:variable name="string-a" as="xs:string?" select="string-join($diff-output/(tan:a | tan:common))"/>
@@ -1255,8 +1284,8 @@
             for $i in $string-b-toks/*
             return
                string-length($i)"/>
-      <xsl:variable name="tok-and-non-tok-starts-a" as="xs:integer+" select="tan:lengths-to-positions($tok-a-lengths)"/>
-      <xsl:variable name="tok-and-non-tok-starts-b" as="xs:integer+" select="tan:lengths-to-positions($tok-b-lengths)"/>
+      <xsl:variable name="tok-and-non-tok-starts-a" as="xs:integer*" select="tan:lengths-to-positions($tok-a-lengths)"/>
+      <xsl:variable name="tok-and-non-tok-starts-b" as="xs:integer*" select="tan:lengths-to-positions($tok-b-lengths)"/>
       
       <xsl:variable name="snapped-diff" as="element()">
          <diff>
@@ -1337,7 +1366,7 @@
                   (not(exists($new-tok-and-non-tok-starts-b)) or ($new-tok-and-non-tok-starts-b[1] eq $new-b-pos))"
                />
                
-               <xsl:variable name="diagnostics-on" as="xs:boolean" select="$el-name eq 'common'"/>
+               <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
                <xsl:if test="$diagnostics-on">
                   <xsl:message select="'Diagnostics on, snap-to-word'"/>
                   <xsl:message select="'Curr element: ', ."/>
@@ -1470,7 +1499,7 @@
       
    </xsl:function>
    
-   <xsl:function name="tan:snap-diff-to-word-old" as="element()?" visibility="private">
+   <xsl:function name="tan:snap-diff-to-word" as="element()?" visibility="private">
       <!-- Input: the output of tan:diff() -->
       <!-- Output: the output adjusted so that divisions occur only at word boundaries -->
       <!-- This function makes the precise output of tan:diff() more legible for humans. -->
@@ -1605,12 +1634,12 @@
          <xsl:when test="exists($preceding-diff) or exists($following-diff)">
             <xsl:variable name="regex-1" select="
                   if (exists($preceding-diff)) then
-                     ('^' || $tan:token-definition-default)
+                     ('^(' || $tan:token-definition-default[1]/@pattern || ')')
                   else
                      ()"/>
             <xsl:variable name="regex-2" select="
                   if (exists($following-diff)) then
-                     ($tan:token-definition-default || '$')
+                     ('(' || $tan:token-definition-default[1]/@pattern || ')$')
                   else
                      ()"/>
             <xsl:variable name="content-analyzed" as="element()">
@@ -1970,10 +1999,10 @@
                   <xsl:message select="'This item: ', ."/>
                   <xsl:message select="'Process the group that has been built so far?: ', $group-so-far-is-a-complete-triad"/>
                   <xsl:message select="'Group primed for adjustment and output: ', $group-so-far-for-adjustment"/>
-                  <xsl:message select="'Common end (1): ' || $common-end-1"/>
-                  <xsl:message select="'Common start (1): ' || $common-start-1"/>
+                  <xsl:message select="'Common end (1):', $common-end-1"/>
+                  <xsl:message select="'Common start (1):', $common-start-1"/>
                   <xsl:message select="'Shift middle by:', $shift-middle-by"/>
-                  <xsl:message select="'Text to insert: ' || $text-to-insert"/>
+                  <xsl:message select="'Text to insert:', $text-to-insert"/>
                   <xsl:message select="'Group to pass to next iteration: ', $group-to-pass-to-next-iteration"
                   />
                </xsl:if>
