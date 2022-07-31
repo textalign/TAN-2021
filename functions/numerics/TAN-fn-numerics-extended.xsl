@@ -115,6 +115,102 @@
    </xsl:function>
    
    
+   
+   <xsl:function name="tan:closest-cluster" as="xs:anyAtomicType+" visibility="public">
+      <!-- Input: an array of sequences of numerics -->
+      <!-- Output: a sequence of numerics, as many as the size of the input array; each nth 
+         item represents an item in the nth member of the input array. Collectively the output
+         represents the closest cluster of items from the input array. -->
+      <!-- Example:
+         Input: [(1, 5, 10), (6, 2), (1, 3, 7)]
+         Output: (1, 2, 1)-->
+      <!-- This function was written to support a version of tan:diff() that evaluates many versions -->
+      <!-- kw: numerics, statistics -->
+      <xsl:param name="array-of-sequences-of-numerics" as="array(xs:anyAtomicType+)"/>
+
+      <xsl:variable name="array-size" as="xs:integer"
+         select="array:size($array-of-sequences-of-numerics)"/>
+      <xsl:variable name="array-item-counts" as="xs:integer*" select="
+            for $i in (1 to $array-size)
+            return
+               count($array-of-sequences-of-numerics($i))"/>
+      <xsl:variable name="array-item-count-min" as="xs:integer" select="min($array-item-counts)"/>
+      <xsl:variable name="array-filter-member-number" as="xs:integer"
+         select="index-of($array-item-counts, $array-item-count-min)[1]"/>
+      <xsl:variable name="array-simplified" as="array(xs:anyAtomicType+)" select="
+            array:join(
+            for $n in (1 to $array-size)
+            return
+               let $member := $array-of-sequences-of-numerics($n)
+               return
+                  if (count($member) le ($array-item-count-min * 2)) then
+                     [$member]
+                  else
+                     [
+                        distinct-values(
+                        for $m in $array-of-sequences-of-numerics($array-filter-member-number)
+                        return
+                           ($member => sort((), function ($x) {
+                              abs($x - $m)
+                           })
+                           )[position() lt 3]
+                        )
+                     ]
+            )"/>
+      <xsl:variable name="permutation-count" as="xs:integer" select="
+            tan:product(for $i in (1 to $array-size)
+            return
+               count($array-simplified($i)))"/>
+
+      <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
+      <xsl:if test="$diagnostics-on">
+         <xsl:message select="'Diagnostics on, tan:closest-cluster()'"/>
+         <xsl:message select="'Array size:', $array-size"/>
+         <xsl:message select="
+               'Array item counts: ',
+               string-join(for $i in $array-item-counts
+               return
+                  xs:string($i), ', ')"/>
+         <xsl:message select="'Array simplified:', tan:array-to-xml($array-simplified)"/>
+      </xsl:if>
+
+      <xsl:choose>
+
+         <!-- Strategy: 
+               1. create a new array of sequences of numerics, one item from each input array member
+               2. calculate the mean of each array
+               3. return the array members with the lowest score
+            -->
+
+         <xsl:when
+            test="$tan:array-join-population-max gt 1 and $permutation-count gt $tan:array-join-population-max">
+            <xsl:variable name="permuted-array" as="element()"
+               select="tan:array-permutations-fallback($array-simplified)"/>
+            <xsl:for-each select="$permuted-array/array:member">
+               <xsl:sort>
+                  <xsl:variable name="items-parsed" as="xs:anyAtomicType*">
+                     <xsl:apply-templates mode="tan:build-maps-and-arrays"/>
+                  </xsl:variable>
+                  <xsl:sequence select="tan:var($items-parsed)"/>
+               </xsl:sort>
+               <xsl:if test="position() eq 1">
+                  <xsl:apply-templates mode="tan:build-maps-and-arrays"/>
+               </xsl:if>
+            </xsl:for-each>
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:variable name="permuted-array" as="array(xs:anyAtomicType+)"
+               select="tan:array-permutations($array-simplified)"/>
+            <xsl:variable name="permuted-array-sorted" as="array(xs:anyAtomicType+)" select="
+                  array:sort($permuted-array, (), function ($vals) {
+                     tan:var($vals)
+                  })"/>
+            <!--<xsl:variable name="permuted-array-sorted" as="array(xs:anyAtomicType+)" select="$permuted-array"/>-->
+            <xsl:sequence select="$permuted-array-sorted(1)"/>
+         </xsl:otherwise>
+      </xsl:choose>
+
+   </xsl:function>
 
 
 </xsl:stylesheet>

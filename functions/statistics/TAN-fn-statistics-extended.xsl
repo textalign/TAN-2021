@@ -80,8 +80,8 @@
       <!-- Input: a sequence of numbers -->
       <!-- Output: a single <stats> with attributes calculating the count, sum, average, max, min, variance, standard deviation, and then one child <d> per datum with the value of the datum -->
       <xsl:param name="arg" as="xs:anyAtomicType*"/>
-      <xsl:variable name="this-avg" select="avg($arg)"/>
-      <xsl:variable name="these-deviations" select="
+      <xsl:variable name="this-avg" as="xs:anyAtomicType*" select="avg($arg)[1]"/>
+      <xsl:variable name="these-deviations" as="xs:anyAtomicType*" select="
             for $i in $arg
             return
                math:pow(($i - $this-avg), 2)"/>

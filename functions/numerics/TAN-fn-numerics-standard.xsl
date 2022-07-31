@@ -2,6 +2,7 @@
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:tan="tag:textalign.net,2015:ns"
    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+   xmlns:array="http://www.w3.org/2005/xpath-functions/array"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
 
    <!-- TAN Function Library standard numeric functions. -->
@@ -60,19 +61,19 @@
          places in either the short or the long string. -->
       <xsl:param name="integer-sequence-a" as="xs:integer*"/>
       <xsl:param name="integer-sequence-b" as="xs:integer*"/>
-      <xsl:param name="population-size-a" as="xs:integer"/>
-      <xsl:param name="population-size-b" as="xs:integer"/>
+      <xsl:param name="max-limit-a" as="xs:integer"/>
+      <xsl:param name="max-limit-b" as="xs:integer"/>
 
       <xsl:variable name="seq-a-sorted" as="xs:integer*" select="sort($integer-sequence-a)"/>
       <xsl:variable name="seq-b-sorted" as="xs:integer*" select="sort($integer-sequence-b)"/>
       <xsl:variable name="seq-a-portions" as="xs:decimal*" select="
             for $i in $seq-a-sorted
             return
-               $i div $population-size-a"/>
+               $i div $max-limit-a"/>
       <xsl:variable name="seq-b-portions" as="xs:decimal*" select="
             for $i in $seq-b-sorted
             return
-               $i div $population-size-b"/>
+               $i div $max-limit-b"/>
 
       <xsl:variable name="diagnostics-on" as="xs:boolean" select="false()"/>
       <xsl:if test="$diagnostics-on">
@@ -87,7 +88,7 @@
          <xsl:param name="best-a-pos-so-far" as="xs:integer" select="1"/>
          <xsl:param name="best-b-pos-so-far" as="xs:integer" select="1"/>
          <xsl:param name="score-to-beat" as="xs:decimal"
-            select="xs:decimal(max(($population-size-a, $population-size-b)))"/>
+            select="xs:decimal(max(($max-limit-a, $max-limit-b)))"/>
 
          <xsl:on-completion>
             <xsl:sequence select="$best-a-pos-so-far, $best-b-pos-so-far"/>
@@ -170,17 +171,17 @@
    
    
    <xsl:function name="tan:lengths-to-positions" as="xs:integer*" visibility="public">
-      <!-- Input: sequence of numbers representing legnths of items.  -->
+      <!-- Input: sequence of numbers representing lengths of items.  -->
       <!-- Output: sequence of numbers representing the first position of each input item, if the sequence concatenated.
       E.g., (4, 12, 0, 7) - > (1, 5, 17, 17)-->
       <!--kw: numerics, sequences -->
       <xsl:param name="seq" as="xs:integer*"/>
       <xsl:copy-of select="
-         for $i in (1 to count($seq))
-         return
-         sum(for $j in (1 to $i)
-         return
-         $seq[$j]) - $seq[$i] + 1"/>
+            for $i in (1 to count($seq))
+            return
+               sum(for $j in (1 to $i)
+               return
+                  $seq[$j]) - $seq[$i] + 1"/>
    </xsl:function>
    
    
