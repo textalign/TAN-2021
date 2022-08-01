@@ -3,6 +3,7 @@
 [http://textalign.net](http://textalign.net)
 
 Version 2021 (alpha release)
+Maintenance release July 31, 2022
 
 New to TAN? Start here:
 

@@ -14,7 +14,8 @@
 
    <!-- A sharp distinction is made between validation mode and non-validation mode. As many components as possible
       are removed during validation mode, to improve efficiency. By default validation mode is turned off, which means
-      that any application that includes this file will have access to the entire library. 
+      that any application that includes this file will have access to the entire library. But when a TAN file is
+      being validated, only a portion of the library is compiled.
    -->
    <!-- Some functions may not be available, or be restricted, if advanced processing features are not supported. -->
    
@@ -83,7 +84,6 @@
    <xsl:include href="strings/TAN-fn-strings-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="strings/TAN-fn-strings-diff-standard.xsl"/>
    <xsl:include href="strings/TAN-fn-strings-diff-extended.xsl" use-when="not($tan:validation-mode-on)"/>
-   <xsl:include href="strings/TAN-fn-strings-collate-standard.xsl"/>
    <xsl:include href="strings/TAN-fn-strings-collate-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- URIs -->
    <xsl:include href="uris/TAN-fn-uris-standard.xsl"/>
@@ -99,6 +99,7 @@
    <xsl:include href="files/TAN-fn-file-output.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="files/TAN-fn-file-archive-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- Statistics -->
+   <xsl:include href="statistics/TAN-fn-statistics-standard.xsl"/>
    <xsl:include href="statistics/TAN-fn-statistics-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- HTML -->
    <xsl:include href="html/TAN-fn-html-core.xsl" use-when="not($tan:validation-mode-on)"/>

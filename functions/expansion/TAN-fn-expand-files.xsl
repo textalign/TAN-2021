@@ -1108,7 +1108,7 @@
    <xsl:template match="tan:reference-system/@type" mode="tan:core-expansion-prep-for-attr-query"/>
    
    
-   <xsl:template match="tan:inclusion | *[@include]" mode="tan:attributes-not-in-inclusions"/>
+   <xsl:template match="tan:inclusion | tan:fix | *[@include]" mode="tan:attributes-not-in-inclusions"/>
    
    <xsl:template match="@xml:id | @id" mode="tan:attributes-not-in-inclusions">
       <xsl:sequence select="."/>

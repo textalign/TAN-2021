@@ -1,3 +1,21 @@
+# Maintenance updates for version 2021
+
+Cumulative changes through July 31, 2022. Developers / users of TAN functions are advised to take careful note of items marked **dev**. 
+
+* Missing TEI function library file restored
+* Diff function:
+  * `tan:collate()` revised to include new superskeleton method, presented at Balisage 2022.
+  * `tan:collate()` in arities of greater than three now have a parameter, `$detect-superskeleton` (**dev**)
+  * Division by zero bug patched.
+  * Collate standard function file renamed to extended. 
+* Rules for TEI space normalization adjusted.
+* Parameters
+  * `$tan:token-definition-default` now exposed as a global parameter (**dev**); note, it the parameter should be populated with a `<token-definition pattern=""/>` element.
+  * `$tan:array-join-population-max`: introduced to prevent memory crashes in `tan:collate()`, superskeleton mode, with Saxon before 11.4 in Java.
+  * `$tan:collate-superskeleton-autoset-min-sample-size`: used to turn on the default mechanism for setting minimimum size of a match in `tan:collate()` in superskeleton mode.
+  * `$tan:collate-superskeleton-min-sample-size`: used to set the minimimum size of a match in `tan:collate()` in superskeleton mode.
+* New functions: `tan:closest-cluster()`, `tan:var()` (statistical variance)
+
 # Changes since version 2020
 
 Below are listed significant changes that have been made since version 2020 to the Text Alignment Network. See the git log of the dev branch for a complete account of all changes.
