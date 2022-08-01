@@ -442,6 +442,7 @@
                <xsl:message select="'Outbound element filters for inclusions:', $element-filters-for-inclusions"/>
                <xsl:message select="'Outbound element filters for vocabularies pass 1:', $element-filters-for-vocabularies-pass-1"/>
                <xsl:message select="'Outbound element filters for vocabularies pass 2:', $element-filters-for-vocabularies-pass-2"/>
+               <xsl:message select="'Doc with critical dependencies resolved:', $doc-with-critical-dependencies-resolved"/>
                <xsl:message select="'Doc with inclusions applied and vocabulary adjusted: ', $doc-with-inclusions-applied-and-vocabulary-adjusted"/>
                <xsl:message select="'Doc with n and ref converted', $doc-with-n-and-ref-converted"/>
             </xsl:if>
@@ -643,7 +644,7 @@
                   at this point they can be inserted into the relevant full vocabulary item. This presumes that
                   we are pushing the filters into a vocabulary file.
                -->
-               <xsl:with-param name="children-to-append" select="$matching-element-filters/(tan:id | tan:idref | tan:alias)"/>
+               <xsl:with-param name="children-to-append" as="element()*" select="$matching-element-filters/(tan:id | tan:idref | tan:alias)"/>
                <xsl:with-param name="inclusion-filters" select="$matching-element-filters"/>
                <xsl:with-param name="copy-id-to-element" as="xs:boolean" tunnel="yes"
                   select="exists(ancestor::tan:TAN-voc)"/>
@@ -772,7 +773,11 @@
    
    
    <xsl:template match="*:body/*" priority="1" mode="tan:first-stamp-shallow-copy">
+      <!-- TODO: adjust rules so that the non-tunnel parameters do not have to be intercepted
+         and passed on. -->
       <xsl:param name="doc-base-uri" tunnel="yes"/>
+      <xsl:param name="children-to-append" as="element()*"/>
+      <xsl:param name="inclusion-filters" as="element()*"/>
       <!-- Validation can be configured to avoid evaluating overly lengthy 
          files. -->
       <xsl:choose>
@@ -792,12 +797,18 @@
                </xsl:when>
                <xsl:when test="$is-cut"/>
                <xsl:otherwise>
-                  <xsl:next-match/>
+                  <xsl:next-match>
+                     <xsl:with-param name="children-to-append" as="element()*" select="$children-to-append"/>
+                     <xsl:with-param name="inclusion-filters" as="element()*" select="$inclusion-filters"/>
+                  </xsl:next-match>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:next-match/>
+            <xsl:next-match>
+               <xsl:with-param name="children-to-append" as="element()*" select="$children-to-append"/>
+               <xsl:with-param name="inclusion-filters" as="element()*" select="$inclusion-filters"/>
+            </xsl:next-match>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
