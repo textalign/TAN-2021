@@ -971,7 +971,8 @@
                     <xsl:element name="br" namespace="http://www.w3.org/1999/xhtml"/>
                 </xsl:matching-substring>
                 <xsl:non-matching-substring>
-                    <xsl:sequence select="tan:parse-a-hrefs(tan:controls-to-pictures(.))"/>
+                    <xsl:sequence select="tan:parse-a-hrefs(tan:controls-to-pictures(.))" use-when="$tan:xml-1-1-is-supported"/>
+                    <xsl:sequence select="tan:parse-a-hrefs(.)" use-when="not($tan:xml-1-1-is-supported)"/>
                 </xsl:non-matching-substring>
             </xsl:analyze-string>
         </xsl:for-each>

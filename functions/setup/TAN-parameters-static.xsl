@@ -28,6 +28,10 @@
    
    <!-- Should attributes with diagnostic information be infused into output from tan:diff()? -->
    <xsl:param name="tan:infuse-diff-diagnostics" as="xs:boolean" select="false()" static="yes"/>
+    
+    <!-- Is support for XML 1.1 available? (C# environments, for example, do not support XML 1.1.) -->
+   <xsl:param name="tan:xml-1-1-is-supported" as="xs:boolean" select="true()" static="yes"/>
+    
    
 
 </xsl:stylesheet>

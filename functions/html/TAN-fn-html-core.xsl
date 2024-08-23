@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns="http://www.w3.org/1999/xhtml" xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -76,7 +76,7 @@
     
     
     <xsl:variable name="tan:excluded-class-characters-regex" 
-        as="xs:string">[&#1;-&#xff;-[\s0-9a-zA-Z_-]]</xsl:variable>
+        as="xs:string">[\p{C}]</xsl:variable>
     
     <xsl:function name="tan:prepare-to-convert-to-html" as="item()*" visibility="private">
         <!-- Input: a tree fragment that is destined for HTML output -->

@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet exclude-result-prefixes="#all" 
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
    xmlns:tan="tag:textalign.net,2015:ns"

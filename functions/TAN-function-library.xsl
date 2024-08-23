@@ -71,9 +71,9 @@
    <xsl:include href="numerals/TAN-fn-numerals-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="numerics/TAN-fn-numerics-standard.xsl"/>
    <xsl:include href="numerics/TAN-fn-numerics-extended.xsl" use-when="not($tan:validation-mode-on)"/>
-   <xsl:include href="numerics/TAN-fn-numeric-conversion.xsl"/>
-   <xsl:include href="numerics/TAN-fn-octets.xsl" use-when="not($tan:validation-mode-on)"/>
-   <xsl:include href="numerics/TAN-fn-binary.xsl" use-when="not($tan:validation-mode-on)"/>
+    <xsl:include href="numerics/TAN-fn-numeric-conversion.xsl"/>
+    <xsl:include href="numerics/TAN-fn-octets.xsl" use-when="not($tan:validation-mode-on)"/>
+    <xsl:include href="numerics/TAN-fn-binary.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- Date, time, and version -->
    <xsl:include href="time/TAN-fn-time.xsl"/>
    <!-- Sequences -->
@@ -81,7 +81,8 @@
    <xsl:include href="sequences/TAN-fn-sequences-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- Strings -->
    <xsl:include href="strings/TAN-fn-strings-standard.xsl"/>
-   <xsl:include href="strings/TAN-fn-strings-extended.xsl" use-when="not($tan:validation-mode-on)"/>
+    <xsl:include href="strings/TAN-fn-strings-extended.xsl" use-when="not($tan:validation-mode-on)"/>
+    <xsl:include href="strings/TAN-fn-strings-extended-xml-1-1.xsl" use-when="not($tan:validation-mode-on) and $tan:xml-1-1-is-supported"/>
    <xsl:include href="strings/TAN-fn-strings-diff-standard.xsl"/>
    <xsl:include href="strings/TAN-fn-strings-diff-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="strings/TAN-fn-strings-collate-extended.xsl" use-when="not($tan:validation-mode-on)"/>
@@ -102,7 +103,7 @@
    <xsl:include href="statistics/TAN-fn-statistics-standard.xsl"/>
    <xsl:include href="statistics/TAN-fn-statistics-extended.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- HTML -->
-   <xsl:include href="html/TAN-fn-html-core.xsl" use-when="not($tan:validation-mode-on)"/>
+    <xsl:include href="html/TAN-fn-html-core.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="html/TAN-fn-html-colors.xsl" use-when="not($tan:validation-mode-on)"/>
    <xsl:include href="html/TAN-fn-html-diff-and-collate.xsl" use-when="not($tan:validation-mode-on)"/>
    <!-- Booleans -->
