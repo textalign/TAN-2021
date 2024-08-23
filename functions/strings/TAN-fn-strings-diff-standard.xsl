@@ -1518,7 +1518,7 @@
                <xsl:variable name="text-b"
                   select="string-join(current-group()/(self::tan:b, self::tan:a-or-b), '')"/>
                <xsl:variable name="a-toks" as="xs:string*">
-                  <xsl:analyze-string select="$text-a" regex="{$tan:token-definition-default}">
+                  <xsl:analyze-string select="$text-a" regex="{$tan:token-definition-default/@pattern}">
                      <xsl:matching-substring>
                         <xsl:value-of select="."/>
                      </xsl:matching-substring>
@@ -1528,7 +1528,7 @@
                   </xsl:analyze-string>
                </xsl:variable>
                <xsl:variable name="b-toks" as="xs:string*">
-                  <xsl:analyze-string select="$text-b" regex="{$tan:token-definition-default}">
+                  <xsl:analyze-string select="$text-b" regex="{$tan:token-definition-default/@pattern}">
                      <xsl:matching-substring>
                         <xsl:value-of select="."/>
                      </xsl:matching-substring>

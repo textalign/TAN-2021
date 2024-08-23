@@ -308,7 +308,8 @@
       />
       <xsl:variable name="elements-prepped-pass-1" as="element()*">
          <xsl:for-each select="$elements-to-group">
-            <xsl:variable name="these-grouping-key-nodes" select="descendant::node()[matches(name(.), $regex-of-names-of-nodes-to-group-by)]"/>
+            <!-- 2023-12-08: patch; changed from descendant:: to child:: -->
+            <xsl:variable name="these-grouping-key-nodes" select="child::node()[matches(name(.), $regex-of-names-of-nodes-to-group-by)]"/>
             <item n="{position()}">
                <xsl:choose>
                   <xsl:when test="$group-by-all-children">
