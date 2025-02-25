@@ -287,7 +287,7 @@
                         <xsl:for-each-group
                            select="$collation-so-far/*/*[@ref = $previous-string-label]/@pos, $this-diff-collation/*/*[@ref = $previous-string-label]/@pos"
                            group-by=".">
-                           <xsl:sort select="number(current-grouping-key())"/>
+                           <xsl:sort select="xs:integer(current-grouping-key())"/>
                            <xsl:variable name="group-root-elements"
                               select="current-group()/ancestor::tan:collation"/>
                            <group pos="{current-grouping-key()}">
@@ -466,7 +466,7 @@
                       -->
                         <xsl:for-each-group select="$both-collations-splintered/*"
                            group-by="*[@ref = $previous-string-label]/@pos">
-                           <!--<xsl:sort select="number(current-grouping-key())"/>-->
+                           <!--<xsl:sort select="xs:integer(current-grouping-key())"/>-->
       
                            <!-- If from the groups about to be created the first of the two groups fails to have a reference to
                            the incoming text, we need a reference with an accurate @pos, so now we get all those that are 
@@ -520,7 +520,7 @@
                                                    <xsl:copy-of
                                                       select="$this-new-collation-item/tan:wit/@ref"/>
                                                    <xsl:attribute name="pos"
-                                                      select="number($this-new-collation-item/tan:wit/@pos) + string-length($this-new-collation-item/tan:txt)"
+                                                      select="xs:integer($this-new-collation-item/tan:wit/@pos) + string-length($this-new-collation-item/tan:txt)"
                                                    />
                                                 </x>
                                              </xsl:when>
@@ -938,9 +938,9 @@
    <xsl:template match="tan:wit" mode="tan:add-collation-pos-offset">
       <xsl:param name="offsets" as="element()*"/>
       <xsl:variable name="this-ref" select="@ref"/>
-      <xsl:variable name="this-pos" select="number(@pos)"/>
-      <xsl:variable name="this-offset-pos"
-         select="(number($offsets[@ref = $this-ref][1]/@by), 1)[1]"/>
+      <xsl:variable name="this-pos" as="xs:integer" select="xs:integer(@pos)"/>
+      <xsl:variable name="this-offset-pos" as="xs:integer"
+         select="(xs:integer($offsets[@ref = $this-ref][1]/@by), 1)[1]"/>
       <xsl:copy>
          <xsl:copy-of select="@* except @pos"/>
          <xsl:attribute name="pos" select="$this-pos + $this-offset-pos - 1"/>
