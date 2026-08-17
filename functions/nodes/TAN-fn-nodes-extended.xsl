@@ -119,14 +119,13 @@
    <xsl:mode name="tan:text-only" on-no-match="text-only-copy"/>
    
    
-   <xsl:mode name="tan:prepend-line-break"/>
+   <xsl:mode name="tan:prepend-line-break" on-no-match="shallow-copy"/>
    
    <xsl:template match="* | processing-instruction() | comment()" mode="tan:prepend-line-break">
       <!-- Useful for breaking up XML content that is not indented -->
       <xsl:text>&#xa;</xsl:text>
       <xsl:copy>
-         <xsl:copy-of select="@*"/>
-         <xsl:apply-templates mode="#current"/>
+         <xsl:apply-templates select="@* | node()" mode="#current"/>
       </xsl:copy>
    </xsl:template>
    

@@ -28,14 +28,13 @@
    </xsl:function>
    
    
-   <xsl:mode name="tan:fn-shallow-copy" on-no-match="shallow-skip"/>
+   <xsl:mode name="tan:fn-shallow-copy" on-no-match="shallow-copy"/>
    
    <xsl:template match="node() | document-node()" mode="tan:fn-shallow-copy">
       <xsl:param name="levels-to-go" as="xs:integer?"/>
       <xsl:if test="$levels-to-go gt 0">
          <xsl:copy>
-            <xsl:copy-of select="@*"/>
-            <xsl:apply-templates mode="#current">
+            <xsl:apply-templates select="@* | node()" mode="#current">
                <xsl:with-param name="levels-to-go" select="$levels-to-go - 1"/>
             </xsl:apply-templates>
          </xsl:copy>
